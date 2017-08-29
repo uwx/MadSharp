@@ -1,0 +1,15 @@
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\obj\Debug\MadGame.csprojResolveAssemblyReference.cache
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\MadGame.pdb
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\MonoGame.Framework.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.XAudio2.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.DXGI.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.Direct3D11.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.Direct2D1.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.XInput.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\MonoGame.Framework.xml
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\obj\Debug\MadGame.pdb
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\bin\Debug\MadGame.exe
+C:\Users\Rafael\Documents\GitHub\MadGame\MadGame\obj\Debug\MadGame.exe

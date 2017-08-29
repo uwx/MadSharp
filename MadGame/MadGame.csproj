@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC66DCE9-33FB-4FED-8E01-8D3C32C11872}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MadGame</RootNamespace>
+    <AssemblyName>MadGame</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Colors.cs" />
+    <Compile Include="ContO.cs" />
+    <Compile Include="Delauney.cs" />
+    <Compile Include="F51.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="Geometry\Edge.cs" />
+    <Compile Include="Geometry\Point.cs" />
+    <Compile Include="Geometry\PointN.cs" />
+    <Compile Include="Geometry\Triangle.cs" />
+    <Compile Include="LilyPath\Brush.cs" />
+    <Compile Include="LilyPath\Brushes\CheckerBrush.cs" />
+    <Compile Include="LilyPath\DrawBatch.cs" />
+    <Compile Include="LilyPath\DrawCache.cs" />
+    <Compile Include="LilyPath\Enums.cs" />
+    <Compile Include="LilyPath\GraphicsPath.cs" />
+    <Compile Include="LilyPath\LineCapInfo.cs" />
+    <Compile Include="LilyPath\PathBuilder.cs" />
+    <Compile Include="LilyPath\Pen.cs" />
+    <Compile Include="LilyPath\Pens\GradientPen.cs" />
+    <Compile Include="LilyPath\Pens\PathGradientPen.cs" />
+    <Compile Include="LilyPath\Properties\AssemblyInfo.cs" />
+    <Compile Include="LilyPath\Properties\AssemblyInfo.WP8.cs" />
+    <Compile Include="LilyPath\Shapes\Grid.cs" />
+    <Compile Include="LilyPath\SolidColorBrush.cs" />
+    <Compile Include="LilyPath\TextureBrush.cs" />
+    <Compile Include="LilyPath\Triangulator.cs" />
+    <Compile Include="LilyPath\Utility\Buffer.cs" />
+    <Compile Include="LilyPath\Utility\PenWorkspace.cs" />
+    <Compile Include="LilyPath\Utility\Pool.cs" />
+    <Compile Include="LilyPath\Utility\Pools.cs" />
+    <Compile Include="LilyPath\Utility\ZeroList.cs" />
+    <Compile Include="Plane.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="RD.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\BoundingBox.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\ColorManager.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\ExtensionMethods.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\GDI\MeshRenderer.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\GDI\RenderControl.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\GDI\VoronoiRenderer.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\IMeshRenderer.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\RenderData.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\RenderManager.cs" />
+    <Compile Include="Triangle.NET\MeshRenderer.Core\Zoom.cs" />
+    <Compile Include="Triangle.NET\Triangle\Algorithm\Dwyer.cs" />
+    <Compile Include="Triangle.NET\Triangle\Algorithm\Incremental.cs" />
+    <Compile Include="Triangle.NET\Triangle\Algorithm\ITriangulator.cs" />
+    <Compile Include="Triangle.NET\Triangle\Algorithm\SweepLine.cs" />
+    <Compile Include="Triangle.NET\Triangle\BadTriQueue.cs" />
+    <Compile Include="Triangle.NET\Triangle\Behavior.cs" />
+    <Compile Include="Triangle.NET\Triangle\Carver.cs" />
+    <Compile Include="Triangle.NET\Triangle\Data\BadSubseg.cs" />
+    <Compile Include="Triangle.NET\Triangle\Data\BadTriangle.cs" />
+    <Compile Include="Triangle.NET\Triangle\Data\Osub.cs" />
+    <Compile Include="Triangle.NET\Triangle\Data\Otri.cs" />
+    <Compile Include="Triangle.NET\Triangle\Data\Segment.cs" />
+    <Compile Include="Triangle.NET\Triangle\Data\Triangle.cs" />
+    <Compile Include="Triangle.NET\Triangle\Data\Vertex.cs" />
+    <Compile Include="Triangle.NET\Triangle\Enums.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\BoundingBox.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\Edge.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\EdgeEnumerator.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\InputGeometry.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\ISegment.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\ITriangle.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\Point.cs" />
+    <Compile Include="Triangle.NET\Triangle\Geometry\RegionPointer.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\DataReader.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\DebugWriter.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\FileReader.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\FileWriter.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\IGeometryFormat.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\IMeshFormat.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\InputTriangle.cs" />
+    <Compile Include="Triangle.NET\Triangle\IO\TriangleFormat.cs" />
+    <Compile Include="Triangle.NET\Triangle\Log\ILog.cs" />
+    <Compile Include="Triangle.NET\Triangle\Log\ILogItem.cs" />
+    <Compile Include="Triangle.NET\Triangle\Log\SimpleLog.cs" />
+    <Compile Include="Triangle.NET\Triangle\Log\SimpleLogItem.cs" />
+    <Compile Include="Triangle.NET\Triangle\Mesh.cs" />
+    <Compile Include="Triangle.NET\Triangle\NewLocation.cs" />
+    <Compile Include="Triangle.NET\Triangle\Primitives.cs" />
+    <Compile Include="Triangle.NET\Triangle\Quality.cs" />
+    <Compile Include="Triangle.NET\Triangle\Sampler.cs" />
+    <Compile Include="Triangle.NET\Triangle\Smoothing\ISmoother.cs" />
+    <Compile Include="Triangle.NET\Triangle\Smoothing\SimpleSmoother.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\AdjacencyMatrix.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\BoundedVoronoi.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\CuthillMcKee.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\IVoronoi.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\QuadTree.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\QualityMeasure.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\RegionIterator.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\Statistic.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\Voronoi.cs" />
+    <Compile Include="Triangle.NET\Triangle\Tools\VoronoiRegion.cs" />
+    <Compile Include="Triangle.NET\Triangle\TriangleLocator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Content\effects.fx" />
+    <Content Include="Triangle.NET\Data\A.node" />
+    <Content Include="Triangle.NET\Data\A.poly" />
+    <Content Include="Triangle.NET\Data\bird.json" />
+    <Content Include="Triangle.NET\Data\superior-1.ele" />
+    <Content Include="Triangle.NET\Data\superior-1.poly" />
+    <Content Include="Triangle.NET\Data\superior.poly" />
+    <Content Include="Triangle.NET\MeshRenderer.Core\MeshRenderer.Core.csproj" />
+    <Content Include="Triangle.NET\MeshRenderer.Core\MeshRenderer.Core.csproj.vspscc" />
+    <Content Include="Triangle.NET\Triangle.sln" />
+    <Content Include="Triangle.NET\Triangle.vssscc" />
+    <Content Include="Triangle.NET\Triangle\Triangle.csproj" />
+    <Content Include="Triangle.NET\Triangle\Triangle.csproj.vspscc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
