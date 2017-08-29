@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadGame", "MadGame\MadGame.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDXMad", "SharpDXMad\SharpDXMad.csproj", "{E57B1BFA-945D-4184-B441-A20143942501}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDX.Samples", "..\..\..\Downloads\SharpDX-Samples-ed7e80cdcac145cf1864c6b9358a558e5fe8deb6\Desktop\Common\SharpDX.Samples.csproj", "{93716298-9FA4-4002-AE0B-4C9F4705CCEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDX.Samples", "SharpDX-Samples-ed7e80cdcac145cf1864c6b9358a558e5fe8deb6\Desktop\Common\SharpDX.Samples.csproj", "{93716298-9FA4-4002-AE0B-4C9F4705CCEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
