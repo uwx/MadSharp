@@ -26,9 +26,8 @@ namespace MadGame
     public class Program : Direct2D1DemoApp
     {
         private const int FrameDelay = (int)(1000 / 21f);
-        private static readonly Stopwatch Stopwatch = new Stopwatch();
         
-        private Bitmap _bitmap;
+        private static readonly Stopwatch Stopwatch = new Stopwatch();
 
         protected override void Initialize(DemoConfiguration demoConfiguration)
         {
@@ -38,6 +37,11 @@ namespace MadGame
             G.Factory = Factory2D;
             F51 = new F51();
             F51.run();
+        }
+
+        public void SetupAndRun()
+        {
+            Run(new DemoConfiguration("Mad.cs", 800, 450));
         }
 
         public F51 F51 { get; set; }
@@ -97,7 +101,7 @@ namespace MadGame
         private static void Main(string[] args)
         {
             var program = new Program();
-            program.Run(new DemoConfiguration("SharpDX Bitmap Demo"));
+            program.SetupAndRun();
         }
 }
 }
