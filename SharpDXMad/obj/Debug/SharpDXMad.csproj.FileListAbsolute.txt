@@ -17,3 +17,5 @@ C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\bin\Debug\SharpDX.Mathematic
 C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\obj\Debug\SharpDXMad.csprojResolveAssemblyReference.cache
 C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\obj\Debug\SharpDXMad.exe
 C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\obj\Debug\SharpDXMad.pdb
+C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\bin\Debug\SharpDX.DirectInput.dll
+C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\bin\Debug\SharpDX.DirectInput.xml

@@ -8,22 +8,22 @@ namespace MadGame
     public class F51
     {
 
-        ContO o;
-        bool right;
-        bool left;
-        bool up;
-        bool down;
-        bool forward;
-        bool back;
-        bool rotl;
-        bool rotr;
-        bool plus;
-        bool minus;
-        bool _in;
-        bool _out;
-        bool show3;
-        static bool trans;
-        Medium medium;
+        internal ContO o;
+        internal bool right;
+        internal bool left;
+        internal bool up;
+        internal bool down;
+        internal bool forward;
+        internal bool back;
+        internal bool rotl;
+        internal bool rotr;
+        internal bool plus;
+        internal bool minus;
+        internal bool _in;
+        internal bool _out;
+        internal bool show3;
+        internal static bool trans;
+        internal Medium medium;
 
         
     public F51()

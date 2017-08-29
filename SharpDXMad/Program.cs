@@ -4,10 +4,12 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Windows.Forms;
 using MadGame;
 using SharpDX;
 using SharpDX.Direct3D;
 using SharpDX.Direct3D11;
+using SharpDX.DirectInput;
 using SharpDX.DXGI;
 using SharpDX.Mathematics.Interop;
 using D2D = SharpDX.Direct2D1;
@@ -15,7 +17,7 @@ using Bitmap = SharpDX.Direct2D1.Bitmap;
 using SharpDX.Samples;
 using SysGfx = System.Drawing;
 
-namespace SharpDXMad
+namespace MadGame
 {
     /// <summary>
     /// This sample demonstrates how to load a Direct2D1 bitmap from a file.
@@ -25,7 +27,7 @@ namespace SharpDXMad
     {
         private const int FrameDelay = (int)(1000 / 21f);
         private static readonly Stopwatch Stopwatch = new Stopwatch();
-
+        
         private Bitmap _bitmap;
 
         protected override void Initialize(DemoConfiguration demoConfiguration)
@@ -58,6 +60,37 @@ namespace SharpDXMad
             }
 
             //RenderTarget2D.FillEllipse(new D2D.Ellipse(new Vector2(250, 525), 100, 100), new D2D.SolidColorBrush(RenderTarget2D, new RawColor4(0,1,0,1)));
+        }
+
+        protected override void KeyDown(KeyEventArgs args)
+        {
+            const bool isDown = true;
+            HandleKeyPress(args, isDown);
+        }
+
+        protected override void KeyUp(KeyEventArgs args)
+        {
+            const bool isDown = false;
+            HandleKeyPress(args, isDown);
+        }
+
+        private void HandleKeyPress(KeyEventArgs args, bool isDown)
+        {
+            switch (args.KeyCode)
+            {
+                case Keys.Up:
+                    F51.up = isDown;
+                    break;
+                case Keys.Down:
+                    F51.down = isDown;
+                    break;
+                case Keys.Left:
+                    F51.left = isDown;
+                    break;
+                case Keys.Right:
+                    F51.right = isDown;
+                    break;
+            }
         }
 
         [STAThread]
