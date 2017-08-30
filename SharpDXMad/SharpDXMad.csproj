@@ -82,6 +82,8 @@
     <Compile Include="Mad\MadNFMM\Utility.cs" />
     <Compile Include="Mad\MadNFMM\Wheels.cs" />
     <Compile Include="Mad\MadNFMM\xtGraphics.cs" />
+    <Compile Include="Mad\MadNFMM\xtImages.cs" />
+    <Compile Include="Mad\MadNFMM\xtPart2.cs" />
     <Compile Include="Mad\Medium.cs" />
     <Compile Include="Mad\Plane.cs" />
     <Compile Include="Mad\G.cs" />

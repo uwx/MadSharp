@@ -160,8 +160,6 @@ public class Medium {
         if (resdown != 2)
             if (f == 5.0F) {
                 if (resdown == 0 && rescnt == 0) {
-                    GameSparker.moto = 0;
-                    Madness.anti = 0;
                     fade[0] = 3000;
                     fadfrom(fade[0]);
                     resdown = 1;

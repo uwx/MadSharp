@@ -1,3 +1,6 @@
+using System;
+using boolean = System.Boolean;
+
 namespace Cum {
 public class Utility {
 
@@ -17,11 +20,11 @@ public class Utility {
      * @param i The position of the value (starting from 0)
      * @return An integer containing the value
      */
-    static int getvalue(final String astring, final String string262, final int i) {
+    static int getvalue(String astring, String string262, int i) {
         int i263 = 0;
         String string264 = "";
         for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
-            final String string266 = "" + string262.charAt(i265);
+            String string266 = "" + string262.charAt(i265);
             if (string266.equals(",") || string266.equals(")")) {
                 i263++;
                 i265++;
@@ -39,7 +42,7 @@ public class Utility {
      * @param i the value position
      * @return the value at the position
      */
-    public static int getServerValue(final String astring, final int i) {
+    public static int getServerValue(String astring, int i) {
         int i437 = -1;
         try {
             int i438 = 0;
@@ -63,7 +66,7 @@ public class Utility {
                 string442 = "-1";
             }
             i437 = Integer.parseInt(string442);
-        } catch (final Exception ignored) {
+        } catch (Exception ignored) {
 
         }
         return i437;
@@ -79,7 +82,7 @@ public class Utility {
      * @param m the Medium
      * @return The 2D X coordinate.
      */
-    static int xs(final int i, int i338) {
+    static int xs(int i, int i338) {
         if (i338 < Medium.cz) {
             i338 = Medium.cz;
         }
@@ -96,7 +99,7 @@ public class Utility {
      * @param m the Medium
      * @return The 2D Y coordinate.
      */
-    static int ys(final int i, int i339) {
+    static int ys(int i, int i339) {
         if (i339 < Medium.cz) {
             i339 = Medium.cz;
         }
@@ -105,14 +108,14 @@ public class Utility {
 
     // alt
 
-    static int altXs(final int i, int i260) {
+    static int altXs(int i, int i260) {
         if (i260 < 50) {
             i260 = 50;
         }
         return (i260 - Medium.focusPoint) * (Medium.cx - i) / i260 + i;
     }
 
-    static int altYs(final int i, int i261) {
+    static int altYs(int i, int i261) {
         if (i261 < 50) {
             i261 = 50;
         }
@@ -121,24 +124,24 @@ public class Utility {
 
     // medium
 
-    /*static public int mediumXs(final int i, int i272) {
+    /*static public int mediumXs(int i, int i272) {
     	if (i272 < m.cz)
     		i272 = m.cz;
     	return (i272 - m.focusPoint) * (m.cx - i) / i272 + i;
     }*/
 
-    static int mediumYs(final int i, int i273) {
+    static int mediumYs(int i, int i273) {
         if (i273 < 10) {
             i273 = 10;
         }
         return (i273 - Medium.focusPoint) * (Medium.cy - i) / i273 + i;
     }
 
-    public static int getint(final String astring, final String string262, final int i) {
+    public static int getint(String astring, String string262, int i) {
         int i263 = 0;
         String string264 = "";
         for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
-            final String string266 = "" + string262.charAt(i265);
+            String string266 = "" + string262.charAt(i265);
             if (string266.equals(",") || string266.equals(")")) {
                 i263++;
                 i265++;
@@ -147,17 +150,17 @@ public class Utility {
                 string264 = "" + string264 + string262.charAt(i265);
             }
         }
-        return Integer.parseInt(string264);
+        return int.Parse(string264);
     }
 
-    private final static float EPSILON = 0.0000001F;
-    private final static double EPSILON_DOUBLE = 0.0000001D;
+    private readonly static float EPSILON = 0.0000001F;
+    private readonly static double EPSILON_DOUBLE = 0.0000001D;
 
-    static boolean fEquals(final float a, final float b) {
+    static boolean fEquals(float a, float b) {
         return Math.abs(a - b) < EPSILON;
     }
 
-    static boolean dEquals(final double a, final double b) {
+    static boolean dEquals(double a, double b) {
         return Math.abs(a - b) < EPSILON_DOUBLE;
     }
 
@@ -168,23 +171,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    internal public static <E> boolean arrayContains(final E[] arr, final E targetValue) {
-        for (final E s : arr) {
-            if (s.equals(targetValue))
-                return true;
-        }
-        return false;
-    }
-
-    /**
-     * Check if an array contains a value, <a href="http://www.programcreek.com/2014/04/check-if-array-contains-a-value-java/">very efficient</a>
-     *
-     * @param arr         The array to check against
-     * @param targetValue The value to check for
-     * @return {@code true} if the value ais found, {@code false} otherwise
-     */
-    static boolean arrayContains(final int[] arr, final int targetValue) {
-        for (final int s : arr) {
+    static boolean arrayContains(int[] arr, int targetValue) {
+        foreach (int s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -198,8 +186,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(final byte[] arr, final byte targetValue) {
-        for (final byte s : arr) {
+    public static boolean arrayContains(byte[] arr, byte targetValue) {
+        foreach (byte s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -213,8 +201,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(final short[] arr, final short targetValue) {
-        for (final short s : arr) {
+    public static boolean arrayContains(short[] arr, short targetValue) {
+        foreach (short s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -228,8 +216,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(final char[] arr, final char targetValue) {
-        for (final char s : arr) {
+    public static boolean arrayContains(char[] arr, char targetValue) {
+        foreach (char s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -243,8 +231,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(final long[] arr, final long targetValue) {
-        for (final long s : arr) {
+    public static boolean arrayContains(long[] arr, long targetValue) {
+        foreach (long s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -258,8 +246,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(final float[] arr, final float targetValue) {
-        for (final float s : arr) {
+    public static boolean arrayContains(float[] arr, float targetValue) {
+        foreach (float s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -273,53 +261,13 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(final double[] arr, final double targetValue) {
-        for (final double s : arr) {
+    public static boolean arrayContains(double[] arr, double targetValue) {
+        foreach (double s in arr) {
             if (s == targetValue)
                 return true;
         }
         return false;
     }
-
-
-    /**
-     * Unsafe subclass of ByteArrayOutputStream that doesn't copy array on output
-     *
-     * @author http://stackoverflow.com/users/80002/mark
-     */
-    public static class UnsafeByteArrayOutputStream extends ByteArrayOutputStream {
-
-        public UnsafeByteArrayOutputStream() {
-        }
-
-        public UnsafeByteArrayOutputStream(final int size) {
-            super(size);
-        }
-
-        public int getByteCount() {
-            return count;
-        }
-
-        public byte[] getDataBuffer() {
-            return buf;
-        }
-    }
-
-    /* for proper .length access and stuff */
-    public static UnsafeByteArrayOutputStream streamNoSize(final ZipInputStream zipinputstream, final ZipEntry zipentry, final int entrySize) throws IOException {
-        final UnsafeByteArrayOutputStream bytes = new UnsafeByteArrayOutputStream(entrySize < 0 ? 8192 : entrySize);
-        Console.WriteLine(zipentry.getName() + "; size = " + zipentry.getSize());
-
-        while (true) {
-            final int b = zipinputstream.read();
-            if (b == -1) {
-                break;
-            }
-            bytes.write(b);
-        }
-        return bytes;
-    }
-
 
     /**
      * Checks if a astring contains a POSITIVE INTEGER.
@@ -327,82 +275,27 @@ public class Utility {
      * @param str
      * @return
      */
-    public static boolean isNumeric(final String str) {
-        for (final char c : str.toCharArray()) {
-            if (!Character.isDigit(c))
+    public static boolean isNumeric(String str) {
+        foreach (char c in str) {
+            if (!char.IsDigit(c))
                 return false;
         }
         return true;
     }
 
-    internal public static <T, E> T getKeyByValue(final Map<T, E> map, final E value) {
-        for (final Map.Entry<T, E> entry : map.entrySet()) {
-            if (Objects.equals(value, entry.getValue()))
-                return entry.getKey();
-        }
-        return null;
-    }
-
-    internal public static <E> boolean listModelEquals(final ListModel<E> lm, final ListModel<E> lm2) {
-        for (int i = 0; i < lm.getSize(); i++) {
-            if (!lm.getElementAt(i).equals(lm2.getElementAt(i)))
-                return false;
-        }
-        return true;
-    }
-
-    internal public static <E> boolean listModelEquals(final ListModel<E> lm, final E[] e2) {
-        for (int i = 0; i < lm.getSize(); i++) {
-            if (!lm.getElementAt(i).equals(e2))
-                return false;
-        }
-        return true;
-    }
-
-    internal public static <E> boolean listModelEquals(final ListModel<E> lm, final Vector<E> lm2) {
-        for (int i = 0; i < lm.getSize(); i++) {
-            if (!lm.getElementAt(i).equals(lm2.elementAt(i)))
-                return false;
-        }
-        return false;
-    }
-
-//    /**
-//     * Pick an item from an array.
-//     *
-//     * @param ais The array.
-//     * @return The item.
-//     * @author Rafael
-//     */
-//    public static int choose(final int... ais) {
-//        return ais[ThreadLocalRandom.current().nextInt(ais.length)];
-//    }
-
-    /**
-     * Pick an item from an array.
-     *
-     * @param ais The array.
-     * @return The item.
-     * @author Rafael
-     */
-    @SafeVarargs
-    internal public static <E> E choose(final E... ais) {
-        return ais[ThreadLocalRandom.current().nextInt(ais.length)];
-    }
-
-    public static double getDistance(final int x1, final int y1, final int z1, final int x2, final int y2, final int z2) {
-        final int dx = x1 - x2;
-        final int dy = y1 - y2;
-        final int dz = z1 - z2;
+    public static double getDistance(int x1, int y1, int z1, int x2, int y2, int z2) {
+        int dx = x1 - x2;
+        int dy = y1 - y2;
+        int dz = z1 - z2;
 
         // We should avoid Math.pow or Math.hypot due to perfomance reasons
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 
-    public static double getDistance(final float x1, final float y1, final float z1, final float x2, final float y2, final float z2) {
-        final float dx = x1 - x2;
-        final float dy = y1 - y2;
-        final float dz = z1 - z2;
+    public static double getDistance(float x1, float y1, float z1, float x2, float y2, float z2) {
+        float dx = x1 - x2;
+        float dy = y1 - y2;
+        float dz = z1 - z2;
 
         // We should avoid Math.pow or Math.hypot due to perfomance reasons
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
@@ -414,7 +307,7 @@ public class Utility {
          * @param data The array to reverse.
          */
         public static void reverse(byte[] data) {
-            for (int left = 0, right = data.length - 1; left < right; left++, right--) {
+            for (int left = 0, right = data.Length - 1; left < right; left++, right--) {
                 // swap the values at the left and right indices
                 byte temp = data[left];
                 data[left] = data[right];
@@ -426,10 +319,10 @@ public class Utility {
          * Reverses an array of elements.
          * @param data The array to reverse.
          */
-        public static <E> void reverse(E[] data) {
-            for (int left = 0, right = data.length - 1; left < right; left++, right--) {
+        public static void reverse<T>(T[] data) {
+            for (int left = 0, right = data.Length - 1; left < right; left++, right--) {
                 // swap the values at the left and right indices
-                E temp = data[left];
+                var temp = data[left];
                 data[left] = data[right];
                 data[right] = temp;
             }

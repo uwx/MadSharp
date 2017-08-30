@@ -82,7 +82,7 @@ class ContO {
     internal int z = 0;
     internal int zy = 0;
 
-    ContO(byte[] _is) {
+    internal ContO(byte[] _is) {
         keyx = new int[4];
         keyz = new int[4];
         sprkat = 0;
