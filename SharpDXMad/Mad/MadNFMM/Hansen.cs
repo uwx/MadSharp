@@ -27,6 +27,46 @@ namespace Cum
         {
             throw new System.NotImplementedException();
         }
+
+        public static int abs(int p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static float cos(double d)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static float sin(double d)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static double abs(float p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static double abs(double p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static double sqrt(float p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static int toDegrees(object atan2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static object atan2(int i, int i1)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class Image : Bitmap

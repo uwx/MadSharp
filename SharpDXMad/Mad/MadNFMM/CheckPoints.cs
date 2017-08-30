@@ -1,3 +1,6 @@
+using System;
+using boolean = System.Boolean;
+
 namespace Cum {
 
 /* CheckPoints - Decompiled by JODE
@@ -7,18 +10,18 @@ namespace Cum {
 class CheckPoints {
     //private CheckPoints() {}
     static int catchfin = 0;
-    static final int[] clear = {
+    static readonly int[] clear = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
-    static final int[] dested = {
+    static readonly int[] dested = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
     static int fn = 0;
-    static final int[] fx = new int[5];
-    static final int[] fy = new int[5];
-    static final int[] fz = new int[5];
+    static readonly int[] fx = new int[5];
+    static readonly int[] fy = new int[5];
+    static readonly int[] fz = new int[5];
     static boolean haltall = false;
-    static final float[] magperc = {
+    static readonly float[] magperc = {
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F
     };
     static String maker = "";
@@ -33,44 +36,44 @@ class CheckPoints {
     static boolean notb = false;
     static int nsp = 0;
     static int nto = 0;
-    static final int[] omxz = new int[8];
-    static final int[] onscreen = new int[8];
+    static readonly int[] omxz = new int[8];
+    static readonly int[] onscreen = new int[8];
     /**
      * The X of every car ain the stage.
      */
-    static final int[] opx = new int[8];
+    static readonly int[] opx = new int[8];
     /**
      * The Z of every car ain the stage.
      */
-    static final int[] opz = new int[8];
+    static readonly int[] opz = new int[8];
     static int pcleared = 0;
     static int pcs = 0;
-    static final int[] pos = {
+    static readonly int[] pos = {
             7, 7, 7, 7, 7, 7, 7, 7
     };
     static private int postwo = 0;
     static float prox = 0.0F;
     static int pubt = 0;
-    static final boolean[] roted = new boolean[5];
-    static final boolean[] special = new boolean[5];
+    static readonly boolean[] roted = new boolean[5];
+    static readonly boolean[] special = new boolean[5];
     static int stage = (int) (HansenRandom.Double() * 27.0) + 1;
     static int top20 = 0;
     static String trackname = "";
     static int trackvol = 200;
-    static final int[] typ = new int[10000];
+    static readonly int[] typ = new int[10000];
     static int wasted = 0;
     /**
      * You know when you add )p to the end of pieces? Their coordinates go here. )p basically adds "nodes" for where the AI goes. Therefore, {@link #x} and {@link #z} are the X and Z coordinates of track pieces with )p at the end of them.
      */
-    static final int[] x = new int[10000];
+    static readonly int[] x = new int[10000];
     /**
      * You know when you add )p to the end of pieces? Their coordinates go here. )p basically adds "nodes" for where the AI goes. Therefore, {@link #x} and {@link #z} are the X and Z coordinates of track pieces with )p at the end of them.
      */
-    static final int[] y = new int[10000];
+    static readonly int[] y = new int[10000];
     /**
      * You know when you add )p to the end of pieces? Their coordinates go here. )p basically adds "nodes" for where the AI goes. Therefore, {@link #x} and {@link #z} are the X and Z coordinates of track pieces with )p at the end of them.
      */
-    static final int[] z = new int[10000];
+    static readonly int[] z = new int[10000];
 
     static void calprox() {
         int i = 0;
@@ -87,7 +90,7 @@ class CheckPoints {
         prox = i / 90.0F;
     }
 
-    static void checkstat(final Mad[] mads, final ContO[] contos, final int i, final int i0, final int i1) {
+    static void checkstat(Mad[] mads, ContO[] contos, int i, int i0, int i1) {
         if (!haltall) {
             pcleared = mads[i0].pcleared;
             for (int i2 = 0; i2 < i; i2++) {
@@ -163,7 +166,7 @@ class CheckPoints {
         }
     }
 
-    static private int py(final int i, final int i11, final int i12, final int i13) {
+    static private int py(int i, int i11, int i12, int i13) {
         return (i - i11) * (i - i11) + (i12 - i13) * (i12 - i13);
     }
 }
