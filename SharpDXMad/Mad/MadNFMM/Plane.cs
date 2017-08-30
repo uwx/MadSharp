@@ -1,14 +1,5 @@
-package nfm.open;
-/* Plane - Decompiled by JODE
- * Visit http://jode.sourceforge.net/
- */
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.util.concurrent.ThreadLocalRandom;
-
-final class Plane implements Comparable<Plane> {
+namespace Cum {
+class Plane implements Comparable<Plane> {
     private int av = 0;
     int bfase = 0;
     final int[] c = new int[3];
@@ -1299,4 +1290,5 @@ final class Plane implements Comparable<Plane> {
         }
         return 0;
     }
+}
 }

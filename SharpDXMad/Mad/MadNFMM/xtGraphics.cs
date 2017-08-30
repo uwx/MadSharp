@@ -1,42 +1,4 @@
-package nfm.open;
-/* xtGraphics - Decompiled by JODE
- * Visit http://jode.sourceforge.net/
- */
-import nfm.open.music.*;
-
-import static nfm.open.xtGraphics.Images.*;
-
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.awt.RenderingHints;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.awt.image.MemoryImageSource;
-import java.awt.image.PixelGrabber;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.net.URL;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+namespace Cum {
 
 class xtGraphics extends JPanel implements Runnable {
     private xtGraphics() { super(); }
@@ -4733,7 +4695,7 @@ class xtGraphics extends JPanel implements Runnable {
         void accept(byte[] is, MediaTracker mediatracker, Toolkit toolkit);
     }
     
-    private static final class ImageIdentifier {
+    private static class ImageIdentifier {
         final String fileName;
         final ImageConsumer cons;
         private ImageIdentifier(String s, ImageConsumer c) {
@@ -5488,7 +5450,7 @@ class xtGraphics extends JPanel implements Runnable {
             fileinputstream.close();
             zipinputstream.close();
         } catch (final Exception exception) {
-            System.out.println("Error Loading Sounds: " + exception);
+            Console.WriteLine("Error Loading Sounds: " + exception);
         }
         System.gc();
     }
@@ -7967,7 +7929,7 @@ class xtGraphics extends JPanel implements Runnable {
             }
 
             // DEBUG: Prints the range of possible cars to the console
-            //System.out.println("Minimum car: " + stat.names[(i - 1) / 2] + ", maximum car: " + stat.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
+            //Console.WriteLine("Minimum car: " + stat.names[(i - 1) / 2] + ", maximum car: " + stat.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
 
             // create a list of car ids, each item completely unique
             final ArrayList<Integer> list = new ArrayList<>();
@@ -7993,10 +7955,10 @@ class xtGraphics extends JPanel implements Runnable {
                 // if there are more cars than tracks, reduce the car index number until it fits.
                 // unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
                 while (sc[j] >= nCars) {
-                    System.out.println("Car " + j + " is out of bounds");
+                    Console.WriteLine("Car " + j + " is out of bounds");
                     sc[j] -= ThreadLocalRandom.current().nextDouble() * 5F;
                 }
-                System.out.println("sc of " + j + " is " + sc[j]);
+                Console.WriteLine("sc of " + j + " is " + sc[j]);
             }
         }
         // this error will never be thrown in a deployment environment
@@ -9546,4 +9508,5 @@ class xtGraphics extends JPanel implements Runnable {
         }
         return (i280 - Medium.focusPoint) * (Medium.cy - i) / i280 + i;
     }
+}
 }

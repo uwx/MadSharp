@@ -1,4 +1,4 @@
-package nfm.open;
+namespace Cum {
 /* ContO - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
@@ -553,7 +553,7 @@ class ContO implements Point3DX {
                 throw new RuntimeException(exception);
             else if (!errd) {
                 err = "Error While Loading 3D Model\n\nLine:     " + string + "\n\nError Detail:\n" + exception + "           \n \n";
-                System.out.println(err);
+                Console.WriteLine(err);
                 errd = true;
             }
         }
@@ -2263,4 +2263,6 @@ class ContO implements Point3DX {
     public float xz() {
         return xz;
     }
+}
+
 }

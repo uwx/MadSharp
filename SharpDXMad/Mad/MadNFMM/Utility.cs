@@ -1,16 +1,5 @@
-package nfm.open;
-
-import javax.swing.*;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Vector;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-public final class Utility {
+namespace Cum {
+public class Utility {
 
     /**
      * This is an utility class, so it can't be inherited.
@@ -319,7 +308,7 @@ public final class Utility {
     /* for proper .length access and stuff */
     public static UnsafeByteArrayOutputStream streamNoSize(final ZipInputStream zipinputstream, final ZipEntry zipentry, final int entrySize) throws IOException {
         final UnsafeByteArrayOutputStream bytes = new UnsafeByteArrayOutputStream(entrySize < 0 ? 8192 : entrySize);
-        System.out.println(zipentry.getName() + "; size = " + zipentry.getSize());
+        Console.WriteLine(zipentry.getName() + "; size = " + zipentry.getSize());
 
         while (true) {
             final int b = zipinputstream.read();
@@ -454,4 +443,5 @@ public final class Utility {
     }
 
 
+}
 }

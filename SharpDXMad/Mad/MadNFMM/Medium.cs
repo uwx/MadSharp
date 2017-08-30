@@ -1,12 +1,4 @@
-package nfm.open;
-/* Medium - Decompiled by JODE
- * Visit http://jode.sourceforge.net/
- */
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
+namespace Cum {
 public class Medium {
     //private Medium() {}
     static int adv = 500;
@@ -2033,4 +2025,5 @@ public class Medium {
         }
         return (i273 - focusPoint) * (cy - i) / i273 + i;
     }
+}
 }

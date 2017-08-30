@@ -1,12 +1,6 @@
-package nfm.open;
-/* MouseHandler - Decompiled by JODE
- * Visit http://jode.sourceforge.net/
- */
-import java.awt.PopupMenu;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-class MouseHandler extends MouseAdapter {
+namespace Cum
+{
+    class MouseHandler extends MouseAdapter {
     private final int id;
     private final PopupMenu popupMenu;
 
@@ -16,8 +10,11 @@ class MouseHandler extends MouseAdapter {
     }
 
     @Override
-    public void mousePressed(final MouseEvent mouseevent) {
-        if (mouseevent.isPopupTrigger()) {
+
+    public void mousePressed(final MouseEvent mouseevent)
+    {
+        if (mouseevent.isPopupTrigger())
+        {
             popupMenu.show(mouseevent.getComponent(), mouseevent.getX(), mouseevent.getY());
             Madness.textid = id;
             mouseevent.consume();
@@ -25,11 +22,15 @@ class MouseHandler extends MouseAdapter {
     }
 
     @Override
-    public void mouseReleased(final MouseEvent mouseevent) {
-        if (mouseevent.isPopupTrigger()) {
+
+    public void mouseReleased(final MouseEvent mouseevent)
+    {
+        if (mouseevent.isPopupTrigger())
+        {
             popupMenu.show(mouseevent.getComponent(), mouseevent.getX(), mouseevent.getY());
             Madness.textid = id;
             mouseevent.consume();
         }
+    }
     }
 }
