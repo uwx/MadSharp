@@ -1,5 +1,8 @@
+using System;
+using boolean = System.Boolean;
+
 namespace Cum {
-class Plane implements Comparable<Plane> {
+class Plane : IComparable<Plane> {
     private int av = 0;
     int bfase = 0;
     final int[] c = new int[3];
@@ -54,7 +57,7 @@ class Plane implements Comparable<Plane> {
     
     byte project;//booleans are bytes anyway so hey why not
 
-    Plane(final int[] is, final int[] is0, final int[] is1, final int i, final int[] is2, final int i3, final int i4, final int i5, final int i6, final int i7, final int i8, final int i9, final int i10, final boolean bool, final int i11, final boolean bool12, final boolean randomcolor, final boolean randoutline, final boolean customstroke, final int strokewidth, final int strokecap, final int strokejoin, final int strokemtlimit) {
+    Plane(final int[] ais, final int[] is0, final int[] is1, final int i, final int[] is2, final int i3, final int i4, final int i5, final int i6, final int i7, final int i8, final int i9, final int i10, final boolean abool, final int i11, final boolean bool12, final boolean randomcolor, final boolean randoutline, final boolean customstroke, final int strokewidth, final int strokecap, final int strokejoin, final int strokemtlimit) {
         this.randoutline = randoutline;
         this.randomcolor = randomcolor;
         //stroke
@@ -68,7 +71,7 @@ class Plane implements Comparable<Plane> {
         oz = new int[n];
         oy = new int[n];
         for (int i13 = 0; i13 < n; i13++) {
-            ox[i13] = is[i13];
+            ox[i13] = ais[i13];
             oy[i13] = is1[i13];
             oz[i13] = is0[i13];
         }
@@ -161,7 +164,7 @@ class Plane implements Comparable<Plane> {
                 hsb[0] = 0.05F;
             }
         }
-        road = bool;
+        road = abool;
         light = i11;
         solo = bool12;
         gr = i4;
@@ -179,7 +182,7 @@ class Plane implements Comparable<Plane> {
         deltafntyp();
     }
 
-    void d(final Plane _last, final Plane _next, final Graphics2D graphics2d, final int _mx, final int _my, final int _mz, final int _xz, final int _xy, final int _yz, final int i34, final int i35, boolean bool, final int i36) {
+    void d(final Plane _last, final Plane _next, final Graphics2D graphics2d, final int _mx, final int _my, final int _mz, final int _xz, final int _xy, final int _yz, final int i34, final int i35, boolean abool, final int i36) {
         if (master == 1)
             if (av > 1500 && !Medium.crs) {
                 n = 12;
@@ -604,7 +607,7 @@ class Plane implements Comparable<Plane> {
             bool84 = false;
         }
         if (i91 != 0) {
-            bool = true;
+            abool = true;
         }
         if (bool84 && i36 != -1) {
             int i93 = 0;
@@ -622,7 +625,7 @@ class Plane implements Comparable<Plane> {
             }
             if (i93 == 0 || i94 == 0) {
                 bool84 = false;
-            } else if (i93 < 3 && i94 < 3 && (i36 / i93 > 15 && i36 / i94 > 15 || bool) && (!Medium.lightson || light == 0)) {
+            } else if (i93 < 3 && i94 < 3 && (i36 / i93 > 15 && i36 / i94 > 15 || abool) && (!Medium.lightson || light == 0)) {
                 bool84 = false;
             }
         }
@@ -709,10 +712,10 @@ class Plane implements Comparable<Plane> {
                 bool84 = false;
             }
             if (i97 == -111 && av > 1500) {
-                bool = true;
+                abool = true;
             }
             if (av > 3000 && Medium.adv <= 900) {
-                bool = true;
+                abool = true;
             }
             if (fs == 22 && av < 11200) {
                 Medium.lastmaf = i97;
@@ -738,7 +741,7 @@ class Plane implements Comparable<Plane> {
         }
         if (bool84) {
             float f = (float) (projf / deltaf + 0.3);
-            if (bool && !solo) {
+            if (abool && !solo) {
                 boolean bool113 = false;
                 if (f > 1.0F) {
                     if (f >= 1.27) {
@@ -871,9 +874,9 @@ class Plane implements Comparable<Plane> {
             graphics2d.setColor(new Color(i114, i115, i116));
             graphics2d.fillPolygon(is85, is86, n);
             if (Medium.trk != 0 && gr == -10) {
-                bool = false;
+                abool = false;
             }
-            if (!bool) {
+            if (!abool) {
                 if (flx == 0) {
                     if (!solo) {
                         i114 = 0;
@@ -1103,29 +1106,29 @@ class Plane implements Comparable<Plane> {
         projf = projf / 3.0F;
     }
 
-    void rot(final int[] is, final int[] is163, final int i, final int i164, final int i165, final int i166) {
+    void rot(final int[] ais, final int[] is163, final int i, final int i164, final int i165, final int i166) {
         if (i165 != 0) {
             for (int i167 = 0; i167 < i166; i167++) {
-                final int i168 = is[i167];
+                final int i168 = ais[i167];
                 final int i169 = is163[i167];
-                is[i167] = i + (int) ((i168 - i) * Medium.cos(i165) - (i169 - i164) * Medium.sin(i165));
+                ais[i167] = i + (int) ((i168 - i) * Medium.cos(i165) - (i169 - i164) * Medium.sin(i165));
                 is163[i167] = i164 + (int) ((i168 - i) * Medium.sin(i165) + (i169 - i164) * Medium.cos(i165));
             }
         }
     }
 
     void s(final Graphics2D graphics2d, final int i, final int i120, final int i121, final int i122, final int i123, final int i124, final int i125) {
-        final int[] is = new int[n];
+        final int[] ais = new int[n];
         final int[] is126 = new int[n];
         final int[] is127 = new int[n];
         for (int i128 = 0; i128 < n; i128++) {
-            is[i128] = ox[i128] + i;
+            ais[i128] = ox[i128] + i;
             is127[i128] = oy[i128] + i120;
             is126[i128] = oz[i128] + i121;
         }
-        rot(is, is127, i, i120, i123, n);
+        rot(ais, is127, i, i120, i123, n);
         rot(is127, is126, i120, i121, i124, n);
-        rot(is, is126, i, i121, i122, n);
+        rot(ais, is126, i, i121, i122, n);
         int i129 = (int) (Medium.crgrnd[0] / 1.5);
         int i130 = (int) (Medium.crgrnd[1] / 1.5);
         int i131 = (int) (Medium.crgrnd[2] / 1.5);
@@ -1143,10 +1146,10 @@ class Plane implements Comparable<Plane> {
                 int i140 = 0;
                 int i141 = 0;
                 for (int i142 = 0; i142 < n; i142++) {
-                    if (is[i137] >= is[i142]) {
+                    if (ais[i137] >= ais[i142]) {
                         i138++;
                     }
-                    if (is[i137] <= is[i142]) {
+                    if (ais[i137] <= ais[i142]) {
                         i139++;
                     }
                     if (is126[i137] >= is126[i142]) {
@@ -1157,10 +1160,10 @@ class Plane implements Comparable<Plane> {
                     }
                 }
                 if (i138 == n) {
-                    i133 = is[i137];
+                    i133 = ais[i137];
                 }
                 if (i139 == n) {
-                    i134 = is[i137];
+                    i134 = ais[i137];
                 }
                 if (i140 == n) {
                     i135 = is126[i137];
@@ -1198,7 +1201,7 @@ class Plane implements Comparable<Plane> {
                             is127[i150] += (is126[i150] - (Trackers.z[i148] - Medium.z - Trackers.radz[i148])) * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]) - Trackers.radz[i148] * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]);
                         }
                         if (Trackers.xy[i148] != 0) {
-                            is127[i150] += (is[i150] - (Trackers.x[i148] - Medium.x - Trackers.radx[i148])) * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]) - Trackers.radx[i148] * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]);
+                            is127[i150] += (ais[i150] - (Trackers.x[i148] - Medium.x - Trackers.radx[i148])) * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]) - Trackers.radx[i148] * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]);
                         }
                     }
                     i129 = (int) (Trackers.c[i148][0] / 1.5);
@@ -1208,7 +1211,7 @@ class Plane implements Comparable<Plane> {
                 }
             }
         }
-        boolean bool = true;
+        boolean abool = true;
         final int[] is151 = new int[n];
         final int[] is152 = new int[n];
         if (i125 == 2) {
@@ -1218,20 +1221,20 @@ class Plane implements Comparable<Plane> {
         } else {
             for (int i153 = 0; i153 < Medium.nsp; i153++) {
                 for (int i154 = 0; i154 < n; i154++)
-                    if (Math.abs(is[i154] - Medium.spx[i153]) < Medium.sprad[i153] && Math.abs(is126[i154] - Medium.spz[i153]) < Medium.sprad[i153]) {
-                        bool = false;
+                    if (Math.abs(ais[i154] - Medium.spx[i153]) < Medium.sprad[i153] && Math.abs(is126[i154] - Medium.spz[i153]) < Medium.sprad[i153]) {
+                        abool = false;
                     }
             }
         }
-        if (bool) {
-            rot(is, is126, Medium.cx, Medium.cz, Medium.xz, n);
+        if (abool) {
+            rot(ais, is126, Medium.cx, Medium.cz, Medium.xz, n);
             rot(is127, is126, Medium.cy, Medium.cz, Medium.zy, n);
             int i155 = 0;
             int i156 = 0;
             int i157 = 0;
             int i158 = 0;
             for (int i159 = 0; i159 < n; i159++) {
-                is151[i159] = xs(is[i159], is126[i159]);
+                is151[i159] = xs(ais[i159], is126[i159]);
                 is152[i159] = ys(is127[i159], is126[i159]);
                 if (is152[i159] < Medium.ih || is126[i159] < 10) {
                     i155++;
@@ -1247,10 +1250,10 @@ class Plane implements Comparable<Plane> {
                 }
             }
             if (i157 == n || i155 == n || i156 == n || i158 == n) {
-                bool = false;
+                abool = false;
             }
         }
-        if (bool) {
+        if (abool) {
             for (int i160 = 0; i160 < 16; i160++)
                 if (av > Medium.fade[i160]) {
                     i129 = (i129 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
@@ -1280,15 +1283,12 @@ class Plane implements Comparable<Plane> {
         return (i162 - Medium.focusPoint) * (Medium.cy - i) / i162 + i;
     }
 
-    @Override
-    public int compareTo(final Plane o) {
-        if (av != o.av) {
-            if (av < o.av)
-                return 1;
-            else
-                return -1;
-        }
-        return 0;
+    public int CompareTo(Plane other)
+    {
+        if (av == o.av) return 0;
+        if (av < o.av)
+            return 1;
+        return -1;
     }
 }
 }

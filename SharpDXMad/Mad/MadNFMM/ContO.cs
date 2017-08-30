@@ -1,56 +1,40 @@
-namespace Cum {
-/* ContO - Decompiled by JODE
- * Visit http://jode.sourceforge.net/
- */
-import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Random;
+using System;
+using boolean = System.Boolean;
 
+namespace Cum {
+    
 interface Point3D {
     float x();
     float y();
     float z();
 }
 
-interface Point3DX extends Point3D {
+interface Point3DX : Point3D {
     float xz();
 }
 
-class _Point3D implements Point3D {
+class _Point3D : Point3D {
 
-    @Override
     public float x() {
         return 0;
     }
-
-    @Override
     public float y() {
         return 0;
     }
 
-    @Override
     public float z() {
         return 0;
     }
     
 }
 
-
-class _Point3DX extends _Point3D implements Point3DX {
-    @Override
+class _Point3DX : _Point3D, Point3DX {
     public float xz() {
         return 0;
     }
 }
 
-class ContO implements Point3DX {
+class ContO : Point3DX {
     int checkpoint;
     int colok;
     private int[] dam;
@@ -58,25 +42,25 @@ class ContO implements Point3DX {
     int disline = 14;
     int disp = 0;
     int dist = 0;
-    private final int[] edl;
-    private final int[] edr;
-    private final int[] elc;
+    private readonly int[] edl;
+    private readonly int[] edr;
+    private readonly int[] elc;
     boolean elec;
     String err;
     boolean errd;
     int fcnt;
-    final int[] fcol;
+    readonly int[] fcol;
     boolean fix;
     int grat = 0;
     float grounded = 1.0F;
-    final int[] keyx;
-    final int[] keyz;
+    readonly int[] keyx;
+    readonly int[] keyz;
     int maxR = 0;
     boolean noline = false;
     private boolean[] notwall;
     int npl = 0;
     float[] osmag;
-    final Plane[] p;
+    readonly Plane[] p;
     private boolean[] rbef;
     float rcx;
     float rcy;
@@ -89,7 +73,7 @@ class ContO implements Point3DX {
     private int[] rz;
     private int[] sav;
     private float[] sbln;
-    final int[] scol;
+    readonly int[] scol;
     int[] scx;
     int[] scz;
     boolean shadow = false;
@@ -129,7 +113,7 @@ class ContO implements Point3DX {
     int z = 0;
     int zy = 0;
 
-    ContO(final byte[] is) {
+    ContO(byte[] _is) {
         keyx = new int[4];
         keyz = new int[4];
         sprkat = 0;
@@ -166,35 +150,36 @@ class ContO implements Point3DX {
         // p = new Plane[286];
         p = new Plane[10000];
         // int[] is0 = new int[286];
-        final int[] is0 = new int[10000];
+        int[] is0 = new int[10000];
         // for (int i = 0; i < 286; i++)
         // is0[i] = 0;
-        for (int i = 0; i < 10000; i++) {
+        int i;
+        for (i = 0; i < 10000; i++) {
             is0[i] = 0;
         }
         if (Medium.loadnew) {
-            for (int i = 0; i < 4; i++) {
+            for (i = 0; i < 4; i++) {
                 keyz[i] = 0;
             }
             shadow = true;
         }
-        String string = "";
-        boolean bool = false;
+        String astring = "";
+        boolean abool = false;
         boolean bool1 = false;
-        int i = 0;
+        i = 0;
         float f = 1.0F;
         float f2 = 1.0F;
-        final float[] fs = {
+        float[] fs = {
                 1.0F, 1.0F, 1.0F
         };
-        final int[] is3 = new int[8000];
-        final int[] is4 = new int[8000];
-        final int[] is5 = new int[8000];
-        final int[] is6 = {
+        int[] is3 = new int[8000];
+        int[] is4 = new int[8000];
+        int[] is5 = new int[8000];
+        int[] is6 = {
                 0, 0, 0
         };
         boolean bool7 = false;
-        final Wheels wheels = new Wheels();
+        Wheels wheels = new Wheels();
         boolean bool8 = false;
         int i9 = 0;
         int i10 = 1;
@@ -208,20 +193,14 @@ class ContO implements Point3DX {
         boolean randomcolor = false;
         boolean randoutline = false;
 
-        boolean customstroke = false;
-        int strokewidth = 1;
-        int strokecap = BasicStroke.CAP_BUTT;
-        int strokejoin = BasicStroke.JOIN_MITER;
-        int strokemtlimit = 10;
-
         try {
-            final BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(new DataInputStream(new ByteArrayInputStream(is))));
+            BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(new DataInputStream(new ByteArrayInputStream(ais))));
             String string17;
             while ((string17 = bufferedreader.readLine()) != null) {
-                string = "" + string17.trim();
+                astring = "" + string17.trim();
                 if (npl < 10000 /* 210 */) {
-                    if (string.startsWith("<p>")) {
-                        bool = true;
+                    if (astring.StartsWith("<p>")) {
+                        abool = true;
                         i = 0;
                         i10 = 0;
                         i11 = 0;
@@ -233,94 +212,58 @@ class ContO implements Point3DX {
 
                         randomcolor = false;
                         randoutline = false;
-                        customstroke = false;
-                        strokewidth = 1;
-                        strokecap = BasicStroke.CAP_BUTT;
-                        strokejoin = BasicStroke.JOIN_MITER;
-                        strokemtlimit = 10;
                     }
-                    if (bool) {
-                        if (string.startsWith("gr(")) {
-                            i10 = getvalue("gr", string, 0);
+                    if (abool) {
+                        if (astring.StartsWith("gr(")) {
+                            i10 = getvalue("gr", astring, 0);
                         }
-                        if (string.startsWith("fs(")) {
-                            i11 = getvalue("fs", string, 0);
+                        if (astring.StartsWith("fs(")) {
+                            i11 = getvalue("fs", astring, 0);
                             is0[npl] = 2;
                         }
-                        if (string.startsWith("c(")) {
+                        if (astring.StartsWith("c(")) {
                             i14 = 0;
-                            is6[0] = getvalue("c", string, 0);
-                            is6[1] = getvalue("c", string, 1);
-                            is6[2] = getvalue("c", string, 2);
+                            is6[0] = getvalue("c", astring, 0);
+                            is6[1] = getvalue("c", astring, 1);
+                            is6[2] = getvalue("c", astring, 2);
                         }
-                        if (string.startsWith("glass")) {
+                        if (astring.StartsWith("glass")) {
                             i14 = 1;
                         }
-                        if (string.startsWith("gshadow")) {
+                        if (astring.StartsWith("gshadow")) {
                             i14 = 2;
                         }
-                        if (string.startsWith("lightF")) {
+                        if (astring.StartsWith("lightF")) {
                             i13 = 1;
                         }
-                        if (string.startsWith("light")) {
+                        if (astring.StartsWith("light")) {
                             i13 = 1;
                         }
-                        if (string.startsWith("lightB")) {
+                        if (astring.StartsWith("lightB")) {
                             i13 = 2;
                         }
-                        if (string.startsWith("noOutline")) {
+                        if (astring.StartsWith("noOutline")) {
                             bool15 = true;
                         }
-                        if (string.startsWith("random()") || string.startsWith("rainbow()")) {
+                        if (astring.StartsWith("random()") || astring.StartsWith("rainbow()")) {
                             randomcolor = true;
                         }
-                        if (string.startsWith("randoutline()")) {
+                        if (astring.StartsWith("randoutline()")) {
                             randoutline = true;
                         }
-                        if (string.startsWith("customOutline")) {
-                            customstroke = true;
-                        }
-                        if (string.startsWith("$outlineW(")) {
-                            strokewidth = getvalue("$outlineW", string, 0);
-                        }
-                        if (string.startsWith("$outlineCap(")) {
-                            if (string.startsWith("$outlineCap(butt)")) {
-                                strokecap = BasicStroke.CAP_BUTT;
-                            }
-                            if (string.startsWith("$outlineCap(round)")) {
-                                strokecap = BasicStroke.CAP_ROUND;
-                            }
-                            if (string.startsWith("$outlineCap(square)")) {
-                                strokecap = BasicStroke.CAP_SQUARE;
-                            }
-                        }
-                        if (string.startsWith("$outlineJoin(")) {
-                            if (string.startsWith("$outlineJoin(bevel)")) {
-                                strokejoin = BasicStroke.JOIN_BEVEL;
-                            }
-                            if (string.startsWith("$outlineJoin(miter)")) {
-                                strokejoin = BasicStroke.JOIN_MITER;
-                            }
-                            if (string.startsWith("$outlineJoin(round)")) {
-                                strokejoin = BasicStroke.JOIN_ROUND;
-                            }
-                        }
-                        if (string.startsWith("$outlineMtlimit(")) {
-                            strokemtlimit = getvalue("$outlineMtlimit", string, 0);
-                        }
-                        if (string.startsWith("p(")) {
-                            is3[i] = (int) (getvalue("p", string, 0) * f * f2 * fs[0]);
-                            is4[i] = (int) (getvalue("p", string, 1) * f * fs[1]);
-                            is5[i] = (int) (getvalue("p", string, 2) * f * fs[2]);
-                            final int i18 = (int) Math.sqrt(is3[i] * is3[i] + is4[i] * is4[i] + is5[i] * is5[i]);
+                        if (astring.StartsWith("p(")) {
+                            is3[i] = (int) (getvalue("p", astring, 0) * f * f2 * fs[0]);
+                            is4[i] = (int) (getvalue("p", astring, 1) * f * fs[1]);
+                            is5[i] = (int) (getvalue("p", astring, 2) * f * fs[2]);
+                            int i18 = (int) Math.sqrt(is3[i] * is3[i] + is4[i] * is4[i] + is5[i] * is5[i]);
                             if (i18 > maxR) {
                                 maxR = i18;
                             }
                             i++;
                         }
                     }
-                    if (string.startsWith("</p>")) {
-                        p[npl] = new Plane(is3, is5, is4, i, is6, i14, i10, i11, 0, 0, 0, disline, 0, bool7, i13, bool15, randomcolor, randoutline, customstroke, strokewidth, strokecap, strokejoin, strokemtlimit);
+                    if (astring.StartsWith("</p>")) {
+                        p[npl] = new Plane(is3, is5, is4, i, is6, i14, i10, i11, 0, 0, 0, disline, 0, bool7, i13, bool15, randomcolor, randoutline, false, 1, 1, 1, 1);
                         if (is6[0] == fcol[0] && is6[1] == fcol[1] && is6[2] == fcol[2] && i14 == 0) {
                             p[npl].colnum = 1;
                         }
@@ -328,25 +271,25 @@ class ContO implements Point3DX {
                             p[npl].colnum = 2;
                         }
                         npl++;
-                        bool = false;
+                        abool = false;
                     }
                 }
-                if (string.startsWith("rims(")) {
-                    wheels.setrims(getvalue("rims", string, 0), getvalue("rims", string, 1), getvalue("rims", string, 2), getvalue("rims", string, 3), getvalue("rims", string, 4));
+                if (astring.StartsWith("rims(")) {
+                    wheels.setrims(getvalue("rims", astring, 0), getvalue("rims", astring, 1), getvalue("rims", astring, 2), getvalue("rims", astring, 3), getvalue("rims", astring, 4));
                 }
-                if (string.startsWith("w(") && i9 < 4) {
-                    keyx[i9] = (int) (getvalue("w", string, 0) * f * fs[0]);
-                    keyz[i9] = (int) (getvalue("w", string, 2) * f * fs[2]);
-                    wheels.make(p, npl, (int) (getvalue("w", string, 0) * f * f2 * fs[0]), (int) (getvalue("w", string, 1) * f * fs[1]), (int) (getvalue("w", string, 2) * f * fs[2]), getvalue("w", string, 3), (int) (getvalue("w", string, 4) * f * f2), (int) (getvalue("w", string, 5) * f), i12);
+                if (astring.StartsWith("w(") && i9 < 4) {
+                    keyx[i9] = (int) (getvalue("w", astring, 0) * f * fs[0]);
+                    keyz[i9] = (int) (getvalue("w", astring, 2) * f * fs[2]);
+                    wheels.make(p, npl, (int) (getvalue("w", astring, 0) * f * f2 * fs[0]), (int) (getvalue("w", astring, 1) * f * fs[1]), (int) (getvalue("w", astring, 2) * f * fs[2]), getvalue("w", astring, 3), (int) (getvalue("w", astring, 4) * f * f2), (int) (getvalue("w", astring, 5) * f), i12);
                     npl += 19;
                     if (Medium.loadnew) {
-                        wh += (int) (getvalue("w", string, 5) * f);
+                        wh += (int) (getvalue("w", astring, 5) * f);
                         if (wheels.ground > 140) {
                             String string19 = "FRONT";
                             if (keyz[i9] < 0) {
                                 string19 = "BACK";
                             }
-                            err = "Wheels Error:\n" + string19 + " Wheels floor is too far below the center of Y Axis of the car!    \n\nPlease decrease the Y value of the " + string19 + " Wheels or decrease its height.     \n \n";
+                            err = "Wheels Error:\n" + string19 + " Wheels floor ais too far below the center of Y Axis of the car!    \n\nPlease decrease the Y value of the " + string19 + " Wheels or decrease its height.     \n \n";
                             errd = true;
                             keyz[i9] = 0;
                             keyx[i9] = 0;
@@ -356,7 +299,7 @@ class ContO implements Point3DX {
                             if (keyz[i9] < 0) {
                                 string20 = "BACK";
                             }
-                            err = "Wheels Error:\n" + string20 + " Wheels floor is too far above the center of Y Axis of the car!    \n\nPlease increase the Y value of the " + string20 + " Wheels or increase its height.     \n \n";
+                            err = "Wheels Error:\n" + string20 + " Wheels floor ais too far above the center of Y Axis of the car!    \n\nPlease increase the Y value of the " + string20 + " Wheels or increase its height.     \n \n";
                             errd = true;
                             keyz[i9] = 0;
                             keyx[i9] = 0;
@@ -381,12 +324,12 @@ class ContO implements Point3DX {
                             keyz[i9] = 0;
                             keyx[i9] = 0;
                         }
-                        if ((int) (getvalue("w", string, 4) * f * f2) > 300) {
+                        if ((int) (getvalue("w", astring, 4) * f * f2) > 300) {
                             String string22 = "FRONT";
                             if (keyz[i9] < 0) {
                                 string22 = "BACK";
                             }
-                            err = "Wheels Error:\nWidth of the " + string22 + " Wheels is too large!    \n\nPlease decrease the width of the " + string22 + " Wheels.     \n \n";
+                            err = "Wheels Error:\nWidth of the " + string22 + " Wheels ais too large!    \n\nPlease decrease the width of the " + string22 + " Wheels.     \n \n";
                             errd = true;
                             keyz[i9] = 0;
                             keyx[i9] = 0;
@@ -394,8 +337,8 @@ class ContO implements Point3DX {
                     }
                     i9++;
                 }
-                if (string.startsWith("tracks")) {
-                    final int i23 = getvalue("tracks", string, 0);
+                if (astring.StartsWith("tracks")) {
+                    int i23 = getvalue("tracks", astring, 0);
                     txy = new int[i23];
                     tzy = new int[i23];
                     tc = new int[i23][3];
@@ -411,7 +354,7 @@ class ContO implements Point3DX {
                     bool8 = true;
                 }
                 if (bool8) {
-                    if (string.startsWith("<track>")) {
+                    if (astring.StartsWith("<track>")) {
                         bool1 = true;
                         notwall[tnt] = false;
                         dam[tnt] = 1;
@@ -429,99 +372,99 @@ class ContO implements Point3DX {
                         tc[tnt][2] = 0;
                     }
                     if (bool1) {
-                        if (string.startsWith("c")) {
-                            tc[tnt][0] = getvalue("c", string, 0);
-                            tc[tnt][1] = getvalue("c", string, 1);
-                            tc[tnt][2] = getvalue("c", string, 2);
+                        if (astring.StartsWith("c")) {
+                            tc[tnt][0] = getvalue("c", astring, 0);
+                            tc[tnt][1] = getvalue("c", astring, 1);
+                            tc[tnt][2] = getvalue("c", astring, 2);
                         }
-                        if (string.startsWith("xy")) {
-                            txy[tnt] = getvalue("xy", string, 0);
+                        if (astring.StartsWith("xy")) {
+                            txy[tnt] = getvalue("xy", astring, 0);
                         }
-                        if (string.startsWith("zy")) {
-                            tzy[tnt] = getvalue("zy", string, 0);
+                        if (astring.StartsWith("zy")) {
+                            tzy[tnt] = getvalue("zy", astring, 0);
                         }
-                        if (string.startsWith("radx")) {
-                            tradx[tnt] = (int) (getvalue("radx", string, 0) * f);
+                        if (astring.StartsWith("radx")) {
+                            tradx[tnt] = (int) (getvalue("radx", astring, 0) * f);
                         }
-                        if (string.startsWith("rady")) {
-                            trady[tnt] = (int) (getvalue("rady", string, 0) * f);
+                        if (astring.StartsWith("rady")) {
+                            trady[tnt] = (int) (getvalue("rady", astring, 0) * f);
                         }
-                        if (string.startsWith("radz")) {
-                            tradz[tnt] = (int) (getvalue("radz", string, 0) * f);
+                        if (astring.StartsWith("radz")) {
+                            tradz[tnt] = (int) (getvalue("radz", astring, 0) * f);
                         }
-                        if (string.startsWith("ty")) {
-                            ty[tnt] = (int) (getvalue("ty", string, 0) * f);
+                        if (astring.StartsWith("ty")) {
+                            ty[tnt] = (int) (getvalue("ty", astring, 0) * f);
                         }
-                        if (string.startsWith("tx")) {
-                            tx[tnt] = (int) (getvalue("tx", string, 0) * f);
+                        if (astring.StartsWith("tx")) {
+                            tx[tnt] = (int) (getvalue("tx", astring, 0) * f);
                         }
-                        if (string.startsWith("tz")) {
-                            tz[tnt] = (int) (getvalue("tz", string, 0) * f);
+                        if (astring.StartsWith("tz")) {
+                            tz[tnt] = (int) (getvalue("tz", astring, 0) * f);
                         }
-                        if (string.startsWith("skid")) {
-                            skd[tnt] = getvalue("skid", string, 0);
+                        if (astring.StartsWith("skid")) {
+                            skd[tnt] = getvalue("skid", astring, 0);
                         }
-                        if (string.startsWith("dam")) {
+                        if (astring.StartsWith("dam")) {
                             dam[tnt] = 3;
                         }
-                        if (string.startsWith("notwall")) {
+                        if (astring.StartsWith("notwall")) {
                             notwall[tnt] = true;
                         }
                     }
-                    if (string.startsWith("</track>")) {
+                    if (astring.StartsWith("</track>")) {
                         bool1 = false;
                         tnt++;
                     }
                 }
-                if (string.startsWith("disp(")) {
-                    disp = getvalue("disp", string, 0);
+                if (astring.StartsWith("disp(")) {
+                    disp = getvalue("disp", astring, 0);
                 }
-                if (string.startsWith("disline(")) {
-                    disline = getvalue("disline", string, 0) * 2;
+                if (astring.StartsWith("disline(")) {
+                    disline = getvalue("disline", astring, 0) * 2;
                 }
-                if (string.startsWith("shadow")) {
+                if (astring.StartsWith("shadow")) {
                     shadow = true;
                 }
-                if (string.startsWith("stonecold")) {
+                if (astring.StartsWith("stonecold")) {
                     noline = true;
                 }
-                if (string.startsWith("newstone")) {
+                if (astring.StartsWith("newstone")) {
                     noline = true;
                     bool15 = true;
                     bool16 = true;
                 }
-                if (string.startsWith("decorative")) {
+                if (astring.StartsWith("decorative")) {
                     decor = true;
                 }
-                if (string.startsWith("road")) {
+                if (astring.StartsWith("road")) {
                     bool7 = true;
                 }
-                if (string.startsWith("notroad")) {
+                if (astring.StartsWith("notroad")) {
                     bool7 = false;
                 }
-                if (string.startsWith("grounded(")) {
-                    grounded = getvalue("grounded", string, 0) / 100.0F;
+                if (astring.StartsWith("grounded(")) {
+                    grounded = getvalue("grounded", astring, 0) / 100.0F;
                 }
-                if (string.startsWith("div(")) {
-                    f = getvalue("div", string, 0) / 10.0F;
+                if (astring.StartsWith("div(")) {
+                    f = getvalue("div", astring, 0) / 10.0F;
                 }
-                if (string.startsWith("idiv(")) {
-                    f = getvalue("idiv", string, 0) / 100.0F;
+                if (astring.StartsWith("idiv(")) {
+                    f = getvalue("idiv", astring, 0) / 100.0F;
                 }
-                if (string.startsWith("iwid(")) {
-                    f2 = getvalue("iwid", string, 0) / 100.0F;
+                if (astring.StartsWith("iwid(")) {
+                    f2 = getvalue("iwid", astring, 0) / 100.0F;
                 }
-                if (string.startsWith("ScaleX(")) {
-                    fs[0] = getvalue("ScaleX", string, 0) / 100.0F;
+                if (astring.StartsWith("ScaleX(")) {
+                    fs[0] = getvalue("ScaleX", astring, 0) / 100.0F;
                 }
-                if (string.startsWith("ScaleY(")) {
-                    fs[1] = getvalue("ScaleY", string, 0) / 100.0F;
+                if (astring.StartsWith("ScaleY(")) {
+                    fs[1] = getvalue("ScaleY", astring, 0) / 100.0F;
                 }
-                if (string.startsWith("ScaleZ(")) {
-                    fs[2] = getvalue("ScaleZ", string, 0) / 100.0F;
+                if (astring.StartsWith("ScaleZ(")) {
+                    fs[2] = getvalue("ScaleZ", astring, 0) / 100.0F;
                 }
-                if (string.startsWith("gwgr(")) {
-                    i12 = getvalue("gwgr", string, 0);
+                if (astring.StartsWith("gwgr(")) {
+                    i12 = getvalue("gwgr", astring, 0);
                     if (Medium.loadnew) {
                         if (i12 > 40) {
                             i12 = 40;
@@ -534,25 +477,25 @@ class ContO implements Point3DX {
                         }
                     }
                 }
-                if (string.startsWith("1stColor(")) {
-                    fcol[0] = getvalue("1stColor", string, 0);
-                    fcol[1] = getvalue("1stColor", string, 1);
-                    fcol[2] = getvalue("1stColor", string, 2);
+                if (astring.StartsWith("1stColor(")) {
+                    fcol[0] = getvalue("1stColor", astring, 0);
+                    fcol[1] = getvalue("1stColor", astring, 1);
+                    fcol[2] = getvalue("1stColor", astring, 2);
                     colok++;
                 }
-                if (string.startsWith("2ndColor(")) {
-                    scol[0] = getvalue("2ndColor", string, 0);
-                    scol[1] = getvalue("2ndColor", string, 1);
-                    scol[2] = getvalue("2ndColor", string, 2);
+                if (astring.StartsWith("2ndColor(")) {
+                    scol[0] = getvalue("2ndColor", astring, 0);
+                    scol[1] = getvalue("2ndColor", astring, 1);
+                    scol[2] = getvalue("2ndColor", astring, 2);
                     colok++;
                 }
             }
             bufferedreader.close();
-        } catch (final Exception exception) {
+        } catch (Exception exception) {
             if (exception instanceof RuntimeException)
                 throw new RuntimeException(exception);
             else if (!errd) {
-                err = "Error While Loading 3D Model\n\nLine:     " + string + "\n\nError Detail:\n" + exception + "           \n \n";
+                err = "Error While Loading 3D Model\n\nLine:     " + astring + "\n\nError Detail:\n" + exception + "           \n \n";
                 Console.WriteLine(err);
                 errd = true;
             }
@@ -668,9 +611,9 @@ class ContO implements Point3DX {
                         }
                     }
                     if (i37 != 0) {
-                        final int[] is47 = new int[p[i27].n];
-                        final int[] is48 = new int[p[i27].n];
-                        final int[] is49 = new int[p[i27].n];
+                        int[] is47 = new int[p[i27].n];
+                        int[] is48 = new int[p[i27].n];
+                        int[] is49 = new int[p[i27].n];
                         for (int i50 = 0; i50 < p[i27].n; i50++) {
                             is47[i50] = p[i27].ox[i50];
                             is48[i50] = p[i27].oy[i50];
@@ -788,12 +731,12 @@ class ContO implements Point3DX {
                                     i62 = p[i55].oz[i63];
                                 }
                             }
-                            final int i64 = (i57 + i58) / 2;
-                            final int i65 = (i59 + i60) / 2;
-                            final int i66 = (i61 + i62) / 2;
-                            final int i67 = (i29 + i30) / 2;
-                            final int i68 = (i31 + i32) / 2;
-                            final int i69 = (i33 + i34) / 2;
+                            int i64 = (i57 + i58) / 2;
+                            int i65 = (i59 + i60) / 2;
+                            int i66 = (i61 + i62) / 2;
+                            int i67 = (i29 + i30) / 2;
+                            int i68 = (i31 + i32) / 2;
+                            int i69 = (i33 + i34) / 2;
                             if (i28 == 1 && (i65 <= i31 && i65 >= i32 && i66 <= i33 && i66 >= i34 || i68 <= i59 && i68 >= i60 && i69 <= i61 && i69 >= i62)) {
                                 if (i57 < i30) {
                                     bool53 = true;
@@ -854,7 +797,7 @@ class ContO implements Point3DX {
                         for (int i73 = 0; i73 < npl; i73++)
                             if (i73 != i27) {
                                 boolean bool74 = false;
-                                final boolean[] bools = new boolean[p[i73].n];
+                                boolean[] bools = new boolean[p[i73].n];
                                 for (int i75 = 0; i75 < p[i73].n; i75++) {
                                     bools[i75] = false;
                                     for (int i76 = 0; i76 < p[i27].n; i76++)
@@ -918,7 +861,7 @@ class ContO implements Point3DX {
         }
     }
 
-    ContO(final ContO conto78, final int toX, final int toY, final int toZ, final int i81) {
+    ContO(ContO conto78, int toX, int toY, int toZ, int i81) {
         keyx = new int[4];
         keyz = new int[4];
         sprkat = 0;
@@ -1049,7 +992,7 @@ class ContO implements Point3DX {
         }
     }
 
-    ContO(final int i, final int i90, final int i91, final int i92, final int i93, final int i94) {
+    ContO(int i, int i90, int i91, int i92, int i93, int i94) {
         keyx = new int[4];
         keyz = new int[4];
         sprkat = 0;
@@ -1098,12 +1041,12 @@ class ContO implements Point3DX {
         decor = true;
         npl = 5;
         p = new Plane[5];
-        final Random random = new Random(i);
-        final int[] is = new int[8];
-        final int[] is95 = new int[8];
-        final int[] is96 = new int[8];
-        final int[] is97 = new int[8];
-        final int[] is98 = new int[8];
+        Random random = new Random(i);
+        int[] ais = new int[8];
+        int[] is95 = new int[8];
+        int[] is96 = new int[8];
+        int[] is97 = new int[8];
+        int[] is98 = new int[8];
         float f = i90;
         float f99 = i91;
         if (f99 < 2.0F) {
@@ -1122,31 +1065,31 @@ class ContO implements Point3DX {
         f99 /= 1.5F;
         f99 *= 1.0F + (f - 2.0F) * 0.1786F;
         float f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[0] = -(int) (f100 * f * 0.7071F);
+        ais[0] = -(int) (f100 * f * 0.7071F);
         is95[0] = (int) (f100 * f * 0.7071F);
         f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[1] = 0;
+        ais[1] = 0;
         is95[1] = (int) (f100 * f);
         f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[2] = (int) (f100 * f * 0.7071);
+        ais[2] = (int) (f100 * f * 0.7071);
         is95[2] = (int) (f100 * f * 0.7071);
         f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[3] = (int) (f100 * f);
+        ais[3] = (int) (f100 * f);
         is95[3] = 0;
         f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[4] = (int) (f100 * f * 0.7071);
+        ais[4] = (int) (f100 * f * 0.7071);
         is95[4] = -(int) (f100 * f * 0.7071);
         f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[5] = 0;
+        ais[5] = 0;
         is95[5] = -(int) (f100 * f);
         f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[6] = -(int) (f100 * f * 0.7071);
+        ais[6] = -(int) (f100 * f * 0.7071);
         is95[6] = -(int) (f100 * f * 0.7071);
         f100 = (float) (50.0 + 100.0 * random.nextDouble());
-        is[7] = -(int) (f100 * f);
+        ais[7] = -(int) (f100 * f);
         is95[7] = 0;
         for (int i101 = 0; i101 < 8; i101++) {
-            is96[i101] = (int) (is[i101] * (0.2 + 0.4 * random.nextDouble()));
+            is96[i101] = (int) (ais[i101] * (0.2 + 0.4 * random.nextDouble()));
             is97[i101] = (int) (is95[i101] * (0.2 + 0.4 * random.nextDouble()));
             is98[i101] = -(int) ((10.0 + 15.0 * random.nextDouble()) * f99);
         }
@@ -1160,12 +1103,12 @@ class ContO implements Point3DX {
             if (i104 == 8) {
                 i104 = 0;
             }
-            is[i102] = ((is[i103] + is[i104]) / 2 + is[i102]) / 2;
+            ais[i102] = ((ais[i103] + ais[i104]) / 2 + ais[i102]) / 2;
             is95[i102] = ((is95[i103] + is95[i104]) / 2 + is95[i102]) / 2;
             is96[i102] = ((is96[i103] + is96[i104]) / 2 + is96[i102]) / 2;
             is97[i102] = ((is97[i103] + is97[i104]) / 2 + is97[i102]) / 2;
             is98[i102] = ((is98[i103] + is98[i104]) / 2 + is98[i102]) / 2;
-            int i105 = (int) Math.sqrt(is[i102] * is[i102] + is95[i102] * is95[i102]);
+            int i105 = (int) Math.sqrt(ais[i102] * ais[i102] + is95[i102] * is95[i102]);
             if (i105 > maxR) {
                 maxR = i105;
             }
@@ -1175,7 +1118,7 @@ class ContO implements Point3DX {
             }
         }
         disp = maxR / 17;
-        final int[] is106 = new int[3];
+        int[] is106 = new int[3];
         float f107 = -1.0F;
         float f108 = (f / f99 - 0.33F) / 33.4F;
         if (f108 < 0.005) {
@@ -1185,17 +1128,17 @@ class ContO implements Point3DX {
             f108 = 0.057F;
         }
         for (int i109 = 0; i109 < 4; i109++) {
-            final int i110 = i109 * 2;
+            int i110 = i109 * 2;
             int i111 = i110 + 2;
             if (i111 == 8) {
                 i111 = 0;
             }
-            final int[] is112 = new int[6];
-            final int[] is113 = new int[6];
-            final int[] is114 = new int[6];
-            is112[0] = is[i110];
-            is112[1] = is[i110 + 1];
-            is112[2] = is[i111];
+            int[] is112 = new int[6];
+            int[] is113 = new int[6];
+            int[] is114 = new int[6];
+            is112[0] = ais[i110];
+            is112[1] = ais[i110 + 1];
+            is112[2] = ais[i111];
             is112[5] = is96[i110];
             is112[4] = is96[i110 + 1];
             is112[3] = is96[i111];
@@ -1231,8 +1174,8 @@ class ContO implements Point3DX {
                 is106[i116] = (int) ((Medium.cpol[i116] + Medium.cgrnd[i116]) / (2.15F + f100));
             }
         p[4] = new Plane(is96, is97, is98, 8, is106, 3, -8, 0, 0, 0, 0, disline, 0, true, 0, false, false, false, false, 1, 0, 0, 10);
-        final int[] is117 = new int[2];
-        final int[] is118 = new int[2];
+        int[] is117 = new int[2];
+        int[] is118 = new int[2];
         for (int i119 = 0; i119 < 4; i119++) {
             int i120 = i119 * 2 + 1;
             Trackers.y[Trackers.nt] = is98[i120] / 2;
@@ -1244,11 +1187,11 @@ class ContO implements Point3DX {
                 if (i120 == 8) {
                     i120 = 0;
                 }
-                Trackers.x[Trackers.nt] = (is[i119 * 2] + is[i120]) / 2;
-                Trackers.radx[Trackers.nt] = Math.abs(Trackers.x[Trackers.nt] - is[i119 * 2]);
+                Trackers.x[Trackers.nt] = (ais[i119 * 2] + ais[i120]) / 2;
+                Trackers.radx[Trackers.nt] = Math.abs(Trackers.x[Trackers.nt] - ais[i119 * 2]);
             } else {
-                Trackers.x[Trackers.nt] = (is[i120] + is96[i120]) / 2;
-                Trackers.radx[Trackers.nt] = Math.abs(Trackers.x[Trackers.nt] - is[i120]);
+                Trackers.x[Trackers.nt] = (ais[i120] + is96[i120]) / 2;
+                Trackers.radx[Trackers.nt] = Math.abs(Trackers.x[Trackers.nt] - ais[i120]);
                 i120 = i119 * 2 + 2;
                 if (i120 == 8) {
                     i120 = 0;
@@ -1320,19 +1263,19 @@ class ContO implements Point3DX {
         Trackers.nt++;
     }
 
-    void d(final Graphics2D graphics2d) {
+    void d(Graphics2D graphics2d) {
         if (dist != 0) {
             dist = 0;
         }
-        final int i = Medium.cx + (int) ((x - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (z - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
-        final int i124 = Medium.cz + (int) ((x - Medium.x - Medium.cx) * Medium.sin(Medium.xz) + (z - Medium.z - Medium.cz) * Medium.cos(Medium.xz));
-        final int i125 = Medium.cz + (int) ((y - Medium.y - Medium.cy) * Medium.sin(Medium.zy) + (i124 - Medium.cz) * Medium.cos(Medium.zy));
+        int i = Medium.cx + (int) ((x - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (z - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
+        int i124 = Medium.cz + (int) ((x - Medium.x - Medium.cx) * Medium.sin(Medium.xz) + (z - Medium.z - Medium.cz) * Medium.cos(Medium.xz));
+        int i125 = Medium.cz + (int) ((y - Medium.y - Medium.cy) * Medium.sin(Medium.zy) + (i124 - Medium.cz) * Medium.cos(Medium.zy));
         int i126 = xs(i + maxR, i125) - xs(i - maxR, i125);
         if (xs(i + maxR * 2, i125) > Medium.iw && xs(i - maxR * 2, i125) < Medium.w && i125 > -maxR && (i125 < Medium.fade[disline] + maxR || Medium.trk != 0) && (i126 > disp || Medium.trk != 0) && (!decor || Medium.resdown != 2 && Medium.trk != 1)) {
             if (shadow)
                 if (!Medium.crs) {
                     if (i125 < 2000) {
-                        boolean bool = false;
+                        boolean abool = false;
                         if (Trackers.ncx != 0 || Trackers.ncz != 0) {
                             int i127 = (x - Trackers.sx) / 3000;
                             if (i127 > Trackers.ncx) {
@@ -1349,20 +1292,20 @@ class ContO implements Point3DX {
                                 i128 = 0;
                             }
                             for (int i129 = Trackers.sect[i127][i128].length - 1; i129 >= 0; i129--) {
-                                final int i130 = Trackers.sect[i127][i128][i129];
+                                int i130 = Trackers.sect[i127][i128][i129];
                                 if (Math.abs(Trackers.zy[i130]) != 90 && Math.abs(Trackers.xy[i130]) != 90 && Math.abs(x - Trackers.x[i130]) < Trackers.radx[i130] + maxR && Math.abs(z - Trackers.z[i130]) < Trackers.radz[i130] + maxR && (!Trackers.decor[i130] || Medium.resdown != 2)) {
-                                    bool = true;
+                                    abool = true;
                                     break;
                                 }
                             }
                         }
-                        if (bool) {
+                        if (abool) {
                             for (int i131 = 0; i131 < npl; i131++) {
                                 p[i131].s(graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 0);
                             }
                         } else {
-                            final int i132 = Medium.cy + (int) ((Medium.ground - Medium.cy) * Medium.cos(Medium.zy) - (i124 - Medium.cz) * Medium.sin(Medium.zy));
-                            final int i133 = Medium.cz + (int) ((Medium.ground - Medium.cy) * Medium.sin(Medium.zy) + (i124 - Medium.cz) * Medium.cos(Medium.zy));
+                            int i132 = Medium.cy + (int) ((Medium.ground - Medium.cy) * Medium.cos(Medium.zy) - (i124 - Medium.cz) * Medium.sin(Medium.zy));
+                            int i133 = Medium.cz + (int) ((Medium.ground - Medium.cy) * Medium.sin(Medium.zy) + (i124 - Medium.cz) * Medium.cos(Medium.zy));
                             if (ys(i132 + maxR, i133) > 0 && ys(i132 - maxR, i133) < Medium.h) {
                                 for (int i134 = 0; i134 < npl; i134++) {
                                     p[i134].s(graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 1);
@@ -1378,7 +1321,7 @@ class ContO implements Point3DX {
                         p[i135].s(graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 2);
                     }
                 }
-            final int i136 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i124 - Medium.cz) * Medium.sin(Medium.zy));
+            int i136 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i124 - Medium.cz) * Medium.sin(Medium.zy));
             if (ys(i136 + maxR, i125) > Medium.ih && ys(i136 - maxR, i125) < Medium.h) {
                 if (elec && Medium.noelec == 0) {
                     electrify(graphics2d);
@@ -1431,8 +1374,8 @@ class ContO implements Point3DX {
         }
     }
 
-    private void dsprk(final Graphics2D graphics2d, final boolean bool) {
-        if (bool && sprk != 0) {
+    private void dsprk(Graphics2D graphics2d, boolean abool) {
+        if (abool && sprk != 0) {
             int i = (int) (Math.sqrt(rcx * rcx + rcy * rcy + rcz * rcz) / 10.0);
             if (i > 5) {
                 boolean bool240 = false;
@@ -1456,7 +1399,7 @@ class ContO implements Point3DX {
             }
         }
         for (int i = 0; i < 100; i++)
-            if (rtg[i] != 0 && (rbef[i] && bool || !rbef[i] && !bool)) {
+            if (rtg[i] != 0 && (rbef[i] && abool || !rbef[i] && !abool)) {
                 if (rtg[i] == 1) {
                     if (sprk < 5) {
                         rx[i] = srx + 3 - (int) (Medium.random() * 6.7);
@@ -1467,9 +1410,9 @@ class ContO implements Point3DX {
                         ry[i] = sry - (int) (Medium.random() * 4.0F);
                         rz[i] = srz + 10 - (int) (Medium.random() * 20.0F);
                     }
-                    final int i243 = (int) Math.sqrt(rcx * rcx + rcy * rcy + rcz * rcz);
-                    final float f = 0.2F + 0.4F * Medium.random();
-                    final float f244 = Medium.random() * Medium.random() * Medium.random();
+                    int i243 = (int) Math.sqrt(rcx * rcx + rcy * rcy + rcz * rcz);
+                    float f = 0.2F + 0.4F * Medium.random();
+                    float f244 = Medium.random() * Medium.random() * Medium.random();
                     float f245 = 1.0F;
                     if (Medium.random() > Medium.random()) {
                         if (Medium.random() > Medium.random()) {
@@ -1496,18 +1439,18 @@ class ContO implements Point3DX {
                 rx[i] += vrx[i];
                 ry[i] += vry[i];
                 rz[i] += vrz[i];
-                final int i246 = Medium.cx + (int) ((rx[i] - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (rz[i] - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
+                int i246 = Medium.cx + (int) ((rx[i] - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (rz[i] - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
                 int i247 = Medium.cz + (int) ((rx[i] - Medium.x - Medium.cx) * Medium.sin(Medium.xz) + (rz[i] - Medium.z - Medium.cz) * Medium.cos(Medium.xz));
-                final int i248 = Medium.cy + (int) ((ry[i] - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i247 - Medium.cz) * Medium.sin(Medium.zy));
+                int i248 = Medium.cy + (int) ((ry[i] - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i247 - Medium.cz) * Medium.sin(Medium.zy));
                 i247 = Medium.cz + (int) ((ry[i] - Medium.y - Medium.cy) * Medium.sin(Medium.zy) + (i247 - Medium.cz) * Medium.cos(Medium.zy));
-                final int i249 = Medium.cx + (int) ((rx[i] - Medium.x - Medium.cx + vrx[i]) * Medium.cos(Medium.xz) - (rz[i] - Medium.z - Medium.cz + vrz[i]) * Medium.sin(Medium.xz));
+                int i249 = Medium.cx + (int) ((rx[i] - Medium.x - Medium.cx + vrx[i]) * Medium.cos(Medium.xz) - (rz[i] - Medium.z - Medium.cz + vrz[i]) * Medium.sin(Medium.xz));
                 int i250 = Medium.cz + (int) ((rx[i] - Medium.x - Medium.cx + vrx[i]) * Medium.sin(Medium.xz) + (rz[i] - Medium.z - Medium.cz + vrz[i]) * Medium.cos(Medium.xz));
-                final int i251 = Medium.cy + (int) ((ry[i] - Medium.y - Medium.cy + vry[i]) * Medium.cos(Medium.zy) - (i250 - Medium.cz) * Medium.sin(Medium.zy));
+                int i251 = Medium.cy + (int) ((ry[i] - Medium.y - Medium.cy + vry[i]) * Medium.cos(Medium.zy) - (i250 - Medium.cz) * Medium.sin(Medium.zy));
                 i250 = Medium.cz + (int) ((ry[i] - Medium.y - Medium.cy + vry[i]) * Medium.sin(Medium.zy) + (i250 - Medium.cz) * Medium.cos(Medium.zy));
-                final int i252 = xs(i246, i247);
-                final int i253 = ys(i248, i247);
-                final int i254 = xs(i249, i250);
-                final int i255 = ys(i251, i250);
+                int i252 = xs(i246, i247);
+                int i253 = ys(i248, i247);
+                int i254 = xs(i249, i250);
+                int i255 = ys(i251, i250);
                 if (i252 < Medium.iw && i254 < Medium.iw) {
                     rtg[i] = 0;
                 }
@@ -1550,7 +1493,7 @@ class ContO implements Point3DX {
         }
     }
 
-    void dust(final int i, final float f, final float f199, final float f200, final int i201, final int i202, final float f203, final int i204, final boolean bool) {
+    void dust(int i, float f, float f199, float f200, int i201, int i202, float f203, int i204, boolean abool) {
         boolean bool205 = false;
         if (i204 > 5 && (i == 0 || i == 2)) {
             bool205 = true;
@@ -1567,8 +1510,8 @@ class ContO implements Point3DX {
             if (ust == 20) {
                 ust = 0;
             }
-            if (!bool) {
-                final float f207 = Medium.random();
+            if (!abool) {
+                float f207 = Medium.random();
                 sx[ust] = (int) ((f + x * f207) / (1.0F + f207));
                 sz[ust] = (int) ((f200 + z * f207) / (1.0F + f207));
                 sy[ust] = (int) ((f199 + y * f207) / (1.0F + f207));
@@ -1587,53 +1530,53 @@ class ContO implements Point3DX {
         }
     }
 
-    private void electrify(final Graphics2D graphics2d) {
+    private void electrify(Graphics2D graphics2d) {
         for (int i = 0; i < 4; i++) {
             if (elc[i] == 0) {
                 edl[i] = (int) (380.0F - Medium.random() * 760.0F);
                 edr[i] = (int) (380.0F - Medium.random() * 760.0F);
                 elc[i] = 1;
             }
-            final int i182 = (int) (edl[i] + (190.0F - Medium.random() * 380.0F));
-            final int i183 = (int) (edr[i] + (190.0F - Medium.random() * 380.0F));
-            final int i184 = (int) (Medium.random() * 126.0F);
-            final int i185 = (int) (Medium.random() * 126.0F);
-            final int[] is = new int[8];
-            final int[] is186 = new int[8];
-            final int[] is187 = new int[8];
+            int i182 = (int) (edl[i] + (190.0F - Medium.random() * 380.0F));
+            int i183 = (int) (edr[i] + (190.0F - Medium.random() * 380.0F));
+            int i184 = (int) (Medium.random() * 126.0F);
+            int i185 = (int) (Medium.random() * 126.0F);
+            int[] ais = new int[8];
+            int[] is186 = new int[8];
+            int[] is187 = new int[8];
             for (int i188 = 0; i188 < 8; i188++) {
                 is187[i188] = z - Medium.z;
             }
-            is[0] = x - Medium.x - 504;
+            ais[0] = x - Medium.x - 504;
             is186[0] = y - Medium.y - edl[i] - 5 - (int) (Medium.random() * 5.0F);
-            is[1] = x - Medium.x - 252 + i185;
+            ais[1] = x - Medium.x - 252 + i185;
             is186[1] = y - Medium.y - i182 - 5 - (int) (Medium.random() * 5.0F);
-            is[2] = x - Medium.x + 252 - i184;
+            ais[2] = x - Medium.x + 252 - i184;
             is186[2] = y - Medium.y - i183 - 5 - (int) (Medium.random() * 5.0F);
-            is[3] = x - Medium.x + 504;
+            ais[3] = x - Medium.x + 504;
             is186[3] = y - Medium.y - edr[i] - 5 - (int) (Medium.random() * 5.0F);
-            is[4] = x - Medium.x + 504;
+            ais[4] = x - Medium.x + 504;
             is186[4] = y - Medium.y - edr[i] + 5 + (int) (Medium.random() * 5.0F);
-            is[5] = x - Medium.x + 252 - i184;
+            ais[5] = x - Medium.x + 252 - i184;
             is186[5] = y - Medium.y - i183 + 5 + (int) (Medium.random() * 5.0F);
-            is[6] = x - Medium.x - 252 + i185;
+            ais[6] = x - Medium.x - 252 + i185;
             is186[6] = y - Medium.y - i182 + 5 + (int) (Medium.random() * 5.0F);
-            is[7] = x - Medium.x - 504;
+            ais[7] = x - Medium.x - 504;
             is186[7] = y - Medium.y - edl[i] + 5 + (int) (Medium.random() * 5.0F);
             if (roted) {
-                rot(is, is187, x - Medium.x, z - Medium.z, 90, 8);
+                rot(ais, is187, x - Medium.x, z - Medium.z, 90, 8);
             }
-            rot(is, is187, Medium.cx, Medium.cz, Medium.xz, 8);
+            rot(ais, is187, Medium.cx, Medium.cz, Medium.xz, 8);
             rot(is186, is187, Medium.cy, Medium.cz, Medium.zy, 8);
-            boolean bool = true;
+            boolean abool = true;
             int i189 = 0;
             int i190 = 0;
             int i191 = 0;
             int i192 = 0;
-            final int[] is193 = new int[8];
-            final int[] is194 = new int[8];
+            int[] is193 = new int[8];
+            int[] is194 = new int[8];
             for (int i195 = 0; i195 < 8; i195++) {
-                is193[i195] = xs(is[i195], is187[i195]);
+                is193[i195] = xs(ais[i195], is187[i195]);
                 is194[i195] = ys(is186[i195], is187[i195]);
                 if (is194[i195] < Medium.ih || is187[i195] < 10) {
                     i189++;
@@ -1649,9 +1592,9 @@ class ContO implements Point3DX {
                 }
             }
             if (i191 == 8 || i189 == 8 || i190 == 8 || i192 == 8) {
-                bool = false;
+                abool = false;
             }
-            if (bool) {
+            if (abool) {
                 int i196 = (int) (160.0F + 160.0F * (Medium.snap[0] / 500.0F));
                 if (i196 > 255) {
                     i196 = 255;
@@ -1727,13 +1670,13 @@ class ContO implements Point3DX {
         }
     }
 
-    private void fixit(final Graphics2D graphics2d) {
+    private void fixit(Graphics2D graphics2d) {
         if (fcnt == 1) {
             for (int i = 0; i < npl; i++) {
                 p[i].hsb[0] = 0.57F;
                 p[i].hsb[2] = 0.8F;
                 p[i].hsb[1] = 0.8F;
-                final Color color = Color.getHSBColor(p[i].hsb[0], p[i].hsb[1], p[i].hsb[2]);
+                Color color = Color.getHSBColor(p[i].hsb[0], p[i].hsb[1], p[i].hsb[2]);
                 int i167 = (int) (color.getRed() + color.getRed() * (Medium.snap[0] / 100.0F));
                 if (i167 > 255) {
                     i167 = 255;
@@ -1770,32 +1713,32 @@ class ContO implements Point3DX {
             }
         }
         if ((fcnt == 1 || fcnt > 2) && fcnt != 9) {
-            final int[] is = new int[8];
-            final int[] is170 = new int[8];
-            final int[] is171 = new int[4];
+            int[] ais = new int[8];
+            int[] is170 = new int[8];
+            int[] is171 = new int[4];
             for (int i = 0; i < 4; i++) {
-                is[i] = keyx[i] + x - Medium.x;
+                ais[i] = keyx[i] + x - Medium.x;
                 is170[i] = grat + y - Medium.y;
                 is171[i] = keyz[i] + z - Medium.z;
             }
-            rot(is, is170, x - Medium.x, y - Medium.y, xy, 4);
+            rot(ais, is170, x - Medium.x, y - Medium.y, xy, 4);
             rot(is170, is171, y - Medium.y, z - Medium.y, zy, 4);
-            rot(is, is171, x - Medium.x, z - Medium.z, xz, 4);
-            rot(is, is171, Medium.cx, Medium.cz, Medium.xz, 4);
+            rot(ais, is171, x - Medium.x, z - Medium.z, xz, 4);
+            rot(ais, is171, Medium.cx, Medium.cz, Medium.xz, 4);
             rot(is170, is171, Medium.cy, Medium.cz, Medium.zy, 4);
             int i = 0;
             int i172 = 0;
             int i173 = 0;
             for (int i174 = 0; i174 < 4; i174++) {
                 for (int i175 = 0; i175 < 4; i175++) {
-                    if (Math.abs(is[i174] - is[i175]) > i) {
-                        i = Math.abs(is[i174] - is[i175]);
+                    if (Math.abs(ais[i174] - ais[i175]) > i) {
+                        i = Math.abs(ais[i174] - ais[i175]);
                     }
                     if (Math.abs(is170[i174] - is170[i175]) > i172) {
                         i172 = Math.abs(is170[i174] - is170[i175]);
                     }
-                    if (py(is[i174], is[i175], is170[i174], is170[i175]) > i173) {
-                        i173 = py(is[i174], is[i175], is170[i174], is170[i175]);
+                    if (py(ais[i174], ais[i175], is170[i174], is170[i175]) > i173) {
+                        i173 = py(ais[i174], ais[i175], is170[i174], is170[i175]);
                     }
                 }
             }
@@ -1806,40 +1749,40 @@ class ContO implements Point3DX {
             if (i172 < i173) {
                 i172 = i173;
             }
-            final int i176 = Medium.cx + (int) ((x - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (z - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
+            int i176 = Medium.cx + (int) ((x - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (z - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
             int i177 = Medium.cz + (int) ((x - Medium.x - Medium.cx) * Medium.sin(Medium.xz) + (z - Medium.z - Medium.cz) * Medium.cos(Medium.xz));
-            final int i178 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i177 - Medium.cz) * Medium.sin(Medium.zy));
+            int i178 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i177 - Medium.cz) * Medium.sin(Medium.zy));
             i177 = Medium.cz + (int) ((y - Medium.y - Medium.cy) * Medium.sin(Medium.zy) + (i177 - Medium.cz) * Medium.cos(Medium.zy));
-            is[0] = xs((int) (i176 - i / 0.8 - Medium.random() * (i / 2.4)), i177);
+            ais[0] = xs((int) (i176 - i / 0.8 - Medium.random() * (i / 2.4)), i177);
             is170[0] = ys((int) (i178 - i172 / 1.92 - Medium.random() * (i172 / 5.67)), i177);
-            is[1] = xs((int) (i176 - i / 0.8 - Medium.random() * (i / 2.4)), i177);
+            ais[1] = xs((int) (i176 - i / 0.8 - Medium.random() * (i / 2.4)), i177);
             is170[1] = ys((int) (i178 + i172 / 1.92 + Medium.random() * (i172 / 5.67)), i177);
-            is[2] = xs((int) (i176 - i / 1.92 - Medium.random() * (i / 5.67)), i177);
+            ais[2] = xs((int) (i176 - i / 1.92 - Medium.random() * (i / 5.67)), i177);
             is170[2] = ys((int) (i178 + i172 / 0.8 + Medium.random() * (i172 / 2.4)), i177);
-            is[3] = xs((int) (i176 + i / 1.92 + Medium.random() * (i / 5.67)), i177);
+            ais[3] = xs((int) (i176 + i / 1.92 + Medium.random() * (i / 5.67)), i177);
             is170[3] = ys((int) (i178 + i172 / 0.8 + Medium.random() * (i172 / 2.4)), i177);
-            is[4] = xs((int) (i176 + i / 0.8 + Medium.random() * (i / 2.4)), i177);
+            ais[4] = xs((int) (i176 + i / 0.8 + Medium.random() * (i / 2.4)), i177);
             is170[4] = ys((int) (i178 + i172 / 1.92 + Medium.random() * (i172 / 5.67)), i177);
-            is[5] = xs((int) (i176 + i / 0.8 + Medium.random() * (i / 2.4)), i177);
+            ais[5] = xs((int) (i176 + i / 0.8 + Medium.random() * (i / 2.4)), i177);
             is170[5] = ys((int) (i178 - i172 / 1.92 - Medium.random() * (i172 / 5.67)), i177);
-            is[6] = xs((int) (i176 + i / 1.92 + Medium.random() * (i / 5.67)), i177);
+            ais[6] = xs((int) (i176 + i / 1.92 + Medium.random() * (i / 5.67)), i177);
             is170[6] = ys((int) (i178 - i172 / 0.8 - Medium.random() * (i172 / 2.4)), i177);
-            is[7] = xs((int) (i176 - i / 1.92 - Medium.random() * (i / 5.67)), i177);
+            ais[7] = xs((int) (i176 - i / 1.92 - Medium.random() * (i / 5.67)), i177);
             is170[7] = ys((int) (i178 - i172 / 0.8 - Medium.random() * (i172 / 2.4)), i177);
             if (fcnt == 3) {
-                rot(is, is170, xs(i176, i177), ys(i178, i177), 22, 8);
+                rot(ais, is170, xs(i176, i177), ys(i178, i177), 22, 8);
             }
             if (fcnt == 4) {
-                rot(is, is170, xs(i176, i177), ys(i178, i177), 22, 8);
+                rot(ais, is170, xs(i176, i177), ys(i178, i177), 22, 8);
             }
             if (fcnt == 5) {
-                rot(is, is170, xs(i176, i177), ys(i178, i177), 0, 8);
+                rot(ais, is170, xs(i176, i177), ys(i178, i177), 0, 8);
             }
             if (fcnt == 6) {
-                rot(is, is170, xs(i176, i177), ys(i178, i177), -22, 8);
+                rot(ais, is170, xs(i176, i177), ys(i178, i177), -22, 8);
             }
             if (fcnt == 7) {
-                rot(is, is170, xs(i176, i177), ys(i178, i177), -22, 8);
+                rot(ais, is170, xs(i176, i177), ys(i178, i177), -22, 8);
             }
             int i179 = (int) (191.0F + 191.0F * (Medium.snap[0] / 350.0F));
             if (i179 > 255) {
@@ -1863,22 +1806,22 @@ class ContO implements Point3DX {
                 i181 = 0;
             }
             graphics2d.setColor(new Color(i179, i180, i181));
-            graphics2d.fillPolygon(is, is170, 8);
-            is[0] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
+            graphics2d.fillPolygon(ais, is170, 8);
+            ais[0] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
             is170[0] = ys((int) (i178 - i172 / 2.4 - Medium.random() * (i172 / 9.6)), i177);
-            is[1] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
+            ais[1] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
             is170[1] = ys((int) (i178 + i172 / 2.4 + Medium.random() * (i172 / 9.6)), i177);
-            is[2] = xs((int) (i176 - i / 2.4 - Medium.random() * (i / 9.6)), i177);
+            ais[2] = xs((int) (i176 - i / 2.4 - Medium.random() * (i / 9.6)), i177);
             is170[2] = ys((int) (i178 + i172 + Medium.random() * (i172 / 4)), i177);
-            is[3] = xs((int) (i176 + i / 2.4 + Medium.random() * (i / 9.6)), i177);
+            ais[3] = xs((int) (i176 + i / 2.4 + Medium.random() * (i / 9.6)), i177);
             is170[3] = ys((int) (i178 + i172 + Medium.random() * (i172 / 4)), i177);
-            is[4] = xs((int) (i176 + i + Medium.random() * (i / 4)), i177);
+            ais[4] = xs((int) (i176 + i + Medium.random() * (i / 4)), i177);
             is170[4] = ys((int) (i178 + i172 / 2.4 + Medium.random() * (i172 / 9.6)), i177);
-            is[5] = xs((int) (i176 + i + Medium.random() * (i / 4)), i177);
+            ais[5] = xs((int) (i176 + i + Medium.random() * (i / 4)), i177);
             is170[5] = ys((int) (i178 - i172 / 2.4 - Medium.random() * (i172 / 9.6)), i177);
-            is[6] = xs((int) (i176 + i / 2.4 + Medium.random() * (i / 9.6)), i177);
+            ais[6] = xs((int) (i176 + i / 2.4 + Medium.random() * (i / 9.6)), i177);
             is170[6] = ys((int) (i178 - i172 - Medium.random() * (i172 / 4)), i177);
-            is[7] = xs((int) (i176 - i / 2.4 - Medium.random() * (i / 9.6)), i177);
+            ais[7] = xs((int) (i176 - i / 2.4 - Medium.random() * (i / 9.6)), i177);
             is170[7] = ys((int) (i178 - i172 - Medium.random() * (i172 / 4)), i177);
             i179 = (int) (213.0F + 213.0F * (Medium.snap[0] / 350.0F));
             if (i179 > 255) {
@@ -1902,7 +1845,7 @@ class ContO implements Point3DX {
                 i181 = 0;
             }
             graphics2d.setColor(new Color(i179, i180, i181));
-            graphics2d.fillPolygon(is, is170, 8);
+            graphics2d.fillPolygon(ais, is170, 8);
         }
         if (fcnt > 7) {
             fcnt = 0;
@@ -1912,15 +1855,15 @@ class ContO implements Point3DX {
         }
     }
 
-    public int getpy(final int i, final int i267, final int i268) {
+    public int getpy(int i, int i267, int i268) {
         return (i - x) / 10 * ((i - x) / 10) + (i267 - y) / 10 * ((i267 - y) / 10) + (i268 - z) / 10 * ((i268 - z) / 10);
     }
 
-    private int getvalue(final String string, final String string262, final int i) {
+    private int getvalue(String astring, String string262, int i) {
         int i263 = 0;
         String string264 = "";
-        for (int i265 = string.length() + 1; i265 < string262.length(); i265++) {
-            final String string266 = "" + string262.charAt(i265);
+        for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
+            String string266 = "" + string262.charAt(i265);
             if (string266.equals(",") || string266.equals(")")) {
                 i263++;
                 i265++;
@@ -1932,10 +1875,10 @@ class ContO implements Point3DX {
         return Integer.parseInt(string264);
     }
 
-    private void lowshadow(final Graphics2D graphics2d, final int i) {
-        final int[] is = new int[4];
-        final int[] is146 = new int[4];
-        final int[] is147 = new int[4];
+    private void lowshadow(Graphics2D graphics2d, int i) {
+        int[] ais = new int[4];
+        int[] is146 = new int[4];
+        int[] is147 = new int[4];
         int i148 = 1;
         int i149;
         for (i149 = Math.abs(zy); i149 > 270; i149 -= 360) {
@@ -1945,15 +1888,15 @@ class ContO implements Point3DX {
         if (i149 > 90) {
             i148 = -1;
         }
-        is[0] = (int) (keyx[0] * 1.2 + x - Medium.x);
+        ais[0] = (int) (keyx[0] * 1.2 + x - Medium.x);
         is147[0] = (int) ((keyz[0] + 30) * i148 * 1.2 + z - Medium.z);
-        is[1] = (int) (keyx[1] * 1.2 + x - Medium.x);
+        ais[1] = (int) (keyx[1] * 1.2 + x - Medium.x);
         is147[1] = (int) ((keyz[1] + 30) * i148 * 1.2 + z - Medium.z);
-        is[2] = (int) (keyx[3] * 1.2 + x - Medium.x);
+        ais[2] = (int) (keyx[3] * 1.2 + x - Medium.x);
         is147[2] = (int) ((keyz[3] - 30) * i148 * 1.2 + z - Medium.z);
-        is[3] = (int) (keyx[2] * 1.2 + x - Medium.x);
+        ais[3] = (int) (keyx[2] * 1.2 + x - Medium.x);
         is147[3] = (int) ((keyz[2] - 30) * i148 * 1.2 + z - Medium.z);
-        rot(is, is147, x - Medium.x, z - Medium.z, xz, 4);
+        rot(ais, is147, x - Medium.x, z - Medium.z, xz, 4);
         int i150 = (int) (Medium.crgrnd[0] / 1.5);
         int i151 = (int) (Medium.crgrnd[1] / 1.5);
         int i152 = (int) (Medium.crgrnd[2] / 1.5);
@@ -1976,10 +1919,10 @@ class ContO implements Point3DX {
                 i155 = 0;
             }
             for (int i156 = Trackers.sect[i154][i155].length - 1; i156 >= 0; i156--) {
-                final int i157 = Trackers.sect[i154][i155][i156];
+                int i157 = Trackers.sect[i154][i155][i156];
                 int i158 = 0;
                 for (int i159 = 0; i159 < 4; i159++)
-                    if (Math.abs(Trackers.zy[i157]) != 90 && Math.abs(Trackers.xy[i157]) != 90 && Trackers.rady[i157] != 801 && Math.abs(is[i159] - (Trackers.x[i157] - Medium.x)) < Trackers.radx[i157] && Math.abs(is147[i159] - (Trackers.z[i157] - Medium.z)) < Trackers.radz[i157] && (!Trackers.decor[i157] || Medium.resdown != 2)) {
+                    if (Math.abs(Trackers.zy[i157]) != 90 && Math.abs(Trackers.xy[i157]) != 90 && Trackers.rady[i157] != 801 && Math.abs(ais[i159] - (Trackers.x[i157] - Medium.x)) < Trackers.radx[i157] && Math.abs(is147[i159] - (Trackers.z[i157] - Medium.z)) < Trackers.radz[i157] && (!Trackers.decor[i157] || Medium.resdown != 2)) {
                         i158++;
                     }
                 if (i158 > 2) {
@@ -1989,7 +1932,7 @@ class ContO implements Point3DX {
                             is146[i160] += (is147[i160] - (Trackers.z[i157] - Medium.z - Trackers.radz[i157])) * Medium.sin(Trackers.zy[i157]) / Medium.sin(90 - Trackers.zy[i157]) - Trackers.radz[i157] * Medium.sin(Trackers.zy[i157]) / Medium.sin(90 - Trackers.zy[i157]);
                         }
                         if (Trackers.xy[i157] != 0) {
-                            is146[i160] += (is[i160] - (Trackers.x[i157] - Medium.x - Trackers.radx[i157])) * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]) - Trackers.radx[i157] * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]);
+                            is146[i160] += (ais[i160] - (Trackers.x[i157] - Medium.x - Trackers.radx[i157])) * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]) - Trackers.radx[i157] * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]);
                         }
                     }
                     i150 = (int) (Trackers.c[i157][0] / 1.5);
@@ -1999,15 +1942,15 @@ class ContO implements Point3DX {
                 }
             }
         }
-        rot(is, is147, Medium.cx, Medium.cz, Medium.xz, 4);
+        rot(ais, is147, Medium.cx, Medium.cz, Medium.xz, 4);
         rot(is146, is147, Medium.cy, Medium.cz, Medium.zy, 4);
-        boolean bool = true;
+        boolean abool = true;
         int i161 = 0;
         int i162 = 0;
         int i163 = 0;
         int i164 = 0;
         for (int i165 = 0; i165 < 4; i165++) {
-            is[i165] = xs(is[i165], is147[i165]);
+            ais[i165] = xs(ais[i165], is147[i165]);
             is146[i165] = ys(is146[i165], is147[i165]);
             if (is146[i165] < Medium.ih || is147[i165] < 10) {
                 i161++;
@@ -2015,17 +1958,17 @@ class ContO implements Point3DX {
             if (is146[i165] > Medium.h || is147[i165] < 10) {
                 i162++;
             }
-            if (is[i165] < Medium.iw || is147[i165] < 10) {
+            if (ais[i165] < Medium.iw || is147[i165] < 10) {
                 i163++;
             }
-            if (is[i165] > Medium.w || is147[i165] < 10) {
+            if (ais[i165] > Medium.w || is147[i165] < 10) {
                 i164++;
             }
         }
         if (i163 == 4 || i161 == 4 || i162 == 4 || i164 == 4) {
-            bool = false;
+            abool = false;
         }
-        if (bool) {
+        if (abool) {
             for (int i166 = 0; i166 < 16; i166++)
                 if (i > Medium.fade[i166]) {
                     i150 = (i150 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
@@ -2033,26 +1976,26 @@ class ContO implements Point3DX {
                     i152 = (i152 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                 }
             graphics2d.setColor(new Color(i150, i151, i152));
-            graphics2d.fillPolygon(is, is146, 4);
+            graphics2d.fillPolygon(ais, is146, 4);
         }
     }
 
-    private void pdust(final int i, final Graphics2D graphics2d, final boolean bool) {
-        if (bool) {
+    private void pdust(int i, Graphics2D graphics2d, boolean abool) {
+        if (abool) {
             sav[i] = (int) Math.sqrt((Medium.x + Medium.cx - sx[i]) * (Medium.x + Medium.cx - sx[i]) + (Medium.y + Medium.cy - sy[i]) * (Medium.y + Medium.cy - sy[i]) + (Medium.z - sz[i]) * (Medium.z - sz[i]));
         }
-        if (bool && sav[i] > dist || !bool && sav[i] <= dist) {
+        if (abool && sav[i] > dist || !abool && sav[i] <= dist) {
             if (stg[i] == 1) {
                 sbln[i] = 0.6F;
                 boolean bool208 = false;
-                final int[] is = new int[3];
+                int[] ais = new int[3];
                 for (int i209 = 0; i209 < 3; i209++) {
-                    is[i209] = (int) (255.0F + 255.0F * (Medium.snap[i209] / 100.0F));
-                    if (is[i209] > 255) {
-                        is[i209] = 255;
+                    ais[i209] = (int) (255.0F + 255.0F * (Medium.snap[i209] / 100.0F));
+                    if (ais[i209] > 255) {
+                        ais[i209] = 255;
                     }
-                    if (is[i209] < 0) {
-                        is[i209] = 0;
+                    if (ais[i209] < 0) {
+                        ais[i209] = 0;
                     }
                 }
                 int i210 = (x - Trackers.sx) / 3000;
@@ -2070,7 +2013,7 @@ class ContO implements Point3DX {
                     i211 = 0;
                 }
                 for (int i212 = 0; i212 < Trackers.sect[i210][i211].length; i212++) {
-                    final int i213 = Trackers.sect[i210][i211][i212];
+                    int i213 = Trackers.sect[i210][i211][i212];
                     if (Math.abs(Trackers.zy[i213]) != 90 && Math.abs(Trackers.xy[i213]) != 90 && Math.abs(sx[i] - Trackers.x[i213]) < Trackers.radx[i213] && Math.abs(sz[i] - Trackers.z[i213]) < Trackers.radz[i213]) {
                         if (Trackers.skd[i213] == 0) {
                             sbln[i] = 0.2F;
@@ -2082,14 +2025,14 @@ class ContO implements Point3DX {
                             sbln[i] = 0.45F;
                         }
                         for (int i214 = 0; i214 < 3; i214++) {
-                            srgb[i][i214] = (Trackers.c[i213][i214] + is[i214]) / 2;
+                            srgb[i][i214] = (Trackers.c[i213][i214] + ais[i214]) / 2;
                         }
                         bool208 = true;
                     }
                 }
                 if (!bool208) {
                     for (int i215 = 0; i215 < 3; i215++) {
-                        srgb[i][i215] = (Medium.crgrnd[i215] + is[i215]) / 2;
+                        srgb[i][i215] = (Medium.crgrnd[i215] + ais[i215]) / 2;
                     }
                 }
                 float f = (float) (0.1 + Medium.random());
@@ -2114,29 +2057,29 @@ class ContO implements Point3DX {
                 }
                 smag[i][6] = smag[i][7];
             }
-            final int i220 = Medium.cx + (int) ((sx[i] - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (sz[i] - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
+            int i220 = Medium.cx + (int) ((sx[i] - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (sz[i] - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
             int i221 = Medium.cz + (int) ((sx[i] - Medium.x - Medium.cx) * Medium.sin(Medium.xz) + (sz[i] - Medium.z - Medium.cz) * Medium.cos(Medium.xz));
-            final int i222 = Medium.cy + (int) ((sy[i] - Medium.y - Medium.cy - smag[i][7]) * Medium.cos(Medium.zy) - (i221 - Medium.cz) * Medium.sin(Medium.zy));
+            int i222 = Medium.cy + (int) ((sy[i] - Medium.y - Medium.cy - smag[i][7]) * Medium.cos(Medium.zy) - (i221 - Medium.cz) * Medium.sin(Medium.zy));
             i221 = Medium.cz + (int) ((sy[i] - Medium.y - Medium.cy - smag[i][7]) * Medium.sin(Medium.zy) + (i221 - Medium.cz) * Medium.cos(Medium.zy));
             sx[i] += scx[i] / (stg[i] + 1);
             sz[i] += scz[i] / (stg[i] + 1);
-            final int[] is = new int[8];
-            final int[] is223 = new int[8];
-            is[0] = xs((int) (i220 + smag[i][0] * 0.9238F * 1.5F), i221);
+            int[] ais = new int[8];
+            int[] is223 = new int[8];
+            ais[0] = xs((int) (i220 + smag[i][0] * 0.9238F * 1.5F), i221);
             is223[0] = ys((int) (i222 + smag[i][0] * 0.3826F * 1.5F), i221);
-            is[1] = xs((int) (i220 + smag[i][1] * 0.9238F * 1.5F), i221);
+            ais[1] = xs((int) (i220 + smag[i][1] * 0.9238F * 1.5F), i221);
             is223[1] = ys((int) (i222 - smag[i][1] * 0.3826F * 1.5F), i221);
-            is[2] = xs((int) (i220 + smag[i][2] * 0.3826F), i221);
+            ais[2] = xs((int) (i220 + smag[i][2] * 0.3826F), i221);
             is223[2] = ys((int) (i222 - smag[i][2] * 0.9238F), i221);
-            is[3] = xs((int) (i220 - smag[i][3] * 0.3826F), i221);
+            ais[3] = xs((int) (i220 - smag[i][3] * 0.3826F), i221);
             is223[3] = ys((int) (i222 - smag[i][3] * 0.9238F), i221);
-            is[4] = xs((int) (i220 - smag[i][4] * 0.9238F * 1.5F), i221);
+            ais[4] = xs((int) (i220 - smag[i][4] * 0.9238F * 1.5F), i221);
             is223[4] = ys((int) (i222 - smag[i][4] * 0.3826F * 1.5F), i221);
-            is[5] = xs((int) (i220 - smag[i][5] * 0.9238F * 1.5F), i221);
+            ais[5] = xs((int) (i220 - smag[i][5] * 0.9238F * 1.5F), i221);
             is223[5] = ys((int) (i222 + smag[i][5] * 0.3826F * 1.5F), i221);
-            is[6] = xs((int) (i220 - smag[i][6] * 0.3826F * 1.7F), i221);
+            ais[6] = xs((int) (i220 - smag[i][6] * 0.3826F * 1.7F), i221);
             is223[6] = ys((int) (i222 + smag[i][6] * 0.9238F), i221);
-            is[7] = xs((int) (i220 + smag[i][7] * 0.3826F * 1.7F), i221);
+            ais[7] = xs((int) (i220 + smag[i][7] * 0.3826F * 1.7F), i221);
             is223[7] = ys((int) (i222 + smag[i][7] * 0.9238F), i221);
             for (int i224 = 0; i224 < 7; i224++) {
                 smag[i][i224] += 5.0F + Medium.random() * 15.0F;
@@ -2154,10 +2097,10 @@ class ContO implements Point3DX {
                 if (is223[i230] > Medium.h || i221 < 10) {
                     i227++;
                 }
-                if (is[i230] < Medium.iw || i221 < 10) {
+                if (ais[i230] < Medium.iw || i221 < 10) {
                     i228++;
                 }
-                if (is[i230] > Medium.w || i221 < 10) {
+                if (ais[i230] > Medium.w || i221 < 10) {
                     i229++;
                 }
             }
@@ -2175,9 +2118,9 @@ class ContO implements Point3DX {
                         i233 = (i233 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                     }
                 graphics2d.setColor(new Color(i231, i232, i233));
-                final float f = sbln[i] - stg[i] * (sbln[i] / 8.0F);
+                float f = sbln[i] - stg[i] * (sbln[i] / 8.0F);
                 graphics2d.setComposite(AlphaComposite.getInstance(3, f));
-                graphics2d.fillPolygon(is, is223, 8);
+                graphics2d.fillPolygon(ais, is223, 8);
                 graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
             }
             if (stg[i] == 7) {
@@ -2188,22 +2131,22 @@ class ContO implements Point3DX {
         }
     }
 
-    private int py(final int i, final int i269, final int i270, final int i271) {
+    private int py(int i, int i269, int i270, int i271) {
         return (i - i269) * (i - i269) + (i270 - i271) * (i270 - i271);
     }
 
-    private void rot(final int[] is, final int[] is272, final int i, final int i273, final int i274, final int i275) {
+    private void rot(int[] ais, int[] is272, int i, int i273, int i274, int i275) {
         if (i274 != 0) {
             for (int i276 = 0; i276 < i275; i276++) {
-                final int i277 = is[i276];
-                final int i278 = is272[i276];
-                is[i276] = i + (int) ((i277 - i) * Medium.cos(i274) - (i278 - i273) * Medium.sin(i274));
+                int i277 = ais[i276];
+                int i278 = is272[i276];
+                ais[i276] = i + (int) ((i277 - i) * Medium.cos(i274) - (i278 - i273) * Medium.sin(i274));
                 is272[i276] = i273 + (int) ((i277 - i) * Medium.sin(i274) + (i278 - i273) * Medium.cos(i274));
             }
         }
     }
 
-    void sprk(final float f, final float f235, final float f236, final float f237, final float f238, final float f239, final int i) {
+    void spark(float f, float f235, float f236, float f237, float f238, float f239, int i) {
         if (i != 1) {
             srx = (int) (f - sprkat * Medium.sin(xz));
             sry = (int) (f235 - sprkat * Medium.cos(zy) * Medium.cos(xy));
@@ -2230,14 +2173,14 @@ class ContO implements Point3DX {
         rcz = f239;
     }
 
-    private int xs(final int i, int i260) {
+    private int xs(int i, int i260) {
         if (i260 < 50) {
             i260 = 50;
         }
         return (i260 - Medium.focusPoint) * (Medium.cx - i) / i260 + i;
     }
 
-    private int ys(final int i, int i261) {
+    private int ys(int i, int i261) {
         if (i261 < 50) {
             i261 = 50;
         }

@@ -1,7 +1,5 @@
 namespace Cum {
 
-import java.util.concurrent.ThreadLocalRandom;
-
 /* CheckPoints - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
