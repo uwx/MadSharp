@@ -168,7 +168,7 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static <E> boolean arrayContains(final E[] arr, final E targetValue) {
+    internal public static <E> boolean arrayContains(final E[] arr, final E targetValue) {
         for (final E s : arr) {
             if (s.equals(targetValue))
                 return true;
@@ -335,7 +335,7 @@ public class Utility {
         return true;
     }
 
-    public static <T, E> T getKeyByValue(final Map<T, E> map, final E value) {
+    internal public static <T, E> T getKeyByValue(final Map<T, E> map, final E value) {
         for (final Map.Entry<T, E> entry : map.entrySet()) {
             if (Objects.equals(value, entry.getValue()))
                 return entry.getKey();
@@ -343,7 +343,7 @@ public class Utility {
         return null;
     }
 
-    public static <E> boolean listModelEquals(final ListModel<E> lm, final ListModel<E> lm2) {
+    internal public static <E> boolean listModelEquals(final ListModel<E> lm, final ListModel<E> lm2) {
         for (int i = 0; i < lm.getSize(); i++) {
             if (!lm.getElementAt(i).equals(lm2.getElementAt(i)))
                 return false;
@@ -351,7 +351,7 @@ public class Utility {
         return true;
     }
 
-    public static <E> boolean listModelEquals(final ListModel<E> lm, final E[] e2) {
+    internal public static <E> boolean listModelEquals(final ListModel<E> lm, final E[] e2) {
         for (int i = 0; i < lm.getSize(); i++) {
             if (!lm.getElementAt(i).equals(e2))
                 return false;
@@ -359,7 +359,7 @@ public class Utility {
         return true;
     }
 
-    public static <E> boolean listModelEquals(final ListModel<E> lm, final Vector<E> lm2) {
+    internal public static <E> boolean listModelEquals(final ListModel<E> lm, final Vector<E> lm2) {
         for (int i = 0; i < lm.getSize(); i++) {
             if (!lm.getElementAt(i).equals(lm2.elementAt(i)))
                 return false;
@@ -386,7 +386,7 @@ public class Utility {
      * @author Rafael
      */
     @SafeVarargs
-    public static <E> E choose(final E... ais) {
+    internal public static <E> E choose(final E... ais) {
         return ais[ThreadLocalRandom.current().nextInt(ais.length)];
     }
 

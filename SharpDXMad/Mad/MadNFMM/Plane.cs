@@ -5,14 +5,14 @@ using boolean = System.Boolean;
 namespace Cum {
 class Plane : IComparable<Plane> {
     private int av = 0;
-    int bfase = 0;
-    readonly int[] c = new int[3];
-    int chip = 0;
-    int colnum = 0;
+    internal int bfase = 0;
+    internal readonly int[] c = new int[3];
+    internal int chip = 0;
+    internal int colnum = 0;
     private readonly int[] cox = new int[3];
     private readonly int[] coy = new int[3];
     private readonly int[] coz = new int[3];
-    float ctmag = 0.0F;
+    internal float ctmag = 0.0F;
     private int cxy = 0;
     private int cxz = 0;
     private int czy = 0;
@@ -21,34 +21,34 @@ class Plane : IComparable<Plane> {
     private int dx = 0;
     private int dy = 0;
     private int dz = 0;
-    int embos = 0;
-    int flx = 0;
-    int fs = 0;
-    int glass = 0;
-    int gr = 0;
-    readonly float[] hsb = new float[3];
-    int light = 0;
-    int master = 0;
-    int n;
-    boolean nocol = false;
-    readonly int[] oc = new int[3];
-    readonly int[] ox;
-    readonly int[] oy;
-    readonly int[] oz;
+    internal int embos = 0;
+    internal int flx = 0;
+    internal int fs = 0;
+    internal int glass = 0;
+    internal int gr = 0;
+    internal readonly float[] hsb = new float[3];
+    internal int light = 0;
+    internal int master = 0;
+    internal int n;
+    internal boolean nocol = false;
+    internal readonly int[] oc = new int[3];
+    internal readonly int[] ox;
+    internal readonly int[] oy;
+    internal readonly int[] oz;
     private int pa = 0;
     private int pb = 0;
     private float projf = 1.0F;
-    boolean road = false;
-    boolean solo = false;
+    internal boolean road = false;
+    internal boolean solo = false;
     private int typ = 0;
     private int vx = 0;
     private int vy = 0;
     private int vz = 0;
-    int wx = 0;
-    int wy = 0;
-    int wz = 0;
+    internal int wx = 0;
+    internal int wy = 0;
+    internal int wz = 0;
     
-    byte project;//booleans are bytes anyway so hey why not
+    internal byte project;//booleans are bytes anyway so hey why not
 
     Plane(int[] ais, int[] is0, int[] is1, int i, int[] is2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, boolean abool, int i11, boolean bool12, boolean randomcolor, boolean randoutline, boolean customstroke, int strokewidth, int strokecap, int strokejoin, int strokemtlimit) {
         n = i;

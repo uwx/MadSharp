@@ -1,7 +1,7 @@
 namespace Cum
 {
 
-    class Wheels
+    internal class Wheels
     {
         private float depth = 3.0F;
         int ground = 0;

@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using boolean = System.Boolean;
 
 namespace Cum
 {
-    class GameSparker {
+    internal class GameSparker {
     /**
      *
      */
@@ -81,6 +80,11 @@ namespace Cum
     private static int xm = 0;
     private static int ym = 0;
 
+    /**
+     * Used for internal time measurement (usage ais analogous to System.currentTimeMilis())
+     */
+    private static Date date;
+
     private static int clicknowtime;
 
     /**
@@ -98,7 +102,7 @@ namespace Cum
      */
     private static ContO[] stageContos;
 
-    static Mad[] mads;
+    internal static Mad[] mads;
         
     private static boolean abool = false;
     private static int recordtime;
@@ -1998,20 +2002,47 @@ namespace Cum
 
     private GameSparker()
     {
+        super();
     }
 
     public static GameSparker create()
     {
-        
+        gsPanel = new GameSparker();
+
+        BASSLoader.initializeBASS();
         initFields();
+
+        gsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        //
+        gsPanel.setBackground(Color.black);
+        gsPanel.setOpaque(true);
+        //
+        gsPanel.setLayout(null);
 
         makeMenus();
 
         preloadGame();
 
-        new Thread(loadGame).Start();
+        new Thread(GameSparker::loadGame).start();
 
-        return new GameSparker();
+        gsPanel.addKeyListener(gsPanel);
+        gsPanel.addMouseListener(gsPanel);
+        gsPanel.addMouseMotionListener(gsPanel);
+        gsPanel.addFocusListener(gsPanel);
+        gsPanel.setFocusable(true);
+        gsPanel.requestFocusInWindow();
+        gsPanel.setIgnoreRepaint(true);
+
+        // disable Swing's double buffering. we don't need it since we have our own offscreen image (offImage)
+        // this means we get a slight performance gain
+        // ("You may find that your numbers for direct rendering far exceed those for double-buffering" from https://docs.oracle.com/javase/tutorial/extra/fullscreen/doublebuf.html)
+        // for zero graphical loss.
+        gsPanel.setDoubleBuffered(false);
+
+        final Timer timer = new Timer(46, ae->gsPanel.repaint());
+
+        timer.start();
+        return gsPanel;
     }
 
     private static void preloadGame()
@@ -2037,6 +2068,7 @@ namespace Cum
             u[i] = new Control();
         }
 
+        date = new Date();
         l1 = date.getTime();
         f2 = 30.0F;
         bool3 = false;

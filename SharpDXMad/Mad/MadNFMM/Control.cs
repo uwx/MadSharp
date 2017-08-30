@@ -4,7 +4,7 @@ using boolean = System.Boolean;
 namespace Cum
 {
 
-    class Control
+    internal class Control
     {
         /**
          * The car that the AI will attack. 0 means it's gonna attack you, 6 means it's gonna attack the boss car, so on and so forth.

@@ -308,7 +308,7 @@ class xtGraphics extends JPanel implements Runnable {
     static private int flang = 0;
     static private int flatr = 0;
     static private int flatrstart = 0;
-    static int[] flexpix = null;
+    internal static int[] flexpix = null;
     static int flipo = 0;
     static private boolean flk = false;
     static private int flkat = 0;

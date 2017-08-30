@@ -1,6 +1,6 @@
 namespace Cum
 {
-    class Mad
+    internal class Mad
     {
         boolean btab = false;
         int capcnt = 0;

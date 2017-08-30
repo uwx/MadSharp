@@ -1,6 +1,6 @@
 namespace Cum
 {
-    class Trackers
+    internal class Trackers
     {
         //private Trackers() {}
         static final int[][] c = new int[75000][3];
