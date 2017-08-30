@@ -352,7 +352,7 @@ class CarDefine {
             0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 3, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    static readonly String[] names = {
+    static readonly string[] names = {
             "Tornado Shark", "Formula 7", "Wow Caninaro", "La Vita Crab", "Nimi", "MAX Revenge", "Lead Oxide",
             "Kool Kat", "Drifter X", "Sword of Justice", "High Rider", "EL KING", "Mighty Eight", "M A S H E E N",
             "Radical One", "DR Monstaa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
@@ -363,35 +363,35 @@ class CarDefine {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
     static int lastload = 0;
-    static private int nlcars = 0;
+    private static int nlcars = 0;
     static int nlocars = 0;
-    static private int xnlocars = 0;
-    static readonly boolean[] include = new boolean[FORTY];
-    static readonly String[] createdby = new String[FORTY];
+    private static int xnlocars = 0;
+    static readonly bool[] include = new bool[FORTY];
+    static readonly string[] createdby = new string[FORTY];
     static readonly int[] publish = new int[FORTY];
-    static readonly String[] loadnames = new String[20];
+    static readonly string[] loadnames = new string[20];
     static int nl = 0;
     static int action = 0;
-    static private boolean carlon = false;
+    private static bool carlon = false;
     static int reco = -2;
     static readonly int[] lcardate = {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
     static int haltload = 0;
     static int ac = -1;
-    static private String acname = "Radical One";
-    static private String fails = "";
-    static String tnickey = "";
-    static String tclan = "";
-    static String tclankey = "";
-    static private readonly int[] adds = {
+    private static string acname = "Radical One";
+    private static string fails = "";
+    static string tnickey = "";
+    static string tclan = "";
+    static string tclankey = "";
+    private static readonly int[] adds = {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    static String viewname = "";
+    static string viewname = "";
     static int staction = 0;
-    static String onstage = "";
-    static private int roundslot = 0;
-    static String lastcar = "";
+    static string onstage = "";
+    private static int roundslot = 0;
+    static string lastcar = "";
     static int msloaded = 0;
     private static CarDefine thread;
     static readonly int[] top20adds = new int[20];
@@ -406,10 +406,10 @@ class CarDefine {
         return thread;
     }
 
-    static private void loadstat(byte[] _is, string str, int i, int i0, int i1, int i2) {
+    private static void loadstat(byte[] _is, string str, int i, int i0, int i1, int i2) {
         names[i2] = str;
-        boolean abool = false;
-        boolean bool3 = false;
+        bool abool = false;
+        bool bool3 = false;
         int[] statValues = {
                 128, 128, 128, 128, 128
         };
@@ -805,11 +805,11 @@ class CarDefine {
         }
     }
 
-    static private int getvalue(String str, String string21, int i) {
+    private static int getvalue(string str, string string21, int i) {
         int i22 = 0;
-        String string23 = "";
+        string string23 = "";
         for (int i24 = str.Length + 1; i24 < string21.Length; i24++) {
-            String string25 = $"{string21[i24]}";
+            string string25 = $"{string21[i24]}";
             if (string25.Equals(",") || string25.Equals(")")) {
                 i22++;
                 i24++;
@@ -821,11 +821,11 @@ class CarDefine {
         return (int) float.Parse(string23);
     }
 
-    static private String getSvalue(String str, String string26, int i) {
-        String string27 = "";
+    private static string getSvalue(string str, string string26, int i) {
+        string string27 = "";
         int i28 = 0;
         for (int i29 = str.Length + 1; i29 < string26.Length && i28 <= i; i29++) {
-            String string30 = $"{string26[i29]}";
+            string string30 = $"{string26[i29]}";
             if (string30.Equals(",") || string30.Equals(")")) {
                 i28++;
             } else if (i28 == i) {
