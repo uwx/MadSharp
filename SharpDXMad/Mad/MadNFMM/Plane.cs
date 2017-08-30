@@ -1,16 +1,17 @@
 using System;
+using MadGame;
 using boolean = System.Boolean;
 
 namespace Cum {
 class Plane : IComparable<Plane> {
     private int av = 0;
     int bfase = 0;
-    final int[] c = new int[3];
+    readonly int[] c = new int[3];
     int chip = 0;
     int colnum = 0;
-    private final int[] cox = new int[3];
-    private final int[] coy = new int[3];
-    private final int[] coz = new int[3];
+    private readonly int[] cox = new int[3];
+    private readonly int[] coy = new int[3];
+    private readonly int[] coz = new int[3];
     float ctmag = 0.0F;
     private int cxy = 0;
     private int cxz = 0;
@@ -25,15 +26,15 @@ class Plane : IComparable<Plane> {
     int fs = 0;
     int glass = 0;
     int gr = 0;
-    final float[] hsb = new float[3];
+    readonly float[] hsb = new float[3];
     int light = 0;
     int master = 0;
     int n;
     boolean nocol = false;
-    final int[] oc = new int[3];
-    final int[] ox;
-    final int[] oy;
-    final int[] oz;
+    readonly int[] oc = new int[3];
+    readonly int[] ox;
+    readonly int[] oy;
+    readonly int[] oz;
     private int pa = 0;
     private int pb = 0;
     private float projf = 1.0F;
@@ -46,26 +47,10 @@ class Plane : IComparable<Plane> {
     int wx = 0;
     int wy = 0;
     int wz = 0;
-
-    final boolean customstroke;
-    final int strokewidth;
-    final int strokecap;
-    final int strokejoin;
-    final int strokemtlimit;
-    final boolean randomcolor;
-    final boolean randoutline;
     
     byte project;//booleans are bytes anyway so hey why not
 
-    Plane(final int[] ais, final int[] is0, final int[] is1, final int i, final int[] is2, final int i3, final int i4, final int i5, final int i6, final int i7, final int i8, final int i9, final int i10, final boolean abool, final int i11, final boolean bool12, final boolean randomcolor, final boolean randoutline, final boolean customstroke, final int strokewidth, final int strokecap, final int strokejoin, final int strokemtlimit) {
-        this.randoutline = randoutline;
-        this.randomcolor = randomcolor;
-        //stroke
-        this.customstroke = customstroke;
-        this.strokewidth = strokewidth;
-        this.strokecap = strokecap;
-        this.strokejoin = strokejoin;
-        this.strokemtlimit = strokemtlimit;
+    Plane(int[] ais, int[] is0, int[] is1, int i, int[] is2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, boolean abool, int i11, boolean bool12, boolean randomcolor, boolean randoutline, boolean customstroke, int strokewidth, int strokecap, int strokejoin, int strokemtlimit) {
         n = i;
         ox = new int[n];
         oz = new int[n];
@@ -75,17 +60,17 @@ class Plane : IComparable<Plane> {
             oy[i13] = is1[i13];
             oz[i13] = is0[i13];
         }
-        System.arraycopy(is2, 0, oc, 0, 3);
+        HansenSystem.ArrayCopy(is2, 0, oc, 0, 3);
         if (i4 == -15) {
             if (is2[0] == 211) {
-                final int i15 = (int) (ThreadLocalRandom.current().nextDouble() * 40.0 - 20.0);
-                final int i16 = (int) (ThreadLocalRandom.current().nextDouble() * 40.0 - 20.0);
+                int i15 = (int) (HansenRandom.Double() * 40.0 - 20.0);
+                int i16 = (int) (HansenRandom.Double() * 40.0 - 20.0);
                 for (int i17 = 0; i17 < n; i17++) {
                     ox[i17] += i15;
                     oz[i17] += i16;
                 }
             }
-            final int i18 = (int) (185.0 + ThreadLocalRandom.current().nextDouble() * 20.0);
+            int i18 = (int) (185.0 + HansenRandom.Double() * 20.0);
             is2[0] = (217 + i18) / 2;
             if (is2[0] == 211) {
                 is2[0] = 210;
@@ -93,14 +78,14 @@ class Plane : IComparable<Plane> {
             is2[1] = (189 + i18) / 2;
             is2[2] = (132 + i18) / 2;
             for (int i19 = 0; i19 < n; i19++) {
-                if (ThreadLocalRandom.current().nextDouble() > ThreadLocalRandom.current().nextDouble()) {
-                    ox[i19] += (int) (8.0 * ThreadLocalRandom.current().nextDouble() - 4.0);
+                if (HansenRandom.Double() > HansenRandom.Double()) {
+                    ox[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
                 }
-                if (ThreadLocalRandom.current().nextDouble() > ThreadLocalRandom.current().nextDouble()) {
-                    oy[i19] += (int) (8.0 * ThreadLocalRandom.current().nextDouble() - 4.0);
+                if (HansenRandom.Double() > HansenRandom.Double()) {
+                    oy[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
                 }
-                if (ThreadLocalRandom.current().nextDouble() > ThreadLocalRandom.current().nextDouble()) {
-                    oz[i19] += (int) (8.0 * ThreadLocalRandom.current().nextDouble() - 4.0);
+                if (HansenRandom.Double() > HansenRandom.Double()) {
+                    oz[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
                 }
             }
         }
@@ -129,12 +114,12 @@ class Plane : IComparable<Plane> {
             }
         }
         if (i3 == 3) {
-            System.arraycopy(is2, 0, c, 0, 3);
+            HansenSystem.ArrayCopy(is2, 0, c, 0, 3);
         }
         disline = i9;
         bfase = i10;
         glass = i3;
-        Color.RGBtoHSB(c[0], c[1], c[2], hsb);
+        Colors.RGBtoHSB(c[0], c[1], c[2], hsb);
         if (i3 == 3 && Medium.trk != 2) {
             hsb[1] += 0.05F;
             if (hsb[1] > 1.0F) {
@@ -182,16 +167,16 @@ class Plane : IComparable<Plane> {
         deltafntyp();
     }
 
-    void d(final Plane _last, final Plane _next, final Graphics2D graphics2d, final int _mx, final int _my, final int _mz, final int _xz, final int _xy, final int _yz, final int i34, final int i35, boolean abool, final int i36) {
+    void d(Plane _last, Plane _next, int _mx, int _my, int _mz, int _xz, int _xy, int _yz, int i34, int i35, boolean abool, int i36) {
         if (master == 1)
             if (av > 1500 && !Medium.crs) {
                 n = 12;
             } else {
                 n = 20;
             }
-        final int[] _x = new int[n];
-        final int[] _z = new int[n];
-        final int[] _y = new int[n];
+        int[] _x = new int[n];
+        int[] _z = new int[n];
+        int[] _y = new int[n];
         if (embos == 0) {
             for (int i39 = 0; i39 < n; i39++) {
                 _x[i39] = ox[i39] + _mx;
@@ -217,8 +202,8 @@ class Plane : IComparable<Plane> {
                 rot(_x, _z, _mx, _mz, _xz, n);
                 rot(_x, _z, Medium.cx, Medium.cz, Medium.xz, n);
                 rot(_y, _z, Medium.cy, Medium.cz, Medium.zy, n);
-                final int[] is42 = new int[n];
-                final int[] is43 = new int[n];
+                int[] is42 = new int[n];
+                int[] is43 = new int[n];
                 for (int i44 = 0; i44 < n; i44++) {
                     is42[i44] = xs(_x[i44], _z[i44]);
                     is43[i44] = ys(_y[i44], _z[i44]);
@@ -285,8 +270,8 @@ class Plane : IComparable<Plane> {
                 if (i48 > 90) {
                     i46 = -1;
                 }
-                final int[] is49 = new int[3];
-                final int[] is50 = new int[3];
+                int[] is49 = new int[3];
+                int[] is50 = new int[3];
                 _x[0] = ox[pa] + _mx;
                 _y[0] = oy[pa] + _my;
                 _z[0] = oz[pa] + _mz;
@@ -305,8 +290,8 @@ class Plane : IComparable<Plane> {
                     } else {
                         _z[1] += 30;
                     }
-                final int i51 = (int) (Math.abs(_x[0] - _x[1]) / 3 * (0.5 - Medium.random()));
-                final int i52 = (int) (Math.abs(_z[0] - _z[1]) / 3 * (0.5 - Medium.random()));
+                int i51 = (int) (Math.abs(_x[0] - _x[1]) / 3 * (0.5 - Medium.random()));
+                int i52 = (int) (Math.abs(_z[0] - _z[1]) / 3 * (0.5 - Medium.random()));
                 _x[2] = (_x[0] + _x[1]) / 2 + i51;
                 _z[2] = (_z[0] + _z[1]) / 2 + i52;
                 int i53 = (int) ((Math.abs(_x[0] - _x[1]) + Math.abs(_z[0] - _z[1])) / 1.5 * (Medium.random() / 2.0F + 0.5));
@@ -438,7 +423,7 @@ class Plane : IComparable<Plane> {
                 cxz = _xz;
                 cxy = _xy;
                 czy = _yz;
-                final int i60 = (int) (Medium.random() * n);
+                int i60 = (int) (Medium.random() * n);
                 cox[0] = ox[i60];
                 coz[0] = oz[i60];
                 coy[0] = oy[i60];
@@ -468,9 +453,9 @@ class Plane : IComparable<Plane> {
                 }
                 chip = 2;
             }
-            final int[] is61 = new int[3];
-            final int[] is62 = new int[3];
-            final int[] is63 = new int[3];
+            int[] is61 = new int[3];
+            int[] is62 = new int[3];
+            int[] is63 = new int[3];
             for (int i64 = 0; i64 < 3; i64++) {
                 is61[i64] = cox[i64] + _mx;
                 is63[i64] = coy[i64] + _my;
@@ -493,13 +478,13 @@ class Plane : IComparable<Plane> {
             }
             rot(is61, is62, Medium.cx, Medium.cz, Medium.xz, 3);
             rot(is63, is62, Medium.cy, Medium.cz, Medium.zy, 3);
-            final int[] is66 = new int[3];
-            final int[] is67 = new int[3];
+            int[] is66 = new int[3];
+            int[] is67 = new int[3];
             for (int i68 = 0; i68 < 3; i68++) {
                 is66[i68] = xs(is61[i68], is62[i68]);
                 is67[i68] = ys(is63[i68], is62[i68]);
             }
-            final int i69 = (int) (Medium.random() * 3.0F);
+            int i69 = (int) (Medium.random() * 3.0F);
             if (bfase != -7) {
                 if (i69 == 0) {
                     graphics2d.setColor(new Color(c[0], c[1], c[2]).darker());
@@ -534,8 +519,8 @@ class Plane : IComparable<Plane> {
         }
         rot(_x, _z, Medium.cx, Medium.cz, Medium.xz, n);
         boolean bool72 = false;
-        final int[] is73 = new int[n];
-        final int[] is74 = new int[n];
+        int[] is73 = new int[n];
+        int[] is74 = new int[n];
         int i75 = 500;
         for (int i76 = 0; i76 < n; i76++) {
             is73[i76] = xs(_x[i76], _z[i76]);
@@ -552,7 +537,7 @@ class Plane : IComparable<Plane> {
                 }
         }
         if (is74[i77] < is74[i78]) {
-            final int i81 = i77;
+            int i81 = i77;
             i77 = i78;
             i78 = i81;
         }
@@ -571,8 +556,8 @@ class Plane : IComparable<Plane> {
         }
         rot(_y, _z, Medium.cy, Medium.cz, Medium.zy, n);
         boolean bool84 = true;
-        final int[] is85 = new int[n];
-        final int[] is86 = new int[n];
+        int[] is85 = new int[n];
+        int[] is86 = new int[n];
         int i87 = 0;
         int i88 = 0;
         int i89 = 0;
@@ -701,9 +686,9 @@ class Plane : IComparable<Plane> {
                     i108 = _z[i109];
                 }
             }
-            final int i110 = (i103 + i104) / 2;
-            final int i111 = (i105 + i106) / 2;
-            final int i112 = (i107 + i108) / 2;
+            int i110 = (i103 + i104) / 2;
+            int i111 = (i105 + i106) / 2;
+            int i112 = (i107 + i108) / 2;
             av = (int) Math.sqrt((Medium.cy - i110) * (Medium.cy - i110) + (Medium.cx - i111) * (Medium.cx - i111) + i112 * i112 + i98 * i98 * i98);
             if (Medium.trk == 0 && (av > Medium.fade[disline] || av == 0)) {
                 bool84 = false;
@@ -819,14 +804,14 @@ class Plane : IComparable<Plane> {
             }
             Color color = Color.getHSBColor(hsb[0], hsb[1], hsb[2] * f);
             if (Medium.trk == 1) {
-                final float[] fs = new float[3];
+                float[] fs = new float[3];
                 Color.RGBtoHSB(oc[0], oc[1], oc[2], fs);
                 fs[0] = 0.15F;
                 fs[1] = 0.3F;
                 color = Color.getHSBColor(fs[0], fs[1], fs[2] * f + 0.0F);
             }
             if (Medium.trk == 3) {
-                final float[] fs = new float[3];
+                float[] fs = new float[3];
                 Color.RGBtoHSB(oc[0], oc[1], oc[2], fs);
                 fs[0] = 0.6F;
                 fs[1] = 0.14F;
@@ -836,9 +821,9 @@ class Plane : IComparable<Plane> {
             int i115 = color.getGreen();
             int i116 = color.getBlue();
             if (randomcolor) { //before the dim
-                i114 = (int) (ThreadLocalRandom.current().nextDouble() * 255);
-                i115 = (int) (ThreadLocalRandom.current().nextDouble() * 255);
-                i116 = (int) (ThreadLocalRandom.current().nextDouble() * 255);
+                i114 = (int) (HansenRandom.Double() * 255);
+                i115 = (int) (HansenRandom.Double() * 255);
+                i116 = (int) (HansenRandom.Double() * 255);
             }
             if (Medium.lightson && (light != 0 || (gr == -11 || gr == -12) && i36 == -1)) {
                 i114 = oc[0];
@@ -883,9 +868,9 @@ class Plane : IComparable<Plane> {
                         i115 = 0;
                         i116 = 0;
                         if (randoutline) {
-                            i114 = (int) (ThreadLocalRandom.current().nextDouble() * 255);
-                            i115 = (int) (ThreadLocalRandom.current().nextDouble() * 255);
-                            i116 = (int) (ThreadLocalRandom.current().nextDouble() * 255);
+                            i114 = (int) (HansenRandom.Double() * 255);
+                            i115 = (int) (HansenRandom.Double() * 255);
+                            i116 = (int) (HansenRandom.Double() * 255);
                         }
                         if (Medium.lightson && light != 0) {
                             i114 = oc[0] / 2;
@@ -1020,7 +1005,7 @@ class Plane : IComparable<Plane> {
                     graphics2d.setColor(new Color(i114, i115, i116));
                     graphics2d.drawPolygon(is85, is86, n);
                 } else if (Medium.cpflik && Medium.hit == 5000) {
-                    i115 = (int) (ThreadLocalRandom.current().nextDouble() * 115.0);
+                    i115 = (int) (HansenRandom.Double() * 115.0);
                     i114 = i115 * 2 - 54;
                     if (i114 < 0) {
                         i114 = 0;
@@ -1073,9 +1058,9 @@ class Plane : IComparable<Plane> {
     }
 
     void deltafntyp() {
-        final int i = Math.abs(ox[2] - ox[1]);
-        final int i24 = Math.abs(oy[2] - oy[1]);
-        final int i25 = Math.abs(oz[2] - oz[1]);
+        int i = Math.abs(ox[2] - ox[1]);
+        int i24 = Math.abs(oy[2] - oy[1]);
+        int i25 = Math.abs(oz[2] - oz[1]);
         if (i24 <= i && i24 <= i25) {
             typ = 2;
         }
@@ -1106,21 +1091,21 @@ class Plane : IComparable<Plane> {
         projf = projf / 3.0F;
     }
 
-    void rot(final int[] ais, final int[] is163, final int i, final int i164, final int i165, final int i166) {
+    void rot(int[] ais, int[] is163, int i, int i164, int i165, int i166) {
         if (i165 != 0) {
             for (int i167 = 0; i167 < i166; i167++) {
-                final int i168 = ais[i167];
-                final int i169 = is163[i167];
+                int i168 = ais[i167];
+                int i169 = is163[i167];
                 ais[i167] = i + (int) ((i168 - i) * Medium.cos(i165) - (i169 - i164) * Medium.sin(i165));
                 is163[i167] = i164 + (int) ((i168 - i) * Medium.sin(i165) + (i169 - i164) * Medium.cos(i165));
             }
         }
     }
 
-    void s(final Graphics2D graphics2d, final int i, final int i120, final int i121, final int i122, final int i123, final int i124, final int i125) {
-        final int[] ais = new int[n];
-        final int[] is126 = new int[n];
-        final int[] is127 = new int[n];
+    void s(Graphics2D graphics2d, int i, int i120, int i121, int i122, int i123, int i124, int i125) {
+        int[] ais = new int[n];
+        int[] is126 = new int[n];
+        int[] is127 = new int[n];
         for (int i128 = 0; i128 < n; i128++) {
             ais[i128] = ox[i128] + i;
             is127[i128] = oy[i128] + i120;
@@ -1172,8 +1157,8 @@ class Plane : IComparable<Plane> {
                     i136 = is126[i137];
                 }
             }
-            final int i143 = (i133 + i134) / 2;
-            final int i144 = (i135 + i136) / 2;
+            int i143 = (i133 + i134) / 2;
+            int i144 = (i135 + i136) / 2;
             int i145 = (i143 - Trackers.sx + Medium.x) / 3000;
             if (i145 > Trackers.ncx) {
                 i145 = Trackers.ncx;
@@ -1189,7 +1174,7 @@ class Plane : IComparable<Plane> {
                 i146 = 0;
             }
             for (int i147 = Trackers.sect[i145][i146].length - 1; i147 >= 0; i147--) {
-                final int i148 = Trackers.sect[i145][i146][i147];
+                int i148 = Trackers.sect[i145][i146][i147];
                 int i149 = 0;
                 if (Math.abs(Trackers.zy[i148]) != 90 && Math.abs(Trackers.xy[i148]) != 90 && Trackers.rady[i148] != 801 && Math.abs(i143 - (Trackers.x[i148] - Medium.x)) < Trackers.radx[i148] && Math.abs(i144 - (Trackers.z[i148] - Medium.z)) < Trackers.radz[i148] && (!Trackers.decor[i148] || Medium.resdown != 2)) {
                     i149++;
@@ -1212,8 +1197,8 @@ class Plane : IComparable<Plane> {
             }
         }
         boolean abool = true;
-        final int[] is151 = new int[n];
-        final int[] is152 = new int[n];
+        int[] is151 = new int[n];
+        int[] is152 = new int[n];
         if (i125 == 2) {
             i129 = 87;
             i130 = 85;
@@ -1265,18 +1250,18 @@ class Plane : IComparable<Plane> {
         }
     }
 
-    private int spy(final int i, final int i170) {
+    private int spy(int i, int i170) {
         return (int) Math.sqrt((i - Medium.cx) * (i - Medium.cx) + i170 * i170);
     }
 
-    private int xs(final int i, int i161) {
+    private int xs(int i, int i161) {
         if (i161 < Medium.cz) {
             i161 = Medium.cz;
         }
         return (i161 - Medium.focusPoint) * (Medium.cx - i) / i161 + i;
     }
 
-    private int ys(final int i, int i162) {
+    private int ys(int i, int i162) {
         if (i162 < Medium.cz) {
             i162 = Medium.cz;
         }

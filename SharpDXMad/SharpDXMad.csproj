@@ -70,6 +70,7 @@
     <Compile Include="Mad\MadNFMM\ContO.cs" />
     <Compile Include="Mad\MadNFMM\Control.cs" />
     <Compile Include="Mad\MadNFMM\GameSparker.cs" />
+    <Compile Include="Mad\MadNFMM\Hansen.cs" />
     <Compile Include="Mad\MadNFMM\Mad.cs" />
     <Compile Include="Mad\MadNFMM\Medium.cs" />
     <Compile Include="Mad\MadNFMM\MouseHandler.cs" />

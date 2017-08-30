@@ -501,7 +501,7 @@ class xtGraphics extends JPanel implements Runnable {
     static private SoundClip three;
     static private SoundClip tires;
     static private int trkl = 0;
-    static private int trklim = (int) (ThreadLocalRandom.current().nextDouble() * 40.0);
+    static private int trklim = (int) (HansenRandom.Double() * 40.0);
     /**
      * X positions of the stage select backgrounds (there are two)
      */
@@ -3361,7 +3361,7 @@ class xtGraphics extends JPanel implements Runnable {
                         drawcs(200, "And:", 255, 247, 165, 3);
                     }
                     rd.setColor(new Color(236, 226, 202));
-                    if (ThreadLocalRandom.current().nextDouble() > 0.5) {
+                    if (HansenRandom.Double() > 0.5) {
                         rd.setComposite(AlphaComposite.getInstance(3, 0.5F));
                         rd.fillRect(226, 211, 344, 125);
                         rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
@@ -3387,7 +3387,7 @@ class xtGraphics extends JPanel implements Runnable {
                     rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
                     contos[i144].d(rd);
                     rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                    if (ThreadLocalRandom.current().nextDouble() < 0.5) {
+                    if (HansenRandom.Double() < 0.5) {
                         rd.setComposite(AlphaComposite.getInstance(3, 0.4F));
                         rd.setColor(new Color(236, 226, 202));
                         for (int i146 = 0; i146 < 30; i146++) {
@@ -3434,7 +3434,7 @@ class xtGraphics extends JPanel implements Runnable {
                 }
                 rd.setColor(new Color(0, 0, 0));
                 rd.fillRect(0, 255, 800, 62);
-                rd.drawImage(radicalplay, radpx + (int) (8.0 * ThreadLocalRandom.current().nextDouble() - 4.0), 255, null);
+                rd.drawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 255, null);
                 if (radpx != 212) {
                     radpx += 40;
                     if (radpx > 800) {
@@ -3566,7 +3566,7 @@ class xtGraphics extends JPanel implements Runnable {
                     }
                 }
                 if (CheckPoints.stage == nTracks && gmode == 0) {
-                    CheckPoints.stage = (int) (ThreadLocalRandom.current().nextDouble() * nTracks) + 1;
+                    CheckPoints.stage = (int) (HansenRandom.Double() * nTracks) + 1;
                 }
                 fase = 102;
             } else if (CarDefine.haltload == 1) {
@@ -3605,8 +3605,8 @@ class xtGraphics extends JPanel implements Runnable {
             int i301 = 0;
             int i302 = 0;
             int i303 = 0;
-            int i304 = (int) (ThreadLocalRandom.current().nextDouble() * 128.0);
-            int i305 = (int) (5.0 + ThreadLocalRandom.current().nextDouble() * 15.0);
+            int i304 = (int) (HansenRandom.Double() * 128.0);
+            int i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
             for (int i306 = 0; i306 < 360000; i306++) {
                 final Color color = new Color(flexpix[i306]);
                 int i309;
@@ -3634,8 +3634,8 @@ class xtGraphics extends JPanel implements Runnable {
                 final int i313 = (int) ((i310 * 17 + i309 + i311 + i304) / 22.0F);
                 final int i314 = (int) ((i311 * 17 + i309 + i310 + i304) / 24.0F);
                 if (--i305 == 0) {
-                    i304 = (int) (ThreadLocalRandom.current().nextDouble() * 128.0);
-                    i305 = (int) (5.0 + ThreadLocalRandom.current().nextDouble() * 15.0);
+                    i304 = (int) (HansenRandom.Double() * 128.0);
+                    i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
                 }
                 final Color color315 = new Color(i312, i313, i314);
                 flexpix[i306] = color315.getRGB();
@@ -3798,10 +3798,10 @@ class xtGraphics extends JPanel implements Runnable {
         if (i49 == 0) {
             if (dudo > 0) {
                 if (aflk) {
-                    if (ThreadLocalRandom.current().nextDouble() > ThreadLocalRandom.current().nextDouble()) {
-                        duds = (int) (ThreadLocalRandom.current().nextDouble() * 3.0);
+                    if (HansenRandom.Double() > HansenRandom.Double()) {
+                        duds = (int) (HansenRandom.Double() * 3.0);
                     } else {
-                        duds = (int) (ThreadLocalRandom.current().nextDouble() * 2.0);
+                        duds = (int) (HansenRandom.Double() * 2.0);
                     }
                     aflk = false;
                 } else {
@@ -4204,11 +4204,11 @@ class xtGraphics extends JPanel implements Runnable {
 
     static void inishstageselect() {
         if (CheckPoints.stage == -2 && (CarDefine.msloaded != 1 || !logged)) {
-            CheckPoints.stage = (int) (ThreadLocalRandom.current().nextDouble() * nTracks) + 1;
+            CheckPoints.stage = (int) (HansenRandom.Double() * nTracks) + 1;
             CheckPoints.top20 = 0;
         }
         if (CheckPoints.stage > nTracks) {
-            CheckPoints.stage = (int) (ThreadLocalRandom.current().nextDouble() * nTracks) + 1;
+            CheckPoints.stage = (int) (HansenRandom.Double() * nTracks) + 1;
         }
         if (CheckPoints.stage == -2) {
             boolean bool = false;
@@ -4217,14 +4217,14 @@ class xtGraphics extends JPanel implements Runnable {
                     bool = true;
                 }
             if (!bool) {
-                CheckPoints.stage = (int) (ThreadLocalRandom.current().nextDouble() * nTracks) + 1;
+                CheckPoints.stage = (int) (HansenRandom.Double() * nTracks) + 1;
             }
         }
         /*if (gmode == 1) {
         	if (unlocked[0] != 11 || justwon1)
         		checkpoints.stage = unlocked[0];
         	else if (winner || checkpoints.stage > 11)
-        		checkpoints.stage = (int) (ThreadLocalRandom.current().nextDouble() * 11.0) + 1;
+        		checkpoints.stage = (int) (HansenRandom.Double() * 11.0) + 1;
         	if (checkpoints.stage == 11)
         		checkpoints.stage = 27;
         }*/
@@ -4232,7 +4232,7 @@ class xtGraphics extends JPanel implements Runnable {
             if (unlocked != nTracks || justwon2) {
                 CheckPoints.stage = unlocked/* + 10*/;
             } else if (winner/* || checkpoints.stage < 11*/) {
-                CheckPoints.stage = (int) (ThreadLocalRandom.current().nextDouble() * nTracks) + 1;
+                CheckPoints.stage = (int) (HansenRandom.Double() * nTracks) + 1;
             }
         GameSparker.sgame.setBackground(new Color(0, 0, 0));
         GameSparker.sgame.setForeground(new Color(47, 179, 255));
@@ -4316,10 +4316,10 @@ class xtGraphics extends JPanel implements Runnable {
         if (flipo != 1 && flipo != 16) {
             if (dudo > 0) {
                 if (aflk)
-                    if (ThreadLocalRandom.current().nextDouble() > ThreadLocalRandom.current().nextDouble()) {
-                        duds = (int) (ThreadLocalRandom.current().nextDouble() * 3.0);
+                    if (HansenRandom.Double() > HansenRandom.Double()) {
+                        duds = (int) (HansenRandom.Double() * 3.0);
                     } else {
-                        duds = (int) (ThreadLocalRandom.current().nextDouble() * 2.0);
+                        duds = (int) (HansenRandom.Double() * 2.0);
                     }
                 dudo--;
             } else {
@@ -5607,11 +5607,11 @@ class xtGraphics extends JPanel implements Runnable {
                 bgmy[0] = 0;
                 bgmy[1] = 400;
                 for (int i36 = 0; i36 < 4; i36++) {
-                    ovw[i36] = (int) (50.0 + 150.0 * ThreadLocalRandom.current().nextDouble());
-                    ovh[i36] = (int) (50.0 + 150.0 * ThreadLocalRandom.current().nextDouble());
-                    ovy[i36] = (int) (400.0 * ThreadLocalRandom.current().nextDouble());
-                    ovx[i36] = (int) (ThreadLocalRandom.current().nextDouble() * 670.0);
-                    ovsx[i36] = (int) (5.0 + ThreadLocalRandom.current().nextDouble() * 10.0);
+                    ovw[i36] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                    ovh[i36] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                    ovy[i36] = (int) (400.0 * HansenRandom.Double());
+                    ovx[i36] = (int) (HansenRandom.Double() * 670.0);
+                    ovsx[i36] = (int) (5.0 + HansenRandom.Double() * 10.0);
                 }
                 lmode = i;
             }
@@ -5622,11 +5622,11 @@ class xtGraphics extends JPanel implements Runnable {
                 rd.fillOval(65 + ovx[i37] - ovh[i37] / 2, 25 + ovy[i37] - ovh[i37] / 2, ovw[i37], ovh[i37]);
                 ovx[i37] -= ovsx[i37];
                 if (ovx[i37] + ovw[i37] * 1.5 / 2.0 < 0.0) {
-                    ovw[i37] = (int) (50.0 + 150.0 * ThreadLocalRandom.current().nextDouble());
-                    ovh[i37] = (int) (50.0 + 150.0 * ThreadLocalRandom.current().nextDouble());
-                    ovy[i37] = (int) (400.0 * ThreadLocalRandom.current().nextDouble());
+                    ovw[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                    ovh[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                    ovy[i37] = (int) (400.0 * HansenRandom.Double());
                     ovx[i37] = (int) (670.0 + ovw[i37] * 1.5 / 2.0);
-                    ovsx[i37] = (int) (5.0 + ThreadLocalRandom.current().nextDouble() * 10.0);
+                    ovsx[i37] = (int) (5.0 + HansenRandom.Double() * 10.0);
                 }
             }
         }
@@ -5678,8 +5678,8 @@ class xtGraphics extends JPanel implements Runnable {
         rd.drawImage(dude[0], 351 + gxdu, 28 + gydu, null);
         rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
         if (movly == 0) {
-            gxdu = (int) (5.0 - 11.0 * ThreadLocalRandom.current().nextDouble());
-            gydu = (int) (5.0 - 11.0 * ThreadLocalRandom.current().nextDouble());
+            gxdu = (int) (5.0 - 11.0 * HansenRandom.Double());
+            gydu = (int) (5.0 - 11.0 * HansenRandom.Double());
         }
         movly++;
         if (movly == 2) {
@@ -6874,7 +6874,7 @@ class xtGraphics extends JPanel implements Runnable {
                     }
                 }
             }
-            if (ThreadLocalRandom.current().nextDouble() > ThreadLocalRandom.current().nextDouble()) {
+            if (HansenRandom.Double() > HansenRandom.Double()) {
                 dudo = 250;
             } else {
                 dudo = 428;
@@ -7068,7 +7068,7 @@ class xtGraphics extends JPanel implements Runnable {
     }
 
     static private void pingstat() {
-        final int i = (int) (100.0 * ThreadLocalRandom.current().nextDouble());
+        final int i = (int) (100.0 * HansenRandom.Double());
         try {
             final URL url = new URL("http://c.statcounter.com/9994681/0/14bb645e/1/?reco=" + i + "");
             url.openConnection().setConnectTimeout(5000);
@@ -7284,7 +7284,7 @@ class xtGraphics extends JPanel implements Runnable {
         rd.setColor(new Color(0, 0, 0));
         rd.fillRect(65, 135, 670, 59);
         if (pin != 0) {
-            rd.drawImage(radicalplay, radpx + (int) (8.0 * ThreadLocalRandom.current().nextDouble() - 4.0), 135, null);
+            rd.drawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
         } else {
             rd.drawImage(radicalplay, 212, 135, null);
         }
@@ -7576,7 +7576,7 @@ class xtGraphics extends JPanel implements Runnable {
             if (multion == 3) {
                 ransay = 4;
             } else if (ransay == 0) {
-                ransay = 1 + (int) (ThreadLocalRandom.current().nextDouble() * 3.0);
+                ransay = 1 + (int) (HansenRandom.Double() * 3.0);
             } else {
                 ransay++;
                 if (ransay > 3) {
@@ -7956,7 +7956,7 @@ class xtGraphics extends JPanel implements Runnable {
                 // unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
                 while (sc[j] >= nCars) {
                     Console.WriteLine("Car " + j + " is out of bounds");
-                    sc[j] -= ThreadLocalRandom.current().nextDouble() * 5F;
+                    sc[j] -= HansenRandom.Double() * 5F;
                 }
                 Console.WriteLine("sc of " + j + " is " + sc[j]);
             }
@@ -8210,9 +8210,9 @@ class xtGraphics extends JPanel implements Runnable {
 
                             }
                             //if (nfmtab == 0)
-                            //	app.snfm1.select(1 + (int) (ThreadLocalRandom.current().nextDouble() * 10.0));
+                            //	app.snfm1.select(1 + (int) (HansenRandom.Double() * 10.0));
                             //if (nfmtab == 1)
-                            //	app.snfm2.select(1 + (int) (ThreadLocalRandom.current().nextDouble() * 17.0));
+                            //	app.snfm2.select(1 + (int) (HansenRandom.Double() * 17.0));
                         }
                     }
                 if (CarDefine.staction == 3) {
@@ -9448,7 +9448,7 @@ class xtGraphics extends JPanel implements Runnable {
         trkl++;
         if (trkl > trklim) {
             i = 1;
-            trklim = (int) (ThreadLocalRandom.current().nextDouble() * 40.0);
+            trklim = (int) (HansenRandom.Double() * 40.0);
             trkl = 0;
         }
         if (bool) {

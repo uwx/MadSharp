@@ -244,7 +244,7 @@ namespace Cum
                 }
                 for (int i16 = 0; i16 < 8; i16++)
                 {
-                    System.arraycopy(mtouch[i16], 0, hmtouch[i16], 0, 7);
+                    HansenSystem.ArrayCopy(mtouch[i16], 0, hmtouch[i16], 0, 7);
                 }
                 hcaught = true;
             }

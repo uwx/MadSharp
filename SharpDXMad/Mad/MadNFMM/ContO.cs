@@ -1234,7 +1234,7 @@ class ContO : Point3DX {
             Trackers.x[Trackers.nt] += x;
             Trackers.z[Trackers.nt] += z;
             Trackers.y[Trackers.nt] += y;
-            System.arraycopy(p[i119].oc, 0, Trackers.c[Trackers.nt], 0, 3);
+            HansenSystem.ArrayCopy(p[i119].oc, 0, Trackers.c[Trackers.nt], 0, 3);
             Trackers.skd[Trackers.nt] = 2;
             Trackers.dam[Trackers.nt] = 1;
             Trackers.notwall[Trackers.nt] = false;
@@ -1255,7 +1255,7 @@ class ContO : Point3DX {
         Trackers.z[Trackers.nt] = (is118[0] + is118[1]) / 2 + z;
         Trackers.zy[Trackers.nt] = 0;
         Trackers.xy[Trackers.nt] = 0;
-        System.arraycopy(p[4].oc, 0, Trackers.c[Trackers.nt], 0, 3);
+        HansenSystem.ArrayCopy(p[4].oc, 0, Trackers.c[Trackers.nt], 0, 3);
         Trackers.skd[Trackers.nt] = 4;
         Trackers.dam[Trackers.nt] = 1;
         Trackers.notwall[Trackers.nt] = false;

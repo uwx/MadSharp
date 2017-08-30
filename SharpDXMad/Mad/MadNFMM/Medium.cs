@@ -57,7 +57,7 @@ public class Medium {
     static int focusPoint = 400;
     static int fogd = 7;
     static private int fvect = 200;
-    static private float gofo = (float) (0.33000001311302185 + ThreadLocalRandom.current().nextDouble() * 1.34);
+    static private float gofo = (float) (0.33000001311302185 + HansenRandom.Double() * 1.34);
     static int ground = 250;
     static int h = 450;
     static int hit = 45000;
@@ -70,7 +70,7 @@ public class Medium {
     static private int lilo = 217;
     static boolean loadnew = false;
     static boolean lton = false;
-    static int mgen = (int) (ThreadLocalRandom.current().nextDouble() * 100000.0);
+    static int mgen = (int) (HansenRandom.Double() * 100000.0);
     static private int[] mrd = null;
     static private int[][][] mtc = null;
     static private int[][] mtx = null;
@@ -276,7 +276,7 @@ public class Medium {
                     fo -= 0.005F;
                 }
             } else {
-                gofo = (float) (0.3499999940395355 + ThreadLocalRandom.current().nextDouble() * 1.3);
+                gofo = (float) (0.3499999940395355 + HansenRandom.Double() * 1.3);
             }
             vxz++;
             trx -= (trx - CheckPoints.x[ptr]) / 10L;
@@ -868,7 +868,7 @@ public class Medium {
             i217 = ys(i217, i218);
             if (i215 - 1 > iw && i215 + 3 < w && i217 - 1 > ih && i217 + 3 < h) {
                 if (twn[i] == 0) {
-                    int i219 = (int) (3.0 * ThreadLocalRandom.current().nextDouble());
+                    int i219 = (int) (3.0 * HansenRandom.Double());
                     if (i219 >= 3) {
                         i219 = 0;
                     }
@@ -876,7 +876,7 @@ public class Medium {
                         i219 = 2;
                     }
                     int i220 = i219 + 1;
-                    if (ThreadLocalRandom.current().nextDouble() > ThreadLocalRandom.current().nextDouble()) {
+                    if (HansenRandom.Double() > HansenRandom.Double()) {
                         i220 = i219 - 1;
                     }
                     if (i220 == 3) {
@@ -888,7 +888,7 @@ public class Medium {
                     for (int i221 = 0; i221 < 3; i221++) {
                         stc[i][0][i221] = 200;
                         if (i219 == i221) {
-                            stc[i][0][i221] += (int) (55.0 * ThreadLocalRandom.current().nextDouble());
+                            stc[i][0][i221] += (int) (55.0 * HansenRandom.Double());
                         }
                         if (i220 == i221) {
                             stc[i][0][i221] += 55;
@@ -1335,57 +1335,57 @@ public class Medium {
         claz = new int[noc][3][12];
         clc = new int[noc][2][6][3];
         for (int i91 = 0; i91 < noc; i91++) {
-            clx[i91] = (int) (i + (i88 - i) * ThreadLocalRandom.current().nextDouble());
-            clz[i91] = (int) (i89 + (i90 - i89) * ThreadLocalRandom.current().nextDouble());
-            final float f = (float) (0.25 + ThreadLocalRandom.current().nextDouble() * 1.25);
-            float f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clx[i91] = (int) (i + (i88 - i) * HansenRandom.Double());
+            clz[i91] = (int) (i89 + (i90 - i89) * HansenRandom.Double());
+            final float f = (float) (0.25 + HansenRandom.Double() * 1.25);
+            float f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][0] = (int) (f92 * 0.3826);
             claz[i91][0][0] = (int) (f92 * 0.9238);
-            clay[i91][0][0] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][0] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][1] = (int) (f92 * 0.7071);
             claz[i91][0][1] = (int) (f92 * 0.7071);
-            clay[i91][0][1] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][1] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][2] = (int) (f92 * 0.9238);
             claz[i91][0][2] = (int) (f92 * 0.3826);
-            clay[i91][0][2] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][2] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][3] = (int) (f92 * 0.9238);
             claz[i91][0][3] = -(int) (f92 * 0.3826);
-            clay[i91][0][3] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][3] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][4] = (int) (f92 * 0.7071);
             claz[i91][0][4] = -(int) (f92 * 0.7071);
-            clay[i91][0][4] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][4] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][5] = (int) (f92 * 0.3826);
             claz[i91][0][5] = -(int) (f92 * 0.9238);
-            clay[i91][0][5] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][5] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][6] = -(int) (f92 * 0.3826);
             claz[i91][0][6] = -(int) (f92 * 0.9238);
-            clay[i91][0][6] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][6] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][7] = -(int) (f92 * 0.7071);
             claz[i91][0][7] = -(int) (f92 * 0.7071);
-            clay[i91][0][7] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][7] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][8] = -(int) (f92 * 0.9238);
             claz[i91][0][8] = -(int) (f92 * 0.3826);
-            clay[i91][0][8] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][8] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][9] = -(int) (f92 * 0.9238);
             claz[i91][0][9] = (int) (f92 * 0.3826);
-            clay[i91][0][9] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][9] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][10] = -(int) (f92 * 0.7071);
             claz[i91][0][10] = (int) (f92 * 0.7071);
-            clay[i91][0][10] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
-            f92 = (float) ((200.0 + ThreadLocalRandom.current().nextDouble() * 700.0) * f);
+            clay[i91][0][10] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][11] = -(int) (f92 * 0.3826);
             claz[i91][0][11] = (int) (f92 * 0.9238);
-            clay[i91][0][11] = (int) ((25.0 - ThreadLocalRandom.current().nextDouble() * 50.0) * f);
+            clay[i91][0][11] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             for (int i93 = 0; i93 < 12; i93++) {
                 int i94 = i93 - 1;
                 if (i94 == -1) {
@@ -1400,14 +1400,14 @@ public class Medium {
                 claz[i91][0][i93] = ((claz[i91][0][i94] + claz[i91][0][i95]) / 2 + claz[i91][0][i93]) / 2;
             }
             for (int i96 = 0; i96 < 12; i96++) {
-                f92 = (float) (1.2 + 0.6 * ThreadLocalRandom.current().nextDouble());
+                f92 = (float) (1.2 + 0.6 * HansenRandom.Double());
                 clax[i91][1][i96] = (int) (clax[i91][0][i96] * f92);
                 claz[i91][1][i96] = (int) (claz[i91][0][i96] * f92);
-                clay[i91][1][i96] = (int) (clay[i91][0][i96] - 100.0 * ThreadLocalRandom.current().nextDouble());
-                f92 = (float) (1.1 + 0.3 * ThreadLocalRandom.current().nextDouble());
+                clay[i91][1][i96] = (int) (clay[i91][0][i96] - 100.0 * HansenRandom.Double());
+                f92 = (float) (1.1 + 0.3 * HansenRandom.Double());
                 clax[i91][2][i96] = (int) (clax[i91][1][i96] * f92);
                 claz[i91][2][i96] = (int) (claz[i91][1][i96] * f92);
-                clay[i91][2][i96] = (int) (clay[i91][1][i96] - 240.0 * ThreadLocalRandom.current().nextDouble());
+                clay[i91][2][i96] = (int) (clay[i91][1][i96] - 240.0 * HansenRandom.Double());
             }
             cmx[i91] = 0;
             for (int i97 = 0; i97 < 12; i97++) {
@@ -1427,8 +1427,8 @@ public class Medium {
                 }
             }
             for (int i101 = 0; i101 < 6; i101++) {
-                final double d = ThreadLocalRandom.current().nextDouble();
-                final double d102 = ThreadLocalRandom.current().nextDouble();
+                final double d = HansenRandom.Double();
+                final double d102 = HansenRandom.Double();
                 for (int i103 = 0; i103 < 3; i103++) {
                     f92 = clds[i103] * 1.05F - clds[i103];
                     clc[i91][0][i101][i103] = (int) (clds[i103] + f92 * d);
@@ -1640,7 +1640,7 @@ public class Medium {
         twn = null;
         nst = 0;
         if (lightson) {
-            final Random random = new Random((long) (ThreadLocalRandom.current().nextDouble() * 100000.0));
+            final Random random = new Random((long) (HansenRandom.Double() * 100000.0));
             nst = 40;
             stx = new int[nst];
             stz = new int[nst];
@@ -1687,8 +1687,8 @@ public class Medium {
     static float random() {
         if (cntrn == 0) {
             for (int i = 0; i < 3; i++) {
-                rand[i] = (int) (10.0 * ThreadLocalRandom.current().nextDouble());
-                diup[i] = ThreadLocalRandom.current().nextDouble() <= ThreadLocalRandom.current().nextDouble();
+                rand[i] = (int) (10.0 * HansenRandom.Double());
+                diup[i] = HansenRandom.Double() <= HansenRandom.Double();
             }
             cntrn = 20;
         } else {

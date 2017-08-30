@@ -53,7 +53,7 @@ class CheckPoints {
     static int pubt = 0;
     static final boolean[] roted = new boolean[5];
     static final boolean[] special = new boolean[5];
-    static int stage = (int) (ThreadLocalRandom.current().nextDouble() * 27.0) + 1;
+    static int stage = (int) (HansenRandom.Double() * 27.0) + 1;
     static int top20 = 0;
     static String trackname = "";
     static int trackvol = 200;

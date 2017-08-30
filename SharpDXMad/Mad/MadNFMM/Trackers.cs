@@ -70,7 +70,7 @@ namespace Cum
                         i7++;
                     }
                     sect[i3][i4] = new int[i7];
-                    System.arraycopy( is, 0, sect[i3][i4], 0, i7);
+                    HansenSystem.ArrayCopy( is, 0, sect[i3][i4], 0, i7);
                 }
             }
             for (int i12 = 0; i12 < nt; i12++)

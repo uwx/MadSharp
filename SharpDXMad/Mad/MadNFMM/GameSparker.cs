@@ -1696,8 +1696,8 @@ namespace Cum
         int i97 = 0;
         if (moto == 1 && shaka > 0)
         {
-            i = (int) ((shaka * 2 * ThreadLocalRandom.current().nextDouble() - shaka) * apmult);
-            i97 = (int) ((shaka * 2 * ThreadLocalRandom.current().nextDouble() - shaka) * apmult);
+            i = (int) ((shaka * 2 * HansenRandom.Double() - shaka) * apmult);
+            i97 = (int) ((shaka * 2 * HansenRandom.Double() - shaka) * apmult);
             shaka--;
         }
         if (!Madness.fullscreen)
@@ -3231,7 +3231,7 @@ namespace Cum
                     }
                     if (xtGraphics.multion >= 2)
                     {
-                        xtGraphics.im = (int) (ThreadLocalRandom.current().nextDouble() * xtGraphics.nplayers);
+                        xtGraphics.im = (int) (HansenRandom.Double() * xtGraphics.nplayers);
                         xtGraphics.starcnt = 0;
                     }
                 }
