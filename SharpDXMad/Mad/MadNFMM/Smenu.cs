@@ -54,14 +54,14 @@ namespace Cum
          * Adds the.
          *
          * @param graphics2d the graphics2d
-         * @param string     the string
+         * @param astring     the astring
          */
-        public void add(final Graphics2D graphics2d, String string) {
+        public void add(final Graphics2D graphics2d, String astring) {
             graphics2d.setFont(font);
             ftm = graphics2d.getFontMetrics();
-            if ((!rooms || no == 0) && ftm.stringWidth(string) + 30 > w)
+            if ((!rooms || no == 0) && ftm.stringWidth(astring) + 30 > w)
             {
-                w = ftm.stringWidth(string) + 30;
+                w = ftm.stringWidth(astring) + 30;
             }
             if (rooms)
             {
@@ -71,21 +71,21 @@ namespace Cum
                     iroom[i] = 0;
                 }
             }
-            opts[no] = string;
+            opts[no] = astring;
             if (maxl != 0)
             {
                 int i;
-                for (i = string.length(); ftm.stringWidth(string.substring(0, i)) + 30 > maxl; i--)
+                for (i = astring.length(); ftm.stringWidth(astring.subastring(0, i)) + 30 > maxl; i--)
                 {
                     /* empty */
                 }
-                if (i != string.length())
+                if (i != astring.length())
                 {
-                    string = string.substring(0, i - 3);
-                    string = string + "...";
+                    astring = astring.subastring(0, i - 3);
+                    astring = astring + "...";
                 }
             }
-            sopts[no] = string;
+            sopts[no] = astring;
             if (no < opts.length - 1)
             {
                 no++;
@@ -95,13 +95,13 @@ namespace Cum
         /**
          * Addstg.
          *
-         * @param string the string
+         * @param astring the astring
          */
-        public void addstg(final String string)
+        public void addstg(final String astring)
         {
-            if (ftm.stringWidth(string) + 30 > w)
+            if (ftm.stringWidth(astring) + 30 > w)
             {
-                w = ftm.stringWidth(string) + 30;
+                w = ftm.stringWidth(astring) + 30;
             }
             no++;
             if (no > 701)
@@ -113,20 +113,20 @@ namespace Cum
                 opts[i] = opts[i - 1];
                 sopts[i] = sopts[i - 1];
             }
-            opts[1] = string;
-            sopts[1] = string;
+            opts[1] = astring;
+            sopts[1] = astring;
         }
 
         /**
          * Addw.
          *
-         * @param string  the string
+         * @param astring  the astring
          * @param string0 the string0
          */
-        public void addw(final String string, final String string0) {
+        public void addw(final String astring, final String string0) {
             w = 300;
             opts[no] = string0;
-            sopts[no] = string;
+            sopts[no] = astring;
             if (no < opts.length - 1)
             {
                 no++;
@@ -149,13 +149,13 @@ namespace Cum
          * @param graphics2d the graphics2d
          * @param _mousex    the i
          * @param _mousey    the i4
-         * @param bool       the bool
+         * @param abool       the abool
          * @param i5         the i5
          * @param bool6      the bool6
          * @return true, if successful
          */
         public boolean draw(final Graphics2D graphics2d, final int _mousex, final int
-            _mousey, final boolean bool, final int i5, boolean bool6) {
+            _mousey, final boolean abool, final int i5, boolean bool6) {
             boolean bool7 = false;
             if (revup)
             {
@@ -169,7 +169,7 @@ namespace Cum
                     graphics2d.setComposite(AlphaComposite.getInstance(3, 0.7F));
                 }
                 boolean bool8 = false;
-                if (bool)
+                if (abool)
                 {
                     if (!om)
                     {
@@ -235,7 +235,7 @@ namespace Cum
                             graphics2d.drawLine(x + w - 7, y + 10 + 29 + scra, x + w - 7, y + 11 + 29 + scra);
                             graphics2d.drawLine(x + w - 6, y + 9 + 29 + scra, x + w - 6, y + 10 + 29 + scra);
                             i12 = -18;
-                            if (bool)
+                            if (abool)
                             {
                                 if (_mousex > x + w - 18 && _mousex < x + w && _mousey > y + 25 && _mousey < i5)
                                 {
@@ -347,7 +347,7 @@ namespace Cum
                             graphics2d.drawLine(x + w - 7, y + 12 - 29 - scra, x + w - 7, y + 11 - 29 - scra);
                             graphics2d.drawLine(x + w - 6, y + 13 - 29 - scra, x + w - 6, y + 12 - 29 - scra);
                             i16 = -18;
-                            if (bool)
+                            if (abool)
                             {
                                 if (_mousex > x + w - 18 && _mousex < x + w && _mousey > 0 && _mousey < y - 3)
                                 {
@@ -577,10 +577,10 @@ namespace Cum
             return "";
         }
 
-        public int getIndex(final String string)
+        public int getIndex(final String astring)
         {
             for (int i = 0; i < no; i++)
-                if (opts[i].equals(string))
+                if (opts[i].equals(astring))
                     return i;
             return -1;
         }
@@ -649,9 +649,9 @@ namespace Cum
         }
 
         /**
-         * Checks if is enabled.
+         * Checks if ais enabled.
          *
-         * @return true, if is enabled
+         * @return true, if ais enabled
          */
         public boolean isEnabled()
         {
@@ -659,9 +659,9 @@ namespace Cum
         }
 
         /**
-         * Checks if is showing.
+         * Checks if ais showing.
          *
-         * @return true, if is showing
+         * @return true, if ais showing
          */
         public boolean isShowing()
         {
@@ -682,12 +682,12 @@ namespace Cum
         /**
          * Removes the.
          *
-         * @param string the string
+         * @param astring the astring
          */
-        public void remove(final String string)
+        public void remove(final String astring)
         {
             for (int i = 0; i < no; i++)
-                if (opts[i].equals(string))
+                if (opts[i].equals(astring))
                 {
                     for (int i1 = i; i1 < no; i1++)
                         if (i1 != no - 1)
@@ -726,12 +726,12 @@ namespace Cum
         /**
          * Select.
          *
-         * @param string the string
+         * @param astring the astring
          */
-        public void select(final String string)
+        public void select(final String astring)
         {
             for (int i = 0; i < no; i++)
-                if (opts[i].equals(string))
+                if (opts[i].equals(astring))
                 {
                     sel = i;
                     break;

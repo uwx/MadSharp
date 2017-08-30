@@ -303,7 +303,7 @@ namespace Cum
         void drive(final Control control, final ContO conto) {
             int i = 1;
             int i4 = 1;
-            boolean bool = false;
+            boolean abool = false;
             boolean bool5 = false;
             boolean bool6 = false;
             capsized = false;
@@ -315,7 +315,7 @@ namespace Cum
             i7 = Math.abs(i7);
             if (i7 > 90)
             {
-                bool = true;
+                abool = true;
             }
             boolean bool8 = false;
             int i9;
@@ -330,7 +330,7 @@ namespace Cum
                 i4 = -1;
             }
             int i10 = conto.grat;
-            if (bool)
+            if (abool)
             {
                 if (bool8)
                 {
@@ -352,7 +352,7 @@ namespace Cum
             {
                 i10 = stat.flipy + squash;
             }
-            control.zyinv = bool;
+            control.zyinv = abool;
             float f = 0.0F;
             float f11 = 0.0F;
             float f12 = 0.0F;
@@ -504,7 +504,7 @@ namespace Cum
                         rcomp -= 2.0F * stat.airs;
                     }
                     pzy += (dcomp - ucomp) * Medium.cos(pxy);
-                    if (bool)
+                    if (abool)
                     {
                         conto.xz += (dcomp - ucomp) * Medium.sin(pxy);
                     }
@@ -665,7 +665,7 @@ namespace Cum
                             pd = false;
                         }
                         pzy += (dcomp - ucomp) * Medium.cos(pxy);
-                        if (bool)
+                        if (abool)
                         {
                             conto.xz += (dcomp - ucomp) * Medium.sin(pxy);
                         }
@@ -1692,7 +1692,7 @@ namespace Cum
             {
                 i83 = i84;
             }
-            if (!bool)
+            if (!abool)
             {
                 pzy += i81;
             }
@@ -1732,7 +1732,7 @@ namespace Cum
                 }
                 if (pzy > 350 || pzy < 10)
                 {
-                    // this is the opposite, rounds off the angle but lands properly
+                    // this ais the opposite, rounds off the angle but lands properly
                     pzy = 0;
                     conto.zy = 0;
                     i86++;
@@ -1782,7 +1782,7 @@ namespace Cum
             }
             conto.y = (int) ((fs23[0] + fs23[1] + fs23[2] + fs23[3]) / 4.0F - i10 * Medium.cos(pzy) * Medium.cos(pxy) +
                              f12);
-            if (bool)
+            if (abool)
             {
                 i = -1;
             }
@@ -2398,18 +2398,18 @@ namespace Cum
 
         private int regx(final int i, float f, final ContO conto) {
             int i110 = 0;
-            boolean bool = true;
+            boolean abool = true;
             if (xtGraphics.multion == 1 && xtGraphics.im != im)
             {
-                bool = false;
+                abool = false;
             }
             if (xtGraphics.multion >= 2)
             {
-                bool = false;
+                abool = false;
             }
             if (xtGraphics.lan && xtGraphics.multion >= 1 && xtGraphics.isbot[im])
             {
-                bool = true;
+                abool = true;
             }
             f *= stat.dammult;
             if (Math.abs(f) > 100.0F)
@@ -2438,7 +2438,7 @@ namespace Cum
                             f112 = f / 20.0F * Medium.random();
                             conto.p[i111].oz[i113] -= f112 * Medium.sin(conto.xz) * Medium.cos(conto.zy);
                             conto.p[i111].ox[i113] += f112 * Medium.cos(conto.xz) * Medium.cos(conto.xy);
-                            if (bool)
+                            if (abool)
                             {
                                 hitmag += Math.abs(f112);
                                 i110 += Math.abs(f112);
@@ -2501,18 +2501,18 @@ namespace Cum
 
         private int regy(final int i, float f, final ContO conto) {
             int i97 = 0;
-            boolean bool = true;
+            boolean abool = true;
             if (xtGraphics.multion == 1 && xtGraphics.im != im)
             {
-                bool = false;
+                abool = false;
             }
             if (xtGraphics.multion >= 2)
             {
-                bool = false;
+                abool = false;
             }
             if (xtGraphics.lan && xtGraphics.multion >= 1 && xtGraphics.isbot[im])
             {
-                bool = true;
+                abool = true;
             }
             f *= stat.dammult;
             if (f > 100.0F)
@@ -2575,7 +2575,7 @@ namespace Cum
                                 f103 = f / 20.0F * Medium.random();
                                 conto.p[i102].oz[i104] += f103 * Medium.sin(i100);
                                 conto.p[i102].ox[i104] -= f103 * Medium.sin(i101);
-                                if (bool)
+                                if (abool)
                                 {
                                     hitmag += Math.abs(f103);
                                     i97 += Math.abs(f103);
@@ -2651,7 +2651,7 @@ namespace Cum
                                         conto.p[i107].oy[i109] += f108;
                                         i105 += f108;
                                         i106++;
-                                        if (bool)
+                                        if (abool)
                                         {
                                             hitmag += Math.abs(f108);
                                             i97 += Math.abs(f108);
@@ -2685,18 +2685,18 @@ namespace Cum
 
         private int regz(final int i, float f, final ContO conto) {
             int i114 = 0;
-            boolean bool = true;
+            boolean abool = true;
             if (xtGraphics.multion == 1 && xtGraphics.im != im)
             {
-                bool = false;
+                abool = false;
             }
             if (xtGraphics.multion >= 2)
             {
-                bool = false;
+                abool = false;
             }
             if (xtGraphics.lan && xtGraphics.multion >= 1 && xtGraphics.isbot[im])
             {
-                bool = true;
+                abool = true;
             }
             f *= stat.dammult;
             if (Math.abs(f) > 100.0F)
@@ -2725,7 +2725,7 @@ namespace Cum
                             f116 = f / 20.0F * Medium.random();
                             conto.p[i115].oz[i117] += f116 * Medium.cos(conto.xz) * Medium.cos(conto.zy);
                             conto.p[i115].ox[i117] += f116 * Medium.sin(conto.xz) * Medium.cos(conto.xy);
-                            if (bool)
+                            if (abool)
                             {
                                 hitmag += Math.abs(f116);
                                 i114 += Math.abs(f116);

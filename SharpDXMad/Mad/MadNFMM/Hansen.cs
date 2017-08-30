@@ -1,4 +1,11 @@
-﻿namespace Cum
+﻿using System;
+using SharpDX;
+using SharpDX.Direct2D1;
+using SharpDX.DXGI;
+using SharpDX.WIC;
+using Bitmap = SharpDX.Direct2D1.Bitmap;
+
+namespace Cum
 {
     public class HansenSystem
     {
@@ -12,6 +19,60 @@
         public static double Double()
         {
             throw new System.NotImplementedException();
+        }
+    }
+    internal class Math
+    {
+        public static int sqrt(int p0)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    internal class Image : Bitmap
+    {
+        public Image(RenderTarget renderTarget, Size2 size) : base(renderTarget, size)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, Size2 size, BitmapProperties bitmapProperties) : base(renderTarget, size, bitmapProperties)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch) : base(renderTarget, size, dataPointer, pitch)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch, BitmapProperties bitmapProperties) : base(renderTarget, size, dataPointer, pitch, bitmapProperties)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, Bitmap bitmap) : base(renderTarget, bitmap)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, Bitmap bitmap, BitmapProperties? bitmapProperties) : base(renderTarget, bitmap, bitmapProperties)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, Surface surface) : base(renderTarget, surface)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, Surface surface, BitmapProperties? bitmapProperties) : base(renderTarget, surface, bitmapProperties)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, BitmapLock bitmapLock) : base(renderTarget, bitmapLock)
+        {
+        }
+
+        public Image(RenderTarget renderTarget, BitmapLock bitmapLock, BitmapProperties? bitmapProperties) : base(renderTarget, bitmapLock, bitmapProperties)
+        {
+        }
+
+        public Image(IntPtr nativePtr) : base(nativePtr)
+        {
         }
     }
 }

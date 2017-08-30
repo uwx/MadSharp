@@ -3,38 +3,7 @@ using boolean = System.Boolean;
 
 namespace Cum {
     
-interface Point3D {
-    float x();
-    float y();
-    float z();
-}
-
-interface Point3DX : Point3D {
-    float xz();
-}
-
-class _Point3D : Point3D {
-
-    public float x() {
-        return 0;
-    }
-    public float y() {
-        return 0;
-    }
-
-    public float z() {
-        return 0;
-    }
-    
-}
-
-class _Point3DX : _Point3D, Point3DX {
-    public float xz() {
-        return 0;
-    }
-}
-
-class ContO : Point3DX {
+class ContO {
     int checkpoint;
     int colok;
     private int[] dam;
@@ -58,15 +27,15 @@ class ContO : Point3DX {
     int maxR = 0;
     boolean noline = false;
     private boolean[] notwall;
-    int npl = 0;
-    float[] osmag;
-    readonly Plane[] p;
+    internal int npl = 0;
+    internal float[] osmag;
+    internal readonly Plane[] p;
     private boolean[] rbef;
-    float rcx;
-    float rcy;
-    float rcz;
-    int roofat;
-    boolean roted;
+    internal float rcx;
+    internal float rcy;
+    internal float rcz;
+    internal int roofat;
+    internal boolean roted;
     private int[] rtg;
     private int[] rx;
     private int[] ry;
@@ -74,23 +43,23 @@ class ContO : Point3DX {
     private int[] sav;
     private float[] sbln;
     readonly int[] scol;
-    int[] scx;
-    int[] scz;
+    internal int[] scx;
+    internal int[] scz;
     boolean shadow = false;
     private int[] skd;
     private float[][] smag;
-    int sprk;
+    internal int sprk;
     private int sprkat;
     private int[][] srgb;
-    int srx;
-    int sry;
-    int srz;
-    int[] stg;
-    int[] sx;
-    int[] sy;
-    int[] sz;
+    internal int srx;
+    internal int sry;
+    internal int srz;
+    internal int[] stg;
+    internal int[] sx;
+    internal int[] sy;
+    internal int[] sz;
     private int[][] tc;
-    int tnt;
+    internal int tnt;
     private int[] tradx;
     private int[] trady;
     private int[] tradz;
@@ -103,15 +72,15 @@ class ContO : Point3DX {
     private float[] vrx;
     private float[] vry;
     private float[] vrz;
-    int wh;
-    int wxz = 0;
-    int wzy = 0;
-    int x = 0;
-    int xy = 0;
-    int xz = 0;
-    int y = 0;
-    int z = 0;
-    int zy = 0;
+    internal int wh;
+    internal int wxz = 0;
+    internal int wzy = 0;
+    internal int x = 0;
+    internal int xy = 0;
+    internal int xz = 0;
+    internal int y = 0;
+    internal int z = 0;
+    internal int zy = 0;
 
     ContO(byte[] _is) {
         keyx = new int[4];
@@ -163,8 +132,8 @@ class ContO : Point3DX {
             }
             shadow = true;
         }
-        String astring = "";
-        boolean abool = false;
+        String aastring = "";
+        boolean aabool = false;
         boolean bool1 = false;
         i = 0;
         float f = 1.0F;
@@ -195,12 +164,13 @@ class ContO : Point3DX {
 
         try {
             BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(new DataInputStream(new ByteArrayInputStream(ais))));
+            
             String string17;
             while ((string17 = bufferedreader.readLine()) != null) {
-                astring = "" + string17.trim();
+                aastring = "" + string17.trim();
                 if (npl < 10000 /* 210 */) {
-                    if (astring.StartsWith("<p>")) {
-                        abool = true;
+                    if (aastring.StartsWith("<p>")) {
+                        aabool = true;
                         i = 0;
                         i10 = 0;
                         i11 = 0;
@@ -213,48 +183,48 @@ class ContO : Point3DX {
                         randomcolor = false;
                         randoutline = false;
                     }
-                    if (abool) {
-                        if (astring.StartsWith("gr(")) {
-                            i10 = getvalue("gr", astring, 0);
+                    if (aabool) {
+                        if (aastring.StartsWith("gr(")) {
+                            i10 = getvalue("gr", aastring, 0);
                         }
-                        if (astring.StartsWith("fs(")) {
-                            i11 = getvalue("fs", astring, 0);
+                        if (aastring.StartsWith("fs(")) {
+                            i11 = getvalue("fs", aastring, 0);
                             is0[npl] = 2;
                         }
-                        if (astring.StartsWith("c(")) {
+                        if (aastring.StartsWith("c(")) {
                             i14 = 0;
-                            is6[0] = getvalue("c", astring, 0);
-                            is6[1] = getvalue("c", astring, 1);
-                            is6[2] = getvalue("c", astring, 2);
+                            is6[0] = getvalue("c", aastring, 0);
+                            is6[1] = getvalue("c", aastring, 1);
+                            is6[2] = getvalue("c", aastring, 2);
                         }
-                        if (astring.StartsWith("glass")) {
+                        if (aastring.StartsWith("glass")) {
                             i14 = 1;
                         }
-                        if (astring.StartsWith("gshadow")) {
+                        if (aastring.StartsWith("gshadow")) {
                             i14 = 2;
                         }
-                        if (astring.StartsWith("lightF")) {
+                        if (aastring.StartsWith("lightF")) {
                             i13 = 1;
                         }
-                        if (astring.StartsWith("light")) {
+                        if (aastring.StartsWith("light")) {
                             i13 = 1;
                         }
-                        if (astring.StartsWith("lightB")) {
+                        if (aastring.StartsWith("lightB")) {
                             i13 = 2;
                         }
-                        if (astring.StartsWith("noOutline")) {
+                        if (aastring.StartsWith("noOutline")) {
                             bool15 = true;
                         }
-                        if (astring.StartsWith("random()") || astring.StartsWith("rainbow()")) {
+                        if (aastring.StartsWith("random()") || aastring.StartsWith("rainbow()")) {
                             randomcolor = true;
                         }
-                        if (astring.StartsWith("randoutline()")) {
+                        if (aastring.StartsWith("randoutline()")) {
                             randoutline = true;
                         }
-                        if (astring.StartsWith("p(")) {
-                            is3[i] = (int) (getvalue("p", astring, 0) * f * f2 * fs[0]);
-                            is4[i] = (int) (getvalue("p", astring, 1) * f * fs[1]);
-                            is5[i] = (int) (getvalue("p", astring, 2) * f * fs[2]);
+                        if (aastring.StartsWith("p(")) {
+                            is3[i] = (int) (getvalue("p", aastring, 0) * f * f2 * fs[0]);
+                            is4[i] = (int) (getvalue("p", aastring, 1) * f * fs[1]);
+                            is5[i] = (int) (getvalue("p", aastring, 2) * f * fs[2]);
                             int i18 = (int) Math.sqrt(is3[i] * is3[i] + is4[i] * is4[i] + is5[i] * is5[i]);
                             if (i18 > maxR) {
                                 maxR = i18;
@@ -262,7 +232,7 @@ class ContO : Point3DX {
                             i++;
                         }
                     }
-                    if (astring.StartsWith("</p>")) {
+                    if (aastring.StartsWith("</p>")) {
                         p[npl] = new Plane(is3, is5, is4, i, is6, i14, i10, i11, 0, 0, 0, disline, 0, bool7, i13, bool15, randomcolor, randoutline, false, 1, 1, 1, 1);
                         if (is6[0] == fcol[0] && is6[1] == fcol[1] && is6[2] == fcol[2] && i14 == 0) {
                             p[npl].colnum = 1;
@@ -271,19 +241,19 @@ class ContO : Point3DX {
                             p[npl].colnum = 2;
                         }
                         npl++;
-                        abool = false;
+                        aabool = false;
                     }
                 }
-                if (astring.StartsWith("rims(")) {
-                    wheels.setrims(getvalue("rims", astring, 0), getvalue("rims", astring, 1), getvalue("rims", astring, 2), getvalue("rims", astring, 3), getvalue("rims", astring, 4));
+                if (aastring.StartsWith("rims(")) {
+                    wheels.setrims(getvalue("rims", aastring, 0), getvalue("rims", aastring, 1), getvalue("rims", aastring, 2), getvalue("rims", aastring, 3), getvalue("rims", aastring, 4));
                 }
-                if (astring.StartsWith("w(") && i9 < 4) {
-                    keyx[i9] = (int) (getvalue("w", astring, 0) * f * fs[0]);
-                    keyz[i9] = (int) (getvalue("w", astring, 2) * f * fs[2]);
-                    wheels.make(p, npl, (int) (getvalue("w", astring, 0) * f * f2 * fs[0]), (int) (getvalue("w", astring, 1) * f * fs[1]), (int) (getvalue("w", astring, 2) * f * fs[2]), getvalue("w", astring, 3), (int) (getvalue("w", astring, 4) * f * f2), (int) (getvalue("w", astring, 5) * f), i12);
+                if (aastring.StartsWith("w(") && i9 < 4) {
+                    keyx[i9] = (int) (getvalue("w", aastring, 0) * f * fs[0]);
+                    keyz[i9] = (int) (getvalue("w", aastring, 2) * f * fs[2]);
+                    wheels.make(p, npl, (int) (getvalue("w", aastring, 0) * f * f2 * fs[0]), (int) (getvalue("w", aastring, 1) * f * fs[1]), (int) (getvalue("w", aastring, 2) * f * fs[2]), getvalue("w", aastring, 3), (int) (getvalue("w", aastring, 4) * f * f2), (int) (getvalue("w", aastring, 5) * f), i12);
                     npl += 19;
                     if (Medium.loadnew) {
-                        wh += (int) (getvalue("w", astring, 5) * f);
+                        wh += (int) (getvalue("w", aastring, 5) * f);
                         if (wheels.ground > 140) {
                             String string19 = "FRONT";
                             if (keyz[i9] < 0) {
@@ -324,7 +294,7 @@ class ContO : Point3DX {
                             keyz[i9] = 0;
                             keyx[i9] = 0;
                         }
-                        if ((int) (getvalue("w", astring, 4) * f * f2) > 300) {
+                        if ((int) (getvalue("w", aastring, 4) * f * f2) > 300) {
                             String string22 = "FRONT";
                             if (keyz[i9] < 0) {
                                 string22 = "BACK";
@@ -337,8 +307,8 @@ class ContO : Point3DX {
                     }
                     i9++;
                 }
-                if (astring.StartsWith("tracks")) {
-                    int i23 = getvalue("tracks", astring, 0);
+                if (aastring.StartsWith("tracks")) {
+                    int i23 = getvalue("tracks", aastring, 0);
                     txy = new int[i23];
                     tzy = new int[i23];
                     tc = new int[i23][3];
@@ -354,7 +324,7 @@ class ContO : Point3DX {
                     bool8 = true;
                 }
                 if (bool8) {
-                    if (astring.StartsWith("<track>")) {
+                    if (aastring.StartsWith("<track>")) {
                         bool1 = true;
                         notwall[tnt] = false;
                         dam[tnt] = 1;
@@ -372,99 +342,99 @@ class ContO : Point3DX {
                         tc[tnt][2] = 0;
                     }
                     if (bool1) {
-                        if (astring.StartsWith("c")) {
-                            tc[tnt][0] = getvalue("c", astring, 0);
-                            tc[tnt][1] = getvalue("c", astring, 1);
-                            tc[tnt][2] = getvalue("c", astring, 2);
+                        if (aastring.StartsWith("c")) {
+                            tc[tnt][0] = getvalue("c", aastring, 0);
+                            tc[tnt][1] = getvalue("c", aastring, 1);
+                            tc[tnt][2] = getvalue("c", aastring, 2);
                         }
-                        if (astring.StartsWith("xy")) {
-                            txy[tnt] = getvalue("xy", astring, 0);
+                        if (aastring.StartsWith("xy")) {
+                            txy[tnt] = getvalue("xy", aastring, 0);
                         }
-                        if (astring.StartsWith("zy")) {
-                            tzy[tnt] = getvalue("zy", astring, 0);
+                        if (aastring.StartsWith("zy")) {
+                            tzy[tnt] = getvalue("zy", aastring, 0);
                         }
-                        if (astring.StartsWith("radx")) {
-                            tradx[tnt] = (int) (getvalue("radx", astring, 0) * f);
+                        if (aastring.StartsWith("radx")) {
+                            tradx[tnt] = (int) (getvalue("radx", aastring, 0) * f);
                         }
-                        if (astring.StartsWith("rady")) {
-                            trady[tnt] = (int) (getvalue("rady", astring, 0) * f);
+                        if (aastring.StartsWith("rady")) {
+                            trady[tnt] = (int) (getvalue("rady", aastring, 0) * f);
                         }
-                        if (astring.StartsWith("radz")) {
-                            tradz[tnt] = (int) (getvalue("radz", astring, 0) * f);
+                        if (aastring.StartsWith("radz")) {
+                            tradz[tnt] = (int) (getvalue("radz", aastring, 0) * f);
                         }
-                        if (astring.StartsWith("ty")) {
-                            ty[tnt] = (int) (getvalue("ty", astring, 0) * f);
+                        if (aastring.StartsWith("ty")) {
+                            ty[tnt] = (int) (getvalue("ty", aastring, 0) * f);
                         }
-                        if (astring.StartsWith("tx")) {
-                            tx[tnt] = (int) (getvalue("tx", astring, 0) * f);
+                        if (aastring.StartsWith("tx")) {
+                            tx[tnt] = (int) (getvalue("tx", aastring, 0) * f);
                         }
-                        if (astring.StartsWith("tz")) {
-                            tz[tnt] = (int) (getvalue("tz", astring, 0) * f);
+                        if (aastring.StartsWith("tz")) {
+                            tz[tnt] = (int) (getvalue("tz", aastring, 0) * f);
                         }
-                        if (astring.StartsWith("skid")) {
-                            skd[tnt] = getvalue("skid", astring, 0);
+                        if (aastring.StartsWith("skid")) {
+                            skd[tnt] = getvalue("skid", aastring, 0);
                         }
-                        if (astring.StartsWith("dam")) {
+                        if (aastring.StartsWith("dam")) {
                             dam[tnt] = 3;
                         }
-                        if (astring.StartsWith("notwall")) {
+                        if (aastring.StartsWith("notwall")) {
                             notwall[tnt] = true;
                         }
                     }
-                    if (astring.StartsWith("</track>")) {
+                    if (aastring.StartsWith("</track>")) {
                         bool1 = false;
                         tnt++;
                     }
                 }
-                if (astring.StartsWith("disp(")) {
-                    disp = getvalue("disp", astring, 0);
+                if (aastring.StartsWith("disp(")) {
+                    disp = getvalue("disp", aastring, 0);
                 }
-                if (astring.StartsWith("disline(")) {
-                    disline = getvalue("disline", astring, 0) * 2;
+                if (aastring.StartsWith("disline(")) {
+                    disline = getvalue("disline", aastring, 0) * 2;
                 }
-                if (astring.StartsWith("shadow")) {
+                if (aastring.StartsWith("shadow")) {
                     shadow = true;
                 }
-                if (astring.StartsWith("stonecold")) {
+                if (aastring.StartsWith("stonecold")) {
                     noline = true;
                 }
-                if (astring.StartsWith("newstone")) {
+                if (aastring.StartsWith("newstone")) {
                     noline = true;
                     bool15 = true;
                     bool16 = true;
                 }
-                if (astring.StartsWith("decorative")) {
+                if (aastring.StartsWith("decorative")) {
                     decor = true;
                 }
-                if (astring.StartsWith("road")) {
+                if (aastring.StartsWith("road")) {
                     bool7 = true;
                 }
-                if (astring.StartsWith("notroad")) {
+                if (aastring.StartsWith("notroad")) {
                     bool7 = false;
                 }
-                if (astring.StartsWith("grounded(")) {
-                    grounded = getvalue("grounded", astring, 0) / 100.0F;
+                if (aastring.StartsWith("grounded(")) {
+                    grounded = getvalue("grounded", aastring, 0) / 100.0F;
                 }
-                if (astring.StartsWith("div(")) {
-                    f = getvalue("div", astring, 0) / 10.0F;
+                if (aastring.StartsWith("div(")) {
+                    f = getvalue("div", aastring, 0) / 10.0F;
                 }
-                if (astring.StartsWith("idiv(")) {
-                    f = getvalue("idiv", astring, 0) / 100.0F;
+                if (aastring.StartsWith("idiv(")) {
+                    f = getvalue("idiv", aastring, 0) / 100.0F;
                 }
-                if (astring.StartsWith("iwid(")) {
-                    f2 = getvalue("iwid", astring, 0) / 100.0F;
+                if (aastring.StartsWith("iwid(")) {
+                    f2 = getvalue("iwid", aastring, 0) / 100.0F;
                 }
-                if (astring.StartsWith("ScaleX(")) {
-                    fs[0] = getvalue("ScaleX", astring, 0) / 100.0F;
+                if (aastring.StartsWith("ScaleX(")) {
+                    fs[0] = getvalue("ScaleX", aastring, 0) / 100.0F;
                 }
-                if (astring.StartsWith("ScaleY(")) {
-                    fs[1] = getvalue("ScaleY", astring, 0) / 100.0F;
+                if (aastring.StartsWith("ScaleY(")) {
+                    fs[1] = getvalue("ScaleY", aastring, 0) / 100.0F;
                 }
-                if (astring.StartsWith("ScaleZ(")) {
-                    fs[2] = getvalue("ScaleZ", astring, 0) / 100.0F;
+                if (aastring.StartsWith("ScaleZ(")) {
+                    fs[2] = getvalue("ScaleZ", aastring, 0) / 100.0F;
                 }
-                if (astring.StartsWith("gwgr(")) {
-                    i12 = getvalue("gwgr", astring, 0);
+                if (aastring.StartsWith("gwgr(")) {
+                    i12 = getvalue("gwgr", aastring, 0);
                     if (Medium.loadnew) {
                         if (i12 > 40) {
                             i12 = 40;
@@ -477,16 +447,16 @@ class ContO : Point3DX {
                         }
                     }
                 }
-                if (astring.StartsWith("1stColor(")) {
-                    fcol[0] = getvalue("1stColor", astring, 0);
-                    fcol[1] = getvalue("1stColor", astring, 1);
-                    fcol[2] = getvalue("1stColor", astring, 2);
+                if (aastring.StartsWith("1stColor(")) {
+                    fcol[0] = getvalue("1stColor", aastring, 0);
+                    fcol[1] = getvalue("1stColor", aastring, 1);
+                    fcol[2] = getvalue("1stColor", aastring, 2);
                     colok++;
                 }
-                if (astring.StartsWith("2ndColor(")) {
-                    scol[0] = getvalue("2ndColor", astring, 0);
-                    scol[1] = getvalue("2ndColor", astring, 1);
-                    scol[2] = getvalue("2ndColor", astring, 2);
+                if (aastring.StartsWith("2ndColor(")) {
+                    scol[0] = getvalue("2ndColor", aastring, 0);
+                    scol[1] = getvalue("2ndColor", aastring, 1);
+                    scol[2] = getvalue("2ndColor", aastring, 2);
                     colok++;
                 }
             }
@@ -495,7 +465,7 @@ class ContO : Point3DX {
             if (exception instanceof RuntimeException)
                 throw new RuntimeException(exception);
             else if (!errd) {
-                err = "Error While Loading 3D Model\n\nLine:     " + astring + "\n\nError Detail:\n" + exception + "           \n \n";
+                err = "Error While Loading 3D Model\n\nLine:     " + aastring + "\n\nError Detail:\n" + exception + "           \n \n";
                 Console.WriteLine(err);
                 errd = true;
             }
@@ -1275,7 +1245,7 @@ class ContO : Point3DX {
             if (shadow)
                 if (!Medium.crs) {
                     if (i125 < 2000) {
-                        boolean abool = false;
+                        boolean aabool = false;
                         if (Trackers.ncx != 0 || Trackers.ncz != 0) {
                             int i127 = (x - Trackers.sx) / 3000;
                             if (i127 > Trackers.ncx) {
@@ -1294,12 +1264,12 @@ class ContO : Point3DX {
                             for (int i129 = Trackers.sect[i127][i128].length - 1; i129 >= 0; i129--) {
                                 int i130 = Trackers.sect[i127][i128][i129];
                                 if (Math.abs(Trackers.zy[i130]) != 90 && Math.abs(Trackers.xy[i130]) != 90 && Math.abs(x - Trackers.x[i130]) < Trackers.radx[i130] + maxR && Math.abs(z - Trackers.z[i130]) < Trackers.radz[i130] + maxR && (!Trackers.decor[i130] || Medium.resdown != 2)) {
-                                    abool = true;
+                                    aabool = true;
                                     break;
                                 }
                             }
                         }
-                        if (abool) {
+                        if (aabool) {
                             for (int i131 = 0; i131 < npl; i131++) {
                                 p[i131].s(graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 0);
                             }
@@ -1374,8 +1344,8 @@ class ContO : Point3DX {
         }
     }
 
-    private void dsprk(Graphics2D graphics2d, boolean abool) {
-        if (abool && sprk != 0) {
+    private void dsprk(Graphics2D graphics2d, boolean aabool) {
+        if (aabool && sprk != 0) {
             int i = (int) (Math.sqrt(rcx * rcx + rcy * rcy + rcz * rcz) / 10.0);
             if (i > 5) {
                 boolean bool240 = false;
@@ -1399,7 +1369,7 @@ class ContO : Point3DX {
             }
         }
         for (int i = 0; i < 100; i++)
-            if (rtg[i] != 0 && (rbef[i] && abool || !rbef[i] && !abool)) {
+            if (rtg[i] != 0 && (rbef[i] && aabool || !rbef[i] && !aabool)) {
                 if (rtg[i] == 1) {
                     if (sprk < 5) {
                         rx[i] = srx + 3 - (int) (Medium.random() * 6.7);
@@ -1493,7 +1463,7 @@ class ContO : Point3DX {
         }
     }
 
-    void dust(int i, float f, float f199, float f200, int i201, int i202, float f203, int i204, boolean abool) {
+    void dust(int i, float f, float f199, float f200, int i201, int i202, float f203, int i204, boolean aabool) {
         boolean bool205 = false;
         if (i204 > 5 && (i == 0 || i == 2)) {
             bool205 = true;
@@ -1510,7 +1480,7 @@ class ContO : Point3DX {
             if (ust == 20) {
                 ust = 0;
             }
-            if (!abool) {
+            if (!aabool) {
                 float f207 = Medium.random();
                 sx[ust] = (int) ((f + x * f207) / (1.0F + f207));
                 sz[ust] = (int) ((f200 + z * f207) / (1.0F + f207));
@@ -1568,7 +1538,7 @@ class ContO : Point3DX {
             }
             rot(ais, is187, Medium.cx, Medium.cz, Medium.xz, 8);
             rot(is186, is187, Medium.cy, Medium.cz, Medium.zy, 8);
-            boolean abool = true;
+            boolean aabool = true;
             int i189 = 0;
             int i190 = 0;
             int i191 = 0;
@@ -1592,9 +1562,9 @@ class ContO : Point3DX {
                 }
             }
             if (i191 == 8 || i189 == 8 || i190 == 8 || i192 == 8) {
-                abool = false;
+                aabool = false;
             }
-            if (abool) {
+            if (aabool) {
                 int i196 = (int) (160.0F + 160.0F * (Medium.snap[0] / 500.0F));
                 if (i196 > 255) {
                     i196 = 255;
@@ -1859,10 +1829,10 @@ class ContO : Point3DX {
         return (i - x) / 10 * ((i - x) / 10) + (i267 - y) / 10 * ((i267 - y) / 10) + (i268 - z) / 10 * ((i268 - z) / 10);
     }
 
-    private int getvalue(String astring, String string262, int i) {
+    private int getvalue(String aastring, String string262, int i) {
         int i263 = 0;
         String string264 = "";
-        for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
+        for (int i265 = aastring.length() + 1; i265 < string262.length(); i265++) {
             String string266 = "" + string262.charAt(i265);
             if (string266.equals(",") || string266.equals(")")) {
                 i263++;
@@ -1944,7 +1914,7 @@ class ContO : Point3DX {
         }
         rot(ais, is147, Medium.cx, Medium.cz, Medium.xz, 4);
         rot(is146, is147, Medium.cy, Medium.cz, Medium.zy, 4);
-        boolean abool = true;
+        boolean aabool = true;
         int i161 = 0;
         int i162 = 0;
         int i163 = 0;
@@ -1966,9 +1936,9 @@ class ContO : Point3DX {
             }
         }
         if (i163 == 4 || i161 == 4 || i162 == 4 || i164 == 4) {
-            abool = false;
+            aabool = false;
         }
-        if (abool) {
+        if (aabool) {
             for (int i166 = 0; i166 < 16; i166++)
                 if (i > Medium.fade[i166]) {
                     i150 = (i150 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
@@ -1980,11 +1950,11 @@ class ContO : Point3DX {
         }
     }
 
-    private void pdust(int i, Graphics2D graphics2d, boolean abool) {
-        if (abool) {
+    private void pdust(int i, Graphics2D graphics2d, boolean aabool) {
+        if (aabool) {
             sav[i] = (int) Math.sqrt((Medium.x + Medium.cx - sx[i]) * (Medium.x + Medium.cx - sx[i]) + (Medium.y + Medium.cy - sy[i]) * (Medium.y + Medium.cy - sy[i]) + (Medium.z - sz[i]) * (Medium.z - sz[i]));
         }
-        if (abool && sav[i] > dist || !abool && sav[i] <= dist) {
+        if (aabool && sav[i] > dist || !aabool && sav[i] <= dist) {
             if (stg[i] == 1) {
                 sbln[i] = 0.6F;
                 boolean bool208 = false;
@@ -2185,26 +2155,6 @@ class ContO : Point3DX {
             i261 = 50;
         }
         return (i261 - Medium.focusPoint) * (Medium.cy - i) / i261 + i;
-    }
-
-    @Override
-    public float x() {
-        return x;
-    }
-
-    @Override
-    public float y() {
-        return y;
-    }
-
-    @Override
-    public float z() {
-        return z;
-    }
-
-    @Override
-    public float xz() {
-        return xz;
     }
 }
 

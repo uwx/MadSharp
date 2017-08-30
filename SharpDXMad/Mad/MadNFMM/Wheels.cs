@@ -23,7 +23,7 @@ namespace Cum
         void make(final Plane[]
         planes, int i, final int i4, final int i5, final int i6, final int i7, final int i8, final int i9, final int
             i10) {
-            final int[] is  = new int[20];
+            final int[] ais  = new int[20];
             final int[] is11 = new int[20];
             final int[] is12 = new int[20];
             final int[] is13 =
@@ -46,7 +46,7 @@ namespace Cum
             }
             for (int i17 = 0; i17 < 20; i17++)
             {
-                is[i17] = (int) (i4 - 4.0F * f);
+                ais[i17] = (int) (i4 - 4.0F * f);
             }
             is11[0] = (int) (i5 - 9.1923F * f15);
             is12[0] = (int) (i6 + 9.1923F * f15);
@@ -89,10 +89,10 @@ namespace Cum
             is11[19] = (int) (i5 - 3.3646F * f15);
             is12[19] = (int) (i6 + 12.557F * f15);
             planes[i] = new Plane(
- is, is12, is11, 20, is13, 0, i10, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 20, is13, 0, i10, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
             planes[i].master = 1;
             i++;
-                is[2] = (int) (i4 - depth * f);
+                ais[2] = (int) (i4 - depth * f);
             is11[2] = i5;
             is12[2] = i6;
             int i18 = (int) (i10 - depth / size * 4.0F);
@@ -105,7 +105,7 @@ namespace Cum
             is11[1] = (int) (i5 + 8.66 * size);
             is12[1] = (int) (i6 + 5.0F * size);
             planes[i] = new Plane(
- is, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -116,7 +116,7 @@ namespace Cum
             is11[1] = (int) (i5 + 8.66 * size);
             is12[1] = (int) (i6 - 5.0F * size);
             planes[i] = new Plane(
- is, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -127,7 +127,7 @@ namespace Cum
             is11[1] = i5;
             is12[1] = (int) (i6 - 10.0F * size);
             planes[i] = new Plane(
- is, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -138,7 +138,7 @@ namespace Cum
             is11[1] = (int) (i5 - 8.66 * size);
             is12[1] = (int) (i6 - 5.0F * size);
             planes[i] = new Plane(
- is, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -149,7 +149,7 @@ namespace Cum
             is11[1] = (int) (i5 - 8.66 * size);
             is12[1] = (int) (i6 + 5.0F * size);
             planes[i] = new Plane(
- is, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -160,191 +160,191 @@ namespace Cum
             is11[1] = i5;
             is12[1] = (int) (i6 + 10.0F * size);
             planes[i] = new Plane(
- is, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
             }
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 12.557F * f15);
             is12[0] = (int) (i6 + 3.3646F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 - 12.557F * f15);
             is12[1] = (int) (i6 - 3.3646F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 - 12.557F * f15);
             is12[2] = (int) (i6 - 3.3646F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 12.557F * f15);
             is12[3] = (int) (i6 + 3.3646F * f15);
-            planes[i] = new Plane( is, is12, is11, 4, is13, 0, i10, -1 *
+            planes[i] = new Plane( ais, is12, is11, 4, is13, 0, i10, -1 *
                 i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
             is12[0] = (int) (i6 - 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 - 12.557F * f15);
             is12[1] = (int) (i6 - 3.3646F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 - 12.557F * f15);
             is12[2] = (int) (i6 - 3.3646F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
             is12[0] = (int) (i6 - 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 - 3.3646F * f15);
             is12[1] = (int) (i6 - 12.557F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 - 3.3646F * f15);
             is12[2] = (int) (i6 - 12.557F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 3.3646F * f15);
             is12[0] = (int) (i6 - 12.557F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 + 3.3646F * f15);
             is12[1] = (int) (i6 - 12.557F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 + 3.3646F * f15);
             is12[2] = (int) (i6 - 12.557F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 3.3646F * f15);
             is12[3] = (int) (i6 - 12.557F * f15);
-            planes[i] = new Plane( is, is12, is11, 4, is13, 0, i10, -1 *
+            planes[i] = new Plane( ais, is12, is11, 4, is13, 0, i10, -1 *
                 i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
             is12[0] = (int) (i6 - 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 + 3.3646F * f15);
             is12[1] = (int) (i6 - 12.557F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 + 3.3646F * f15);
             is12[2] = (int) (i6 - 12.557F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
             is12[0] = (int) (i6 - 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 + 12.557F * f15);
             is12[1] = (int) (i6 - 3.3646F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 + 12.557F * f15);
             is12[2] = (int) (i6 - 3.3646F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 12.557F * f15);
             is12[0] = (int) (i6 - 3.3646F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 + 12.557F * f15);
             is12[1] = (int) (i6 + 3.3646F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 + 12.557F * f15);
             is12[2] = (int) (i6 + 3.3646F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 12.557F * f15);
             is12[3] = (int) (i6 - 3.3646F * f15);
-            planes[i] = new Plane( is, is12, is11, 4, is13, 0, i10, -1 *
+            planes[i] = new Plane( ais, is12, is11, 4, is13, 0, i10, -1 *
                 i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
             is12[0] = (int) (i6 + 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 + 12.557F * f15);
             is12[1] = (int) (i6 + 3.3646F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 + 12.557F * f15);
             is12[2] = (int) (i6 + 3.3646F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
             is12[0] = (int) (i6 + 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 + 3.3646F * f15);
             is12[1] = (int) (i6 + 12.557F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 + 3.3646F * f15);
             is12[2] = (int) (i6 + 12.557F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 3.3646F * f15);
             is12[0] = (int) (i6 + 12.557F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 - 3.3646F * f15);
             is12[1] = (int) (i6 + 12.557F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 - 3.3646F * f15);
             is12[2] = (int) (i6 + 12.557F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 3.3646F * f15);
             is12[3] = (int) (i6 + 12.557F * f15);
-            planes[i] = new Plane( is, is12, is11, 4, is13, 0, i10, -1 *
+            planes[i] = new Plane( ais, is12, is11, 4, is13, 0, i10, -1 *
                 i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
             is12[0] = (int) (i6 + 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 - 3.3646F * f15);
             is12[1] = (int) (i6 + 12.557F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 - 3.3646F * f15);
             is12[2] = (int) (i6 + 12.557F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
-                is[0] = (int) (i4 - 4.0F * f);
+                ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
             is12[0] = (int) (i6 + 9.1923F * f15);
-                is[1] = (int) (i4 - 4.0F * f);
+                ais[1] = (int) (i4 - 4.0F * f);
             is11[1] = (int) (i5 - 12.557F * f15);
             is12[1] = (int) (i6 + 3.3646F * f15);
-                is[2] = (int) (i4 + 4.0F * f);
+                ais[2] = (int) (i4 + 4.0F * f);
             is11[2] = (int) (i5 - 12.557F * f15);
             is12[2] = (int) (i6 + 3.3646F * f15);
-                is[3] = (int) (i4 + 4.0F * f);
+                ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
             planes[i] = new Plane(
- is, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+ ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
             i++;
         }
 

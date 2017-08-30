@@ -1,142 +1,144 @@
+using boolean = System.Boolean;
+
 namespace Cum {
 public class Medium {
     //private Medium() {}
-    static int adv = 500;
-    static private long atrx = 0L;
-    static private long atrz = 0L;
-    static private int bcxz = 0;
-    static private boolean[] bst = null;
-    static boolean bt = false;
-    static final int[] cfade = {
+    internal static int adv = 500;
+    private static long atrx = 0L;
+    private static long atrz = 0L;
+    private static int bcxz = 0;
+    private static boolean[] bst = null;
+    internal static boolean bt = false;
+    internal static readonly int[] cfade = {
             255, 220, 220
     };
-    static private int[] cgpx = null;
-    static private int[] cgpz = null;
-    static final int[] cgrnd = {
+    private static int[] cgpx = null;
+    private static int[] cgpz = null;
+    internal static readonly int[] cgrnd = {
             205, 200, 200
     };
-    static int checkpoint = -1;
-    static private int[][][] clax = null;
-    static private int[][][] clay = null;
-    static private int[][][] claz = null;
-    static private int[][][][] clc = null;
-    static private final int[] cldd = {
+    internal static int checkpoint = -1;
+    private static int[][][] clax = null;
+    private static int[][][] clay = null;
+    private static int[][][] claz = null;
+    private static int[][][][] clc = null;
+    private static readonly int[] cldd = {
             210, 210, 210, 1, -1000
     };
-    static private final int[] clds = {
+    private static readonly int[] clds = {
             210, 210, 210
     };
-    static private int[] clx = null;
-    static private int[] clz = null;
-    static private int[] cmx = null;
-    static private int cntrn = 0;
-    static boolean cpflik = false;
-    static final int[] cpol = {
+    private static int[] clx = null;
+    private static int[] clz = null;
+    private static int[] cmx = null;
+    private static int cntrn = 0;
+    internal static boolean cpflik = false;
+    internal static readonly int[] cpol = {
             215, 210, 210
     };
-    static final int[] crgrnd = {
+    internal static readonly int[] crgrnd = {
             205, 200, 200
     };
-    static boolean crs = false;
-    static final int[] csky = {
+    internal static boolean crs = false;
+    internal static readonly int[] csky = {
             170, 220, 255
     };
     public static int cx = 400;
-    static int cy = 225;
-    static int cz = 50;
-    static boolean darksky = false;
-    static private final boolean[] diup = {
+    internal static int cy = 225;
+    internal static int cz = 50;
+    internal static boolean darksky = false;
+    private static readonly boolean[] diup = {
             false, false, false
     };
-    static float elecr = 0.0F;
-    static final int[] fade = {
+    internal static float elecr = 0.0F;
+    internal static readonly int[] fade = {
             3000, 4500, 6000, 7500, 9000, 10500, 12000, 13500, 15000, 16500, 18000, 19500, 21000, 22500, 24000, 25500
     };
-    static int fallen = 0;
-    static private float fo = 1.0F;
-    static int focusPoint = 400;
-    static int fogd = 7;
-    static private int fvect = 200;
-    static private float gofo = (float) (0.33000001311302185 + HansenRandom.Double() * 1.34);
-    static int ground = 250;
-    static int h = 450;
-    static int hit = 45000;
-    static int ih = 0;
-    static int iw = 0;
-    static boolean lastcheck = false;
-    static int lastmaf = 0;
-    static int lightn = -1;
-    static boolean lightson = false;
-    static private int lilo = 217;
-    static boolean loadnew = false;
-    static boolean lton = false;
-    static int mgen = (int) (HansenRandom.Double() * 100000.0);
-    static private int[] mrd = null;
-    static private int[][][] mtc = null;
-    static private int[][] mtx = null;
-    static private int[][] mty = null;
-    static private int[][] mtz = null;
-    static int ncl = 0;
-    static private int nmt = 0;
-    static private int[] nmv = null;
-    static private int noc = 0;
-    static boolean nochekflk = false;
-    static int noelec = 0;
-    static int nrnd = 0;
-    static int nrw = 0;
-    static int nsp = 0;
-    static private int nst = 0;
-    static private int[][] ogpx = null;
-    static private int[][] ogpz = null;
-    static private final int[] ogrnd = {
+    internal static int fallen = 0;
+    private static float fo = 1.0F;
+    internal static int focusPoint = 400;
+    internal static int fogd = 7;
+    private static int fvect = 200;
+    private static float gofo = (float) (0.33000001311302185 + HansenRandom.Double() * 1.34);
+    internal static int ground = 250;
+    internal static int h = 450;
+    internal static int hit = 45000;
+    internal static int ih = 0;
+    internal static int iw = 0;
+    internal static boolean lastcheck = false;
+    internal static int lastmaf = 0;
+    internal static int lightn = -1;
+    internal static boolean lightson = false;
+    private static int lilo = 217;
+    internal static boolean loadnew = false;
+    internal static boolean lton = false;
+    internal static int mgen = (int) (HansenRandom.Double() * 100000.0);
+    private static int[] mrd = null;
+    private static int[][][] mtc = null;
+    private static int[][] mtx = null;
+    private static int[][] mty = null;
+    private static int[][] mtz = null;
+    internal static int ncl = 0;
+    private static int nmt = 0;
+    private static int[] nmv = null;
+    private static int noc = 0;
+    internal static boolean nochekflk = false;
+    internal static int noelec = 0;
+    internal static int nrnd = 0;
+    internal static int nrw = 0;
+    internal static int nsp = 0;
+    private static int nst = 0;
+    private static int[][] ogpx = null;
+    private static int[][] ogpz = null;
+    private static readonly int[] ogrnd = {
             205, 200, 200
     };
-    static private final int[] osky = {
+    private static readonly int[] osky = {
             170, 220, 255
     };
-    static private float[] pcv = null;
-    static private int[] pmx = null;
-    static int ptcnt = -10;
-    static int ptr = 0;
-    static private float[][] pvr = null;
-    static private final int[] rand = {
+    private static float[] pcv = null;
+    private static int[] pmx = null;
+    internal static int ptcnt = -10;
+    internal static int ptr = 0;
+    private static float[][] pvr = null;
+    private static readonly int[] rand = {
             0, 0, 0
     };
-    static int rescnt = 5;
-    static int resdown = 0;
-    static private int sgpx = 0;
-    static private int sgpz = 0;
-    static private final int skyline = -300;
-    static final int[] snap = {
+    internal static int rescnt = 5;
+    internal static int resdown = 0;
+    private static int sgpx = 0;
+    private static int sgpz = 0;
+    private static readonly int skyline = -300;
+    internal static readonly int[] snap = {
             0, 0, 0
     };
-    static final int[] sprad = new int[7];
-    static final int[] spx = new int[7];
-    static final int[] spz = new int[7];
-    static private int[][][] stc = null;
-    static private int[] stx = null;
-    static private int[] stz = null;
-    static private final float[] tcos = new float[360];
-    static private boolean td = false;
-    static private final int[] texture = {
+    internal static readonly int[] sprad = new int[7];
+    internal static readonly int[] spx = new int[7];
+    internal static readonly int[] spz = new int[7];
+    private static int[][][] stc = null;
+    private static int[] stx = null;
+    private static int[] stz = null;
+    private static readonly float[] tcos = new float[360];
+    private static boolean td = false;
+    private static readonly int[] texture = {
             0, 0, 0, 50
     };
-    static int trk = 0;
-    static private int trn = 0;
-    static long trx = 0L;
-    static long trz = 0L;
-    static private final float[] tsin = new float[360];
-    static private int[] twn = null;
-    static boolean vert = false;
-    static int vxz = 180;
-    static int w = 800;
-    static int x = 0;
-    static int xz = 0;
-    static int y = 0;
-    static int z = 0;
-    static int zy = 0;
+    internal static int trk = 0;
+    private static int trn = 0;
+    internal static long trx = 0L;
+    internal static long trz = 0L;
+    private static readonly float[] tsin = new float[360];
+    private static int[] twn = null;
+    internal static boolean vert = false;
+    internal static int vxz = 180;
+    internal static int w = 800;
+    internal static int x = 0;
+    internal static int xz = 0;
+    internal static int y = 0;
+    internal static int z = 0;
+    internal static int zy = 0;
 
-    static {
+    static Medium() {
         for (int i = 0; i < 360; i++) {
             tcos[i] = (float) Math.cos(i * 0.017453292519943295);
         }
@@ -145,7 +147,7 @@ public class Medium {
         }
     }
 
-    static void addsp(final int i, final int i245, final int i246) {
+    static void addsp(int i, int i245, int i246) {
         if (nsp != 7) {
             spx[nsp] = i;
             spz[nsp] = i245;
@@ -154,7 +156,7 @@ public class Medium {
         }
     }
 
-    static void adjstfade(final float f, final float f271, final int i, final GameSparker gamesparker) {
+    static void adjstfade(float f, float f271, int i, GameSparker gamesparker) {
         if (resdown != 2)
             if (f == 5.0F) {
                 if (resdown == 0 && rescnt == 0) {
@@ -178,8 +180,8 @@ public class Medium {
             }
     }
 
-    static void around(final ContO conto, final boolean bool) {
-        if (!bool) {
+    static void around(ContO conto, boolean abool) {
+        if (!abool) {
             if (!vert) {
                 adv += 2;
             } else {
@@ -198,7 +200,7 @@ public class Medium {
             }
         }
         int i = 500 + adv;
-        if (bool && i < 1300) {
+        if (abool && i < 1300) {
             i = 1300;
         }
         if (i < 1000) {
@@ -210,7 +212,7 @@ public class Medium {
         }
         x = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
         z = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
-        if (!bool) {
+        if (!abool) {
             vxz += 2;
         } else {
             vxz += 4;
@@ -223,10 +225,10 @@ public class Medium {
         if (conto.y - i5 - cy < 0) {
             i4 = -180;
         }
-        final int i6 = (int) Math.sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
+        int i6 = (int) Math.sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
         int i7 = (int) (90 + i4 - Math.atan((double) i6 / (double) (conto.y - i5 - cy)) / 0.017453292519943295);
         xz = -vxz + 90;
-        if (bool) {
+        if (abool) {
             i7 -= 15;
         }
         zy += (i7 - zy) / 10;
@@ -312,7 +314,7 @@ public class Medium {
         return tcos[i];
     }
 
-    static void d(final Graphics2D graphics2d) {
+    static void d(Graphics2D graphics2d) {
         nsp = 0;
         if (zy > 90) {
             zy = 90;
@@ -330,8 +332,8 @@ public class Medium {
             y = 0;
         }
         ground = 250 - y;
-        final int[] is = new int[4];
-        final int[] is223 = new int[4];
+        int[] ais = new int[4];
+        int[] is223 = new int[4];
         int i = cgrnd[0];
         int i224 = cgrnd[1];
         int i225 = cgrnd[2];
@@ -346,7 +348,7 @@ public class Medium {
                 i232 = cy + (int) ((ground - cy) * cos(zy) - (fade[i230] - cz) * sin(zy));
                 i231 = cz + (int) ((ground - cy) * sin(zy) + (fade[i230] - cz) * cos(zy));
             }
-            is[0] = iw;
+            ais[0] = iw;
             is223[0] = ys(i232, i231);
             if (is223[0] < ih) {
                 is223[0] = ih;
@@ -354,11 +356,11 @@ public class Medium {
             if (is223[0] > h) {
                 is223[0] = h;
             }
-            is[1] = iw;
+            ais[1] = iw;
             is223[1] = i229;
-            is[2] = w;
+            ais[2] = w;
             is223[2] = i229;
-            is[3] = w;
+            ais[3] = w;
             is223[3] = is223[0];
             i229 = is223[0];
             if (i230 > 0) {
@@ -377,7 +379,7 @@ public class Medium {
             }
             if (is223[0] < h && is223[1] > ih) {
                 graphics2d.setColor(new Color(i, i224, i225));
-                graphics2d.fillPolygon(is, is223, 4);
+                graphics2d.fillPolygon(ais, is223, 4);
             }
         }
         if (lightn != -1 && lton) {
@@ -421,7 +423,7 @@ public class Medium {
         int i234 = i224;
         int i235 = i225;
         int i236 = cy + (int) ((skyline - 700 - cy) * cos(zy) - (7000 - cz) * sin(zy));
-        final int i237 = cz + (int) ((skyline - 700 - cy) * sin(zy) + (7000 - cz) * cos(zy));
+        int i237 = cz + (int) ((skyline - 700 - cy) * sin(zy) + (7000 - cz) * cos(zy));
         i236 = ys(i236, i237);
         int i238 = ih;
         for (int i239 = 0; i239 < 16; i239++) {
@@ -431,7 +433,7 @@ public class Medium {
                 i241 = cy + (int) ((skyline - cy) * cos(zy) - (fade[i239] - cz) * sin(zy));
                 i240 = cz + (int) ((skyline - cy) * sin(zy) + (fade[i239] - cz) * cos(zy));
             }
-            is[0] = iw;
+            ais[0] = iw;
             is223[0] = ys(i241, i240);
             if (is223[0] > h) {
                 is223[0] = h;
@@ -439,11 +441,11 @@ public class Medium {
             if (is223[0] < ih) {
                 is223[0] = ih;
             }
-            is[1] = iw;
+            ais[1] = iw;
             is223[1] = i238;
-            is[2] = w;
+            ais[2] = w;
             is223[2] = i238;
-            is[3] = w;
+            ais[3] = w;
             is223[3] = is223[0];
             i238 = is223[0];
             if (i239 > 0) {
@@ -458,16 +460,16 @@ public class Medium {
             }
             if (is223[0] > ih && is223[1] < h) {
                 graphics2d.setColor(new Color(i, i224, i225));
-                graphics2d.fillPolygon(is, is223, 4);
+                graphics2d.fillPolygon(ais, is223, 4);
             }
         }
-        is[0] = iw;
+        ais[0] = iw;
         is223[0] = i238;
-        is[1] = iw;
+        ais[1] = iw;
         is223[1] = i229;
-        is[2] = w;
+        ais[2] = w;
         is223[2] = i229;
-        is[3] = w;
+        ais[3] = w;
         is223[3] = i238;
         if (is223[0] < h && is223[1] > ih) {
             float f = (Math.abs(y) - 250.0F) / (fade[0] * 2);
@@ -481,7 +483,7 @@ public class Medium {
             i224 = (int) ((i224 * (1.0F - f) + i227 * (1.0F + f)) / 2.0F);
             i225 = (int) ((i225 * (1.0F - f) + i228 * (1.0F + f)) / 2.0F);
             graphics2d.setColor(new Color(i, i224, i225));
-            graphics2d.fillPolygon(is, is223, 4);
+            graphics2d.fillPolygon(ais, is223, 4);
         }
         if (resdown != 2) {
             for (int i242 = 1; i242 < 20; i242++) {
@@ -491,7 +493,7 @@ public class Medium {
                     i244 = cy + (int) ((skyline - 700 - i242 * 70 - cy) * cos(zy) - (7000 - cz) * sin(zy));
                     i243 = cz + (int) ((skyline - 700 - i242 * 70 - cy) * sin(zy) + (7000 - cz) * cos(zy));
                 }
-                is[0] = iw;
+                ais[0] = iw;
                 if (i242 != 19) {
                     is223[0] = ys(i244, i243);
                     if (is223[0] > h) {
@@ -503,11 +505,11 @@ public class Medium {
                 } else {
                     is223[0] = ih;
                 }
-                is[1] = iw;
+                ais[1] = iw;
                 is223[1] = i236;
-                is[2] = w;
+                ais[2] = w;
                 is223[2] = i236;
-                is[3] = w;
+                ais[3] = w;
                 is223[3] = is223[0];
                 i236 = is223[0];
                 i233 *= 0.991;
@@ -515,7 +517,7 @@ public class Medium {
                 i235 *= 0.998;
                 if (is223[1] > ih && is223[0] < h) {
                     graphics2d.setColor(new Color(i233, i234, i235));
-                    graphics2d.fillPolygon(is, is223, 4);
+                    graphics2d.fillPolygon(ais, is223, 4);
                 }
             }
             if (lightson) {
@@ -536,27 +538,27 @@ public class Medium {
         }
     }
 
-    static private void drawclouds(final Graphics2D graphics2d) {
+    private static void drawclouds(Graphics2D graphics2d) {
         for (int i = 0; i < noc; i++) {
-            final int i104 = cx + (int) ((clx[i] - x / 20 - cx) * cos(xz) - (clz[i] - z / 20 - cz) * sin(xz));
-            final int i105 = cz + (int) ((clx[i] - x / 20 - cx) * sin(xz) + (clz[i] - z / 20 - cz) * cos(xz));
-            final int i106 = cz + (int) ((cldd[4] - y / 20 - cy) * sin(zy) + (i105 - cz) * cos(zy));
-            final int i107 = xs(i104 + cmx[i], i106);
-            final int i108 = xs(i104 - cmx[i], i106);
+            int i104 = cx + (int) ((clx[i] - x / 20 - cx) * cos(xz) - (clz[i] - z / 20 - cz) * sin(xz));
+            int i105 = cz + (int) ((clx[i] - x / 20 - cx) * sin(xz) + (clz[i] - z / 20 - cz) * cos(xz));
+            int i106 = cz + (int) ((cldd[4] - y / 20 - cy) * sin(zy) + (i105 - cz) * cos(zy));
+            int i107 = xs(i104 + cmx[i], i106);
+            int i108 = xs(i104 - cmx[i], i106);
             if (i107 > 0 && i108 < w && i106 > -cmx[i] && i107 - i108 > 20) {
-                final int[][] is = new int[3][12];
-                final int[][] is109 = new int[3][12];
-                final int[][] is110 = new int[3][12];
-                final int[] is111 = new int[12];
-                final int[] is112 = new int[12];
+                int[][] ais = new int[3][12];
+                int[][] is109 = new int[3][12];
+                int[][] is110 = new int[3][12];
+                int[] is111 = new int[12];
+                int[] is112 = new int[12];
                 boolean bool116;
                 for (int i120 = 0; i120 < 3; i120++) {
                     for (int i121 = 0; i121 < 12; i121++) {
-                        is[i120][i121] = clax[i][i120][i121] + clx[i] - x / 20;
+                        ais[i120][i121] = clax[i][i120][i121] + clx[i] - x / 20;
                         is110[i120][i121] = claz[i][i120][i121] + clz[i] - z / 20;
                         is109[i120][i121] = clay[i][i120][i121] + cldd[4] - y / 20;
                     }
-                    rot(is[i120], is110[i120], cx, cz, xz, 12);
+                    rot(ais[i120], is110[i120], cx, cz, xz, 12);
                     rot(is109[i120], is110[i120], cy, cz, zy, 12);
                 }
                 for (int i122 = 0; i122 < 12; i122 += 2) {
@@ -604,9 +606,9 @@ public class Medium {
                             i131 = i122;
                             i132 = 2;
                         }
-                        is111[i130] = xs(is[i132][i131], is110[i132][i131]);
+                        is111[i130] = xs(ais[i132][i131], is110[i132][i131]);
                         is112[i130] = ys(is109[i132][i131], is110[i132][i131]);
-                        i128 += is[i132][i131];
+                        i128 += ais[i132][i131];
                         i127 += is109[i132][i131];
                         i129 += is110[i132][i131];
                         if (is112[i130] < 0 || is110[0][i130] < 10) {
@@ -629,7 +631,7 @@ public class Medium {
                         i128 /= 6;
                         i127 /= 6;
                         i129 /= 6;
-                        final int i133 = (int) Math.sqrt((cy - i127) * (cy - i127) + (cx - i128) * (cx - i128) + i129 * i129);
+                        int i133 = (int) Math.sqrt((cy - i127) * (cy - i127) + (cx - i128) * (cx - i128) + i129 * i129);
                         if (i133 < fade[7]) {
                             int i134 = clc[i][1][i122 / 2][0];
                             int i135 = clc[i][1][i122 / 2][1];
@@ -690,9 +692,9 @@ public class Medium {
                             i147 = i138;
                             i148 = 1;
                         }
-                        is111[i146] = xs(is[i148][i147], is110[i148][i147]);
+                        is111[i146] = xs(ais[i148][i147], is110[i148][i147]);
                         is112[i146] = ys(is109[i148][i147], is110[i148][i147]);
-                        i144 += is[i148][i147];
+                        i144 += ais[i148][i147];
                         i143 += is109[i148][i147];
                         i145 += is110[i148][i147];
                         if (is112[i146] < 0 || is110[0][i146] < 10) {
@@ -715,7 +717,7 @@ public class Medium {
                         i144 /= 6;
                         i143 /= 6;
                         i145 /= 6;
-                        final int i149 = (int) Math.sqrt((cy - i143) * (cy - i143) + (cx - i144) * (cx - i144) + i145 * i145);
+                        int i149 = (int) Math.sqrt((cy - i143) * (cy - i143) + (cx - i144) * (cx - i144) + i145 * i145);
                         if (i149 < fade[7]) {
                             int i150 = clc[i][0][i138 / 2][0];
                             int i151 = clc[i][0][i138 / 2][1];
@@ -740,9 +742,9 @@ public class Medium {
                 int i159 = 0;
                 int i160 = 0;
                 for (int i161 = 0; i161 < 12; i161++) {
-                    is111[i161] = xs(is[0][i161], is110[0][i161]);
+                    is111[i161] = xs(ais[0][i161], is110[0][i161]);
                     is112[i161] = ys(is109[0][i161], is110[0][i161]);
-                    i159 += is[0][i161];
+                    i159 += ais[0][i161];
                     i158 += is109[0][i161];
                     i160 += is110[0][i161];
                     if (is112[i161] < 0 || is110[0][i161] < 10) {
@@ -765,7 +767,7 @@ public class Medium {
                     i159 /= 12;
                     i158 /= 12;
                     i160 /= 12;
-                    final int i162 = (int) Math.sqrt((cy - i158) * (cy - i158) + (cx - i159) * (cx - i159) + i160 * i160);
+                    int i162 = (int) Math.sqrt((cy - i158) * (cy - i158) + (cx - i159) * (cx - i159) + i160 * i160);
                     if (i162 < fade[7]) {
                         int i163 = clds[0];
                         int i164 = clds[1];
@@ -784,29 +786,29 @@ public class Medium {
         }
     }
 
-    static private void drawmountains(final Graphics2D graphics2d) {
+    private static void drawmountains(Graphics2D graphics2d) {
         for (int i = 0; i < nmt; i++) {
-            final int i185 = mrd[i];
-            final int i186 = cx + (int) ((mtx[i185][0] - x / 30 - cx) * cos(xz) - (mtz[i185][0] - z / 30 - cz) * sin(xz));
-            final int i187 = cz + (int) ((mtx[i185][0] - x / 30 - cx) * sin(xz) + (mtz[i185][0] - z / 30 - cz) * cos(xz));
-            final int i188 = cz + (int) ((mty[i185][0] - y / 30 - cy) * sin(zy) + (i187 - cz) * cos(zy));
-            final int i189 = cx + (int) ((mtx[i185][nmv[i185] - 1] - x / 30 - cx) * cos(xz) - (mtz[i185][nmv[i185] - 1] - z / 30 - cz) * sin(xz));
-            final int i190 = cz + (int) ((mtx[i185][nmv[i185] - 1] - x / 30 - cx) * sin(xz) + (mtz[i185][nmv[i185] - 1] - z / 30 - cz) * cos(xz));
-            final int i191 = cz + (int) ((mty[i185][nmv[i185] - 1] - y / 30 - cy) * sin(zy) + (i190 - cz) * cos(zy));
+            int i185 = mrd[i];
+            int i186 = cx + (int) ((mtx[i185][0] - x / 30 - cx) * cos(xz) - (mtz[i185][0] - z / 30 - cz) * sin(xz));
+            int i187 = cz + (int) ((mtx[i185][0] - x / 30 - cx) * sin(xz) + (mtz[i185][0] - z / 30 - cz) * cos(xz));
+            int i188 = cz + (int) ((mty[i185][0] - y / 30 - cy) * sin(zy) + (i187 - cz) * cos(zy));
+            int i189 = cx + (int) ((mtx[i185][nmv[i185] - 1] - x / 30 - cx) * cos(xz) - (mtz[i185][nmv[i185] - 1] - z / 30 - cz) * sin(xz));
+            int i190 = cz + (int) ((mtx[i185][nmv[i185] - 1] - x / 30 - cx) * sin(xz) + (mtz[i185][nmv[i185] - 1] - z / 30 - cz) * cos(xz));
+            int i191 = cz + (int) ((mty[i185][nmv[i185] - 1] - y / 30 - cy) * sin(zy) + (i190 - cz) * cos(zy));
             if (xs(i189, i191) > 0 && xs(i186, i188) < w) {
-                final int[] is = new int[nmv[i185] * 2];
-                final int[] is192 = new int[nmv[i185] * 2];
-                final int[] is193 = new int[nmv[i185] * 2];
+                int[] ais = new int[nmv[i185] * 2];
+                int[] is192 = new int[nmv[i185] * 2];
+                int[] is193 = new int[nmv[i185] * 2];
                 for (int i194 = 0; i194 < nmv[i185] * 2; i194++) {
-                    is[i194] = mtx[i185][i194] - x / 30;
+                    ais[i194] = mtx[i185][i194] - x / 30;
                     is192[i194] = mty[i185][i194] - y / 30;
                     is193[i194] = mtz[i185][i194] - z / 30;
                 }
-                final int i195 = (int) Math.sqrt(is[nmv[i185] / 4] * is[nmv[i185] / 4] + is193[nmv[i185] / 4] * is193[nmv[i185] / 4]);
-                rot(is, is193, cx, cz, xz, nmv[i185] * 2);
+                int i195 = (int) Math.sqrt(ais[nmv[i185] / 4] * ais[nmv[i185] / 4] + is193[nmv[i185] / 4] * is193[nmv[i185] / 4]);
+                rot(ais, is193, cx, cz, xz, nmv[i185] * 2);
                 rot(is192, is193, cy, cz, zy, nmv[i185] * 2);
-                final int[] is196 = new int[4];
-                final int[] is197 = new int[4];
+                int[] is196 = new int[4];
+                int[] is197 = new int[4];
                 boolean bool201;
                 for (int i202 = 0; i202 < nmv[i185] - 1; i202++) {
                     int i203 = 0;
@@ -822,7 +824,7 @@ public class Medium {
                         if (i207 == 3) {
                             i208 = i202 + nmv[i185];
                         }
-                        is196[i207] = xs(is[i208], is193[i208]);
+                        is196[i207] = xs(ais[i208], is193[i208]);
                         is197[i207] = ys(is192[i208], is193[i208]);
                         if (is197[i207] < 0 || is193[i208] < 10) {
                             i203++;
@@ -846,9 +848,9 @@ public class Medium {
                             if (f < 3.5) {
                                 f = 3.5F;
                             }
-                            final int i209 = (int) ((mtc[i185][i202][0] + cgrnd[0] + csky[0] * f + cfade[0] * f) / (2.0F + f * 2.0F));
-                            final int i210 = (int) ((mtc[i185][i202][1] + cgrnd[1] + csky[1] * f + cfade[1] * f) / (2.0F + f * 2.0F));
-                            final int i211 = (int) ((mtc[i185][i202][2] + cgrnd[2] + csky[2] * f + cfade[2] * f) / (2.0F + f * 2.0F));
+                            int i209 = (int) ((mtc[i185][i202][0] + cgrnd[0] + csky[0] * f + cfade[0] * f) / (2.0F + f * 2.0F));
+                            int i210 = (int) ((mtc[i185][i202][1] + cgrnd[1] + csky[1] * f + cfade[1] * f) / (2.0F + f * 2.0F));
+                            int i211 = (int) ((mtc[i185][i202][2] + cgrnd[2] + csky[2] * f + cfade[2] * f) / (2.0F + f * 2.0F));
                             graphics2d.setColor(new Color(i209, i210, i211));
                             graphics2d.fillPolygon(is196, is197, 4);
                         }
@@ -858,12 +860,12 @@ public class Medium {
         }
     }
 
-    static private void drawstars(final Graphics2D graphics2d) {
+    private static void drawstars(Graphics2D graphics2d) {
         for (int i = 0; i < nst; i++) {
             int i215 = cx + (int) (stx[i] * cos(xz) - stz[i] * sin(xz));
-            final int i216 = cz + (int) (stx[i] * sin(xz) + stz[i] * cos(xz));
+            int i216 = cz + (int) (stx[i] * sin(xz) + stz[i] * cos(xz));
             int i217 = cy + (int) (-200.0F * cos(zy) - i216 * sin(zy));
-            final int i218 = cz + (int) (-200.0F * sin(zy) + i216 * cos(zy));
+            int i218 = cz + (int) (-200.0F * sin(zy) + i216 * cos(zy));
             i215 = xs(i215, i218);
             i217 = ys(i217, i218);
             if (i215 - 1 > iw && i215 + 3 < w && i217 - 1 > ih && i217 + 3 < h) {
@@ -922,7 +924,7 @@ public class Medium {
         }
     }
 
-    static void follow(final ContO conto, int i, final int i27) {
+    static void follow(ContO conto, int i, int i27) {
         zy = 10;
         int i28 = 2 + Math.abs(bcxz) / 4;
         if (i28 > 20) {
@@ -961,7 +963,7 @@ public class Medium {
         y = conto.y - 250 - cy;
     }
 
-    static void getaround(final ContO conto) {
+    static void getaround(ContO conto) {
         if (!vert) {
             adv += 2;
         } else {
@@ -980,9 +982,9 @@ public class Medium {
         if (i < 1000) {
             i = 1000;
         }
-        final int i8 = conto.y - adv;
-        final int i9 = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
-        final int i10 = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
+        int i8 = conto.y - adv;
+        int i9 = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
+        int i10 = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
         int i11 = 0;
         if (Math.abs(i8 - y) > fvect) {
             if (y < i8) {
@@ -1036,7 +1038,7 @@ public class Medium {
         if (conto.y - i15 - cy < 0) {
             i13 = -180;
         }
-        final int i16 = (int) Math.sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
+        int i16 = (int) Math.sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
         int i17 = 25;
         if (i16 != 0) {
             i17 = (int) (90 + i13 - Math.atan((double) i16 / (double) (conto.y - i15 - cy)) / 0.017453292519943295);
@@ -1087,7 +1089,7 @@ public class Medium {
         zy += (i17 - zy) / 10;
     }
 
-    static void getfollow(final ContO conto, int i, final int i29) {
+    static void getfollow(ContO conto, int i, int i29) {
         zy = 10;
         int i30 = 2 + Math.abs(bcxz) / 4;
         if (i30 > 20) {
@@ -1121,9 +1123,9 @@ public class Medium {
         }
         i += bcxz;
         xz = -i;
-        final int i31 = conto.x - cx + (int) (-(conto.z - 800 - conto.z) * sin(i));
-        final int i32 = conto.z - cz + (int) ((conto.z - 800 - conto.z) * cos(i));
-        final int i33 = conto.y - 250 - cy;
+        int i31 = conto.x - cx + (int) (-(conto.z - 800 - conto.z) * sin(i));
+        int i32 = conto.z - cz + (int) ((conto.z - 800 - conto.z) * cos(i));
+        int i33 = conto.y - 250 - cy;
         int i34 = 0;
         if (Math.abs(i33 - y) > fvect) {
             if (y < i33) {
@@ -1162,7 +1164,7 @@ public class Medium {
         }
     }
 
-    static private void groundpolys(final Graphics2D graphics2d) {
+    private static void groundpolys(Graphics2D graphics2d) {
         int i = (x - sgpx) / 1200 - 12;
         if (i < 0) {
             i = 0;
@@ -1185,20 +1187,20 @@ public class Medium {
         if (i50 < i49) {
             i50 = i49;
         }
-        final int[][] is = new int[i48 - i][i50 - i49];
+        int[][] ais = new int[i48 - i][i50 - i49];
         for (int i51 = i; i51 < i48; i51++) {
             for (int i52 = i49; i52 < i50; i52++) {
-                is[i51 - i][i52 - i49] = 0;
-                final int i53 = i51 + i52 * nrw;
+                ais[i51 - i][i52 - i49] = 0;
+                int i53 = i51 + i52 * nrw;
                 if (resdown < 2 || i53 % 2 == 0) {
-                    final int i54 = cx + (int) ((cgpx[i53] - x - cx) * cos(xz) - (cgpz[i53] - z - cz) * sin(xz));
-                    final int i55 = cz + (int) ((cgpx[i53] - x - cx) * sin(xz) + (cgpz[i53] - z - cz) * cos(xz));
-                    final int i56 = cz + (int) ((250 - y - cy) * sin(zy) + (i55 - cz) * cos(zy));
+                    int i54 = cx + (int) ((cgpx[i53] - x - cx) * cos(xz) - (cgpz[i53] - z - cz) * sin(xz));
+                    int i55 = cz + (int) ((cgpx[i53] - x - cx) * sin(xz) + (cgpz[i53] - z - cz) * cos(xz));
+                    int i56 = cz + (int) ((250 - y - cy) * sin(zy) + (i55 - cz) * cos(zy));
                     if (xs(i54 + pmx[i53], i56) > 0 && xs(i54 - pmx[i53], i56) < w && i56 > -pmx[i53] && i56 < fade[2]) {
-                        is[i51 - i][i52 - i49] = i56;
-                        final int[] is57 = new int[8];
-                        final int[] is58 = new int[8];
-                        final int[] is59 = new int[8];
+                        ais[i51 - i][i52 - i49] = i56;
+                        int[] is57 = new int[8];
+                        int[] is58 = new int[8];
+                        int[] is59 = new int[8];
                         for (int i60 = 0; i60 < 8; i60++) {
                             is57[i60] = (int) (ogpx[i53][i60] * pvr[i53][i60] + cgpx[i53] - x);
                             is58[i60] = (int) (ogpz[i53][i60] * pvr[i53][i60] + cgpz[i53] - z);
@@ -1206,13 +1208,13 @@ public class Medium {
                         }
                         rot(is57, is58, cx, cz, xz, 8);
                         rot(is59, is58, cy, cz, zy, 8);
-                        final int[] is61 = new int[8];
-                        final int[] is62 = new int[8];
+                        int[] is61 = new int[8];
+                        int[] is62 = new int[8];
                         int i63 = 0;
                         int i64 = 0;
                         int i65 = 0;
                         int i66 = 0;
-                        boolean bool = true;
+                        boolean abool = true;
                         for (int i67 = 0; i67 < 8; i67++) {
                             is61[i67] = xs(is57[i67], is58[i67]);
                             is62[i67] = ys(is59[i67], is58[i67]);
@@ -1230,9 +1232,9 @@ public class Medium {
                             }
                         }
                         if (i65 == 8 || i63 == 8 || i64 == 8 || i66 == 8) {
-                            bool = false;
+                            abool = false;
                         }
-                        if (bool) {
+                        if (abool) {
                             int i68 = (int) ((cpol[0] * pcv[i53] + cgrnd[0]) / 2.0F);
                             int i69 = (int) ((cpol[1] * pcv[i53] + cgrnd[1]) / 2.0F);
                             int i70 = (int) ((cpol[2] * pcv[i53] + cgrnd[2]) / 2.0F);
@@ -1255,11 +1257,11 @@ public class Medium {
         }
         for (int i71 = i; i71 < i48; i71++) {
             for (int i72 = i49; i72 < i50; i72++)
-                if (is[i71 - i][i72 - i49] != 0) {
-                    final int i73 = i71 + i72 * nrw;
-                    final int[] is74 = new int[8];
-                    final int[] is75 = new int[8];
-                    final int[] is76 = new int[8];
+                if (ais[i71 - i][i72 - i49] != 0) {
+                    int i73 = i71 + i72 * nrw;
+                    int[] is74 = new int[8];
+                    int[] is75 = new int[8];
+                    int[] is76 = new int[8];
                     for (int i77 = 0; i77 < 8; i77++) {
                         is74[i77] = ogpx[i73][i77] + cgpx[i73] - x;
                         is75[i77] = ogpz[i73][i77] + cgpz[i73] - z;
@@ -1267,13 +1269,13 @@ public class Medium {
                     }
                     rot(is74, is75, cx, cz, xz, 8);
                     rot(is76, is75, cy, cz, zy, 8);
-                    final int[] is78 = new int[8];
-                    final int[] is79 = new int[8];
+                    int[] is78 = new int[8];
+                    int[] is79 = new int[8];
                     int i80 = 0;
                     int i81 = 0;
                     int i82 = 0;
                     int i83 = 0;
-                    boolean bool = true;
+                    boolean abool = true;
                     for (int i84 = 0; i84 < 8; i84++) {
                         is78[i84] = xs(is74[i84], is75[i84]);
                         is79[i84] = ys(is76[i84], is75[i84]);
@@ -1291,18 +1293,18 @@ public class Medium {
                         }
                     }
                     if (i82 == 8 || i80 == 8 || i81 == 8 || i83 == 8) {
-                        bool = false;
+                        abool = false;
                     }
-                    if (bool) {
+                    if (abool) {
                         int i85 = (int) (cpol[0] * pcv[i73]);
                         int i86 = (int) (cpol[1] * pcv[i73]);
                         int i87 = (int) (cpol[2] * pcv[i73]);
-                        if (is[i71 - i][i72 - i49] - pmx[i73] > fade[0]) {
+                        if (ais[i71 - i][i72 - i49] - pmx[i73] > fade[0]) {
                             i85 = (i85 * 7 + cfade[0]) / 8;
                             i86 = (i86 * 7 + cfade[1]) / 8;
                             i87 = (i87 * 7 + cfade[2]) / 8;
                         }
-                        if (is[i71 - i][i72 - i49] - pmx[i73] > fade[1]) {
+                        if (ais[i71 - i][i72 - i49] - pmx[i73] > fade[1]) {
                             i85 = (i85 * 7 + cfade[0]) / 8;
                             i86 = (i86 * 7 + cfade[1]) / 8;
                             i87 = (i87 * 7 + cfade[2]) / 8;
@@ -1337,7 +1339,7 @@ public class Medium {
         for (int i91 = 0; i91 < noc; i91++) {
             clx[i91] = (int) (i + (i88 - i) * HansenRandom.Double());
             clz[i91] = (int) (i89 + (i90 - i89) * HansenRandom.Double());
-            final float f = (float) (0.25 + HansenRandom.Double() * 1.25);
+            float f = (float) (0.25 + HansenRandom.Double() * 1.25);
             float f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
             clax[i91][0][0] = (int) (f92 * 0.3826);
             claz[i91][0][0] = (int) (f92 * 0.9238);
@@ -1421,14 +1423,14 @@ public class Medium {
                 }
                 clay[i91][1][i97] = ((clay[i91][1][i98] + clay[i91][1][i99]) / 2 + clay[i91][1][i97]) / 2;
                 clay[i91][2][i97] = ((clay[i91][2][i98] + clay[i91][2][i99]) / 2 + clay[i91][2][i97]) / 2;
-                final int i100 = (int) Math.sqrt(clax[i91][2][i97] * clax[i91][2][i97] + claz[i91][2][i97] * claz[i91][2][i97]);
+                int i100 = (int) Math.sqrt(clax[i91][2][i97] * clax[i91][2][i97] + claz[i91][2][i97] * claz[i91][2][i97]);
                 if (i100 > cmx[i91]) {
                     cmx[i91] = i100;
                 }
             }
             for (int i101 = 0; i101 < 6; i101++) {
-                final double d = HansenRandom.Double();
-                final double d102 = HansenRandom.Double();
+                double d = HansenRandom.Double();
+                double d102 = HansenRandom.Double();
                 for (int i103 = 0; i103 < 3; i103++) {
                     f92 = clds[i103] * 1.05F - clds[i103];
                     clc[i91][0][i101][i103] = (int) (clds[i103] + f92 * d);
@@ -1450,12 +1452,12 @@ public class Medium {
         }
     }
 
-    static void newmountains(final int i, final int i167, final int i168, final int i169) {
-        final Random random = new Random(mgen);
+    static void newmountains(int i, int i167, int i168, int i169) {
+        Random random = new Random(mgen);
         nmt = (int) (20.0 + 10.0 * random.nextDouble());
-        final int i170 = (i + i167) / 60;
-        final int i171 = (i168 + i169) / 60;
-        final int i172 = Math.max(i167 - i, i169 - i168) / 60;
+        int i170 = (i + i167) / 60;
+        int i171 = (i168 + i169) / 60;
+        int i172 = Math.max(i167 - i, i169 - i168) / 60;
         mrd = null;
         nmv = null;
         mtx = null;
@@ -1468,14 +1470,14 @@ public class Medium {
         mty = new int[nmt][];
         mtz = new int[nmt][];
         mtc = new int[nmt][][];
-        final int[] is = new int[nmt];
-        final int[] is173 = new int[nmt];
+        int[] ais = new int[nmt];
+        int[] is173 = new int[nmt];
         for (int i174 = 0; i174 < nmt; i174++) {
             int i175;
             float f;
             float f176;
-            is[i174] = (int) (10000.0 + random.nextDouble() * 10000.0);
-            final int i177 = (int) (random.nextDouble() * 360.0);
+            ais[i174] = (int) (10000.0 + random.nextDouble() * 10000.0);
+            int i177 = (int) (random.nextDouble() * 360.0);
             if (random.nextDouble() > random.nextDouble()) {
                 f = (float) (0.2 + random.nextDouble() * 0.35);
                 f176 = (float) (0.2 + random.nextDouble() * 0.35);
@@ -1506,9 +1508,9 @@ public class Medium {
                     mty[i174][i178] = (int) ((-1600.0 - 1700.0 * random.nextDouble()) * f176 + ground);
                 }
                 mty[i174][i178 + nmv[i174]] = ground - 70;
-                mtz[i174][i178] = i171 + i172 + is[i174];
-                mtz[i174][i178 + nmv[i174]] = i171 + i172 + is[i174];
-                final float f179 = (float) (0.5 + random.nextDouble() * 0.5);
+                mtz[i174][i178] = i171 + i172 + ais[i174];
+                mtz[i174][i178 + nmv[i174]] = i171 + i172 + ais[i174];
+                float f179 = (float) (0.5 + random.nextDouble() * 0.5);
                 mtc[i174][i178][0] = (int) (170.0F * f179 + 170.0F * f179 * (snap[0] / 100.0F));
                 if (mtc[i174][i178][0] > 255) {
                     mtc[i174][i178][0] = 255;
@@ -1526,8 +1528,8 @@ public class Medium {
                 mtc[i174][i178][2] = 0;
             }
             for (int i180 = 1; i180 < nmv[i174] - 1; i180++) {
-                final int i181 = i180 - 1;
-                final int i182 = i180 + 1;
+                int i181 = i180 - 1;
+                int i182 = i180 + 1;
                 mty[i174][i180] = ((mty[i174][i181] + mty[i174][i182]) / 2 + mty[i174][i180]) / 2;
             }
             rot(mtx[i174], mtz[i174], i170, i171, i177, nmv[i174] * 2);
@@ -1535,7 +1537,7 @@ public class Medium {
         }
         for (int i183 = 0; i183 < nmt; i183++) {
             for (int i184 = i183 + 1; i184 < nmt; i184++)
-                if (is[i183] < is[i184]) {
+                if (ais[i183] < ais[i184]) {
                     is173[i183]++;
                 } else {
                     is173[i184]++;
@@ -1544,8 +1546,8 @@ public class Medium {
         }
     }
 
-    static void newpolys(final int i, final int i35, final int i36, final int i37, final int i38) {
-        final Random random = new Random((i38 + cgrnd[0] + cgrnd[1] + cgrnd[2]) * 1671);
+    static void newpolys(int i, int i35, int i36, int i37, int i38) {
+        Random random = new Random((i38 + cgrnd[0] + cgrnd[1] + cgrnd[2]) * 1671);
         nrw = i35 / 1200 + 9;
         ncl = i37 / 1200 + 9;
         sgpx = i - 4800;
@@ -1588,7 +1590,7 @@ public class Medium {
             }
         }
         for (int i43 = 0; i43 < nrw * ncl; i43++) {
-            final float f = (float) (0.3 + 1.6 * random.nextDouble());
+            float f = (float) (0.3 + 1.6 * random.nextDouble());
             ogpx[i43][0] = 0;
             ogpz[i43][0] = (int) ((100.0 + random.nextDouble() * 760.0) * f);
             ogpx[i43][1] = (int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
@@ -1617,7 +1619,7 @@ public class Medium {
                 ogpx[i43][i44] = ((ogpx[i43][i45] + ogpx[i43][i46]) / 2 + ogpx[i43][i44]) / 2;
                 ogpz[i43][i44] = ((ogpz[i43][i45] + ogpz[i43][i46]) / 2 + ogpz[i43][i44]) / 2;
                 pvr[i43][i44] = (float) (1.1 + random.nextDouble() * 0.8);
-                final int i47 = (int) Math.sqrt((int) (ogpx[i43][i44] * ogpx[i43][i44] * pvr[i43][i44] * pvr[i43][i44] + ogpz[i43][i44] * ogpz[i43][i44] * pvr[i43][i44] * pvr[i43][i44]));
+                int i47 = (int) Math.sqrt((int) (ogpx[i43][i44] * ogpx[i43][i44] * pvr[i43][i44] * pvr[i43][i44] + ogpz[i43][i44] * ogpz[i43][i44] * pvr[i43][i44] * pvr[i43][i44]));
                 if (i47 > pmx[i43]) {
                     pmx[i43] = i47;
                 }
@@ -1640,7 +1642,7 @@ public class Medium {
         twn = null;
         nst = 0;
         if (lightson) {
-            final Random random = new Random((long) (HansenRandom.Double() * 100000.0));
+            Random random = new Random((long) (HansenRandom.Double() * 100000.0));
             nst = 40;
             stx = new int[nst];
             stz = new int[nst];
@@ -1713,18 +1715,18 @@ public class Medium {
         return rand[trn] / 10.0F;
     }
 
-    static private void rot(final int[] is, final int[] is274, final int i, final int i275, final int i276, final int i277) {
+    private static void rot(int[] ais, int[] is274, int i, int i275, int i276, int i277) {
         if (i276 != 0) {
             for (int i278 = 0; i278 < i277; i278++) {
-                final int i279 = is[i278];
-                final int i280 = is274[i278];
-                is[i278] = i + (int) ((i279 - i) * cos(i276) - (i280 - i275) * sin(i276));
+                int i279 = ais[i278];
+                int i280 = is274[i278];
+                ais[i278] = i + (int) ((i279 - i) * cos(i276) - (i280 - i275) * sin(i276));
                 is274[i278] = i275 + (int) ((i279 - i) * sin(i276) + (i280 - i275) * cos(i276));
             }
         }
     }
 
-    static void setcloads(final int i, final int i252, final int i253, int i254, int i255) {
+    static void setcloads(int i, int i252, int i253, int i254, int i255) {
         if (i254 < 0) {
             i254 = 0;
         }
@@ -1794,7 +1796,7 @@ public class Medium {
         }
     }
 
-    static void setfade(final int i, final int i268, final int i269) {
+    static void setfade(int i, int i268, int i269) {
         cfade[0] = (int) (i + i * (snap[0] / 100.0F));
         if (cfade[0] > 255) {
             cfade[0] = 255;
@@ -1818,7 +1820,7 @@ public class Medium {
         }
     }
 
-    static void setgrnd(final int i, final int i257, final int i258) {
+    static void setgrnd(int i, int i257, int i258) {
         ogrnd[0] = i;
         ogrnd[1] = i257;
         ogrnd[2] = i258;
@@ -1858,7 +1860,7 @@ public class Medium {
         }
     }
 
-    static void setpolys(final int i, final int i265, final int i266) {
+    static void setpolys(int i, int i265, int i266) {
         cpol[0] = (int) (i + i * (snap[0] / 100.0F));
         if (cpol[0] > 255) {
             cpol[0] = 255;
@@ -1885,7 +1887,7 @@ public class Medium {
         }
     }
 
-    static void setsky(final int i, final int i249, final int i250) {
+    static void setsky(int i, int i249, int i250) {
         osky[0] = i;
         osky[1] = i249;
         osky[2] = i250;
@@ -1920,12 +1922,12 @@ public class Medium {
         if (csky[2] < 0) {
             csky[2] = 0;
         }
-        final float[] fs = new float[3];
+        float[] fs = new float[3];
         Color.RGBtoHSB(csky[0], csky[1], csky[2], fs);
         darksky = fs[2] < 0.6;
     }
 
-    static void setsnap(final int i, final int i247, final int i248) {
+    static void setsnap(int i, int i247, int i248) {
         snap[0] = i;
         snap[1] = i247;
         snap[2] = i248;
@@ -1941,10 +1943,10 @@ public class Medium {
         return tsin[i];
     }
 
-    static void transaround(final ContO conto, final ContO conto18, final int i) {
-        final int i19 = (conto.x * (20 - i) + conto18.x * i) / 20;
-        final int i20 = (conto.y * (20 - i) + conto18.y * i) / 20;
-        final int i21 = (conto.z * (20 - i) + conto18.z * i) / 20;
+    static void transaround(ContO conto, ContO conto18, int i) {
+        int i19 = (conto.x * (20 - i) + conto18.x * i) / 20;
+        int i20 = (conto.y * (20 - i) + conto18.y * i) / 20;
+        int i21 = (conto.z * (20 - i) + conto18.z * i) / 20;
         if (!vert) {
             adv += 2;
         } else {
@@ -1975,13 +1977,13 @@ public class Medium {
         if (i20 - i24 - cy < 0) {
             i23 = -180;
         }
-        final int i25 = (int) Math.sqrt((i21 - z + cz) * (i21 - z + cz) + (i19 - x - cx) * (i19 - x - cx));
-        final int i26 = (int) (90 + i23 - Math.atan((double) i25 / (double) (i20 - i24 - cy)) / 0.017453292519943295);
+        int i25 = (int) Math.sqrt((i21 - z + cz) * (i21 - z + cz) + (i19 - x - cx) * (i19 - x - cx));
+        int i26 = (int) (90 + i23 - Math.atan((double) i25 / (double) (i20 - i24 - cy)) / 0.017453292519943295);
         xz = -vxz + 90;
         zy += (i26 - zy) / 10;
     }
 
-    static void watch(final ContO conto, final int i) {
+    static void watch(ContO conto, int i) {
         if (td) {
             y = (int) (conto.y - 300 - 1100.0F * random());
             x = conto.x + (int) ((conto.x + 400 - conto.x) * cos(i) - (conto.z + 5000 - conto.z) * sin(i));
@@ -1997,8 +1999,8 @@ public class Medium {
         if (conto.y - y - cy < 0) {
             i0 = -180;
         }
-        final int i2 = (int) Math.sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx));
-        final int i3 = (int) (90 + i0 - Math.atan((double) i2 / (double) (conto.y - y - cy)) / 0.017453292519943295);
+        int i2 = (int) Math.sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx));
+        int i3 = (int) (90 + i0 - Math.atan((double) i2 / (double) (conto.y - y - cy)) / 0.017453292519943295);
         for (/**/; i1 < 0; i1 += 360) {
 
         }
@@ -2012,18 +2014,19 @@ public class Medium {
         }
     }
 
-    static private int xs(final int i, int i272) {
+    private static int xs(int i, int i272) {
         if (i272 < cz) {
             i272 = cz;
         }
         return (i272 - focusPoint) * (cx - i) / i272 + i;
     }
 
-    static private int ys(final int i, int i273) {
+    private static int ys(int i, int i273) {
         if (i273 < 10) {
             i273 = 10;
         }
         return (i273 - focusPoint) * (cy - i) / i273 + i;
     }
 }
+
 }

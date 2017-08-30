@@ -1,118 +1,117 @@
+using boolean = System.Boolean;
 namespace Cum
 {
     class Record
     {
-        static final ContO[][]
-        car = new ContO[6][8];
+        static readonly ContO[][] car = new ContO[6,8];
         static int caught = 0;
-        static private final int[] checkpoint = new int[300];
+        private static readonly int[] checkpoint = new int[300];
         static int closefinish = 0;
-        static final int[] cntdest = new int[8];
-        static private int cntf = 50;
-        static final int[] dest = new int[8];
-        static final int[] fix = new int[8];
+        static readonly int[] cntdest = new int[8];
+        private static int cntf = 50;
+        static readonly int[] dest = new int[8];
+        static readonly int[] fix = new int[8];
         static boolean hcaught = false;
-        static private final int[] hcheckpoint = new int[300];
-        static private final int[] hdest =
+        private static readonly int[] hcheckpoint = new int[300];
+        private static readonly int[] hdest =
         {
             -1, -1, -1, -1, -1, -1, -1, -1
         };
 
-        static final int[] hfix =
+        static readonly int[] hfix =
         {
             -1, -1, -1, -1, -1, -1, -1, -1
         };
 
-        static private final boolean[] hlastcheck = new boolean[300];
-        static private final int[][][] hmagx = new int[8][4][7];
-        static private final int[][][] hmagy = new int[8][4][7];
-        static private final int[][][] hmagz = new int[8][4][7];
-        static private final boolean[][]
-        hmtouch = new boolean[8][7];
-        static private final float[][] hrcx = new float[8][200];
-        static private final float[][] hrcy = new float[8][200];
-        static private final float[][] hrcz = new float[8][200];
-        static private final int[][] hrspark = new int[8][200];
-        static private final int[][][] hrx = new int[8][4][7];
-        static private final int[][][] hry = new int[8][4][7];
-        static private final int[][][] hrz = new int[8][4][7];
-        static private final int[][][] hscx = new int[8][20][30];
-        static private final int[][][] hscz = new int[8][20][30];
-        static private final float[][][] hsmag = new float[8][20][30];
-        static private final int[][] hsprk = new int[8][200];
-        static private final int[] hsquash =
+        private static readonly boolean[] hlastcheck = new boolean[300];
+        private static readonly int[,,] hmagx = new int[8,4,7];
+        private static readonly int[,,] hmagy = new int[8,4,7];
+        private static readonly int[,,] hmagz = new int[8,4,7];
+        private static readonly boolean[,] hmtouch = new boolean[8,7];
+        private static readonly float[,] hrcx = new float[8,200];
+        private static readonly float[,] hrcy = new float[8,200];
+        private static readonly float[,] hrcz = new float[8,200];
+        private static readonly int[,] hrspark = new int[8,200];
+        private static readonly int[,,] hrx = new int[8,4,7];
+        private static readonly int[,,] hry = new int[8,4,7];
+        private static readonly int[,,] hrz = new int[8,4,7];
+        private static readonly int[,,] hscx = new int[8,20,30];
+        private static readonly int[,,] hscz = new int[8,20,30];
+        private static readonly float[,,] hsmag = new float[8,20,30];
+        private static readonly int[,] hsprk = new int[8,200];
+        private static readonly int[] hsquash =
         {
             0, 0, 0, 0, 0, 0, 0, 0
         };
 
-        static private final int[][] hsrx = new int[8][200];
-        static private final int[][] hsry = new int[8][200];
-        static private final int[][] hsrz = new int[8][200];
-        static private final int[][][] hsspark = new int[8][20][30];
-        static private final int[][][] hsx = new int[8][20][30];
-        static private final int[][][] hsy = new int[8][20][30];
-        static private final int[][][] hsz = new int[8][20][30];
-        static private final int[][] hwxz = new int[300][8];
-        static private final int[][] hwzy = new int[300][8];
-        static private final int[][] hx = new int[300][8];
-        static private final int[][] hxy = new int[300][8];
-        static private final int[][] hxz = new int[300][8];
-        static private final int[][] hy = new int[300][8];
-        static private final int[][] hz = new int[300][8];
-        static private final int[][] hzy = new int[300][8];
-        static private final boolean[] lastcheck = new boolean[300];
-        static private int lastfr = 0;
-        static private final int[][][] magx = new int[8][4][7];
-        static private final int[][][] magy = new int[8][4][7];
-        static private final int[][][] magz = new int[8][4][7];
-        static private final boolean[][]
-        mtouch = new boolean[8][7];
-        static private final int[] nr = new int[8];
-        static private final int[][] nrx = new int[8][4];
-        static private final int[][] nry = new int[8][4];
-        static private final int[][] nrz = new int[8][4];
-        static private final int[][] ns = new int[8][20];
-        static final ContO[] ocar = new ContO[8];
+        private static readonly int[,] hsrx = new int[8,200];
+        private static readonly int[,] hsry = new int[8,200];
+        private static readonly int[,] hsrz = new int[8,200];
+        private static readonly int[,,] hsspark = new int[8,20,30];
+        private static readonly int[,,] hsx = new int[8,20,30];
+        private static readonly int[,,] hsy = new int[8,20,30];
+        private static readonly int[,,] hsz = new int[8,20,30];
+        private static readonly int[,] hwxz = new int[300,8];
+        private static readonly int[,] hwzy = new int[300,8];
+        private static readonly int[,] hx = new int[300,8];
+        private static readonly int[,] hxy = new int[300,8];
+        private static readonly int[,] hxz = new int[300,8];
+        private static readonly int[,] hy = new int[300,8];
+        private static readonly int[,] hz = new int[300,8];
+        private static readonly int[,] hzy = new int[300,8];
+        private static readonly boolean[] lastcheck = new boolean[300];
+        private static int lastfr = 0;
+        private static readonly int[,,] magx = new int[8,4,7];
+        private static readonly int[,,] magy = new int[8,4,7];
+        private static readonly int[,,] magz = new int[8,4,7];
+        private static readonly boolean[,]
+        mtouch = new boolean[8,7];
+        private static readonly int[] nr = new int[8];
+        private static readonly int[,] nrx = new int[8,4];
+        private static readonly int[,] nry = new int[8,4];
+        private static readonly int[,] nrz = new int[8,4];
+        private static readonly int[,] ns = new int[8,20];
+        static readonly ContO[] ocar = new ContO[8];
         static int powered = 0;
-        static private boolean prepit = true;
-        static private final float[][] rcx = new float[8][200];
-        static private final float[][] rcy = new float[8][200];
-        static private final float[][] rcz = new float[8][200];
-        static private final int[][] rspark = new int[8][200];
-        static private final int[][][] rx = new int[8][4][7];
-        static private final int[][][] ry = new int[8][4][7];
-        static private final int[][][] rz = new int[8][4][7];
-        static private final int[][][] scx = new int[8][20][30];
-        static private final int[][][] scz = new int[8][20][30];
-        static private final float[][][] smag = new float[8][20][30];
-        static private final int[][] sprk = new int[8][200];
-        static private final int[][] squash = new int[6][8];
-        static private final int[][] srx = new int[8][200];
-        static private final int[][] sry = new int[8][200];
-        static private final int[][] srz = new int[8][200];
-        static private final int[][][] sspark = new int[8][20][30];
-        static final ContO[] starcar = new ContO[8];
-        static private final int[][][] sx = new int[8][20][30];
-        static private final int[][][] sy = new int[8][20][30];
-        static private final int[][][] sz = new int[8][20][30];
+        private static boolean prepit = true;
+        private static readonly float[,] rcx = new float[8,200];
+        private static readonly float[,] rcy = new float[8,200];
+        private static readonly float[,] rcz = new float[8,200];
+        private static readonly int[,] rspark = new int[8,200];
+        private static readonly int[,,] rx = new int[8,4,7];
+        private static readonly int[,,] ry = new int[8,4,7];
+        private static readonly int[,,] rz = new int[8,4,7];
+        private static readonly int[,,] scx = new int[8,20,30];
+        private static readonly int[,,] scz = new int[8,20,30];
+        private static readonly float[,,] smag = new float[8,20,30];
+        private static readonly int[,] sprk = new int[8,200];
+        private static readonly int[,] squash = new int[6,8];
+        private static readonly int[,] srx = new int[8,200];
+        private static readonly int[,] sry = new int[8,200];
+        private static readonly int[,] srz = new int[8,200];
+        private static readonly int[,,] sspark = new int[8,20,30];
+        static readonly ContO[] starcar = new ContO[8];
+        private static readonly int[,,] sx = new int[8,20,30];
+        private static readonly int[,,] sy = new int[8,20,30];
+        private static readonly int[,,] sz = new int[8,20,30];
         static int wasted = 0;
         static int whenwasted = 0;
-        static private final int[][] wxz = new int[300][8];
-        static private final int[][] wzy = new int[300][8];
-        static private final int[][] x = new int[300][8];
-        static private final int[][] xy = new int[300][8];
-        static private final int[][] xz = new int[300][8];
-        static private final int[][] y = new int[300][8];
-        static private final int[][] z = new int[300][8];
-        static private final int[][] zy = new int[300][8];
+        private static readonly int[,] wxz = new int[300,8];
+        private static readonly int[,] wzy = new int[300,8];
+        private static readonly int[,] x = new int[300,8];
+        private static readonly int[,] xy = new int[300,8];
+        private static readonly int[,] xz = new int[300,8];
+        private static readonly int[,] y = new int[300,8];
+        private static readonly int[,] z = new int[300,8];
+        private static readonly int[,] zy = new int[300,8];
 
-        Record()
+        internal Record()
         {
             caught = 0;
             cotchinow(0);
         }
 
-        static private void chipx(final int i, float f, final ContO conto, final Mad mad) {
+        private static void chipx(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -142,7 +141,7 @@ namespace Cum
             }
         }
 
-        static private void chipz(final int i, float f, final ContO conto, final Mad mad) {
+        private static void chipz(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -172,7 +171,7 @@ namespace Cum
             }
         }
 
-        static void cotchinow(final int i)
+        static void cotchinow(int i)
         {
             if (caught >= 300)
             {
@@ -250,7 +249,7 @@ namespace Cum
             }
         }
 
-        static void play(final ContO conto, final Mad mad, final int i, final int i30) {
+        static void play(ContO conto, Mad mad, int i, int i30) {
             conto.x = x[i30][i];
             conto.y = y[i30][i];
             conto.z = z[i30][i];
@@ -334,7 +333,7 @@ namespace Cum
             }
         }
 
-        static void playh(final ContO conto, final Mad mad, final int i, final int i38, final int i39) {
+        static void playh(ContO conto, Mad mad, int i, int i38, int i39) {
             conto.x = hx[i38][i];
             conto.y = hy[i38][i];
             conto.z = hz[i38][i];
@@ -429,11 +428,11 @@ namespace Cum
             lastfr = i38;
         }
 
-        static private int py(final int i, final int i74, final int i75, final int i76) {
+        private static int py(int i, int i74, int i75, int i76) {
             return (i - i74) * (i - i74) + (i75 - i76) * (i75 - i76);
         }
 
-        static void rec(final ContO conto, final int i, final int i18, final int i19, final int i20, final int i21) {
+        static void rec(ContO conto, int i, int i18, int i19, int i20, int i21) {
             if (i == i21)
             {
                 caught++;
@@ -551,7 +550,7 @@ namespace Cum
             }
         }
 
-        static void recx(final int i, final float f, final int i48) {
+        static void recx(int i, float f, int i48) {
             rx[i48][i][nry[i48][i]] = 300;
             magx[i48][i][nry[i48][i]] = (int) f;
             nrx[i48][i]++;
@@ -561,10 +560,10 @@ namespace Cum
             }
         }
 
-        static void recy(final int i, final float f, final boolean bool, final int i47) {
+        static void recy(int i, float f, boolean abool, int i47) {
             ry[i47][i][nry[i47][i]] = 300;
             magy[i47][i][nry[i47][i]] = (int) f;
-            mtouch[i47][nry[i47][i]] = bool;
+            mtouch[i47][nry[i47][i]] = abool;
             nry[i47][i]++;
             if (nry[i47][i] == 7)
             {
@@ -572,7 +571,7 @@ namespace Cum
             }
         }
 
-        static void recz(final int i, final float f, final int i49) {
+        static void recz(int i, float f, int i49) {
             rz[i49][i][nry[i49][i]] = 300;
             magz[i49][i][nry[i49][i]] = (int) f;
             nrz[i49][i]++;
@@ -582,7 +581,7 @@ namespace Cum
             }
         }
 
-        static private void regx(final int i, float f, final ContO conto, final Mad mad) {
+        private static void regx(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -648,7 +647,7 @@ namespace Cum
                             }
                             conto.p[i62].bfase += Math.abs(f63);
                             new Color(conto.p[i62].c[0], conto.p[i62].c[1], conto.p[i62].c[2]);
-                            final Color color = Color.getHSBColor(conto.p[i62].hsb[0], conto.p[i62].hsb[1],
+                            Color color = Color.getHSBColor(conto.p[i62].hsb[0], conto.p[i62].hsb[1],
                                 conto.p[i62].hsb[2]);
                             conto.p[i62].c[0] = color.getRed();
                             conto.p[i62].c[1] = color.getGreen();
@@ -663,7 +662,7 @@ namespace Cum
             }
         }
 
-        static private void regy(final int i, float f, final boolean bool, final ContO conto, final Mad mad) {
+        private static void regy(int i, float f, boolean abool, ContO conto, Mad mad) {
             if (f > 100.0F)
             {
                 f -= 100.0F;
@@ -703,7 +702,7 @@ namespace Cum
                 {
                     i51 = 1;
                 }
-                if (i51 * i50 == 0 || bool)
+                if (i51 * i50 == 0 || abool)
                 {
                     for (int i54 = 0; i54 < conto.npl; i54++)
                     {
@@ -760,7 +759,7 @@ namespace Cum
                                 }
                                 conto.p[i54].bfase += f55;
                                 new Color(conto.p[i54].c[0], conto.p[i54].c[1], conto.p[i54].c[2]);
-                                final Color color = Color.getHSBColor(conto.p[i54].hsb[0], conto.p[i54].hsb[1],
+                                Color color = Color.getHSBColor(conto.p[i54].hsb[0], conto.p[i54].hsb[1],
                                     conto.p[i54].hsb[2]);
                                 conto.p[i54].c[0] = color.getRed();
                                 conto.p[i54].c[1] = color.getGreen();
@@ -813,7 +812,7 @@ namespace Cum
             }
         }
 
-        static private void regz(final int i, float f, final ContO conto, final Mad mad) {
+        private static void regz(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -879,7 +878,7 @@ namespace Cum
                             }
                             conto.p[i65].bfase += Math.abs(f66);
                             new Color(conto.p[i65].c[0], conto.p[i65].c[1], conto.p[i65].c[2]);
-                            final Color color = Color.getHSBColor(conto.p[i65].hsb[0], conto.p[i65].hsb[1],
+                            Color color = Color.getHSBColor(conto.p[i65].hsb[0], conto.p[i65].hsb[1],
                                 conto.p[i65].hsb[2]);
                             conto.p[i65].c[0] = color.getRed();
                             conto.p[i65].c[1] = color.getGreen();
@@ -894,7 +893,7 @@ namespace Cum
             }
         }
 
-        static void reset(final ContO[] contos)
+        static void reset(ContO[] contos)
         {
             caught = 0;
             hcaught = false;

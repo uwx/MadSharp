@@ -44,14 +44,14 @@ namespace Cum
                 {
                     final int i5 = sx + i3 * 3000 + 1500;
                     final int i6 = sz + i4 * 3000 + 1500;
-                    final int[] is  = new int[6700];
+                    final int[] ais  = new int[6700];
                     int i7 = 0;
                     for (int i8 = 0; i8 < nt; i8++)
                     {
                         final int i9 = py(i5, x[i8], i6, z[i8]);
                         if (i9 < 20250000 && i9 > 0 && dam[i8] != 167)
                         {
-                            is[i7] = i8;
+                            ais[i7] = i8;
                             i7++;
                         }
                     }
@@ -60,17 +60,17 @@ namespace Cum
                         for (int i10 = 0; i10 < nt; i10++)
                             if (dam[i10] == 167)
                             {
-                                is[i7] = i10;
+                                ais[i7] = i10;
                                 i7++;
                             }
                     }
                     if (i7 == 0)
                     {
-                        is[i7] = 0;
+                        ais[i7] = 0;
                         i7++;
                     }
                     sect[i3][i4] = new int[i7];
-                    HansenSystem.ArrayCopy( is, 0, sect[i3][i4], 0, i7);
+                    HansenSystem.ArrayCopy( ais, 0, sect[i3][i4], 0, i7);
                 }
             }
             for (int i12 = 0; i12 < nt; i12++)

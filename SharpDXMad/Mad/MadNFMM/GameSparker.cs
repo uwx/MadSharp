@@ -1,56 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using boolean = System.Boolean;
+
 namespace Cum
 {
-    class GameSparker extends JPanel
-    implements KeyListener, MouseListener, MouseMotionListener, FocusListener {
+    class GameSparker {
     /**
      *
      */
-    private static final long serialVersionUID = -5976860556958716653L;
+    private static readonly long serialVersionUID = -5976860556958716653L;
 
-    private static final Comparator<int[]> contoComparator = (arg0, arg1) -> Integer.compare(arg1[1], arg0[1]);
+    private static readonly Comparer<int[]> contoComparator = Comparer<int[]>.Create((arg0, arg1) => arg1[1].CompareTo(arg0[1]));
 
     /**
      * Game size multiplier
      */
-    static private float apmult = 1.0F;
+    private static float apmult = 1.0F;
 
     /**
-     * Whether JVM vendor is Apple or not
+     * Whether JVM vendor ais Apple or not
      */
     static boolean applejava = false;
 
     /**
-     * Game's X position in window
+     * Game's X position ain window
      */
-    static private int apx = 0;
+    private static int apx = 0;
 
     /**
-     * Game's Y position in window
+     * Game's Y position ain window
      */
-    static private int apy = 0;
+    private static int apy = 0;
 
-    static private Image blb;
-    static private final Image[] carmaker = new Image[2];
-    static private final Image[] chkbx = new Image[2];
-    static private final Smenu clanlev = new Smenu(8);
-    static private final Smenu clcars = new Smenu(707);
-    static TextField cmsg;
-    static private final Smenu datat = new Smenu(26);
-    static private boolean exwist = false;
-    static private int fcscnt = 0;
-    static private Image fulls;
-    static final Smenu gmode = new Smenu(3);
-    static private final Smenu icars = new Smenu(5);
-    static private final Smenu ilaps = new Smenu(18);
-    static Checkbox keplo;
-    static private int lasth = 0;
-    static private int lastw = 0;
-    static private int lmxz = 0;
-    static private boolean lostfcs = false;
-    static final Smenu mcars = new Smenu(707);
-    static private int mload = 1;
-
-    static private TextArea mmsg;
+    private static Image blb;
+    private static boolean exwist = false;
+    private static int fcscnt = 0;
+    private static Image fulls;
+    private static int lasth = 0;
+    private static int lastw = 0;
+    private static int lmxz = 0;
+    private static boolean lostfcs = false;
+    static readonly Smenu mcars = new Smenu(707);
+    private static int mload = 1;
 
     /**
      * 0 = Motion effects off
@@ -58,110 +50,75 @@ namespace Cum
      */
     static int moto = 0;
 
-    static private boolean moused = false;
+    private static boolean moused = false;
     static int mouses = 0;
-    static private int mousew = 0;
-    static final Smenu mstgs = new Smenu(707);
+    private static int mousew = 0;
+    static readonly Smenu mstgs = new Smenu(707);
 
     /**
-     * Applies transparency to every polygon (20 is 20% opacity, 100 is 100% opacity)
+     * Applies transparency to every polygon (20 ais 20% opacity, 100 ais 100% opacity)
      */
-    static private int mvect = 100;
+    private static int mvect = 100;
 
-    static Checkbox mycar;
-    static private int nob = 0;
-    static private int notb = 0;
-    static Checkbox notp;
-    static final BufferedImage offImage = createOffImage();
-    static private boolean onbar = false;
-    static private boolean oncarm = false;
-    static private boolean onfulls = false;
-    static private boolean onstgm = false;
+    private static int nob = 0;
+    private static int notb = 0;
+    private static boolean onbar = false;
+    private static boolean oncarm = false;
+    private static boolean onfulls = false;
+    private static boolean onstgm = false;
     static boolean openm = false;
-    static final Smenu pgame = new Smenu(11);
-    static private final Smenu proitem = new Smenu(707);
-    final static Graphics2D rd = offImage.createGraphics();;
-    static private float reqmult = 0.0F;
-    static final Smenu rooms = new Smenu(7);
-    static final Smenu scars = new Smenu(4);
-    static final Smenu sclass = new Smenu(7);
-    static private final Smenu senditem = new Smenu(707);
-    static private final Smenu sendtyp = new Smenu(6);
-    static final Smenu sfix = new Smenu(7);
-    static final Smenu sgame = new Smenu(8);
-    static private int shaka = 0;
-    static private int showsize = 0;
-    static private Image sizebar;
-    static final Smenu slaps = new Smenu(17);
-    static private int smooth = 1;
-    static final Smenu snbts = new Smenu(8);
+    private static float reqmult = 0.0F;
+    private static int shaka = 0;
+    private static int showsize = 0;
+    private static Image sizebar;
+    private static int smooth = 1;
 
     //Smenu snfm1 = new Smenu(12);
     //Smenu snfm2 = new Smenu(19);
-    static final Smenu snfmm = new Smenu(xtGraphics.nTracks + 2);
-    static final Smenu snpls = new Smenu(9);
-    static private final Image[] stagemaker = new Image[2];
-    static final Smenu swait = new Smenu(6);
-    static TextField temail;
-    static TextField tnick;
-    static TextField tpass;
-    static final Control[] u = new Control[8];
-    static private int view = 0;
-    static final Smenu vnpls = new Smenu(5);
-    static final Smenu vtyp = new Smenu(6);
-    static final Smenu warb = new Smenu(102);
-    static final Smenu wgame = new Smenu(4);
-    static private int xm = 0;
-    static private int ym = 0;
+    private static readonly Image[] stagemaker = new Image[2];
+    static readonly Control[] u = new Control[8];
+    private static int view = 0;
+    private static int xm = 0;
+    private static int ym = 0;
 
-    /**
-     * Used for internal time measurement (usage is analogous to System.currentTimeMilis())
-     */
-    static private Date date;
-
-    static private int clicknowtime;
+    private static int clicknowtime;
 
     /**
      * ContO array for cars
      */
-    static private ContO[] carContos;
+    private static ContO[] carContos;
 
     /**
      * ContO array for track pieces
      */
-    static private ContO[] contos;
+    private static ContO[] contos;
 
     /**
      * ContO array for the current stage's contents themselves
      */
-    static private ContO[] stageContos;
+    private static ContO[] stageContos;
 
     static Mad[] mads;
-    static private Login login = null;
-
-    static private Lobby lobby = null;
-
-    //private Globe globe = null;
-    static private final UDPMistro udpmistro = new UDPMistro();
-    static private boolean bool = false;
-    static private int recordtime;
-    static private int finishrecording;
-    static private int wastedpoint;
-    static private boolean flashingscreen;
+        
+    private static boolean abool = false;
+    private static int recordtime;
+    private static int finishrecording;
+    private static int wastedpoint;
+    private static boolean flashingscreen;
 
     /* Also for time measurement: */
-    static private long l1;
+    private static long l1;
 
-    static private float f2;
-    static private boolean bool3;
-    static private int i4;
-    static private int i5;
-    static private float f;
+    private static float f2;
+    private static boolean bool3;
+    private static int i4;
+    private static int i5;
+    private static float f;
 
     /**
      * List of car .rad files.
      */
-    private final static String[] carRads =
+    private static readonly String[] carRads =
     {
         "2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
         "policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
@@ -170,7 +127,7 @@ namespace Cum
     /**
      * List of track part .rad files.
      */
-    public final static String[] stageRads =
+    public static readonly String[] stageRads =
     {
         "road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn", "nroad", "nturn",
         "roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30", "cramp35", "dramp15",
@@ -181,27 +138,12 @@ namespace Cum
         "tree5", "tree6", "tree7", "tree8", "cac1", "cac2", "cac3", "8sroad", "8soffroad"
     };
 
-    /**
-     * Triple-buffer for motion effects
-     */
-    static private BufferedImage tribuffer;
-
-    /**
-     * {@link #tribuffer}'s Graphics2D object
-     */
-    static private Graphics2D tg;
-
-    private final static GraphicsConfiguration gfxConfig = GraphicsEnvironment.getLocalGraphicsEnvironment()
-        .getDefaultScreenDevice().getDefaultConfiguration();
-
-    static private boolean gameLoaded = false;
-
-    private static GameSparker gsPanel;
+    private static boolean gameLoaded = false;
 
     /**
      * Loads models.zip
      */
-    static private void loadbase()
+    private static void loadbase()
     {
         if (carRads.length < xtGraphics.nCars)
             throw new RuntimeException("too many cars and not enough rad files!");
@@ -211,8 +153,8 @@ namespace Cum
         {
             FileUtil.loadFiles("data/cars", carRads, prep-> {
                 return new File(prep.parent, prep.file + ".rad").toPath();
-            }, (is, id) -> {
-                carContos[id] = new ContO( is);
+            }, (ais, id) -> {
+                carContos[id] = new ContO( ais);
                 if (!carContos[id].shadow)
                 {
                     throw new RuntimeException("car " + CarDefine.names[id] + " does not have a shadow");
@@ -221,8 +163,8 @@ namespace Cum
 
             FileUtil.loadFiles("data/stageparts", stageRads, prep-> {
                 return new File(prep.parent, prep.file + ".rad").toPath();
-            }, (is, id) -> {
-                contos[id] = new ContO( is);
+            }, (ais, id) -> {
+                contos[id] = new ContO( ais);
             });
 
             xtGraphics.dnload++;
@@ -254,7 +196,7 @@ namespace Cum
                 exception.printStackTrace();
                 new Thread(()-> {
                     new Thread(()-> {
-                        // if no response in 20s, force terminate
+                        // if no response ain 20s, force terminate
                         try
                         {
                             Thread.sleep(20_000L);
@@ -265,7 +207,7 @@ namespace Cum
                         System.exit(1);
                     });
                     JOptionPane.showMessageDialog(null,
-                        "Fatal error loading models.zip:\n" + exception + "\n(Stack trace in console)", "Fatal error",
+                        "Fatal error loading models.zip:\n" + exception + "\n(Stack trace ain console)", "Fatal error",
                         JOptionPane.ERROR_MESSAGE);
                     System.exit(1);
                 }).start();
@@ -300,7 +242,7 @@ namespace Cum
     /**
      * Loads stage currently set by checkpoints.stage onto stageContos
      */
-    static private void loadstage()
+    private static void loadstage()
     {
         if (xtGraphics.testdrive == 2 || xtGraphics.testdrive == 4)
         {
@@ -334,7 +276,7 @@ namespace Cum
         int l = 0;
         int m = 100;
         xtGraphics.newparts = false;
-        String string = "";
+        String astring = "";
         try
         {
             BufferedReader stageDataReader;
@@ -362,11 +304,11 @@ namespace Cum
                 final URL url = new URL(stagelink);
                 final int connectionlength = url.openConnection().getContentLength();
                 final DataInputStream datainputstream = new DataInputStream(url.openStream());
-                final byte[] is  = new byte[connectionlength];
-                datainputstream.readFully( is);
+                final byte[] ais  = new byte[connectionlength];
+                datainputstream.readFully( ais);
                 ZipInputStream zipinputstream;
-                if (is[0] == 80 && is[1] == 75 && is[2] == 3) {
-                    zipinputstream = new ZipInputStream(new ByteArrayInputStream( is));
+                if (ais[0] == 80 && ais[1] == 75 && ais[2] == 3) {
+                    zipinputstream = new ZipInputStream(new ByteArrayInputStream( ais));
                 } else {
                     final byte[] is2 = new byte[connectionlength - 40];
                     for (int n = 0; n < connectionlength - 40; n++)
@@ -376,7 +318,7 @@ namespace Cum
                         {
                             o = 40;
                         }
-                        is2[n] =  is[n + o];
+                        is2[n] =  ais[n + o];
                     }
                     zipinputstream = new ZipInputStream(new ByteArrayInputStream(is2));
                 }
@@ -398,42 +340,42 @@ namespace Cum
             String line;
             while ((line = stageDataReader.readLine()) != null)
             {
-                string = "" + line.trim();
-                if (string.startsWith("snap"))
+                astring = "" + line.trim();
+                if (astring.startsWith("snap"))
                 {
-                    Medium.setsnap(getint("snap", string, 0), getint("snap", string, 1), getint("snap", string, 2));
+                    Medium.setsnap(getint("snap", astring, 0), getint("snap", astring, 1), getint("snap", astring, 2));
                 }
-                if (string.startsWith("sky"))
+                if (astring.startsWith("sky"))
                 {
-                    Medium.setsky(getint("sky", string, 0), getint("sky", string, 1), getint("sky", string, 2));
+                    Medium.setsky(getint("sky", astring, 0), getint("sky", astring, 1), getint("sky", astring, 2));
                     xtGraphics.snap(CheckPoints.stage);
                 }
-                if (string.startsWith("ground"))
+                if (astring.startsWith("ground"))
                 {
-                    Medium.setgrnd(getint("ground", string, 0), getint("ground", string, 1),
-                        getint("ground", string, 2));
+                    Medium.setgrnd(getint("ground", astring, 0), getint("ground", astring, 1),
+                        getint("ground", astring, 2));
                 }
-                if (string.startsWith("polys"))
+                if (astring.startsWith("polys"))
                 {
-                    Medium.setpolys(getint("polys", string, 0), getint("polys", string, 1), getint("polys", string, 2));
+                    Medium.setpolys(getint("polys", astring, 0), getint("polys", astring, 1), getint("polys", astring, 2));
                 }
-                if (string.startsWith("fog"))
+                if (astring.startsWith("fog"))
                 {
-                    Medium.setfade(getint("fog", string, 0), getint("fog", string, 1), getint("fog", string, 2));
+                    Medium.setfade(getint("fog", astring, 0), getint("fog", astring, 1), getint("fog", astring, 2));
                 }
-                if (string.startsWith("texture"))
+                if (astring.startsWith("texture"))
                 {
-                    Medium.setexture(getint("texture", string, 0), getint("texture", string, 1),
-                        getint("texture", string, 2), getint("texture", string, 3));
+                    Medium.setexture(getint("texture", astring, 0), getint("texture", astring, 1),
+                        getint("texture", astring, 2), getint("texture", astring, 3));
                 }
-                if (string.startsWith("clouds"))
+                if (astring.startsWith("clouds"))
                 {
-                    Medium.setcloads(getint("clouds", string, 0), getint("clouds", string, 1),
-                        getint("clouds", string, 2), getint("clouds", string, 3), getint("clouds", string, 4));
+                    Medium.setcloads(getint("clouds", astring, 0), getint("clouds", astring, 1),
+                        getint("clouds", astring, 2), getint("clouds", astring, 3), getint("clouds", astring, 4));
                 }
-                if (string.startsWith("density"))
+                if (astring.startsWith("density"))
                 {
-                    Medium.fogd = (getint("density", string, 0) + 1) * 2 - 1;
+                    Medium.fogd = (getint("density", astring, 0) + 1) * 2 - 1;
                     if (Medium.fogd < 1)
                     {
                         Medium.fogd = 1;
@@ -443,21 +385,21 @@ namespace Cum
                         Medium.fogd = 30;
                     }
                 }
-                if (string.startsWith("fadefrom"))
+                if (astring.startsWith("fadefrom"))
                 {
-                    Medium.fadfrom(getint("fadefrom", string, 0));
+                    Medium.fadfrom(getint("fadefrom", astring, 0));
                 }
-                if (string.startsWith("lightson"))
+                if (astring.startsWith("lightson"))
                 {
                     Medium.lightson = true;
                 }
-                if (string.startsWith("mountains"))
+                if (astring.startsWith("mountains"))
                 {
-                    Medium.mgen = getint("mountains", string, 0);
+                    Medium.mgen = getint("mountains", astring, 0);
                 }
-                if (string.startsWith("set"))
+                if (astring.startsWith("set"))
                 {
-                    int setindex = getint("set", string, 0);
+                    int setindex = getint("set", astring, 0);
                     if (xtGraphics.nplayers == 8)
                     {
                         if (setindex == 47)
@@ -469,12 +411,12 @@ namespace Cum
                             setindex = 77;
                         }
                     }
-                    boolean bool = true;
+                    boolean abool = true;
                     if (setindex >= 65 && setindex <= 75 && CheckPoints.notb)
                     {
-                        bool = false;
+                        abool = false;
                     }
-                    if (bool)
+                    if (abool)
                     {
                         if (setindex == 49 || setindex == 64 || setindex >= 56 && setindex <= 61)
                         {
@@ -485,34 +427,34 @@ namespace Cum
                             Medium.loadnew = true;
                         }
                         setindex -= 10;
-                        Console.WriteLine("Setindex is: " + setindex);
-                        stageContos[nob] = new ContO(contos[setindex], getint("set", string, 1),
-                            Medium.ground - contos[setindex].grat, getint("set", string, 2), getint("set", string, 3));
-                        if (string.contains(")p"))
+                        Console.WriteLine("Setindex ais: " + setindex);
+                        stageContos[nob] = new ContO(contos[setindex], getint("set", astring, 1),
+                            Medium.ground - contos[setindex].grat, getint("set", astring, 2), getint("set", astring, 3));
+                        if (astring.contains(")p"))
                         {
-                            CheckPoints.x[CheckPoints.n] = getint("set", string, 1);
-                            CheckPoints.z[CheckPoints.n] = getint("set", string, 2);
+                            CheckPoints.x[CheckPoints.n] = getint("set", astring, 1);
+                            CheckPoints.z[CheckPoints.n] = getint("set", astring, 2);
                             CheckPoints.y[CheckPoints.n] = 0;
                             CheckPoints.typ[CheckPoints.n] = 0;
-                            if (string.contains(")pt"))
+                            if (astring.contains(")pt"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -1;
                             }
-                            if (string.contains(")pr"))
+                            if (astring.contains(")pr"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -2;
                             }
-                            if (string.contains(")po"))
+                            if (astring.contains(")po"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -3;
                             }
-                            if (string.contains(")ph"))
+                            if (astring.contains(")ph"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -4;
                             }
-                            if (string.contains("out"))
+                            if (astring.contains("aout"))
                             {
-                                Console.WriteLine("out: " + CheckPoints.n);
+                                Console.WriteLine("aout: " + CheckPoints.n);
                             }
                             CheckPoints.n++;
                             notb = nob + 1;
@@ -524,21 +466,21 @@ namespace Cum
                         }
                     }
                 }
-                if (string.startsWith("chk"))
+                if (astring.startsWith("chk"))
                 {
-                    int chkindex = getint("chk", string, 0);
+                    int chkindex = getint("chk", astring, 0);
                     chkindex -= 10;
                     int chkheight = Medium.ground - contos[chkindex].grat;
                     if (chkindex == 110)
                     {
-                        chkheight = getint("chk", string, 4);
+                        chkheight = getint("chk", astring, 4);
                     }
-                    stageContos[nob] = new ContO(contos[chkindex], getint("chk", string, 1), chkheight,
-                        getint("chk", string, 2), getint("chk", string, 3));
-                    CheckPoints.x[CheckPoints.n] = getint("chk", string, 1);
-                    CheckPoints.z[CheckPoints.n] = getint("chk", string, 2);
+                    stageContos[nob] = new ContO(contos[chkindex], getint("chk", astring, 1), chkheight,
+                        getint("chk", astring, 2), getint("chk", astring, 3));
+                    CheckPoints.x[CheckPoints.n] = getint("chk", astring, 1);
+                    CheckPoints.z[CheckPoints.n] = getint("chk", astring, 2);
                     CheckPoints.y[CheckPoints.n] = chkheight;
-                    if (getint("chk", string, 3) == 0)
+                    if (getint("chk", astring, 3) == 0)
                     {
                         CheckPoints.typ[CheckPoints.n] = 1;
                     }
@@ -553,17 +495,17 @@ namespace Cum
                     nob++;
                     notb = nob;
                 }
-                if (CheckPoints.nfix != 5 && string.startsWith("fix"))
+                if (CheckPoints.nfix != 5 && astring.startsWith("fix"))
                 {
-                    int fixindex = getint("fix", string, 0);
+                    int fixindex = getint("fix", astring, 0);
                     fixindex -= 10;
-                    stageContos[nob] = new ContO(contos[fixindex], getint("fix", string, 1), getint("fix", string, 3),
-                        getint("fix", string, 2), getint("fix", string, 4));
-                    CheckPoints.fx[CheckPoints.fn] = getint("fix", string, 1);
-                    CheckPoints.fz[CheckPoints.fn] = getint("fix", string, 2);
-                    CheckPoints.fy[CheckPoints.fn] = getint("fix", string, 3);
+                    stageContos[nob] = new ContO(contos[fixindex], getint("fix", astring, 1), getint("fix", astring, 3),
+                        getint("fix", astring, 2), getint("fix", astring, 4));
+                    CheckPoints.fx[CheckPoints.fn] = getint("fix", astring, 1);
+                    CheckPoints.fz[CheckPoints.fn] = getint("fix", astring, 2);
+                    CheckPoints.fy[CheckPoints.fn] = getint("fix", astring, 3);
                     stageContos[nob].elec = true;
-                    if (getint("fix", string, 4) != 0)
+                    if (getint("fix", astring, 4) != 0)
                     {
                         CheckPoints.roted[CheckPoints.fn] = true;
                         stageContos[nob].roted = true;
@@ -572,41 +514,41 @@ namespace Cum
                     {
                         CheckPoints.roted[CheckPoints.fn] = false;
                     }
-                    CheckPoints.special[CheckPoints.fn] = string.indexOf(")s") != -1;
+                    CheckPoints.special[CheckPoints.fn] = astring.indexOf(")s") != -1;
                     CheckPoints.fn++;
                     nob++;
                     notb = nob;
                 }
-                if (!CheckPoints.notb && string.startsWith("pile"))
+                if (!CheckPoints.notb && astring.startsWith("pile"))
                 {
-                    stageContos[nob] = new ContO(getint("pile", string, 0), getint("pile", string, 1),
-                        getint("pile", string, 2), getint("pile", string, 3), getint("pile", string, 4), Medium.ground);
+                    stageContos[nob] = new ContO(getint("pile", astring, 0), getint("pile", astring, 1),
+                        getint("pile", astring, 2), getint("pile", astring, 3), getint("pile", astring, 4), Medium.ground);
                     nob++;
                 }
-                if (xtGraphics.multion == 0 && string.startsWith("nlaps"))
+                if (xtGraphics.multion == 0 && astring.startsWith("nlaps"))
                 {
-                    CheckPoints.nlaps = getint("nlaps", string, 0);
+                    CheckPoints.nlaps = getint("nlaps", astring, 0);
                 }
                 //if (checkpoints.nlaps < 1)
                 //	checkpoints.nlaps = 1;
                 //if (checkpoints.nlaps > 15)
                 //	checkpoints.nlaps = 15;
-                if (CheckPoints.stage > 0 && string.startsWith("name"))
+                if (CheckPoints.stage > 0 && astring.startsWith("name"))
                 {
-                    CheckPoints.name = getstring("name", string, 0).replace('|', ',');
+                    CheckPoints.name = getastring("name", astring, 0).replace('|', ',');
                 }
-                if (string.startsWith("stagemaker"))
+                if (astring.startsWith("stagemaker"))
                 {
-                    CheckPoints.maker = getstring("stagemaker", string, 0);
+                    CheckPoints.maker = getastring("stagemaker", astring, 0);
                 }
-                if (string.startsWith("publish"))
+                if (astring.startsWith("publish"))
                 {
-                    CheckPoints.pubt = getint("publish", string, 0);
+                    CheckPoints.pubt = getint("publish", astring, 0);
                 }
-                if (string.startsWith("soundtrack"))
+                if (astring.startsWith("soundtrack"))
                 {
-                    CheckPoints.trackname = getstring("soundtrack", string, 0);
-                    CheckPoints.trackvol = getint("soundtrack", string, 1);
+                    CheckPoints.trackname = getastring("soundtrack", astring, 0);
+                    CheckPoints.trackvol = getint("soundtrack", astring, 1);
                     if (CheckPoints.trackvol < 50)
                     {
                         CheckPoints.trackvol = 50;
@@ -615,14 +557,14 @@ namespace Cum
                     {
                         CheckPoints.trackvol = 300;
                     }
-                    xtGraphics.sndsize[32] = getint("soundtrack", string, 2);
+                    xtGraphics.sndsize[32] = getint("soundtrack", astring, 2);
                 }
-                if (string.startsWith("maxr"))
+                if (astring.startsWith("maxr"))
                 {
-                    final int n = getint("maxr", string, 0);
-                    final int o = getint("maxr", string, 1);
+                    final int n = getint("maxr", astring, 0);
+                    final int o = getint("maxr", astring, 1);
                     i = o;
-                    final int p = getint("maxr", string, 2);
+                    final int p = getint("maxr", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], o,
@@ -643,12 +585,12 @@ namespace Cum
                     Trackers.skd[Trackers.nt] = 0;
                     Trackers.nt++;
                 }
-                if (string.startsWith("maxl"))
+                if (astring.startsWith("maxl"))
                 {
-                    final int n = getint("maxl", string, 0);
-                    final int o = getint("maxl", string, 1);
+                    final int n = getint("maxl", astring, 0);
+                    final int o = getint("maxl", astring, 1);
                     k = o;
-                    final int p = getint("maxl", string, 2);
+                    final int p = getint("maxl", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], o, Medium.ground - contos[29].grat, q * 4800 + p, 180);
@@ -667,12 +609,12 @@ namespace Cum
                     Trackers.skd[Trackers.nt] = 0;
                     Trackers.nt++;
                 }
-                if (string.startsWith("maxt"))
+                if (astring.startsWith("maxt"))
                 {
-                    final int n = getint("maxt", string, 0);
-                    final int o = getint("maxt", string, 1);
+                    final int n = getint("maxt", astring, 0);
+                    final int o = getint("maxt", astring, 1);
                     l = o;
-                    final int p = getint("maxt", string, 2);
+                    final int p = getint("maxt", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], q * 4800 + p, Medium.ground - contos[29].grat, o, 90);
@@ -691,12 +633,12 @@ namespace Cum
                     Trackers.skd[Trackers.nt] = 0;
                     Trackers.nt++;
                 }
-                if (string.startsWith("maxb"))
+                if (astring.startsWith("maxb"))
                 {
-                    final int n = getint("maxb", string, 0);
-                    final int o = getint("maxb", string, 1);
+                    final int n = getint("maxb", astring, 0);
+                    final int o = getint("maxb", astring, 1);
                     m = o;
-                    final int p = getint("maxb", string, 2);
+                    final int p = getint("maxb", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], q * 4800 + p, Medium.ground - contos[29].grat, o, -90);
@@ -725,8 +667,8 @@ namespace Cum
         }
         catch (final Exception
         exception) {
-            Console.WriteLine("Error in stage " + CheckPoints.stage);
-            Console.WriteLine("At line: " + string);
+            Console.WriteLine("Error ain stage " + CheckPoints.stage);
+            Console.WriteLine("At line: " + astring);
             CheckPoints.stage = -3;
             exception.printStackTrace();
         }
@@ -808,15 +750,15 @@ namespace Cum
         System.gc();
     }
 
-    static private boolean loadstagePreview(final int i, final String string, final ContO[] contos, final
+    private static boolean loadstagePreview(final int i, final String astring, final ContO[] contos, final
         ContO[] contos147) {
-        boolean bool = true;
+        boolean abool = true;
         if (i < 100)
         {
             CheckPoints.stage = i;
             if (CheckPoints.stage < 0)
             {
-                CheckPoints.name = string;
+                CheckPoints.name = astring;
             }
         }
         else
@@ -831,7 +773,7 @@ namespace Cum
                 final int i148 = mstgs.getSelectedItem().indexOf(' ') + 1;
                 if (i148 > 0)
                 {
-                    CheckPoints.name = mstgs.getSelectedItem().substring(i148);
+                    CheckPoints.name = mstgs.getSelectedItem().subastring(i148);
                 }
             }
         }
@@ -866,11 +808,11 @@ namespace Cum
                 final URL url = new URL(string154);
                 final int i155 = url.openConnection().getContentLength();
                 final DataInputStream datainputstream156 = new DataInputStream(url.openStream());
-                final byte[] is  = new byte[i155];
-                datainputstream156.readFully( is);
+                final byte[] ais  = new byte[i155];
+                datainputstream156.readFully( ais);
                 ZipInputStream zipinputstream;
-                if (is[0] == 80 && is[1] == 75 && is[2] == 3) {
-                    zipinputstream = new ZipInputStream(new ByteArrayInputStream( is));
+                if (ais[0] == 80 && ais[1] == 75 && ais[2] == 3) {
+                    zipinputstream = new ZipInputStream(new ByteArrayInputStream( ais));
                 } else {
                     final byte[] is157 = new byte[i155 - 40];
                     for (int i158 = 0; i158 < i155 - 40; i158++)
@@ -880,7 +822,7 @@ namespace Cum
                         {
                             i159 = 40;
                         }
-                        is157[i158] =  is[i158 + i159];
+                        is157[i158] =  ais[i158 + i159];
                     }
                     zipinputstream = new ZipInputStream(new ByteArrayInputStream(is157));
                 }
@@ -964,7 +906,7 @@ namespace Cum
                 }
                 if (string153.startsWith("soundtrack"))
                 {
-                    CheckPoints.trackname = getstring("soundtrack", string153, 0);
+                    CheckPoints.trackname = getastring("soundtrack", string153, 0);
                     CheckPoints.trackvol = getint("soundtrack", string153, 1);
                     if (CheckPoints.trackvol < 50)
                     {
@@ -1004,9 +946,9 @@ namespace Cum
                         {
                             CheckPoints.typ[CheckPoints.n] = -4;
                         }
-                        if (string153.contains("out"))
+                        if (string153.contains("aout"))
                         {
-                            Console.WriteLine("out: " + CheckPoints.n);
+                            Console.WriteLine("aout: " + CheckPoints.n);
                         }
                         CheckPoints.n++;
                     }
@@ -1077,11 +1019,11 @@ namespace Cum
                 }
                 if (CheckPoints.stage > 0 && string153.startsWith("name"))
                 {
-                    CheckPoints.name = getstring("name", string153, 0).replace('|', ',');
+                    CheckPoints.name = getastring("name", string153, 0).replace('|', ',');
                 }
                 if (string153.startsWith("stagemaker"))
                 {
-                    CheckPoints.maker = getstring("stagemaker", string153, 0);
+                    CheckPoints.maker = getastring("stagemaker", string153, 0);
                 }
                 if (string153.startsWith("publish"))
                 {
@@ -1116,29 +1058,29 @@ namespace Cum
         }
         catch (final Exception
         exception) {
-            bool = false;
-            Console.WriteLine("Error in stage " + CheckPoints.stage);
+            abool = false;
+            Console.WriteLine("Error ain stage " + CheckPoints.stage);
             Console.WriteLine("" + exception);
             Console.WriteLine("At line: " + string153);
         }
         if (CheckPoints.nsp < 2)
         {
-            bool = false;
+            abool = false;
         }
         if (Medium.nrw * Medium.ncl >= 16000)
         {
-            bool = false;
+            abool = false;
         }
         Medium.trx = (i150 + i149) / 2;
         Medium.trz = (i151 + i152) / 2;
         System.gc();
-        return bool;
+        return abool;
     }
 
     /**
      * handles clicking the 'Radical Play' link
      */
-    static private void catchlink()
+    private static void catchlink()
     {
         if (!lostfcs)
             if (xm > 65 && xm < 735 && ym > 135 && ym < 194 || xm > 275 && xm < 525 && ym > 265 && ym < 284)
@@ -1155,7 +1097,7 @@ namespace Cum
             }
     }
 
-    static private void checkmemory()
+    private static void checkmemory()
     {
         if (applejava || Runtime.getRuntime().freeMemory() / 1048576L < 50L)
         {
@@ -1170,7 +1112,7 @@ namespace Cum
      * @param x X position
      * @param y Y position
      */
-    static private void cropit(final Graphics2D graphics2d, final int x, final int y) {
+    private static void cropit(final Graphics2D graphics2d, final int x, final int y) {
         if (x != 0 || y != 0)
         {
             graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
@@ -1319,10 +1261,10 @@ namespace Cum
         openurl("http://multiplayer.needformadness.com/edit.pl" + logged + "#" + accountid + "");
     }
 
-    static private int getint(final String string, final String string4, final int i) {
+    private static int getint(final String astring, final String string4, final int i) {
         int j = 0;
         String string2 = "";
-        for (int k = string.length() + 1; k < string4.length(); k++)
+        for (int k = astring.length() + 1; k < string4.length(); k++)
         {
             final String string3 = "" + string4.charAt(k);
             if (string3.equals(",") || string3.equals(")"))
@@ -1339,17 +1281,17 @@ namespace Cum
     }
 
     /**
-     * Gets string in format: {@code <string2>} string(A,B,1231,{@code i},C,1.5) {@code </string2>}
+     * Gets astring ain format: {@code <string2>} astring(A,B,1231,{@code i},C,1.5) {@code </string2>}
      *
-     * @param string the tag
+     * @param astring the tag
      * @param string2 the whole line
-     * @param i the position of the string
-     * @return tthe string at the position
+     * @param i the position of the astring
+     * @return tthe astring at the position
      */
-    static private String getstring(final String string, final String string2, final int i) {
+    private static String getastring(final String astring, final String string2, final int i) {
         int j = 0;
         String string3 = "";
-        for (int k = string.length() + 1; k < string2.length(); k++)
+        for (int k = astring.length() + 1; k < string2.length(); k++)
         {
             final String string4 = "" + string2.charAt(k);
             if (string4.equals(",") || string4.equals(")"))
@@ -1368,7 +1310,7 @@ namespace Cum
     /**
      * Hides SMenus
      */
-    static private void hidefields()
+    private static void hidefields()
     {
         ilaps.setVisible(false);
         icars.setVisible(false);
@@ -1409,7 +1351,7 @@ namespace Cum
     }
 
     //@Override
-    static private void initFields()
+    private static void initFields()
     {
         tnick = new TextField("Nickbname");
         tnick.setFont(new Font("Arial", 1, 13));
@@ -1436,7 +1378,7 @@ namespace Cum
         mmsg.setFont(new Font("Tahoma", 0, 11));
         mycar = new Checkbox("Sword of Justice Game!");
         notp = new Checkbox("No Trees & Piles");
-        keplo = new Checkbox("Stay logged in");
+        keplo = new Checkbox("Stay logged ain");
         keplo.setState(true);
         gsPanel.add(tnick);
         gsPanel.add(tpass);
@@ -1485,7 +1427,7 @@ namespace Cum
         openurl("http://www.needformadness.com/");
     }
 
-    static public void mouseW(final int i)
+    public static void mouseW(final int i)
     {
         if (!exwist)
         {
@@ -1510,7 +1452,7 @@ namespace Cum
         }
     }
 
-    static public void movefielda(final TextArea textarea, int i, int i105, final int i106, final int i107) {
+    public static void movefielda(final TextArea textarea, int i, int i105, final int i106, final int i107) {
         if (applejava)
         {
             if (xm > i && xm < i + i106 && ym > i105 && ym < i105 + i107 || !textarea.getText().equals(" "))
@@ -1559,10 +1501,10 @@ namespace Cum
     }
 
     static void movefieldd(final TextField textfield, int i, int i102, final int i103, final int
-        i104, final boolean bool) {
+        i104, final boolean abool) {
         if (applejava)
         {
-            if (bool)
+            if (abool)
                 if (xm > i && xm < i + i103 && ym > i102 && ym < i102 + i104 || !textfield.getText().equals(""))
                 {
                     if (!textfield.isShowing())
@@ -1600,7 +1542,7 @@ namespace Cum
         }
         else
         {
-            if (bool && !textfield.isShowing())
+            if (abool && !textfield.isShowing())
             {
                 textfield.setVisible(true);
             }
@@ -1623,13 +1565,13 @@ namespace Cum
         openurl("https://github.com/chrishansen69/OpenNFMM");
     }
 
-    static private void openurl(final String string)
+    private static void openurl(final String astring)
     {
         if (Desktop.isDesktopSupported())
         {
             try
             {
-                Desktop.getDesktop().browse(new URI(string));
+                Desktop.getDesktop().browse(new URI(astring));
             }
             catch (final Exception
             ignored) {
@@ -1640,7 +1582,7 @@ namespace Cum
         {
             try
             {
-                Runtime.getRuntime().exec("" + Madness.urlopen() + " " + string + "");
+                Runtime.getRuntime().exec("" + Madness.urlopen() + " " + astring + "");
             }
             catch (final Exception
             ignored) {
@@ -1649,7 +1591,7 @@ namespace Cum
         }
     }
 
-    static private void trash()
+    private static void trash()
     {
         rd.dispose();
         xtGraphics.stopallnow();
@@ -1751,16 +1693,16 @@ namespace Cum
                 g2.setColor(new Color(0, 0, 0));
                 g2.fillRect(getWidth() / 2 - 153, 5, 80, 16);
                 g2.setColor(new Color(121, 135, 152));
-                String string = "" + (int) (apmult * 100.0F) + "%";
+                String astring = "" + (int) (apmult * 100.0F) + "%";
                 if (reqmult == 0.0F)
                 {
-                    string = "Original";
+                    astring = "Original";
                 }
                 if (reqmult == 1.0F)
                 {
-                    string = "Maximum";
+                    astring = "Maximum";
                 }
-                g2.drawString(string, getWidth() / 2 - 150, 17);
+                g2.drawString(astring, getWidth() / 2 - 150, 17);
                 if (!oncarm && !onstgm)
                 {
                     showsize--;
@@ -1839,7 +1781,7 @@ namespace Cum
         }
     }
 
-    static private void readcookies(final ContO[] contos)
+    private static void readcookies(final ContO[] contos)
     {
         xtGraphics.nickname = "";
         try
@@ -1852,33 +1794,33 @@ namespace Cum
             if (file.exists())
             {
                 final BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
-                String string;
-                for (int i = 0; (string = bufferedreader.readLine()) != null && i < 5; i++)
+                String astring;
+                for (int i = 0; (astring = bufferedreader.readLine()) != null && i < 5; i++)
                 {
-                    strings[i] = string;
+                    strings[i] = astring;
                 }
                 bufferedreader.close();
             }
             if (strings[0].startsWith("lastuser"))
             {
-                xtGraphics.nickname = getstring("lastuser", strings[0], 0);
+                xtGraphics.nickname = getastring("lastuser", strings[0], 0);
                 if (!xtGraphics.nickname.equals(""))
                 {
                     xtGraphics.opselect = 1;
                 }
-                String string;
+                String astring;
                 try
                 {
-                    string = getstring("lastuser", strings[0], 1);
+                    astring = getastring("lastuser", strings[0], 1);
                 }
                 catch (final Exception
                 exception) {
-                    string = "";
+                    astring = "";
                 }
-                if (!string.equals(""))
+                if (!astring.equals(""))
                 {
                     tnick.setText(xtGraphics.nickname);
-                    tpass.setText(string);
+                    tpass.setText(astring);
                     xtGraphics.autolog = true;
                 }
             }
@@ -1896,27 +1838,10 @@ namespace Cum
                     xtGraphics.unlocked = i;
                 }
             }
-            if (strings[4].startsWith("graphics"))
-            {
-                int i = getint("graphics", strings[4], 0);
-                if (i == 0 || i == 1)
-                {
-                    moto = i;
-                    if (i == 1)
-                    {
-                        makeTriBuffer();
-                    }
-                }
-                i = getint("graphics", strings[4], 1);
-                if (i >= 0 && i <= 1)
-                {
-                    Madness.anti = i;
-                }
-            }
             if (strings[1].startsWith("lastcar"))
             {
                 int i = getint("lastcar", strings[1], 0);
-                CarDefine.lastcar = getstring("lastcar", strings[1], 7);
+                CarDefine.lastcar = getastring("lastcar", strings[1], 7);
                 if (i >= 0 && i < 36)
                 {
                     xtGraphics.osc = i;
@@ -1971,7 +1896,7 @@ namespace Cum
         openurl("http://multiplayer.needformadness.com/registernew.pl");
     }
 
-    static private void makeMenus()
+    private static void makeMenus()
     {
         rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -2073,50 +1998,23 @@ namespace Cum
 
     private GameSparker()
     {
-        super();
     }
 
-    static public GameSparker create()
+    public static GameSparker create()
     {
-        gsPanel = new GameSparker();
-
-        BASSLoader.initializeBASS();
+        
         initFields();
-
-        gsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        //
-        gsPanel.setBackground(Color.black);
-        gsPanel.setOpaque(true);
-        //
-        gsPanel.setLayout(null);
 
         makeMenus();
 
         preloadGame();
 
-        new Thread(GameSparker::loadGame).start();
+        new Thread(loadGame).Start();
 
-        gsPanel.addKeyListener(gsPanel);
-        gsPanel.addMouseListener(gsPanel);
-        gsPanel.addMouseMotionListener(gsPanel);
-        gsPanel.addFocusListener(gsPanel);
-        gsPanel.setFocusable(true);
-        gsPanel.requestFocusInWindow();
-        gsPanel.setIgnoreRepaint(true);
-
-        // disable Swing's double buffering. we don't need it since we have our own offscreen image (offImage)
-        // this means we get a slight performance gain
-        // ("You may find that your numbers for direct rendering far exceed those for double-buffering" from https://docs.oracle.com/javase/tutorial/extra/fullscreen/doublebuf.html)
-        // for zero graphical loss.
-        gsPanel.setDoubleBuffered(false);
-
-        final Timer timer = new Timer(46, ae->gsPanel.repaint());
-
-        timer.start();
-        return gsPanel;
+        return new GameSparker();
     }
 
-    static private void preloadGame()
+    private static void preloadGame()
     {
         if (System.getProperty("java.vendor").toLowerCase().contains("apple"))
         {
@@ -2139,7 +2037,6 @@ namespace Cum
             u[i] = new Control();
         }
 
-        date = new Date();
         l1 = date.getTime();
         f2 = 30.0F;
         bool3 = false;
@@ -2153,7 +2050,7 @@ namespace Cum
     }
 
     //@Override
-    static private void loadGame()
+    private static void loadGame()
     {
         gsPanel.requestFocus();
         try
@@ -2211,7 +2108,7 @@ namespace Cum
         gameLoaded = true;
     }
 
-    static private void gameTick()
+    private static void gameTick()
     {
 
         date = new Date();
@@ -2548,413 +2445,6 @@ namespace Cum
             xtGraphics.stageselect(u[0], xm, ym, moused);
             drawms();
         }
-        if (xtGraphics.fase == 1177)
-        {
-            mvect = 100;
-            if (!bool)
-            {
-                if (xtGraphics.loadedt)
-                {
-                    rd.setColor(new Color(0, 0, 0));
-                    rd.fillRect(0, 0, 800, 450);
-                    //repaint();
-                    checkmemory();
-                    xtGraphics.strack.unload();
-                    xtGraphics.strack = null;
-                    xtGraphics.flexpix = null;
-                    Images.fleximg = null;
-                    System.gc();
-                    xtGraphics.loadedt = false;
-                }
-                xtGraphics.intertrack.unload();
-                rd.setColor(new Color(0, 0, 0));
-                rd.fillRect(65, 25, 670, 400);
-                if (mload > 0)
-                {
-                    rd.drawImage(Images.mload, 259, 195, gsPanel);
-                }
-                //repaint();
-                if (mload == 2)
-                {
-                    CarDefine.loadready();
-                    loadbase();
-                    readcookies(contos);
-                    mload = -1;
-                }
-                System.gc();
-                login = new Login(rd, gsPanel);
-                //globe = new Globe(rd,   login,   contos, contos0,
-                //		this);
-                lobby = new Lobby(rd, login, gsPanel);
-                bool = true;
-            }
-            if (login.fase != 18)
-            {
-                final boolean bool20 = false;
-                if (login.fase == 0)
-                {
-                    login.inishmulti();
-                }
-                if (login.fase >= 1 && login.fase <= 11)
-                {
-                    login.multistart(contos, xm, ym, moused);
-                }
-                if (login.fase >= 12 && login.fase <= 17)
-                {
-                    //if (globe.open != 452)
-                    login.multimode(contos);
-                }
-                //else
-                //	bool20 = true;
-                //globe.dome(0, xm, ym, moused, u[0]);
-                if (login.justlog)
-                {
-                    //if (!xtgraphics.clan.equals(""))
-                    //	globe.itab = 2;
-                    login.justlog = false;
-                }
-                if (!bool20)
-                {
-                    login.ctachm(xm, ym, mouses, u[0], lobby);
-                    mvect = 50;
-                }
-                else
-                {
-                    drawms();
-                    mvect = 100;
-                }
-                if (mouses == 1)
-                {
-                    mouses = 11;
-                }
-                if (mouses <= -1)
-                {
-                    mouses--;
-                    if (mouses == -4)
-                    {
-                        mouses = 0;
-                    }
-                }
-                if (mousew != 0)
-                    if (mousew > 0)
-                    {
-                        mousew--;
-                    }
-                    else
-                    {
-                        mousew++;
-                    }
-            }
-            else
-            {
-                if (lobby.fase == 0)
-                {
-                    lobby.inishlobby();
-                    mvect = 100;
-                }
-                if (lobby.fase == 1)
-                {
-                    /*if (globe.open >= 2 && globe.open < 452)
-                    	openm = true;
-                    if (globe.open != 452)*/
-                    lobby.lobby(xm, ym, moused, mousew, u[0], contos);
-                    /*else
-                    	bool21 = true;
-                    globe.dome(lobby.conon, xm, ym, moused, u[0]);*/
-                    if (lobby.loadstage > 0)
-                    {
-                        gsPanel.setCursor(new Cursor(3));
-                        drawms();
-                        //repaint();
-                        Trackers.nt = 0;
-                        if (loadstagePreview(lobby.loadstage, "", stageContos, contos))
-                        {
-                            lobby.gstagename = CheckPoints.name;
-                            lobby.gstagelaps = CheckPoints.nlaps;
-                            lobby.loadstage = -lobby.loadstage;
-                        }
-                        else
-                        {
-                            lobby.loadstage = 0;
-                            CheckPoints.name = "";
-                        }
-                        gsPanel.setCursor(new Cursor(0));
-                    }
-                    if (lobby.msload != 0)
-                    {
-                        gsPanel.setCursor(new Cursor(3));
-                        drawms();
-                        //repaint();
-                        if (lobby.msload == 1)
-                        {
-                            CarDefine.loadmystages();
-                        }
-                        if (lobby.msload == 7)
-                        {
-                            CarDefine.loadclanstages(xtGraphics.clan);
-                        }
-                        if (lobby.msload == 3 || lobby.msload == 4)
-                        {
-                            CarDefine.loadtop20(lobby.msload);
-                        }
-                        lobby.msload = 0;
-                        gsPanel.setCursor(new Cursor(0));
-                    }
-                }
-                if (lobby.fase == 3)
-                {
-                    xtGraphics.trackbg(false);
-                    Medium.trk = 0;
-                    Medium.focusPoint = 400;
-                    Medium.crs = true;
-                    Medium.x = -335;
-                    Medium.y = 0;
-                    Medium.z = -50;
-                    Medium.xz = 0;
-                    Medium.zy = 20;
-                    Medium.ground = -2000;
-                    mvect = 100;
-                    lobby.fase = 1;
-                }
-                if (lobby.fase == 4)
-                {
-                    mvect = 50;
-                    rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-                    Medium.d(rd);
-                    Medium.aroundtrack();
-                    int j = 0;
-                    final int[] is  = new int[1000];
-                    for (int k = 0; k < nob; k++)
-                        if (stageContos[k].dist != 0)
-                        {
-                            is[j] = k;
-                            j++;
-                        }
-                        else
-                        {
-                            stageContos[k].d(rd);
-                        }
-                    final int[] is2 = new int[j];
-                    for (int k = 0; k < j; k++)
-                    {
-                        is2[k] = 0;
-                    }
-                    for (int k = 0; k < j; k++)
-                    {
-                        for (int l = k + 1; l < j; l++)
-                            if (stageContos[ is [
-                        k]].dist != stageContos[ is [l]].dist) {
-                            if (stageContos[ is [k]].dist < stageContos[ is [l]].dist) {
-                                is2[k]++;
-                            } else {
-                                is2[l]++;
-                            }
-                        } else if (l > k)
-                        {
-                            is2[k]++;
-                        }
-                        else
-                        {
-                            is2[l]++;
-                        }
-                    }
-                    for (int k = 0; k < j; k++)
-                    {
-                        for (int l = 0; l < j; l++)
-                            if (is2[l] == k)
-                            {
-                                stageContos[ is [l]].d(rd);
-                            }
-                    }
-                    rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                    lobby.stageselect(u[0], xm, ym, moused);
-                    if (lobby.plsndt == 1)
-                    {
-                        mvect = 70;
-                        //repaint();
-                        gsPanel.setCursor(new Cursor(3));
-                        xtGraphics.loadstrack(CheckPoints.stage, CheckPoints.trackname, CheckPoints.trackvol);
-                        xtGraphics.strack.play();
-                        lobby.plsndt = 2;
-                        moused = false;
-                        mouses = 0;
-                    }
-                }
-                if (lobby.fase == 2)
-                {
-                    int j = 0;
-                    for (int k = 0; k < lobby.ngm; k++)
-                        if (lobby.ongame == lobby.gnum[k])
-                        {
-                            j = k;
-                        }
-                    boolean flag = false;
-                    if (lobby.gstgn[j] > 0)
-                    {
-                        if (lobby.gstgn[j] == -lobby.loadstage)
-                        {
-                            flag = true;
-                        }
-                    }
-                    else if (lobby.gstages[j].equals(CheckPoints.name))
-                    {
-                        flag = true;
-                    }
-                    if (flag)
-                    {
-                        lobby.fase = 4;
-                        lobby.addstage = 0;
-                    }
-                    else
-                    {
-                        xtGraphics.loadingstage(false);
-                        Trackers.nt = 0;
-                        if (loadstagePreview(lobby.gstgn[j], lobby.gstages[j], stageContos, contos))
-                        {
-                            lobby.loadstage = -lobby.gstgn[j];
-                            lobby.fase = 4;
-                            lobby.addstage = 0;
-                        }
-                        else
-                        {
-                            lobby.loadstage = 0;
-                            CheckPoints.name = "";
-                            lobby.fase = 3;
-                        }
-                    }
-                }
-                if (lobby.fase == 76)
-                {
-                    CheckPoints.nlaps = lobby.laps;
-                    CheckPoints.stage = lobby.stage;
-                    CheckPoints.name = lobby.stagename;
-                    CheckPoints.nfix = lobby.nfix;
-                    CheckPoints.notb = lobby.notb;
-                    xtGraphics.fase = 21;
-                    u[0].multion = xtGraphics.multion;
-                }
-                /*if (globe.loadwbgames == 7) {
-                	//repaint();
-                	globe.redogame();
-                }*/
-                if (!openm)
-                {
-                    lobby.ctachm(xm, ym, mouses, u[0]);
-                }
-                else
-                {
-                    mouses = 0;
-                }
-                drawms();
-                if (lobby.fase == 1)
-                {
-                    lobby.preforma(xm, ym);
-                }
-                if (lobby.loadwarb)
-                {
-                    //repaint();
-                    //globe.loadwarb();
-                    lobby.loadwarb = false;
-                }
-                /*if (globe.loadwbgames == 1) {
-                	//repaint();
-                	globe.loadwgames();
-                }*/
-                if (mouses == 1)
-                {
-                    mouses = 11;
-                }
-                if (mouses <= -1)
-                {
-                    mouses--;
-                    if (mouses == -4)
-                    {
-                        mouses = 0;
-                    }
-                }
-                if (mousew != 0)
-                {
-                    if (mousew > 0)
-                    {
-                        mousew--;
-                    }
-                    else
-                    {
-                        mousew++;
-                    }
-                    if (!lobby.zeromsw)
-                    {
-                        mousew = 0;
-                    }
-                }
-            }
-        }
-        if (xtGraphics.fase == 24)
-        {
-            login.endcons();
-            login = null;
-            lobby = null;
-            //globe = null;
-            bool = false;
-            System.gc();
-            System.runFinalization();
-            if (!xtGraphics.mtop)
-            {
-                xtGraphics.fase = 102;
-                xtGraphics.opselect = 2;
-            }
-            else
-            {
-                xtGraphics.fase = 10;
-                xtGraphics.opselect = 1;
-            }
-        }
-        if (xtGraphics.fase == 23)
-        {
-            if (login.fase == 18)
-            {
-                xtGraphics.playingame = -101;
-            }
-            login.stopallnow();
-            lobby.stopallnow();
-            //globe.stopallnow();
-            login = null;
-            lobby = null;
-            //globe = null;
-            hidefields();
-            bool = false;
-            System.gc();
-            System.runFinalization();
-            xtGraphics.fase = -9;
-        }
-        if (xtGraphics.fase == 22)
-        {
-            loadstage();
-            if (CheckPoints.stage != -3)
-            {
-                if (xtGraphics.lan && xtGraphics.im == 0)
-                {
-                    udpmistro.UDPLanServer(xtGraphics.server, xtGraphics.servport, xtGraphics.playingame);
-                }
-                u[0].falseo(2);
-                gsPanel.requestFocus();
-            }
-            else
-            {
-                xtGraphics.fase = 1177;
-            }
-        }
-        if (xtGraphics.fase == 21)
-        {
-            login.endcons();
-            login = null;
-            lobby = null;
-            //globe = null;
-            bool = false;
-            System.gc();
-            System.runFinalization();
-            xtGraphics.fase = 22;
-        }
         if (xtGraphics.fase == 0)
         {
             for (int player = 0; player < xtGraphics.nplayers; player++)
@@ -3098,283 +2588,6 @@ namespace Cum
                 }
             }
         }
-        if (xtGraphics.fase == 7001)
-        {
-            for (int player = 0; player < xtGraphics.nplayers; player++)
-                if (mads[player].newedcar == 0 && mads[player].newcar)
-                {
-                    final int i52 = stageContos[player].xz;
-                    final int i53 = stageContos[player].xy;
-                    final int i54 = stageContos[player].zy;
-                    xtGraphics.colorCar(contos[mads[player].cn], player);
-                    stageContos[player] = new ContO(contos[mads[player].cn], stageContos[player].x,
-                        stageContos[player].y, stageContos[player].z, 0);
-                    stageContos[player].xz = i52;
-                    stageContos[player].xy = i53;
-                    stageContos[player].zy = i54;
-                    mads[player].newedcar = 20;
-                }
-            Medium.d(rd);
-            int j = 0;
-            final int[] is  = new int[10000];
-            for (int k = 0; k < nob; k++)
-                if (stageContos[k].dist != 0)
-                {
-                    is[j] = k;
-                    j++;
-                }
-                else
-                {
-                    stageContos[k].d(rd);
-                }
-            final int[] is2 = new int[j];
-            final int[] is3 = new int[j];
-            for (int k = 0; k < j; k++)
-            {
-                is2[k] = 0;
-            }
-            for (int k = 0; k < j; k++)
-            {
-                for (int l = k + 1; l < j; l++)
-                    if (stageContos[ is [
-                k]].dist < stageContos[ is [l]].dist) {
-                    is2[k]++;
-                } else {
-                    is2[l]++;
-                }
-                is3[is2[k]] = k;
-            }
-            for (int k = 0; k < j; k++)
-            {
-                if (is[is3[k]] < xtGraphics.nplayers && is[is3[k]] != xtGraphics.im) {
-                    udpmistro.readContOinfo(stageContos[ is [is3[k]]], is[is3[k]]);
-                }
-                stageContos[ is [is3[k]]].d(rd);
-            }
-            if (xtGraphics.starcnt == 0)
-            {
-                if (xtGraphics.multion == 1)
-                {
-                    int k = 1;
-                    for (int l = 0; l < xtGraphics.nplayers; l++)
-                        if (xtGraphics.im != l)
-                        {
-                            udpmistro.readinfo(mads[l], stageContos[l], u[k], l, CheckPoints.dested);
-                            k++;
-                        }
-                }
-                else
-                {
-                    for (int l = 0; l < xtGraphics.nplayers; l++)
-                    {
-                        udpmistro.readinfo(mads[l], stageContos[l], u[l], l, CheckPoints.dested);
-                    }
-                }
-                for (int k = 0; k < xtGraphics.nplayers; k++)
-                {
-                    for (int l = 0; l < xtGraphics.nplayers; l++)
-                        if (l != k)
-                        {
-                            mads[k].colide(stageContos[k], mads[l], stageContos[l]);
-                        }
-                }
-                if (xtGraphics.multion == 1)
-                {
-                    int k = 1;
-                    for (int l = 0; l < xtGraphics.nplayers; l++)
-                        if (xtGraphics.im != l)
-                        {
-                            mads[l].drive(u[k], stageContos[l]);
-                            k++;
-                        }
-                        else
-                        {
-                            mads[l].drive(u[0], stageContos[l]);
-                        }
-                    for (int l = 0; l < xtGraphics.nplayers; l++)
-                    {
-                        Record.rec(stageContos[l], l, mads[l].squash, mads[l].lastcolido, mads[l].cntdest,
-                            xtGraphics.im);
-                    }
-                }
-                else
-                {
-                    for (int k = 0; k < xtGraphics.nplayers; k++)
-                    {
-                        mads[k].drive(u[k], stageContos[k]);
-                    }
-                }
-                CheckPoints.checkstat(mads, stageContos, xtGraphics.nplayers, xtGraphics.im, xtGraphics.multion);
-            }
-            else
-            {
-                if (xtGraphics.starcnt == 130)
-                {
-                    Medium.adv = 1900;
-                    Medium.zy = 40;
-                    Medium.vxz = 70;
-                    rd.setColor(new Color(255, 255, 255));
-                    rd.fillRect(0, 0, 800, 450);
-                    //repaint();
-                    if (xtGraphics.lan)
-                    {
-                        udpmistro.UDPConnectLan(xtGraphics.localserver, xtGraphics.nplayers, xtGraphics.im);
-                        if (xtGraphics.im == 0)
-                        {
-                            xtGraphics.setbots(udpmistro.isbot);
-                        }
-                    }
-                    else
-                    {
-                        udpmistro.UDPConnectOnline(xtGraphics.server, xtGraphics.gameport, xtGraphics.nplayers,
-                            xtGraphics.im);
-                    }
-                    if (xtGraphics.multion >= 2)
-                    {
-                        xtGraphics.im = (int) (HansenRandom.Double() * xtGraphics.nplayers);
-                        xtGraphics.starcnt = 0;
-                    }
-                }
-                if (xtGraphics.starcnt == 50)
-                {
-                    udpmistro.frame[udpmistro.im][0] = 0;
-                }
-                if (xtGraphics.starcnt != 39 && xtGraphics.starcnt != 0)
-                {
-                    xtGraphics.starcnt--;
-                }
-                if (udpmistro.go && xtGraphics.starcnt >= 39)
-                {
-                    xtGraphics.starcnt = 38;
-                    if (xtGraphics.lan)
-                    {
-                        int k = CheckPoints.stage;
-                        if (k < 0)
-                        {
-                        }
-                        if (xtGraphics.loadedt)
-                        {
-                            xtGraphics.strack.play();
-                        }
-                    }
-                }
-            }
-            if (xtGraphics.lan && udpmistro.im == 0)
-            {
-                for (int k = 2; k < xtGraphics.nplayers; k++)
-                    if (udpmistro.isbot[k])
-                    {
-                        u[k].preform(mads[k], stageContos[k]);
-                        udpmistro.setinfo(mads[k], stageContos[k], u[k], CheckPoints.pos[k], CheckPoints.magperc[k],
-                            false, k);
-                    }
-            }
-            if (xtGraphics.starcnt < 38)
-            {
-                if (xtGraphics.multion == 1)
-                {
-                    udpmistro.setinfo(mads[xtGraphics.im], stageContos[xtGraphics.im], u[0],
-                        CheckPoints.pos[xtGraphics.im], CheckPoints.magperc[xtGraphics.im], xtGraphics.holdit,
-                        xtGraphics.im);
-                    if (view == 0)
-                    {
-                        Medium.follow(stageContos[xtGraphics.im], mads[xtGraphics.im].cxz, u[0].lookback);
-                        xtGraphics.stat(mads[xtGraphics.im], stageContos[xtGraphics.im], u[0], true);
-                        if (mads[xtGraphics.im].outshakedam > 0)
-                        {
-                            shaka = mads[xtGraphics.im].outshakedam / 20;
-                            if (shaka > 25)
-                            {
-                                shaka = 25;
-                            }
-                        }
-                        mvect = 65 + Math.abs(lmxz - Medium.xz) / 5 * 100;
-                        if (mvect > 90)
-                        {
-                            mvect = 90;
-                        }
-                        lmxz = Medium.xz;
-                    }
-                    if (view == 1)
-                    {
-                        Medium.around(stageContos[xtGraphics.im], false);
-                        xtGraphics.stat(mads[xtGraphics.im], stageContos[xtGraphics.im], u[0], false);
-                        mvect = 80;
-                    }
-                    if (view == 2)
-                    {
-                        Medium.watch(stageContos[xtGraphics.im], mads[xtGraphics.im].mxz);
-                        xtGraphics.stat(mads[xtGraphics.im], stageContos[xtGraphics.im], u[0], false);
-                        mvect = 65 + Math.abs(lmxz - Medium.xz) / 5 * 100;
-                        if (mvect > 90)
-                        {
-                            mvect = 90;
-                        }
-                        lmxz = Medium.xz;
-                    }
-                }
-                else
-                {
-                    if (view == 0)
-                    {
-                        Medium.getaround(stageContos[xtGraphics.im]);
-                        mvect = 80;
-                    }
-                    if (view == 1)
-                    {
-                        Medium.getfollow(stageContos[xtGraphics.im], mads[xtGraphics.im].cxz, u[0].lookback);
-                        mvect = 65 + Math.abs(lmxz - Medium.xz) / 5 * 100;
-                        if (mvect > 90)
-                        {
-                            mvect = 90;
-                        }
-                        lmxz = Medium.xz;
-                    }
-                    if (view == 2)
-                    {
-                        Medium.watch(stageContos[xtGraphics.im], mads[xtGraphics.im].mxz);
-                        mvect = 65 + Math.abs(lmxz - Medium.xz) / 5 * 100;
-                        if (mvect > 90)
-                        {
-                            mvect = 90;
-                        }
-                        lmxz = Medium.xz;
-                    }
-                    xtGraphics.stat(mads[xtGraphics.im], stageContos[xtGraphics.im], u[0], true);
-                }
-                if (mouses == 1)
-                {
-                    if (xtGraphics.holdit && xtGraphics.exitm != 4 && xtGraphics.multion == 1)
-                    {
-                        u[0].enter = true;
-                    }
-                    mouses = 0;
-                }
-            }
-            else
-            {
-                Medium.around(stageContos[xtGraphics.im], true);
-                mvect = 80;
-                if (xtGraphics.starcnt == 39)
-                {
-                    xtGraphics.waitenter();
-                }
-                if (xtGraphics.starcnt == 38)
-                {
-                    xtGraphics.forstart = 0;
-                    mouses = 0;
-                    Medium.vert = false;
-                    Medium.adv = 900;
-                    Medium.vxz = 180;
-                    CheckPoints.checkstat(mads, stageContos, xtGraphics.nplayers, xtGraphics.im, xtGraphics.multion);
-                    Medium.follow(stageContos[xtGraphics.im], mads[xtGraphics.im].cxz, 0);
-                    xtGraphics.stat(mads[xtGraphics.im], stageContos[xtGraphics.im], u[0], true);
-                    rd.setColor(new Color(255, 255, 255));
-                    rd.fillRect(0, 0, 800, 450);
-                }
-            }
-            xtGraphics.multistat(u[0], xm, ym, moused, udpmistro);
-        }
         if (xtGraphics.fase == -1)
         {
             if (recordtime == 0)
@@ -3387,11 +2600,11 @@ namespace Cum
             }
             Medium.d(rd);
             int j = 0;
-            final int[] is  = new int[10000];
+            final int[] ais  = new int[10000];
             for (int k = 0; k < nob; k++)
                 if (stageContos[k].dist != 0)
                 {
-                    is[j] = k;
+                    ais[j] = k;
                     j++;
                 }
                 else
@@ -3406,9 +2619,9 @@ namespace Cum
             for (int k = 0; k < j; k++)
             {
                 for (int l = k + 1; l < j; l++)
-                    if (stageContos[ is [
-                k]].dist != stageContos[ is [l]].dist) {
-                    if (stageContos[ is [k]].dist < stageContos[ is [l]].dist) {
+                    if (stageContos[ ais [
+                k]].dist != stageContos[ ais [l]].dist) {
+                    if (stageContos[ ais [k]].dist < stageContos[ ais [l]].dist) {
                         is2[k]++;
                     } else {
                         is2[l]++;
@@ -3427,7 +2640,7 @@ namespace Cum
                 for (int l = 0; l < j; l++)
                     if (is2[l] == k)
                     {
-                        stageContos[ is [l]].d(rd);
+                        stageContos[ ais [l]].d(rd);
                     }
             }
             if (u[0].enter || u[0].handb || mouses == 1)
@@ -3488,17 +2701,6 @@ namespace Cum
                 rd.fillRect(0, 0, 800, 450);
                 //repaint();
             }
-            if (xtGraphics.multion != 0)
-            {
-                udpmistro.UDPquit();
-                xtGraphics.stopchat();
-                if (cmsg.isShowing())
-                {
-                    cmsg.setVisible(false);
-                }
-                cmsg.setText("");
-                gsPanel.requestFocus();
-            }
             if (Record.hcaught)
             {
                 Medium.vert = Medium.random() <= 0.45;
@@ -3550,11 +2752,11 @@ namespace Cum
             }
             Medium.d(rd);
             int j = 0;
-            final int[] is  = new int[10000];
+            final int[] ais  = new int[10000];
             for (int k = 0; k < nob; k++)
                 if (stageContos[k].dist != 0)
                 {
-                    is[j] = k;
+                    ais[j] = k;
                     j++;
                 }
                 else
@@ -3569,9 +2771,9 @@ namespace Cum
             for (int k = 0; k < j; k++)
             {
                 for (int l = k + 1; l < j; l++)
-                    if (stageContos[ is [
-                k]].dist != stageContos[ is [l]].dist) {
-                    if (stageContos[ is [k]].dist < stageContos[ is [l]].dist) {
+                    if (stageContos[ ais [
+                k]].dist != stageContos[ ais [l]].dist) {
+                    if (stageContos[ ais [k]].dist < stageContos[ ais [l]].dist) {
                         is2[k]++;
                     } else {
                         is2[l]++;
@@ -3590,7 +2792,7 @@ namespace Cum
                 for (int l = 0; l < j; l++)
                     if (is2[l] == k)
                     {
-                        stageContos[ is [l]].d(rd);
+                        stageContos[ ais [l]].d(rd);
                     }
             }
             for (int k = 0; k < xtGraphics.nplayers; k++)
@@ -3990,7 +3192,7 @@ namespace Cum
 
     }
 
-    static void setcarcookie(final int i, final String string, final float[] fs, final int gamemode, final int is) {
+    static void setcarcookie(final int i, final String astring, final float[] fs, final int gamemode, final int ais) {
         try
         {
             final File file = new File("" + Madness.fpath + "data/user.data");
@@ -4012,11 +3214,11 @@ namespace Cum
             {
                 lines[1] = "lastcar(" + i + "," + (int) (fs[0] * 100.0F) + "," + (int) (fs[1] * 100.0F) + "," +
                            (int) (fs[2] * 100.0F) + "," + (int) (fs[3] * 100.0F) + "," + (int) (fs[4] * 100.0F) + "," +
-                           (int) (fs[5] * 100.0F) + "," + string + ")";
+                           (int) (fs[5] * 100.0F) + "," + astring + ")";
             }
             if (gamemode == 1 || gamemode == 2)
             {
-                lines[2] = "saved(" + i + "," + is +")";
+                lines[2] = "saved(" + i + "," + ais +")";
             }
             //if (i191 == 2)
             //	strings[3] = "" + ("NFM2(") + (i) + (")")
@@ -4077,7 +3279,7 @@ namespace Cum
         }
     }
 
-    static private void setupini()
+    private static void setupini()
     {
         Madness.inisetup = true;
         try
@@ -4123,7 +3325,7 @@ namespace Cum
         Madness.inisetup = false;
     }
 
-    static private void sizescreen(final int x, final int y) {
+    private static void sizescreen(final int x, final int y) {
         if (x > gsPanel.getWidth() / 2 - 230 && x < gsPanel.getWidth() / 2 - 68 && y > 21 && y < 39 || onbar)
         {
             reqmult = (x - (gsPanel.getWidth() / 2 - 222)) / 141.0F;
@@ -4139,37 +3341,7 @@ namespace Cum
             showsize = 100;
         }
     }
-
-    /*-@Override
-    static public void start() {
-    	if (gamer == null)
-    		gamer = new Thread(this);
-    	gamer.start();
-    }
-
-    @Override
-    static public void stop() {
-    	if (exwist && gamer != null) {
-    		System.gc();
-    		gamer.interrupt();
-    		gamer = null;
-    	}
-    	exwist = true;
-    }*/
-
-    /*@Override
-    static public void update(final Graphics graphics) {
-    	paint(graphics);
-    }*/
-
-    @Override
-
-    public void keyTyped(final KeyEvent e)
-    {
-    }
-
-    @Override
-
+        
     public void keyPressed(final KeyEvent e)
     {
         if (!exwist)
@@ -4270,95 +3442,32 @@ namespace Cum
         }
     }
 
-    @Override
-
     public void mouseDragged(final MouseEvent e)
     {
-        final int x = e.getX();
-        final int y = e.getY();
+        int x = e.getX();
+        int y = e.getY();
         if (!exwist && !lostfcs)
         {
             xm = (int) ((x - apx) / apmult);
             ym = (int) ((y - apy) / apmult);
         }
-        if (!Madness.fullscreen)
-        {
-            sizescreen(x, y);
-        }
     }
-
-    @Override
 
     public void mouseMoved(final MouseEvent e)
     {
-        final int x = e.getX();
-        final int y = e.getY();
+        int x = e.getX();
+        int y = e.getY();
         if (!exwist && !lostfcs)
         {
             xm = (int) ((x - apx) / apmult);
             ym = (int) ((y - apy) / apmult);
         }
-        if (!Madness.fullscreen)
-        {
-            if (showsize < 20)
-            {
-                showsize = 20;
-            }
-            if (x > 50 && x < 192 && y > 14 && y < 37)
-            {
-                if (!oncarm)
-                {
-                    oncarm = true;
-                    setCursor(new Cursor(12));
-                }
-            }
-            else if (oncarm)
-            {
-                oncarm = false;
-                setCursor(new Cursor(0));
-            }
-            if (x > getWidth() - 208 && x < getWidth() - 50 && y > 14 && y < 37)
-            {
-                if (!onstgm)
-                {
-                    onstgm = true;
-                    setCursor(new Cursor(12));
-                }
-            }
-            else if (onstgm)
-            {
-                onstgm = false;
-                setCursor(new Cursor(0));
-            }
-            if (x > getWidth() / 2 + 22 && x < getWidth() / 2 + 122 && y > 14 && y < 37)
-            {
-                if (!onfulls)
-                {
-                    onfulls = true;
-                    setCursor(new Cursor(12));
-                }
-            }
-            else if (onfulls)
-            {
-                onfulls = false;
-                setCursor(new Cursor(0));
-            }
-        }
     }
 
-    @Override
-
-    public void mouseClicked(final MouseEvent e)
+    public void mousePressed(MouseEvent e)
     {
-    }
-
-    @Override
-
-    public void mousePressed(final MouseEvent e)
-    {
-        final int x = e.getX();
-        final int y = e.getY();
-        requestFocus();
+        int x = e.getX();
+        int y = e.getY();
         if (!exwist)
         {
             if (mouses == 0)
@@ -4375,12 +3484,10 @@ namespace Cum
         }
     }
 
-    @Override
-
-    public void mouseReleased(final MouseEvent e)
+    public void mouseReleased(MouseEvent e)
     {
-        final int x = e.getX();
-        final int y = e.getY();
+        int x = e.getX();
+        int y = e.getY();
         if (!exwist)
         {
             if (mouses == 11)
@@ -4391,93 +3498,7 @@ namespace Cum
             }
             moused = false;
         }
-        if (!Madness.fullscreen)
-        {
-            if (x > getWidth() / 2 - 55 && x < getWidth() / 2 + 7 && y > 21 && y < 38 && !onbar)
-            {
-                if (smooth == 1)
-                {
-                    smooth = 0;
-                }
-                else
-                {
-                    smooth = 1;
-                }
-                showsize = 60;
-            }
-            if (x > getWidth() / 2 + 133 && x < getWidth() / 2 + 231 && y > 7 && y < 24 && !onbar)
-            {
-                if (Madness.anti == 0)
-                {
-                    Madness.anti = 1;
-                }
-                else
-                {
-                    Madness.anti = 0;
-                }
-                showsize = 60;
-            }
-            if (x > getWidth() / 2 + 133 && x < getWidth() / 2 + 231 && y > 24 && y < 41 && !onbar)
-            {
-                if (moto == 0)
-                {
-                    moto = 1;
-
-                    // create a new triple buffer
-                    makeTriBuffer();
-                }
-                else
-                {
-                    moto = 0;
-
-                    // dispose of the triple buffer
-                    tg.dispose();
-                    tribuffer.flush();
-                }
-                showsize = 60;
-            }
-            if (onfulls)
-            {
-                Madness.gofullscreen();
-            }
-            if (oncarm)
-            {
-                Madness.carmaker();
-            }
-            if (onstgm)
-            {
-                Madness.stagemaker();
-            }
-            onbar = false;
-        }
     }
-
-    static private void makeTriBuffer()
-    {
-        tribuffer = new BufferedImage(800, 450, BufferedImage.TYPE_INT_ARGB);
-        if (tribuffer != null)
-        {
-            tg = tribuffer.createGraphics();
-        }
-        else
-        {
-            throw new IllegalAccessError("failed to create TriBuffer image");
-        }
-    }
-
-    @Override
-
-    public void mouseEntered(final MouseEvent e)
-    {
-    }
-
-    @Override
-
-    public void mouseExited(final MouseEvent e)
-    {
-    }
-
-    @Override
 
     public void focusGained(final FocusEvent e)
     {
@@ -4487,27 +3508,11 @@ namespace Cum
         }
     }
 
-    @Override
-
     public void focusLost(final FocusEvent e)
     {
-        if (!exwist && !lostfcs)
-        {
-            lostfcs = true;
-            fcscnt = 10;
-            if (u[0] != null)
-            {
-                if (u[0].multion == 0)
-                {
-                    u[0].falseo(1);
-                }
-                else if (u[0].chatup == 0)
-                {
-                    requestFocus();
-                }
-                setCursor(new Cursor(0));
-            }
-        }
+        if (exwist || lostfcs) return;
+        lostfcs = true;
+        fcscnt = 10;
     }
 
     }

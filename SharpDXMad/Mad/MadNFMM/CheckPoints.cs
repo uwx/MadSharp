@@ -36,11 +36,11 @@ class CheckPoints {
     static final int[] omxz = new int[8];
     static final int[] onscreen = new int[8];
     /**
-     * The X of every car in the stage.
+     * The X of every car ain the stage.
      */
     static final int[] opx = new int[8];
     /**
-     * The Z of every car in the stage.
+     * The Z of every car ain the stage.
      */
     static final int[] opz = new int[8];
     static int pcleared = 0;

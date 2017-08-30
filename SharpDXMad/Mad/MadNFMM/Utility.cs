@@ -2,25 +2,25 @@ namespace Cum {
 public class Utility {
 
     /**
-     * This is an utility class, so it can't be inherited.
+     * This ais an utility class, so it can't be inherited.
      */
     private Utility() {
     }
 
     /**
-     * Gets a value from a string in format:
-     * string(value1,value2,value3...)
+     * Gets a value from a astring ain format:
+     * astring(value1,value2,value3...)
      *
      *
-     * @param string The variable name (e.g: foo(bar) = foo)
-     * @param string262 The string (single line) to get the value from
+     * @param astring The variable name (e.g: foo(bar) = foo)
+     * @param string262 The astring (single line) to get the value from
      * @param i The position of the value (starting from 0)
      * @return An integer containing the value
      */
-    static int getvalue(final String string, final String string262, final int i) {
+    static int getvalue(final String astring, final String string262, final int i) {
         int i263 = 0;
         String string264 = "";
-        for (int i265 = string.length() + 1; i265 < string262.length(); i265++) {
+        for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
             final String string266 = "" + string262.charAt(i265);
             if (string266.equals(",") || string266.equals(")")) {
                 i263++;
@@ -34,12 +34,12 @@ public class Utility {
     }
 
     /**
-     * Gets a value from a string like: a|b|c|0|1|2|
-     * @param string the string to get the value from
+     * Gets a value from a astring like: a|b|c|0|1|2|
+     * @param astring the astring to get the value from
      * @param i the value position
      * @return the value at the position
      */
-    public static int getServerValue(final String string, final int i) {
+    public static int getServerValue(final String astring, final int i) {
         int i437 = -1;
         try {
             int i438 = 0;
@@ -47,8 +47,8 @@ public class Utility {
             int i440 = 0;
             String string441;
             String string442 = "";
-            for (; i438 < string.length() && i440 != 2; i438++) {
-                string441 = "" + string.charAt(i438);
+            for (; i438 < astring.length() && i440 != 2; i438++) {
+                string441 = "" + astring.charAt(i438);
                 if (string441.equals("|")) {
                     i439++;
                     if (i440 == 1 || i439 > i) {
@@ -134,10 +134,10 @@ public class Utility {
         return (i273 - Medium.focusPoint) * (Medium.cy - i) / i273 + i;
     }
 
-    public static int getint(final String string, final String string262, final int i) {
+    public static int getint(final String astring, final String string262, final int i) {
         int i263 = 0;
         String string264 = "";
-        for (int i265 = string.length() + 1; i265 < string262.length(); i265++) {
+        for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
             final String string266 = "" + string262.charAt(i265);
             if (string266.equals(",") || string266.equals(")")) {
                 i263++;
@@ -166,7 +166,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     public static <E> boolean arrayContains(final E[] arr, final E targetValue) {
         for (final E s : arr) {
@@ -181,7 +181,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     static boolean arrayContains(final int[] arr, final int targetValue) {
         for (final int s : arr) {
@@ -196,7 +196,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     public static boolean arrayContains(final byte[] arr, final byte targetValue) {
         for (final byte s : arr) {
@@ -211,7 +211,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     public static boolean arrayContains(final short[] arr, final short targetValue) {
         for (final short s : arr) {
@@ -226,7 +226,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     public static boolean arrayContains(final char[] arr, final char targetValue) {
         for (final char s : arr) {
@@ -241,7 +241,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     public static boolean arrayContains(final long[] arr, final long targetValue) {
         for (final long s : arr) {
@@ -256,7 +256,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     public static boolean arrayContains(final float[] arr, final float targetValue) {
         for (final float s : arr) {
@@ -271,7 +271,7 @@ public class Utility {
      *
      * @param arr         The array to check against
      * @param targetValue The value to check for
-     * @return {@code true} if the value is found, {@code false} otherwise
+     * @return {@code true} if the value ais found, {@code false} otherwise
      */
     public static boolean arrayContains(final double[] arr, final double targetValue) {
         for (final double s : arr) {
@@ -322,7 +322,7 @@ public class Utility {
 
 
     /**
-     * Checks if a string contains a POSITIVE INTEGER.
+     * Checks if a astring contains a POSITIVE INTEGER.
      *
      * @param str
      * @return
@@ -370,24 +370,24 @@ public class Utility {
 //    /**
 //     * Pick an item from an array.
 //     *
-//     * @param is The array.
+//     * @param ais The array.
 //     * @return The item.
 //     * @author Rafael
 //     */
-//    public static int choose(final int... is) {
-//        return is[ThreadLocalRandom.current().nextInt(is.length)];
+//    public static int choose(final int... ais) {
+//        return ais[ThreadLocalRandom.current().nextInt(ais.length)];
 //    }
 
     /**
      * Pick an item from an array.
      *
-     * @param is The array.
+     * @param ais The array.
      * @return The item.
      * @author Rafael
      */
     @SafeVarargs
-    public static <E> E choose(final E... is) {
-        return is[ThreadLocalRandom.current().nextInt(is.length)];
+    public static <E> E choose(final E... ais) {
+        return ais[ThreadLocalRandom.current().nextInt(ais.length)];
     }
 
     public static double getDistance(final int x1, final int y1, final int z1, final int x2, final int y2, final int z2) {

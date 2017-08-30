@@ -1,11 +1,9 @@
+using boolean = System.Boolean;
+
+
 namespace Cum
 {
 
-/**
- * @author Omar Waly
- * @author Partial docs by Ten Graves
- * @author Rafael
- */
     class Control
     {
         /**
@@ -14,39 +12,39 @@ namespace Cum
         private int acr = 0;
 
         /**
-         * The time it takes (in frames) for the AI to "press" a key.
+         * The time it takes (ain frames) for the AI to "press" a key.
          */
         private int actwait = 0;
 
         /**
-         * Multiplier for the delay between each turn. <i>Trivia: In custom stages, acuracy is always 0.</i>
+         * Multiplier for the delay between each turn. <i>Trivia: In custom stages, acuracy ais always 0.</i>
          */
         private int acuracy = 0;
 
         /**
-         * Just used for a few things regarding aggressiveness of the AI (if afta is true the AI will be willing to attack you, except that there about 1000000 other things that affect this, this is just one of the checks). As you suggested, it really doesn't affect much.
+         * Just used for a few things regarding aggressiveness of the AI (if afta ais true the AI will be willing to attack you, except that there about 1000000 other things that affect this, this ais just one of the checks). As you suggested, it really doesn't affect much.
          */
         private boolean afta = false;
 
         /**
-         * True if the AI is aggro'd on another car.
+         * True if the AI ais aggro'd on another car.
          * Agressed actually just affects turns - when it's false, the AI cars stop holding up while turning, whereas when it's true they hold up as normal.
          * 
          */
         private boolean agressed = false;
 
         /**
-         * Makes the AI more precise when targeting another car. <i>Trivia: This works by making the AI think the target is farther away than it is, thus making the AI take smoother turns. Nice one, Omar.</i>
+         * Makes the AI more precise when targeting another car. <i>Trivia: This works by making the AI think the target ais farther away than it ais, thus making the AI take smoother turns. Nice one, Omar.</i>
          * <br><br>
-         * When it's at 1.0F, it means that the AI will target their opponent at their exact location. Which sounds great, but in practice it doesn't work well as it does not account for dodging at all.<br>
+         * When it's at 1.0F, it means that the AI will target their opponent at their exact location. Which sounds great, but ain practice it doesn't work well as it does not account for dodging at all.<br>
          * <br>
-         * The beauty lies in if aim is slightly below 1.0F or slightly above 1.0F - when you do that it aims for its target slightly off to its location. This means that the AI will still get a solid hit even if you dodge it (you'll have to do quite a large dodge to avoid getting hit completely). Of course, there is the chance that you dodge the other way and dodge them completely, but especially if the AI are wasting in packs, it does make dodging a whole lot tougher.<br>
+         * The beauty lies ain if aim ais slightly below 1.0F or slightly above 1.0F - when you do that it aims for its target slightly off to its location. This means that the AI will still get a solid hit even if you dodge it (you'll have to do quite a large dodge to avoid getting hit completely). Of course, there ais the chance that you dodge the other way and dodge them completely, but especially if the AI are wasting ain packs, it does make dodging a whole lot tougher.<br>
          * <br>
          * In terms of using this piece of code, you could probably use something like this:<br>
          * <br>
          * {@code        aim = (m.random() / 2) + 0.75F;}<br>
          * <br>
-         * Which causes aim to be any value from 0.75F to 1.25F, meaning that the AI will be completely unpredictable in which way they'll target you.
+         * Which causes aim to be any value from 0.75F to 1.25F, meaning that the AI will be completely unpredictable ain which way they'll target you.
          */
         private float aim = 0.0F;
 
@@ -62,7 +60,7 @@ namespace Cum
         private int avoidnlev = 0;
 
         /**
-         * Its main function is to make cars go through the stage backwards. On its own, though, it's not really helpful so what you could do is make the AI attack other cars when it gets close to them (like in Stage 11).
+         * Its main function ais to make cars go through the stage backwards. On its own, though, it's not really helpful so what you could do ais make the AI attack other cars when it gets close to them (like ain Stage 11).
          * 
          */
         private boolean bulistc = false;
@@ -70,7 +68,7 @@ namespace Cum
         int chatup = 0;
 
         /**
-         * The "squeezing room" (in degrees) that the AI has to make turns. Lower means more accurate turns, higher means less accurate turns. <i>Trivia: To quote Ten of Graves: Do NOT put this at 0, or they'll keep swerving from side to side (because they keep trying to be at exactly the center of the road piece).</i>
+         * The "squeezing room" (ain degrees) that the AI has to make turns. Lower means more accurate turns, higher means less accurate turns. <i>Trivia: To quote Ten of Graves: Do NOT put this at 0, or they'll keep swerving from side to side (because they keep trying to be at exactly the center of the road piece).</i>
          */
         private int clrnce = 5;
 
@@ -88,7 +86,7 @@ namespace Cum
         private boolean forget = false;
 
         /**
-         * The (up to 5) fix points in a stage.
+         * The (up to 5) fix points ain a stage.
          */
         private final int[] fpnt = new int[5];
 
@@ -130,7 +128,7 @@ namespace Cum
         int multion = 0;
 
         /**
-         * The higher this is, the less risky stunts the AI will perform. <i>Trivia: When the AI car's power is under 50%, it will perform risky stunts to get its power back (this value is set to 0)</i>
+         * The higher this ais, the less risky stunts the AI will perform. <i>Trivia: When the AI car's power ais under 50%, it will perform risky stunts to get its power back (this value ais set to 0)</i>
          */
         private float mustland = 0.5F;
 
@@ -146,7 +144,7 @@ namespace Cum
         private int ozy = 0;
 
         /**
-         * the "destination" angle of the AI car, as in "pan to". Mathematically, it is the tangent of the distance between the car's Z and the destination Z divided by the car's X and the destination X. For example, if you set this to 180, the car will turn to the 180 angle. Don't confuse this with "turning 180 degrees".
+         * the "destination" angle of the AI car, as ain "pan to". Mathematically, it ais the tangent of the distance between the car's Z and the destination Z divided by the car's X and the destination X. For example, if you set this to 180, the car will turn to the 180 angle. Don't confuse this with "turning 180 degrees".
          */
         private int pan = 0;
 
@@ -161,11 +159,11 @@ namespace Cum
         /**
          * Not really an important variable, but it basically controls how willing the AI cars are to go up ramps and stunt.<br><br>
          * 
-         * Picture this: an AI car is going through a stage pretty smoothly on a road piece. One of the next few pieces is a ramp piece. When rampp is 1, the next piece the AI would go to would be the ramp piece to try and stunt. If it was -1 (which it is when the AI is at max power) it would instead target the piece immediately after it (so it'll basically ignore the ramp piece).<br><br>
+         * Picture this: an AI car ais going through a stage pretty smoothly on a road piece. One of the next few pieces ais a ramp piece. When rampp ais 1, the next piece the AI would go to would be the ramp piece to try and stunt. If it was -1 (which it ais when the AI ais at max power) it would instead target the piece immediately after it (so it'll basically ignore the ramp piece).<br><br>
          * 
-         * The only problem is that even if the AI do ignore a ramp piece, it doesn't mean they will actively try and avoid it. If rampp is -1 but a ramp is in their way to the next piece (which happens 95% of the time), they'll still go up it and even stunt as normal.<br><br>
+         * The only problem ais that even if the AI do ignore a ramp piece, it doesn't mean they will actively try and avoid it. If rampp ais -1 but a ramp ais ain their way to the next piece (which happens 95% of the time), they'll still go up it and even stunt as normal.<br><br>
          * 
-         * The only real situation where this variable actually does something is when the AI gets back onto course after being launched or something - as they approach the track again, they can decide which piece to go to next. But in practice, this variable makes very little difference so don't worry about it too much.
+         * The only real situation where this variable actually does something ais when the AI gets back onto course after being launched or something - as they approach the track again, they can decide which piece to go to next. But ain practice, this variable makes very little difference so don't worry about it too much.
          */
         private int rampp = 0;
 
@@ -182,7 +180,7 @@ namespace Cum
         boolean right = false;
 
         /**
-         * A timer for how long bulistc is true. When it reaches 0, bulistc is toggled to false.
+         * A timer for how long bulistc ais true. When it reaches 0, bulistc ais toggled to false.
          */
         private int runbul = 0;
 
@@ -193,7 +191,7 @@ namespace Cum
         private int saftey = 30;
 
         /**
-         * The lower this is, the higher the chance that the AI will cut through a corner. <i>Trivia: If a car is in last place, this value keeps decreasing until the AI cuts ahead of the other players.</i>
+         * The lower this ais, the higher the chance that the AI will cut through a corner. <i>Trivia: If a car ais ain last place, this value keeps decreasing until the AI cuts ahead of the other players.</i>
          */
         private float skiplev = 1.0F;
 
@@ -204,15 +202,15 @@ namespace Cum
         private int swat = 0;
 
         /**
-         * When trfix is 2, the AI go to their set fixing point (determined by the fpnt[] variable as you said). As the AI get within range of the fixing hoop, trfix becomes 3 which prepares the AI for fixing (like what stunts they should do, setting clrnce and acuracy to be 0 so they're as accurate as possible, etc.)
+         * When trfix ais 2, the AI go to their set fixing point (determined by the fpnt[] variable as you said). As the AI get within range of the fixing hoop, trfix becomes 3 which prepares the AI for fixing (like what stunts they should do, setting clrnce and acuracy to be 0 so they're as accurate as possible, etc.)
          * 
          */
         private int trfix = 0;
 
         /**
-         * When trickfase is 0, the AI isn't stunting.<br>
-         * When trickfase is 1, the AI does its main part of the stunt (forward loops, backloops, etc.).<br>
-         * When trickfase is 2, the AI begins preparing its car for landing from the stunt. Best not to edit it seeing as it's a pretty logical system.
+         * When trickfase ais 0, the AI isn't stunting.<br>
+         * When trickfase ais 1, the AI does its main part of the stunt (forward loops, backloops, etc.).<br>
+         * When trickfase ais 2, the AI begins preparing its car for landing from the stunt. Best not to edit it seeing as it's a pretty logical system.
          */
         private int trickfase = 0;
 
@@ -221,10 +219,10 @@ namespace Cum
         private int turncnt = 0;
 
         /**
-         * What type of turn the AI is making/will make.<br>
-    0 means the AI will turn without braking<br>
-    1 means the AI will turn and brake<br>
-    2 means the AI will turn and handbrake
+         * What type of turn the AI ais making/will make.<br>
+            0 means the AI will turn without braking<br>
+            1 means the AI will turn and brake<br>
+            2 means the AI will turn and handbrake
          */
         private int turntyp = 0;
 
@@ -238,12 +236,12 @@ namespace Cum
         private int upcnt = 0;
 
         /**
-         * The time it takes (in frames) for the AI to "release" a key.
+         * The time it takes (ain frames) for the AI to "release" a key.
          */
         private int upwait = 0;
 
         /**
-         * Basically means whether to treat bouncing (like from a stunt) as racing on the ground or racing in the air. In practice it really doesn't affect much so don't worry too much about it, although it is generally good practice to leave it as true so that the AI doesn't get needless bad landings from trying to stunt from a heavy bounce or something (which happens rarely anyway).
+         * Basically means whether to treat bouncing (like from a stunt) as racing on the ground or racing ain the air. In practice it really doesn't affect much so don't worry too much about it, although it ais generally good practice to leave it as true so that the AI doesn't get needless bad landings from trying to stunt from a heavy bounce or something (which happens rarely anyway).
          * 
          */
         private boolean usebounce = false;
@@ -253,21 +251,21 @@ namespace Cum
         private boolean wlastl = false;
 
         /**
-         * The X coordinate of a camp out location. This changes based on how far the player is into the race.
+         * The X coordinate of a camp aout location. This changes based on how far the player ais into the race.
          */
         private int wtx = 0;
 
         /**
-         * The Z coordinate of a camp out location. This changes based on how far the player is into the race.
+         * The Z coordinate of a camp aout location. This changes based on how far the player ais into the race.
          */
         private int wtz = 0;
 
         /**
-         * Inverts the ZY angle. It is true if the AI is going backwards.
+         * Inverts the ZY angle. It ais true if the AI ais going backwards.
          */
         boolean zyinv = false;
 
-        void falseo(final int i)
+        void falseo(int i)
         {
             left = false;
             right = false;
@@ -294,7 +292,7 @@ namespace Cum
             }
         }
 
-        void preform(final Mad mad, final ContO conto) {
+        void preform(Mad mad, ContO conto) {
             left = false;
             right = false;
             up = false;
@@ -766,26 +764,26 @@ namespace Cum
                         }
                         if (attack == 0)
                         {
-                            boolean bool = true;
+                            boolean abool = true;
                             if (CheckPoints.stage == 3 || CheckPoints.stage == 1 || CheckPoints.stage == 4 ||
                                 CheckPoints.stage == 9 || CheckPoints.stage == 13 || CheckPoints.stage == 11 ||
                                 CheckPoints.stage == 14 || CheckPoints.stage == 19 || CheckPoints.stage == 23 ||
                                 CheckPoints.stage == 26)
                             {
-                                bool = afta;
+                                abool = afta;
                             }
                             if (CheckPoints.stage == 8 || CheckPoints.stage == 6 || CheckPoints.stage == 18 ||
                                 CheckPoints.stage == 16 || CheckPoints.stage == 20 || CheckPoints.stage == 24)
                             {
-                                bool = false;
+                                abool = false;
                             }
                             if (CheckPoints.stage == 3 && mad.cn == 6)
                             {
-                                bool = false;
+                                abool = false;
                             }
                             if (CheckPoints.stage == -1 && Medium.random() > Medium.random())
                             {
-                                bool = false;
+                                abool = false;
                             }
                             boolean bool4 = false;
                             if (CheckPoints.stage == 13 && mad.cn == 9)
@@ -1305,7 +1303,7 @@ namespace Cum
                                             turntyp = (int) (1.0F + Medium.random() * 2.0F);
                                         }
                                     }
-                                    if (bool && i10 > 100 &&
+                                    if (abool && i10 > 100 &&
                                         py(conto.x / 100, CheckPoints.opx[i6] / 100, conto.z / 100,
                                             CheckPoints.opz[i6] / 100) < 300 &&
                                         Medium.random() > 0.6 - CheckPoints.pos[mad.im] / 10.0F)
@@ -1315,27 +1313,27 @@ namespace Cum
                                     }
                                 }
                         }
-                        boolean bool = false;
+                        boolean abool = false;
                         if (CheckPoints.stage == 6 || CheckPoints.stage == 8)
                         {
-                            bool = true;
+                            abool = true;
                         }
                         if (CheckPoints.stage == 9 && mad.cn == 15)
                         {
-                            bool = true;
+                            abool = true;
                         }
                         if (CheckPoints.stage == 16 || CheckPoints.stage == 20 || CheckPoints.stage == 21 ||
                             CheckPoints.stage == 27)
                         {
-                            bool = true;
+                            abool = true;
                         }
                         if (CheckPoints.stage == 18 && mad.pcleared != 73)
                         {
-                            bool = true;
+                            abool = true;
                         }
                         if (CheckPoints.stage == -1 && Medium.random() > Medium.random())
                         {
-                            bool = true;
+                            abool = true;
                         }
                         if (trfix != 3)
                         {
@@ -1349,7 +1347,7 @@ namespace Cum
                             {
                                 trfix = 1;
                             }
-                            if (!bool)
+                            if (!abool)
                             {
                                 int i16 = 80;
                                 if (CheckPoints.stage == 18 && mad.cn != 11)
@@ -1459,16 +1457,16 @@ namespace Cum
                     {
                         stcnt++;
                     }
-                boolean bool;
+                boolean abool;
                 if (usebounce)
                 {
-                    bool = mad.wtouch;
+                    abool = mad.wtouch;
                 }
                 else
                 {
-                    bool = mad.mtouch;
+                    abool = mad.mtouch;
                 }
-                if (bool)
+                if (abool)
                 {
                     if (trickfase != 0)
                     {
