@@ -1491,7 +1491,7 @@ public class Medium {
             mtx[i174] = new int[nmv[i174] * 2];
             mty[i174] = new int[nmv[i174] * 2];
             mtz[i174] = new int[nmv[i174] * 2];
-            mtc[i174] = new int[nmv[i174]][3];
+            mtc[i174] = ArrayExt.New<int>(nmv[i174],3);
             for (int i178 = 0; i178 < nmv[i174]; i178++) {
                 mtx[i174][i178] = (int) ((i178 * 500 + (random.nextDouble() * 800.0 - 400.0) - 250 * (nmv[i174] - 1)) * f);
                 mtx[i174][i178 + nmv[i174]] = (int) ((i178 * 500 + (random.nextDouble() * 800.0 - 400.0) - 250 * (nmv[i174] - 1)) * f);
@@ -1573,12 +1573,12 @@ public class Medium {
             for (int i42 = 0; i42 < Trackers.nt; i42++)
                 if (Trackers.zy[i42] == 0 && Trackers.xy[i42] == 0) {
                     if (Trackers.radx[i42] < Trackers.radz[i42] && Math.abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]) {
-                        for (/**/; Math.abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]; cgpx[i41] += random.nextDouble() * Trackers.radx[i42] * 2.0 - Trackers.radx[i42]) {
+                        for (/**/; Math.abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]; cgpx[i41] += Math.round(random.nextDouble() * Trackers.radx[i42] * 2.0 - Trackers.radx[i42])) {
 
                         }
                     }
                     if (Trackers.radz[i42] < Trackers.radx[i42] && Math.abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]) {
-                        for (/**/; Math.abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]; cgpz[i41] += random.nextDouble() * Trackers.radz[i42] * 2.0 - Trackers.radz[i42]) {
+                        for (/**/; Math.abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]; cgpz[i41] += Math.round(random.nextDouble() * Trackers.radz[i42] * 2.0 - Trackers.radz[i42])) {
 
                         }
                     }
@@ -1590,22 +1590,22 @@ public class Medium {
         }
         for (int i43 = 0; i43 < nrw * ncl; i43++) {
             float f = (float) (0.3 + 1.6 * random.nextDouble());
-            ogpx[i43][0] = 0;
-            ogpz[i43][0] = (int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpx[i43][1] = (int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43][1] = ogpx[i43][1];
-            ogpx[i43][2] = (int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpz[i43][2] = 0;
-            ogpx[i43][3] = (int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43][3] = -ogpx[i43][3];
-            ogpx[i43][4] = 0;
-            ogpz[i43][4] = -(int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpx[i43][5] = -(int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43][5] = ogpx[i43][5];
-            ogpx[i43][6] = -(int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpz[i43][6] = 0;
-            ogpx[i43][7] = -(int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43][7] = -ogpx[i43][7];
+            ogpx[i43,0] = 0;
+            ogpz[i43,0] = (int) ((100.0 + random.nextDouble() * 760.0) * f);
+            ogpx[i43,1] = (int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
+            ogpz[i43,1] = ogpx[i43,1];
+            ogpx[i43,2] = (int) ((100.0 + random.nextDouble() * 760.0) * f);
+            ogpz[i43,2] = 0;
+            ogpx[i43,3] = (int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
+            ogpz[i43,3] = -ogpx[i43,3];
+            ogpx[i43,4] = 0;
+            ogpz[i43,4] = -(int) ((100.0 + random.nextDouble() * 760.0) * f);
+            ogpx[i43,5] = -(int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
+            ogpz[i43,5] = ogpx[i43,5];
+            ogpx[i43,6] = -(int) ((100.0 + random.nextDouble() * 760.0) * f);
+            ogpz[i43,6] = 0;
+            ogpx[i43,7] = -(int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
+            ogpz[i43,7] = -ogpx[i43,7];
             for (int i44 = 0; i44 < 8; i44++) {
                 int i45 = i44 - 1;
                 if (i45 == -1) {
@@ -1615,10 +1615,10 @@ public class Medium {
                 if (i46 == 8) {
                     i46 = 0;
                 }
-                ogpx[i43][i44] = ((ogpx[i43][i45] + ogpx[i43][i46]) / 2 + ogpx[i43][i44]) / 2;
-                ogpz[i43][i44] = ((ogpz[i43][i45] + ogpz[i43][i46]) / 2 + ogpz[i43][i44]) / 2;
-                pvr[i43][i44] = (float) (1.1 + random.nextDouble() * 0.8);
-                int i47 = (int) Math.sqrt((int) (ogpx[i43][i44] * ogpx[i43][i44] * pvr[i43][i44] * pvr[i43][i44] + ogpz[i43][i44] * ogpz[i43][i44] * pvr[i43][i44] * pvr[i43][i44]));
+                ogpx[i43,i44] = ((ogpx[i43,i45] + ogpx[i43,i46]) / 2 + ogpx[i43,i44]) / 2;
+                ogpz[i43,i44] = ((ogpz[i43,i45] + ogpz[i43,i46]) / 2 + ogpz[i43,i44]) / 2;
+                pvr[i43,i44] = (float) (1.1 + random.nextDouble() * 0.8);
+                int i47 = (int) Math.sqrt((int) (ogpx[i43,i44] * ogpx[i43,i44] * pvr[i43,i44] * pvr[i43,i44] + ogpz[i43,i44] * ogpz[i43,i44] * pvr[i43,i44] * pvr[i43,i44]));
                 if (i47 > pmx[i43]) {
                     pmx[i43] = i47;
                 }
@@ -1645,7 +1645,7 @@ public class Medium {
             nst = 40;
             stx = new int[nst];
             stz = new int[nst];
-            stc = new int[nst][2][3];
+            stc = new int[nst,2,3];
             bst = new boolean[nst];
             twn = new int[nst];
             for (int i = 0; i < nst; i++) {
@@ -1669,15 +1669,15 @@ public class Medium {
                     i213 = 2;
                 }
                 for (int i214 = 0; i214 < 3; i214++) {
-                    stc[i][0][i214] = 200;
+                    stc[i,0,i214] = 200;
                     if (i212 == i214) {
-                        stc[i][0][i214] += (int) (55.0 * random.nextDouble());
+                        stc[i,0,i214] += (int) (55.0 * random.nextDouble());
                     }
                     if (i213 == i214) {
-                        stc[i][0][i214] += 55;
+                        stc[i,0,i214] += 55;
                     }
-                    stc[i][0][i214] = (stc[i][0][i214] * 2 + csky[i214]) / 3;
-                    stc[i][1][i214] = (stc[i][0][i214] + csky[i214]) / 2;
+                    stc[i,0,i214] = (stc[i,0,i214] * 2 + csky[i214]) / 3;
+                    stc[i,1,i214] = (stc[i,0,i214] + csky[i214]) / 2;
                 }
                 twn[i] = (int) (4.0 * random.nextDouble());
                 bst[i] = random.nextDouble() > 0.8;

@@ -67,6 +67,11 @@ namespace Cum
         {
             throw new NotImplementedException();
         }
+
+        public static void RGBtoHSB(int i, int i1, int i2, float[] fs)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class RadicalMusic
@@ -127,6 +132,11 @@ namespace Cum
         }
 
         public static int max(int i, int i1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static int round(double d)
         {
             throw new NotImplementedException();
         }
