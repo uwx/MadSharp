@@ -64,5 +64,20 @@ namespace MadGame
                 D2D.DrawLine(new RawVector2(x[i], y[i]), new RawVector2(x[i+1], y[i+1]), _currentColor);
             }
         }
+
+        public static void setColor(Cum.Color color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void fillPolygon(int[] is78, int[] is79, int i)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void fillRect(int p0, int i217, int p2, int p3)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

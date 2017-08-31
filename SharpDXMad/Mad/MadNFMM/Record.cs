@@ -3,108 +3,106 @@ namespace Cum
 {
     internal class Record
     {
-        static readonly ContO[,] car = new ContO[6,8];
-        static int caught = 0;
-        static private readonly int[] checkpoint = new int[300];
-        static int closefinish = 0;
-        static readonly int[] cntdest = new int[8];
-        static private int cntf = 50;
-        static readonly int[] dest = new int[8];
-        static readonly int[] fix = new int[8];
-        static boolean hcaught = false;
-        static private readonly int[] hcheckpoint = new int[300];
-        static private readonly int[] hdest =
+        internal static readonly ContO[,] car = new ContO[6,8];
+        internal static int caught = 0;
+        private static readonly int[] checkpoint = new int[300];
+        internal static int closefinish = 0;
+        internal static readonly int[] cntdest = new int[8];
+        private static int cntf = 50;
+        internal static readonly int[] dest = new int[8];
+        internal static readonly int[] fix = new int[8];
+        internal static boolean hcaught = false;
+        private static readonly int[] hcheckpoint = new int[300];
+        private static readonly int[] hdest =
         {
             -1, -1, -1, -1, -1, -1, -1, -1
         };
 
-        static readonly int[] hfix =
+        internal static readonly int[] hfix =
         {
             -1, -1, -1, -1, -1, -1, -1, -1
         };
 
-        static private readonly boolean[] hlastcheck = new boolean[300];
-        static private readonly int[,,] hmagx = new int[8,4,7];
-        static private readonly int[,,] hmagy = new int[8,4,7];
-        static private readonly int[,,] hmagz = new int[8,4,7];
-        static private readonly boolean[,]
-        hmtouch = new boolean[8,7];
-        static private readonly float[,] hrcx = new float[8,200];
-        static private readonly float[,] hrcy = new float[8,200];
-        static private readonly float[,] hrcz = new float[8,200];
-        static private readonly int[,] hrspark = new int[8,200];
-        static private readonly int[,,] hrx = new int[8,4,7];
-        static private readonly int[,,] hry = new int[8,4,7];
-        static private readonly int[,,] hrz = new int[8,4,7];
-        static private readonly int[,,] hscx = new int[8,20,30];
-        static private readonly int[,,] hscz = new int[8,20,30];
-        static private readonly float[,,] hsmag = new float[8,20,30];
-        static private readonly int[,] hsprk = new int[8,200];
-        static private readonly int[] hsquash =
+        private static readonly boolean[] hlastcheck = new boolean[300];
+        private static readonly int[,,] hmagx = new int[8,4,7];
+        private static readonly int[,,] hmagy = new int[8,4,7];
+        private static readonly int[,,] hmagz = new int[8,4,7];
+        private static readonly boolean[,] hmtouch = new boolean[8,7];
+        private static readonly float[,] hrcx = new float[8,200];
+        private static readonly float[,] hrcy = new float[8,200];
+        private static readonly float[,] hrcz = new float[8,200];
+        private static readonly int[,] hrspark = new int[8,200];
+        private static readonly int[,,] hrx = new int[8,4,7];
+        private static readonly int[,,] hry = new int[8,4,7];
+        private static readonly int[,,] hrz = new int[8,4,7];
+        private static readonly int[,,] hscx = new int[8,20,30];
+        private static readonly int[,,] hscz = new int[8,20,30];
+        private static readonly float[,,] hsmag = new float[8,20,30];
+        private static readonly int[,] hsprk = new int[8,200];
+        private static readonly int[] hsquash =
         {
             0, 0, 0, 0, 0, 0, 0, 0
         };
 
-        static private readonly int[,] hsrx = new int[8,200];
-        static private readonly int[,] hsry = new int[8,200];
-        static private readonly int[,] hsrz = new int[8,200];
-        static private readonly int[,,] hsspark = new int[8,20,30];
-        static private readonly int[,,] hsx = new int[8,20,30];
-        static private readonly int[,,] hsy = new int[8,20,30];
-        static private readonly int[,,] hsz = new int[8,20,30];
-        static private readonly int[,] hwxz = new int[300,8];
-        static private readonly int[,] hwzy = new int[300,8];
-        static private readonly int[,] hx = new int[300,8];
-        static private readonly int[,] hxy = new int[300,8];
-        static private readonly int[,] hxz = new int[300,8];
-        static private readonly int[,] hy = new int[300,8];
-        static private readonly int[,] hz = new int[300,8];
-        static private readonly int[,] hzy = new int[300,8];
-        static private readonly boolean[] lastcheck = new boolean[300];
-        static private int lastfr = 0;
-        static private readonly int[,,] magx = new int[8,4,7];
-        static private readonly int[,,] magy = new int[8,4,7];
-        static private readonly int[,,] magz = new int[8,4,7];
-        static private readonly boolean[,]
-        mtouch = new boolean[8,7];
-        static private readonly int[] nr = new int[8];
-        static private readonly int[,] nrx = new int[8,4];
-        static private readonly int[,] nry = new int[8,4];
-        static private readonly int[,] nrz = new int[8,4];
-        static private readonly int[,] ns = new int[8,20];
-        static readonly ContO[] ocar = new ContO[8];
-        static int powered = 0;
-        static private boolean prepit = true;
-        static private readonly float[,] rcx = new float[8,200];
-        static private readonly float[,] rcy = new float[8,200];
-        static private readonly float[,] rcz = new float[8,200];
-        static private readonly int[,] rspark = new int[8,200];
-        static private readonly int[,,] rx = new int[8,4,7];
-        static private readonly int[,,] ry = new int[8,4,7];
-        static private readonly int[,,] rz = new int[8,4,7];
-        static private readonly int[,,] scx = new int[8,20,30];
-        static private readonly int[,,] scz = new int[8,20,30];
-        static private readonly float[,,] smag = new float[8,20,30];
-        static private readonly int[,] sprk = new int[8,200];
-        static private readonly int[,] squash = new int[6,8];
-        static private readonly int[,] srx = new int[8,200];
-        static private readonly int[,] sry = new int[8,200];
-        static private readonly int[,] srz = new int[8,200];
-        static private readonly int[,,] sspark = new int[8,20,30];
-        static readonly ContO[] starcar = new ContO[8];
-        static private readonly int[,,] sx = new int[8,20,30];
-        static private readonly int[,,] sy = new int[8,20,30];
-        static private readonly int[,,] sz = new int[8,20,30];
-        static int wasted = 0;
-        static int whenwasted = 0;
-        static private readonly int[,] wxz = new int[300,8];
-        static private readonly int[,] wzy = new int[300,8];
-        static private readonly int[,] x = new int[300,8];
-        static private readonly int[,] xy = new int[300,8];
-        static private readonly int[,] xz = new int[300,8];
-        static private readonly int[,] y = new int[300,8];
-        static private readonly int[,] z = new int[300,8];
-        static private readonly int[,] zy = new int[300,8];
+        private static readonly int[,] hsrx = new int[8,200];
+        private static readonly int[,] hsry = new int[8,200];
+        private static readonly int[,] hsrz = new int[8,200];
+        private static readonly int[,,] hsspark = new int[8,20,30];
+        private static readonly int[,,] hsx = new int[8,20,30];
+        private static readonly int[,,] hsy = new int[8,20,30];
+        private static readonly int[,,] hsz = new int[8,20,30];
+        private static readonly int[,] hwxz = new int[300,8];
+        private static readonly int[,] hwzy = new int[300,8];
+        private static readonly int[,] hx = new int[300,8];
+        private static readonly int[,] hxy = new int[300,8];
+        private static readonly int[,] hxz = new int[300,8];
+        private static readonly int[,] hy = new int[300,8];
+        private static readonly int[,] hz = new int[300,8];
+        private static readonly int[,] hzy = new int[300,8];
+        private static readonly boolean[] lastcheck = new boolean[300];
+        private static int lastfr = 0;
+        private static readonly int[,,] magx = new int[8,4,7];
+        private static readonly int[,,] magy = new int[8,4,7];
+        private static readonly int[,,] magz = new int[8,4,7];
+        private static readonly boolean[,] mtouch = new boolean[8,7];
+        private static readonly int[] nr = new int[8];
+        private static readonly int[,] nrx = new int[8,4];
+        private static readonly int[,] nry = new int[8,4];
+        private static readonly int[,] nrz = new int[8,4];
+        private static readonly int[,] ns = new int[8,20];
+        internal static readonly ContO[] ocar = new ContO[8];
+        internal static int powered = 0;
+        private static boolean prepit = true;
+        private static readonly float[,] rcx = new float[8,200];
+        private static readonly float[,] rcy = new float[8,200];
+        private static readonly float[,] rcz = new float[8,200];
+        private static readonly int[,] rspark = new int[8,200];
+        private static readonly int[,,] rx = new int[8,4,7];
+        private static readonly int[,,] ry = new int[8,4,7];
+        private static readonly int[,,] rz = new int[8,4,7];
+        private static readonly int[,,] scx = new int[8,20,30];
+        private static readonly int[,,] scz = new int[8,20,30];
+        private static readonly float[,,] smag = new float[8,20,30];
+        private static readonly int[,] sprk = new int[8,200];
+        private static readonly int[,] squash = new int[6,8];
+        private static readonly int[,] srx = new int[8,200];
+        private static readonly int[,] sry = new int[8,200];
+        private static readonly int[,] srz = new int[8,200];
+        private static readonly int[,,] sspark = new int[8,20,30];
+        internal static readonly ContO[] starcar = new ContO[8];
+        private static readonly int[,,] sx = new int[8,20,30];
+        private static readonly int[,,] sy = new int[8,20,30];
+        private static readonly int[,,] sz = new int[8,20,30];
+        internal static int wasted = 0;
+        internal static int whenwasted = 0;
+        private static readonly int[,] wxz = new int[300,8];
+        private static readonly int[,] wzy = new int[300,8];
+        private static readonly int[,] x = new int[300,8];
+        private static readonly int[,] xy = new int[300,8];
+        private static readonly int[,] xz = new int[300,8];
+        private static readonly int[,] y = new int[300,8];
+        private static readonly int[,] z = new int[300,8];
+        private static readonly int[,] zy = new int[300,8];
 
         Record()
         {
@@ -112,7 +110,7 @@ namespace Cum
             cotchinow(0);
         }
 
-        static private void chipx(int i, float f, ContO conto, Mad mad) {
+        private static void chipx(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -142,7 +140,7 @@ namespace Cum
             }
         }
 
-        static private void chipz(int i, float f, ContO conto, Mad mad) {
+        private static void chipz(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -429,7 +427,7 @@ namespace Cum
             lastfr = i38;
         }
 
-        static private int py(int i, int i74, int i75, int i76) {
+        private static int py(int i, int i74, int i75, int i76) {
             return (i - i74) * (i - i74) + (i75 - i76) * (i75 - i76);
         }
 
@@ -582,7 +580,7 @@ namespace Cum
             }
         }
 
-        static private void regx(int i, float f, ContO conto, Mad mad) {
+        private static void regx(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -663,7 +661,7 @@ namespace Cum
             }
         }
 
-        static private void regy(int i, float f, boolean abool, ContO conto, Mad mad) {
+        private static void regy(int i, float f, boolean abool, ContO conto, Mad mad) {
             if (f > 100.0F)
             {
                 f -= 100.0F;
@@ -813,7 +811,7 @@ namespace Cum
             }
         }
 
-        static private void regz(int i, float f, ContO conto, Mad mad) {
+        private static void regz(int i, float f, ContO conto, Mad mad) {
             if (Math.abs(f) > 100.0F)
             {
                 if (f > 100.0F)

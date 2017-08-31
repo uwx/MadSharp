@@ -3,25 +3,25 @@ namespace Cum
     internal class Trackers
     {
         //private Trackers() {}
-        static final int[][] c = new int[75000][3];
-        static final int[] dam = new int[75000];
-        static final boolean[] decor = new boolean[75000];
-        static int ncx = 0;
-        static int ncz = 0;
-        static final boolean[] notwall = new boolean[75000];
-        static int nt = 0;
-        static final int[] radx = new int[75000];
-        static final int[] rady = new int[75000];
-        static final int[] radz = new int[75000];
-        static int[][][] sect = null;
-        static final int[] skd = new int[75000];
-        static int sx = 0;
-        static int sz = 0;
-        static final int[] x = new int[75000];
-        static final int[] xy = new int[75000];
-        static final int[] y = new int[75000];
-        static final int[] z = new int[75000];
-        static final int[] zy = new int[75000];
+        internal static final int[][] c = new int[75000][3];
+        internal static final int[] dam = new int[75000];
+        internal static final boolean[] decor = new boolean[75000];
+        internal static int ncx = 0;
+        internal static int ncz = 0;
+        internal static final boolean[] notwall = new boolean[75000];
+        internal static int nt = 0;
+        internal static final int[] radx = new int[75000];
+        internal static final int[] rady = new int[75000];
+        internal static final int[] radz = new int[75000];
+        internal static int[][][] sect = null;
+        internal static final int[] skd = new int[75000];
+        internal static int sx = 0;
+        internal static int sz = 0;
+        internal static final int[] x = new int[75000];
+        internal static final int[] xy = new int[75000];
+        internal static final int[] y = new int[75000];
+        internal static final int[] z = new int[75000];
+        internal static final int[] zy = new int[75000];
 
         static void devidetrackers(final int i, final int i0, final int i1, final int i2) {
             sect = null;

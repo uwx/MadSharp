@@ -1,3 +1,4 @@
+using MadGame;
 using boolean = System.Boolean;
 
 namespace Cum {
@@ -18,10 +19,10 @@ public class Medium {
             205, 200, 200
     };
     internal static int checkpoint = -1;
-    private static int[][][] clax = null;
-    private static int[][][] clay = null;
-    private static int[][][] claz = null;
-    private static int[][][][] clc = null;
+    private static int[,,] clax = null;
+    private static int[,,] clay = null;
+    private static int[,,] claz = null;
+    private static int[,,,] clc = null;
     private static readonly int[] cldd = {
             210, 210, 210, 1, -1000
     };
@@ -88,8 +89,8 @@ public class Medium {
     internal static int nrw = 0;
     internal static int nsp = 0;
     private static int nst = 0;
-    private static int[][] ogpx = null;
-    private static int[][] ogpz = null;
+    private static int[,] ogpx = null;
+    private static int[,] ogpz = null;
     private static readonly int[] ogrnd = {
             205, 200, 200
     };
@@ -100,7 +101,7 @@ public class Medium {
     private static int[] pmx = null;
     internal static int ptcnt = -10;
     internal static int ptr = 0;
-    private static float[][] pvr = null;
+    private static float[,] pvr = null;
     private static readonly int[] rand = {
             0, 0, 0
     };
@@ -115,7 +116,7 @@ public class Medium {
     internal static readonly int[] sprad = new int[7];
     internal static readonly int[] spx = new int[7];
     internal static readonly int[] spz = new int[7];
-    private static int[][][] stc = null;
+    private static int[,,] stc = null;
     private static int[] stx = null;
     private static int[] stz = null;
     private static readonly float[] tcos = new float[360];
@@ -312,7 +313,7 @@ public class Medium {
         return tcos[i];
     }
 
-    static void d(Graphics2D graphics2d) {
+    static void d() {
         nsp = 0;
         if (zy > 90) {
             zy = 90;
@@ -376,8 +377,8 @@ public class Medium {
                 }
             }
             if (is223[0] < h && is223[1] > ih) {
-                graphics2d.setColor(new Color(i, i224, i225));
-                graphics2d.fillPolygon(ais, is223, 4);
+                G.setColor(new Color(i, i224, i225));
+                G.fillPolygon(ais, is223, 4);
             }
         }
         if (lightn != -1 && lton) {
@@ -457,8 +458,8 @@ public class Medium {
                 i235 = i225;
             }
             if (is223[0] > ih && is223[1] < h) {
-                graphics2d.setColor(new Color(i, i224, i225));
-                graphics2d.fillPolygon(ais, is223, 4);
+                G.setColor(new Color(i, i224, i225));
+                G.fillPolygon(ais, is223, 4);
             }
         }
         ais[0] = iw;
@@ -480,8 +481,8 @@ public class Medium {
             i = (int) ((i * (1.0F - f) + i226 * (1.0F + f)) / 2.0F);
             i224 = (int) ((i224 * (1.0F - f) + i227 * (1.0F + f)) / 2.0F);
             i225 = (int) ((i225 * (1.0F - f) + i228 * (1.0F + f)) / 2.0F);
-            graphics2d.setColor(new Color(i, i224, i225));
-            graphics2d.fillPolygon(ais, is223, 4);
+            G.setColor(new Color(i, i224, i225));
+            G.fillPolygon(ais, is223, 4);
         }
         if (resdown != 2) {
             for (int i242 = 1; i242 < 20; i242++) {
@@ -510,21 +511,21 @@ public class Medium {
                 ais[3] = w;
                 is223[3] = is223[0];
                 i236 = is223[0];
-                i233 *= 0.991;
-                i234 *= 0.991;
-                i235 *= 0.998;
+                i233 = (int) (i233 * 0.991);
+                i234 = (int) (i234 * 0.991);
+                i235 = (int) (i235 * 0.998);
                 if (is223[1] > ih && is223[0] < h) {
-                    graphics2d.setColor(new Color(i233, i234, i235));
-                    graphics2d.fillPolygon(ais, is223, 4);
+                    G.setColor(new Color(i233, i234, i235));
+                    G.fillPolygon(ais, is223, 4);
                 }
             }
             if (lightson) {
-                drawstars(graphics2d);
+                drawstars();
             }
-            drawmountains(graphics2d);
-            drawclouds(graphics2d);
+            drawmountains();
+            drawclouds();
         }
-        groundpolys(graphics2d);
+        groundpolys();
         if (noelec != 0) {
             noelec--;
         }
@@ -536,7 +537,7 @@ public class Medium {
         }
     }
 
-    private static void drawclouds(Graphics2D graphics2d) {
+    private static void drawclouds() {
         for (int i = 0; i < noc; i++) {
             int i104 = cx + (int) ((clx[i] - x / 20 - cx) * cos(xz) - (clz[i] - z / 20 - cz) * sin(xz));
             int i105 = cz + (int) ((clx[i] - x / 20 - cx) * sin(xz) + (clz[i] - z / 20 - cz) * cos(xz));
@@ -544,17 +545,17 @@ public class Medium {
             int i107 = xs(i104 + cmx[i], i106);
             int i108 = xs(i104 - cmx[i], i106);
             if (i107 > 0 && i108 < w && i106 > -cmx[i] && i107 - i108 > 20) {
-                int[][] ais = new int[3][12];
-                int[][] is109 = new int[3][12];
-                int[][] is110 = new int[3][12];
+                int[][] ais = ArrayExt.New<int>(3,12);
+                int[][] is109 = ArrayExt.New<int>(3,12);
+                int[][] is110 = ArrayExt.New<int>(3,12);
                 int[] is111 = new int[12];
                 int[] is112 = new int[12];
                 boolean bool116;
                 for (int i120 = 0; i120 < 3; i120++) {
                     for (int i121 = 0; i121 < 12; i121++) {
-                        ais[i120][i121] = clax[i][i120][i121] + clx[i] - x / 20;
-                        is110[i120][i121] = claz[i][i120][i121] + clz[i] - z / 20;
-                        is109[i120][i121] = clay[i][i120][i121] + cldd[4] - y / 20;
+                        ais[i120][i121] = clax[i,i120,i121] + clx[i] - x / 20;
+                        is110[i120][i121] = claz[i,i120,i121] + clz[i] - z / 20;
+                        is109[i120][i121] = clay[i,i120,i121] + cldd[4] - y / 20;
                     }
                     rot(ais[i120], is110[i120], cx, cz, xz, 12);
                     rot(is109[i120], is110[i120], cy, cz, zy, 12);
@@ -631,17 +632,17 @@ public class Medium {
                         i129 /= 6;
                         int i133 = (int) Math.sqrt((cy - i127) * (cy - i127) + (cx - i128) * (cx - i128) + i129 * i129);
                         if (i133 < fade[7]) {
-                            int i134 = clc[i][1][i122 / 2][0];
-                            int i135 = clc[i][1][i122 / 2][1];
-                            int i136 = clc[i][1][i122 / 2][2];
+                            int i134 = clc[i,1,i122 / 2,0];
+                            int i135 = clc[i,1,i122 / 2,1];
+                            int i136 = clc[i,1,i122 / 2,2];
                             for (int i137 = 0; i137 < 16; i137++)
                                 if (i133 > fade[i137]) {
                                     i134 = (i134 * fogd + cfade[0]) / (fogd + 1);
                                     i135 = (i135 * fogd + cfade[1]) / (fogd + 1);
                                     i136 = (i136 * fogd + cfade[2]) / (fogd + 1);
                                 }
-                            graphics2d.setColor(new Color(i134, i135, i136));
-                            graphics2d.fillPolygon(is111, is112, 6);
+                            G.setColor(new Color(i134, i135, i136));
+                            G.fillPolygon(is111, is112, 6);
                         }
                     }
                 }
@@ -717,17 +718,17 @@ public class Medium {
                         i145 /= 6;
                         int i149 = (int) Math.sqrt((cy - i143) * (cy - i143) + (cx - i144) * (cx - i144) + i145 * i145);
                         if (i149 < fade[7]) {
-                            int i150 = clc[i][0][i138 / 2][0];
-                            int i151 = clc[i][0][i138 / 2][1];
-                            int i152 = clc[i][0][i138 / 2][2];
+                            int i150 = clc[i,0,i138 / 2,0];
+                            int i151 = clc[i,0,i138 / 2,1];
+                            int i152 = clc[i,0,i138 / 2,2];
                             for (int i153 = 0; i153 < 16; i153++)
                                 if (i149 > fade[i153]) {
                                     i150 = (i150 * fogd + cfade[0]) / (fogd + 1);
                                     i151 = (i151 * fogd + cfade[1]) / (fogd + 1);
                                     i152 = (i152 * fogd + cfade[2]) / (fogd + 1);
                                 }
-                            graphics2d.setColor(new Color(i150, i151, i152));
-                            graphics2d.fillPolygon(is111, is112, 6);
+                            G.setColor(new Color(i150, i151, i152));
+                            G.fillPolygon(is111, is112, 6);
                         }
                     }
                 }
@@ -776,15 +777,15 @@ public class Medium {
                                 i164 = (i164 * fogd + cfade[1]) / (fogd + 1);
                                 i165 = (i165 * fogd + cfade[2]) / (fogd + 1);
                             }
-                        graphics2d.setColor(new Color(i163, i164, i165));
-                        graphics2d.fillPolygon(is111, is112, 12);
+                        G.setColor(new Color(i163, i164, i165));
+                        G.fillPolygon(is111, is112, 12);
                     }
                 }
             }
         }
     }
 
-    private static void drawmountains(Graphics2D graphics2d) {
+    private static void drawmountains() {
         for (int i = 0; i < nmt; i++) {
             int i185 = mrd[i];
             int i186 = cx + (int) ((mtx[i185][0] - x / 30 - cx) * cos(xz) - (mtz[i185][0] - z / 30 - cz) * sin(xz));
@@ -849,8 +850,8 @@ public class Medium {
                             int i209 = (int) ((mtc[i185][i202][0] + cgrnd[0] + csky[0] * f + cfade[0] * f) / (2.0F + f * 2.0F));
                             int i210 = (int) ((mtc[i185][i202][1] + cgrnd[1] + csky[1] * f + cfade[1] * f) / (2.0F + f * 2.0F));
                             int i211 = (int) ((mtc[i185][i202][2] + cgrnd[2] + csky[2] * f + cfade[2] * f) / (2.0F + f * 2.0F));
-                            graphics2d.setColor(new Color(i209, i210, i211));
-                            graphics2d.fillPolygon(is196, is197, 4);
+                            G.setColor(new Color(i209, i210, i211));
+                            G.fillPolygon(is196, is197, 4);
                         }
                     }
                 }
@@ -858,7 +859,7 @@ public class Medium {
         }
     }
 
-    private static void drawstars(Graphics2D graphics2d) {
+    private static void drawstars() {
         for (int i = 0; i < nst; i++) {
             int i215 = cx + (int) (stx[i] * cos(xz) - stz[i] * sin(xz));
             int i216 = cz + (int) (stx[i] * sin(xz) + stz[i] * cos(xz));
@@ -886,15 +887,15 @@ public class Medium {
                         i220 = 2;
                     }
                     for (int i221 = 0; i221 < 3; i221++) {
-                        stc[i][0][i221] = 200;
+                        stc[i,0,i221] = 200;
                         if (i219 == i221) {
-                            stc[i][0][i221] += (int) (55.0 * HansenRandom.Double());
+                            stc[i,0,i221] += (int) (55.0 * HansenRandom.Double());
                         }
                         if (i220 == i221) {
-                            stc[i][0][i221] += 55;
+                            stc[i,0,i221] += 55;
                         }
-                        stc[i][0][i221] = (stc[i][0][i221] * 2 + csky[i221]) / 3;
-                        stc[i][1][i221] = (stc[i][0][i221] + csky[i221]) / 2;
+                        stc[i,0,i221] = (stc[i,0,i221] * 2 + csky[i221]) / 3;
+                        stc[i,1,i221] = (stc[i,0,i221] + csky[i221]) / 2;
                     }
                     twn[i] = 3;
                 } else {
@@ -904,11 +905,11 @@ public class Medium {
                 if (bst[i]) {
                     i222 = 1;
                 }
-                graphics2d.setColor(new Color(stc[i][1][0], stc[i][1][1], stc[i][1][2]));
-                graphics2d.fillRect(i215 - 1, i217, 3 + i222, 1 + i222);
-                graphics2d.fillRect(i215, i217 - 1, 1 + i222, 3 + i222);
-                graphics2d.setColor(new Color(stc[i][0][0], stc[i][0][1], stc[i][0][2]));
-                graphics2d.fillRect(i215, i217, 1 + i222, 1 + i222);
+                G.setColor(new Color(stc[i,1,0], stc[i,1,1], stc[i,1,2]));
+                G.fillRect(i215 - 1, i217, 3 + i222, 1 + i222);
+                G.fillRect(i215, i217 - 1, 1 + i222, 3 + i222);
+                G.setColor(new Color(stc[i,0,0], stc[i,0,1], stc[i,0,2]));
+                G.fillRect(i215, i217, 1 + i222, 1 + i222);
             }
         }
     }
@@ -1162,7 +1163,7 @@ public class Medium {
         }
     }
 
-    private static void groundpolys(Graphics2D graphics2d) {
+    private static void groundpolys() {
         int i = (x - sgpx) / 1200 - 12;
         if (i < 0) {
             i = 0;
@@ -1185,23 +1186,23 @@ public class Medium {
         if (i50 < i49) {
             i50 = i49;
         }
-        int[][] ais = new int[i48 - i][i50 - i49];
+        int[,] ais = new int[i48 - i,i50 - i49];
         for (int i51 = i; i51 < i48; i51++) {
             for (int i52 = i49; i52 < i50; i52++) {
-                ais[i51 - i][i52 - i49] = 0;
+                ais[i51 - i,i52 - i49] = 0;
                 int i53 = i51 + i52 * nrw;
                 if (resdown < 2 || i53 % 2 == 0) {
                     int i54 = cx + (int) ((cgpx[i53] - x - cx) * cos(xz) - (cgpz[i53] - z - cz) * sin(xz));
                     int i55 = cz + (int) ((cgpx[i53] - x - cx) * sin(xz) + (cgpz[i53] - z - cz) * cos(xz));
                     int i56 = cz + (int) ((250 - y - cy) * sin(zy) + (i55 - cz) * cos(zy));
                     if (xs(i54 + pmx[i53], i56) > 0 && xs(i54 - pmx[i53], i56) < w && i56 > -pmx[i53] && i56 < fade[2]) {
-                        ais[i51 - i][i52 - i49] = i56;
+                        ais[i51 - i,i52 - i49] = i56;
                         int[] is57 = new int[8];
                         int[] is58 = new int[8];
                         int[] is59 = new int[8];
                         for (int i60 = 0; i60 < 8; i60++) {
-                            is57[i60] = (int) (ogpx[i53][i60] * pvr[i53][i60] + cgpx[i53] - x);
-                            is58[i60] = (int) (ogpz[i53][i60] * pvr[i53][i60] + cgpz[i53] - z);
+                            is57[i60] = (int) (ogpx[i53,i60] * pvr[i53,i60] + cgpx[i53] - x);
+                            is58[i60] = (int) (ogpz[i53,i60] * pvr[i53,i60] + cgpz[i53] - z);
                             is59[i60] = ground;
                         }
                         rot(is57, is58, cx, cz, xz, 8);
@@ -1246,8 +1247,8 @@ public class Medium {
                                 i69 = (i69 * 7 + cfade[1]) / 8;
                                 i70 = (i70 * 7 + cfade[2]) / 8;
                             }
-                            graphics2d.setColor(new Color(i68, i69, i70));
-                            graphics2d.fillPolygon(is61, is62, 8);
+                            G.setColor(new Color(i68, i69, i70));
+                            G.fillPolygon(is61, is62, 8);
                         }
                     }
                 }
@@ -1255,14 +1256,14 @@ public class Medium {
         }
         for (int i71 = i; i71 < i48; i71++) {
             for (int i72 = i49; i72 < i50; i72++)
-                if (ais[i71 - i][i72 - i49] != 0) {
+                if (ais[i71 - i,i72 - i49] != 0) {
                     int i73 = i71 + i72 * nrw;
                     int[] is74 = new int[8];
                     int[] is75 = new int[8];
                     int[] is76 = new int[8];
                     for (int i77 = 0; i77 < 8; i77++) {
-                        is74[i77] = ogpx[i73][i77] + cgpx[i73] - x;
-                        is75[i77] = ogpz[i73][i77] + cgpz[i73] - z;
+                        is74[i77] = ogpx[i73,i77] + cgpx[i73] - x;
+                        is75[i77] = ogpz[i73,i77] + cgpz[i73] - z;
                         is76[i77] = ground;
                     }
                     rot(is74, is75, cx, cz, xz, 8);
@@ -1297,18 +1298,18 @@ public class Medium {
                         int i85 = (int) (cpol[0] * pcv[i73]);
                         int i86 = (int) (cpol[1] * pcv[i73]);
                         int i87 = (int) (cpol[2] * pcv[i73]);
-                        if (ais[i71 - i][i72 - i49] - pmx[i73] > fade[0]) {
+                        if (ais[i71 - i,i72 - i49] - pmx[i73] > fade[0]) {
                             i85 = (i85 * 7 + cfade[0]) / 8;
                             i86 = (i86 * 7 + cfade[1]) / 8;
                             i87 = (i87 * 7 + cfade[2]) / 8;
                         }
-                        if (ais[i71 - i][i72 - i49] - pmx[i73] > fade[1]) {
+                        if (ais[i71 - i,i72 - i49] - pmx[i73] > fade[1]) {
                             i85 = (i85 * 7 + cfade[0]) / 8;
                             i86 = (i86 * 7 + cfade[1]) / 8;
                             i87 = (i87 * 7 + cfade[2]) / 8;
                         }
-                        graphics2d.setColor(new Color(i85, i86, i87));
-                        graphics2d.fillPolygon(is78, is79, 8);
+                        G.setColor(new Color(i85, i86, i87));
+                        G.fillPolygon(is78, is79, 8);
                     }
                 }
         }
@@ -1330,62 +1331,62 @@ public class Medium {
         clx = new int[noc];
         clz = new int[noc];
         cmx = new int[noc];
-        clax = new int[noc][3][12];
-        clay = new int[noc][3][12];
-        claz = new int[noc][3][12];
-        clc = new int[noc][2][6][3];
+        clax = new int[noc,3,12];
+        clay = new int[noc,3,12];
+        claz = new int[noc,3,12];
+        clc = new int[noc,2,6,3];
         for (int i91 = 0; i91 < noc; i91++) {
             clx[i91] = (int) (i + (i88 - i) * HansenRandom.Double());
             clz[i91] = (int) (i89 + (i90 - i89) * HansenRandom.Double());
             float f = (float) (0.25 + HansenRandom.Double() * 1.25);
             float f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][0] = (int) (f92 * 0.3826);
-            claz[i91][0][0] = (int) (f92 * 0.9238);
-            clay[i91][0][0] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,0] = (int) (f92 * 0.3826);
+            claz[i91,0,0] = (int) (f92 * 0.9238);
+            clay[i91,0,0] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][1] = (int) (f92 * 0.7071);
-            claz[i91][0][1] = (int) (f92 * 0.7071);
-            clay[i91][0][1] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,1] = (int) (f92 * 0.7071);
+            claz[i91,0,1] = (int) (f92 * 0.7071);
+            clay[i91,0,1] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][2] = (int) (f92 * 0.9238);
-            claz[i91][0][2] = (int) (f92 * 0.3826);
-            clay[i91][0][2] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,2] = (int) (f92 * 0.9238);
+            claz[i91,0,2] = (int) (f92 * 0.3826);
+            clay[i91,0,2] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][3] = (int) (f92 * 0.9238);
-            claz[i91][0][3] = -(int) (f92 * 0.3826);
-            clay[i91][0][3] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,3] = (int) (f92 * 0.9238);
+            claz[i91,0,3] = -(int) (f92 * 0.3826);
+            clay[i91,0,3] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][4] = (int) (f92 * 0.7071);
-            claz[i91][0][4] = -(int) (f92 * 0.7071);
-            clay[i91][0][4] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,4] = (int) (f92 * 0.7071);
+            claz[i91,0,4] = -(int) (f92 * 0.7071);
+            clay[i91,0,4] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][5] = (int) (f92 * 0.3826);
-            claz[i91][0][5] = -(int) (f92 * 0.9238);
-            clay[i91][0][5] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,5] = (int) (f92 * 0.3826);
+            claz[i91,0,5] = -(int) (f92 * 0.9238);
+            clay[i91,0,5] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][6] = -(int) (f92 * 0.3826);
-            claz[i91][0][6] = -(int) (f92 * 0.9238);
-            clay[i91][0][6] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,6] = -(int) (f92 * 0.3826);
+            claz[i91,0,6] = -(int) (f92 * 0.9238);
+            clay[i91,0,6] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][7] = -(int) (f92 * 0.7071);
-            claz[i91][0][7] = -(int) (f92 * 0.7071);
-            clay[i91][0][7] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,7] = -(int) (f92 * 0.7071);
+            claz[i91,0,7] = -(int) (f92 * 0.7071);
+            clay[i91,0,7] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][8] = -(int) (f92 * 0.9238);
-            claz[i91][0][8] = -(int) (f92 * 0.3826);
-            clay[i91][0][8] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,8] = -(int) (f92 * 0.9238);
+            claz[i91,0,8] = -(int) (f92 * 0.3826);
+            clay[i91,0,8] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][9] = -(int) (f92 * 0.9238);
-            claz[i91][0][9] = (int) (f92 * 0.3826);
-            clay[i91][0][9] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,9] = -(int) (f92 * 0.9238);
+            claz[i91,0,9] = (int) (f92 * 0.3826);
+            clay[i91,0,9] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][10] = -(int) (f92 * 0.7071);
-            claz[i91][0][10] = (int) (f92 * 0.7071);
-            clay[i91][0][10] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,10] = -(int) (f92 * 0.7071);
+            claz[i91,0,10] = (int) (f92 * 0.7071);
+            clay[i91,0,10] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91][0][11] = -(int) (f92 * 0.3826);
-            claz[i91][0][11] = (int) (f92 * 0.9238);
-            clay[i91][0][11] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            clax[i91,0,11] = -(int) (f92 * 0.3826);
+            claz[i91,0,11] = (int) (f92 * 0.9238);
+            clay[i91,0,11] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             for (int i93 = 0; i93 < 12; i93++) {
                 int i94 = i93 - 1;
                 if (i94 == -1) {
@@ -1395,19 +1396,19 @@ public class Medium {
                 if (i95 == 12) {
                     i95 = 0;
                 }
-                clax[i91][0][i93] = ((clax[i91][0][i94] + clax[i91][0][i95]) / 2 + clax[i91][0][i93]) / 2;
-                clay[i91][0][i93] = ((clay[i91][0][i94] + clay[i91][0][i95]) / 2 + clay[i91][0][i93]) / 2;
-                claz[i91][0][i93] = ((claz[i91][0][i94] + claz[i91][0][i95]) / 2 + claz[i91][0][i93]) / 2;
+                clax[i91,0,i93] = ((clax[i91,0,i94] + clax[i91,0,i95]) / 2 + clax[i91,0,i93]) / 2;
+                clay[i91,0,i93] = ((clay[i91,0,i94] + clay[i91,0,i95]) / 2 + clay[i91,0,i93]) / 2;
+                claz[i91,0,i93] = ((claz[i91,0,i94] + claz[i91,0,i95]) / 2 + claz[i91,0,i93]) / 2;
             }
             for (int i96 = 0; i96 < 12; i96++) {
                 f92 = (float) (1.2 + 0.6 * HansenRandom.Double());
-                clax[i91][1][i96] = (int) (clax[i91][0][i96] * f92);
-                claz[i91][1][i96] = (int) (claz[i91][0][i96] * f92);
-                clay[i91][1][i96] = (int) (clay[i91][0][i96] - 100.0 * HansenRandom.Double());
+                clax[i91,1,i96] = (int) (clax[i91,0,i96] * f92);
+                claz[i91,1,i96] = (int) (claz[i91,0,i96] * f92);
+                clay[i91,1,i96] = (int) (clay[i91,0,i96] - 100.0 * HansenRandom.Double());
                 f92 = (float) (1.1 + 0.3 * HansenRandom.Double());
-                clax[i91][2][i96] = (int) (clax[i91][1][i96] * f92);
-                claz[i91][2][i96] = (int) (claz[i91][1][i96] * f92);
-                clay[i91][2][i96] = (int) (clay[i91][1][i96] - 240.0 * HansenRandom.Double());
+                clax[i91,2,i96] = (int) (clax[i91,1,i96] * f92);
+                claz[i91,2,i96] = (int) (claz[i91,1,i96] * f92);
+                clay[i91,2,i96] = (int) (clay[i91,1,i96] - 240.0 * HansenRandom.Double());
             }
             cmx[i91] = 0;
             for (int i97 = 0; i97 < 12; i97++) {
@@ -1419,9 +1420,9 @@ public class Medium {
                 if (i99 == 12) {
                     i99 = 0;
                 }
-                clay[i91][1][i97] = ((clay[i91][1][i98] + clay[i91][1][i99]) / 2 + clay[i91][1][i97]) / 2;
-                clay[i91][2][i97] = ((clay[i91][2][i98] + clay[i91][2][i99]) / 2 + clay[i91][2][i97]) / 2;
-                int i100 = (int) Math.sqrt(clax[i91][2][i97] * clax[i91][2][i97] + claz[i91][2][i97] * claz[i91][2][i97]);
+                clay[i91,1,i97] = ((clay[i91,1,i98] + clay[i91,1,i99]) / 2 + clay[i91,1,i97]) / 2;
+                clay[i91,2,i97] = ((clay[i91,2,i98] + clay[i91,2,i99]) / 2 + clay[i91,2,i97]) / 2;
+                int i100 = (int) Math.sqrt(clax[i91,2,i97] * clax[i91,2,i97] + claz[i91,2,i97] * claz[i91,2,i97]);
                 if (i100 > cmx[i91]) {
                     cmx[i91] = i100;
                 }
@@ -1431,19 +1432,19 @@ public class Medium {
                 double d102 = HansenRandom.Double();
                 for (int i103 = 0; i103 < 3; i103++) {
                     f92 = clds[i103] * 1.05F - clds[i103];
-                    clc[i91][0][i101][i103] = (int) (clds[i103] + f92 * d);
-                    if (clc[i91][0][i101][i103] > 255) {
-                        clc[i91][0][i101][i103] = 255;
+                    clc[i91,0,i101,i103] = (int) (clds[i103] + f92 * d);
+                    if (clc[i91,0,i101,i103] > 255) {
+                        clc[i91,0,i101,i103] = 255;
                     }
-                    if (clc[i91][0][i101][i103] < 0) {
-                        clc[i91][0][i101][i103] = 0;
+                    if (clc[i91,0,i101,i103] < 0) {
+                        clc[i91,0,i101,i103] = 0;
                     }
-                    clc[i91][1][i101][i103] = (int) (clds[i103] * 1.05F + f92 * d102);
-                    if (clc[i91][1][i101][i103] > 255) {
-                        clc[i91][1][i101][i103] = 255;
+                    clc[i91,1,i101,i103] = (int) (clds[i103] * 1.05F + f92 * d102);
+                    if (clc[i91,1,i101,i103] > 255) {
+                        clc[i91,1,i101,i103] = 255;
                     }
-                    if (clc[i91][1][i101][i103] < 0) {
-                        clc[i91][1][i101][i103] = 0;
+                    if (clc[i91,1,i101,i103] < 0) {
+                        clc[i91,1,i101,i103] = 0;
                     }
                 }
             }
@@ -1557,9 +1558,9 @@ public class Medium {
         cgpz = null;
         pmx = null;
         pcv = null;
-        ogpx = new int[nrw * ncl][8];
-        ogpz = new int[nrw * ncl][8];
-        pvr = new float[nrw * ncl][8];
+        ogpx = new int[nrw * ncl,8];
+        ogpz = new int[nrw * ncl,8];
+        pvr = new float[nrw * ncl,8];
         cgpx = new int[nrw * ncl];
         cgpz = new int[nrw * ncl];
         pmx = new int[nrw * ncl];
@@ -1632,7 +1633,7 @@ public class Medium {
         }
     }
 
-    static void newstars() {
+    internal static void newstars() {
         stx = null;
         stz = null;
         stc = null;
@@ -1684,7 +1685,7 @@ public class Medium {
         }
     }
 
-    static float random() {
+    internal static float random() {
         if (cntrn == 0) {
             for (int i = 0; i < 3; i++) {
                 rand[i] = (int) (10.0 * HansenRandom.Double());
