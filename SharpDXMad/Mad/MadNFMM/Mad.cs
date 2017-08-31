@@ -1,120 +1,122 @@
+using boolean = System.Boolean;
+
 namespace Cum
 {
     internal class Mad
     {
-        boolean btab = false;
-        int capcnt = 0;
-        boolean capsized = false;
-        private final boolean[] caught = new boolean[8];
-        Stat stat;
-        int clear = 0;
-        int cn = 0;
-        int cntdest = 0;
+        internal boolean btab = false;
+        internal int capcnt = 0;
+        internal boolean capsized = false;
+        private readonly boolean[] caught = new boolean[8];
+        internal Stat stat;
+        internal int clear = 0;
+        internal int cn = 0;
+        internal int cntdest = 0;
         private int cntouch = 0;
         private boolean colidim = false;
-        private final int[][] crank = new int[4][4];
-        int cxz = 0;
+        private readonly int[,] crank = new int[4,4];
+        internal int cxz = 0;
         private int dcnt = 0;
-        float dcomp = 0.0F;
-        boolean dest = false;
-        private final boolean[] dominate = new boolean[8];
-        private final float drag = 0.5F;
+        internal float dcomp = 0.0F;
+        internal boolean dest = false;
+        private readonly boolean[] dominate = new boolean[8];
+        private readonly float drag = 0.5F;
         private int fixes = -1;
         private int focus = -1;
         private float forca = 0.0F;
-        boolean ftab = false;
+        internal boolean ftab = false;
         private int fxz = 0;
-        boolean gtouch = false;
-        int hitmag = 0;
-        int im = 0;
-        int lastcolido = 0;
-        float lcomp = 0.0F;
-        private final int[][] lcrank = new int[4][4];
-        int loop = 0;
+        internal boolean gtouch = false;
+        internal int hitmag = 0;
+        internal int im = 0;
+        internal int lastcolido = 0;
+        internal float lcomp = 0.0F;
+        private readonly int[,] lcrank = new int[4,4];
+        internal int loop = 0;
         private int lxz = 0;
-        int missedcp = 0;
-        boolean mtouch = false;
-        int mxz = 0;
+        internal int missedcp = 0;
+        internal boolean mtouch = false;
+        internal int mxz = 0;
         private int nbsq = 0;
-        boolean newcar = false;
-        int newedcar = 0;
-        int nlaps = 0;
+        internal boolean newcar = false;
+        internal int newedcar = 0;
+        internal int nlaps = 0;
         private int nmlt = 1;
-        boolean nofocus = false;
-        int outshakedam = 0;
-        int pcleared = 0;
-        boolean pd = false;
-        boolean pl = false;
+        internal boolean nofocus = false;
+        internal int outshakedam = 0;
+        internal int pcleared = 0;
+        internal boolean pd = false;
+        internal boolean pl = false;
         private int pmlt = 1;
-        int point = 0;
-        float power = 75.0F;
-        float powerup = 0.0F;
-        boolean pr = false;
-        boolean pu = false;
-        boolean pushed = false;
-        int pxy = 0;
-        int pzy = 0;
-        float rcomp = 0.0F;
+        internal int point = 0;
+        internal float power = 75.0F;
+        internal float powerup = 0.0F;
+        internal boolean pr = false;
+        internal boolean pu = false;
+        internal boolean pushed = false;
+        internal int pxy = 0;
+        internal int pzy = 0;
+        internal float rcomp = 0.0F;
         private int rpdcatch = 0;
-        boolean rtab = false;
-        final float[] scx = new float[4];
-        final float[] scy = new float[4];
-        final float[] scz = new float[4];
-        int shakedam = 0;
-        int skid = 0;
-        float speed = 0.0F;
-        int squash = 0;
+        internal boolean rtab = false;
+        internal readonly float[] scx = new float[4];
+        internal readonly float[] scy = new float[4];
+        internal readonly float[] scz = new float[4];
+        internal int shakedam = 0;
+        internal int skid = 0;
+        internal float speed = 0.0F;
+        internal int squash = 0;
         private int srfcnt = 0;
-        boolean surfer = false;
+        internal boolean surfer = false;
         private float tilt = 0.0F;
-        int travxy = 0;
-        int travxz = 0;
-        int travzy = 0;
-        int trcnt = 0;
-        int txz = 0;
-        float ucomp = 0.0F;
-        boolean wtouch = false;
+        internal int travxy = 0;
+        internal int travxz = 0;
+        internal int travzy = 0;
+        internal int trcnt = 0;
+        internal int txz = 0;
+        internal float ucomp = 0.0F;
+        internal boolean wtouch = false;
         private int xtpower = 0;
 
-        Mad(final Stat stat, final int i) {
+        internal Mad(Stat stat, int i) {
             this.stat = stat;
             im = i;
         }
 
-        public void setStat(final Stat stat)
+        public void setStat(Stat stat)
         {
             this.stat = stat;
         }
 
-        void colide(final ContO conto, final Mad mad118, final ContO conto119) {
-            final float[] fs = new float[4];
-            final float[] fs120 = new float[4];
-            final float[] fs121 = new float[4];
-            final float[] fs122 = new float[4];
-            final float[] fs123 = new float[4];
-            final float[] fs124 = new float[4];
-            for (int i = 0; i < 4; i++)
+        void colide(ContO conto, Mad mad118, ContO conto119) {
+            float[] fs = new float[4];
+            float[] fs120 = new float[4];
+            float[] fs121 = new float[4];
+            float[] fs122 = new float[4];
+            float[] fs123 = new float[4];
+            float[] fs124 = new float[4];
+            for (int i1 = 0; i1 < 4; i1++)
             {
-                fs[i] = conto.x + conto.keyx[i];
+                fs[i1] = conto.x + conto.keyx[i1];
                 if (capsized)
                 {
-                    fs120[i] = conto.y + stat.flipy + squash;
+                    fs120[i1] = conto.y + stat.flipy + squash;
                 }
                 else
                 {
-                    fs120[i] = conto.y + conto.grat;
+                    fs120[i1] = conto.y + conto.grat;
                 }
-                fs121[i] = conto.z + conto.keyz[i];
-                fs122[i] = conto119.x + conto119.keyx[i];
+                fs121[i1] = conto.z + conto.keyz[i1];
+                fs122[i1] = conto119.x + conto119.keyx[i1];
                 if (capsized)
                 {
-                    fs123[i] = conto119.y + mad118.stat.flipy + mad118.squash;
+                    fs123[i1] = conto119.y + mad118.stat.flipy + mad118.squash;
                 }
                 else
                 {
-                    fs123[i] = conto119.y + conto119.grat;
+                    fs123[i1] = conto119.y + conto119.grat;
                 }
-                fs124[i] = conto119.z + conto119.keyz[i];
+                fs124[i1] = conto119.z + conto119.keyz[i1];
             }
             rot(fs, fs120, conto.x, conto.y, conto.xy, 4);
             rot(fs120, fs121, conto.y, conto.z, conto.zy, 4);
@@ -145,7 +147,7 @@ namespace Cum
             int i125 = 0;
             if (dominate[mad118.im])
             {
-                final int i126 =
+                int i126 =
                     (int) (((scz[0] - mad118.scz[0] + scz[1] - mad118.scz[1] + scz[2] - mad118.scz[2] + scz[3] -
                              mad118.scz[3]) *
                             (scz[0] - mad118.scz[0] + scz[1] - mad118.scz[1] + scz[2] - mad118.scz[2] + scz[3] -
@@ -291,7 +293,7 @@ namespace Cum
             }
         }
 
-        private void distruct(final ContO conto)
+        private void distruct(ContO conto)
         {
             for (int i = 0; i < conto.npl; i++)
                 if (conto.p[i].wz == 0 || conto.p[i].gr == -17 || conto.p[i].gr == -16)
@@ -300,7 +302,7 @@ namespace Cum
                 }
         }
 
-        void drive(final Control control, final ContO conto) {
+        void drive(Control control, ContO conto) {
             int i = 1;
             int i4 = 1;
             boolean abool = false;
@@ -408,7 +410,7 @@ namespace Cum
             }
             if (loop == 1)
             {
-                final float f13 = (scy[0] + scy[1] + scy[2] + scy[3]) / 4.0F;
+                float f13 = (scy[0] + scy[1] + scy[2] + scy[3]) / 4.0F;
                 for (int i14 = 0; i14 < 4; i14++)
                 {
                     scy[i14] = f13;
@@ -794,9 +796,9 @@ namespace Cum
                     }
                 }
             }
-            final float[] fs = new float[4];
-            final float[] fs22 = new float[4];
-            final float[] fs23 = new float[4];
+            float[] fs = new float[4];
+            float[] fs22 = new float[4];
+            float[] fs23 = new float[4];
             for (int i24 = 0; i24 < 4; i24++)
             {
                 fs[i24] = conto.keyx[i24] + conto.x;
@@ -809,8 +811,8 @@ namespace Cum
             rot(fs, fs22, conto.x, conto.z, conto.xz, 4);
             boolean bool25 = false;
             double d;
-            final int i26 = (int) ((scx[0] + scx[1] + scx[2] + scx[3]) / 4.0F);
-            final int i27 = (int) ((scz[0] + scz[1] + scz[2] + scz[3]) / 4.0F);
+            int i26 = (int) ((scx[0] + scx[1] + scx[2] + scx[3]) / 4.0F);
+            int i27 = (int) ((scz[0] + scz[1] + scz[2] + scz[3]) / 4.0F);
             for (int i28 = 0; i28 < 4; i28++)
             {
                 if (scx[i28] - i26 > 200.0F)
@@ -857,7 +859,7 @@ namespace Cum
             int i32 = 1;
             for (int i33 = 0; i33 < Trackers.sect[i30][i31].length; i33++)
             {
-                final int i34 = Trackers.sect[i30][i31][i33];
+                int i34 = Trackers.sect[i30][i31][i33];
                 if (Math.abs(Trackers.zy[i34]) != 90 && Math.abs(Trackers.xy[i34]) != 90 &&
                     Math.abs(conto.x - Trackers.x[i34]) < Trackers.radx[i34] &&
                     Math.abs(conto.z - Trackers.z[i34]) < Trackers.radz[i34] &&
@@ -1036,12 +1038,12 @@ namespace Cum
                     }
                     if (i32 == 3)
                     {
-                        final int i43 = (int) (Medium.random() * 4.0F);
+                        int i43 = (int) (Medium.random() * 4.0F);
                         scy[i43] = (float) (-100.0F * Medium.random() * (speed / stat.swits[2]) * (stat.bounce - 0.3));
                     }
                     if (i32 == 4)
                     {
-                        final int i44 = (int) (Medium.random() * 4.0F);
+                        int i44 = (int) (Medium.random() * 4.0F);
                         scy[i44] = (float) (-150.0F * Medium.random() * (speed / stat.swits[2]) * (stat.bounce - 0.3));
                     }
                     f39 += scx[i41];
@@ -1087,9 +1089,9 @@ namespace Cum
                 skid = 2;
             }
             int i45 = 0;
-            final boolean[] bools = new boolean[4];
-            final boolean[] bools46 = new boolean[4];
-            final boolean[] bools47 = new boolean[4];
+            boolean[] bools = new boolean[4];
+            boolean[] bools46 = new boolean[4];
+            boolean[] bools47 = new boolean[4];
             float f48 = 0.0F;
             for (int i49 = 0; i49 < 4; i49++)
             {
@@ -1156,7 +1158,7 @@ namespace Cum
             int i53 = 0;
             for (int i54 = 0; i54 < Trackers.sect[i30][i31].length; i54++)
             {
-                final int i55 = Trackers.sect[i30][i31][i54];
+                int i55 = Trackers.sect[i30][i31][i54];
                 int i56 = 0;
                 int i57 = 0;
                 for (int i58 = 0; i58 < 4; i58++)
@@ -1434,13 +1436,13 @@ namespace Cum
                         }
                         if (Trackers.zy[i55] != 0 && Trackers.zy[i55] != 90 && Trackers.zy[i55] != -90)
                         {
-                            final int i69 = 90 + Trackers.zy[i55];
+                            int i69 = 90 + Trackers.zy[i55];
                             float f70 = 1.0F + (50 - Math.abs(Trackers.zy[i55])) / 30.0F;
                             if (f70 < 1.0F)
                             {
                                 f70 = 1.0F;
                             }
-                            final float f71 = Trackers.y[i55] +
+                            float f71 = Trackers.y[i55] +
                                               ((fs23[i58] - Trackers.y[i55]) * Medium.cos(i69) -
                                                (fs22[i58] - Trackers.z[i55]) * Medium.sin(i69));
                             float f72 = Trackers.z[i55] +
@@ -1473,7 +1475,7 @@ namespace Cum
                                 }
                                 if (!bool25 && i32 != 0)
                                 {
-                                    final float f73 = 1.4F;
+                                    float f73 = 1.4F;
                                     conto.dust(i58, fs[i58], fs23[i58], fs22[i58], (int) scx[i58], (int) scz[i58],
                                         f73 * stat.simag, 0, capsized && mtouch);
                                 }
@@ -1488,13 +1490,13 @@ namespace Cum
                         }
                         if (Trackers.xy[i55] != 0 && Trackers.xy[i55] != 90 && Trackers.xy[i55] != -90)
                         {
-                            final int i74 = 90 + Trackers.xy[i55];
+                            int i74 = 90 + Trackers.xy[i55];
                             float f75 = 1.0F + (50 - Math.abs(Trackers.xy[i55])) / 30.0F;
                             if (f75 < 1.0F)
                             {
                                 f75 = 1.0F;
                             }
-                            final float f76 = Trackers.y[i55] +
+                            float f76 = Trackers.y[i55] +
                                               ((fs23[i58] - Trackers.y[i55]) * Medium.cos(i74) -
                                                (fs[i58] - Trackers.x[i55]) * Medium.sin(i74));
                             float f77 = Trackers.x[i55] +
@@ -1527,7 +1529,7 @@ namespace Cum
                                 }
                                 if (!bool25 && i32 != 0)
                                 {
-                                    final float f78 = 1.4F;
+                                    float f78 = 1.4F;
                                     conto.dust(i58, fs[i58], fs23[i58], fs22[i58], (int) scx[i58], (int) scz[i58],
                                         f78 * stat.simag, 0, capsized && mtouch);
                                 }
@@ -1839,7 +1841,7 @@ namespace Cum
             }
             if (wtouch && !capsized)
             {
-                final float f87 = (float) (speed / stat.swits[2] * 14.0F * (stat.bounce - 0.4));
+                float f87 = (float) (speed / stat.swits[2] * 14.0F * (stat.bounce - 0.4));
                 if (control.left && tilt < f87 && tilt >= 0.0F)
                 {
                     tilt += 0.4;
@@ -2392,11 +2394,11 @@ namespace Cum
             }
         }
 
-        private int py(final int i, final int i145, final int i146, final int i147) {
+        private int py(int i, int i145, int i146, int i147) {
             return (i - i145) * (i - i145) + (i146 - i147) * (i146 - i147);
         }
 
-        private int regx(final int i, float f, final ContO conto) {
+        private int regx(int i, float f, ContO conto) {
             int i110 = 0;
             boolean abool = true;
             if (xtGraphics.multion == 1 && xtGraphics.im != im)
@@ -2483,7 +2485,7 @@ namespace Cum
                             }
                             conto.p[i111].bfase += Math.abs(f112);
                             new Color(conto.p[i111].c[0], conto.p[i111].c[1], conto.p[i111].c[2]);
-                            final Color color = Color.getHSBColor(conto.p[i111].hsb[0], conto.p[i111].hsb[1],
+                            Color color = Color.getHSBColor(conto.p[i111].hsb[0], conto.p[i111].hsb[1],
                                 conto.p[i111].hsb[2]);
                             conto.p[i111].c[0] = color.getRed();
                             conto.p[i111].c[1] = color.getGreen();
@@ -2499,7 +2501,7 @@ namespace Cum
             return i110;
         }
 
-        private int regy(final int i, float f, final ContO conto) {
+        private int regy(int i, float f, ContO conto) {
             int i97 = 0;
             boolean abool = true;
             if (xtGraphics.multion == 1 && xtGraphics.im != im)
@@ -2620,7 +2622,7 @@ namespace Cum
                                 }
                                 conto.p[i102].bfase += f103;
                                 new Color(conto.p[i102].c[0], conto.p[i102].c[1], conto.p[i102].c[2]);
-                                final Color color = Color.getHSBColor(conto.p[i102].hsb[0], conto.p[i102].hsb[1],
+                                Color color = Color.getHSBColor(conto.p[i102].hsb[0], conto.p[i102].hsb[1],
                                     conto.p[i102].hsb[2]);
                                 conto.p[i102].c[0] = color.getRed();
                                 conto.p[i102].c[1] = color.getGreen();
@@ -2683,7 +2685,7 @@ namespace Cum
             return i97;
         }
 
-        private int regz(final int i, float f, final ContO conto) {
+        private int regz(int i, float f, ContO conto) {
             int i114 = 0;
             boolean abool = true;
             if (xtGraphics.multion == 1 && xtGraphics.im != im)
@@ -2770,7 +2772,7 @@ namespace Cum
                             }
                             conto.p[i115].bfase += Math.abs(f116);
                             new Color(conto.p[i115].c[0], conto.p[i115].c[1], conto.p[i115].c[2]);
-                            final Color color = Color.getHSBColor(conto.p[i115].hsb[0], conto.p[i115].hsb[1],
+                            Color color = Color.getHSBColor(conto.p[i115].hsb[0], conto.p[i115].hsb[1],
                                 conto.p[i115].hsb[2]);
                             conto.p[i115].c[0] = color.getRed();
                             conto.p[i115].c[1] = color.getGreen();
@@ -2786,7 +2788,7 @@ namespace Cum
             return i114;
         }
 
-        void reseto(final int i, final ContO conto) {
+        void reseto(int i, ContO conto) {
             cn = i;
             for (int i0 = 0; i0 < 8; i0++)
             {
@@ -2889,22 +2891,22 @@ namespace Cum
             }
         }
 
-        private void rot(final float[] fs, final float[] fs134, final int i, final int i135, final int i136, final int
+        private void rot(float[] fs, float[] fs134, int i, int i135, int i136, int
             i137) {
             if (i136 != 0)
             {
                 for (int i138 = 0; i138 < i137; i138++)
                 {
-                    final float f = fs[i138];
-                    final float f139 = fs134[i138];
+                    float f = fs[i138];
+                    float f139 = fs134[i138];
                     fs[i138] = i + ((f - i) * Medium.cos(i136) - (f139 - i135) * Medium.sin(i136));
                     fs134[i138] = i135 + ((f - i) * Medium.sin(i136) + (f139 - i135) * Medium.cos(i136));
                 }
             }
         }
 
-        private int rpy(final float f, final float f140, final float f141, final float f142, final float
-            f143, final float f144) {
+        private int rpy(float f, float f140, float f141, float f142, float
+            f143, float f144) {
             return (int) ((f - f140) * (f - f140) + (f141 - f142) * (f141 - f142) + (f143 - f144) * (f143 - f144));
         }
     }

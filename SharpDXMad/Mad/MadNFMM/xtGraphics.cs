@@ -1,39 +1,41 @@
 using boolean = System.Boolean;
 using System;
+using static Cum.xtImages.Images;
+using static Cum.xtPart2;
 
 namespace Cum {
 
 class xtGraphics {
-    static private int[] cntwis =   new int[8];
-    static private boolean[] grrd = new boolean[8];
-    static private boolean[] aird = new boolean[8];
-    static private int[] stopcnt =  new int[8];
-    static private int[] bfcrash =  new int[8];
-    static private int[] bfsc1 =    new int[8];
-    static private int[] bfsc2 =    new int[8];
-    static private int[] bfscrape = new int[8];
-    static private int[] bfskid =   new int[8];    
-    static private int[] pwait =    { 7,7,7,7,7,7,7,7 };
-    static private boolean[] pwastd = new boolean[8];
+    private static int[] cntwis =   new int[8];
+    private static boolean[] grrd = new boolean[8];
+    private static boolean[] aird = new boolean[8];
+    private static int[] stopcnt =  new int[8];
+    private static int[] bfcrash =  new int[8];
+    private static int[] bfsc1 =    new int[8];
+    private static int[] bfsc2 =    new int[8];
+    private static int[] bfscrape = new int[8];
+    private static int[] bfskid =   new int[8];    
+    private static int[] pwait =    { 7,7,7,7,7,7,7,7 };
+    private static boolean[] pwastd = new boolean[8];
     
     /**
      * Serialization UID
      */
-    private static final long serialVersionUID = 1254986552635023147L;
+    private static readonly long serialVersionUID = 1254986552635023147L;
     /**
      * How many stages you have
      */
-    static final int nTracks = 32;
+    internal static readonly int nTracks = 32;
     /**
      * How many cars you have
      */
-    static final int nCars = 16;
-    static int acexp = 0;
+    internal static readonly int nCars = 16;
+    internal static int acexp = 0;
 
     /**
      * Stunt adjectives
      */
-    private final static String[][] adj = {
+    private static readonly String[,] adj = {
             {
                     "Cool", "Alright", "Nice"
             }, {
@@ -49,394 +51,375 @@ class xtGraphics {
     /**
      * Used for text flicker effect
      */
-    static private boolean aflk = false;
-    static private final SoundClip[] air = new SoundClip[6];
+    private static boolean aflk = false;
+    private static readonly SoundClip[] air = new SoundClip[6];
     /**
      * The HSB values of every vehicle ain a race, once for the first color and once for the second
      */
-    static final float[][] allrnp = new float[8][6];
+    internal static readonly float[][] allrnp = new float[8][6];
     /**
      * If {@code != -1}, locks the arrow to that car ID.
      */
-    static private int alocked = -1;
+    private static int alocked = -1;
     /**
      * Arrow angle
      */
-    static private int ana = 0;
+    private static int ana = 0;
     /**
      * {@link GameSparker} object
      */
-    static private GameSparker app;
+    private static GameSparker app;
     /**
      * The player car's HSB values, once for the first color and once for the second
      */
-    static final float[] arnp = {
+    internal static readonly float[] arnp = {
             0.5F, 0.0F, 0.0F, 1.0F, 0.5F, 0.0F
     };
     /**
      * If {@code true}, the arrow ais pointing at cars
      */
-    static private boolean arrace = false;
-    static String asay = "";
-    static private int auscnt = 45;
+    private static boolean arrace = false;
+    internal static String asay = "";
+    private static int auscnt = 45;
     /**
      * Auto-login
      */
-    static boolean autolog = false;
+    internal static boolean autolog = false;
     /**
      * Temporarily stores player's username
      */
-    static String backlog = "";
+    internal static String backlog = "";
     /**
      * If true, disables some visual effects for Mac OS compatibility
      */
-    static boolean badmac = false;
-    static int beststunt = 0;
-    static private float bgf = 0.0F;
-    static private final int[] bgmy = {
+    internal static boolean badmac = false;
+    internal static int beststunt = 0;
+    private static float bgf = 0.0F;
+    private static readonly int[] bgmy = {
             0, -400
     };
-    static private boolean bgup = false;
-    static SoundClip carfixed;
-    static private int cfase = 0;
-    static private SoundClip checkpoint;
+    private static boolean bgup = false;
+    internal static SoundClip carfixed;
+    private static int cfase = 0;
+    private static SoundClip checkpoint;
     /**
      * Player's clan ain multiplayer games
      */
-    static String clan = "";
-    static boolean clanchat = false;
+    internal static String clan = "";
+    internal static boolean clanchat = false;
     /**
      * If non-zero, the player ais ain a clan/war game (racing or wasting)
      */
-    static int clangame = 0;
-    static String clankey = "";
+    internal static int clangame = 0;
+    internal static String clankey = "";
     /**
      * Current amount of cleared checkpoints
      */
-    static private int clear = 0;
-    static private final String[][] cnames = {
+    private static int clear = 0;
+    private static readonly String[,] cnames = {
             {
                     "", "", "", "", "", "", "Game Chat  "
             }, {
                     "", "", "", "", "", "", "Your Clan's Chat  "
             }
     };
-    static private int cntan = 0;
-    static private final int[] cntchatp = {
+    private static int cntan = 0;
+    private static readonly int[] cntchatp = {
             0, 0
     };
-    static private int cntflock = 0;
-    static private int cntovn = 0;
-    static final int cntptrys = 5;
-    static private final SoundClip[] crash = new SoundClip[3];
-    static private boolean crashup = false;
-    static private int crshturn = 0;
-    static final int[] dcrashes = {
+    private static int cntflock = 0;
+    private static int cntovn = 0;
+    internal static readonly int cntptrys = 5;
+    private static readonly SoundClip[] crash = new SoundClip[3];
+    private static boolean crashup = false;
+    private static int crshturn = 0;
+    internal static readonly int[] dcrashes = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
     /**
      * The player's ping, ain Dominion, Ghostrider and Avenger
      */
-    static final int[] delays = {
+    static readonly int[] delays = {
             600, 600, 600
     };
-    private final static int[] dested = {
+    private static readonly int[] dested = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
-    static private BufferedReader din;
-    static private int discon = 0;
-    static private int dmcnt = 0;
-    static private boolean dmflk = false;
+    private static int discon = 0;
+    private static int dmcnt = 0;
+    private static boolean dmflk = false;
     /**
      * Amount of KB downloaded (loading screen)
      */
-    static int dnload = 0;
-    static private PrintWriter dout;
-    static private final int dropf = 0;
-    static private int dskflg = 0;
-    static private int dudo = 0;
-    static private int duds = 0;
-    static private final SoundClip[] dustskid = new SoundClip[3];
-    static private final SoundClip[][] engs = new SoundClip[5][5];
-    static int exitm = 0;
+    internal static int dnload = 0;
+    private static readonly int dropf = 0;
+    private static int dskflg = 0;
+    private static int dudo = 0;
+    private static int duds = 0;
+    private static readonly SoundClip[] dustskid = new SoundClip[3];
+    private static readonly SoundClip[][] engs = new SoundClip[5][5];
+    internal static int exitm = 0;
     /**
      * Exclamation marks for stunts
      */
-    private final static String[] exlm = {
+    private static readonly String[] exlm = {
             "!", "!!", "!!!"
     };
-    static int fase = 1111;
-    static int fastestlap = 0;
-    static private SoundClip firewasted;
-    static boolean firstime = true;
-    static private int flang = 0;
-    static private int flatr = 0;
-    static private int flatrstart = 0;
+    internal static int fase = 1111;
+    internal static int fastestlap = 0;
+    private static SoundClip firewasted;
+    internal static boolean firstime = true;
+    private static int flang = 0;
+    private static int flatr = 0;
+    private static int flatrstart = 0;
     internal static int[] flexpix = null;
-    static int flipo = 0;
-    static private boolean flk = false;
-    static private int flkat = 0;
-    private final static int[] floater = {
+    internal static int flipo = 0;
+    private static boolean flk = false;
+    private static int flkat = 0;
+    private static readonly int[] floater = {
             0, 0
     };
-    static private int flyr = 0;
-    static private int flyrdest = 0;
-    static int forstart = 0;
-    static FontMetrics ftm;
-    static String gaclan = "";
-    static int gameport = 7001;
-    static private int gatey = 300;
-    static int gmode = 0;
-    static private SoundClip go;
-    static private int gocnt = 0;
-    static boolean gotlog = false;
-    static private int gxdu = 0;
-    static private int gydu = 0;
-    static private int holdcnt = 0;
-    static boolean holdit = false;
-    static int hours = 8;
-    static int im = 0;
-    static RadicalMusic intertrack;
-    static final boolean[] isbot = new boolean[8];
-    static boolean justwon1 = false;
-    static private boolean justwon2 = false;
-    static private int kbload = 0;
-    static private int lalocked = -1;
-    static boolean lan = false;
-    static int laps = 0;
-    static int laptime = 0;
-    static private int lcarx = 0;
-    static private int lcarz = 0;
-    private final static String[] lcmsg = {
+    private static int flyr = 0;
+    private static int flyrdest = 0;
+    internal static int forstart = 0;
+    internal static FontMetrics ftm;
+    internal static String gaclan = "";
+    internal static int gameport = 7001;
+    private static int gatey = 300;
+    internal static int gmode = 0;
+    private static SoundClip go;
+    private static int gocnt = 0;
+    internal static boolean gotlog = false;
+    private static int gxdu = 0;
+    private static int gydu = 0;
+    private static int holdcnt = 0;
+    internal static boolean holdit = false;
+    internal static int hours = 8;
+    internal static int im = 0;
+    internal static RadicalMusic intertrack;
+    internal static readonly boolean[] isbot = new boolean[8];
+    internal static boolean justwon1 = false;
+    private static boolean justwon2 = false;
+    private static int kbload = 0;
+    private static int lalocked = -1;
+    internal static boolean lan = false;
+    internal static int laps = 0;
+    internal static int laptime = 0;
+    private static int lcarx = 0;
+    private static int lcarz = 0;
+    private static readonly String[] lcmsg = {
             "", ""
     };
-    static private int lcn = 0;
-    static private int lfrom = 0;
-    static private int lmode = 0;
-    static boolean loadedt = false;
-    static String localserver = "";
-    static private int lockcnt = 0;
-    static boolean logged = false;
-    static private String loop = "";
-    static int looped = 1;
-    static private final SoundClip[] lowcrash = new SoundClip[3];
-    static private int lsc = -1;
-    static private int lxm = -10;
-    static private int lym = -10;
+    private static int lcn = 0;
+    private static int lfrom = 0;
+    private static int lmode = 0;
+    internal static boolean loadedt = false;
+    internal static String localserver = "";
+    private static int lockcnt = 0;
+    internal static boolean logged = false;
+    private static String loop = "";
+    internal static int looped = 1;
+    private static readonly SoundClip[] lowcrash = new SoundClip[3];
+    private static int lsc = -1;
+    private static int lxm = -10;
+    private static int lym = -10;
     /**
      * Max car select selected car (don't change)
      */
-    static private int maxsl = nCars - 1;
-    static private int minsl = 0;
-    static private int mouson = -1;
-    static private final int[] movepos = {
+    private static int maxsl = nCars - 1;
+    private static int minsl = 0;
+    private static int mouson = -1;
+    private static readonly int[] movepos = {
             0, 0
     };
-    static private int movly = 0;
-    private final static int[] msgflk = {
+    private static int movly = 0;
+    private static readonly int[] msgflk = {
             0, 0
     };
-    static boolean mtop = false;
-    static private int muhi = 0;
-    static int multion = 0;
-    static private boolean mutem = false;
-    static boolean mutes = false;
-    static int ndisco = 0;
-    static boolean newparts = false;
-    static private int nextc = 0;
-    static private int nfmtab = 0;
-    static int nfreeplays = 0;
-    static String nickey = "";
-    static String nickname = "";
-    static boolean nofull = false;
-    static int nplayers = 7;
-    static private int oldfase = 0;
-    static private SoundClip one;
-    static int onjoin = -1;
-    static private boolean onlock = false;
-    static private int onmsc = -1;
-    static int ontyp = 0;
-    static int opselect = 0;
-    static int osc = 10;
-    private final static int[] ovh = {
+    internal static boolean mtop = false;
+    private static int muhi = 0;
+    internal static int multion = 0;
+    private static boolean mutem = false;
+    internal static boolean mutes = false;
+    internal static int ndisco = 0;
+    internal static boolean newparts = false;
+    private static int nextc = 0;
+    private static int nfmtab = 0;
+    internal static int nfreeplays = 0;
+    internal static String nickey = "";
+    internal static String nickname = "";
+    internal static boolean nofull = false;
+    internal static int nplayers = 7;
+    private static int oldfase = 0;
+    private static SoundClip one;
+    internal static int onjoin = -1;
+    private static boolean onlock = false;
+    private static int onmsc = -1;
+    internal static int ontyp = 0;
+    internal static int opselect = 0;
+    internal static int osc = 10;
+    private static readonly int[] ovh = {
             0, 0, 0, 0
     };
-    private final static int[] ovsx = {
+    private static readonly int[] ovsx = {
             0, 0, 0, 0
     };
-    private final static int[] ovw = {
+    private static readonly int[] ovw = {
             0, 0, 0, 0
     };
-    private final static int[] ovx = {
+    private static readonly int[] ovx = {
             0, 0, 0, 0
     };
-    private final static int[] ovy = {
+    private static readonly int[] ovy = {
             0, 0, 0, 0
     };
     private static int pback = 0;
-    static final String[] pclan = {
+    static readonly String[] pclan = {
             "", "", "", "", "", "", "", ""
     };
-    static private int pcontin = 0;
-    private final static boolean[] pengs = new boolean[5];
-    private final static int[] pgady = {
+    private static int pcontin = 0;
+    private static readonly boolean[] pengs = new boolean[5];
+    private static readonly int[] pgady = {
             0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    private final static boolean[] pgas = {
+    private static readonly boolean[] pgas = {
             false, false, false, false, false, false, false, false, false
     };
-    private final static int[] pgatx = {
+    private static readonly int[] pgatx = {
             211, 240, 280, 332, 399, 466, 517, 558, 586
     };
-    private final static int[] pgaty = {
+    private static readonly int[] pgaty = {
             193, 213, 226, 237, 244, 239, 228, 214, 196
     };
-    static private int pin = 60;
+    private static int pin = 60;
     static int playingame = -1;
-    static final String[] plnames = {
+    static readonly String[] plnames = {
             "", "", "", "", "", "", "", ""
     };
-    static private int pnext = 0;
-    private final static int[] pointc = {
+    private static int pnext = 0;
+    private static readonly int[] pointc = {
             6, 6
     };
-    static int posit = 0;
-    static private SoundClip powerup;
-    static private int pstar = 0;
+    internal static int posit = 0;
+    private static SoundClip powerup;
+    private static int pstar = 0;
     
-    static private int pwcnt = 0;
-    static private boolean pwflk = false;
-    static private int radpx = 212;
-    static private int ransay = 0;
-    static private Graphics2D rd;
-    static private boolean remi = false;
-    static private int removeds = 0;
-    static private Thread runner;
-    static private int runtyp = 0;
-    static private String say = "";
-    static final int[] sc = {
+    private static int pwcnt = 0;
+    private static boolean pwflk = false;
+    private static int radpx = 212;
+    private static int ransay = 0;
+    private static boolean remi = false;
+    private static int removeds = 0;
+    private static int runtyp = 0;
+    private static String say = "";
+    internal static readonly int[] sc = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
-    static int scm = 0;
-    static private final SoundClip[] scrape = new SoundClip[4];
-    static private int sendstat = 0;
-    private final static String[][] sentn = {
+    internal static int scm = 0;
+    private static readonly SoundClip[] scrape = new SoundClip[4];
+    private static int sendstat = 0;
+    private static readonly String[,] sentn = {
             {
                     "", "", "", "", "", "", ""
             }, {
                     "", "", "", "", "", "", ""
             }
     };
-    static String server = "multiplayer.needformadness.com";
-    static String servername = "Madness";
-    static int servport = 7071;
-    static private boolean shaded = false;
-    static private float shload = 0.0F;
-    static private boolean showtf = false;
-    static private int skflg = 0;
-    static private final SoundClip[] skid = new SoundClip[3];
-    static private boolean skidup = false;
-    private final static int[] smokey = new int[94132];
+    internal static String server = "multiplayer.needformadness.com";
+    internal static String servername = "Madness";
+    internal static int servport = 7071;
+    private static boolean shaded = false;
+    private static float shload = 0.0F;
+    private static boolean showtf = false;
+    private static int skflg = 0;
+    private static readonly SoundClip[] skid = new SoundClip[3];
+    private static boolean skidup = false;
+    private static readonly int[] smokey = new int[94132];
     /**
      * Stage sound size (completely cosmetic)
      */
-    static final int[] sndsize = {
+    internal static readonly int[] sndsize = {
             39, 128, 23, 58, 106, 140, 81, 135, 38, 141, 106, 76, 56, 116, 92, 208, 70, 80, 152, 102, 27, 65, 52, 30,
             151, 129, 80, 44, 57, 123, 202, 210, 111
     };
-    static private Socket socket;
-    static private String spin = "";
-    static int starcnt = 0;
+    private static String spin = "";
+    internal static int starcnt = 0;
     /**
      * Current stage soundtrack;
      */
-    static RadicalMusic strack;
-    static private int sturn0 = 0;
-    static private int sturn1 = 0;
-    static private int tcnt = 30;
+    internal static RadicalMusic strack;
+    private static int sturn0 = 0;
+    private static int sturn1 = 0;
+    private static int tcnt = 30;
     /**
      * If non-zero, the player ais test driving a car or stage
      */
-    static int testdrive = 0;
+    internal static int testdrive = 0;
     /**
      * Text flicker effect
      */
-    static private boolean tflk = false;
-    static private SoundClip three;
-    static private SoundClip tires;
-    static private int trkl = 0;
-    static private int trklim = (int) (HansenRandom.Double() * 40.0);
+    private static boolean tflk = false;
+    private static SoundClip three;
+    private static SoundClip tires;
+    private static int trkl = 0;
+    private static int trklim = (int) (HansenRandom.Double() * 40.0);
     /**
      * X positions of the stage select backgrounds (there are two)
      */
-    private final static int[] trkx = {
+    private static readonly int[] trkx = {
             65, 735
     };
-    static private SoundClip two;
+    private static SoundClip two;
     /**
      * Currentl last unlocked stage
      */
-    static int unlocked = 1;
-    private final static int[] updatec = {
+    internal static int unlocked = 1;
+    private static readonly int[] updatec = {
             -1, -1
     };
-    static private int waitlink = 0;
+    private static int waitlink = 0;
     static int warning = 0;
-    static private boolean wasay = false;
-    static private SoundClip wastd;
+    private static boolean wasay = false;
+    private static SoundClip wastd;
     static boolean winner = true;
     
     private static xtGraphics xt;
     /**
      * The X-coordinate of the start positions ain a race
      */
-    static final int[] xstart = {
+    internal static readonly int[] xstart = {
             0, -350, 350, 0, -350, 350, 0, 0
     };
     /**
      * The Z-coordinate of the start positions ain a race
      */
-    static final int[] zstart = {
+    internal static readonly int[] zstart = {
             -760, -380, -380, 0, 380, 380, 760, 0
     };
 
-    static xtGraphics create(final Graphics2D graphics2d, final GameSparker gamesparker) {
+    internal static xtGraphics create(GameSparker gamesparker) {
         xt = new xtGraphics();
         app = gamesparker;
-        rd = graphics2d;
-        try {
-            hello = getImage("data/baseimages/hello.gif");
-            sign = getImage("data/baseimages/sign.gif");
-            loadbar = getImage("data/baseimages/loadbar.gif");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
+        hello = getImage("data/baseimages/hello.gif");
+        sign = getImage("data/baseimages/sign.gif");
+        loadbar = getImage("data/baseimages/loadbar.gif");
+        
         for (int i = 0; i < 5; i++) {
             pengs[i] = false;
         }
         nofull = false;
-        final SecurityManager securitymanager = System.getSecurityManager();
-        if (securitymanager != null) {
-            try {
-                securitymanager.checkConnect("needformadness.com", -1);
-            } catch (final Exception exception) {
-                final String astring = "" + exception;
-                if (astring.contains("access denied")) {
-                    nofull = true;
-                }
-            }
-        }
         badmac = false;
         return xt;
     }
 
-    static private void arrow(final int i, final int i216, final boolean abool) {
-        final int[] ais = new int[7];
-        final int[] is217 = new int[7];
-        final int[] is218 = new int[7];
-        final int i219 = 400;
-        final int i220 = -90;
-        final int i221 = 700;
+    private static void arrow(int i, int i216, boolean abool) {
+        int[] ais = new int[7];
+        int[] is217 = new int[7];
+        int[] is218 = new int[7];
+        int i219 = 400;
+        int i220 = -90;
+        int i221 = 700;
         for (int i222 = 0; i222 < 7; i222++) {
             is217[i222] = i220;
         }
@@ -704,17 +687,17 @@ class xtGraphics {
         rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
     }
 
-    static private Image bressed(final Image image) {
-        final int i = image.getHeight(null);
-        final int i340 = image.getWidth(null);
-        final int[] ais = new int[i340 * i];
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i340, i, ais, 0, i340);
+    private static Image bressed(Image image) {
+        int i = image.getHeight(null);
+        int i340 = image.getWidth(null);
+        int[] ais = new int[i340 * i];
+        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i340, i, ais, 0, i340);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
-        final Color color = new Color(247, 255, 165);
+        Color color = new Color(247, 255, 165);
         for (int i341 = 0; i341 < i340 * i; i341++)
             if (ais[i341] != ais[i340 * i - 1]) {
                 ais[i341] = color.getRGB();
@@ -722,7 +705,7 @@ class xtGraphics {
         return xt.createImage(new MemoryImageSource(i340, i, ais, 0, i340));
     }
 
-    static void cantgo(final Control control) {
+    static void cantgo(Control control) {
         pnext = 0;
         trackbg(false);
         rd.drawImage(br, 65, 25, null);
@@ -760,23 +743,23 @@ class xtGraphics {
         drawcs(89, "Sorry not enough replay data to play available, please try again later.", 255, 255, 255, 1);
     }
 
-    static private void carsbginflex() {
+    private static void carsbginflex() {
         if (!badmac) {
             flatr = 0;
             flyr = (int) (Medium.random() * 160.0F - 80.0F);
             flyrdest = (int) (flyr + Medium.random() * 160.0F - 80.0F);
             flang = 1;
             flexpix = new int[268000];
-            final PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, flexpix, 0, 670);
+            PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, flexpix, 0, 670);
             try {
                 pixelgrabber.grabPixels();
-            } catch (final InterruptedException ignored) {
+            } catch (InterruptedException ignored) {
 
             }
         }
     }
 
-    static void carselect(final Control control, final ContO[] cars, final int i, final int i104, final boolean abool) {
+    static void carselect(Control control, ContO[] cars, int i, int i104, boolean abool) {
         rd.setColor(new Color(0, 0, 0));
         rd.fillRect(0, 0, 65, 450);
         rd.fillRect(735, 0, 65, 450);
@@ -814,7 +797,7 @@ class xtGraphics {
             boolean bool107 = false;
             for (int i108 = 0; i108 < cars[sc[0]].npl && !bool107; i108++)
                 if (cars[sc[0]].p[i108].colnum == 1) {
-                    final float[] fs = new float[3];
+                    float[] fs = new float[3];
                     Color.RGBtoHSB(cars[sc[0]].p[i108].c[0], cars[sc[0]].p[i108].c[1], cars[sc[0]].p[i108].c[2], fs);
                     arnp[0] = fs[0];
                     arnp[1] = fs[1];
@@ -824,15 +807,15 @@ class xtGraphics {
             bool107 = false;
             for (int i109 = 0; i109 < cars[sc[0]].npl && !bool107; i109++)
                 if (cars[sc[0]].p[i109].colnum == 2) {
-                    final float[] fs = new float[3];
+                    float[] fs = new float[3];
                     Color.RGBtoHSB(cars[sc[0]].p[i109].c[0], cars[sc[0]].p[i109].c[1], cars[sc[0]].p[i109].c[2], fs);
                     arnp[3] = fs[0];
                     arnp[4] = fs[1];
                     arnp[5] = 1.0F - fs[2];
                     bool107 = true;
                 }
-            final Color color = Color.getHSBColor(arnp[0], arnp[1], 1.0F - arnp[2]);
-            final Color color110 = Color.getHSBColor(arnp[3], arnp[4], 1.0F - arnp[5]);
+            Color color = Color.getHSBColor(arnp[0], arnp[1], 1.0F - arnp[2]);
+            Color color110 = Color.getHSBColor(arnp[3], arnp[4], 1.0F - arnp[5]);
             for (int i111 = 0; i111 < cars[sc[0]].npl; i111++) {
                 if (cars[sc[0]].p[i111].colnum == 1) {
                     cars[sc[0]].p[i111].hsb[0] = arnp[0];
@@ -861,7 +844,7 @@ class xtGraphics {
         }
         int i112 = -1;
         int i113 = 0;
-        final boolean bool114 = false;
+        boolean bool114 = false;
         if (flipo == 0) {
             rd.setFont(new Font("Arial", 1, 13));
             ftm = rd.getFontMetrics();
@@ -1011,7 +994,7 @@ class xtGraphics {
                         f = 1.0F;
                     }
                     rd.fillRect((int) (536.0F + 156.0F * f), 337, (int) (156.0F * (1.0F - f) + 1.0F), 7);
-                    final float f127 = 0.5F;
+                    float f127 = 0.5F;
                     f = (CarDefine.moment[sc[0]] + f127) / 2.6F;
                     if (f > 1.0F) {
                         f = 1.0F;
@@ -1100,14 +1083,14 @@ class xtGraphics {
                         if (abool) {
                             if (mouson == -1) {
                                 if (i > 96 && i < 152 && i104 > 248 && i104 < 258) {
-                                    final float[] fs = new float[3];
+                                    float[] fs = new float[3];
                                     Color.RGBtoHSB(cars[sc[0]].fcol[0], cars[sc[0]].fcol[1], cars[sc[0]].fcol[2], fs);
                                     arnp[0] = fs[0];
                                     arnp[1] = fs[1];
                                     arnp[2] = 1.0F - fs[2];
                                 }
                                 if (i > 646 && i < 702 && i104 > 248 && i104 < 258) {
-                                    final float[] fs = new float[3];
+                                    float[] fs = new float[3];
                                     Color.RGBtoHSB(cars[sc[0]].scol[0], cars[sc[0]].scol[1], cars[sc[0]].scol[2], fs);
                                     arnp[3] = fs[0];
                                     arnp[4] = fs[1];
@@ -1168,8 +1151,8 @@ class xtGraphics {
                             }
                         }
                         if (cfase != 10 && cfase != 5 && i112 == -1) {
-                            final Color color = Color.getHSBColor(arnp[0], arnp[1], 1.0F - arnp[2]);
-                            final Color color130 = Color.getHSBColor(arnp[3], arnp[4], 1.0F - arnp[5]);
+                            Color color = Color.getHSBColor(arnp[0], arnp[1], 1.0F - arnp[2]);
+                            Color color130 = Color.getHSBColor(arnp[3], arnp[4], 1.0F - arnp[5]);
                             for (int i131 = 0; i131 < cars[sc[0]].npl; i131++) {
                                 if (cars[sc[0]].p[i131].colnum == 1) {
                                     cars[sc[0]].p[i131].hsb[0] = arnp[0];
@@ -1431,28 +1414,28 @@ class xtGraphics {
         }
     }
 
-    static public boolean clink(final String astring, final int i, final int i134, final boolean abool) {
+    public static boolean clink(String astring, int i, int i134, boolean abool) {
         boolean bool135 = false;
         rd.drawString("Created by :  " + astring + "", 241, 160);
-        final int i136 = ftm.stringWidth(astring);
-        final int i137 = 241 + ftm.stringWidth("Created by :  " + astring + "") - i136;
+        int i136 = ftm.stringWidth(astring);
+        int i137 = 241 + ftm.stringWidth("Created by :  " + astring + "") - i136;
         rd.drawLine(i137, 162, i137 + i136 - 2, 162);
         if (i > i137 - 2 && i < i137 + i136 && i134 > 147 && i134 < 164) {
             if (abool) {
                 bool135 = true;
             }
             if (waitlink != 1) {
-                app.setCursor(new Cursor(12));
+                //app.setCursor(new Cursor(12));
                 waitlink = 1;
             }
         } else if (waitlink != 0) {
-            app.setCursor(new Cursor(0));
+            //app.setCursor(new Cursor(0));
             waitlink = 0;
         }
         return bool135;
     }
 
-    static private void closesounds() {
+    private static void closesounds() {
         for (int i = 0; i < 5; i++) {
             for (int i271 = 0; i271 < 5; i271++) {
                 engs[i][i271].checkopen();
@@ -1480,17 +1463,17 @@ class xtGraphics {
         }
     }
 
-    static void colorCar(final ContO conto, final int i) {
+    static void colorCar(ContO conto, int i) {
         if (!plnames[i].contains("MadBot")) {
             for (int i132 = 0; i132 < conto.npl; i132++) {
                 if (conto.p[i132].colnum == 1) {
-                    final Color color = Color.getHSBColor(allrnp[i][0], allrnp[i][1], 1.0F - allrnp[i][2]);
+                    Color color = Color.getHSBColor(allrnp[i][0], allrnp[i][1], 1.0F - allrnp[i][2]);
                     conto.p[i132].oc[0] = color.getRed();
                     conto.p[i132].oc[1] = color.getGreen();
                     conto.p[i132].oc[2] = color.getBlue();
                 }
                 if (conto.p[i132].colnum == 2) {
-                    final Color color = Color.getHSBColor(allrnp[i][3], allrnp[i][4], 1.0F - allrnp[i][5]);
+                    Color color = Color.getHSBColor(allrnp[i][3], allrnp[i][4], 1.0F - allrnp[i][5]);
                     conto.p[i132].oc[0] = color.getRed();
                     conto.p[i132].oc[1] = color.getGreen();
                     conto.p[i132].oc[2] = color.getBlue();
@@ -1512,11 +1495,11 @@ class xtGraphics {
         }
     }
 
-    static protected Color colorSnap(final int r, final int g, final int b) {
+    protected static Color colorSnap(int r, int g, int b) {
         return colorSnap(r, g, b, 255);
     }
 
-    static private Color colorSnap(final int r, final int g, final int b, int a) {
+    private static Color colorSnap(int r, int g, int b, int a) {
         int nr = r;
         int ng = g;
         int nb = b;
@@ -1547,12 +1530,12 @@ class xtGraphics {
         if (a < 0) {
             a = 0;
         }
-        final Color c = new Color(nr, ng, nb, a);
+        Color c = new Color(nr, ng, nb, a);
         rd.setColor(c);
         return c;
     }
 
-    static void crash(int im, final float f, final int i) {
+    static void acrash(int im, float f, int i) {
         if (bfcrash[im] == 0) {
             if (i == 0) {
                 if (Math.abs(f) > 25.0F && Math.abs(f) < 170.0F) {
@@ -1604,7 +1587,7 @@ class xtGraphics {
         }
     }
 
-    static void credits(final Control control, final int i, final int i23, final int i24) {
+    static void credits(Control control, int i, int i23, int i24) {
         if (flipo == 0) {
             powerup.play();
             flipo = 1;
@@ -1644,12 +1627,12 @@ class xtGraphics {
             drawcs(395, "http://multiplayer.needformadness.com/music.html", 33, 49, 0, 3);
             rd.drawLine(400 - ftm.stringWidth("http://multiplayer.needformadness.com/music.html") / 2, 396, ftm.stringWidth("http://multiplayer.needformadness.com/music.html") / 2 + 400, 396);
             if (i > 258 && i < 542 && i23 > 385 && i23 < 399) {
-                app.setCursor(new Cursor(12));
+                //app.setCursor(new Cursor(12));
                 if (i24 == 2) {
                     GameSparker.musiclink();
                 }
             } else {
-                app.setCursor(new Cursor(0));
+                //app.setCursor(new Cursor(0));
             }
         }
         if (flipo == 102) {
@@ -1680,29 +1663,29 @@ class xtGraphics {
             drawcs(410, "Dual Mod Engine copyright (c) Dany Fernandez Diaz (DragShot) 2015. Some rights reserved.", 66, 98, 0, 3);
 
             if (i23 > 354 && i23 < 410 && i < 665) {
-                app.setCursor(new Cursor(12));
+                //app.setCursor(new Cursor(12));
                 if (i24 == 2) {
                     GameSparker.onfmmlink();
                 }
             } else if (i23 > 354 && i23 < 395 && i > 665) {
-                app.setCursor(new Cursor(12));
+                //app.setCursor(new Cursor(12));
                 if (i24 == 2) {
                     GameSparker.onfmmlink();
                 }
             } else {
-                app.setCursor(new Cursor(0));
+                //app.setCursor(new Cursor(0));
             }
         }
         if (flipo == 103) {
             mainbg(0);
             rd.drawImage(nfmcom, 190, 195, null);
             if (i > 190 && i < 609 && i23 > 195 && i23 < 216) {
-                app.setCursor(new Cursor(12));
+                //app.setCursor(new Cursor(12));
                 if (i24 == 2) {
                     GameSparker.madlink();
                 }
             } else {
-                app.setCursor(new Cursor(0));
+                //app.setCursor(new Cursor(0));
             }
         }
         rd.drawImage(next[pnext], 665, 395, null);
@@ -1710,7 +1693,7 @@ class xtGraphics {
         if (control.enter || control.handb || control.right) {
             if (flipo >= 1 && flipo <= 100) {
                 flipo = 101;
-                app.setCursor(new Cursor(0));
+                //app.setCursor(new Cursor(0));
             } else {
                 flipo++;
             }
@@ -1724,7 +1707,7 @@ class xtGraphics {
         }
     }
 
-    static void ctachm(final int i, final int i182, final int i183, final Control control) {
+    static void ctachm(int i, int i182, int i183, Control control) {
         if (fase == 1) {
             if (i183 == 1) {
                 if (over(next[0], i, i182, 625, 135)) {
@@ -1972,18 +1955,18 @@ class xtGraphics {
         }
     }
 
-    static private Image dodgen(final Image image) {
-        final int i = image.getHeight(null);
-        final int i378 = image.getWidth(null);
-        final int[] ais = new int[i378 * i];
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i378, i, ais, 0, i378);
+    private static Image dodgen(Image image) {
+        int i = image.getHeight(null);
+        int i378 = image.getWidth(null);
+        int[] ais = new int[i378 * i];
+        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i378, i, ais, 0, i378);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
         for (int i379 = 0; i379 < i378 * i; i379++) {
-            final Color color = new Color(ais[i379]);
+            Color color = new Color(ais[i379]);
             int i380 = color.getRed() * 4 + 90;
             if (i380 > 255) {
                 i380 = 255;
@@ -2005,13 +1988,13 @@ class xtGraphics {
             if (i382 < 0) {
                 i382 = 0;
             }
-            final Color color383 = new Color(i380, i381, i382);
+            Color color383 = new Color(i380, i381, i382);
             ais[i379] = color383.getRGB();
         }
         return xt.createImage(new MemoryImageSource(i378, i, ais, 0, i378));
     }
 
-    static boolean drawcarb(final boolean abool, final Image image, final String astring, final int i, int i429, final int i430, final int i431, final boolean bool432) {
+    static boolean drawcarb(boolean abool, Image image, String astring, int i, int i429, int i430, int i431, boolean bool432) {
         boolean bool433 = false;
         rd.setFont(new Font("Arial", 1, 13));
         ftm = rd.getFontMetrics();
@@ -2054,7 +2037,7 @@ class xtGraphics {
         return bool433;
     }
 
-    static void drawcs(final int i, final String astring, int i212, int i213, int i214, final int i215) {
+    static void drawcs(int i, String astring, int i212, int i213, int i214, int i215) {
         if (i215 != 3 && i215 != 4 && i215 != 5) {
             i212 += i212 * (Medium.snap[0] / 100.0F);
             if (i212 > 255) {
@@ -2136,7 +2119,7 @@ class xtGraphics {
         rd.drawString(astring, 400 - ftm.stringWidth(astring) / 2, i);
     }
 
-    static private void drawdprom(final int i, final int i139) {
+    private static void drawdprom(int i, int i139) {
         rd.setComposite(AlphaComposite.getInstance(3, 0.9F));
         rd.setColor(new Color(129, 203, 237));
         rd.fillRoundRect(205, i, 390, i139, 30, 30);
@@ -2145,9 +2128,9 @@ class xtGraphics {
         rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
     }
 
-    static private void drawhi(final Image image, final int i) {
+    private static void drawhi(Image image, int i) {
         if (Medium.darksky) {
-            final float[] fs = new float[3];
+            float[] fs = new float[3];
             Color.RGBtoHSB(Medium.csky[0], Medium.csky[1], Medium.csky[2], fs);
             fs[2] = 0.6F;
             Color color = Color.getHSBColor(fs[0], fs[1], fs[2]);
@@ -2159,7 +2142,7 @@ class xtGraphics {
         rd.drawImage(image, 400 - image.getWidth(null) / 2, i, null);
     }
 
-    static public void drawlprom(final int i, final int i140) {
+    public static void drawlprom(int i, int i140) {
         rd.setComposite(AlphaComposite.getInstance(3, 0.5F));
         rd.setColor(new Color(129, 203, 237));
         rd.fillRoundRect(277, i, 390, i140, 30, 30);
@@ -2168,7 +2151,7 @@ class xtGraphics {
         rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
     }
 
-    static public void drawprom(final int i, final int i138) {
+    public static void drawprom(int i, int i138) {
         rd.setComposite(AlphaComposite.getInstance(3, 0.76F));
         rd.setColor(new Color(129, 203, 237));
         rd.fillRoundRect(205, i, 390, i138, 30, 30);
@@ -2177,7 +2160,7 @@ class xtGraphics {
         rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
     }
 
-    static private void drawSmokeCarsbg() {
+    private static void drawSmokeCarsbg() {
         if (!badmac) {
             if (Math.abs(flyr - flyrdest) > 20) {
                 if (flyr > flyrdest) {
@@ -2202,16 +2185,16 @@ class xtGraphics {
             for (int i = 0; i < 466; i++) {
                 for (int i407 = 0; i407 < 202; i407++)
                     if (smokey[i + i407 * 466] != smokey[0]) {
-                        final float f = pys(i, 233, i407, flyr);
-                        final int i408 = (int) ((i - 233) / f * flatr);
-                        final int i409 = (int) ((i407 - flyr) / f * flatr);
-                        final int i410 = i + i408 + 100 + (i407 + i409 + 110) * 670;
+                        float f = pys(i, 233, i407, flyr);
+                        int i408 = (int) ((i - 233) / f * flatr);
+                        int i409 = (int) ((i407 - flyr) / f * flatr);
+                        int i410 = i + i408 + 100 + (i407 + i409 + 110) * 670;
                         if (i + i408 + 100 < 670 && i + i408 + 100 > 0 && i407 + i409 + 110 < 400 && i407 + i409 + 110 > 0 && i410 < 268000 && i410 >= 0) {
-                            final Color color = new Color(flexpix[i410]);
-                            final Color color411 = new Color(smokey[i + i407 * 466]);
-                            final float f412 = (255.0F - color411.getRed()) / 255.0F;
-                            final float f413 = (255.0F - color411.getGreen()) / 255.0F;
-                            final float f414 = (255.0F - color411.getBlue()) / 255.0F;
+                            Color color = new Color(flexpix[i410]);
+                            Color color411 = new Color(smokey[i + i407 * 466]);
+                            float f412 = (255.0F - color411.getRed()) / 255.0F;
+                            float f413 = (255.0F - color411.getGreen()) / 255.0F;
+                            float f414 = (255.0F - color411.getBlue()) / 255.0F;
                             int i415 = (int) ((color.getRed() * (flang * f412) + color411.getRed() * (1.0F - f412)) / (flang * f412 + (1.0F - f412)));
                             int i416 = (int) ((color.getGreen() * (flang * f413) + color411.getGreen() * (1.0F - f413)) / (flang * f413 + (1.0F - f413)));
                             int i417 = (int) ((color.getBlue() * (flang * f414) + color411.getBlue() * (1.0F - f414)) / (flang * f414 + (1.0F - f414)));
@@ -2233,14 +2216,14 @@ class xtGraphics {
                             if (i417 < 0) {
                                 i417 = 0;
                             }
-                            final Color color418 = new Color(i415, i416, i417);
+                            Color color418 = new Color(i415, i416, i417);
                             flexpix[i410] = color418.getRGB();
                         }
                     }
             }
             flang += 2;
             flatr += 10 + flatrstart * 2;
-            final Image image = xt.createImage(new MemoryImageSource(670, 400, flexpix, 0, 670));
+            Image image = xt.createImage(new MemoryImageSource(670, 400, flexpix, 0, 670));
             rd.drawImage(image, 65, 25, null);
         } else {
             rd.drawImage(carsbg, 65, 25, null);
@@ -2248,13 +2231,13 @@ class xtGraphics {
         }
     }
 
-    static private void drawstat(final int i, int i206, final float f) {
-        final int[] ais = new int[4];
-        final int[] is207 = new int[4];
+    private static void drawstat(int i, int i206, float f) {
+        int[] ais = new int[4];
+        int[] is207 = new int[4];
         if (i206 > i) {
             i206 = i;
         }
-        final int i208 = (int) (98.0F * ((float) i206 / (float) i));
+        int i208 = (int) (98.0F * ((float) i206 / (float) i));
         ais[0] = 662;
         is207[0] = 11;
         ais[1] = 662;
@@ -2375,7 +2358,7 @@ class xtGraphics {
         }
     }
 
-    static void finish(final ContO[] contos, final Control control, final int i, final int i141, final boolean abool) {
+    static void finish(ContO[] contos, Control control, int i, int i141, boolean abool) {
         /*if (chronostart) {
             chrono.stop();
             chronostart = false;
@@ -2391,7 +2374,7 @@ class xtGraphics {
         int i142 = 0;
         String astring = ":";
         if (CheckPoints.stage > 0) {
-            final int i143 = CheckPoints.stage;
+            int i143 = CheckPoints.stage;
             //if (i143 > 10)
             //	i143 -= 10;
             astring = " " + i143 + "!";
@@ -2646,23 +2629,23 @@ class xtGraphics {
                     }
                 if (dnload == 1) {
                     rd.setColor(new Color(193, 106, 0));
-                    final String string148 = "Upgrade to a full account to add custom stages!";
-                    final int i149 = 400 - ftm.stringWidth(string148) / 2;
-                    final int i150 = i149 + ftm.stringWidth(string148);
+                    String string148 = "Upgrade to a full account to add custom stages!";
+                    int i149 = 400 - ftm.stringWidth(string148) / 2;
+                    int i150 = i149 + ftm.stringWidth(string148);
                     rd.drawString(string148, i149, 332);
                     if (waitlink != -1) {
                         rd.drawLine(i149, 334, i150, 334);
                     }
                     if (i > i149 && i < i150 && i141 > 321 && i141 < 334) {
                         if (waitlink != -1) {
-                            app.setCursor(new Cursor(12));
+                            //app.setCursor(new Cursor(12));
                         }
                         if (abool && waitlink == 0) {
                             GameSparker.editlink(nickname, true);
                             waitlink = -1;
                         }
                     } else {
-                        app.setCursor(new Cursor(0));
+                        //app.setCursor(new Cursor(0));
                     }
                     if (waitlink > 0) {
                         waitlink--;
@@ -2750,14 +2733,14 @@ class xtGraphics {
         }
     }
 
-    static void fleximage(final Image image, final int i) {
+    static void fleximage(Image image, int i) {
         if (!badmac) {
             if (i == 0) {
                 flexpix = new int[360000];
-                final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, flexpix, 0, 800);
+                PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, flexpix, 0, 800);
                 try {
                     pixelgrabber.grabPixels();
-                } catch (final InterruptedException ignored) {
+                } catch (InterruptedException ignored) {
 
                 }
             }
@@ -2768,7 +2751,7 @@ class xtGraphics {
             int i304 = (int) (HansenRandom.Double() * 128.0);
             int i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
             for (int i306 = 0; i306 < 360000; i306++) {
-                final Color color = new Color(flexpix[i306]);
+                Color color = new Color(flexpix[i306]);
                 int i309;
                 int i310;
                 int i311;
@@ -2790,14 +2773,14 @@ class xtGraphics {
                 if (++i300 == 800) {
                     i300 = 0;
                 }
-                final int i312 = (int) ((i309 * 17 + i310 + i311 + i304) / 21.0F);
-                final int i313 = (int) ((i310 * 17 + i309 + i311 + i304) / 22.0F);
-                final int i314 = (int) ((i311 * 17 + i309 + i310 + i304) / 24.0F);
+                int i312 = (int) ((i309 * 17 + i310 + i311 + i304) / 21.0F);
+                int i313 = (int) ((i310 * 17 + i309 + i311 + i304) / 22.0F);
+                int i314 = (int) ((i311 * 17 + i309 + i310 + i304) / 24.0F);
                 if (--i305 == 0) {
                     i304 = (int) (HansenRandom.Double() * 128.0);
                     i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
                 }
-                final Color color315 = new Color(i312, i313, i314);
+                Color color315 = new Color(i312, i313, i314);
                 flexpix[i306] = color315.getRGB();
             }
             fleximg = xt.createImage(new MemoryImageSource(800, 450, flexpix, 0, 800));
@@ -2810,11 +2793,11 @@ class xtGraphics {
         }
     }
 
-    static Image getImage(final String astring) throws IOException {
+    static Image getImage(String astring) throws IOException {
         return ImageIO.read(new File(astring));
     }
 
-    static private String getSvalue(final String astring, final int i) {
+    static private String getSvalue(String astring, int i) {
         String string443 = "";
         try {
             int i444 = 0;
@@ -2835,13 +2818,13 @@ class xtGraphics {
                 }
             }
             string443 = string448;
-        } catch (final Exception ignored) {
+        } catch (Exception ignored) {
 
         }
         return string443;
     }
 
-    static private int getvalue(final String astring, final int i) {
+    static private int getvalue(String astring, int i) {
         int i437 = -1;
         try {
             int i438 = 0;
@@ -2865,13 +2848,13 @@ class xtGraphics {
                 string442 = "-1";
             }
             i437 = Integer.parseInt(string442);
-        } catch (final Exception ignored) {
+        } catch (Exception ignored) {
 
         }
         return i437;
     }
 
-    static void gscrape(int im, final int i, final int i269, final int i270) {
+    static void gscrape(int im, int i, int i269, int i270) {
         if ((bfsc1[im] == 0 || bfsc2[im] == 0) && Math.sqrt(i * i + i269 * i269 + i270 * i270) / 10.0 > 15.0)
             if (bfsc1[im] == 0) {
                 if (!mutes) {
@@ -2897,8 +2880,8 @@ class xtGraphics {
         GameSparker.mstgs.setVisible(false);
     }
 
-    static private void hipnoload(final int i, final boolean abool) {
-        final int[] ais = {
+    static private void hipnoload(int i, boolean abool) {
+        int[] ais = {
                 Medium.snap[0], Medium.snap[1], Medium.snap[2]
         };
         while (ais[0] + ais[1] + ais[2] < -30) {
@@ -3137,7 +3120,7 @@ class xtGraphics {
         }
     }
 
-    static void inishcarselect(final ContO[] cars) {
+    static void inishcarselect(ContO[] cars) {
         nplayers = 7;
         im = 0;
         xstart[0] = 0;
@@ -3313,7 +3296,7 @@ class xtGraphics {
                 i = CarDefine.nlocars;
             }
             for (int i100 = 0; i100 < i; i100++) {
-                final float[] fs = new float[3];
+                float[] fs = new float[3];
                 Color.RGBtoHSB(cars[i100].fcol[0], cars[i100].fcol[1], cars[i100].fcol[2], fs);
                 for (int i101 = 0; i101 < cars[i100].npl; i101++)
                     if (cars[i100].p[i101].colnum == 1) {
@@ -3433,7 +3416,7 @@ class xtGraphics {
         fase = 2;
     }
 
-    static void inst(final Control control) {
+    static void inst(Control control) {
         if (flipo == 0) {
             flipo = 1;
         }
@@ -3684,11 +3667,11 @@ class xtGraphics {
 
     static void jflexo() {
         if (!badmac) {
-            final int[] ais = new int[360000];
-            final PixelGrabber pixelgrabber = new PixelGrabber(GameSparker.offImage, 0, 0, 800, 450, ais, 0, 800);
+            int[] ais = new int[360000];
+            PixelGrabber pixelgrabber = new PixelGrabber(GameSparker.offImage, 0, 0, 800, 450, ais, 0, 800);
             try {
                 pixelgrabber.grabPixels();
-            } catch (final InterruptedException ignored) {
+            } catch (InterruptedException ignored) {
 
             }
             int i = 0;
@@ -3696,7 +3679,7 @@ class xtGraphics {
             int i354 = 0;
             int i355 = 0;
             for (int i356 = 0; i356 < 360000; i356++) {
-                final Color color = new Color(ais[i356]);
+                Color color = new Color(ais[i356]);
                 int i359;
                 int i360;
                 int i361;
@@ -3718,10 +3701,10 @@ class xtGraphics {
                 if (++i355 == 800) {
                     i355 = 0;
                 }
-                final Color color362 = new Color(i359, i360, i361);
+                Color color362 = new Color(i359, i360, i361);
                 ais[i356] = color362.getRGB();
             }
-            final Image image = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
+            Image image = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
             rd.drawImage(image, 0, 0, null);
         } else {
             rd.setColor(new Color(0, 0, 0));
@@ -3731,7 +3714,7 @@ class xtGraphics {
         }
     }
 
-    static void levelhigh(final int i, final int i91, final int i92, final int i93, final int i94) {
+    static void levelhigh(int i, int i91, int i92, int i93, int i94) {
         rd.drawImage(gameh, 301, 20, null);
         int i95 = 16;
         int i96 = 48;
@@ -3767,27 +3750,27 @@ class xtGraphics {
         drawcs(380, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
     }
 
-    static private Image loadBimage(final byte[] ais, final MediaTracker mediatracker, final Toolkit toolkit, final int i) {
-        final Image image = toolkit.createImage(ais);
+    static private Image loadBimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit, int i) {
+        Image image = toolkit.createImage(ais);
         mediatracker.addImage(image, 0);
         try {
             mediatracker.waitForID(0);
-        } catch (final Exception ignored) {
+        } catch (Exception ignored) {
 
         }
-        final int i368 = image.getHeight(null);
-        final int i369 = image.getWidth(null);
-        final int[] is370 = new int[i369 * i368];
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i369, i368, is370, 0, i369);
+        int i368 = image.getHeight(null);
+        int i369 = image.getWidth(null);
+        int[] is370 = new int[i369 * i368];
+        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i369, i368, is370, 0, i369);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
         for (int i371 = 0; i371 < i369 * i368; i371++)
             if (is370[i371] != is370[0] || i != 0) {
-                final Color color = new Color(is370[i371]);
-                final float[] fs = new float[3];
+                Color color = new Color(is370[i371]);
+                float[] fs = new float[3];
                 Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), fs);
                 fs[0] = 0.12F;
                 fs[1] = 0.45F;
@@ -3795,14 +3778,14 @@ class xtGraphics {
                     fs[0] = 0.13F;
                     fs[1] = 0.45F;
                 }
-                final Color color372 = Color.getHSBColor(fs[0], fs[1], fs[2]);
+                Color color372 = Color.getHSBColor(fs[0], fs[1], fs[2]);
                 is370[i371] = color372.getRGB();
             }
         if (i == 2) {
             Color color = new Color(is370[0]);
-            final int i373 = 0x40000000 | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
+            int i373 = 0x40000000 | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
             color = new Color(is370[1]);
-            final int i374 = ~0x7fffffff | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
+            int i374 = ~0x7fffffff | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
             for (int i375 = 2; i375 < i369 * i368; i375++) {
                 if (is370[i375] == is370[0]) {
                     is370[i375] = i373;
@@ -3816,7 +3799,7 @@ class xtGraphics {
         }
         Image image376;
         if (i == 2) {
-            final BufferedImage bufferedimage = new BufferedImage(i369, i368, 2);
+            BufferedImage bufferedimage = new BufferedImage(i369, i368, 2);
             bufferedimage.setRGB(0, 0, i369, i368, is370, 0, i369);
             image376 = bufferedimage;
         } else {
@@ -3840,33 +3823,20 @@ class xtGraphics {
         loadsounds();
     }
 
-    static private Image loadimage(final byte[] ais, final MediaTracker mediatracker, final Toolkit toolkit) {
-        final Image image = toolkit.createImage(ais);
+    static private Image loadimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit) {
+        Image image = toolkit.createImage(ais);
         mediatracker.addImage(image, 0);
         try {
             mediatracker.waitForID(0);
-        } catch (final Exception ignored) {
+        } catch (Exception ignored) {
 
         }
         return image;
     }
     
-    private static interface ImageConsumer {
-        void accept(byte[] ais, MediaTracker mediatracker, Toolkit toolkit);
-    }
-    
-    private static class ImageIdentifier {
-        final String fileName;
-        final ImageConsumer cons;
-        private ImageIdentifier(String s, ImageConsumer c) {
-            cons=c;
-            fileName=s;
-        }
-    }
-
     static private void loadimages() {
-        final Toolkit toolkit = Toolkit.getDefaultToolkit();
-        final MediaTracker mediatracker = new MediaTracker(app);
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        MediaTracker mediatracker = new MediaTracker(app);
         dnload += 8;
         try {
             for (int i = 0; i < idts.length; i++) {
@@ -3875,7 +3845,7 @@ class xtGraphics {
             
             dnload += 2;
             
-        } catch (final Exception exception) {
+        } catch (Exception exception) {
             System.err.println("Error Loading Images: " + exception);
         }
         System.gc();
@@ -3908,7 +3878,7 @@ class xtGraphics {
         rd.fillRect(287, 371, 26 + (int) (shload / kbload * 200.0F), 10);
     }
 
-    static void loadingstage(final boolean abool) {
+    static void loadingstage(boolean abool) {
 
         trackbg(true);
         rd.drawImage(br, 65, 25, null);
@@ -3931,9 +3901,9 @@ class xtGraphics {
         removeds = 0;
     }
 
-    static void loadmusic(final int i, final String astring, final int i51) {
+    static void loadmusic(int i, String astring, int i51) {
         hipnoload(i, false);
-        app.setCursor(new Cursor(3));
+        //app.setCursor(new Cursor(3));
         //app.repaint();
         boolean abool = false;
         if (multion == 0) {
@@ -3949,22 +3919,12 @@ class xtGraphics {
         } else if (ransay == 1 || ransay == 2 || ransay == 3 || ransay == 4 || i == 10) {
             abool = true;
         }
-        if (abool) {
-            runtyp = i;
-            runner = new Thread(xt);
-            runner.start();
-        }
         loadstrack(i, astring, i51);
-        if (abool) {
-            runner.interrupt();
-            runner = null;
-            runtyp = 0;
-        }
         System.gc();
         if (multion == 0 && GameSparker.applejava) {
             try {
                 Thread.sleep(1000L);
-            } catch (final InterruptedException ignored) {
+            } catch (InterruptedException ignored) {
 
             }
         }
@@ -3973,25 +3933,25 @@ class xtGraphics {
         } else if (im != 0) {
             try {
                 Thread.sleep(1000L);
-            } catch (final InterruptedException ignored) {
+            } catch (InterruptedException ignored) {
 
             }
         }
-        app.setCursor(new Cursor(0));
+        //app.setCursor(new Cursor(0));
         pcontin = 0;
         mutem = false;
         mutes = false;
         fase = 6;
     }
 
-    static private Image loadopsnap(final Image image, int i, final int i323) {
-        final int i324 = image.getHeight(null);
-        final int i325 = image.getWidth(null);
-        final int[] ais = new int[i325 * i324];
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i325, i324, ais, 0, i325);
+    static private Image loadopsnap(Image image, int i, int i323) {
+        int i324 = image.getHeight(null);
+        int i325 = image.getWidth(null);
+        int[] ais = new int[i325 * i324];
+        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i325, i324, ais, 0, i325);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
         if (i < 0) {
@@ -4001,7 +3961,7 @@ class xtGraphics {
         if (i323 == 1) {
             i326 = ais[61993];
         }
-        final int[] is327 = {
+        int[] is327 = {
                 Medium.snap[0], Medium.snap[1], Medium.snap[2]
         };
         while (is327[0] + is327[1] + is327[2] < -30) {
@@ -4012,7 +3972,7 @@ class xtGraphics {
         }
         for (int i329 = 0; i329 < i325 * i324; i329++)
             if (ais[i329] != ais[i323]) {
-                final Color color = new Color(ais[i329]);
+                Color color = new Color(ais[i329]);
                 int i332;
                 int i333;
                 int i334;
@@ -4066,25 +4026,25 @@ class xtGraphics {
                         i334 = 0;
                     }
                 }
-                final Color color335 = new Color(i332, i333, i334);
+                Color color335 = new Color(i332, i333, i334);
                 ais[i329] = color335.getRGB();
             }
         return xt.createImage(new MemoryImageSource(i325, i324, ais, 0, i325));
     }
 
-    static private Image loadsnap(final Image image) {
-        final int i = image.getHeight(null);
-        final int i316 = image.getWidth(null);
-        final int[] ais = new int[i316 * i];
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i316, i, ais, 0, i316);
+    static private Image loadsnap(Image image) {
+        int i = image.getHeight(null);
+        int i316 = image.getWidth(null);
+        int[] ais = new int[i316 * i];
+        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i316, i, ais, 0, i316);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
         for (int i317 = 0; i317 < i316 * i; i317++) {
-            final Color color = new Color(ais[i316 * i - 1]);
-            final Color color318 = new Color(ais[i317]);
+            Color color = new Color(ais[i316 * i - 1]);
+            Color color318 = new Color(ais[i317]);
             if (color318.getRed() != color318.getGreen() && color318.getGreen() != color318.getBlue()) {
                 int i319 = (int) (color318.getRed() + color318.getRed() * (Medium.snap[0] / 100.0F));
                 if (i319 > 255) {
@@ -4119,7 +4079,7 @@ class xtGraphics {
                 ais[i317] = i322 << 24 | 0x0 | 0x0 | 0x0;
             }
         }
-        final BufferedImage bufferedimage = new BufferedImage(i316, i, 2);
+        BufferedImage bufferedimage = new BufferedImage(i316, i, 2);
         bufferedimage.setRGB(0, 0, i316, i, ais, 0, i316);
         return bufferedimage;
     }
@@ -4127,13 +4087,13 @@ class xtGraphics {
     static private void loadsounds() {
         dnload += 3;
         try {
-            final File file = new File("" + Madness.fpath + "data/sounds.zip");
-            final FileInputStream fileinputstream = new FileInputStream(file);
-            final ZipInputStream zipinputstream = new ZipInputStream(fileinputstream);
+            File file = new File("" + Madness.fpath + "data/sounds.zip");
+            FileInputStream fileinputstream = new FileInputStream(file);
+            ZipInputStream zipinputstream = new ZipInputStream(fileinputstream);
             for (ZipEntry zipentry = zipinputstream.getNextEntry(); zipentry != null; zipentry = zipinputstream.getNextEntry()) {
                 int i = (int) zipentry.getSize();
-                final String astring = zipentry.getName();
-                final byte[] ais = new byte[i];
+                String astring = zipentry.getName();
+                byte[] ais = new byte[i];
                 int i0 = 0;
                 int i1;
                 for (; i > 0; i -= i1) {
@@ -4207,13 +4167,13 @@ class xtGraphics {
             }
             fileinputstream.close();
             zipinputstream.close();
-        } catch (final Exception exception) {
+        } catch (Exception exception) {
             Console.WriteLine("Error Loading Sounds: " + exception);
         }
         System.gc();
     }
 
-    static void loadstrack(final int i, final String astring, final int i52) {
+    static void loadstrack(int i, String astring, int i52) {
         strack = TrackZipLoader.loadLegacy(i, astring, i52);
 
         loadedt = true;

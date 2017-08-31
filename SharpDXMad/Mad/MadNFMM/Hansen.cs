@@ -21,6 +21,59 @@ namespace Cum
             throw new System.NotImplementedException();
         }
     }
+    
+    internal class Random {
+        public Random(long l)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double nextDouble()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal class FontMetrics
+    {
+        
+    }
+
+    public class Color
+    {
+        public Color(int r, int g, int b, int a)
+        {
+            throw new NotImplementedException();
+        }
+        public Color(int r, int g, int b)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Color getHSBColor(float p0, float p1, float p2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getRed()
+        {
+            throw new NotImplementedException();
+        }
+        public int getGreen()
+        {
+            throw new NotImplementedException();
+        }
+        public int getBlue()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal class RadicalMusic
+    {
+        
+    }
+    
     internal class Math
     {
         public static int sqrt(int p0)
@@ -66,6 +119,61 @@ namespace Cum
         public static object atan2(int i, int i1)
         {
             throw new NotImplementedException();
+        }
+
+        public static double atan(double p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static int max(int i, int i1)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public static class ArrayExt
+    {
+        public static T[] CloneArray<T>(this T[] arr)
+        {
+            var to = new T[arr.Length];
+            arr.CopyTo(to, 0);
+            return to;
+        }
+        
+        public static T[] Slice<T>(this T[,] arr2, int i)
+        {
+            var len = arr2.GetLength(0);
+            var arr = new T[len];
+            for (var j = 0; j < len; j++)
+            {
+                arr[j] = arr2[i, j];
+            }
+            return arr;
+        }
+
+        public static T[][] New<T>(int l0, int l1)
+        {
+            var arr = new T[l0][];
+            for (var i = 0; i < l0; i++)
+            {
+                arr[i] = new T[l1];
+            }
+            return arr;
+        }
+        
+        public static T[][][] New<T>(int l0, int l1, int l2)
+        {
+            var arr = new T[l0][][];
+            for (var i = 0; i < l0; i++)
+            {
+                arr[i] = new T[l1][];
+                for (var j = 0; j < l0; j++)
+                {
+                    arr[i][j] = new T[l2];
+                }
+            }
+            return arr;
         }
     }
 
@@ -113,6 +221,19 @@ namespace Cum
 
         public Image(IntPtr nativePtr) : base(nativePtr)
         {
+        }
+    }
+
+    internal class SoundClip
+    {
+        public void play()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void checkopen()
+        {
+            throw new NotImplementedException();
         }
     }
 }

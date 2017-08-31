@@ -23,17 +23,17 @@ public class Utility {
     static int getvalue(String astring, String string262, int i) {
         int i263 = 0;
         String string264 = "";
-        for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
-            String string266 = "" + string262.charAt(i265);
-            if (string266.equals(",") || string266.equals(")")) {
+        for (int i265 = astring.Length + 1; i265 < string262.Length; i265++) {
+            char string266 = string262[i265];
+            if (string266 == ',' || string266 == ')') {
                 i263++;
                 i265++;
             }
             if (i263 == i) {
-                string264 = "" + string264 + string262.charAt(i265);
+                string264 = $"{string264}{string262[i265]}";
             }
         }
-        return (int) Float.parseFloat(string264);
+        return (int) float.Parse(string264);
     }
 
     /**
@@ -43,33 +43,34 @@ public class Utility {
      * @return the value at the position
      */
     public static int getServerValue(String astring, int i) {
-        int i437 = -1;
-        try {
-            int i438 = 0;
-            int i439 = 0;
-            int i440 = 0;
-            String string441;
-            String string442 = "";
-            for (; i438 < astring.length() && i440 != 2; i438++) {
-                string441 = "" + astring.charAt(i438);
-                if (string441.equals("|")) {
-                    i439++;
-                    if (i440 == 1 || i439 > i) {
-                        i440 = 2;
-                    }
-                } else if (i439 == i) {
-                    string442 = "" + string442 + string441;
-                    i440 = 1;
-                }
-            }
-            if (string442.equals("")) {
-                string442 = "-1";
-            }
-            i437 = Integer.parseInt(string442);
-        } catch (Exception ignored) {
-
-        }
-        return i437;
+        throw new NotImplementedException();
+//        int i437 = -1;
+//        try {
+//            int i438 = 0;
+//            int i439 = 0;
+//            int i440 = 0;
+//            String string441;
+//            String string442 = "";
+//            for (; i438 < astring.length() && i440 != 2; i438++) {
+//                string441 = "" + astring.charAt(i438);
+//                if (string441.equals("|")) {
+//                    i439++;
+//                    if (i440 == 1 || i439 > i) {
+//                        i440 = 2;
+//                    }
+//                } else if (i439 == i) {
+//                    string442 = "" + string442 + string441;
+//                    i440 = 1;
+//                }
+//            }
+//            if (string442.equals("")) {
+//                string442 = "-1";
+//            }
+//            i437 = Integer.parseInt(string442);
+//        } catch (Exception ignored) {
+//
+//        }
+//        return i437;
     }
 
     /**
@@ -140,14 +141,14 @@ public class Utility {
     public static int getint(String astring, String string262, int i) {
         int i263 = 0;
         String string264 = "";
-        for (int i265 = astring.length() + 1; i265 < string262.length(); i265++) {
-            String string266 = "" + string262.charAt(i265);
-            if (string266.equals(",") || string266.equals(")")) {
+        for (int i265 = astring.Length + 1; i265 < string262.Length; i265++) {
+            char string266 = string262[i265];
+            if (string266 == ',' || string266 == ')') {
                 i263++;
                 i265++;
             }
             if (i263 == i) {
-                string264 = "" + string264 + string262.charAt(i265);
+                string264 = "" + string264 + string262[i265];
             }
         }
         return int.Parse(string264);

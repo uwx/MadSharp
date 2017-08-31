@@ -20,7 +20,7 @@ namespace Cum
     /**
      * Whether JVM vendor ais Apple or not
      */
-    static boolean applejava = false;
+        internal static boolean applejava = false;
 
     /**
      * Game's X position ain window
@@ -40,19 +40,19 @@ namespace Cum
     private static int lastw = 0;
     private static int lmxz = 0;
     private static boolean lostfcs = false;
-    static readonly Smenu mcars = new Smenu(707);
+        internal static readonly Smenu mcars = new Smenu(707);
     private static int mload = 1;
 
     /**
      * 0 = Motion effects off
      * 1 = Motion effects on
      */
-    static int moto = 0;
+        internal static int moto = 0;
 
     private static boolean moused = false;
-    static int mouses = 0;
+    internal static int mouses = 0;
     private static int mousew = 0;
-    static readonly Smenu mstgs = new Smenu(707);
+        internal static readonly Smenu mstgs = new Smenu(707);
 
     /**
      * Applies transparency to every polygon (20 ais 20% opacity, 100 ais 100% opacity)
@@ -65,7 +65,7 @@ namespace Cum
     private static boolean oncarm = false;
     private static boolean onfulls = false;
     private static boolean onstgm = false;
-    static boolean openm = false;
+        internal static boolean openm = false;
     private static float reqmult = 0.0F;
     private static int shaka = 0;
     private static int showsize = 0;
@@ -75,7 +75,7 @@ namespace Cum
     //Smenu snfm1 = new Smenu(12);
     //Smenu snfm2 = new Smenu(19);
     private static readonly Image[] stagemaker = new Image[2];
-    static readonly Control[] u = new Control[8];
+        internal static readonly Control[] u = new Control[8];
     private static int view = 0;
     private static int xm = 0;
     private static int ym = 0;
@@ -1089,7 +1089,7 @@ namespace Cum
         if (!lostfcs)
             if (xm > 65 && xm < 735 && ym > 135 && ym < 194 || xm > 275 && xm < 525 && ym > 265 && ym < 284)
             {
-                gsPanel.setCursor(new Cursor(12));
+                //gsPanel.setCursor(new Cursor(12));
                 if (mouses == 2)
                 {
                     openurl("http://www.radicalplay.com/");
@@ -1097,7 +1097,7 @@ namespace Cum
             }
             else
             {
-                gsPanel.setCursor(new Cursor(0));
+                //gsPanel.setCursor(new Cursor(0));
             }
     }
 
@@ -1569,7 +1569,7 @@ namespace Cum
         openurl("https://github.com/chrishansen69/OpenNFMM");
     }
 
-    private static void openurl(final String astring)
+    private static void openurl(String astring)
     {
         if (Desktop.isDesktopSupported())
         {
