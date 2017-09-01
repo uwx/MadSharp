@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using SharpDX;
 using SharpDX.Direct2D1;
 using SharpDX.DXGI;
@@ -34,7 +35,30 @@ namespace Cum
         }
     }
 
-    internal class FontMetrics
+    public class Date
+    {
+        private readonly long _time;
+
+        public Date()
+        {
+            _time = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+        }
+
+        public long getTime()
+        {
+            return _time;
+        }
+    }
+
+    internal class FileUtil
+    {
+        public static void loadFiles(string dataCars, string[] carRads, Func<File, File> p2, Action<byte[], int> p3)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class FontMetrics
     {
         
     }
@@ -231,6 +255,11 @@ namespace Cum
 
                 }*/
         }
+
+        public static Image read(byte[] file)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal struct File
@@ -241,6 +270,16 @@ namespace Cum
         {
             _path = str;
         }
+
+        public File(File parent, string child)
+        {
+            _path = $@"{parent._path}\{child}";
+        }
+
+        public File parent => new File(_getParent());
+        public string file => Path.GetFileNameWithoutExtension(_path);
+
+        private string _getParent() => Path.GetDirectoryName(_path);
     }
 
     public struct Font
@@ -301,6 +340,16 @@ namespace Cum
 
         public Image(IntPtr nativePtr) : base(nativePtr)
         {
+        }
+
+        public int getHeight(object o)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int getWidth(object o)
+        {
+            throw new NotImplementedException();
         }
     }
 

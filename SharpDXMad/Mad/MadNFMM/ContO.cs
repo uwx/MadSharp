@@ -828,7 +828,7 @@ class ContO {
         }
     }
 
-    ContO(ContO conto78, int toX, int toY, int toZ, int i81) {
+    internal ContO(ContO conto78, int toX, int toY, int toZ, int i81) {
         keyx = new int[4];
         keyz = new int[4];
         sprkat = 0;

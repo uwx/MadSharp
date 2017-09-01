@@ -1,46 +1,44 @@
-﻿namespace Cum
+﻿using System;
+using MadGame;
+using static Cum.xtGraphics;
+using static Cum.xtImages.Images;
+using boolean = System.Boolean;
+
+namespace Cum
 {
     public class xtPart2
     {
         
-    static private Image loadude(final byte[] ais, final MediaTracker mediatracker, final Toolkit toolkit) {
-        final Image image = toolkit.createImage(ais);
-        mediatracker.addImage(image, 0);
-        try {
-            mediatracker.waitForID(0);
-        } catch (final Exception ignored) {
-
-        }
-        final int i = image.getHeight(null);
-        final int i364 = image.getWidth(null);
-        final int[] is365 = new int[i364 * i];
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i364, i, is365, 0, i364);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
-
-        }
-        for (int i366 = 0; i366 < i364 * i; i366++) {
-            final Color color = new Color(is365[i366]);
-            if (color.getGreen() > color.getRed() + 5 && color.getGreen() > color.getBlue() + 5) {
-                int i367 = (int) (255.0F - (color.getGreen() - (color.getRed() + color.getBlue()) / 2) * 1.5F);
-                if (i367 > 255) {
-                    i367 = 255;
-                }
-                if (i367 < 0) {
-                    i367 = 0;
-                }
-                is365[i366] = i367 << 24 | 0x0 | 0x0 | 0x0;
-            }
-        }
-        final BufferedImage bufferedimage = new BufferedImage(i364, i, 2);
-        bufferedimage.setRGB(0, 0, i364, i, is365, 0, i364);
-        return bufferedimage;
+    static private Image loadude(byte[] ais)
+    {
+        return ImageIO.read(ais);
+//        Image image = ImageIO.read(ais);
+//        int i = image.getHeight(null);
+//        int i364 = image.getWidth(null);
+//        int[] is365 = new int[i364 * i];
+//        ImageIO.GrabPixels(image, is365);
+//        
+//        for (int i366 = 0; i366 < i364 * i; i366++) {
+//            Color color = new Color(is365[i366]);
+//            if (color.getGreen() > color.getRed() + 5 && color.getGreen() > color.getBlue() + 5) {
+//                int i367 = (int) (255.0F - (color.getGreen() - (color.getRed() + color.getBlue()) / 2) * 1.5F);
+//                if (i367 > 255) {
+//                    i367 = 255;
+//                }
+//                if (i367 < 0) {
+//                    i367 = 0;
+//                }
+//                is365[i366] = i367 << 24 | 0x0 | 0x0 | 0x0;
+//            }
+//        }
+//        BufferedImage bufferedimage = new BufferedImage(i364, i, 2);
+//        bufferedimage.setRGB(0, 0, i364, i, is365, 0, i364);
+//        return bufferedimage;
     }
 
-    static void mainbg(final int i) {
+    static void mainbg(int i) {
         int i26 = 2;
-        rd.setColor(new Color(191, 184, 124));
+        G.setColor(new Color(191, 184, 124));
         if (i == -1) {
             if (i != lmode) {
                 bgmy[0] = 0;
@@ -49,7 +47,7 @@
                 bgf = 0.0F;
                 lmode = i;
             }
-            rd.setColor(new Color(144, 222, 9));
+            G.setColor(new Color(144, 222, 9));
             i26 = 8;
         }
         if (i == 0) {
@@ -60,9 +58,9 @@
                 bgf = 0.0F;
                 lmode = i;
             }
-            final int i27 = (int) (255.0F * bgf + 191.0F * (1.0F - bgf));
-            final int i28 = (int) (176.0F * bgf + 184.0F * (1.0F - bgf));
-            final int i29 = (int) (67.0F * bgf + 124.0F * (1.0F - bgf));
+            int i27 = (int) (255.0F * bgf + 191.0F * (1.0F - bgf));
+            int i28 = (int) (176.0F * bgf + 184.0F * (1.0F - bgf));
+            int i29 = (int) (67.0F * bgf + 124.0F * (1.0F - bgf));
             if (!bgup) {
                 bgf += 0.02F;
                 if (bgf > 0.9F) {
@@ -76,7 +74,7 @@
                     bgup = false;
                 }
             }
-            rd.setColor(new Color(i27, i28, i29));
+            G.setColor(new Color(i27, i28, i29));
             i26 = 4;
         }
         if (i == 1) {
@@ -85,7 +83,7 @@
                 bgmy[1] = -400;
                 lmode = i;
             }
-            rd.setColor(new Color(255, 176, 67));
+            G.setColor(new Color(255, 176, 67));
             i26 = 8;
         }
         if (i == 2) {
@@ -95,12 +93,12 @@
                 lmode = i;
                 bgf = 0.2F;
             }
-            rd.setColor(new Color(188, 170, 122));
+            G.setColor(new Color(188, 170, 122));
             if (flipo == 16) {
-                final int i30 = (int) (176.0F * bgf + 191.0F * (1.0F - bgf));
-                final int i31 = (int) (202.0F * bgf + 184.0F * (1.0F - bgf));
-                final int i32 = (int) (255.0F * bgf + 124.0F * (1.0F - bgf));
-                rd.setColor(new Color(i30, i31, i32));
+                int i30 = (int) (176.0F * bgf + 191.0F * (1.0F - bgf));
+                int i31 = (int) (202.0F * bgf + 184.0F * (1.0F - bgf));
+                int i32 = (int) (255.0F * bgf + 124.0F * (1.0F - bgf));
+                G.setColor(new Color(i30, i31, i32));
                 bgf += 0.025F;
                 if (bgf > 0.85F) {
                     bgf = 0.85F;
@@ -118,9 +116,9 @@
                 bgf = 0.0F;
                 lmode = i;
             }
-            final int i33 = (int) (255.0F * bgf + 191.0F * (1.0F - bgf));
-            final int i34 = (int) (176.0F * bgf + 184.0F * (1.0F - bgf));
-            final int i35 = (int) (67.0F * bgf + 124.0F * (1.0F - bgf));
+            int i33 = (int) (255.0F * bgf + 191.0F * (1.0F - bgf));
+            int i34 = (int) (176.0F * bgf + 184.0F * (1.0F - bgf));
+            int i35 = (int) (67.0F * bgf + 124.0F * (1.0F - bgf));
             if (!bgup) {
                 bgf += 0.02F;
                 if (bgf > 0.9F) {
@@ -134,15 +132,15 @@
                     bgup = false;
                 }
             }
-            rd.setColor(new Color(i33, i34, i35));
+            G.setColor(new Color(i33, i34, i35));
             i26 = 2;
         }
         if (i != -101)
             if (i == 4) {
-                rd.setColor(new Color(216, 177, 100));
-                rd.fillRect(65, 0, 670, 425);
+                G.setColor(new Color(216, 177, 100));
+                G.fillRect(65, 0, 670, 425);
             } else {
-                rd.fillRect(65, 25, 670, 400);
+                G.fillRect(65, 25, 670, 400);
             }
         if (i == 4) {
             if (i != lmode) {
@@ -158,10 +156,10 @@
                 lmode = i;
             }
             for (int i37 = 0; i37 < 4; i37++) {
-                rd.setColor(new Color(235, 176, 84));
-                rd.fillOval((int) (65 + ovx[i37] - ovw[i37] * 1.5 / 2.0), (int) (25 + ovy[i37] - ovh[i37] * 1.5 / 2.0), (int) (ovw[i37] * 1.5), (int) (ovh[i37] * 1.5));
-                rd.setColor(new Color(255, 176, 67));
-                rd.fillOval(65 + ovx[i37] - ovh[i37] / 2, 25 + ovy[i37] - ovh[i37] / 2, ovw[i37], ovh[i37]);
+                G.setColor(new Color(235, 176, 84));
+                G.fillOval((int) (65 + ovx[i37] - ovw[i37] * 1.5 / 2.0), (int) (25 + ovy[i37] - ovh[i37] * 1.5 / 2.0), (int) (ovw[i37] * 1.5), (int) (ovh[i37] * 1.5));
+                G.setColor(new Color(255, 176, 67));
+                G.fillOval(65 + ovx[i37] - ovh[i37] / 2, 25 + ovy[i37] - ovh[i37] / 2, ovw[i37], ovh[i37]);
                 ovx[i37] -= ovsx[i37];
                 if (ovx[i37] + ovw[i37] * 1.5 / 2.0 < 0.0) {
                     ovw[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
@@ -175,7 +173,7 @@
         if (i != -101 && i != 4) {
             for (int i38 = 0; i38 < 2; i38++) {
                 if (i != 2 || flipo != 16) {
-                    rd.drawImage(bgmain, 65, 25 + bgmy[i38], null);
+                    G.drawImage(bgmain, 65, 25 + bgmy[i38], null);
                 }
                 bgmy[i38] += i26;
                 if (bgmy[i38] >= 400) {
@@ -183,25 +181,25 @@
                 }
             }
         }
-        rd.setColor(new Color(0, 0, 0));
-        rd.fillRect(0, 0, 65, 450);
-        rd.fillRect(735, 0, 65, 450);
+        G.setColor(new Color(0, 0, 0));
+        G.fillRect(0, 0, 65, 450);
+        G.fillRect(735, 0, 65, 450);
         if (i != 4) {
-            rd.fillRect(65, 0, 670, 25);
+            G.fillRect(65, 0, 670, 25);
         }
-        rd.fillRect(65, 425, 670, 25);
+        G.fillRect(65, 425, 670, 25);
     }
 
-    static void maini(final Control control) {
+    static void maini(Control control) {
         if (flipo == 0) {
-            app.setCursor(new Cursor(0));
+            //app.setCursor(new Cursor(0));
             flipo++;
         }
         mainbg(1);
-        rd.setComposite(AlphaComposite.getInstance(3, 0.6F));
-        rd.drawImage(logomadbg, 65, 25, null);
-        rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
-        rd.drawImage(logomadnes, 233, 186, null);
+        G.setComposite(AlphaComposite.getInstance(3, 0.6F));
+        G.drawImage(logomadbg, 65, 25, null);
+        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
+        G.drawImage(logomadnes, 233, 186, null);
         float f = flkat / 800.0F;
         if (f > 0.2) {
             f = 0.2F;
@@ -216,9 +214,9 @@
         if (flkat == 400) {
             flkat = 0;
         }
-        rd.setComposite(AlphaComposite.getInstance(3, f));
-        rd.drawImage(dude[0], 351 + gxdu, 28 + gydu, null);
-        rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
+        G.setComposite(AlphaComposite.getInstance(3, f));
+        G.drawImage(dude[0], 351 + gxdu, 28 + gydu, null);
+        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
         if (movly == 0) {
             gxdu = (int) (5.0 - 11.0 * HansenRandom.Double());
             gydu = (int) (5.0 - 11.0 * HansenRandom.Double());
@@ -227,11 +225,11 @@
         if (movly == 2) {
             movly = 0;
         }
-        rd.drawImage(logocars, 66, 33, null);
-        rd.drawImage(opback, 247, 237, null);
+        G.drawImage(logocars, 66, 33, null);
+        G.drawImage(opback, 247, 237, null);
         if (muhi < 0) {
-            rd.setColor(new Color(140, 70, 0));
-            rd.fillRoundRect(335, 293, 114, 19, 7, 20);
+            G.setColor(new Color(140, 70, 0));
+            G.fillRoundRect(335, 293, 114, 19, 7, 20);
         }
         muhi--;
         if (muhi < -5) {
@@ -253,77 +251,77 @@
         }
         if (opselect == 0) {
             if (shaded) {
-                rd.setColor(new Color(140, 70, 0));
-                rd.fillRect(343, 261, 110, 22);
+                G.setColor(new Color(140, 70, 0));
+                G.fillRect(343, 261, 110, 22);
                 aflk = false;
             }
             if (aflk) {
-                rd.setColor(new Color(200, 200, 0));
+                G.setColor(new Color(200, 200, 0));
                 aflk = false;
             } else {
-                rd.setColor(new Color(255, 128, 0));
+                G.setColor(new Color(255, 128, 0));
                 aflk = true;
             }
-            rd.drawRoundRect(343, 261, 110, 22, 7, 20);
+            G.drawRoundRect(343, 261, 110, 22, 7, 20);
         } else {
-            rd.setColor(new Color(0, 0, 0));
-            rd.drawRoundRect(343, 261, 110, 22, 7, 20);
+            G.setColor(new Color(0, 0, 0));
+            G.drawRoundRect(343, 261, 110, 22, 7, 20);
         }
         if (opselect == 1) {
             if (shaded) {
-                rd.setColor(new Color(140, 70, 0));
-                rd.fillRect(288, 291, 221, 22);
+                G.setColor(new Color(140, 70, 0));
+                G.fillRect(288, 291, 221, 22);
                 aflk = false;
             }
             if (aflk) {
-                rd.setColor(new Color(200, 191, 0));
+                G.setColor(new Color(200, 191, 0));
                 aflk = false;
             } else {
-                rd.setColor(new Color(255, 95, 0));
+                G.setColor(new Color(255, 95, 0));
                 aflk = true;
             }
-            rd.drawRoundRect(288, 291, 221, 22, 7, 20);
+            G.drawRoundRect(288, 291, 221, 22, 7, 20);
         } else {
-            rd.setColor(new Color(0, 0, 0));
-            rd.drawRoundRect(288, 291, 221, 22, 7, 20);
+            G.setColor(new Color(0, 0, 0));
+            G.drawRoundRect(288, 291, 221, 22, 7, 20);
         }
         if (opselect == 2) {
             if (shaded) {
-                rd.setColor(new Color(140, 70, 0));
-                rd.fillRect(301, 321, 196, 22);
+                G.setColor(new Color(140, 70, 0));
+                G.fillRect(301, 321, 196, 22);
                 aflk = false;
             }
             if (aflk) {
-                rd.setColor(new Color(200, 128, 0));
+                G.setColor(new Color(200, 128, 0));
                 aflk = false;
             } else {
-                rd.setColor(new Color(255, 128, 0));
+                G.setColor(new Color(255, 128, 0));
                 aflk = true;
             }
-            rd.drawRoundRect(301, 321, 196, 22, 7, 20);
+            G.drawRoundRect(301, 321, 196, 22, 7, 20);
         } else {
-            rd.setColor(new Color(0, 0, 0));
-            rd.drawRoundRect(301, 321, 196, 22, 7, 20);
+            G.setColor(new Color(0, 0, 0));
+            G.drawRoundRect(301, 321, 196, 22, 7, 20);
         }
         if (opselect == 3) {
             if (shaded) {
-                rd.setColor(new Color(140, 70, 0));
-                rd.fillRect(357, 351, 85, 22);
+                G.setColor(new Color(140, 70, 0));
+                G.fillRect(357, 351, 85, 22);
                 aflk = false;
             }
             if (aflk) {
-                rd.setColor(new Color(200, 0, 0));
+                G.setColor(new Color(200, 0, 0));
                 aflk = false;
             } else {
-                rd.setColor(new Color(255, 128, 0));
+                G.setColor(new Color(255, 128, 0));
                 aflk = true;
             }
-            rd.drawRoundRect(357, 351, 85, 22, 7, 20);
+            G.drawRoundRect(357, 351, 85, 22, 7, 20);
         } else {
-            rd.setColor(new Color(0, 0, 0));
-            rd.drawRoundRect(357, 351, 85, 22, 7, 20);
+            G.setColor(new Color(0, 0, 0));
+            G.drawRoundRect(357, 351, 85, 22, 7, 20);
         }
-        rd.drawImage(opti, 294, 265, null);
+        G.drawImage(opti, 294, 265, null);
         if (control.enter || control.handb) {
             if (opselect == 1) {
                 mtop = true;
@@ -362,13 +360,13 @@
             control.enter = false;
             control.handb = false;
         }
-        rd.drawImage(byrd, 72, 410, null);
-        rd.drawImage(nfmcoms, 567, 410, null);
+        G.drawImage(byrd, 72, 410, null);
+        G.drawImage(nfmcoms, 567, 410, null);
         if (shaded) {
             //app.repaint();
             try {
                 Thread.sleep(200L);
-            } catch (final InterruptedException ignored) {
+            } catch (InterruptedException ignored) {
 
             }
         }
@@ -383,33 +381,33 @@
         opselect = 0;
     }
 
-    static private void makecarsbgc(final Image image, final Image image386) {
-        final int[] ais = new int[268000];
-        final PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, ais, 0, 670);
+    static private void makecarsbgc(Image image, Image image386) {
+        int[] ais = new int[268000];
+        PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, ais, 0, 670);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
-        final int[] is387 = new int[20700];
-        final PixelGrabber pixelgrabber388 = new PixelGrabber(image, 0, 0, 92, 225, is387, 0, 92);
+        int[] is387 = new int[20700];
+        PixelGrabber pixelgrabber388 = new PixelGrabber(image, 0, 0, 92, 225, is387, 0, 92);
         try {
             pixelgrabber388.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
-        final int[] is389 = new int[2112];
-        final PixelGrabber pixelgrabber390 = new PixelGrabber(image386, 0, 0, 88, 24, is389, 0, 88);
+        int[] is389 = new int[2112];
+        PixelGrabber pixelgrabber390 = new PixelGrabber(image386, 0, 0, 88, 24, is389, 0, 88);
         try {
             pixelgrabber390.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
         for (int i = 0; i < 670; i++) {
             for (int i391 = 0; i391 < 400; i391++) {
                 if (i > 14 && i < 106 && i391 > 11 && i391 < 236 && is387[i - 14 + (i391 - 11) * 92] != is387[0]) {
-                    final Color color = new Color(ais[i + i391 * 670]);
-                    final Color color392 = new Color(is387[i - 14 + (i391 - 11) * 92]);
+                    Color color = new Color(ais[i + i391 * 670]);
+                    Color color392 = new Color(is387[i - 14 + (i391 - 11) * 92]);
                     int i393 = (int) (color.getRed() * 0.33 + color392.getRed() * 0.67);
                     if (i393 > 255) {
                         i393 = 255;
@@ -431,12 +429,12 @@
                     if (i395 < 0) {
                         i395 = 0;
                     }
-                    final Color color396 = new Color(i393, i394, i395);
+                    Color color396 = new Color(i393, i394, i395);
                     ais[i + i391 * 670] = color396.getRGB();
                 }
                 if (i > 564 && i < 656 && i391 > 11 && i391 < 236 && is387[i - 564 + (i391 - 11) * 92] != is387[0]) {
-                    final Color color = new Color(ais[i + i391 * 670]);
-                    final Color color397 = new Color(is387[i - 564 + (i391 - 11) * 92]);
+                    Color color = new Color(ais[i + i391 * 670]);
+                    Color color397 = new Color(is387[i - 564 + (i391 - 11) * 92]);
                     int i398 = (int) (color.getRed() * 0.33 + color397.getRed() * 0.67);
                     if (i398 > 255) {
                         i398 = 255;
@@ -458,12 +456,12 @@
                     if (i400 < 0) {
                         i400 = 0;
                     }
-                    final Color color401 = new Color(i398, i399, i400);
+                    Color color401 = new Color(i398, i399, i400);
                     ais[i + i391 * 670] = color401.getRGB();
                 }
                 if (i > 440 && i < 528 && i391 > 53 && i391 < 77 && is389[i - 440 + (i391 - 53) * 88] != is389[0]) {
-                    final Color color = new Color(ais[i + i391 * 670]);
-                    final Color color402 = new Color(is389[i - 440 + (i391 - 53) * 88]);
+                    Color color = new Color(ais[i + i391 * 670]);
+                    Color color402 = new Color(is389[i - 440 + (i391 - 53) * 88]);
                     int i403 = (int) (color.getRed() * 0.33 + color402.getRed() * 0.67);
                     if (i403 > 255) {
                         i403 = 255;
@@ -485,7 +483,7 @@
                     if (i405 < 0) {
                         i405 = 0;
                     }
-                    final Color color406 = new Color(i403, i404, i405);
+                    Color color406 = new Color(i403, i404, i405);
                     ais[i + i391 * 670] = color406.getRGB();
                 }
             }
@@ -496,13 +494,13 @@
     static boolean msgcheck(String astring) {
         boolean abool = false;
         astring = astring.toLowerCase();
-        final String[] strings = {
+        String[] strings = {
                 "fu ", " rape", "slut ", "screw ", "redtube", "fuck", "fuk", "f*ck", "fu*k", "f**k", "ass hole",
                 "asshole", "dick", "dik", "cock", "cok ", "shit", "damn", "sex", "anal", "whore", "bitch", "biatch",
                 "bich", " ass", "bastard", "cunt", "dildo", "fag", "homo", "mothaf", "motherf", "negro", "nigga",
                 "nigger", "pussy", "gay", "homo", "you punk", "i will kill you"
         };
-        for (final String string2 : strings)
+        for (String string2 : strings)
             if (astring.contains(string2)) {
                 abool = true;
             }
@@ -535,7 +533,7 @@
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (final String string2 : strings)
+            for (String string2 : strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -556,7 +554,7 @@
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (final String string2 : strings)
+            for (String string2 : strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -577,7 +575,7 @@
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (final String string2 : strings)
+            foreach (String string2 in strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -598,7 +596,7 @@
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (final String string2 : strings)
+            for (String string2 : strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -619,7 +617,7 @@
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (final String string2 : strings)
+            for (String string2 : strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -627,29 +625,29 @@
         return abool;
     }
 
-    static void multistat(final Control control, final int i, final int i53, final boolean abool, final UDPMistro udpmistro) {
+    static void multistat(Control control, int i, int i53, boolean abool, UDPMistro udpmistro) {
         int i54 = -1;
         if (fase != -2) {
             if (exitm != 0 && !holdit) {
                 if (!lan || im != 0) {
-                    if (abool)
-                        if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
-                            exitm = 2;
-                            if (multion == 1 && !lan && sendstat == 0) {
-                                sendstat = 1;
-                                if (runtyp != -101) {
-                                    if (runner != null) {
-                                        runner.interrupt();
-                                    }
-                                    runner = null;
-                                    runner = new Thread(xt);
-                                    runner.start();
-                                }
-                            }
-                        } else {
-                            exitm = 0;
-                        }
-                    final float[] fs = new float[3];
+//                    if (abool)
+//                        if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
+//                            exitm = 2;
+//                            if (multion == 1 && !lan && sendstat == 0) {
+//                                sendstat = 1;
+//                                if (runtyp != -101) {
+//                                    if (runner != null) {
+//                                        runner.interrupt();
+//                                    }
+//                                    runner = null;
+//                                    runner = new Thread(xt);
+//                                    runner.start();
+//                                }
+//                            }
+//                        } else {
+//                            exitm = 0;
+//                        }
+                    float[] fs = new float[3];
                     Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
                     fs[1] -= 0.15;
                     if (fs[1] < 0.0F) {
@@ -659,9 +657,9 @@
                     if (fs[2] > 1.0F) {
                         fs[2] = 1.0F;
                     }
-                    rd.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                    rd.fillRect(357, 169, 39, 10);
-                    rd.fillRect(403, 169, 39, 10);
+                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+                    G.fillRect(357, 169, 39, 10);
+                    G.fillRect(403, 169, 39, 10);
                     fs[1] -= 0.07;
                     if (fs[1] < 0.0F) {
                         fs[1] = 0.0F;
@@ -670,35 +668,35 @@
                     if (fs[2] > 1.0F) {
                         fs[2] = 1.0F;
                     }
-                    rd.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                    rd.fillRect(357, 162, 39, 7);
-                    rd.fillRect(403, 162, 39, 7);
+                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+                    G.fillRect(357, 162, 39, 7);
+                    G.fillRect(403, 162, 39, 7);
                     drawhi(exitgame, 116);
                     if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
-                        rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                        rd.fillRect(357, 162, 39, 17);
+                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+                        G.fillRect(357, 162, 39, 17);
                     }
                     if (i > 403 && i < 442 && i53 > 162 && i53 < 179) {
-                        rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                        rd.fillRect(403, 162, 39, 17);
+                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+                        G.fillRect(403, 162, 39, 17);
                     }
-                    rd.setColor(new Color(0, 0, 0));
-                    rd.drawString("Yes", 366, 175);
-                    rd.drawString("No", 416, 175);
-                    rd.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
-                    rd.drawRect(403, 162, 39, 17);
-                    rd.drawRect(357, 162, 39, 17);
+                    G.setColor(new Color(0, 0, 0));
+                    G.drawString("Yes", 366, 175);
+                    G.drawString("No", 416, 175);
+                    G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+                    G.drawRect(403, 162, 39, 17);
+                    G.drawRect(357, 162, 39, 17);
                 } else {
-                    rd.setFont(new Font("Arial", 1, 13));
-                    ftm = rd.getFontMetrics();
+                    G.setFont(new Font("Arial", 1, 13));
+                    ftm = G.getFontMetrics();
                     drawcs(125, "You cannot exit game.  Your computer ais the LAN server!", 0, 0, 0, 0);
                     msgflk[0]++;
                     if (msgflk[0] == 67 || abool) {
                         msgflk[0] = 0;
                         exitm = 0;
                     }
-                    rd.setFont(new Font("Arial", 1, 11));
-                    ftm = rd.getFontMetrics();
+                    G.setFont(new Font("Arial", 1, 11));
+                    ftm = G.getFontMetrics();
                 }
             } else if (exitm == 4) {
                 if (abool) {
@@ -717,7 +715,7 @@
                         control.chatup = 0;
                     }
                 }
-                final float[] fs = new float[3];
+                float[] fs = new float[3];
                 Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
                 fs[1] -= 0.15;
                 if (fs[1] < 0.0F) {
@@ -727,10 +725,10 @@
                 if (fs[2] > 1.0F) {
                     fs[2] = 1.0F;
                 }
-                rd.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                rd.fillRect(357, 369, 39, 10);
+                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+                G.fillRect(357, 369, 39, 10);
                 if (!lan || im != 0) {
-                    rd.fillRect(403, 369, 39, 10);
+                    G.fillRect(403, 369, 39, 10);
                 }
                 fs[1] -= 0.07;
                 if (fs[1] < 0.0F) {
@@ -740,42 +738,42 @@
                 if (fs[2] > 1.0F) {
                     fs[2] = 1.0F;
                 }
-                rd.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                rd.fillRect(357, 362, 39, 7);
+                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+                G.fillRect(357, 362, 39, 7);
                 if (!lan || im != 0) {
-                    rd.fillRect(403, 362, 39, 7);
+                    G.fillRect(403, 362, 39, 7);
                 }
-                rd.setColor(new Color(0, 0, 0));
-                rd.setFont(new Font("Arial", 1, 13));
-                ftm = rd.getFontMetrics();
+                G.setColor(new Color(0, 0, 0));
+                G.setFont(new Font("Arial", 1, 13));
+                ftm = G.getFontMetrics();
                 if (lan && im == 0) {
                     drawcs(140, "(You cannot exit game.  Your computer ais the LAN server... )", 0, 0, 0, 0);
                 }
-                rd.drawString("Continue watching this game?", 155, 375);
+                G.drawString("Continue watching this game?", 155, 375);
                 if (i > 357 && i < 396 && i53 > 362 && i53 < 379) {
-                    rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                    rd.fillRect(357, 362, 39, 17);
+                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+                    G.fillRect(357, 362, 39, 17);
                 }
                 if ((!lan || im != 0) && i > 403 && i < 442 && i53 > 362 && i53 < 379) {
-                    rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                    rd.fillRect(403, 362, 39, 17);
+                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+                    G.fillRect(403, 362, 39, 17);
                 }
-                rd.setFont(new Font("Arial", 1, 11));
-                ftm = rd.getFontMetrics();
-                rd.setColor(new Color(0, 0, 0));
-                rd.drawString("Yes", 366, 375);
+                G.setFont(new Font("Arial", 1, 11));
+                ftm = G.getFontMetrics();
+                G.setColor(new Color(0, 0, 0));
+                G.drawString("Yes", 366, 375);
                 if (!lan || im != 0) {
-                    rd.drawString("No", 416, 375);
+                    G.drawString("No", 416, 375);
                 }
-                rd.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+                G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
                 if (!lan || im != 0) {
-                    rd.drawRoundRect(147, 357, 301, 27, 7, 20);
+                    G.drawRoundRect(147, 357, 301, 27, 7, 20);
                 } else {
-                    rd.drawRoundRect(147, 357, 262, 27, 7, 20);
+                    G.drawRoundRect(147, 357, 262, 27, 7, 20);
                 }
-                rd.drawRect(357, 362, 39, 17);
+                G.drawRect(357, 362, 39, 17);
                 if (!lan || im != 0) {
-                    rd.drawRect(403, 362, 39, 17);
+                    G.drawRect(403, 362, 39, 17);
                 }
             }
             if (runtyp == -101 && !lan) {
@@ -842,7 +840,7 @@
                             int i60 = 0;
                             int i61 = 1;
                             for (; i60 < lcmsg[i57].length(); i60++) {
-                                final String string62 = "" + lcmsg[i57].charAt(i60);
+                                String string62 = "" + lcmsg[i57].charAt(i60);
                                 if (string62.equals(" ")) {
                                     i61++;
                                 } else {
@@ -883,7 +881,7 @@
                             }
                         }
                         if (bool58 || floater[i57] != 0 || control.chatup == i57 + 1 || msgflk[i57] != 0) {
-                            final float[] fs = new float[3];
+                            float[] fs = new float[3];
                             Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
                             fs[1] -= 0.15;
                             if (fs[1] < 0.0F) {
@@ -893,8 +891,8 @@
                             if (fs[2] > 1.0F) {
                                 fs[2] = 1.0F;
                             }
-                            rd.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                            rd.fillRect(33, 423 + i56, 761, 23);
+                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+                            G.fillRect(33, 423 + i56, 761, 23);
                         }
                         if (control.chatup == 0 && GameSparker.cmsg.isShowing()) {
                             GameSparker.cmsg.setVisible(false);
@@ -933,35 +931,35 @@
                                             floater[i57] = 0;
                                         }
                                     if (pointc[i57] >= i67) {
-                                        rd.setColor(new Color(0, i65, i66));
-                                        rd.setFont(new Font("Tahoma", 1, 11));
-                                        ftm = rd.getFontMetrics();
-                                        rd.drawString("" + cnames[i57][i67] + ": ", 39 + i64 + movepos[i57], 439 + i56);
+                                        G.setColor(new Color(0, i65, i66));
+                                        G.setFont(new Font("Tahoma", 1, 11));
+                                        ftm = G.getFontMetrics();
+                                        G.drawString("" + cnames[i57][i67] + ": ", 39 + i64 + movepos[i57], 439 + i56);
                                         i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
-                                        rd.setColor(new Color(0, 0, 0));
-                                        rd.setFont(new Font("Tahoma", 0, 11));
-                                        ftm = rd.getFontMetrics();
-                                        rd.drawString("" + sentn[i57][i67] + "   ", 39 + i64 + movepos[i57], 439 + i56);
+                                        G.setColor(new Color(0, 0, 0));
+                                        G.setFont(new Font("Tahoma", 0, 11));
+                                        ftm = G.getFontMetrics();
+                                        G.drawString("" + sentn[i57][i67] + "   ", 39 + i64 + movepos[i57], 439 + i56);
                                         i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
                                     } else {
                                         i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
                                         i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
                                     }
                                 }
-                                rd.setColor(new Color(0, 0, 0));
-                                rd.fillRect(0, 423 + i56, 5, 24);
-                                rd.fillRect(794, 423 + i56, 6, 24);
+                                G.setColor(new Color(0, 0, 0));
+                                G.fillRect(0, 423 + i56, 5, 24);
+                                G.fillRect(794, 423 + i56, 6, 24);
                             } else {
                                 for (int i68 = pointc[i57]; i68 >= 0; i68--) {
                                     if (i68 == 6 && msgflk[i57] != 0) {
                                         msgflk[i57]--;
                                     }
-                                    rd.setColor(new Color(0, i65, i66));
-                                    rd.setFont(new Font("Tahoma", 1, 11));
-                                    ftm = rd.getFontMetrics();
+                                    G.setColor(new Color(0, i65, i66));
+                                    G.setFont(new Font("Tahoma", 1, 11));
+                                    ftm = G.getFontMetrics();
                                     if (ftm.stringWidth("" + cnames[i57][i68] + ": ") + 39 + i64 < 775) {
                                         if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            rd.drawString("" + cnames[i57][i68] + ": ", 39 + i64, 439 + i56);
+                                            G.drawString("" + cnames[i57][i68] + ": ", 39 + i64, 439 + i56);
                                         }
                                         i64 += ftm.stringWidth("" + cnames[i57][i68] + ": ");
                                     } else {
@@ -971,16 +969,16 @@
                                         }
                                         astring = "" + astring + "...";
                                         if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            rd.drawString(astring, 39 + i64, 439 + i56);
+                                            G.drawString(astring, 39 + i64, 439 + i56);
                                         }
                                         break;
                                     }
-                                    rd.setColor(new Color(0, 0, 0));
-                                    rd.setFont(new Font("Tahoma", 0, 11));
-                                    ftm = rd.getFontMetrics();
+                                    G.setColor(new Color(0, 0, 0));
+                                    G.setFont(new Font("Tahoma", 0, 11));
+                                    ftm = G.getFontMetrics();
                                     if (ftm.stringWidth(sentn[i57][i68]) + 39 + i64 < 775) {
                                         if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            rd.drawString("" + sentn[i57][i68] + "   ", 39 + i64, 439 + i56);
+                                            G.drawString("" + sentn[i57][i68] + "   ", 39 + i64, 439 + i56);
                                         }
                                         i64 += ftm.stringWidth("" + sentn[i57][i68] + "   ");
                                     } else {
@@ -990,7 +988,7 @@
                                         }
                                         astring = "" + astring + "...";
                                         if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            rd.drawString(astring, 39 + i64, 439 + i56);
+                                            G.drawString(astring, 39 + i64, 439 + i56);
                                         }
                                         break;
                                     }
@@ -1001,7 +999,7 @@
                             i54 = i57;
                         }
                         if (bool58 || floater[i57] != 0) {
-                            final float[] fs = new float[3];
+                            float[] fs = new float[3];
                             Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
                             fs[1] -= 0.076;
                             if (fs[1] < 0.0F) {
@@ -1011,24 +1009,24 @@
                             if (fs[2] > 1.0F) {
                                 fs[2] = 1.0F;
                             }
-                            rd.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                            rd.fillRect(5, 423 + i56, 28, 23);
+                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+                            G.fillRect(5, 423 + i56, 28, 23);
                         }
                         if (bool58) {
-                            rd.setColor(new Color(0, 0, 0));
+                            G.setColor(new Color(0, 0, 0));
                         } else {
-                            rd.setColor(new Color((int) (Medium.cgrnd[0] / 2.0F), (int) (Medium.cgrnd[1] / 2.0F), (int) (Medium.cgrnd[2] / 2.0F)));
+                            G.setColor(new Color((int) (Medium.cgrnd[0] / 2.0F), (int) (Medium.cgrnd[1] / 2.0F), (int) (Medium.cgrnd[2] / 2.0F)));
                         }
-                        rd.setFont(new Font("Tahoma", 1, 11));
-                        rd.drawString("<<", 10, 439 + i56);
-                        rd.setColor(new Color(0, 0, 0));
-                        rd.drawRect(5, 423 + i56, 789, 23);
-                        rd.drawLine(33, 423 + i56, 33, 446 + i56);
+                        G.setFont(new Font("Tahoma", 1, 11));
+                        G.drawString("<<", 10, 439 + i56);
+                        G.setColor(new Color(0, 0, 0));
+                        G.drawRect(5, 423 + i56, 789, 23);
+                        G.drawLine(33, 423 + i56, 33, 446 + i56);
                         i56 += 23;
                     }
                     if (i > 775 && i < 794 && i53 > 409 - i55 * 23 && i53 < 423 - i55 * 23) {
-                        rd.drawRect(775, 409 - i55 * 23, 19, 14);
-                        rd.setColor(new Color(200, 0, 0));
+                        G.drawRect(775, 409 - i55 * 23, 19, 14);
+                        G.setColor(new Color(200, 0, 0));
                         if (abool) {
                             control.chatup = 0;
                             if (GameSparker.cmsg.isShowing()) {
@@ -1043,13 +1041,13 @@
                                 din = null;
                                 dout.close();
                                 dout = null;
-                            } catch (final Exception ignored) {
+                            } catch (Exception ignored) {
 
                             }
                         }
                     }
-                    rd.setFont(new Font("Arial", 1, 12));
-                    rd.drawString("x", 782, 420 - i55 * 23);
+                    G.setFont(new Font("Arial", 1, 12));
+                    G.drawString("x", 782, 420 - i55 * 23);
                 } else {
                     drawWarning();
                     if (GameSparker.cmsg.isShowing()) {
@@ -1058,8 +1056,8 @@
                     }
                     warning++;
                 }
-                rd.setFont(new Font("Arial", 1, 11));
-                ftm = rd.getFontMetrics();
+                G.setFont(new Font("Arial", 1, 11));
+                ftm = G.getFontMetrics();
             } else if (control.chatup != 0) {
                 control.chatup = 0;
                 if (!lan) {
@@ -1117,7 +1115,7 @@
                         }
                     }
                 }
-                final int i74 = nplayers;
+                int i74 = nplayers;
                 for (int i75 = 0; i75 < i74; i75++) {
                     boolean bool76 = false;
                     for (int i77 = 0; i77 < nplayers; i77++)
@@ -1129,18 +1127,18 @@
                             if (i81 < 0) {
                                 i81 = 0;
                             }
-                            rd.setColor(new Color(0, 0, i81));
+                            G.setColor(new Color(0, 0, i81));
                             if (i75 == 0) {
-                                rd.drawString("1st", 673, 76 + 30 * i75);
+                                G.drawString("1st", 673, 76 + 30 * i75);
                             }
                             if (i75 == 1) {
-                                rd.drawString("2nd", 671, 76 + 30 * i75);
+                                G.drawString("2nd", 671, 76 + 30 * i75);
                             }
                             if (i75 == 2) {
-                                rd.drawString("3rd", 671, 76 + 30 * i75);
+                                G.drawString("3rd", 671, 76 + 30 * i75);
                             }
                             if (i75 >= 3) {
-                                rd.drawString("" + (i75 + 1) + "th", 671, 76 + 30 * i75);
+                                G.drawString("" + (i75 + 1) + "th", 671, 76 + 30 * i75);
                             }
                             if (clangame != 0) {
                                 int i82;
@@ -1175,12 +1173,12 @@
                                 if (i81 < 0) {
                                     i81 = 0;
                                 }
-                                rd.setColor(new Color(i82, i83, i81));
-                                rd.drawString(plnames[i77], 731 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
+                                G.setColor(new Color(i82, i83, i81));
+                                G.drawString(plnames[i77], 731 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
                             }
-                            rd.setColor(new Color(0, 0, 0));
-                            rd.drawString(plnames[i77], 730 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
-                            final int i84 = (int) (60.0F * CheckPoints.magperc[i77]);
+                            G.setColor(new Color(0, 0, 0));
+                            G.drawString(plnames[i77], 730 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
+                            int i84 = (int) (60.0F * CheckPoints.magperc[i77]);
                             int i85 = 244;
                             int i86 = 244;
                             i81 = 11;
@@ -1208,10 +1206,10 @@
                             if (i81 < 0) {
                                 i81 = 0;
                             }
-                            rd.setColor(new Color(i85, i86, i81));
-                            rd.fillRect(700, 74 + 30 * i75, i84, 5);
-                            rd.setColor(new Color(0, 0, 0));
-                            rd.drawRect(700, 74 + 30 * i75, 60, 5);
+                            G.setColor(new Color(i85, i86, i81));
+                            G.fillRect(700, 74 + 30 * i75, i84, 5);
+                            G.setColor(new Color(0, 0, 0));
+                            G.drawRect(700, 74 + 30 * i75, 60, 5);
                             boolean bool87 = false;
                             if ((im != i77 || multion >= 2) && i > 661 && i < 775 && i53 > 58 + 30 * i75 && i53 < 83 + 30 * i75) {
                                 bool87 = true;
@@ -1252,9 +1250,9 @@
                                 if (i81 < 0) {
                                     i81 = 0;
                                 }
-                                rd.setColor(new Color(i85, i86, i81));
-                                rd.drawRect(661, 58 + 30 * i75, 114, 25);
-                                rd.drawRect(662, 59 + 30 * i75, 112, 23);
+                                G.setColor(new Color(i85, i86, i81));
+                                G.drawRect(661, 58 + 30 * i75, 114, 25);
+                                G.drawRect(662, 59 + 30 * i75, 112, 23);
                             }
                             if (bool87 && !onlock) {
                                 if (alocked == i77) {
@@ -1302,8 +1300,8 @@
                                         i81 = 0;
                                     }
                                 }
-                                rd.setColor(new Color(i85, i86, i81));
-                                rd.drawRect(660, 57 + 30 * i75, 116, 27);
+                                G.setColor(new Color(i85, i86, i81));
+                                G.drawRect(660, 57 + 30 * i75, 116, 27);
                             }
                             bool76 = true;
                         }
@@ -1332,7 +1330,7 @@
             }
         }
         if (i54 != -1) {
-            final float[] fs = new float[3];
+            float[] fs = new float[3];
             Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
             fs[1] -= 0.22;
             if (fs[1] < 0.0F) {
@@ -1342,14 +1340,14 @@
             if (fs[2] > 1.0F) {
                 fs[2] = 1.0F;
             }
-            final Color color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-            rd.setColor(color);
-            rd.fillRect(676, 426 - i54 * 23, 109, 7);
-            rd.setColor(new Color(0, 0, 0));
-            rd.setFont(new Font("Tahoma", 1, 11));
-            rd.drawString("Send Message  >", 684, 439 - i54 * 23);
-            rd.setColor(new Color((int) (Medium.cgrnd[0] / 1.2F), (int) (Medium.cgrnd[1] / 1.2F), (int) (Medium.cgrnd[2] / 1.2F)));
-            rd.drawRect(676, 426 - i54 * 23, 109, 17);
+            Color color = Color.getHSBColor(fs[0], fs[1], fs[2]);
+            G.setColor(color);
+            G.fillRect(676, 426 - i54 * 23, 109, 7);
+            G.setColor(new Color(0, 0, 0));
+            G.setFont(new Font("Tahoma", 1, 11));
+            G.drawString("Send Message  >", 684, 439 - i54 * 23);
+            G.setColor(new Color((int) (Medium.cgrnd[0] / 1.2F), (int) (Medium.cgrnd[1] / 1.2F), (int) (Medium.cgrnd[2] / 1.2F)));
+            G.drawRect(676, 426 - i54 * 23, 109, 17);
             if (!GameSparker.cmsg.isShowing()) {
                 GameSparker.cmsg.setVisible(true);
                 GameSparker.cmsg.requestFocus();
@@ -1371,12 +1369,12 @@
                 GameSparker.cmsg.setText(GameSparker.cmsg.getText().subastring(0, 100));
                 GameSparker.cmsg.select(100, 100);
             }
-            rd.setFont(new Font("Arial", 1, 11));
-            ftm = rd.getFontMetrics();
+            G.setFont(new Font("Arial", 1, 11));
+            ftm = G.getFontMetrics();
         }
     }
 
-    static void musicomp(final int i, final Control control) {
+    static void musicomp(int i, Control control) {
         hipnoload(i, true);
         if (multion != 0) {
             forstart--;
@@ -1385,7 +1383,7 @@
             }
         }
         if (control.handb || control.enter || forstart == 0) {
-            System.gc();
+            GC.Collect();
             Medium.trk = 0;
             Medium.crs = false;
             Medium.ih = 0;
@@ -1396,8 +1394,8 @@
             Medium.cx = 400;
             Medium.cy = 225;
             Medium.cz = 50;
-            rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
-            rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+            G.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+            G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
             if (multion == 0) {
                 fase = 0;
             } else {
@@ -1411,7 +1409,7 @@
                         runtyp = -101;
                         runner = new Thread(xt);
                         runner.start();
-                    } catch (final Exception ignored) {
+                    } catch (Exception ignored) {
 
                     }
                 }
@@ -1427,37 +1425,37 @@
     }
 
     static public void nofocus() {
-        rd.setColor(new Color(255, 255, 255));
-        rd.fillRect(0, 0, 800, 20);
-        rd.fillRect(0, 0, 20, 450);
-        rd.fillRect(0, 430, 800, 20);
-        rd.fillRect(780, 0, 20, 450);
-        rd.setColor(new Color(192, 192, 192));
-        rd.drawRect(20, 20, 760, 410);
-        rd.setColor(new Color(0, 0, 0));
-        rd.drawRect(22, 22, 756, 406);
-        rd.setFont(new Font("Arial", 1, 11));
-        ftm = rd.getFontMetrics();
+        G.setColor(new Color(255, 255, 255));
+        G.fillRect(0, 0, 800, 20);
+        G.fillRect(0, 0, 20, 450);
+        G.fillRect(0, 430, 800, 20);
+        G.fillRect(780, 0, 20, 450);
+        G.setColor(new Color(192, 192, 192));
+        G.drawRect(20, 20, 760, 410);
+        G.setColor(new Color(0, 0, 0));
+        G.drawRect(22, 22, 756, 406);
+        G.setFont(new Font("Arial", 1, 11));
+        ftm = G.getFontMetrics();
         drawcs(14, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
         drawcs(445, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
     }
 
-    static private boolean over(final Image image, final int i, final int i294, final int i295, final int i296) {
-        final int i297 = image.getHeight(null);
-        final int i298 = image.getWidth(null);
+    static private boolean over(Image image, int i, int i294, int i295, int i296) {
+        int i297 = image.getHeight(null);
+        int i298 = image.getWidth(null);
         return i > i295 - 5 && i < i295 + i298 + 5 && i294 > i296 - 5 && i294 < i296 + i297 + 5;
     }
 
-    static private boolean overon(final int i, final int i289, final int i290, final int i291, final int i292, final int i293) {
+    static private boolean overon(int i, int i289, int i290, int i291, int i292, int i293) {
         return i292 > i && i292 < i + i290 && i293 > i289 && i293 < i289 + i291;
     }
 
-    static void pausedgame(final Control control) {
+    static void pausedgame(Control control) {
         if (!badmac) {
-            rd.drawImage(fleximg, 0, 0, null);
+            G.drawImage(fleximg, 0, 0, null);
         } else {
-            rd.setColor(new Color(30, 67, 110));
-            rd.fillRect(281, 8, 237, 188);
+            G.setColor(new Color(30, 67, 110));
+            G.fillRect(281, 8, 237, 188);
         }
         if (control.up) {
             opselect--;
@@ -1474,46 +1472,46 @@
             control.down = false;
         }
         if (opselect == 0) {
-            rd.setColor(new Color(64, 143, 223));
-            rd.fillRoundRect(329, 45, 137, 22, 7, 20);
+            G.setColor(new Color(64, 143, 223));
+            G.fillRoundRect(329, 45, 137, 22, 7, 20);
             if (shaded) {
-                rd.setColor(new Color(225, 200, 255));
+                G.setColor(new Color(225, 200, 255));
             } else {
-                rd.setColor(new Color(0, 89, 223));
+                G.setColor(new Color(0, 89, 223));
             }
-            rd.drawRoundRect(329, 45, 137, 22, 7, 20);
+            G.drawRoundRect(329, 45, 137, 22, 7, 20);
         }
         if (opselect == 1) {
-            rd.setColor(new Color(64, 143, 223));
-            rd.fillRoundRect(320, 73, 155, 22, 7, 20);
+            G.setColor(new Color(64, 143, 223));
+            G.fillRoundRect(320, 73, 155, 22, 7, 20);
             if (shaded) {
-                rd.setColor(new Color(225, 200, 255));
+                G.setColor(new Color(225, 200, 255));
             } else {
-                rd.setColor(new Color(0, 89, 223));
+                G.setColor(new Color(0, 89, 223));
             }
-            rd.drawRoundRect(320, 73, 155, 22, 7, 20);
+            G.drawRoundRect(320, 73, 155, 22, 7, 20);
         }
         if (opselect == 2) {
-            rd.setColor(new Color(64, 143, 223));
-            rd.fillRoundRect(303, 99, 190, 22, 7, 20);
+            G.setColor(new Color(64, 143, 223));
+            G.fillRoundRect(303, 99, 190, 22, 7, 20);
             if (shaded) {
-                rd.setColor(new Color(225, 200, 255));
+                G.setColor(new Color(225, 200, 255));
             } else {
-                rd.setColor(new Color(0, 89, 223));
+                G.setColor(new Color(0, 89, 223));
             }
-            rd.drawRoundRect(303, 99, 190, 22, 7, 20);
+            G.drawRoundRect(303, 99, 190, 22, 7, 20);
         }
         if (opselect == 3) {
-            rd.setColor(new Color(64, 143, 223));
-            rd.fillRoundRect(341, 125, 109, 22, 7, 20);
+            G.setColor(new Color(64, 143, 223));
+            G.fillRoundRect(341, 125, 109, 22, 7, 20);
             if (shaded) {
-                rd.setColor(new Color(225, 200, 255));
+                G.setColor(new Color(225, 200, 255));
             } else {
-                rd.setColor(new Color(0, 89, 223));
+                G.setColor(new Color(0, 89, 223));
             }
-            rd.drawRoundRect(341, 125, 109, 22, 7, 20);
+            G.drawRoundRect(341, 125, 109, 22, 7, 20);
         }
-        rd.drawImage(paused, 281, 8, null);
+        G.drawImage(paused, 281, 8, null);
         if (control.enter || control.handb) {
             if (opselect == 0) {
                 if (loadedt && !mutem) {
@@ -1522,7 +1520,7 @@
                 fase = 0;
             }
             if (opselect == 1)
-                if (Record.caught >= 300) {
+                if (RecoG.caught >= 300) {
                     if (loadedt && !mutem) {
                         strack.setPaused(false);
                     }
@@ -1550,21 +1548,21 @@
                 if (gmode == 2) {
                     opselect = 1;
                 }
-                rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-                rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                G.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+                G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             }
             control.enter = false;
             control.handb = false;
         }
     }
 
-    static void pauseimage(final Image image) {
+    static void pauseimage(Image image) {
         if (!badmac) {
-            final int[] ais = new int[360000];
-            final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, ais, 0, 800);
+            int[] ais = new int[360000];
+            PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, ais, 0, 800);
             try {
                 pixelgrabber.grabPixels();
-            } catch (final InterruptedException ignored) {
+            } catch (InterruptedException ignored) {
 
             }
             int i = 0;
@@ -1572,7 +1570,7 @@
             int i344 = 0;
             int i345 = 0;
             for (int i346 = 0; i346 < 360000; i346++) {
-                final Color color = new Color(ais[i346]);
+                Color color = new Color(ais[i346]);
                 int i347;
                 if (i345 == 0) {
                     i347 = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
@@ -1585,46 +1583,46 @@
                     i345 = 0;
                 }
                 if (i346 > 800 * (8 + i343) + 281 && i343 < 188) {
-                    final int i348 = (i347 + 60) / 3;
-                    final int i349 = (i347 + 135) / 3;
-                    final int i350 = (i347 + 220) / 3;
+                    int i348 = (i347 + 60) / 3;
+                    int i349 = (i347 + 135) / 3;
+                    int i350 = (i347 + 220) / 3;
                     if (++i == 237) {
                         i343++;
                         i = 0;
                     }
-                    final Color color351 = new Color(i348, i349, i350);
+                    Color color351 = new Color(i348, i349, i350);
                     ais[i346] = color351.getRGB();
                 } else {
-                    final Color color352 = new Color(i347, i347, i347);
+                    Color color352 = new Color(i347, i347, i347);
                     ais[i346] = color352.getRGB();
                 }
             }
             fleximg = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
-            rd.drawImage(fleximg, 0, 0, null);
+            G.drawImage(fleximg, 0, 0, null);
         } else {
-            rd.setColor(new Color(0, 0, 0));
-            rd.setComposite(AlphaComposite.getInstance(3, 0.5F));
-            rd.fillRect(0, 0, 800, 450);
-            rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
+            G.setColor(new Color(0, 0, 0));
+            G.setComposite(AlphaComposite.getInstance(3, 0.5F));
+            G.fillRect(0, 0, 800, 450);
+            G.setComposite(AlphaComposite.getInstance(3, 1.0F));
         }
     }
 
     static private void pingstat() {
-        final int i = (int) (100.0 * HansenRandom.Double());
+        int i = (int) (100.0 * HansenRandom.Double());
         try {
-            final URL url = new URL("http://c.statcounter.com/9994681/0/14bb645e/1/?reco=" + i + "");
+            URL url = new URL("http://c.statcounter.com/9994681/0/14bb645e/1/?reco=" + i + "");
             url.openConnection().setConnectTimeout(5000);
-            final Image image = Toolkit.getDefaultToolkit().createImage(url);
-            final MediaTracker mediatracker = new MediaTracker(app);
+            Image image = Toolkit.getDefaultToolkit().createImage(url);
+            MediaTracker mediatracker = new MediaTracker(app);
             mediatracker.addImage(image, 0);
             mediatracker.waitForID(0);
             mediatracker.removeImage(image, 0);
-        } catch (final Exception ignored) {
+        } catch (Exception ignored) {
 
         }
     }
 
-    static void playsounds(int im, final Mad mad, final Control control, final ContO player, final ContO conto) {
+    static void playsounds(int im, Mad mad, Control control, ContO player, ContO conto) {
         SoundClip.source = conto;
         SoundClip.player = player;
         
@@ -1668,7 +1666,7 @@
                                 sparkeng(i260, mad.cn);
                             }
                             if (Math.abs(mad.speed) > CarDefine.swits[mad.cn][1] && Math.abs(mad.speed) <= CarDefine.swits[mad.cn][2]) {
-                                final int i261 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn][1]) / (CarDefine.swits[mad.cn][2] - CarDefine.swits[mad.cn][1]));
+                                int i261 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn][1]) / (CarDefine.swits[mad.cn][2] - CarDefine.swits[mad.cn][1]));
                                 sparkeng(i261, mad.cn);
                             }
                         } else {
@@ -1791,14 +1789,14 @@
         }
     }
 
-    static private Image pressed(final Image image) {
-        final int i = image.getHeight(null);
-        final int i337 = image.getWidth(null);
-        final int[] ais = new int[i337 * i];
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i337, i, ais, 0, i337);
+    static private Image pressed(Image image) {
+        int i = image.getHeight(null);
+        int i337 = image.getWidth(null);
+        int[] ais = new int[i337 * i];
+        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i337, i, ais, 0, i337);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
         for (int i338 = 0; i338 < i337 * i; i338++)
@@ -1808,27 +1806,27 @@
         return xt.createImage(new MemoryImageSource(i337, i, ais, 0, i337));
     }
 
-    static private int py(final int i, final int i281, final int i282, final int i283) {
+    static private int py(int i, int i281, int i282, int i283) {
         return (i - i281) * (i - i281) + (i282 - i283) * (i282 - i283);
     }
 
-    static private float pys(final int i, final int i284, final int i285, final int i286) {
+    static private float pys(int i, int i284, int i285, int i286) {
         return (float) Math.sqrt((i - i284) * (i - i284) + (i285 - i286) * (i285 - i286));
     }
 
-    static void rad(final int i) {
+    static void rad(int i) {
         if (i == 0) {
             powerup.play();
             radpx = 212;
             pin = 0;
         }
         trackbg(false);
-        rd.setColor(new Color(0, 0, 0));
-        rd.fillRect(65, 135, 670, 59);
+        G.setColor(new Color(0, 0, 0));
+        G.fillRect(65, 135, 670, 59);
         if (pin != 0) {
-            rd.drawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
+            G.drawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
         } else {
-            rd.drawImage(radicalplay, 212, 135, null);
+            G.drawImage(radicalplay, 212, 135, null);
         }
         if (radpx != 212) {
             radpx += 40;
@@ -1843,12 +1841,12 @@
             pin = 7;
         }
         if (radpx == 212) {
-            rd.setFont(new Font("Arial", 1, 11));
-            ftm = rd.getFontMetrics();
+            G.setFont(new Font("Arial", 1, 11));
+            ftm = G.getFontMetrics();
             drawcs(185 + (int) (5.0F * Medium.random()), "Radicalplay.com", 112, 120, 143, 3);
         }
-        rd.setFont(new Font("Arial", 1, 11));
-        ftm = rd.getFontMetrics();
+        G.setFont(new Font("Arial", 1, 11));
+        ftm = G.getFontMetrics();
         if (aflk) {
             drawcs(215, "And we are never going to find the new unless we get a little crazy...", 112, 120, 143, 3);
             aflk = false;
@@ -1856,21 +1854,21 @@
             drawcs(217, "And we are never going to find the new unless we get a little crazy...", 150, 150, 150, 3);
             aflk = true;
         }
-        rd.drawImage(rpro, 275, 265, null);
-        rd.setColor(new Color(0, 0, 0));
-        rd.fillRect(0, 0, 65, 450);
-        rd.fillRect(735, 0, 65, 450);
-        rd.fillRect(65, 0, 670, 25);
-        rd.fillRect(65, 425, 670, 25);
+        G.drawImage(rpro, 275, 265, null);
+        G.setColor(new Color(0, 0, 0));
+        G.fillRect(0, 0, 65, 450);
+        G.fillRect(735, 0, 65, 450);
+        G.fillRect(65, 0, 670, 25);
+        G.fillRect(65, 425, 670, 25);
     }
 
-    static private void radarstat(final Mad mad, final ContO conto) {
-        rd.setComposite(AlphaComposite.getInstance(3, 0.5F));
-        rd.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-        rd.fillRoundRect(10, 55, 172, 172, 30, 30);
-        rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
-        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        rd.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+    static private void radarstat(Mad mad, ContO conto) {
+        G.setComposite(AlphaComposite.getInstance(3, 0.5F));
+        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+        G.fillRoundRect(10, 55, 172, 172, 30, 30);
+        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
+        G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
         for (int i = 0; i < CheckPoints.n; i++) {
             int i241 = i + 1;
             if (i == CheckPoints.n - 1) {
@@ -1881,23 +1879,23 @@
                 i241 = 0;
                 abool = true;
             }
-            final int[] ais = {
+            int[] ais = {
                     (int) (96.0F - (CheckPoints.opx[im] - CheckPoints.x[i]) / CheckPoints.prox),
                     (int) (96.0F - (CheckPoints.opx[im] - CheckPoints.x[i241]) / CheckPoints.prox)
             };
-            final int[] is242 = {
+            int[] is242 = {
                     (int) (141.0F - (CheckPoints.z[i] - CheckPoints.opz[im]) / CheckPoints.prox),
                     (int) (141.0F - (CheckPoints.z[i241] - CheckPoints.opz[im]) / CheckPoints.prox)
             };
             rot(ais, is242, 96, 141, mad.cxz, 2);
-            rd.drawLine(ais[0], is242[0], ais[1], is242[1]);
+            G.drawLine(ais[0], is242[0], ais[1], is242[1]);
             if (abool) {
                 break;
             }
         }
         if (arrace || multion > 1) {
-            final int[] ais = new int[nplayers];
-            final int[] is245 = new int[nplayers];
+            int[] ais = new int[nplayers];
+            int[] is245 = new int[nplayers];
             for (int i = 0; i < nplayers; i++) {
                 ais[i] = (int) (96.0F - (CheckPoints.opx[im] - CheckPoints.opx[i]) / CheckPoints.prox);
                 is245[i] = (int) (141.0F - (CheckPoints.opz[i] - CheckPoints.opz[im]) / CheckPoints.prox);
@@ -1955,14 +1953,14 @@
                     int i249 = 2;
                     if (alocked == i248) {
                         i249 = 3;
-                        rd.setColor(new Color(i, i246, i247));
+                        G.setColor(new Color(i, i246, i247));
                     } else {
-                        rd.setColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i246) / 2, (i247 + Medium.csky[2]) / 2));
+                        G.setColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i246) / 2, (i247 + Medium.csky[2]) / 2));
                     }
-                    rd.drawLine(ais[i248] - i249, is245[i248], ais[i248] + i249, is245[i248]);
-                    rd.drawLine(ais[i248], is245[i248] + i249, ais[i248], is245[i248] - i249);
-                    rd.setColor(new Color(i, i246, i247));
-                    rd.fillRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
+                    G.drawLine(ais[i248] - i249, is245[i248], ais[i248] + i249, is245[i248]);
+                    G.drawLine(ais[i248], is245[i248] + i249, ais[i248], is245[i248] - i249);
+                    G.setColor(new Color(i, i246, i247));
+                    G.fillRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
                 }
         }
         int i = (int) (159.0F + 159.0F * (Medium.snap[0] / 100.0F));
@@ -2006,36 +2004,36 @@
                 i251 = 0;
             }
         }
-        rd.setColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i250) / 2, (i251 + Medium.csky[2]) / 2));
-        rd.drawLine(96, 139, 96, 143);
-        rd.drawLine(94, 141, 98, 141);
-        rd.setColor(new Color(i, i250, i251));
-        rd.fillRect(95, 140, 3, 3);
-        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+        G.setColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i250) / 2, (i251 + Medium.csky[2]) / 2));
+        G.drawLine(96, 139, 96, 143);
+        G.drawLine(94, 141, 98, 141);
+        G.setColor(new Color(i, i250, i251));
+        G.fillRect(95, 140, 3, 3);
+        G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
         if (Medium.darksky) {
             Color color = new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]);
-            final float[] fs = new float[3];
+            float[] fs = new float[3];
             Color.RGBtoHSB(Medium.csky[0], Medium.csky[1], Medium.csky[2], fs);
             fs[2] = 0.6F;
             color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-            rd.setColor(color);
-            rd.fillRect(5, 232, 181, 17);
-            rd.drawLine(4, 233, 4, 247);
-            rd.drawLine(3, 235, 3, 245);
-            rd.drawLine(186, 233, 186, 247);
-            rd.drawLine(187, 235, 187, 245);
+            G.setColor(color);
+            G.fillRect(5, 232, 181, 17);
+            G.drawLine(4, 233, 4, 247);
+            G.drawLine(3, 235, 3, 245);
+            G.drawLine(186, 233, 186, 247);
+            G.drawLine(187, 235, 187, 245);
         }
-        rd.drawImage(sped, 7, 234, null);
-        final int i252 = conto.x - lcarx;
+        G.drawImage(sped, 7, 234, null);
+        int i252 = conto.x - lcarx;
         lcarx = conto.x;
-        final int i254 = conto.z - lcarz;
+        int i254 = conto.z - lcarz;
         lcarz = conto.z;
-        final float f = (float) Math.sqrt(i252 * i252 + i254 * i254);
-        final float f255 = f * 1.4F * 21.0F * 60.0F * 60.0F / 100000.0F;
-        final float f256 = f255 * 0.621371F;
-        rd.setColor(new Color(0, 0, 100));
-        rd.drawString("" + (int) f255, 62, 245);
-        rd.drawString("" + (int) f256, 132, 245);
+        float f = (float) Math.sqrt(i252 * i252 + i254 * i254);
+        float f255 = f * 1.4F * 21.0F * 60.0F * 60.0F / 100000.0F;
+        float f256 = f255 * 0.621371F;
+        G.setColor(new Color(0, 0, 100));
+        G.drawString("" + (int) f255, 62, 245);
+        G.drawString("" + (int) f256, 132, 245);
     }
 
     static void replyn() {
@@ -2048,7 +2046,7 @@
         }
     }
 
-    static void resetstat(final int i) {
+    static void resetstat(int i) {
         arrace = false;
         alocked = -1;
         lalocked = -1;
@@ -2128,11 +2126,11 @@
         }
     }
 
-    static private void rot(final int[] ais, final int[] is272, final int i, final int i273, final int i274, final int i275) {
+    static private void rot(int[] ais, int[] is272, int i, int i273, int i274, int i275) {
         if (i274 != 0) {
             for (int i276 = 0; i276 < i275; i276++) {
-                final int i277 = ais[i276];
-                final int i278 = is272[i276];
+                int i277 = ais[i276];
+                int i278 = is272[i276];
                 ais[i276] = i + (int) ((i277 - i) * Medium.cos(i274) - (i278 - i273) * Medium.sin(i274));
                 is272[i276] = i273 + (int) ((i277 - i) * Medium.sin(i274) + (i278 - i273) * Medium.cos(i274));
             }
@@ -2157,14 +2155,14 @@
 
                     }
                     Thread.sleep(20L);
-                } catch (final InterruptedException ignored) {
+                } catch (InterruptedException ignored) {
 
                 }
             }
             if (abool) {
                 pingstat();
             }
-            final boolean[] bools = {
+            boolean[] bools = {
                     true, true
             };
             while ((runtyp == -101 || sendstat == 1) && !lan) {
@@ -2201,7 +2199,7 @@
                     if (string14 == null) {
                         bool13 = true;
                     }
-                } catch (final Exception exception) {
+                } catch (Exception exception) {
                     bool13 = true;
                 }
                 if (bool13) {
@@ -2212,7 +2210,7 @@
                         din = null;
                         dout.close();
                         dout = null;
-                    } catch (final Exception ignored) {
+                    } catch (Exception ignored) {
 
                     }
                     try {
@@ -2224,7 +2222,7 @@
                         if (string14 != null) {
                             bool13 = false;
                         }
-                    } catch (final Exception ignored) {
+                    } catch (Exception ignored) {
 
                     }
                 }
@@ -2232,7 +2230,7 @@
                     try {
                         socket.close();
                         socket = null;
-                    } catch (final Exception ignored) {
+                    } catch (Exception ignored) {
 
                     }
                     runtyp = 0;
@@ -2250,7 +2248,7 @@
                         i15 = 2;
                     }
                     for (int i16 = 0; i16 < i15; i16++) {
-                        final int i17 = getvalue(string14, i16);
+                        int i17 = getvalue(string14, i16);
                         if (updatec[i16] != i17 && updatec[i16] >= -2 && pointc[i16] == 6) {
                             for (int i18 = 0; i18 < 7; i18++) {
                                 cnames[i16][i18] = getSvalue(string14, i);
@@ -2284,7 +2282,7 @@
 
                     }
                     Thread.sleep(1000L);
-                } catch (final InterruptedException ignored) {
+                } catch (InterruptedException ignored) {
 
                 }
             }
@@ -2301,7 +2299,7 @@
                     din = null;
                     dout.close();
                     dout = null;
-                } catch (final Exception ignored) {
+                } catch (Exception ignored) {
 
                 }
                 runtyp = 0;
@@ -2312,7 +2310,7 @@
         }
     }
 
-    static void scrape(int im, final int i, final int i266, final int i267) {
+    static void scrape(int im, int i, int i266, int i267) {
         if (bfscrape[im] == 0 && Math.sqrt(i * i + i266 * i266 + i267 * i267) / 10.0 > 10.0) {
             int i268 = 0;
             if (Medium.random() > Medium.random()) {
@@ -2356,7 +2354,7 @@
         runner.start();
     }
 
-    static void setbots(final boolean[] bools) {
+    static void setbots(boolean[] bools) {
         for (int i = 0; i < nplayers; i++)
             if (plnames[i].contains("MadBot")) {
                 bools[i] = true;
@@ -2364,7 +2362,7 @@
             }
     }
 
-    static void skid(int im, final int i, final float f) {
+    static void skid(int im, int i, float f) {
         if (bfcrash[im] == 0 && bfskid[im] == 0 && f > 150.0F) {
             if (i == 0) {
                 if (!mutes) {
@@ -2401,33 +2399,33 @@
         }
     }
 
-    static private void smokeypix(final byte[] ais, final MediaTracker mediatracker, final Toolkit toolkit) {
-        final Image image = toolkit.createImage(ais);
+    static private void smokeypix(byte[] ais, MediaTracker mediatracker, Toolkit toolkit) {
+        Image image = toolkit.createImage(ais);
         mediatracker.addImage(image, 0);
         try {
             mediatracker.waitForID(0);
-        } catch (final Exception ignored) {
+        } catch (Exception ignored) {
 
         }
-        final PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 466, 202, smokey, 0, 466);
+        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 466, 202, smokey, 0, 466);
         try {
             pixelgrabber.grabPixels();
-        } catch (final InterruptedException ignored) {
+        } catch (InterruptedException ignored) {
 
         }
         for (int i = 0; i < 94132; i++)
             if (smokey[i] != smokey[0]) {
-                final Color color = new Color(smokey[i]);
-                final float[] fs = new float[3];
+                Color color = new Color(smokey[i]);
+                float[] fs = new float[3];
                 Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), fs);
                 fs[0] = 0.11F;
                 fs[1] = 0.45F;
-                final Color color385 = Color.getHSBColor(fs[0], fs[1], fs[2]);
+                Color color385 = Color.getHSBColor(fs[0], fs[1], fs[2]);
                 smokey[i] = color385.getRGB();
             }
     }
 
-    static void snap(final int i) {
+    static void snap(int i) {
         dmg = loadsnap(odmg);
         pwr = loadsnap(opwr);
         was = loadsnap(owas);
@@ -2457,7 +2455,7 @@
         flaot = loadopsnap(oflaot, i, 1);
     }
 
-    static private void sortcars(final int i) {
+    static private void sortcars(int i) {
         if (i != 0) {
             int lastcar = nplayers;
 
@@ -2474,7 +2472,7 @@
             //Console.WriteLine("Minimum car: " + stat.names[(i - 1) / 2] + ", maximum car: " + stat.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
 
             // create a list of car ids, each item completely unique
-            final ArrayList<Integer> list = new ArrayList<>();
+            ArrayList<Integer> list = new ArrayList<>();
             for (int k = (i - 1) / 2; k < nplayers + (i - 1) / 2; k++) {
                 if (k == sc[0]) {
                     continue;
@@ -2511,7 +2509,7 @@
         }
     }
 
-    static private void sparkeng(int i, final int i263) {
+    static private void sparkeng(int i, int i263) {
         if (lcn != i263) {
             for (int i264 = 0; i264 < 5; i264++)
                 if (pengs[i264]) {
@@ -2533,16 +2531,16 @@
             }
     }
 
-    static void stageselect(final Control control, final int i, final int i39, final boolean abool) {
-        rd.drawImage(br, 65, 25, null);
-        rd.drawImage(select, 338, 35, null);
+    static void stageselect(Control control, int i, int i39, boolean abool) {
+        G.drawImage(br, 65, 25, null);
+        G.drawImage(select, 338, 35, null);
         if (testdrive != 3 && testdrive != 4) {
             if (CheckPoints.stage > 0 && CarDefine.staction == 0) {
                 if (CheckPoints.stage != 1 && CheckPoints.stage != 11) {
-                    rd.drawImage(back[pback], 115, 135, null);
+                    G.drawImage(back[pback], 115, 135, null);
                 }
                 if (CheckPoints.stage != nTracks) {
-                    rd.drawImage(next[pnext], 625, 135, null);
+                    G.drawImage(next[pnext], 625, 135, null);
                 }
             }
             if (gmode == 0) {
@@ -2703,8 +2701,8 @@
                 	if (app.snfm2.isShowing())
                 		app.snfm2.setVisible(false);
                 }*/
-                rd.setFont(new Font("Arial", 1, 13));
-                ftm = rd.getFontMetrics();
+                G.setFont(new Font("Arial", 1, 13));
+                ftm = G.getFontMetrics();
                 if (CarDefine.staction == 0 || CarDefine.staction == 6)
                     if (CheckPoints.stage != -3) {
                         String astring = "";
@@ -2719,24 +2717,24 @@
                             aflk = true;
                         }
                         if (CheckPoints.stage == -2 && CarDefine.staction == 0) {
-                            rd.setFont(new Font("Arial", 1, 11));
-                            ftm = rd.getFontMetrics();
-                            rd.setColor(new Color(255, 176, 85));
+                            G.setFont(new Font("Arial", 1, 11));
+                            ftm = G.getFontMetrics();
+                            G.setColor(new Color(255, 176, 85));
                             if (CheckPoints.maker.equals(nickname)) {
-                                rd.drawString("Created by You", 70, 115);
+                                G.drawString("Created by You", 70, 115);
                             } else {
-                                rd.drawString("Created by :  " + CheckPoints.maker + "", 70, 115);
+                                G.drawString("Created by :  " + CheckPoints.maker + "", 70, 115);
                             }
                             if (CheckPoints.top20 >= 3) {
-                                rd.drawString("Added by :  " + CarDefine.top20adds[CheckPoints.nto - 1] + " Players", 70, 135);
+                                G.drawString("Added by :  " + CarDefine.top20adds[CheckPoints.nto - 1] + " Players", 70, 135);
                             }
                         }
                     } else if (removeds != 1) {
-                        rd.setFont(new Font("Arial", 1, 13));
-                        ftm = rd.getFontMetrics();
+                        G.setFont(new Font("Arial", 1, 13));
+                        ftm = G.getFontMetrics();
                         drawcs(132, "Failed to load stage...", 255, 138, 0, 3);
-                        rd.setFont(new Font("Arial", 1, 11));
-                        ftm = rd.getFontMetrics();
+                        G.setFont(new Font("Arial", 1, 11));
+                        ftm = G.getFontMetrics();
                         if (nfmtab == 5) {
                             drawcs(155, "Please Test Drive this stage ain the Stage Maker to make sure it can be loaded!", 255, 138, 0, 3);
                         }
@@ -2748,7 +2746,7 @@
                             //app.repaint();
                             try {
                                 Thread.sleep(5000L);
-                            } catch (final InterruptedException ignored) {
+                            } catch (InterruptedException ignored) {
 
                             }
                             //if (nfmtab == 0)
@@ -2813,8 +2811,8 @@
                         }
                         showtf = true;
                     }
-                    rd.drawString("Nickname:", 376 - ftm.stringWidth("Nickname:") - 14, 201);
-                    rd.drawString("Password:", 376 - ftm.stringWidth("Password:") - 14, 231);
+                    G.drawString("Nickname:", 376 - ftm.stringWidth("Nickname:") - 14, 201);
+                    G.drawString("Password:", 376 - ftm.stringWidth("Password:") - 14, 231);
                     GameSparker.movefieldd(GameSparker.tnick, 376, 185, 129, 23, true);
                     GameSparker.movefieldd(GameSparker.tpass, 376, 215, 129, 23, true);
                     if (tcnt < 30) {
@@ -2913,13 +2911,13 @@
                     CarDefine.loadstagemaker();
                 }
                 if (CheckPoints.stage != -3 && CarDefine.staction == 0 && CheckPoints.top20 < 3) {
-                    rd.drawImage(contin[pcontin], 355, 360, null);
+                    G.drawImage(contin[pcontin], 355, 360, null);
                 } else {
                     pcontin = 0;
                 }
                 if (CheckPoints.top20 >= 3 && CarDefine.staction != 3 && CarDefine.staction != 4) {
-                    rd.setFont(new Font("Arial", 1, 11));
-                    ftm = rd.getFontMetrics();
+                    G.setFont(new Font("Arial", 1, 11));
+                    ftm = G.getFontMetrics();
                     if (dnload == 0 && drawcarb(true, null, " Add to My Stages ", 334, 355, i, i39, abool))
                         if (logged) {
                             CarDefine.onstage = CheckPoints.name;
@@ -3017,7 +3015,7 @@
                 }
                 if (nfmtab == 3 || nfmtab == 4) {
                     String astring = "";
-                    final int i43 = GameSparker.mstgs.getSelectedItem().indexOf(' ') + 1;
+                    int i43 = GameSparker.mstgs.getSelectedItem().indexOf(' ') + 1;
                     if (i43 > 0) {
                         astring = GameSparker.mstgs.getSelectedItem().subastring(i43);
                     }
@@ -3032,15 +3030,15 @@
                     }
                 }
             } else {
-                rd.setFont(new Font("SansSerif", 1, 13));
-                ftm = rd.getFontMetrics();
+                G.setFont(new Font("SansSerif", 1, 13));
+                ftm = G.getFontMetrics();
                 if (CheckPoints.stage != nTracks) {
-                    final int i44 = CheckPoints.stage;
+                    int i44 = CheckPoints.stage;
                     //if (i44 > 10)
                     //	i44 -= 10;
                     drawcs(80, "Stage " + i44 + "  >", 255, 128, 0, 3);
                 } else {
-                    drawcs(80, "Final Party Stage  >", 255, 128, 0, 3);
+                    drawcs(80, "Party Stage  >", 255, 128, 0, 3);
                 }
                 if (aflk) {
                     drawcs(100, "| " + CheckPoints.name + " |", 240, 240, 240, 3);
@@ -3050,7 +3048,7 @@
                     aflk = true;
                 }
                 if (CheckPoints.stage != -3) {
-                    rd.drawImage(contin[pcontin], 355, 360, null);
+                    G.drawImage(contin[pcontin], 355, 360, null);
                 } else {
                     pcontin = 0;
                 }
@@ -3116,7 +3114,7 @@
                 drawcs(132, CheckPoints.name, 176, 176, 176, 3);
                 aflk = true;
             }
-            rd.drawImage(contin[pcontin], 355, 360, null);
+            G.drawImage(contin[pcontin], 355, 360, null);
             if (control.handb || control.enter) {
                 dudo = 150;
                 fase = 5;
@@ -3145,7 +3143,7 @@
         }
     }
 
-    static void stat(final Mad mad, final ContO conto, final Control control, final boolean abool) {
+    static void stat(Mad mad, ContO conto, Control control, boolean abool) {
         if (holdit) {
             int i = 250;
             if (fase == 7001)
@@ -3435,7 +3433,7 @@
                     winner = false;
                 }
                 if (!holdit) {
-                    rd.drawImage(wgame, 311, 20, null);
+                    G.drawImage(wgame, 311, 20, null);
                     if (!clanchat) {
                         drawcs(397, "Click any player on the right to follow!", 0, 0, 0, 0);
                         if (!lan) {
@@ -3520,38 +3518,38 @@
                 }
                 if (Medium.darksky) {
                     Color color = new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]);
-                    final float[] fs = new float[3];
+                    float[] fs = new float[3];
                     Color.RGBtoHSB(Medium.csky[0], Medium.csky[1], Medium.csky[2], fs);
                     fs[2] = 0.6F;
                     color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-                    rd.setColor(color);
-                    rd.fillRect(602, 9, 54, 14);
-                    rd.drawLine(601, 10, 601, 21);
-                    rd.drawLine(600, 12, 600, 19);
-                    rd.fillRect(607, 29, 49, 14);
-                    rd.drawLine(606, 30, 606, 41);
-                    rd.drawLine(605, 32, 605, 39);
-                    rd.fillRect(18, 6, 155, 14);
-                    rd.drawLine(17, 7, 17, 18);
-                    rd.drawLine(16, 9, 16, 16);
-                    rd.drawLine(173, 7, 173, 18);
-                    rd.drawLine(174, 9, 174, 16);
-                    rd.fillRect(40, 26, 107, 21);
-                    rd.drawLine(39, 27, 39, 45);
-                    rd.drawLine(38, 29, 38, 43);
-                    rd.drawLine(147, 27, 147, 45);
-                    rd.drawLine(148, 29, 148, 43);
+                    G.setColor(color);
+                    G.fillRect(602, 9, 54, 14);
+                    G.drawLine(601, 10, 601, 21);
+                    G.drawLine(600, 12, 600, 19);
+                    G.fillRect(607, 29, 49, 14);
+                    G.drawLine(606, 30, 606, 41);
+                    G.drawLine(605, 32, 605, 39);
+                    G.fillRect(18, 6, 155, 14);
+                    G.drawLine(17, 7, 17, 18);
+                    G.drawLine(16, 9, 16, 16);
+                    G.drawLine(173, 7, 173, 18);
+                    G.drawLine(174, 9, 174, 16);
+                    G.fillRect(40, 26, 107, 21);
+                    G.drawLine(39, 27, 39, 45);
+                    G.drawLine(38, 29, 38, 43);
+                    G.drawLine(147, 27, 147, 45);
+                    G.drawLine(148, 29, 148, 43);
                 }
-                rd.drawImage(dmg, 600, 7, null);
-                rd.drawImage(pwr, 600, 27, null);
-                rd.drawImage(lap, 19, 7, null);
-                rd.setColor(new Color(0, 0, 100));
-                rd.drawString("" + (mad.nlaps + 1) + " / " + CheckPoints.nlaps + "", 51, 18);
-                rd.drawImage(was, 92, 7, null);
-                rd.setColor(new Color(0, 0, 100));
-                rd.drawString("" + CheckPoints.wasted + " / " + (nplayers - 1) + "", 150, 18);
-                rd.drawImage(pos, 42, 27, null);
-                rd.drawImage(rank[CheckPoints.pos[mad.im]], 110, 28, null);
+                G.drawImage(dmg, 600, 7, null);
+                G.drawImage(pwr, 600, 27, null);
+                G.drawImage(lap, 19, 7, null);
+                G.setColor(new Color(0, 0, 100));
+                G.drawString("" + (mad.nlaps + 1) + " / " + CheckPoints.nlaps + "", 51, 18);
+                G.drawImage(was, 92, 7, null);
+                G.setColor(new Color(0, 0, 100));
+                G.drawString("" + CheckPoints.wasted + " / " + (nplayers - 1) + "", 150, 18);
+                G.drawImage(pos, 42, 27, null);
+                G.drawImage(rank[CheckPoints.pos[mad.im]], 110, 28, null);
                 drawstat(CarDefine.maxmag[mad.cn], mad.hitmag, mad.power);
                 if (control.radar && CheckPoints.stage != 10) {
                     radarstat(mad, conto);
@@ -3594,14 +3592,14 @@
                         duds = 2;
                     }
                     if (dudo != -1) {
-                        rd.setComposite(AlphaComposite.getInstance(3, 0.3F));
-                        rd.drawImage(dude[duds], dudo, 0, null);
-                        rd.setComposite(AlphaComposite.getInstance(3, 1.0F));
+                        G.setComposite(AlphaComposite.getInstance(3, 0.3F));
+                        G.drawImage(dude[duds], dudo, 0, null);
+                        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
                     }
                     if (gocnt != 0) {
-                        rd.drawImage(cntdn[gocnt], 385, 50, null);
+                        G.drawImage(cntdn[gocnt], 385, 50, null);
                     } else {
-                        rd.drawImage(cntdn[gocnt], 363, 50, null);
+                        G.drawImage(cntdn[gocnt], 363, 50, null);
                     }
                 }
                 if (looped != 0 && mad.loop == 2) {
@@ -3914,7 +3912,7 @@
             }
         }
         if (Medium.lightn != -1) {
-            //final int i = strack.sClip.stream.available();
+            //int i = strack.sClip.stream.available();
             Medium.lton = false;
             //if (i <= 6380001 && i > 5368001)
             //	m.lton = true;
@@ -3973,7 +3971,7 @@
                 din = null;
                 dout.close();
                 dout = null;
-            } catch (final Exception ignored) {
+            } catch (Exception ignored) {
 
             }
         }
@@ -3985,7 +3983,7 @@
         runtyp = 0;
     }
 
-    static void trackbg(final boolean abool) {
+    static void trackbg(boolean abool) {
         int i = 0;
         trkl++;
         if (trkl > trklim) {
@@ -3997,31 +3995,31 @@
             i = 0;
         }
         for (int i25 = 0; i25 < 2; i25++) {
-            rd.drawImage(trackbg[i], trkx[i25], 25, null);
+            G.drawImage(trackbg[i], trkx[i25], 25, null);
             trkx[i25] -= 10;
             if (trkx[i25] <= -605) {
                 trkx[i25] = 735;
             }
         }
-        rd.setColor(new Color(0, 0, 0));
-        rd.fillRect(0, 0, 65, 450);
-        rd.fillRect(735, 0, 65, 450);
-        rd.fillRect(65, 0, 670, 25);
-        rd.fillRect(65, 425, 670, 25);
+        G.setColor(new Color(0, 0, 0));
+        G.fillRect(0, 0, 65, 450);
+        G.fillRect(735, 0, 65, 450);
+        G.fillRect(65, 0, 670, 25);
+        G.fillRect(65, 425, 670, 25);
     }
 
     static void waitenter() {
         if (forstart < 690) {
-            rd.setFont(new Font("Arial", 1, 13));
-            ftm = rd.getFontMetrics();
+            G.setFont(new Font("Arial", 1, 13));
+            ftm = G.getFontMetrics();
             drawcs(70, "Waiting for all players to finish loading!", 0, 0, 0, 0);
             if (forstart <= 640) {
                 drawcs(90, "" + (640 - forstart) / 32 + "", 0, 0, 0, 0);
             } else {
                 drawcs(90, "Your connection to game may have been lost...", 0, 0, 0, 0);
             }
-            rd.setFont(new Font("Arial", 1, 11));
-            ftm = rd.getFontMetrics();
+            G.setFont(new Font("Arial", 1, 11));
+            ftm = G.getFontMetrics();
             if (tflk) {
                 drawcs(125, "Get Ready!", 0, 0, 0, 0);
                 tflk = false;
@@ -4037,14 +4035,14 @@
         }
     }
 
-    static private int xs(final int i, int i279) {
+    static private int xs(int i, int i279) {
         if (i279 < 50) {
             i279 = 50;
         }
         return (i279 - Medium.focusPoint) * (Medium.cx - i) / i279 + i;
     }
 
-    static private int ys(final int i, int i280) {
+    static private int ys(int i, int i280) {
         if (i280 < 50) {
             i280 = 50;
         }

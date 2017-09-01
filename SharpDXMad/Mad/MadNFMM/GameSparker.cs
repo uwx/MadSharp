@@ -149,30 +149,26 @@ namespace Cum
      */
     private static void loadbase()
     {
-        if (carRads.length < xtGraphics.nCars)
+        if (carRads.Length < xtGraphics.nCars)
             throw new Exception("too many cars and not enough rad files!");
         int totalSize = 0;
         xtGraphics.dnload += 6;
         
-        FileUtil.loadFiles("data/cars", carRads, prep => {
-            return new File(prep.parent, prep.file + ".rad").toPath();
-        }, (ais, id) => {
+        FileUtil.loadFiles("data/cars", carRads, prep => new File(prep.parent, prep.file + ".rad"), (ais, id) => {
             carContos[id] = new ContO( ais);
             if (!carContos[id].shadow)
             {
-                throw new RuntimeException("car " + CarDefine.names[id] + " does not have a shadow");
+                throw new Exception("car " + CarDefine.names[id] + " does not have a shadow");
             }
         });
 
-        FileUtil.loadFiles("data/stageparts", stageRads, prep => {
-            return new File(prep.parent, prep.file + ".rad").toPath();
-        }, (ais, id) => {
+        FileUtil.loadFiles("data/stageparts", stageRads, prep => new File(prep.parent, prep.file + ".rad"), (ais, id) => {
             contos[id] = new ContO( ais);
         });
 
         xtGraphics.dnload++;
 
-        for (int i = 0; i < stageRads.length; i++)
+        for (int i = 0; i < stageRads.Length; i++)
         {
             if (contos[i] == null)
             {
@@ -180,7 +176,7 @@ namespace Cum
                                 ")");
             }
         }
-        for (int i = 0; i < carRads.length; i++)
+        for (int i = 0; i < carRads.Length; i++)
         {
             if (carContos[i] == null)
             {
@@ -189,29 +185,10 @@ namespace Cum
             }
         }
 
-        System.gc();
+        GC.Collect();
         if (mload != -1 && totalSize != 615671)
         {
             mload = 2;
-        }
-    }
-
-    private static BufferedImage createOffImage()
-    {
-        try
-        {
-            BufferedImage _offImage = gfxConfig.createCompatibleImage(800, 450, Transparency.OPAQUE);
-
-            if (_offImage == null)
-                throw new AssertionError("this should never happen");
-            return _offImage;
-        }
-        catch (Throwable
-        e) {
-            //fallback image creation
-            e.printStackTrace();
-
-            return new BufferedImage(800, 450, BufferedImage.TYPE_INT_RGB);
         }
     }
 
@@ -723,11 +700,10 @@ namespace Cum
         {
             xtGraphics.fase = 1;
         }
-        System.gc();
+        GC.Collect();
     }
 
-    private static boolean loadstagePreview(int i, String astring, ContO[] contos, final
-        ContO[] contos147) {
+    private static boolean loadstagePreview(int i, String astring, ContO[] contos, ContO[] contos147) {
         boolean abool = true;
         if (i < 100)
         {
@@ -1569,189 +1545,189 @@ namespace Cum
         xtGraphics.stopallnow();
         //cardefine.stopallnow();
         //udpmistro.UDPquit();
-        System.gc();
+        GC.Collect();
     }
 
-    @Override
-
-    public void paintComponent(Graphics g)
-    {
-        Graphics2D g2 = (Graphics2D) g;
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, getWidth(), getHeight());
-
-        try
-        {
-            gameTick();
-        }
-        catch (Exception
-        e) {
-            e.printStackTrace();
-            exwist = true;
-            trash();
-            System.exit(3);
-        }
-        if (lastw != getWidth() || lasth != getHeight())
-        {
-            lastw = getWidth();
-            lasth = getHeight();
-            showsize = 100;
-            if (lastw <= 800 || lasth <= 550)
-            {
-                reqmult = 0.0F;
-            }
-            if (Madness.fullscreen)
-            {
-                apx = (int) (getWidth() / 2 - 400.0F * apmult);
-                apy = (int) (getHeight() / 2 - 225.0F * apmult);
-            }
-        }
-        int i = 0;
-        int i97 = 0;
-        if (moto == 1 && shaka > 0)
-        {
-            i = (int) ((shaka * 2 * HansenRandom.Double() - shaka) * apmult);
-            i97 = (int) ((shaka * 2 * HansenRandom.Double() - shaka) * apmult);
-            shaka--;
-        }
-        if (!Madness.fullscreen)
-        {
-            if (showsize != 0)
-            {
-                float f = (getWidth() - 40) / 800.0F - 1.0F;
-                if (f > (getHeight() - 70) / 450.0F - 1.0F)
-                {
-                    f = (getHeight() - 70) / 450.0F - 1.0F;
-                }
-                if (f > 1.0F)
-                {
-                    f = 1.0F;
-                }
-                if (f < 0.0F)
-                {
-                    f = 0.0F;
-                }
-                apmult = 1.0F + f * reqmult;
-                if (!oncarm)
-                {
-                    g2.drawImage(carmaker[0], 50, 14, this);
-                }
-                else
-                {
-                    g2.drawImage(carmaker[1], 50, 14, this);
-                }
-                if (!onstgm)
-                {
-                    g2.drawImage(stagemaker[0], getWidth() - 208, 14, this);
-                }
-                else
-                {
-                    g2.drawImage(stagemaker[1], getWidth() - 208, 14, this);
-                }
-                g2.drawImage(sizebar, getWidth() / 2 - 230, 23, this);
-                g2.drawImage(blb, (int) (getWidth() / 2 - 222 + 141.0F * reqmult), 23, this);
-                g2.drawImage(chkbx[smooth], getWidth() / 2 - 53, 23, this);
-                g2.setFont(new Font("Arial", 1, 11));
-                g2.setColor(new Color(74, 99, 125));
-                g2.drawString("Screen Size:", getWidth() / 2 - 224, 17);
-                g2.drawString("Smooth", getWidth() / 2 - 36, 34);
-                g2.drawImage(fulls, getWidth() / 2 + 27, 15, this);
-                g2.setColor(new Color(94, 126, 159));
-                g2.drawString("Fullscreen", getWidth() / 2 + 63, 30);
-                g2.drawImage(chkbx[Madness.anti], getWidth() / 2 + 135, 9, this);
-                g2.drawString("Antialiasing", getWidth() / 2 + 152, 20);
-                g2.drawImage(chkbx[moto], getWidth() / 2 + 135, 26, this);
-                g2.drawString("Motion Effects", getWidth() / 2 + 152, 37);
-                g2.setColor(new Color(0, 0, 0));
-                g2.fillRect(getWidth() / 2 - 153, 5, 80, 16);
-                g2.setColor(new Color(121, 135, 152));
-                String astring = "" + (int) (apmult * 100.0F) + "%";
-                if (reqmult == 0.0F)
-                {
-                    astring = "Original";
-                }
-                if (reqmult == 1.0F)
-                {
-                    astring = "Maximum";
-                }
-                g2.drawString(astring, getWidth() / 2 - 150, 17);
-                if (!oncarm && !onstgm)
-                {
-                    showsize--;
-                }
-                if (showsize == 0)
-                {
-                    g2.setColor(new Color(0, 0, 0));
-                    g2.fillRect(getWidth() / 2 - 260, 0, 520, 40);
-                    g2.fillRect(50, 14, 142, 23);
-                    g2.fillRect(getWidth() - 208, 14, 158, 23);
-                }
-            }
-            apx = (int) (getWidth() / 2 - 400.0F * apmult);
-            apy = (int) (getHeight() / 2 - 225.0F * apmult - 50.0F);
-            if (apy < 50)
-            {
-                apy = 50;
-            }
-            if (apmult > 1.0F)
-            {
-                if (smooth == 1)
-                {
-                    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                    if (moto == 1)
-                    {
-                        rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                            RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
-                        g2.drawImage(tribuffer, apx + i, apy + i97, (int) (800.0F * apmult), (int) (450.0F * apmult),
-                            this);
-                        cropit(g2, i, i97);
-                        tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
-                        tg.drawImage(offImage, 0, 0, null);
-                    }
-                    else
-                    {
-                        g2.drawImage(offImage, apx, apy, (int) (800.0F * apmult), (int) (450.0F * apmult), this);
-                    }
-                }
-                else if (moto == 1)
-                {
-                    rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
-                    g2.drawImage(tribuffer, apx + i, apy + i97, (int) (800.0F * apmult), (int) (450.0F * apmult), this);
-                    cropit(g2, i, i97);
-                }
-                else
-                {
-                    g2.drawImage(offImage, apx, apy, (int) (800.0F * apmult), (int) (450.0F * apmult), this);
-                }
-            }
-            else if (moto == 1)
-            {
-                rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                    RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
-                g2.drawImage(tribuffer, apx + i, apy + i97, this);
-                cropit(g2, i, i97);
-                tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
-                tg.drawImage(offImage, 0, 0, null);
-            }
-            else
-            {
-                g2.drawImage(offImage, apx, apy, this);
-            }
-        }
-        else if (moto == 1)
-        {
-            rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
-            g2.drawImage(tribuffer, apx + i, apy + i97, this);
-            cropit(g2, i, i97);
-            tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
-            tg.drawImage(offImage, 0, 0, null);
-        }
-        else
-        {
-            g2.drawImage(offImage, apx, apy, this);
-        }
-    }
+//    @Override
+//
+//    public void paintComponent(Graphics g)
+//    {
+//        Graphics2D g2 = (Graphics2D) g;
+//        g.setColor(Color.BLACK);
+//        g.fillRect(0, 0, getWidth(), getHeight());
+//
+//        try
+//        {
+//            gameTick();
+//        }
+//        catch (Exception
+//        e) {
+//            e.printStackTrace();
+//            exwist = true;
+//            trash();
+//            System.exit(3);
+//        }
+//        if (lastw != getWidth() || lasth != getHeight())
+//        {
+//            lastw = getWidth();
+//            lasth = getHeight();
+//            showsize = 100;
+//            if (lastw <= 800 || lasth <= 550)
+//            {
+//                reqmult = 0.0F;
+//            }
+//            if (Madness.fullscreen)
+//            {
+//                apx = (int) (getWidth() / 2 - 400.0F * apmult);
+//                apy = (int) (getHeight() / 2 - 225.0F * apmult);
+//            }
+//        }
+//        int i = 0;
+//        int i97 = 0;
+//        if (moto == 1 && shaka > 0)
+//        {
+//            i = (int) ((shaka * 2 * HansenRandom.Double() - shaka) * apmult);
+//            i97 = (int) ((shaka * 2 * HansenRandom.Double() - shaka) * apmult);
+//            shaka--;
+//        }
+//        if (!Madness.fullscreen)
+//        {
+//            if (showsize != 0)
+//            {
+//                float f = (getWidth() - 40) / 800.0F - 1.0F;
+//                if (f > (getHeight() - 70) / 450.0F - 1.0F)
+//                {
+//                    f = (getHeight() - 70) / 450.0F - 1.0F;
+//                }
+//                if (f > 1.0F)
+//                {
+//                    f = 1.0F;
+//                }
+//                if (f < 0.0F)
+//                {
+//                    f = 0.0F;
+//                }
+//                apmult = 1.0F + f * reqmult;
+//                if (!oncarm)
+//                {
+//                    g2.drawImage(carmaker[0], 50, 14, this);
+//                }
+//                else
+//                {
+//                    g2.drawImage(carmaker[1], 50, 14, this);
+//                }
+//                if (!onstgm)
+//                {
+//                    g2.drawImage(stagemaker[0], getWidth() - 208, 14, this);
+//                }
+//                else
+//                {
+//                    g2.drawImage(stagemaker[1], getWidth() - 208, 14, this);
+//                }
+//                g2.drawImage(sizebar, getWidth() / 2 - 230, 23, this);
+//                g2.drawImage(blb, (int) (getWidth() / 2 - 222 + 141.0F * reqmult), 23, this);
+//                g2.drawImage(chkbx[smooth], getWidth() / 2 - 53, 23, this);
+//                g2.setFont(new Font("Arial", 1, 11));
+//                g2.setColor(new Color(74, 99, 125));
+//                g2.drawString("Screen Size:", getWidth() / 2 - 224, 17);
+//                g2.drawString("Smooth", getWidth() / 2 - 36, 34);
+//                g2.drawImage(fulls, getWidth() / 2 + 27, 15, this);
+//                g2.setColor(new Color(94, 126, 159));
+//                g2.drawString("Fullscreen", getWidth() / 2 + 63, 30);
+//                g2.drawImage(chkbx[Madness.anti], getWidth() / 2 + 135, 9, this);
+//                g2.drawString("Antialiasing", getWidth() / 2 + 152, 20);
+//                g2.drawImage(chkbx[moto], getWidth() / 2 + 135, 26, this);
+//                g2.drawString("Motion Effects", getWidth() / 2 + 152, 37);
+//                g2.setColor(new Color(0, 0, 0));
+//                g2.fillRect(getWidth() / 2 - 153, 5, 80, 16);
+//                g2.setColor(new Color(121, 135, 152));
+//                String astring = "" + (int) (apmult * 100.0F) + "%";
+//                if (reqmult == 0.0F)
+//                {
+//                    astring = "Original";
+//                }
+//                if (reqmult == 1.0F)
+//                {
+//                    astring = "Maximum";
+//                }
+//                g2.drawString(astring, getWidth() / 2 - 150, 17);
+//                if (!oncarm && !onstgm)
+//                {
+//                    showsize--;
+//                }
+//                if (showsize == 0)
+//                {
+//                    g2.setColor(new Color(0, 0, 0));
+//                    g2.fillRect(getWidth() / 2 - 260, 0, 520, 40);
+//                    g2.fillRect(50, 14, 142, 23);
+//                    g2.fillRect(getWidth() - 208, 14, 158, 23);
+//                }
+//            }
+//            apx = (int) (getWidth() / 2 - 400.0F * apmult);
+//            apy = (int) (getHeight() / 2 - 225.0F * apmult - 50.0F);
+//            if (apy < 50)
+//            {
+//                apy = 50;
+//            }
+//            if (apmult > 1.0F)
+//            {
+//                if (smooth == 1)
+//                {
+//                    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+//                    if (moto == 1)
+//                    {
+//                        rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
+//                            RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+//                        g2.drawImage(tribuffer, apx + i, apy + i97, (int) (800.0F * apmult), (int) (450.0F * apmult),
+//                            this);
+//                        cropit(g2, i, i97);
+//                        tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
+//                        tg.drawImage(offImage, 0, 0, null);
+//                    }
+//                    else
+//                    {
+//                        g2.drawImage(offImage, apx, apy, (int) (800.0F * apmult), (int) (450.0F * apmult), this);
+//                    }
+//                }
+//                else if (moto == 1)
+//                {
+//                    rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
+//                        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+//                    g2.drawImage(tribuffer, apx + i, apy + i97, (int) (800.0F * apmult), (int) (450.0F * apmult), this);
+//                    cropit(g2, i, i97);
+//                }
+//                else
+//                {
+//                    g2.drawImage(offImage, apx, apy, (int) (800.0F * apmult), (int) (450.0F * apmult), this);
+//                }
+//            }
+//            else if (moto == 1)
+//            {
+//                rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION,
+//                    RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+//                g2.drawImage(tribuffer, apx + i, apy + i97, this);
+//                cropit(g2, i, i97);
+//                tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
+//                tg.drawImage(offImage, 0, 0, null);
+//            }
+//            else
+//            {
+//                g2.drawImage(offImage, apx, apy, this);
+//            }
+//        }
+//        else if (moto == 1)
+//        {
+//            rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+//            g2.drawImage(tribuffer, apx + i, apy + i97, this);
+//            cropit(g2, i, i97);
+//            tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
+//            tg.drawImage(offImage, 0, 0, null);
+//        }
+//        else
+//        {
+//            g2.drawImage(offImage, apx, apy, this);
+//        }
+//    }
 
     private static void readcookies(ContO[] contos)
     {
@@ -2103,7 +2079,7 @@ namespace Cum
         {
             setupini();
         }
-        System.gc();
+        GC.Collect();
 
         gameLoaded = true;
     }
@@ -2182,7 +2158,7 @@ namespace Cum
                 xtGraphics.strack = null;
                 xtGraphics.flexpix = null;
                 Images.fleximg = null;
-                System.gc();
+                GC.Collect();
                 xtGraphics.loadedt = false;
             }
             if (clicknowtime < 2)
@@ -2246,7 +2222,7 @@ namespace Cum
                 xtGraphics.strack = null;
                 xtGraphics.flexpix = null;
                 Images.fleximg = null;
-                System.gc();
+                GC.Collect();
                 xtGraphics.loadedt = false;
             }
             if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)
@@ -2281,7 +2257,7 @@ namespace Cum
                 xtGraphics.strack = null;
                 xtGraphics.flexpix = null;
                 Images.fleximg = null;
-                System.gc();
+                GC.Collect();
                 xtGraphics.loadedt = false;
             }
             if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)

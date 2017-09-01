@@ -116,5 +116,10 @@ namespace MadGame
         {
             throw new NotImplementedException();
         }
+
+        public static void fillOval(int p0, int p1, int p2, int p3)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

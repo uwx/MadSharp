@@ -7,22 +7,22 @@ using static Cum.xtPart2;
 namespace Cum {
 
 class xtGraphics {
-    private static int[] cntwis =   new int[8];
-    private static boolean[] grrd = new boolean[8];
-    private static boolean[] aird = new boolean[8];
-    private static int[] stopcnt =  new int[8];
-    private static int[] bfcrash =  new int[8];
-    private static int[] bfsc1 =    new int[8];
-    private static int[] bfsc2 =    new int[8];
-    private static int[] bfscrape = new int[8];
-    private static int[] bfskid =   new int[8];    
-    private static int[] pwait =    { 7,7,7,7,7,7,7,7 };
-    private static boolean[] pwastd = new boolean[8];
+    internal static int[] cntwis =   new int[8];
+    internal static boolean[] grrd = new boolean[8];
+    internal static boolean[] aird = new boolean[8];
+    internal static int[] stopcnt =  new int[8];
+    internal static int[] bfcrash =  new int[8];
+    internal static int[] bfsc1 =    new int[8];
+    internal static int[] bfsc2 =    new int[8];
+    internal static int[] bfscrape = new int[8];
+    internal static int[] bfskid =   new int[8];    
+    internal static int[] pwait =    { 7,7,7,7,7,7,7,7 };
+    internal static boolean[] pwastd = new boolean[8];
     
     /**
      * Serialization UID
      */
-    private static readonly long serialVersionUID = 1254986552635023147L;
+    internal static readonly long serialVersionUID = 1254986552635023147L;
     /**
      * How many stages you have
      */
@@ -36,7 +36,7 @@ class xtGraphics {
     /**
      * Stunt adjectives
      */
-    private static readonly String[,] adj = {
+    internal static readonly String[,] adj = {
             {
                     "Cool", "Alright", "Nice"
             }, {
@@ -52,24 +52,24 @@ class xtGraphics {
     /**
      * Used for text flicker effect
      */
-    private static boolean aflk = false;
-    private static readonly SoundClip[] air = new SoundClip[6];
+    internal static boolean aflk = false;
+    internal static readonly SoundClip[] air = new SoundClip[6];
     /**
      * The HSB values of every vehicle ain a race, once for the first color and once for the second
      */
-    internal static readonly float[][] allrnp = new float[8][6];
+    internal static readonly float[,] allrnp = new float[8,6];
     /**
      * If {@code != -1}, locks the arrow to that car ID.
      */
-    private static int alocked = -1;
+    internal static int alocked = -1;
     /**
      * Arrow angle
      */
-    private static int ana = 0;
+    internal static int ana = 0;
     /**
      * {@link GameSparker} object
      */
-    private static GameSparker app;
+    internal static GameSparker app;
     /**
      * The player car's HSB values, once for the first color and once for the second
      */
@@ -79,9 +79,9 @@ class xtGraphics {
     /**
      * If {@code true}, the arrow ais pointing at cars
      */
-    private static boolean arrace = false;
+    internal static boolean arrace = false;
     internal static String asay = "";
-    private static int auscnt = 45;
+    internal static int auscnt = 45;
     /**
      * Auto-login
      */
@@ -95,14 +95,14 @@ class xtGraphics {
      */
     internal static boolean badmac = false;
     internal static int beststunt = 0;
-    private static float bgf = 0.0F;
-    private static readonly int[] bgmy = {
+    internal static float bgf = 0.0F;
+    internal static readonly int[] bgmy = {
             0, -400
     };
-    private static boolean bgup = false;
+    internal static boolean bgup = false;
     internal static SoundClip carfixed;
-    private static int cfase = 0;
-    private static SoundClip checkpoint;
+    internal static int cfase = 0;
+    internal static SoundClip checkpoint;
     /**
      * Player's clan ain multiplayer games
      */
@@ -116,24 +116,24 @@ class xtGraphics {
     /**
      * Current amount of cleared checkpoints
      */
-    private static int clear = 0;
-    private static readonly String[,] cnames = {
+    internal static int clear = 0;
+    internal static readonly String[,] cnames = {
             {
                     "", "", "", "", "", "", "Game Chat  "
             }, {
                     "", "", "", "", "", "", "Your Clan's Chat  "
             }
     };
-    private static int cntan = 0;
-    private static readonly int[] cntchatp = {
+    internal static int cntan = 0;
+    internal static readonly int[] cntchatp = {
             0, 0
     };
-    private static int cntflock = 0;
-    private static int cntovn = 0;
+    internal static int cntflock = 0;
+    internal static int cntovn = 0;
     internal static readonly int cntptrys = 5;
-    private static readonly SoundClip[] crash = new SoundClip[3];
-    private static boolean crashup = false;
-    private static int crshturn = 0;
+    internal static readonly SoundClip[] crash = new SoundClip[3];
+    internal static boolean crashup = false;
+    internal static int crshturn = 0;
     internal static readonly int[] dcrashes = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
@@ -143,183 +143,183 @@ class xtGraphics {
     static readonly int[] delays = {
             600, 600, 600
     };
-    private static readonly int[] dested = {
+    internal static readonly int[] dested = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
-    private static int discon = 0;
-    private static int dmcnt = 0;
-    private static boolean dmflk = false;
+    internal static int discon = 0;
+    internal static int dmcnt = 0;
+    internal static boolean dmflk = false;
     /**
      * Amount of KB downloaded (loading screen)
      */
     internal static int dnload = 0;
-    private static readonly int dropf = 0;
-    private static int dskflg = 0;
-    private static int dudo = 0;
-    private static int duds = 0;
-    private static readonly SoundClip[] dustskid = new SoundClip[3];
-    private static readonly SoundClip[][] engs = new SoundClip[5][5];
+    internal static readonly int dropf = 0;
+    internal static int dskflg = 0;
+    internal static int dudo = 0;
+    internal static int duds = 0;
+    internal static readonly SoundClip[] dustskid = new SoundClip[3];
+    internal static readonly SoundClip[,] engs = new SoundClip[5,5];
     internal static int exitm = 0;
     /**
      * Exclamation marks for stunts
      */
-    private static readonly String[] exlm = {
+    internal static readonly String[] exlm = {
             "!", "!!", "!!!"
     };
     internal static int fase = 1111;
     internal static int fastestlap = 0;
-    private static SoundClip firewasted;
+    internal static SoundClip firewasted;
     internal static boolean firstime = true;
-    private static int flang = 0;
-    private static int flatr = 0;
-    private static int flatrstart = 0;
+    internal static int flang = 0;
+    internal static int flatr = 0;
+    internal static int flatrstart = 0;
     internal static int[] flexpix = null;
     internal static int flipo = 0;
-    private static boolean flk = false;
-    private static int flkat = 0;
-    private static readonly int[] floater = {
+    internal static boolean flk = false;
+    internal static int flkat = 0;
+    internal static readonly int[] floater = {
             0, 0
     };
-    private static int flyr = 0;
-    private static int flyrdest = 0;
+    internal static int flyr = 0;
+    internal static int flyrdest = 0;
     internal static int forstart = 0;
     internal static FontMetrics ftm;
     internal static String gaclan = "";
     internal static int gameport = 7001;
-    private static int gatey = 300;
+    internal static int gatey = 300;
     internal static int gmode = 0;
-    private static SoundClip go;
-    private static int gocnt = 0;
+    internal static SoundClip go;
+    internal static int gocnt = 0;
     internal static boolean gotlog = false;
-    private static int gxdu = 0;
-    private static int gydu = 0;
-    private static int holdcnt = 0;
+    internal static int gxdu = 0;
+    internal static int gydu = 0;
+    internal static int holdcnt = 0;
     internal static boolean holdit = false;
     internal static int hours = 8;
     internal static int im = 0;
     internal static RadicalMusic intertrack;
     internal static readonly boolean[] isbot = new boolean[8];
     internal static boolean justwon1 = false;
-    private static boolean justwon2 = false;
-    private static int kbload = 0;
-    private static int lalocked = -1;
+    internal static boolean justwon2 = false;
+    internal static int kbload = 0;
+    internal static int lalocked = -1;
     internal static boolean lan = false;
     internal static int laps = 0;
     internal static int laptime = 0;
-    private static int lcarx = 0;
-    private static int lcarz = 0;
-    private static readonly String[] lcmsg = {
+    internal static int lcarx = 0;
+    internal static int lcarz = 0;
+    internal static readonly String[] lcmsg = {
             "", ""
     };
-    private static int lcn = 0;
-    private static int lfrom = 0;
-    private static int lmode = 0;
+    internal static int lcn = 0;
+    internal static int lfrom = 0;
+    internal static int lmode = 0;
     internal static boolean loadedt = false;
     internal static String localserver = "";
-    private static int lockcnt = 0;
+    internal static int lockcnt = 0;
     internal static boolean logged = false;
-    private static String loop = "";
+    internal static String loop = "";
     internal static int looped = 1;
-    private static readonly SoundClip[] lowcrash = new SoundClip[3];
-    private static int lsc = -1;
-    private static int lxm = -10;
-    private static int lym = -10;
+    internal static readonly SoundClip[] lowcrash = new SoundClip[3];
+    internal static int lsc = -1;
+    internal static int lxm = -10;
+    internal static int lym = -10;
     /**
      * Max car select selected car (don't change)
      */
-    private static int maxsl = nCars - 1;
-    private static int minsl = 0;
-    private static int mouson = -1;
-    private static readonly int[] movepos = {
+    internal static int maxsl = nCars - 1;
+    internal static int minsl = 0;
+    internal static int mouson = -1;
+    internal static readonly int[] movepos = {
             0, 0
     };
-    private static int movly = 0;
-    private static readonly int[] msgflk = {
+    internal static int movly = 0;
+    internal static readonly int[] msgflk = {
             0, 0
     };
     internal static boolean mtop = false;
-    private static int muhi = 0;
+    internal static int muhi = 0;
     internal static int multion = 0;
-    private static boolean mutem = false;
+    internal static boolean mutem = false;
     internal static boolean mutes = false;
     internal static int ndisco = 0;
     internal static boolean newparts = false;
-    private static int nextc = 0;
-    private static int nfmtab = 0;
+    internal static int nextc = 0;
+    internal static int nfmtab = 0;
     internal static int nfreeplays = 0;
     internal static String nickey = "";
     internal static String nickname = "";
     internal static boolean nofull = false;
     internal static int nplayers = 7;
-    private static int oldfase = 0;
-    private static SoundClip one;
+    internal static int oldfase = 0;
+    internal static SoundClip one;
     internal static int onjoin = -1;
-    private static boolean onlock = false;
-    private static int onmsc = -1;
+    internal static boolean onlock = false;
+    internal static int onmsc = -1;
     internal static int ontyp = 0;
     internal static int opselect = 0;
     internal static int osc = 10;
-    private static readonly int[] ovh = {
+    internal static readonly int[] ovh = {
             0, 0, 0, 0
     };
-    private static readonly int[] ovsx = {
+    internal static readonly int[] ovsx = {
             0, 0, 0, 0
     };
-    private static readonly int[] ovw = {
+    internal static readonly int[] ovw = {
             0, 0, 0, 0
     };
-    private static readonly int[] ovx = {
+    internal static readonly int[] ovx = {
             0, 0, 0, 0
     };
-    private static readonly int[] ovy = {
+    internal static readonly int[] ovy = {
             0, 0, 0, 0
     };
-    private static int pback = 0;
+    internal static int pback = 0;
     static readonly String[] pclan = {
             "", "", "", "", "", "", "", ""
     };
-    private static int pcontin = 0;
-    private static readonly boolean[] pengs = new boolean[5];
-    private static readonly int[] pgady = {
+    internal static int pcontin = 0;
+    internal static readonly boolean[] pengs = new boolean[5];
+    internal static readonly int[] pgady = {
             0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    private static readonly boolean[] pgas = {
+    internal static readonly boolean[] pgas = {
             false, false, false, false, false, false, false, false, false
     };
-    private static readonly int[] pgatx = {
+    internal static readonly int[] pgatx = {
             211, 240, 280, 332, 399, 466, 517, 558, 586
     };
-    private static readonly int[] pgaty = {
+    internal static readonly int[] pgaty = {
             193, 213, 226, 237, 244, 239, 228, 214, 196
     };
-    private static int pin = 60;
+    internal static int pin = 60;
     static int playingame = -1;
     static readonly String[] plnames = {
             "", "", "", "", "", "", "", ""
     };
-    private static int pnext = 0;
-    private static readonly int[] pointc = {
+    internal static int pnext = 0;
+    internal static readonly int[] pointc = {
             6, 6
     };
     internal static int posit = 0;
-    private static SoundClip powerup;
-    private static int pstar = 0;
+    internal static SoundClip powerup;
+    internal static int pstar = 0;
     
-    private static int pwcnt = 0;
-    private static boolean pwflk = false;
-    private static int radpx = 212;
-    private static int ransay = 0;
-    private static boolean remi = false;
-    private static int removeds = 0;
-    private static int runtyp = 0;
-    private static String say = "";
+    internal static int pwcnt = 0;
+    internal static boolean pwflk = false;
+    internal static int radpx = 212;
+    internal static int ransay = 0;
+    internal static boolean remi = false;
+    internal static int removeds = 0;
+    internal static int runtyp = 0;
+    internal static String say = "";
     internal static readonly int[] sc = {
             0, 0, 0, 0, 0, 0, 0, 0
     };
     internal static int scm = 0;
-    private static readonly SoundClip[] scrape = new SoundClip[4];
-    private static int sendstat = 0;
-    private static readonly String[,] sentn = {
+    internal static readonly SoundClip[] scrape = new SoundClip[4];
+    internal static int sendstat = 0;
+    internal static readonly String[,] sentn = {
             {
                     "", "", "", "", "", "", ""
             }, {
@@ -329,13 +329,13 @@ class xtGraphics {
     internal static String server = "multiplayer.needformadness.com";
     internal static String servername = "Madness";
     internal static int servport = 7071;
-    private static boolean shaded = false;
-    private static float shload = 0.0F;
-    private static boolean showtf = false;
-    private static int skflg = 0;
-    private static readonly SoundClip[] skid = new SoundClip[3];
-    private static boolean skidup = false;
-    private static readonly int[] smokey = new int[94132];
+    internal static boolean shaded = false;
+    internal static float shload = 0.0F;
+    internal static boolean showtf = false;
+    internal static int skflg = 0;
+    internal static readonly SoundClip[] skid = new SoundClip[3];
+    internal static boolean skidup = false;
+    internal static readonly int[] smokey = new int[94132];
     /**
      * Stage sound size (completely cosmetic)
      */
@@ -343,15 +343,15 @@ class xtGraphics {
             39, 128, 23, 58, 106, 140, 81, 135, 38, 141, 106, 76, 56, 116, 92, 208, 70, 80, 152, 102, 27, 65, 52, 30,
             151, 129, 80, 44, 57, 123, 202, 210, 111
     };
-    private static String spin = "";
+    internal static String spin = "";
     internal static int starcnt = 0;
     /**
      * Current stage soundtrack;
      */
     internal static RadicalMusic strack;
-    private static int sturn0 = 0;
-    private static int sturn1 = 0;
-    private static int tcnt = 30;
+    internal static int sturn0 = 0;
+    internal static int sturn1 = 0;
+    internal static int tcnt = 30;
     /**
      * If non-zero, the player ais test driving a car or stage
      */
@@ -359,29 +359,29 @@ class xtGraphics {
     /**
      * Text flicker effect
      */
-    private static boolean tflk = false;
-    private static SoundClip three;
-    private static SoundClip tires;
-    private static int trkl = 0;
-    private static int trklim = (int) (HansenRandom.Double() * 40.0);
+    internal static boolean tflk = false;
+    internal static SoundClip three;
+    internal static SoundClip tires;
+    internal static int trkl = 0;
+    internal static int trklim = (int) (HansenRandom.Double() * 40.0);
     /**
      * X positions of the stage select backgrounds (there are two)
      */
-    private static readonly int[] trkx = {
+    internal static readonly int[] trkx = {
             65, 735
     };
-    private static SoundClip two;
+    internal static SoundClip two;
     /**
      * Currentl last unlocked stage
      */
     internal static int unlocked = 1;
-    private static readonly int[] updatec = {
+    internal static readonly int[] updatec = {
             -1, -1
     };
-    private static int waitlink = 0;
+    internal static int waitlink = 0;
     static int warning = 0;
-    private static boolean wasay = false;
-    private static SoundClip wastd;
+    internal static boolean wasay = false;
+    internal static SoundClip wastd;
     static boolean winner = true;
     
     /**
@@ -411,7 +411,7 @@ class xtGraphics {
         badmac = false;
     }
 
-    private static void arrow(int i, int i216, boolean abool) {
+    internal static void arrow(int i, int i216, boolean abool) {
         int[] ais = new int[7];
         int[] is217 = new int[7];
         int[] is218 = new int[7];
@@ -685,7 +685,7 @@ class xtGraphics {
         G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
     }
 
-    private static Image bressed(Image image) {
+    internal static Image bressed(Image image) {
         int i = image.getHeight(null);
         int i340 = image.getWidth(null);
         int[] ais = new int[i340 * i];
@@ -741,7 +741,7 @@ class xtGraphics {
         drawcs(89, "Sorry not enough replay data to play available, please try again later.", 255, 255, 255, 1);
     }
 
-    private static void carsbginflex() {
+    internal static void carsbginflex() {
         if (!badmac) {
             flatr = 0;
             flyr = (int) (Medium.random() * 160.0F - 80.0F);
@@ -1433,7 +1433,7 @@ class xtGraphics {
         return bool135;
     }
 
-    private static void closesounds() {
+    internal static void closesounds() {
         for (int i = 0; i < 5; i++) {
             for (int i271 = 0; i271 < 5; i271++) {
                 engs[i][i271].checkopen();
@@ -1497,7 +1497,7 @@ class xtGraphics {
         return colorSnap(r, g, b, 255);
     }
 
-    private static Color colorSnap(int r, int g, int b, int a) {
+    internal static Color colorSnap(int r, int g, int b, int a) {
         int nr = r;
         int ng = g;
         int nb = b;
@@ -1953,7 +1953,7 @@ class xtGraphics {
         }
     }
 
-    private static Image dodgen(Image image) {
+    internal static Image dodgen(Image image) {
         int i = image.getHeight(null);
         int i378 = image.getWidth(null);
         int[] ais = new int[i378 * i];
@@ -2117,7 +2117,7 @@ class xtGraphics {
         G.drawString(astring, 400 - ftm.stringWidth(astring) / 2, i);
     }
 
-    private static void drawdprom(int i, int i139) {
+    internal static void drawdprom(int i, int i139) {
         G.setAlpha(0.9F);
         G.setColor(new Color(129, 203, 237));
         G.fillRoundRect(205, i, 390, i139, 30, 30);
@@ -2126,7 +2126,7 @@ class xtGraphics {
         G.setAlpha(1.0F);
     }
 
-    private static void drawhi(Image image, int i) {
+    internal static void drawhi(Image image, int i) {
         if (Medium.darksky) {
             float[] fs = new float[3];
             Color.RGBtoHSB(Medium.csky[0], Medium.csky[1], Medium.csky[2], fs);
@@ -2158,7 +2158,7 @@ class xtGraphics {
         G.setAlpha(1.0F);
     }
 
-    private static void drawSmokeCarsbg() {
+    internal static void drawSmokeCarsbg() {
         if (!badmac) {
             if (Math.abs(flyr - flyrdest) > 20) {
                 if (flyr > flyrdest) {
@@ -2229,7 +2229,7 @@ class xtGraphics {
         }
     }
 
-    private static void drawstat(int i, int i206, float f) {
+    internal static void drawstat(int i, int i206, float f) {
         int[] ais = new int[4];
         int[] is207 = new int[4];
         if (i206 > i) {
@@ -2790,7 +2790,7 @@ class xtGraphics {
         return ImageIO.read(new File(astring));
     }
 
-    static private String getSvalue(String astring, int i) {
+    static internal String getSvalue(String astring, int i) {
         String string443 = "";
         try {
             int i444 = 0;
@@ -2817,7 +2817,7 @@ class xtGraphics {
         return string443;
     }
 
-    static private int getvalue(String astring, int i) {
+    static internal int getvalue(String astring, int i) {
         int i437 = -1;
         try {
             int i438 = 0;
@@ -2866,14 +2866,14 @@ class xtGraphics {
             }
     }
 
-    static private void hidos() {
+    static internal void hidos() {
         GameSparker.sgame.setVisible(false);
         //app.snfm1.setVisible(false);
         //app.snfm2.setVisible(false);
         GameSparker.mstgs.setVisible(false);
     }
 
-    static private void hipnoload(int i, boolean abool) {
+    static internal void hipnoload(int i, boolean abool) {
         int[] ais = {
                 Medium.snap[0], Medium.snap[1], Medium.snap[2]
         };
@@ -3742,7 +3742,7 @@ class xtGraphics {
         drawcs(380, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
     }
 
-    static private Image loadBimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit, int i) {
+    static internal Image loadBimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit, int i) {
         Image image = toolkit.createImage(ais);
         mediatracker.addImage(image, 0);
         try {
@@ -3815,7 +3815,7 @@ class xtGraphics {
         loadsounds();
     }
 
-    static private Image loadimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit) {
+    static internal Image loadimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit) {
         Image image = toolkit.createImage(ais);
         mediatracker.addImage(image, 0);
         try {
@@ -3826,7 +3826,7 @@ class xtGraphics {
         return image;
     }
     
-    static private void loadimages() {
+    static internal void loadimages() {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         MediaTracker mediatracker = new MediaTracker(app);
         dnload += 8;
@@ -3840,7 +3840,7 @@ class xtGraphics {
         } catch (Exception exception) {
             System.err.println("Error Loading Images: " + exception);
         }
-        System.gc();
+        GC.Collect();
     }
 
     static void loading() {
@@ -3912,7 +3912,7 @@ class xtGraphics {
             abool = true;
         }
         loadstrack(i, astring, i51);
-        System.gc();
+        GC.Collect();
         if (multion == 0 && GameSparker.applejava) {
             try {
                 Thread.sleep(1000L);
@@ -3936,7 +3936,7 @@ class xtGraphics {
         fase = 6;
     }
 
-    static private Image loadopsnap(Image image, int i, int i323) {
+    static internal Image loadopsnap(Image image, int i, int i323) {
         int i324 = image.getHeight(null);
         int i325 = image.getWidth(null);
         int[] ais = new int[i325 * i324];
@@ -4024,7 +4024,7 @@ class xtGraphics {
         return xt.createImage(new MemoryImageSource(i325, i324, ais, 0, i325));
     }
 
-    static private Image loadsnap(Image image) {
+    static internal Image loadsnap(Image image) {
         int i = image.getHeight(null);
         int i316 = image.getWidth(null);
         int[] ais = new int[i316 * i];
@@ -4076,7 +4076,7 @@ class xtGraphics {
         return bufferedimage;
     }
 
-    static private void loadsounds() {
+    static internal void loadsounds() {
         dnload += 3;
         try {
             File file = new File("" + Madness.fpath + "data/sounds.zip");
@@ -4162,7 +4162,7 @@ class xtGraphics {
         } catch (Exception exception) {
             Console.WriteLine("Error Loading Sounds: " + exception);
         }
-        System.gc();
+        GC.Collect();
     }
 
     static void loadstrack(int i, String astring, int i52) {
