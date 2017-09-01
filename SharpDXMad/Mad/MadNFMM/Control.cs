@@ -88,7 +88,7 @@ namespace Cum
         /**
          * The (up to 5) fix points ain a stage.
          */
-        private final int[] fpnt = new int[5];
+        private readonly int[] fpnt = new int[5];
 
         private int frad = 0;
 
@@ -300,6 +300,7 @@ namespace Cum
             handb = false;
             if (!mad.dest)
             {
+                bool abool;
                 if (mad.mtouch)
                     if (stcnt > statusque)
                     {
@@ -400,7 +401,7 @@ namespace Cum
                         }
                         if (CheckPoints.pos[mad.im] - CheckPoints.pos[0] >= -1)
                         {
-                            skiplev -= 0.1;
+                            skiplev -= 0.1f;
                             if (skiplev < 0.0F)
                             {
                                 skiplev = 0.0F;
@@ -408,7 +409,7 @@ namespace Cum
                         }
                         else
                         {
-                            skiplev += 0.2;
+                            skiplev += 0.2f;
                             if (skiplev > f)
                             {
                                 skiplev = f;
@@ -597,7 +598,7 @@ namespace Cum
                         {
                             if (CheckPoints.pos[0] - CheckPoints.pos[mad.im] > 0)
                             {
-                                saftey *= f;
+                                saftey = (int)(saftey * f);
                             }
                             else
                             {
@@ -764,7 +765,7 @@ namespace Cum
                         }
                         if (attack == 0)
                         {
-                            boolean abool = true;
+                            abool = true;
                             if (CheckPoints.stage == 3 || CheckPoints.stage == 1 || CheckPoints.stage == 4 ||
                                 CheckPoints.stage == 9 || CheckPoints.stage == 13 || CheckPoints.stage == 11 ||
                                 CheckPoints.stage == 14 || CheckPoints.stage == 19 || CheckPoints.stage == 23 ||
@@ -1105,7 +1106,7 @@ namespace Cum
                                         }
                                         if (CheckPoints.stage == 17 && mad.im == 6 && i6 == 0)
                                         {
-                                            f14 *= 1.5;
+                                            f14 = (float)(f14 * 1.5f);
                                         }
                                         if (CheckPoints.stage == 18)
                                             if (mad.cn == 11 || mad.cn == 13 && bulistc)
@@ -1120,7 +1121,7 @@ namespace Cum
                                         {
                                             if (i6 != 0)
                                             {
-                                                f14 *= 0.5;
+                                                f14 = (float)(f14 * 0.5f);
                                             }
                                             if (mad.pcleared != 13 && mad.pcleared != 33 && !bool4)
                                             {
@@ -1162,7 +1163,7 @@ namespace Cum
                                         {
                                             if (CheckPoints.pos[mad.im] == 0)
                                             {
-                                                f14 *= 0.5;
+                                                f14 *= 0.5f;
                                             }
                                             if (CheckPoints.pos[0] < CheckPoints.pos[mad.im])
                                             {
@@ -1185,7 +1186,7 @@ namespace Cum
                                             }
                                             else
                                             {
-                                                f14 *= 0.5;
+                                                f14 *= 0.5f;
                                             }
                                             if (mad.cn == 13 && i6 == 0)
                                             {
@@ -1313,7 +1314,7 @@ namespace Cum
                                     }
                                 }
                         }
-                        boolean abool = false;
+                        abool = false;
                         if (CheckPoints.stage == 6 || CheckPoints.stage == 8)
                         {
                             abool = true;
@@ -1457,7 +1458,6 @@ namespace Cum
                     {
                         stcnt++;
                     }
-                boolean abool;
                 if (usebounce)
                 {
                     abool = mad.wtouch;
@@ -1476,6 +1476,7 @@ namespace Cum
                     {
                         attack = 0;
                     }
+                    int i;
                     if (attack == 0)
                     {
                         if (upcnt < 30)
@@ -1497,7 +1498,7 @@ namespace Cum
                             upcnt = 0;
                             actwait = upwait;
                         }
-                        int i = mad.point;
+                        i = mad.point;
                         int i17 = 50;
                         if (CheckPoints.stage == 9)
                         {
@@ -2303,11 +2304,11 @@ namespace Cum
                     else
                     {
                         up = true;
-                        int i = 0;
-                        final int i42 = (int) (pys(conto.x, CheckPoints.opx[acr], conto.z, CheckPoints.opz[acr]) /
+                        i = 0;
+                        int i42 = (int) (pys(conto.x, CheckPoints.opx[acr], conto.z, CheckPoints.opz[acr]) /
                                                2.0F * aim);
-                        final int i43 = (int) (CheckPoints.opx[acr] - i42 * Medium.sin(CheckPoints.omxz[acr]));
-                        final int i44 = (int) (CheckPoints.opz[acr] + i42 * Medium.cos(CheckPoints.omxz[acr]));
+                        int i43 = (int) (CheckPoints.opx[acr] - i42 * Medium.sin(CheckPoints.omxz[acr]));
+                        int i44 = (int) (CheckPoints.opz[acr] + i42 * Medium.cos(CheckPoints.omxz[acr]));
                         if (i43 - conto.x >= 0)
                         {
                             i = 180;
@@ -2339,7 +2340,7 @@ namespace Cum
                             attack = 0;
                         }
                     }
-                    int i = conto.xz;
+                    i = conto.xz;
                     if (zyinv)
                     {
                         i += 180;
@@ -2487,7 +2488,7 @@ namespace Cum
                 {
                     if (trickfase == 0)
                     {
-                        final int i = (int) ((mad.scy[0] + mad.scy[1] + mad.scy[2] + mad.scy[3]) * (conto.y - 300) /
+                        int i = (int) ((mad.scy[0] + mad.scy[1] + mad.scy[2] + mad.scy[3]) * (conto.y - 300) /
                                              4000.0F);
                         int i46 = 3;
                         if (CheckPoints.stage == 25)
@@ -2983,15 +2984,15 @@ namespace Cum
             }
         }
 
-        private int py(final int i, final int i47, final int i48, final int i49) {
+        private int py(int i, int i47, int i48, int i49) {
             return (i - i47) * (i - i47) + (i48 - i49) * (i48 - i49);
         }
 
-        private int pys(final int i, final int i50, final int i51, final int i52) {
+        private int pys(int i, int i50, int i51, int i52) {
             return (int) Math.sqrt((i - i50) * (i - i50) + (i51 - i52) * (i51 - i52));
         }
 
-        void reset(final int i)
+        void reset(int i)
         {
             pan = 0;
             attack = 0;
