@@ -535,7 +535,7 @@ namespace Cum
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (String string2 : strings)
+            foreach (String string2 in strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -556,7 +556,7 @@ namespace Cum
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (String string2 : strings)
+            foreach (String string2 in strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -598,7 +598,7 @@ namespace Cum
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (String string2 : strings)
+            foreach (String string2 in strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
@@ -619,7 +619,7 @@ namespace Cum
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
-            for (String string2 : strings)
+            foreach (String string2 in strings)
                 if (string419.contains(string2)) {
                     abool = true;
                 }
