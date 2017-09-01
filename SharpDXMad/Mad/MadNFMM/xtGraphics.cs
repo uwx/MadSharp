@@ -275,7 +275,7 @@ class xtGraphics {
             0, 0, 0, 0
     };
     internal static int pback = 0;
-    static readonly String[] pclan = {
+    internal static readonly String[] pclan = {
             "", "", "", "", "", "", "", ""
     };
     internal static int pcontin = 0;
@@ -293,8 +293,8 @@ class xtGraphics {
             193, 213, 226, 237, 244, 239, 228, 214, 196
     };
     internal static int pin = 60;
-    static int playingame = -1;
-    static readonly String[] plnames = {
+    internal static int playingame = -1;
+    internal static readonly String[] plnames = {
             "", "", "", "", "", "", "", ""
     };
     internal static int pnext = 0;
@@ -379,10 +379,10 @@ class xtGraphics {
             -1, -1
     };
     internal static int waitlink = 0;
-    static int warning = 0;
+    internal static int warning = 0;
     internal static boolean wasay = false;
     internal static SoundClip wastd;
-    static boolean winner = true;
+    internal static boolean winner = true;
     
     /**
      * The X-coordinate of the start positions ain a race
@@ -2035,23 +2035,23 @@ class xtGraphics {
         return bool433;
     }
 
-    static void drawcs(int i, String astring, int i212, int i213, int i214, int i215) {
+    internal static void drawcs(int i, String astring, int i212, int i213, int i214, int i215) {
         if (i215 != 3 && i215 != 4 && i215 != 5) {
-            i212 += i212 * (Medium.snap[0] / 100.0F);
+            i212 += (int)(i212 * (Medium.snap[0] / 100.0F));
             if (i212 > 255) {
                 i212 = 255;
             }
             if (i212 < 0) {
                 i212 = 0;
             }
-            i213 += i213 * (Medium.snap[1] / 100.0F);
+            i213 += (int)(i213 * (Medium.snap[1] / 100.0F));
             if (i213 > 255) {
                 i213 = 255;
             }
             if (i213 < 0) {
                 i213 = 0;
             }
-            i214 += i214 * (Medium.snap[2] / 100.0F);
+            i214 += (int)(i214 * (Medium.snap[2] / 100.0F));
             if (i214 > 255) {
                 i214 = 255;
             }
@@ -2060,21 +2060,21 @@ class xtGraphics {
             }
         }
         if (i215 == 4) {
-            i212 -= i212 * (Medium.snap[0] / 100.0F);
+            i212 -= (int)(i212 * (Medium.snap[0] / 100.0F));
             if (i212 > 255) {
                 i212 = 255;
             }
             if (i212 < 0) {
                 i212 = 0;
             }
-            i213 -= i213 * (Medium.snap[1] / 100.0F);
+            i213 -= (int)(i213 * (Medium.snap[1] / 100.0F));
             if (i213 > 255) {
                 i213 = 255;
             }
             if (i213 < 0) {
                 i213 = 0;
             }
-            i214 -= i214 * (Medium.snap[2] / 100.0F);
+            i214 -= (int)(i214 * (Medium.snap[2] / 100.0F));
             if (i214 > 255) {
                 i214 = 255;
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using SharpDX;
 using SharpDX.Direct2D1;
@@ -65,7 +66,10 @@ namespace Cum
 
     public class FontMetrics
     {
-        
+        public int stringWidth(string astring)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Color
@@ -116,11 +120,24 @@ namespace Cum
         {
             throw new NotImplementedException();
         }
+
+        public int getRGB()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class RadicalMusic
     {
-        
+        public void setPaused(bool p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void unload()
+        {
+            throw new NotImplementedException();
+        }
     }
     
     internal class Math
@@ -184,10 +201,17 @@ namespace Cum
         {
             throw new NotImplementedException();
         }
+
+        public static double acos(double p0)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public static class ArrayExt
     {
+        private static readonly System.Random Rng = new System.Random();
+        
         public static T[] CloneArray<T>(this T[] arr)
         {
             var to = new T[arr.Length];
@@ -239,6 +263,19 @@ namespace Cum
         {
             Array.Sort(arr, from, to);
         }
+
+        public static List<T> Shuffle<T>(this List<T> list)
+        {
+            var n = list.Count;  
+            while (n > 1) {  
+                n--;  
+                int k = Rng.Next(n + 1);  
+                T value = list[k];  
+                list[k] = list[n];  
+                list[n] = value;  
+            }
+            return list;
+        }
     }
 
     public static class StringShim
@@ -267,6 +304,11 @@ namespace Cum
         public static char charAt(this string self, int at)
         {
             return self[at];
+        }
+
+        public static bool equalsIgnoreCase(this string self, string other)
+        {
+            return self.Equals(other, StringComparison.OrdinalIgnoreCase);
         }
     }
 
@@ -389,12 +431,25 @@ namespace Cum
 
     internal class SoundClip
     {
+        public static ContO source;
+        public static ContO player;
+
         public void play()
         {
             throw new NotImplementedException();
         }
 
         public void checkopen()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void loop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void stop()
         {
             throw new NotImplementedException();
         }

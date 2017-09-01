@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MadGame;
 using static Cum.xtGraphics;
 using static Cum.xtImages.Images;
@@ -627,756 +628,756 @@ namespace Cum
         return abool;
     }
 
-    static void multistat(Control control, int i, int i53, boolean abool, UDPMistro udpmistro) {
-        int i54 = -1;
-        if (fase != -2) {
-            if (exitm != 0 && !holdit) {
-                if (!lan || im != 0) {
-//                    if (abool)
-//                        if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
-//                            exitm = 2;
-//                            if (multion == 1 && !lan && sendstat == 0) {
-//                                sendstat = 1;
-//                                if (runtyp != -101) {
-//                                    if (runner != null) {
-//                                        runner.interrupt();
+    static void multistat(Control control, int i, int i53, boolean abool) {
+//        int i54 = -1;
+//        if (fase != -2) {
+//            if (exitm != 0 && !holdit) {
+//                if (!lan || im != 0) {
+////                    if (abool)
+////                        if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
+////                            exitm = 2;
+////                            if (multion == 1 && !lan && sendstat == 0) {
+////                                sendstat = 1;
+////                                if (runtyp != -101) {
+////                                    if (runner != null) {
+////                                        runner.interrupt();
+////                                    }
+////                                    runner = null;
+////                                    runner = new Thread(xt);
+////                                    runner.start();
+////                                }
+////                            }
+////                        } else {
+////                            exitm = 0;
+////                        }
+//                    float[] fs = new float[3];
+//                    Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
+//                    fs[1] -= 0.15;
+//                    if (fs[1] < 0.0F) {
+//                        fs[1] = 0.0F;
+//                    }
+//                    fs[2] += 0.15;
+//                    if (fs[2] > 1.0F) {
+//                        fs[2] = 1.0F;
+//                    }
+//                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                    G.fillRect(357, 169, 39, 10);
+//                    G.fillRect(403, 169, 39, 10);
+//                    fs[1] -= 0.07;
+//                    if (fs[1] < 0.0F) {
+//                        fs[1] = 0.0F;
+//                    }
+//                    fs[2] += 0.07;
+//                    if (fs[2] > 1.0F) {
+//                        fs[2] = 1.0F;
+//                    }
+//                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                    G.fillRect(357, 162, 39, 7);
+//                    G.fillRect(403, 162, 39, 7);
+//                    drawhi(exitgame, 116);
+//                    if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
+//                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                        G.fillRect(357, 162, 39, 17);
+//                    }
+//                    if (i > 403 && i < 442 && i53 > 162 && i53 < 179) {
+//                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                        G.fillRect(403, 162, 39, 17);
+//                    }
+//                    G.setColor(new Color(0, 0, 0));
+//                    G.drawString("Yes", 366, 175);
+//                    G.drawString("No", 416, 175);
+//                    G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+//                    G.drawRect(403, 162, 39, 17);
+//                    G.drawRect(357, 162, 39, 17);
+//                } else {
+//                    G.setFont(new Font("Arial", 1, 13));
+//                    ftm = G.getFontMetrics();
+//                    drawcs(125, "You cannot exit game.  Your computer ais the LAN server!", 0, 0, 0, 0);
+//                    msgflk[0]++;
+//                    if (msgflk[0] == 67 || abool) {
+//                        msgflk[0] = 0;
+//                        exitm = 0;
+//                    }
+//                    G.setFont(new Font("Arial", 1, 11));
+//                    ftm = G.getFontMetrics();
+//                }
+//            } else if (exitm == 4) {
+//                if (abool) {
+//                    if (i > 357 && i < 396 && i53 > 362 && i53 < 379) {
+//                        alocked = -1;
+//                        lalocked = -1;
+//                        multion = 2;
+//                        control.multion = multion;
+//                        holdit = false;
+//                        exitm = 0;
+//                        control.chatup = 0;
+//                    }
+//                    if ((!lan || im != 0) && i > 403 && i < 442 && i53 > 362 && i53 < 379) {
+//                        holdcnt = 600;
+//                        exitm = 0;
+//                        control.chatup = 0;
+//                    }
+//                }
+//                float[] fs = new float[3];
+//                Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
+//                fs[1] -= 0.15;
+//                if (fs[1] < 0.0F) {
+//                    fs[1] = 0.0F;
+//                }
+//                fs[2] += 0.15;
+//                if (fs[2] > 1.0F) {
+//                    fs[2] = 1.0F;
+//                }
+//                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                G.fillRect(357, 369, 39, 10);
+//                if (!lan || im != 0) {
+//                    G.fillRect(403, 369, 39, 10);
+//                }
+//                fs[1] -= 0.07;
+//                if (fs[1] < 0.0F) {
+//                    fs[1] = 0.0F;
+//                }
+//                fs[2] += 0.07;
+//                if (fs[2] > 1.0F) {
+//                    fs[2] = 1.0F;
+//                }
+//                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                G.fillRect(357, 362, 39, 7);
+//                if (!lan || im != 0) {
+//                    G.fillRect(403, 362, 39, 7);
+//                }
+//                G.setColor(new Color(0, 0, 0));
+//                G.setFont(new Font("Arial", 1, 13));
+//                ftm = G.getFontMetrics();
+//                if (lan && im == 0) {
+//                    drawcs(140, "(You cannot exit game.  Your computer ais the LAN server... )", 0, 0, 0, 0);
+//                }
+//                G.drawString("Continue watching this game?", 155, 375);
+//                if (i > 357 && i < 396 && i53 > 362 && i53 < 379) {
+//                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                    G.fillRect(357, 362, 39, 17);
+//                }
+//                if ((!lan || im != 0) && i > 403 && i < 442 && i53 > 362 && i53 < 379) {
+//                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                    G.fillRect(403, 362, 39, 17);
+//                }
+//                G.setFont(new Font("Arial", 1, 11));
+//                ftm = G.getFontMetrics();
+//                G.setColor(new Color(0, 0, 0));
+//                G.drawString("Yes", 366, 375);
+//                if (!lan || im != 0) {
+//                    G.drawString("No", 416, 375);
+//                }
+//                G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+//                if (!lan || im != 0) {
+//                    G.drawRoundRect(147, 357, 301, 27, 7, 20);
+//                } else {
+//                    G.drawRoundRect(147, 357, 262, 27, 7, 20);
+//                }
+//                G.drawRect(357, 362, 39, 17);
+//                if (!lan || im != 0) {
+//                    G.drawRect(403, 362, 39, 17);
+//                }
+//            }
+//            if (runtyp == -101 && !lan) {
+//                if (warning == 0 || warning == 210) {
+//                    int i55 = 0;
+//                    int i56 = 0;
+//                    if (clanchat) {
+//                        i55 = 1;
+//                        i56 = -23;
+//                    } else if (control.chatup == 2) {
+//                        control.chatup = 1;
+//                    }
+//                    for (int i57 = i55; i57 >= 0; i57--) {
+//                        boolean bool58 = false;
+//                        if (i > 5 && i < 33 && i53 > 423 + i56 && i53 < 446 + i56) {
+//                            bool58 = true;
+//                            if (control.chatup != 0) {
+//                                control.chatup = 0;
+//                            }
+//                        } else if (pointc[i57] != 6) {
+//                            pointc[i57] = 6;
+//                            floater[i57] = 1;
+//                        }
+//                        if (i > 33 && i < 666 && i53 > 423 + i56 && i53 < 446 + i56 && lxm != i && i53 != lym && lxm != -100) {
+//                            control.chatup = i57 + 1;
+//                            cntchatp[i57] = 0;
+//                        }
+//                        if (i57 == 0) {
+//                            lxm = i;
+//                            lym = i53;
+//                        }
+//                        if (exitm != 0 && exitm != 4) {
+//                            control.chatup = 0;
+//                        }
+//                        boolean bool59 = false;
+//                        if (control.enter && control.chatup == i57 + 1) {
+//                            bool59 = true;
+//                            control.chatup = 0;
+//                            control.enter = false;
+//                            lxm = -100;
+//                        }
+//                        if (abool) {
+//                            if (mouson == 0) {
+//                                if (i > 676 && i < 785 && i53 > 426 + i56 && i53 < 443 + i56 && control.chatup == i57 + 1) {
+//                                    bool59 = true;
+//                                    control.chatup = 0;
+//                                }
+//                                if (bool58 && pointc[i57] > 0) {
+//                                    pointc[i57]--;
+//                                    floater[i57] = 1;
+//                                }
+//                                if (i57 == 0) {
+//                                    mouson = 1;
+//                                }
+//                            }
+//                            if (i57 == 0) {
+//                                control.chatup = 0;
+//                            }
+//                        } else if (i57 == 0 && mouson != 0) {
+//                            mouson = 0;
+//                        }
+//                        if (bool59) {
+//                            String astring = "";
+//                            int i60 = 0;
+//                            int i61 = 1;
+//                            for (; i60 < lcmsg[i57].length(); i60++) {
+//                                String string62 = "" + lcmsg[i57].charAt(i60);
+//                                if (string62.equals(" ")) {
+//                                    i61++;
+//                                } else {
+//                                    i61 = 0;
+//                                }
+//                                if (i61 < 2) {
+//                                    astring = "" + astring + string62;
+//                                }
+//                            }
+//                            if (!astring.equals("")) {
+//                                astring = astring.replace('|', ':');
+//                                if (astring.ToLower().contains(GameSparker.tpass.getText().ToLower())) {
+//                                    astring = " ";
+//                                }
+//                                if (!msgcheck(astring) && updatec[i57] > -12) {
+//                                    if (cnames[i57][6].equals("Game Chat  ") || cnames[i57][6].equals("" + clan + "'s Chat  ")) {
+//                                        cnames[i57][6] = "";
 //                                    }
-//                                    runner = null;
-//                                    runner = new Thread(xt);
-//                                    runner.start();
+//                                    for (int i63 = 0; i63 < 6; i63++) {
+//                                        sentn[i57][i63] = sentn[i57][i63 + 1];
+//                                        cnames[i57][i63] = cnames[i57][i63 + 1];
+//                                    }
+//                                    sentn[i57][6] = astring;
+//                                    cnames[i57][6] = nickname;
+//                                    if (pointc[i57] != 6) {
+//                                        pointc[i57] = 6;
+//                                        floater[i57] = 1;
+//                                    }
+//                                    msgflk[i57] = 110;
+//                                    if (updatec[i57] > -11) {
+//                                        updatec[i57] = -11;
+//                                    } else {
+//                                        updatec[i57]--;
+//                                    }
+//                                } else {
+//                                    warning++;
+//                                }
+//                            }
+//                        }
+//                        if (bool58 || floater[i57] != 0 || control.chatup == i57 + 1 || msgflk[i57] != 0) {
+//                            float[] fs = new float[3];
+//                            Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
+//                            fs[1] -= 0.15;
+//                            if (fs[1] < 0.0F) {
+//                                fs[1] = 0.0F;
+//                            }
+//                            fs[2] += 0.15;
+//                            if (fs[2] > 1.0F) {
+//                                fs[2] = 1.0F;
+//                            }
+//                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                            G.fillRect(33, 423 + i56, 761, 23);
+//                        }
+//                        if (control.chatup == 0 && GameSparker.cmsg.isShowing()) {
+//                            GameSparker.cmsg.setVisible(false);
+//                            app.requestFocus();
+//                        }
+//                        if (control.chatup != i57 + 1) {
+//                            int i64 = 0;
+//                            int i65 = (int) (48.0F + 48.0F * (Medium.snap[1] / 100.0F));
+//                            if (i65 > 255) {
+//                                i65 = 255;
+//                            }
+//                            if (i65 < 0) {
+//                                i65 = 0;
+//                            }
+//                            int i66 = (int) (96.0F + 96.0F * (Medium.snap[2] / 100.0F));
+//                            if (i66 > 255) {
+//                                i66 = 255;
+//                            }
+//                            if (i66 < 0) {
+//                                i66 = 0;
+//                            }
+//                            if (floater[i57] != 0) {
+//                                for (int i67 = 6; i67 >= 0; i67--) {
+//                                    if (pointc[i57] == i67)
+//                                        if (Math.abs(i64 + movepos[i57]) > 10) {
+//                                            floater[i57] = (movepos[i57] + i64) / 4;
+//                                            if (floater[i57] > -5 && floater[i57] < 0) {
+//                                                floater[i57] = -5;
+//                                            }
+//                                            if (floater[i57] < 10 && floater[i57] > 0) {
+//                                                floater[i57] = 10;
+//                                            }
+//                                            movepos[i57] -= floater[i57];
+//                                        } else {
+//                                            movepos[i57] = -i64;
+//                                            floater[i57] = 0;
+//                                        }
+//                                    if (pointc[i57] >= i67) {
+//                                        G.setColor(new Color(0, i65, i66));
+//                                        G.setFont(new Font("Tahoma", 1, 11));
+//                                        ftm = G.getFontMetrics();
+//                                        G.drawString("" + cnames[i57][i67] + ": ", 39 + i64 + movepos[i57], 439 + i56);
+//                                        i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
+//                                        G.setColor(new Color(0, 0, 0));
+//                                        G.setFont(new Font("Tahoma", 0, 11));
+//                                        ftm = G.getFontMetrics();
+//                                        G.drawString("" + sentn[i57][i67] + "   ", 39 + i64 + movepos[i57], 439 + i56);
+//                                        i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
+//                                    } else {
+//                                        i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
+//                                        i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
+//                                    }
+//                                }
+//                                G.setColor(new Color(0, 0, 0));
+//                                G.fillRect(0, 423 + i56, 5, 24);
+//                                G.fillRect(794, 423 + i56, 6, 24);
+//                            } else {
+//                                for (int i68 = pointc[i57]; i68 >= 0; i68--) {
+//                                    if (i68 == 6 && msgflk[i57] != 0) {
+//                                        msgflk[i57]--;
+//                                    }
+//                                    G.setColor(new Color(0, i65, i66));
+//                                    G.setFont(new Font("Tahoma", 1, 11));
+//                                    ftm = G.getFontMetrics();
+//                                    if (ftm.stringWidth("" + cnames[i57][i68] + ": ") + 39 + i64 < 775) {
+//                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
+//                                            G.drawString("" + cnames[i57][i68] + ": ", 39 + i64, 439 + i56);
+//                                        }
+//                                        i64 += ftm.stringWidth("" + cnames[i57][i68] + ": ");
+//                                    } else {
+//                                        String astring = "";
+//                                        for (int i69 = 0; ftm.stringWidth(astring) + 39 + i64 < 775 && i69 < cnames[i57][i68].length(); i69++) {
+//                                            astring = "" + astring + cnames[i57][i68].charAt(i69);
+//                                        }
+//                                        astring = "" + astring + "...";
+//                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
+//                                            G.drawString(astring, 39 + i64, 439 + i56);
+//                                        }
+//                                        break;
+//                                    }
+//                                    G.setColor(new Color(0, 0, 0));
+//                                    G.setFont(new Font("Tahoma", 0, 11));
+//                                    ftm = G.getFontMetrics();
+//                                    if (ftm.stringWidth(sentn[i57][i68]) + 39 + i64 < 775) {
+//                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
+//                                            G.drawString("" + sentn[i57][i68] + "   ", 39 + i64, 439 + i56);
+//                                        }
+//                                        i64 += ftm.stringWidth("" + sentn[i57][i68] + "   ");
+//                                    } else {
+//                                        String astring = "";
+//                                        for (int i70 = 0; ftm.stringWidth(astring) + 39 + i64 < 775 && i70 < sentn[i57][i68].length(); i70++) {
+//                                            astring = "" + astring + sentn[i57][i68].charAt(i70);
+//                                        }
+//                                        astring = "" + astring + "...";
+//                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
+//                                            G.drawString(astring, 39 + i64, 439 + i56);
+//                                        }
+//                                        break;
+//                                    }
 //                                }
 //                            }
 //                        } else {
-//                            exitm = 0;
+//                            msgflk[i57] = 0;
+//                            i54 = i57;
 //                        }
-                    float[] fs = new float[3];
-                    Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
-                    fs[1] -= 0.15;
-                    if (fs[1] < 0.0F) {
-                        fs[1] = 0.0F;
-                    }
-                    fs[2] += 0.15;
-                    if (fs[2] > 1.0F) {
-                        fs[2] = 1.0F;
-                    }
-                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                    G.fillRect(357, 169, 39, 10);
-                    G.fillRect(403, 169, 39, 10);
-                    fs[1] -= 0.07;
-                    if (fs[1] < 0.0F) {
-                        fs[1] = 0.0F;
-                    }
-                    fs[2] += 0.07;
-                    if (fs[2] > 1.0F) {
-                        fs[2] = 1.0F;
-                    }
-                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                    G.fillRect(357, 162, 39, 7);
-                    G.fillRect(403, 162, 39, 7);
-                    drawhi(exitgame, 116);
-                    if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
-                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                        G.fillRect(357, 162, 39, 17);
-                    }
-                    if (i > 403 && i < 442 && i53 > 162 && i53 < 179) {
-                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                        G.fillRect(403, 162, 39, 17);
-                    }
-                    G.setColor(new Color(0, 0, 0));
-                    G.drawString("Yes", 366, 175);
-                    G.drawString("No", 416, 175);
-                    G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
-                    G.drawRect(403, 162, 39, 17);
-                    G.drawRect(357, 162, 39, 17);
-                } else {
-                    G.setFont(new Font("Arial", 1, 13));
-                    ftm = G.getFontMetrics();
-                    drawcs(125, "You cannot exit game.  Your computer ais the LAN server!", 0, 0, 0, 0);
-                    msgflk[0]++;
-                    if (msgflk[0] == 67 || abool) {
-                        msgflk[0] = 0;
-                        exitm = 0;
-                    }
-                    G.setFont(new Font("Arial", 1, 11));
-                    ftm = G.getFontMetrics();
-                }
-            } else if (exitm == 4) {
-                if (abool) {
-                    if (i > 357 && i < 396 && i53 > 362 && i53 < 379) {
-                        alocked = -1;
-                        lalocked = -1;
-                        multion = 2;
-                        control.multion = multion;
-                        holdit = false;
-                        exitm = 0;
-                        control.chatup = 0;
-                    }
-                    if ((!lan || im != 0) && i > 403 && i < 442 && i53 > 362 && i53 < 379) {
-                        holdcnt = 600;
-                        exitm = 0;
-                        control.chatup = 0;
-                    }
-                }
-                float[] fs = new float[3];
-                Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
-                fs[1] -= 0.15;
-                if (fs[1] < 0.0F) {
-                    fs[1] = 0.0F;
-                }
-                fs[2] += 0.15;
-                if (fs[2] > 1.0F) {
-                    fs[2] = 1.0F;
-                }
-                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                G.fillRect(357, 369, 39, 10);
-                if (!lan || im != 0) {
-                    G.fillRect(403, 369, 39, 10);
-                }
-                fs[1] -= 0.07;
-                if (fs[1] < 0.0F) {
-                    fs[1] = 0.0F;
-                }
-                fs[2] += 0.07;
-                if (fs[2] > 1.0F) {
-                    fs[2] = 1.0F;
-                }
-                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                G.fillRect(357, 362, 39, 7);
-                if (!lan || im != 0) {
-                    G.fillRect(403, 362, 39, 7);
-                }
-                G.setColor(new Color(0, 0, 0));
-                G.setFont(new Font("Arial", 1, 13));
-                ftm = G.getFontMetrics();
-                if (lan && im == 0) {
-                    drawcs(140, "(You cannot exit game.  Your computer ais the LAN server... )", 0, 0, 0, 0);
-                }
-                G.drawString("Continue watching this game?", 155, 375);
-                if (i > 357 && i < 396 && i53 > 362 && i53 < 379) {
-                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                    G.fillRect(357, 362, 39, 17);
-                }
-                if ((!lan || im != 0) && i > 403 && i < 442 && i53 > 362 && i53 < 379) {
-                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-                    G.fillRect(403, 362, 39, 17);
-                }
-                G.setFont(new Font("Arial", 1, 11));
-                ftm = G.getFontMetrics();
-                G.setColor(new Color(0, 0, 0));
-                G.drawString("Yes", 366, 375);
-                if (!lan || im != 0) {
-                    G.drawString("No", 416, 375);
-                }
-                G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
-                if (!lan || im != 0) {
-                    G.drawRoundRect(147, 357, 301, 27, 7, 20);
-                } else {
-                    G.drawRoundRect(147, 357, 262, 27, 7, 20);
-                }
-                G.drawRect(357, 362, 39, 17);
-                if (!lan || im != 0) {
-                    G.drawRect(403, 362, 39, 17);
-                }
-            }
-            if (runtyp == -101 && !lan) {
-                if (warning == 0 || warning == 210) {
-                    int i55 = 0;
-                    int i56 = 0;
-                    if (clanchat) {
-                        i55 = 1;
-                        i56 = -23;
-                    } else if (control.chatup == 2) {
-                        control.chatup = 1;
-                    }
-                    for (int i57 = i55; i57 >= 0; i57--) {
-                        boolean bool58 = false;
-                        if (i > 5 && i < 33 && i53 > 423 + i56 && i53 < 446 + i56) {
-                            bool58 = true;
-                            if (control.chatup != 0) {
-                                control.chatup = 0;
-                            }
-                        } else if (pointc[i57] != 6) {
-                            pointc[i57] = 6;
-                            floater[i57] = 1;
-                        }
-                        if (i > 33 && i < 666 && i53 > 423 + i56 && i53 < 446 + i56 && lxm != i && i53 != lym && lxm != -100) {
-                            control.chatup = i57 + 1;
-                            cntchatp[i57] = 0;
-                        }
-                        if (i57 == 0) {
-                            lxm = i;
-                            lym = i53;
-                        }
-                        if (exitm != 0 && exitm != 4) {
-                            control.chatup = 0;
-                        }
-                        boolean bool59 = false;
-                        if (control.enter && control.chatup == i57 + 1) {
-                            bool59 = true;
-                            control.chatup = 0;
-                            control.enter = false;
-                            lxm = -100;
-                        }
-                        if (abool) {
-                            if (mouson == 0) {
-                                if (i > 676 && i < 785 && i53 > 426 + i56 && i53 < 443 + i56 && control.chatup == i57 + 1) {
-                                    bool59 = true;
-                                    control.chatup = 0;
-                                }
-                                if (bool58 && pointc[i57] > 0) {
-                                    pointc[i57]--;
-                                    floater[i57] = 1;
-                                }
-                                if (i57 == 0) {
-                                    mouson = 1;
-                                }
-                            }
-                            if (i57 == 0) {
-                                control.chatup = 0;
-                            }
-                        } else if (i57 == 0 && mouson != 0) {
-                            mouson = 0;
-                        }
-                        if (bool59) {
-                            String astring = "";
-                            int i60 = 0;
-                            int i61 = 1;
-                            for (; i60 < lcmsg[i57].length(); i60++) {
-                                String string62 = "" + lcmsg[i57].charAt(i60);
-                                if (string62.equals(" ")) {
-                                    i61++;
-                                } else {
-                                    i61 = 0;
-                                }
-                                if (i61 < 2) {
-                                    astring = "" + astring + string62;
-                                }
-                            }
-                            if (!astring.equals("")) {
-                                astring = astring.replace('|', ':');
-                                if (astring.ToLower().contains(GameSparker.tpass.getText().ToLower())) {
-                                    astring = " ";
-                                }
-                                if (!msgcheck(astring) && updatec[i57] > -12) {
-                                    if (cnames[i57][6].equals("Game Chat  ") || cnames[i57][6].equals("" + clan + "'s Chat  ")) {
-                                        cnames[i57][6] = "";
-                                    }
-                                    for (int i63 = 0; i63 < 6; i63++) {
-                                        sentn[i57][i63] = sentn[i57][i63 + 1];
-                                        cnames[i57][i63] = cnames[i57][i63 + 1];
-                                    }
-                                    sentn[i57][6] = astring;
-                                    cnames[i57][6] = nickname;
-                                    if (pointc[i57] != 6) {
-                                        pointc[i57] = 6;
-                                        floater[i57] = 1;
-                                    }
-                                    msgflk[i57] = 110;
-                                    if (updatec[i57] > -11) {
-                                        updatec[i57] = -11;
-                                    } else {
-                                        updatec[i57]--;
-                                    }
-                                } else {
-                                    warning++;
-                                }
-                            }
-                        }
-                        if (bool58 || floater[i57] != 0 || control.chatup == i57 + 1 || msgflk[i57] != 0) {
-                            float[] fs = new float[3];
-                            Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
-                            fs[1] -= 0.15;
-                            if (fs[1] < 0.0F) {
-                                fs[1] = 0.0F;
-                            }
-                            fs[2] += 0.15;
-                            if (fs[2] > 1.0F) {
-                                fs[2] = 1.0F;
-                            }
-                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                            G.fillRect(33, 423 + i56, 761, 23);
-                        }
-                        if (control.chatup == 0 && GameSparker.cmsg.isShowing()) {
-                            GameSparker.cmsg.setVisible(false);
-                            app.requestFocus();
-                        }
-                        if (control.chatup != i57 + 1) {
-                            int i64 = 0;
-                            int i65 = (int) (48.0F + 48.0F * (Medium.snap[1] / 100.0F));
-                            if (i65 > 255) {
-                                i65 = 255;
-                            }
-                            if (i65 < 0) {
-                                i65 = 0;
-                            }
-                            int i66 = (int) (96.0F + 96.0F * (Medium.snap[2] / 100.0F));
-                            if (i66 > 255) {
-                                i66 = 255;
-                            }
-                            if (i66 < 0) {
-                                i66 = 0;
-                            }
-                            if (floater[i57] != 0) {
-                                for (int i67 = 6; i67 >= 0; i67--) {
-                                    if (pointc[i57] == i67)
-                                        if (Math.abs(i64 + movepos[i57]) > 10) {
-                                            floater[i57] = (movepos[i57] + i64) / 4;
-                                            if (floater[i57] > -5 && floater[i57] < 0) {
-                                                floater[i57] = -5;
-                                            }
-                                            if (floater[i57] < 10 && floater[i57] > 0) {
-                                                floater[i57] = 10;
-                                            }
-                                            movepos[i57] -= floater[i57];
-                                        } else {
-                                            movepos[i57] = -i64;
-                                            floater[i57] = 0;
-                                        }
-                                    if (pointc[i57] >= i67) {
-                                        G.setColor(new Color(0, i65, i66));
-                                        G.setFont(new Font("Tahoma", 1, 11));
-                                        ftm = G.getFontMetrics();
-                                        G.drawString("" + cnames[i57][i67] + ": ", 39 + i64 + movepos[i57], 439 + i56);
-                                        i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
-                                        G.setColor(new Color(0, 0, 0));
-                                        G.setFont(new Font("Tahoma", 0, 11));
-                                        ftm = G.getFontMetrics();
-                                        G.drawString("" + sentn[i57][i67] + "   ", 39 + i64 + movepos[i57], 439 + i56);
-                                        i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
-                                    } else {
-                                        i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
-                                        i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
-                                    }
-                                }
-                                G.setColor(new Color(0, 0, 0));
-                                G.fillRect(0, 423 + i56, 5, 24);
-                                G.fillRect(794, 423 + i56, 6, 24);
-                            } else {
-                                for (int i68 = pointc[i57]; i68 >= 0; i68--) {
-                                    if (i68 == 6 && msgflk[i57] != 0) {
-                                        msgflk[i57]--;
-                                    }
-                                    G.setColor(new Color(0, i65, i66));
-                                    G.setFont(new Font("Tahoma", 1, 11));
-                                    ftm = G.getFontMetrics();
-                                    if (ftm.stringWidth("" + cnames[i57][i68] + ": ") + 39 + i64 < 775) {
-                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            G.drawString("" + cnames[i57][i68] + ": ", 39 + i64, 439 + i56);
-                                        }
-                                        i64 += ftm.stringWidth("" + cnames[i57][i68] + ": ");
-                                    } else {
-                                        String astring = "";
-                                        for (int i69 = 0; ftm.stringWidth(astring) + 39 + i64 < 775 && i69 < cnames[i57][i68].length(); i69++) {
-                                            astring = "" + astring + cnames[i57][i68].charAt(i69);
-                                        }
-                                        astring = "" + astring + "...";
-                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            G.drawString(astring, 39 + i64, 439 + i56);
-                                        }
-                                        break;
-                                    }
-                                    G.setColor(new Color(0, 0, 0));
-                                    G.setFont(new Font("Tahoma", 0, 11));
-                                    ftm = G.getFontMetrics();
-                                    if (ftm.stringWidth(sentn[i57][i68]) + 39 + i64 < 775) {
-                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            G.drawString("" + sentn[i57][i68] + "   ", 39 + i64, 439 + i56);
-                                        }
-                                        i64 += ftm.stringWidth("" + sentn[i57][i68] + "   ");
-                                    } else {
-                                        String astring = "";
-                                        for (int i70 = 0; ftm.stringWidth(astring) + 39 + i64 < 775 && i70 < sentn[i57][i68].length(); i70++) {
-                                            astring = "" + astring + sentn[i57][i68].charAt(i70);
-                                        }
-                                        astring = "" + astring + "...";
-                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-                                            G.drawString(astring, 39 + i64, 439 + i56);
-                                        }
-                                        break;
-                                    }
-                                }
-                            }
-                        } else {
-                            msgflk[i57] = 0;
-                            i54 = i57;
-                        }
-                        if (bool58 || floater[i57] != 0) {
-                            float[] fs = new float[3];
-                            Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
-                            fs[1] -= 0.076;
-                            if (fs[1] < 0.0F) {
-                                fs[1] = 0.0F;
-                            }
-                            fs[2] += 0.076;
-                            if (fs[2] > 1.0F) {
-                                fs[2] = 1.0F;
-                            }
-                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-                            G.fillRect(5, 423 + i56, 28, 23);
-                        }
-                        if (bool58) {
-                            G.setColor(new Color(0, 0, 0));
-                        } else {
-                            G.setColor(new Color((int) (Medium.cgrnd[0] / 2.0F), (int) (Medium.cgrnd[1] / 2.0F), (int) (Medium.cgrnd[2] / 2.0F)));
-                        }
-                        G.setFont(new Font("Tahoma", 1, 11));
-                        G.drawString("<<", 10, 439 + i56);
-                        G.setColor(new Color(0, 0, 0));
-                        G.drawRect(5, 423 + i56, 789, 23);
-                        G.drawLine(33, 423 + i56, 33, 446 + i56);
-                        i56 += 23;
-                    }
-                    if (i > 775 && i < 794 && i53 > 409 - i55 * 23 && i53 < 423 - i55 * 23) {
-                        G.drawRect(775, 409 - i55 * 23, 19, 14);
-                        G.setColor(new Color(200, 0, 0));
-                        if (abool) {
-                            control.chatup = 0;
-                            if (GameSparker.cmsg.isShowing()) {
-                                GameSparker.cmsg.setVisible(false);
-                                app.requestFocus();
-                            }
-                            runtyp = 0;
-                            try {
-                                socket.close();
-                                socket = null;
-                                din.close();
-                                din = null;
-                                dout.close();
-                                dout = null;
-                            } catch (Exception ignored) {
-
-                            }
-                        }
-                    }
-                    G.setFont(new Font("Arial", 1, 12));
-                    G.drawString("x", 782, 420 - i55 * 23);
-                } else {
-                    drawWarning();
-                    if (GameSparker.cmsg.isShowing()) {
-                        GameSparker.cmsg.setVisible(false);
-                        app.requestFocus();
-                    }
-                    warning++;
-                }
-                G.setFont(new Font("Arial", 1, 11));
-                ftm = G.getFontMetrics();
-            } else if (control.chatup != 0) {
-                control.chatup = 0;
-                if (!lan) {
-                    runtyp = -101;
-                    if (runner != null) {
-                        runner.interrupt();
-                    }
-                    runner = null;
-                    runner = new Thread(xt);
-                    runner.start();
-                }
-            }
-            if (holdit && multion == 1 && !lan && sendstat == 0) {
-                sendstat = 1;
-                if (runtyp != -101) {
-                    if (runner != null) {
-                        runner.interrupt();
-                    }
-                    runner = null;
-                    runner = new Thread(xt);
-                    runner.start();
-                }
-            }
-            if (control.arrace && starcnt < 38 && !holdit && CheckPoints.stage != 10 || multion >= 2) {
-                if (alocked != -1 && CheckPoints.dested[alocked] != 0) {
-                    alocked = -1;
-                    lalocked = -1;
-                }
-                if (multion >= 2) {
-                    if (alocked == -1 || holdit) {
-                        if (cntflock == 100) {
-                            for (int i71 = 0; i71 < nplayers; i71++)
-                                if (holdit) {
-                                    if (CheckPoints.pos[i71] == 0) {
-                                        alocked = i71;
-                                        im = i71;
-                                    }
-                                } else if (CheckPoints.dested[i71] == 0) {
-                                    alocked = i71;
-                                    im = i71;
-                                }
-                        }
-                        cntflock++;
-                    } else {
-                        cntflock = 0;
-                    }
-                    if (lan) {
-                        boolean bool72 = true;
-                        for (int i73 = 0; i73 < nplayers; i73++)
-                            if (dested[i73] == 0 && !plnames[i73].contains("MadBot")) {
-                                bool72 = false;
-                            }
-                        if (bool72) {
-                            exitm = 2;
-                        }
-                    }
-                }
-                int i74 = nplayers;
-                for (int i75 = 0; i75 < i74; i75++) {
-                    boolean bool76 = false;
-                    for (int i77 = 0; i77 < nplayers; i77++)
-                        if (CheckPoints.pos[i77] == i75 && CheckPoints.dested[i77] == 0 && !bool76) {
-                            int i81 = (int) (100.0F + 100.0F * (Medium.snap[2] / 100.0F));
-                            if (i81 > 255) {
-                                i81 = 255;
-                            }
-                            if (i81 < 0) {
-                                i81 = 0;
-                            }
-                            G.setColor(new Color(0, 0, i81));
-                            if (i75 == 0) {
-                                G.drawString("1st", 673, 76 + 30 * i75);
-                            }
-                            if (i75 == 1) {
-                                G.drawString("2nd", 671, 76 + 30 * i75);
-                            }
-                            if (i75 == 2) {
-                                G.drawString("3rd", 671, 76 + 30 * i75);
-                            }
-                            if (i75 >= 3) {
-                                G.drawString("" + (i75 + 1) + "th", 671, 76 + 30 * i75);
-                            }
-                            if (clangame != 0) {
-                                int i82;
-                                int i83;
-                                if (pclan[i77].equalsIgnoreCase(gaclan)) {
-                                    i82 = 255;
-                                    i83 = 128;
-                                    i81 = 0;
-                                } else {
-                                    i82 = 0;
-                                    i83 = 128;
-                                    i81 = 255;
-                                }
-                                i82 += i82 * (Medium.snap[0] / 100.0F);
-                                if (i82 > 255) {
-                                    i82 = 255;
-                                }
-                                if (i82 < 0) {
-                                    i82 = 0;
-                                }
-                                i83 += i83 * (Medium.snap[1] / 100.0F);
-                                if (i83 > 255) {
-                                    i83 = 255;
-                                }
-                                if (i83 < 0) {
-                                    i83 = 0;
-                                }
-                                i81 += i81 * (Medium.snap[2] / 100.0F);
-                                if (i81 > 255) {
-                                    i81 = 255;
-                                }
-                                if (i81 < 0) {
-                                    i81 = 0;
-                                }
-                                G.setColor(new Color(i82, i83, i81));
-                                G.drawString(plnames[i77], 731 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
-                            }
-                            G.setColor(new Color(0, 0, 0));
-                            G.drawString(plnames[i77], 730 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
-                            int i84 = (int) (60.0F * CheckPoints.magperc[i77]);
-                            int i85 = 244;
-                            int i86 = 244;
-                            i81 = 11;
-                            if (i84 > 20) {
-                                i86 = (int) (244.0F - 233.0F * ((i84 - 20) / 40.0F));
-                            }
-                            i85 += i85 * (Medium.snap[0] / 100.0F);
-                            if (i85 > 255) {
-                                i85 = 255;
-                            }
-                            if (i85 < 0) {
-                                i85 = 0;
-                            }
-                            i86 += i86 * (Medium.snap[1] / 100.0F);
-                            if (i86 > 255) {
-                                i86 = 255;
-                            }
-                            if (i86 < 0) {
-                                i86 = 0;
-                            }
-                            i81 += i81 * (Medium.snap[2] / 100.0F);
-                            if (i81 > 255) {
-                                i81 = 255;
-                            }
-                            if (i81 < 0) {
-                                i81 = 0;
-                            }
-                            G.setColor(new Color(i85, i86, i81));
-                            G.fillRect(700, 74 + 30 * i75, i84, 5);
-                            G.setColor(new Color(0, 0, 0));
-                            G.drawRect(700, 74 + 30 * i75, 60, 5);
-                            boolean bool87 = false;
-                            if ((im != i77 || multion >= 2) && i > 661 && i < 775 && i53 > 58 + 30 * i75 && i53 < 83 + 30 * i75) {
-                                bool87 = true;
-                                if (abool) {
-                                    if (!onlock)
-                                        if (alocked != i77 || multion >= 2) {
-                                            alocked = i77;
-                                            if (multion >= 2) {
-                                                im = i77;
-                                            }
-                                        } else {
-                                            alocked = -1;
-                                        }
-                                    onlock = true;
-                                } else if (onlock) {
-                                    onlock = false;
-                                }
-                            }
-                            if (alocked == i77) {
-                                i85 = (int) (159.0F + 159.0F * (Medium.snap[0] / 100.0F));
-                                if (i85 > 255) {
-                                    i85 = 255;
-                                }
-                                if (i85 < 0) {
-                                    i85 = 0;
-                                }
-                                i86 = (int) (207.0F + 207.0F * (Medium.snap[1] / 100.0F));
-                                if (i86 > 255) {
-                                    i86 = 255;
-                                }
-                                if (i86 < 0) {
-                                    i86 = 0;
-                                }
-                                i81 = (int) (255.0F + 255.0F * (Medium.snap[2] / 100.0F));
-                                if (i81 > 255) {
-                                    i81 = 255;
-                                }
-                                if (i81 < 0) {
-                                    i81 = 0;
-                                }
-                                G.setColor(new Color(i85, i86, i81));
-                                G.drawRect(661, 58 + 30 * i75, 114, 25);
-                                G.drawRect(662, 59 + 30 * i75, 112, 23);
-                            }
-                            if (bool87 && !onlock) {
-                                if (alocked == i77) {
-                                    i85 = (int) (120.0F + 120.0F * (Medium.snap[0] / 100.0F));
-                                    if (i85 > 255) {
-                                        i85 = 255;
-                                    }
-                                    if (i85 < 0) {
-                                        i85 = 0;
-                                    }
-                                    i86 = (int) (114.0F + 114.0F * (Medium.snap[1] / 100.0F));
-                                    if (i86 > 255) {
-                                        i86 = 255;
-                                    }
-                                    if (i86 < 0) {
-                                        i86 = 0;
-                                    }
-                                    i81 = (int) (255.0F + 255.0F * (Medium.snap[2] / 100.0F));
-                                    if (i81 > 255) {
-                                        i81 = 255;
-                                    }
-                                    if (i81 < 0) {
-                                        i81 = 0;
-                                    }
-                                } else {
-                                    i85 = (int) (140.0F + 140.0F * (Medium.snap[0] / 100.0F));
-                                    if (i85 > 255) {
-                                        i85 = 255;
-                                    }
-                                    if (i85 < 0) {
-                                        i85 = 0;
-                                    }
-                                    i86 = (int) (160.0F + 160.0F * (Medium.snap[1] / 100.0F));
-                                    if (i86 > 255) {
-                                        i86 = 255;
-                                    }
-                                    if (i86 < 0) {
-                                        i86 = 0;
-                                    }
-                                    i81 = (int) (255.0F + 255.0F * (Medium.snap[2] / 100.0F));
-                                    if (i81 > 255) {
-                                        i81 = 255;
-                                    }
-                                    if (i81 < 0) {
-                                        i81 = 0;
-                                    }
-                                }
-                                G.setColor(new Color(i85, i86, i81));
-                                G.drawRect(660, 57 + 30 * i75, 116, 27);
-                            }
-                            bool76 = true;
-                        }
-                }
-            }
-            if (udpmistro.go && udpmistro.runon == 1 && !holdit) {
-                int i88 = 0;
-                int i89 = 0;
-                for (int i90 = 0; i90 < nplayers; i90++)
-                    if (i90 != udpmistro.im) {
-                        i89++;
-                        if (udpmistro.lframe[i90] == udpmistro.lcframe[i90] || udpmistro.force[i90] == 7) {
-                            i88++;
-                        } else {
-                            udpmistro.lcframe[i90] = udpmistro.lframe[i90];
-                        }
-                    }
-                if (i88 == i89) {
-                    discon++;
-                } else if (discon != 0) {
-                    discon = 0;
-                }
-                if (discon == 240) {
-                    udpmistro.runon = 2;
-                }
-            }
-        }
-        if (i54 != -1) {
-            float[] fs = new float[3];
-            Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
-            fs[1] -= 0.22;
-            if (fs[1] < 0.0F) {
-                fs[1] = 0.0F;
-            }
-            fs[2] += 0.22;
-            if (fs[2] > 1.0F) {
-                fs[2] = 1.0F;
-            }
-            Color color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-            G.setColor(color);
-            G.fillRect(676, 426 - i54 * 23, 109, 7);
-            G.setColor(new Color(0, 0, 0));
-            G.setFont(new Font("Tahoma", 1, 11));
-            G.drawString("Send Message  >", 684, 439 - i54 * 23);
-            G.setColor(new Color((int) (Medium.cgrnd[0] / 1.2F), (int) (Medium.cgrnd[1] / 1.2F), (int) (Medium.cgrnd[2] / 1.2F)));
-            G.drawRect(676, 426 - i54 * 23, 109, 17);
-            if (!GameSparker.cmsg.isShowing()) {
-                GameSparker.cmsg.setVisible(true);
-                GameSparker.cmsg.requestFocus();
-                lcmsg[i54] = "";
-                GameSparker.cmsg.setText("");
-                GameSparker.cmsg.setBackground(color);
-            }
-            GameSparker.movefield(GameSparker.cmsg, 34, 424 - i54 * 23, 633, 22);
-            if (GameSparker.cmsg.getText().equals(lcmsg[i54])) {
-                cntchatp[i54]++;
-            } else {
-                cntchatp[i54] = -200;
-            }
-            lcmsg[i54] = "" + GameSparker.cmsg.getText();
-            if (cntchatp[i54] == 67) {
-                control.chatup = 0;
-            }
-            if (GameSparker.cmsg.getText().length() > 100) {
-                GameSparker.cmsg.setText(GameSparker.cmsg.getText().subastring(0, 100));
-                GameSparker.cmsg.select(100, 100);
-            }
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
-        }
+//                        if (bool58 || floater[i57] != 0) {
+//                            float[] fs = new float[3];
+//                            Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
+//                            fs[1] -= 0.076;
+//                            if (fs[1] < 0.0F) {
+//                                fs[1] = 0.0F;
+//                            }
+//                            fs[2] += 0.076;
+//                            if (fs[2] > 1.0F) {
+//                                fs[2] = 1.0F;
+//                            }
+//                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                            G.fillRect(5, 423 + i56, 28, 23);
+//                        }
+//                        if (bool58) {
+//                            G.setColor(new Color(0, 0, 0));
+//                        } else {
+//                            G.setColor(new Color((int) (Medium.cgrnd[0] / 2.0F), (int) (Medium.cgrnd[1] / 2.0F), (int) (Medium.cgrnd[2] / 2.0F)));
+//                        }
+//                        G.setFont(new Font("Tahoma", 1, 11));
+//                        G.drawString("<<", 10, 439 + i56);
+//                        G.setColor(new Color(0, 0, 0));
+//                        G.drawRect(5, 423 + i56, 789, 23);
+//                        G.drawLine(33, 423 + i56, 33, 446 + i56);
+//                        i56 += 23;
+//                    }
+//                    if (i > 775 && i < 794 && i53 > 409 - i55 * 23 && i53 < 423 - i55 * 23) {
+//                        G.drawRect(775, 409 - i55 * 23, 19, 14);
+//                        G.setColor(new Color(200, 0, 0));
+//                        if (abool) {
+//                            control.chatup = 0;
+//                            if (GameSparker.cmsg.isShowing()) {
+//                                GameSparker.cmsg.setVisible(false);
+//                                app.requestFocus();
+//                            }
+//                            runtyp = 0;
+//                            try {
+//                                socket.close();
+//                                socket = null;
+//                                din.close();
+//                                din = null;
+//                                dout.close();
+//                                dout = null;
+//                            } catch (Exception ignored) {
+//
+//                            }
+//                        }
+//                    }
+//                    G.setFont(new Font("Arial", 1, 12));
+//                    G.drawString("x", 782, 420 - i55 * 23);
+//                } else {
+//                    drawWarning();
+//                    if (GameSparker.cmsg.isShowing()) {
+//                        GameSparker.cmsg.setVisible(false);
+//                        app.requestFocus();
+//                    }
+//                    warning++;
+//                }
+//                G.setFont(new Font("Arial", 1, 11));
+//                ftm = G.getFontMetrics();
+//            } else if (control.chatup != 0) {
+//                control.chatup = 0;
+//                if (!lan) {
+//                    runtyp = -101;
+//                    if (runner != null) {
+//                        runner.interrupt();
+//                    }
+//                    runner = null;
+//                    runner = new Thread(xt);
+//                    runner.start();
+//                }
+//            }
+//            if (holdit && multion == 1 && !lan && sendstat == 0) {
+//                sendstat = 1;
+//                if (runtyp != -101) {
+//                    if (runner != null) {
+//                        runner.interrupt();
+//                    }
+//                    runner = null;
+//                    runner = new Thread(xt);
+//                    runner.start();
+//                }
+//            }
+//            if (control.arrace && starcnt < 38 && !holdit && CheckPoints.stage != 10 || multion >= 2) {
+//                if (alocked != -1 && CheckPoints.dested[alocked] != 0) {
+//                    alocked = -1;
+//                    lalocked = -1;
+//                }
+//                if (multion >= 2) {
+//                    if (alocked == -1 || holdit) {
+//                        if (cntflock == 100) {
+//                            for (int i71 = 0; i71 < nplayers; i71++)
+//                                if (holdit) {
+//                                    if (CheckPoints.pos[i71] == 0) {
+//                                        alocked = i71;
+//                                        im = i71;
+//                                    }
+//                                } else if (CheckPoints.dested[i71] == 0) {
+//                                    alocked = i71;
+//                                    im = i71;
+//                                }
+//                        }
+//                        cntflock++;
+//                    } else {
+//                        cntflock = 0;
+//                    }
+//                    if (lan) {
+//                        boolean bool72 = true;
+//                        for (int i73 = 0; i73 < nplayers; i73++)
+//                            if (dested[i73] == 0 && !plnames[i73].contains("MadBot")) {
+//                                bool72 = false;
+//                            }
+//                        if (bool72) {
+//                            exitm = 2;
+//                        }
+//                    }
+//                }
+//                int i74 = nplayers;
+//                for (int i75 = 0; i75 < i74; i75++) {
+//                    boolean bool76 = false;
+//                    for (int i77 = 0; i77 < nplayers; i77++)
+//                        if (CheckPoints.pos[i77] == i75 && CheckPoints.dested[i77] == 0 && !bool76) {
+//                            int i81 = (int) (100.0F + 100.0F * (Medium.snap[2] / 100.0F));
+//                            if (i81 > 255) {
+//                                i81 = 255;
+//                            }
+//                            if (i81 < 0) {
+//                                i81 = 0;
+//                            }
+//                            G.setColor(new Color(0, 0, i81));
+//                            if (i75 == 0) {
+//                                G.drawString("1st", 673, 76 + 30 * i75);
+//                            }
+//                            if (i75 == 1) {
+//                                G.drawString("2nd", 671, 76 + 30 * i75);
+//                            }
+//                            if (i75 == 2) {
+//                                G.drawString("3rd", 671, 76 + 30 * i75);
+//                            }
+//                            if (i75 >= 3) {
+//                                G.drawString("" + (i75 + 1) + "th", 671, 76 + 30 * i75);
+//                            }
+//                            if (clangame != 0) {
+//                                int i82;
+//                                int i83;
+//                                if (pclan[i77].equalsIgnoreCase(gaclan)) {
+//                                    i82 = 255;
+//                                    i83 = 128;
+//                                    i81 = 0;
+//                                } else {
+//                                    i82 = 0;
+//                                    i83 = 128;
+//                                    i81 = 255;
+//                                }
+//                                i82 += i82 * (Medium.snap[0] / 100.0F);
+//                                if (i82 > 255) {
+//                                    i82 = 255;
+//                                }
+//                                if (i82 < 0) {
+//                                    i82 = 0;
+//                                }
+//                                i83 += i83 * (Medium.snap[1] / 100.0F);
+//                                if (i83 > 255) {
+//                                    i83 = 255;
+//                                }
+//                                if (i83 < 0) {
+//                                    i83 = 0;
+//                                }
+//                                i81 += i81 * (Medium.snap[2] / 100.0F);
+//                                if (i81 > 255) {
+//                                    i81 = 255;
+//                                }
+//                                if (i81 < 0) {
+//                                    i81 = 0;
+//                                }
+//                                G.setColor(new Color(i82, i83, i81));
+//                                G.drawString(plnames[i77], 731 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
+//                            }
+//                            G.setColor(new Color(0, 0, 0));
+//                            G.drawString(plnames[i77], 730 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
+//                            int i84 = (int) (60.0F * CheckPoints.magperc[i77]);
+//                            int i85 = 244;
+//                            int i86 = 244;
+//                            i81 = 11;
+//                            if (i84 > 20) {
+//                                i86 = (int) (244.0F - 233.0F * ((i84 - 20) / 40.0F));
+//                            }
+//                            i85 += i85 * (Medium.snap[0] / 100.0F);
+//                            if (i85 > 255) {
+//                                i85 = 255;
+//                            }
+//                            if (i85 < 0) {
+//                                i85 = 0;
+//                            }
+//                            i86 += i86 * (Medium.snap[1] / 100.0F);
+//                            if (i86 > 255) {
+//                                i86 = 255;
+//                            }
+//                            if (i86 < 0) {
+//                                i86 = 0;
+//                            }
+//                            i81 += i81 * (Medium.snap[2] / 100.0F);
+//                            if (i81 > 255) {
+//                                i81 = 255;
+//                            }
+//                            if (i81 < 0) {
+//                                i81 = 0;
+//                            }
+//                            G.setColor(new Color(i85, i86, i81));
+//                            G.fillRect(700, 74 + 30 * i75, i84, 5);
+//                            G.setColor(new Color(0, 0, 0));
+//                            G.drawRect(700, 74 + 30 * i75, 60, 5);
+//                            boolean bool87 = false;
+//                            if ((im != i77 || multion >= 2) && i > 661 && i < 775 && i53 > 58 + 30 * i75 && i53 < 83 + 30 * i75) {
+//                                bool87 = true;
+//                                if (abool) {
+//                                    if (!onlock)
+//                                        if (alocked != i77 || multion >= 2) {
+//                                            alocked = i77;
+//                                            if (multion >= 2) {
+//                                                im = i77;
+//                                            }
+//                                        } else {
+//                                            alocked = -1;
+//                                        }
+//                                    onlock = true;
+//                                } else if (onlock) {
+//                                    onlock = false;
+//                                }
+//                            }
+//                            if (alocked == i77) {
+//                                i85 = (int) (159.0F + 159.0F * (Medium.snap[0] / 100.0F));
+//                                if (i85 > 255) {
+//                                    i85 = 255;
+//                                }
+//                                if (i85 < 0) {
+//                                    i85 = 0;
+//                                }
+//                                i86 = (int) (207.0F + 207.0F * (Medium.snap[1] / 100.0F));
+//                                if (i86 > 255) {
+//                                    i86 = 255;
+//                                }
+//                                if (i86 < 0) {
+//                                    i86 = 0;
+//                                }
+//                                i81 = (int) (255.0F + 255.0F * (Medium.snap[2] / 100.0F));
+//                                if (i81 > 255) {
+//                                    i81 = 255;
+//                                }
+//                                if (i81 < 0) {
+//                                    i81 = 0;
+//                                }
+//                                G.setColor(new Color(i85, i86, i81));
+//                                G.drawRect(661, 58 + 30 * i75, 114, 25);
+//                                G.drawRect(662, 59 + 30 * i75, 112, 23);
+//                            }
+//                            if (bool87 && !onlock) {
+//                                if (alocked == i77) {
+//                                    i85 = (int) (120.0F + 120.0F * (Medium.snap[0] / 100.0F));
+//                                    if (i85 > 255) {
+//                                        i85 = 255;
+//                                    }
+//                                    if (i85 < 0) {
+//                                        i85 = 0;
+//                                    }
+//                                    i86 = (int) (114.0F + 114.0F * (Medium.snap[1] / 100.0F));
+//                                    if (i86 > 255) {
+//                                        i86 = 255;
+//                                    }
+//                                    if (i86 < 0) {
+//                                        i86 = 0;
+//                                    }
+//                                    i81 = (int) (255.0F + 255.0F * (Medium.snap[2] / 100.0F));
+//                                    if (i81 > 255) {
+//                                        i81 = 255;
+//                                    }
+//                                    if (i81 < 0) {
+//                                        i81 = 0;
+//                                    }
+//                                } else {
+//                                    i85 = (int) (140.0F + 140.0F * (Medium.snap[0] / 100.0F));
+//                                    if (i85 > 255) {
+//                                        i85 = 255;
+//                                    }
+//                                    if (i85 < 0) {
+//                                        i85 = 0;
+//                                    }
+//                                    i86 = (int) (160.0F + 160.0F * (Medium.snap[1] / 100.0F));
+//                                    if (i86 > 255) {
+//                                        i86 = 255;
+//                                    }
+//                                    if (i86 < 0) {
+//                                        i86 = 0;
+//                                    }
+//                                    i81 = (int) (255.0F + 255.0F * (Medium.snap[2] / 100.0F));
+//                                    if (i81 > 255) {
+//                                        i81 = 255;
+//                                    }
+//                                    if (i81 < 0) {
+//                                        i81 = 0;
+//                                    }
+//                                }
+//                                G.setColor(new Color(i85, i86, i81));
+//                                G.drawRect(660, 57 + 30 * i75, 116, 27);
+//                            }
+//                            bool76 = true;
+//                        }
+//                }
+//            }
+//            if (udpmistro.go && udpmistro.runon == 1 && !holdit) {
+//                int i88 = 0;
+//                int i89 = 0;
+//                for (int i90 = 0; i90 < nplayers; i90++)
+//                    if (i90 != udpmistro.im) {
+//                        i89++;
+//                        if (udpmistro.lframe[i90] == udpmistro.lcframe[i90] || udpmistro.force[i90] == 7) {
+//                            i88++;
+//                        } else {
+//                            udpmistro.lcframe[i90] = udpmistro.lframe[i90];
+//                        }
+//                    }
+//                if (i88 == i89) {
+//                    discon++;
+//                } else if (discon != 0) {
+//                    discon = 0;
+//                }
+//                if (discon == 240) {
+//                    udpmistro.runon = 2;
+//                }
+//            }
+//        }
+//        if (i54 != -1) {
+//            float[] fs = new float[3];
+//            Color.RGBtoHSB(Medium.cgrnd[0], Medium.cgrnd[1], Medium.cgrnd[2], fs);
+//            fs[1] -= 0.22;
+//            if (fs[1] < 0.0F) {
+//                fs[1] = 0.0F;
+//            }
+//            fs[2] += 0.22;
+//            if (fs[2] > 1.0F) {
+//                fs[2] = 1.0F;
+//            }
+//            Color color = Color.getHSBColor(fs[0], fs[1], fs[2]);
+//            G.setColor(color);
+//            G.fillRect(676, 426 - i54 * 23, 109, 7);
+//            G.setColor(new Color(0, 0, 0));
+//            G.setFont(new Font("Tahoma", 1, 11));
+//            G.drawString("Send Message  >", 684, 439 - i54 * 23);
+//            G.setColor(new Color((int) (Medium.cgrnd[0] / 1.2F), (int) (Medium.cgrnd[1] / 1.2F), (int) (Medium.cgrnd[2] / 1.2F)));
+//            G.drawRect(676, 426 - i54 * 23, 109, 17);
+//            if (!GameSparker.cmsg.isShowing()) {
+//                GameSparker.cmsg.setVisible(true);
+//                GameSparker.cmsg.requestFocus();
+//                lcmsg[i54] = "";
+//                GameSparker.cmsg.setText("");
+//                GameSparker.cmsg.setBackground(color);
+//            }
+//            GameSparker.movefield(GameSparker.cmsg, 34, 424 - i54 * 23, 633, 22);
+//            if (GameSparker.cmsg.getText().equals(lcmsg[i54])) {
+//                cntchatp[i54]++;
+//            } else {
+//                cntchatp[i54] = -200;
+//            }
+//            lcmsg[i54] = "" + GameSparker.cmsg.getText();
+//            if (cntchatp[i54] == 67) {
+//                control.chatup = 0;
+//            }
+//            if (GameSparker.cmsg.getText().length() > 100) {
+//                GameSparker.cmsg.setText(GameSparker.cmsg.getText().subastring(0, 100));
+//                GameSparker.cmsg.select(100, 100);
+//            }
+//            G.setFont(new Font("Arial", 1, 11));
+//            ftm = G.getFontMetrics();
+//        }
     }
 
-    static void musicomp(int i, Control control) {
+        internal static void musicomp(int i, Control control) {
         hipnoload(i, true);
         if (multion != 0) {
             forstart--;
@@ -1396,25 +1397,11 @@ namespace Cum
             Medium.cx = 400;
             Medium.cy = 225;
             Medium.cz = 50;
-            G.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
-            G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
             if (multion == 0) {
                 fase = 0;
             } else {
                 fase = 7001;
                 forstart = 0;
-                if (!lan) {
-                    try {
-                        socket = new Socket(server, servport);
-                        din = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        dout = new PrintWriter(socket.getOutputStream(), true);
-                        runtyp = -101;
-                        runner = new Thread(xt);
-                        runner.start();
-                    } catch (Exception ignored) {
-
-                    }
-                }
             }
             if (HansenRandom.Double() > HansenRandom.Double()) {
                 dudo = 250;
@@ -1452,7 +1439,7 @@ namespace Cum
         return i292 > i && i292 < i + i290 && i293 > i289 && i293 < i289 + i291;
     }
 
-    static void pausedgame(Control control) {
+        internal static void pausedgame(Control control) {
         if (!badmac) {
             G.drawImage(fleximg, 0, 0, null);
         } else {
@@ -1522,7 +1509,7 @@ namespace Cum
                 fase = 0;
             }
             if (opselect == 1)
-                if (RecoG.caught >= 300) {
+                if (Record.caught >= 300) {
                     if (loadedt && !mutem) {
                         strack.setPaused(false);
                     }
@@ -1550,81 +1537,79 @@ namespace Cum
                 if (gmode == 2) {
                     opselect = 1;
                 }
-                G.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-                G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             }
             control.enter = false;
             control.handb = false;
         }
     }
 
-    static void pauseimage(Image image) {
-        if (!badmac) {
-            int[] ais = new int[360000];
-            PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, ais, 0, 800);
-            try {
-                pixelgrabber.grabPixels();
-            } catch (InterruptedException ignored) {
-
-            }
-            int i = 0;
-            int i343 = 0;
-            int i344 = 0;
-            int i345 = 0;
-            for (int i346 = 0; i346 < 360000; i346++) {
-                Color color = new Color(ais[i346]);
-                int i347;
-                if (i345 == 0) {
-                    i347 = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
-                    i344 = i347;
-                } else {
-                    i347 = (color.getRed() + color.getGreen() + color.getBlue() + i344 * 30) / 33;
-                    i344 = i347;
-                }
-                if (++i345 == 800) {
-                    i345 = 0;
-                }
-                if (i346 > 800 * (8 + i343) + 281 && i343 < 188) {
-                    int i348 = (i347 + 60) / 3;
-                    int i349 = (i347 + 135) / 3;
-                    int i350 = (i347 + 220) / 3;
-                    if (++i == 237) {
-                        i343++;
-                        i = 0;
-                    }
-                    Color color351 = new Color(i348, i349, i350);
-                    ais[i346] = color351.getRGB();
-                } else {
-                    Color color352 = new Color(i347, i347, i347);
-                    ais[i346] = color352.getRGB();
-                }
-            }
-            fleximg = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
-            G.drawImage(fleximg, 0, 0, null);
-        } else {
+        internal static void pauseimage(Image image) {
+//        if (!badmac) {
+//            int[] ais = new int[360000];
+//            PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, ais, 0, 800);
+//            try {
+//                pixelgrabber.grabPixels();
+//            } catch (InterruptedException ignored) {
+//
+//            }
+//            int i = 0;
+//            int i343 = 0;
+//            int i344 = 0;
+//            int i345 = 0;
+//            for (int i346 = 0; i346 < 360000; i346++) {
+//                Color color = new Color(ais[i346]);
+//                int i347;
+//                if (i345 == 0) {
+//                    i347 = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
+//                    i344 = i347;
+//                } else {
+//                    i347 = (color.getRed() + color.getGreen() + color.getBlue() + i344 * 30) / 33;
+//                    i344 = i347;
+//                }
+//                if (++i345 == 800) {
+//                    i345 = 0;
+//                }
+//                if (i346 > 800 * (8 + i343) + 281 && i343 < 188) {
+//                    int i348 = (i347 + 60) / 3;
+//                    int i349 = (i347 + 135) / 3;
+//                    int i350 = (i347 + 220) / 3;
+//                    if (++i == 237) {
+//                        i343++;
+//                        i = 0;
+//                    }
+//                    Color color351 = new Color(i348, i349, i350);
+//                    ais[i346] = color351.getRGB();
+//                } else {
+//                    Color color352 = new Color(i347, i347, i347);
+//                    ais[i346] = color352.getRGB();
+//                }
+//            }
+//            fleximg = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
+//            G.drawImage(fleximg, 0, 0, null);
+//        } else {
             G.setColor(new Color(0, 0, 0));
             G.setAlpha(0.5F);
             G.fillRect(0, 0, 800, 450);
             G.setAlpha(1.0F);
-        }
+//        }
     }
 
     static private void pingstat() {
-        int i = (int) (100.0 * HansenRandom.Double());
-        try {
-            URL url = new URL("http://c.statcounter.com/9994681/0/14bb645e/1/?reco=" + i + "");
-            url.openConnection().setConnectTimeout(5000);
-            Image image = Toolkit.getDefaultToolkit().createImage(url);
-            MediaTracker mediatracker = new MediaTracker(app);
-            mediatracker.addImage(image, 0);
-            mediatracker.waitForID(0);
-            mediatracker.removeImage(image, 0);
-        } catch (Exception ignored) {
-
-        }
+//        int i = (int) (100.0 * HansenRandom.Double());
+//        try {
+//            URL url = new URL("http://c.statcounter.com/9994681/0/14bb645e/1/?reco=" + i + "");
+//            url.openConnection().setConnectTimeout(5000);
+//            Image image = Toolkit.getDefaultToolkit().createImage(url);
+//            MediaTracker mediatracker = new MediaTracker(app);
+//            mediatracker.addImage(image, 0);
+//            mediatracker.waitForID(0);
+//            mediatracker.removeImage(image, 0);
+//        } catch (Exception ignored) {
+//
+//        }
     }
 
-    static void playsounds(int im, Mad mad, Control control, ContO player, ContO conto) {
+        internal static void playsounds(int im, Mad mad, Control control, ContO player, ContO conto) {
         SoundClip.source = conto;
         SoundClip.player = player;
         
@@ -1641,8 +1626,8 @@ namespace Cum
                 if (!mad.capsized) {
                     if (!bool257) {
                         if (mad.power != 98.0F) {
-                            if (Math.abs(mad.speed) > 0.0F && Math.abs(mad.speed) <= CarDefine.swits[mad.cn][0]) {
-                                int i259 = (int) (3.0F * Math.abs(mad.speed) / CarDefine.swits[mad.cn][0]);
+                            if (Math.abs(mad.speed) > 0.0F && Math.abs(mad.speed) <= CarDefine.swits[mad.cn,0]) {
+                                int i259 = (int) (3.0F * Math.abs(mad.speed) / CarDefine.swits[mad.cn,0]);
                                 if (i259 == 2) {
                                     if (pwait[im] == 0) {
                                         i259 = 0;
@@ -1654,8 +1639,8 @@ namespace Cum
                                 }
                                 sparkeng(i259, mad.cn);
                             }
-                            if (Math.abs(mad.speed) > CarDefine.swits[mad.cn][0] && Math.abs(mad.speed) <= CarDefine.swits[mad.cn][1]) {
-                                int i260 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn][0]) / (CarDefine.swits[mad.cn][1] - CarDefine.swits[mad.cn][0]));
+                            if (Math.abs(mad.speed) > CarDefine.swits[mad.cn,0] && Math.abs(mad.speed) <= CarDefine.swits[mad.cn,1]) {
+                                int i260 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn,0]) / (CarDefine.swits[mad.cn,1] - CarDefine.swits[mad.cn,0]));
                                 if (i260 == 2) {
                                     if (pwait[im] == 0) {
                                         i260 = 0;
@@ -1667,14 +1652,14 @@ namespace Cum
                                 }
                                 sparkeng(i260, mad.cn);
                             }
-                            if (Math.abs(mad.speed) > CarDefine.swits[mad.cn][1] && Math.abs(mad.speed) <= CarDefine.swits[mad.cn][2]) {
-                                int i261 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn][1]) / (CarDefine.swits[mad.cn][2] - CarDefine.swits[mad.cn][1]));
+                            if (Math.abs(mad.speed) > CarDefine.swits[mad.cn,1] && Math.abs(mad.speed) <= CarDefine.swits[mad.cn,2]) {
+                                int i261 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn,1]) / (CarDefine.swits[mad.cn,2] - CarDefine.swits[mad.cn,1]));
                                 sparkeng(i261, mad.cn);
                             }
                         } else {
                             int i262 = 2;
                             if (pwait[im] == 0) {
-                                if (Math.abs(mad.speed) > CarDefine.swits[mad.cn][1]) {
+                                if (Math.abs(mad.speed) > CarDefine.swits[mad.cn,1]) {
                                     i262 = 3;
                                 }
                             } else {
@@ -1791,32 +1776,34 @@ namespace Cum
         }
     }
 
-    static private Image pressed(Image image) {
-        int i = image.getHeight(null);
-        int i337 = image.getWidth(null);
-        int[] ais = new int[i337 * i];
-        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i337, i, ais, 0, i337);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        for (int i338 = 0; i338 < i337 * i; i338++)
-            if (ais[i338] != ais[i337 * i - 1]) {
-                ais[i338] = -16777216;
-            }
-        return xt.createImage(new MemoryImageSource(i337, i, ais, 0, i337));
+    static internal Image pressed(Image image)
+    {
+        return image;
+//        int i = image.getHeight(null);
+//        int i337 = image.getWidth(null);
+//        int[] ais = new int[i337 * i];
+//        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i337, i, ais, 0, i337);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        for (int i338 = 0; i338 < i337 * i; i338++)
+//            if (ais[i338] != ais[i337 * i - 1]) {
+//                ais[i338] = -16777216;
+//            }
+//        return xt.createImage(new MemoryImageSource(i337, i, ais, 0, i337));
     }
 
-    static private int py(int i, int i281, int i282, int i283) {
+    static internal int py(int i, int i281, int i282, int i283) {
         return (i - i281) * (i - i281) + (i282 - i283) * (i282 - i283);
     }
 
-    static private float pys(int i, int i284, int i285, int i286) {
+    static internal float pys(int i, int i284, int i285, int i286) {
         return (float) Math.sqrt((i - i284) * (i - i284) + (i285 - i286) * (i285 - i286));
     }
 
-    static void rad(int i) {
+        internal static void rad(int i) {
         if (i == 0) {
             powerup.play();
             radpx = 212;
@@ -1869,9 +1856,9 @@ namespace Cum
         G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
         G.fillRoundRect(10, 55, 172, 172, 30, 30);
         G.setAlpha(1.0F);
-        G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
-        for (int i = 0; i < CheckPoints.n; i++) {
+        int i;
+        for (i = 0; i < CheckPoints.n; i++) {
             int i241 = i + 1;
             if (i == CheckPoints.n - 1) {
                 i241 = 0;
@@ -1898,12 +1885,12 @@ namespace Cum
         if (arrace || multion > 1) {
             int[] ais = new int[nplayers];
             int[] is245 = new int[nplayers];
-            for (int i = 0; i < nplayers; i++) {
+            for (i = 0; i < nplayers; i++) {
                 ais[i] = (int) (96.0F - (CheckPoints.opx[im] - CheckPoints.opx[i]) / CheckPoints.prox);
                 is245[i] = (int) (141.0F - (CheckPoints.opz[i] - CheckPoints.opz[im]) / CheckPoints.prox);
             }
             rot(ais, is245, 96, 141, mad.cxz, nplayers);
-            int i = 0;
+            i = 0;
             int i246 = (int) (80.0F + 80.0F * (Medium.snap[1] / 100.0F));
             if (i246 > 255) {
                 i246 = 255;
@@ -1930,21 +1917,21 @@ namespace Cum
                             i246 = 80;
                             i247 = 159;
                         }
-                        i += i * (Medium.snap[0] / 100.0F);
+                        i += (int)(i * (Medium.snap[0] / 100.0F));
                         if (i > 255) {
                             i = 255;
                         }
                         if (i < 0) {
                             i = 0;
                         }
-                        i246 += i246 * (Medium.snap[1] / 100.0F);
+                        i246 += (int)(i246 * (Medium.snap[1] / 100.0F));
                         if (i246 > 255) {
                             i246 = 255;
                         }
                         if (i246 < 0) {
                             i246 = 0;
                         }
-                        i247 += i247 * (Medium.snap[2] / 100.0F);
+                        i247 += (int)(i247 * (Medium.snap[2] / 100.0F));
                         if (i247 > 255) {
                             i247 = 255;
                         }
@@ -1965,7 +1952,7 @@ namespace Cum
                     G.fillRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
                 }
         }
-        int i = (int) (159.0F + 159.0F * (Medium.snap[0] / 100.0F));
+        i = (int) (159.0F + 159.0F * (Medium.snap[0] / 100.0F));
         if (i > 255) {
             i = 255;
         }
@@ -1984,21 +1971,21 @@ namespace Cum
                 i250 = 80;
                 i251 = 159;
             }
-            i += i * (Medium.snap[0] / 100.0F);
+            i += (int)(i * (Medium.snap[0] / 100.0F));
             if (i > 255) {
                 i = 255;
             }
             if (i < 0) {
                 i = 0;
             }
-            i250 += i250 * (Medium.snap[1] / 100.0F);
+            i250 += (int)(i250 * (Medium.snap[1] / 100.0F));
             if (i250 > 255) {
                 i250 = 255;
             }
             if (i250 < 0) {
                 i250 = 0;
             }
-            i251 += i251 * (Medium.snap[2] / 100.0F);
+            i251 += (int)(i251 * (Medium.snap[2] / 100.0F));
             if (i251 > 255) {
                 i251 = 255;
             }
@@ -2011,7 +1998,6 @@ namespace Cum
         G.drawLine(94, 141, 98, 141);
         G.setColor(new Color(i, i250, i251));
         G.fillRect(95, 140, 3, 3);
-        G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
         if (Medium.darksky) {
             Color color = new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]);
             float[] fs = new float[3];
@@ -2038,7 +2024,7 @@ namespace Cum
         G.drawString("" + (int) f256, 132, 245);
     }
 
-    static void replyn() {
+        internal static void replyn() {
         if (aflk) {
             drawcs(30, "Replay  > ", 0, 0, 0, 0);
             aflk = false;
@@ -2048,7 +2034,7 @@ namespace Cum
         }
     }
 
-    static void resetstat(int i) {
+        internal static void resetstat(int i) {
         arrace = false;
         alocked = -1;
         lalocked = -1;
@@ -2099,13 +2085,13 @@ namespace Cum
         if (fase == 22) {
             for (int i21 = 0; i21 < 2; i21++) {
                 for (int i22 = 0; i22 < 7; i22++) {
-                    cnames[i21][i22] = "";
-                    sentn[i21][i22] = "";
+                    cnames[i21,i22] = "";
+                    sentn[i21,i22] = "";
                 }
                 if (i21 == 0) {
-                    cnames[i21][6] = "Game Chat  ";
+                    cnames[i21,6] = "Game Chat  ";
                 } else {
-                    cnames[i21][6] = "" + clan + "'s Chat  ";
+                    cnames[i21,6] = "" + clan + "'s Chat  ";
                 }
                 updatec[i21] = -1;
                 movepos[i21] = 0;
@@ -2139,180 +2125,181 @@ namespace Cum
         }
     }
 
-    @Override
-    public void run() {
-        if (!Thread.currentThread().isInterrupted()) {
-            boolean abool = false;
-            while (runtyp > 0) {
-                if (runtyp >= 1 && runtyp <= 140) {
-                    hipnoload(runtyp, false);
-                }
-                //if (runtyp == 176) {
-                //    loading();
-                //    abool = true;
-                //}
-                //app.repaint();
-                try {
-                    if (runner != null) {
+//    @Override
+//    public void run() {
+//        if (!Thread.currentThread().isInterrupted()) {
+//            boolean abool = false;
+//            while (runtyp > 0) {
+//                if (runtyp >= 1 && runtyp <= 140) {
+//                    hipnoload(runtyp, false);
+//                }
+//                //if (runtyp == 176) {
+//                //    loading();
+//                //    abool = true;
+//                //}
+//                //app.repaint();
+//                try {
+//                    if (runner != null) {
+//
+//                    }
+//                    Thread.sleep(20L);
+//                } catch (InterruptedException ignored) {
+//
+//                }
+//            }
+//            if (abool) {
+//                pingstat();
+//            }
+//            boolean[] bools = {
+//                    true, true
+//            };
+//            while ((runtyp == -101 || sendstat == 1) && !lan) {
+//                String astring = "3|" + playingame + "|" + updatec[0] + "|";
+//                if (clanchat) {
+//                    astring = "" + astring + "" + updatec[1] + "|" + clan + "|" + clankey + "|";
+//                } else {
+//                    astring = "" + astring + "0|||";
+//                }
+//                if (updatec[0] <= -11) {
+//                    for (int i = 0; i < -updatec[0] - 10; i++) {
+//                        astring = "" + astring + "" + cnames[0][6 - i] + "|" + sentn[0][6 - i] + "|";
+//                    }
+//                    updatec[0] = -2;
+//                }
+//                if (clanchat && updatec[1] <= -11) {
+//                    for (int i = 0; i < -updatec[1] - 10; i++) {
+//                        astring = "" + astring + "" + cnames[1][6 - i] + "|" + sentn[1][6 - i] + "|";
+//                    }
+//                    updatec[1] = -2;
+//                }
+//                if (sendstat == 1) {
+//                    astring = "5|" + playingame + "|" + im + "|" + beststunt + "|" + fastestlap + "|";
+//                    for (int i = 0; i < nplayers; i++) {
+//                        astring = "" + astring + "" + dcrashes[i] + "|";
+//                    }
+//                    sendstat = 2;
+//                }
+//                boolean bool13 = false;
+//                String string14 = "";
+//                try {
+//                    dout.println(astring);
+//                    string14 = din.readLine();
+//                    if (string14 == null) {
+//                        bool13 = true;
+//                    }
+//                } catch (Exception exception) {
+//                    bool13 = true;
+//                }
+//                if (bool13) {
+//                    try {
+//                        socket.close();
+//                        socket = null;
+//                        din.close();
+//                        din = null;
+//                        dout.close();
+//                        dout = null;
+//                    } catch (Exception ignored) {
+//
+//                    }
+//                    try {
+//                        socket = new Socket(server, servport);
+//                        din = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//                        dout = new PrintWriter(socket.getOutputStream(), true);
+//                        dout.println(astring);
+//                        string14 = din.readLine();
+//                        if (string14 != null) {
+//                            bool13 = false;
+//                        }
+//                    } catch (Exception ignored) {
+//
+//                    }
+//                }
+//                if (bool13) {
+//                    try {
+//                        socket.close();
+//                        socket = null;
+//                    } catch (Exception ignored) {
+//
+//                    }
+//                    runtyp = 0;
+//                    if (GameSparker.cmsg.isShowing()) {
+//                        GameSparker.cmsg.setVisible(false);
+//                        app.requestFocus();
+//                    }
+//                    runner.interrupt();
+//                    runner = null;
+//                }
+//                if (sendstat != 2) {
+//                    int i = 2;
+//                    int i15 = 1;
+//                    if (clanchat) {
+//                        i15 = 2;
+//                    }
+//                    for (int i16 = 0; i16 < i15; i16++) {
+//                        int i17 = getvalue(string14, i16);
+//                        if (updatec[i16] != i17 && updatec[i16] >= -2 && pointc[i16] == 6) {
+//                            for (int i18 = 0; i18 < 7; i18++) {
+//                                cnames[i16][i18] = getSvalue(string14, i);
+//                                i++;
+//                                sentn[i16][i18] = getSvalue(string14, i);
+//                                i++;
+//                            }
+//                            if (cnames[i16][6].equals(""))
+//                                if (i16 == 0) {
+//                                    cnames[i16][6] = "Game Chat  ";
+//                                } else {
+//                                    cnames[i16][6] = "" + clan + "'s Chat  ";
+//                                }
+//                            if (updatec[i16] != -2) {
+//                                floater[i16] = 1;
+//                                if (bools[i16]) {
+//                                    msgflk[i16] = 67;
+//                                    bools[i16] = false;
+//                                } else {
+//                                    msgflk[i16] = 110;
+//                                }
+//                            }
+//                            updatec[i16] = i17;
+//                        }
+//                    }
+//                } else {
+//                    sendstat = 3;
+//                }
+//                try {
+//                    if (runner != null) {
+//
+//                    }
+//                    Thread.sleep(1000L);
+//                } catch (InterruptedException ignored) {
+//
+//                }
+//            }
+//            if (runtyp == -167 || runtyp == -168) {
+//                try {
+//                    socket = new Socket("multiplayer.needformadness.com", 7061);
+//                    din = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//                    dout = new PrintWriter(socket.getOutputStream(), true);
+//                    dout.println("101|" + (runtyp + 174) + "|" + GameSparker.tnick.getText() + "|" + GameSparker.tpass.getText() + "|");
+//                    din.readLine();
+//                    socket.close();
+//                    socket = null;
+//                    din.close();
+//                    din = null;
+//                    dout.close();
+//                    dout = null;
+//                } catch (Exception ignored) {
+//
+//                }
+//                runtyp = 0;
+//            }
+//            if (runtyp == -166 || runtyp == -167 || runtyp == -168) {
+//                pingstat();
+//            }
+//        }
+//    }
 
-                    }
-                    Thread.sleep(20L);
-                } catch (InterruptedException ignored) {
-
-                }
-            }
-            if (abool) {
-                pingstat();
-            }
-            boolean[] bools = {
-                    true, true
-            };
-            while ((runtyp == -101 || sendstat == 1) && !lan) {
-                String astring = "3|" + playingame + "|" + updatec[0] + "|";
-                if (clanchat) {
-                    astring = "" + astring + "" + updatec[1] + "|" + clan + "|" + clankey + "|";
-                } else {
-                    astring = "" + astring + "0|||";
-                }
-                if (updatec[0] <= -11) {
-                    for (int i = 0; i < -updatec[0] - 10; i++) {
-                        astring = "" + astring + "" + cnames[0][6 - i] + "|" + sentn[0][6 - i] + "|";
-                    }
-                    updatec[0] = -2;
-                }
-                if (clanchat && updatec[1] <= -11) {
-                    for (int i = 0; i < -updatec[1] - 10; i++) {
-                        astring = "" + astring + "" + cnames[1][6 - i] + "|" + sentn[1][6 - i] + "|";
-                    }
-                    updatec[1] = -2;
-                }
-                if (sendstat == 1) {
-                    astring = "5|" + playingame + "|" + im + "|" + beststunt + "|" + fastestlap + "|";
-                    for (int i = 0; i < nplayers; i++) {
-                        astring = "" + astring + "" + dcrashes[i] + "|";
-                    }
-                    sendstat = 2;
-                }
-                boolean bool13 = false;
-                String string14 = "";
-                try {
-                    dout.println(astring);
-                    string14 = din.readLine();
-                    if (string14 == null) {
-                        bool13 = true;
-                    }
-                } catch (Exception exception) {
-                    bool13 = true;
-                }
-                if (bool13) {
-                    try {
-                        socket.close();
-                        socket = null;
-                        din.close();
-                        din = null;
-                        dout.close();
-                        dout = null;
-                    } catch (Exception ignored) {
-
-                    }
-                    try {
-                        socket = new Socket(server, servport);
-                        din = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        dout = new PrintWriter(socket.getOutputStream(), true);
-                        dout.println(astring);
-                        string14 = din.readLine();
-                        if (string14 != null) {
-                            bool13 = false;
-                        }
-                    } catch (Exception ignored) {
-
-                    }
-                }
-                if (bool13) {
-                    try {
-                        socket.close();
-                        socket = null;
-                    } catch (Exception ignored) {
-
-                    }
-                    runtyp = 0;
-                    if (GameSparker.cmsg.isShowing()) {
-                        GameSparker.cmsg.setVisible(false);
-                        app.requestFocus();
-                    }
-                    runner.interrupt();
-                    runner = null;
-                }
-                if (sendstat != 2) {
-                    int i = 2;
-                    int i15 = 1;
-                    if (clanchat) {
-                        i15 = 2;
-                    }
-                    for (int i16 = 0; i16 < i15; i16++) {
-                        int i17 = getvalue(string14, i16);
-                        if (updatec[i16] != i17 && updatec[i16] >= -2 && pointc[i16] == 6) {
-                            for (int i18 = 0; i18 < 7; i18++) {
-                                cnames[i16][i18] = getSvalue(string14, i);
-                                i++;
-                                sentn[i16][i18] = getSvalue(string14, i);
-                                i++;
-                            }
-                            if (cnames[i16][6].equals(""))
-                                if (i16 == 0) {
-                                    cnames[i16][6] = "Game Chat  ";
-                                } else {
-                                    cnames[i16][6] = "" + clan + "'s Chat  ";
-                                }
-                            if (updatec[i16] != -2) {
-                                floater[i16] = 1;
-                                if (bools[i16]) {
-                                    msgflk[i16] = 67;
-                                    bools[i16] = false;
-                                } else {
-                                    msgflk[i16] = 110;
-                                }
-                            }
-                            updatec[i16] = i17;
-                        }
-                    }
-                } else {
-                    sendstat = 3;
-                }
-                try {
-                    if (runner != null) {
-
-                    }
-                    Thread.sleep(1000L);
-                } catch (InterruptedException ignored) {
-
-                }
-            }
-            if (runtyp == -167 || runtyp == -168) {
-                try {
-                    socket = new Socket("multiplayer.needformadness.com", 7061);
-                    din = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    dout = new PrintWriter(socket.getOutputStream(), true);
-                    dout.println("101|" + (runtyp + 174) + "|" + GameSparker.tnick.getText() + "|" + GameSparker.tpass.getText() + "|");
-                    din.readLine();
-                    socket.close();
-                    socket = null;
-                    din.close();
-                    din = null;
-                    dout.close();
-                    dout = null;
-                } catch (Exception ignored) {
-
-                }
-                runtyp = 0;
-            }
-            if (runtyp == -166 || runtyp == -167 || runtyp == -168) {
-                pingstat();
-            }
-        }
-    }
-
-    static void scrape(int im, int i, int i266, int i267) {
+        // TODO
+        internal static void scrapef(int im, int i, int i266, int i267) {
         if (bfscrape[im] == 0 && Math.sqrt(i * i + i266 * i266 + i267 * i267) / 10.0 > 10.0) {
             int i268 = 0;
             if (Medium.random() > Medium.random()) {
@@ -2342,7 +2329,7 @@ namespace Cum
         }
     }
 
-    static void sendwin() {
+        internal static void sendwin() {
         if (logged && multion == 1 && winner) {
             if (CheckPoints.wasted == nplayers - 1) {
                 runtyp = -167;
@@ -2352,11 +2339,9 @@ namespace Cum
         } else {
             runtyp = -166;
         }
-        runner = new Thread(xt);
-        runner.start();
     }
 
-    static void setbots(boolean[] bools) {
+        internal static void setbots(boolean[] bools) {
         for (int i = 0; i < nplayers; i++)
             if (plnames[i].contains("MadBot")) {
                 bools[i] = true;
@@ -2364,7 +2349,7 @@ namespace Cum
             }
     }
 
-    static void skid(int im, int i, float f) {
+    internal static void skidf(int im, int i, float f) {
         if (bfcrash[im] == 0 && bfskid[im] == 0 && f > 150.0F) {
             if (i == 0) {
                 if (!mutes) {
@@ -2401,30 +2386,29 @@ namespace Cum
         }
     }
 
-    static private void smokeypix(byte[] ais, MediaTracker mediatracker, Toolkit toolkit) {
-        Image image = toolkit.createImage(ais);
-        mediatracker.addImage(image, 0);
-        try {
-            mediatracker.waitForID(0);
-        } catch (Exception ignored) {
-
-        }
-        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 466, 202, smokey, 0, 466);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        for (int i = 0; i < 94132; i++)
-            if (smokey[i] != smokey[0]) {
-                Color color = new Color(smokey[i]);
-                float[] fs = new float[3];
-                Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), fs);
-                fs[0] = 0.11F;
-                fs[1] = 0.45F;
-                Color color385 = Color.getHSBColor(fs[0], fs[1], fs[2]);
-                smokey[i] = color385.getRGB();
-            }
+    static private void smokeypix(byte[] ais) {
+//        mediatracker.addImage(image, 0);
+//        try {
+//            mediatracker.waitForID(0);
+//        } catch (Exception ignored) {
+//
+//        }
+//        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 466, 202, smokey, 0, 466);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        for (int i = 0; i < 94132; i++)
+//            if (smokey[i] != smokey[0]) {
+//                Color color = new Color(smokey[i]);
+//                float[] fs = new float[3];
+//                Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), fs);
+//                fs[0] = 0.11F;
+//                fs[1] = 0.45F;
+//                Color color385 = Color.getHSBColor(fs[0], fs[1], fs[2]);
+//                smokey[i] = color385.getRGB();
+//            }
     }
 
     static void snap(int i) {
@@ -2474,31 +2458,32 @@ namespace Cum
             //Console.WriteLine("Minimum car: " + stat.names[(i - 1) / 2] + ", maximum car: " + stat.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
 
             // create a list of car ids, each item completely unique
-            ArrayList<Integer> list = new ArrayList<>();
-            for (int k = (i - 1) / 2; k < nplayers + (i - 1) / 2; k++) {
+            var list = new List<int>();
+            int k;
+            for (k = (i - 1) / 2; k < nplayers + (i - 1) / 2; k++) {
                 if (k == sc[0]) {
                     continue;
                 }
-                list.add(k);
+                list.Add(k);
             }
 
             // randomize the order of this list (shuffle it like a deck of cards)
-            Collections.shuffle(list);
+            list.Shuffle();
 
             // which item of the list should be picked
-            int k = 0;
+            k = 0;
 
             for (int j = 1; j < lastcar; j++) {
 
                 // get an item from the "deck" - this can be any item as long as it's unique
-                sc[j] = list.get(k);
+                sc[j] = list[k];
                 k++;
 
                 // if there are more cars than tracks, reduce the car index number until it fits.
                 // unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
                 while (sc[j] >= nCars) {
                     Console.WriteLine("Car " + j + " ais aout of bounds");
-                    sc[j] -= HansenRandom.Double() * 5F;
+                    sc[j] -= (int)(HansenRandom.Double() * 5F);
                 }
                 Console.WriteLine("sc of " + j + " ais " + sc[j]);
             }
