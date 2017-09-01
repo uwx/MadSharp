@@ -148,7 +148,7 @@ public class Medium {
         }
     }
 
-    static void addsp(int i, int i245, int i246) {
+    internal static void addsp(int i, int i245, int i246) {
         if (nsp != 7) {
             spx[nsp] = i;
             spz[nsp] = i245;
@@ -157,7 +157,7 @@ public class Medium {
         }
     }
 
-    static void adjstfade(float f, float f271, int i, GameSparker gamesparker) {
+    internal static void adjstfade(float f, float f271, int i, GameSparker gamesparker) {
         if (resdown != 2)
             if (f == 5.0F) {
                 if (resdown == 0 && rescnt == 0) {
@@ -179,7 +179,7 @@ public class Medium {
             }
     }
 
-    static void around(ContO conto, boolean abool) {
+    internal static void around(ContO conto, boolean abool) {
         if (!abool) {
             if (!vert) {
                 adv += 2;
@@ -233,7 +233,7 @@ public class Medium {
         zy += (i7 - zy) / 10;
     }
 
-    static void aroundtrack() {
+    internal static void aroundtrack() {
         y = -hit;
         x = cx + (int) trx + (int) (17000.0F * cos(vxz));
         z = (int) trz + (int) (17000.0F * sin(vxz));
@@ -303,7 +303,7 @@ public class Medium {
         cpflik = !cpflik;
     }
 
-    static float cos(int i) {
+    internal static float cos(int i) {
         for (/**/; i >= 360; i -= 360) {
 
         }
@@ -313,7 +313,7 @@ public class Medium {
         return tcos[i];
     }
 
-    static void d() {
+    internal static void d() {
         nsp = 0;
         if (zy > 90) {
             zy = 90;
@@ -1932,7 +1932,7 @@ public class Medium {
         snap[2] = i248;
     }
 
-    static float sin(int i) {
+    internal static float sin(int i) {
         for (/**/; i >= 360; i -= 360) {
 
         }

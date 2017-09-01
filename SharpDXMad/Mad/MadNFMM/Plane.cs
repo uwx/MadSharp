@@ -48,9 +48,9 @@ class Plane : IComparable<Plane> {
     internal int wy = 0;
     internal int wz = 0;
     
-    internal byte project;//booleans are bytes anyway so hey why not
+    internal sbyte project;
 
-    Plane(int[] ais, int[] is0, int[] is1, int i, int[] is2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, boolean abool, int i11, boolean bool12, boolean randomcolor, boolean randoutline, boolean customstroke, int strokewidth, int strokecap, int strokejoin, int strokemtlimit) {
+    internal Plane(int[] ais, int[] is0, int[] is1, int i, int[] is2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, boolean abool, int i11, boolean bool12) {
         n = i;
         ox = new int[n];
         oz = new int[n];
@@ -167,7 +167,7 @@ class Plane : IComparable<Plane> {
         deltafntyp();
     }
 
-    void d(Plane _last, Plane _next, int _mx, int _my, int _mz, int _xz, int _xy, int _yz, int i34, int i35, boolean abool, int i36) {
+    internal void d(Plane _last, Plane _next, int _mx, int _my, int _mz, int _xz, int _xy, int _yz, int i34, int i35, boolean abool, int i36) {
         if (master == 1)
             if (av > 1500 && !Medium.crs) {
                 n = 12;
@@ -208,8 +208,8 @@ class Plane : IComparable<Plane> {
                     is42[i44] = xs(_x[i44], _z[i44]);
                     is43[i44] = ys(_y[i44], _z[i44]);
                 }
-                graphics2d.setColor(new Color(230, 230, 230));
-                graphics2d.fillPolygon(is42, is43, n);
+                G.setColor(new Color(230, 230, 230));
+                G.fillPolygon(is42, is43, n);
             }
             float f = 1.0F;
             if (embos <= 4) {
@@ -326,8 +326,8 @@ class Plane : IComparable<Plane> {
                 if (i57 < 0) {
                     i57 = 0;
                 }
-                graphics2d.setColor(new Color(i55, i56, i57));
-                graphics2d.fillPolygon(is49, is50, 3);
+                G.setColor(new Color(i55, i56, i57));
+                G.fillPolygon(is49, is50, 3);
                 _x[0] = ox[pa] + _mx;
                 _y[0] = oy[pa] + _my;
                 _z[0] = oz[pa] + _mz;
@@ -348,7 +348,7 @@ class Plane : IComparable<Plane> {
                     }
                 _x[2] = (_x[0] + _x[1]) / 2 + i51;
                 _z[2] = (_z[0] + _z[1]) / 2 + i52;
-                i53 *= 0.8;
+                i53 = (int)(i53 * 0.8);
                 _y[2] = (_y[0] + _y[1]) / 2 - i45 * i46 * i53;
                 rot(_x, _y, _mx, _my, _xy, 3);
                 rot(_y, _z, _my, _mz, _yz, 3);
@@ -380,8 +380,8 @@ class Plane : IComparable<Plane> {
                 if (i57 < 0) {
                     i57 = 0;
                 }
-                graphics2d.setColor(new Color(i55, i56, i57));
-                graphics2d.fillPolygon(is49, is50, 3);
+                G.setColor(new Color(i55, i56, i57));
+                G.fillPolygon(is49, is50, 3);
             }
             for (int i59 = 0; i59 < n; i59++) {
                 if (typ == 1) {
@@ -487,18 +487,18 @@ class Plane : IComparable<Plane> {
             int i69 = (int) (Medium.random() * 3.0F);
             if (bfase != -7) {
                 if (i69 == 0) {
-                    graphics2d.setColor(new Color(c[0], c[1], c[2]).darker());
+                    G.setColor(new Color(c[0], c[1], c[2]).darker());
                 }
                 if (i69 == 1) {
-                    graphics2d.setColor(new Color(c[0], c[1], c[2]));
+                    G.setColor(new Color(c[0], c[1], c[2]));
                 }
                 if (i69 == 2) {
-                    graphics2d.setColor(new Color(c[0], c[1], c[2]).brighter());
+                    G.setColor(new Color(c[0], c[1], c[2]).brighter());
                 }
             } else {
-                graphics2d.setColor(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
+                G.setColor(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
             }
-            graphics2d.fillPolygon(is66, is67, 3);
+            G.fillPolygon(is66, is67, 3);
             chip++;
             if (chip == 20) {
                 chip = 0;
@@ -735,9 +735,9 @@ class Plane : IComparable<Plane> {
                     f = 1.0F;
                 }
                 if (bool113) {
-                    f *= 0.89;
+                    f *= 0.89f;
                 } else {
-                    f *= 0.86;
+                    f *= 0.86f;
                 }
                 if (f < 0.37) {
                     f = 0.37F;
@@ -820,11 +820,13 @@ class Plane : IComparable<Plane> {
             int i114 = color.getRed();
             int i115 = color.getGreen();
             int i116 = color.getBlue();
-            if (randomcolor) { //before the dim
+/*
+            if (false) { //before the dim
                 i114 = (int) (HansenRandom.Double() * 255);
                 i115 = (int) (HansenRandom.Double() * 255);
                 i116 = (int) (HansenRandom.Double() * 255);
             }
+*/
             if (Medium.lightson && (light != 0 || (gr == -11 || gr == -12) && i36 == -1)) {
                 i114 = oc[0];
                 if (i114 > 255) {
@@ -856,8 +858,8 @@ class Plane : IComparable<Plane> {
                         i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                     }
             }
-            graphics2d.setColor(new Color(i114, i115, i116));
-            graphics2d.fillPolygon(is85, is86, n);
+            G.setColor(new Color(i114, i115, i116));
+            G.fillPolygon(is85, is86, n);
             if (Medium.trk != 0 && gr == -10) {
                 abool = false;
             }
@@ -867,11 +869,13 @@ class Plane : IComparable<Plane> {
                         i114 = 0;
                         i115 = 0;
                         i116 = 0;
-                        if (randoutline) {
+/*
+                        if (false) {
                             i114 = (int) (HansenRandom.Double() * 255);
                             i115 = (int) (HansenRandom.Double() * 255);
                             i116 = (int) (HansenRandom.Double() * 255);
                         }
+*/
                         if (Medium.lightson && light != 0) {
                             i114 = oc[0] / 2;
                             if (i114 > 255) {
@@ -895,25 +899,13 @@ class Plane : IComparable<Plane> {
                                 i116 = 0;
                             }
                         }
-                        if (Madness.anti == 1) {
-                            graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                        }
-                        graphics2d.setColor(new Color(i114, i115, i116));
-                        if (customstroke) {
-                            graphics2d.setStroke(new BasicStroke(strokewidth, strokecap, strokejoin, strokemtlimit));
-                        }
-                        graphics2d.drawPolygon(is85, is86, n);
-                        if (customstroke) {
-                            graphics2d.setStroke(new BasicStroke());
-                        }
-                        if (Madness.anti == 1) {
-                            graphics2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-                        }
+                        G.setColor(new Color(i114, i115, i116));
+                        G.drawPolygon(is85, is86, n);
                     }
                 } else {
                     if (flx == 2) {
-                        graphics2d.setColor(new Color(0, 0, 0));
-                        graphics2d.drawPolygon(is85, is86, n);
+                        G.setColor(new Color(0, 0, 0));
+                        G.drawPolygon(is85, is86, n);
                     }
                     if (flx == 1) {
                         i114 = 0;
@@ -931,8 +923,8 @@ class Plane : IComparable<Plane> {
                         if (i116 < 0) {
                             i116 = 0;
                         }
-                        graphics2d.setColor(new Color(i114, i115, i116));
-                        graphics2d.drawPolygon(is85, is86, n);
+                        G.setColor(new Color(i114, i115, i116));
+                        G.drawPolygon(is85, is86, n);
                         flx = 2;
                     }
                     if (flx == 3) {
@@ -951,13 +943,13 @@ class Plane : IComparable<Plane> {
                         if (i116 < 0) {
                             i116 = 0;
                         }
-                        graphics2d.setColor(new Color(i114, i115, i116));
-                        graphics2d.drawPolygon(is85, is86, n);
+                        G.setColor(new Color(i114, i115, i116));
+                        G.drawPolygon(is85, is86, n);
                         flx = 2;
                     }
                     if (flx == 77) {
-                        graphics2d.setColor(new Color(16, 198, 255));
-                        graphics2d.drawPolygon(is85, is86, n);
+                        G.setColor(new Color(16, 198, 255));
+                        G.drawPolygon(is85, is86, n);
                         flx = 0;
                     }
                 }
@@ -974,8 +966,8 @@ class Plane : IComparable<Plane> {
                 if (i116 < 0) {
                     i116 = 0;
                 }
-                graphics2d.setColor(new Color(i114, i115, i116));
-                graphics2d.drawPolygon(is85, is86, n);
+                G.setColor(new Color(i114, i115, i116));
+                G.drawPolygon(is85, is86, n);
             }
             if (gr == -10)
                 if (Medium.trk == 0) {
@@ -983,15 +975,15 @@ class Plane : IComparable<Plane> {
                     i115 = c[1];
                     i116 = c[2];
                     if (i36 == -1 && Medium.cpflik) {
-                        i114 *= 1.6;
+                        i114 = (int)(i114 * 1.6);
                         if (i114 > 255) {
                             i114 = 255;
                         }
-                        i115 *= 1.6;
+                        i115 = (int)(i115 * 1.6);
                         if (i115 > 255) {
                             i115 = 255;
                         }
-                        i116 *= 1.6;
+                        i116 = (int)(i116 * 1.6);
                         if (i116 > 255) {
                             i116 = 255;
                         }
@@ -1002,8 +994,8 @@ class Plane : IComparable<Plane> {
                             i115 = (i115 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                             i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                         }
-                    graphics2d.setColor(new Color(i114, i115, i116));
-                    graphics2d.drawPolygon(is85, is86, n);
+                    G.setColor(new Color(i114, i115, i116));
+                    G.drawPolygon(is85, is86, n);
                 } else if (Medium.cpflik && Medium.hit == 5000) {
                     i115 = (int) (HansenRandom.Double() * 115.0);
                     i114 = i115 * 2 - 54;
@@ -1027,8 +1019,8 @@ class Plane : IComparable<Plane> {
                     if (i115 > 255) {
                         i115 = 255;
                     }
-                    graphics2d.setColor(new Color(i114, i115, i116));
-                    graphics2d.drawPolygon(is85, is86, n);
+                    G.setColor(new Color(i114, i115, i116));
+                    G.drawPolygon(is85, is86, n);
                 }
             if (gr == -18 && Medium.trk == 0) {
                 i114 = c[0];
@@ -1051,13 +1043,13 @@ class Plane : IComparable<Plane> {
                         i115 = (i115 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                         i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                     }
-                graphics2d.setColor(new Color(i114, i115, i116));
-                graphics2d.drawPolygon(is85, is86, n);
+                G.setColor(new Color(i114, i115, i116));
+                G.drawPolygon(is85, is86, n);
             }
         }
     }
 
-    void deltafntyp() {
+    internal void deltafntyp() {
         int i = Math.abs(ox[2] - ox[1]);
         int i24 = Math.abs(oy[2] - oy[1]);
         int i25 = Math.abs(oz[2] - oz[1]);
@@ -1080,7 +1072,7 @@ class Plane : IComparable<Plane> {
         deltaf = deltaf / 3.0F;
     }
 
-    void loadprojf() {
+    internal void loadprojf() {
         projf = 1.0F;
         for (int i = 0; i < 3; i++) {
             for (int i28 = 0; i28 < 3; i28++)
@@ -1091,7 +1083,7 @@ class Plane : IComparable<Plane> {
         projf = projf / 3.0F;
     }
 
-    void rot(int[] ais, int[] is163, int i, int i164, int i165, int i166) {
+    internal void rot(int[] ais, int[] is163, int i, int i164, int i165, int i166) {
         if (i165 != 0) {
             for (int i167 = 0; i167 < i166; i167++) {
                 int i168 = ais[i167];
@@ -1102,7 +1094,7 @@ class Plane : IComparable<Plane> {
         }
     }
 
-    void s(Graphics2D graphics2d, int i, int i120, int i121, int i122, int i123, int i124, int i125) {
+    internal void s(int i, int i120, int i121, int i122, int i123, int i124, int i125) {
         int[] ais = new int[n];
         int[] is126 = new int[n];
         int[] is127 = new int[n];
@@ -1173,8 +1165,8 @@ class Plane : IComparable<Plane> {
             if (i146 < 0) {
                 i146 = 0;
             }
-            for (int i147 = Trackers.sect[i145][i146].length - 1; i147 >= 0; i147--) {
-                int i148 = Trackers.sect[i145][i146][i147];
+            for (int i147 = Trackers.sect[i145,i146].Length - 1; i147 >= 0; i147--) {
+                int i148 = Trackers.sect[i145,i146][i147];
                 int i149 = 0;
                 if (Math.abs(Trackers.zy[i148]) != 90 && Math.abs(Trackers.xy[i148]) != 90 && Trackers.rady[i148] != 801 && Math.abs(i143 - (Trackers.x[i148] - Medium.x)) < Trackers.radx[i148] && Math.abs(i144 - (Trackers.z[i148] - Medium.z)) < Trackers.radz[i148] && (!Trackers.decor[i148] || Medium.resdown != 2)) {
                     i149++;
@@ -1183,10 +1175,10 @@ class Plane : IComparable<Plane> {
                     for (int i150 = 0; i150 < n; i150++) {
                         is127[i150] = Trackers.y[i148] - Medium.y;
                         if (Trackers.zy[i148] != 0) {
-                            is127[i150] += (is126[i150] - (Trackers.z[i148] - Medium.z - Trackers.radz[i148])) * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]) - Trackers.radz[i148] * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]);
+                            is127[i150] += (int) ((is126[i150] - (Trackers.z[i148] - Medium.z - Trackers.radz[i148])) * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]) - Trackers.radz[i148] * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]));
                         }
                         if (Trackers.xy[i148] != 0) {
-                            is127[i150] += (ais[i150] - (Trackers.x[i148] - Medium.x - Trackers.radx[i148])) * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]) - Trackers.radx[i148] * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]);
+                            is127[i150] += (int)((ais[i150] - (Trackers.x[i148] - Medium.x - Trackers.radx[i148])) * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]) - Trackers.radx[i148] * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]));
                         }
                     }
                     i129 = (int) (Trackers.c[i148][0] / 1.5);
@@ -1245,8 +1237,8 @@ class Plane : IComparable<Plane> {
                     i130 = (i130 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                     i131 = (i131 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                 }
-            graphics2d.setColor(new Color(i129, i130, i131));
-            graphics2d.fillPolygon(is151, is152, n);
+            G.setColor(new Color(i129, i130, i131));
+            G.fillPolygon(is151, is152, n);
         }
     }
 
@@ -1268,7 +1260,7 @@ class Plane : IComparable<Plane> {
         return (i162 - Medium.focusPoint) * (Medium.cy - i) / i162 + i;
     }
 
-    public int CompareTo(Plane other)
+    public int CompareTo(Plane o)
     {
         if (av == o.av) return 0;
         if (av < o.av)

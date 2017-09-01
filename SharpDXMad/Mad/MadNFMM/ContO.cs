@@ -1,4 +1,6 @@
 using System;
+using System.Text;
+using MadGame;
 using boolean = System.Boolean;
 
 namespace Cum {
@@ -47,10 +49,10 @@ class ContO {
     internal int[] scz;
     internal boolean shadow = false;
     private int[] skd;
-    private float[][] smag;
+    private float[,] smag;
     internal int sprk;
     private int sprkat;
-    private int[][] srgb;
+    private int[,] srgb;
     internal int srx;
     internal int sry;
     internal int srz;
@@ -58,7 +60,7 @@ class ContO {
     internal int[] sx;
     internal int[] sy;
     internal int[] sz;
-    private int[][] tc;
+    private int[,] tc;
     internal int tnt;
     private int[] tradx;
     private int[] trady;
@@ -163,11 +165,9 @@ class ContO {
         boolean randoutline = false;
 
         try {
-            BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(new DataInputStream(new ByteArrayInputStream(ais))));
-            
-            String string17;
-            while ((string17 = bufferedreader.readLine()) != null) {
-                aastring = "" + string17.trim();
+            foreach (var aline in Encoding.Default.GetString(_is).Split('\n'))
+            {
+                aastring = aline.Trim();
                 if (npl < 10000 /* 210 */) {
                     if (aastring.StartsWith("<p>")) {
                         aabool = true;
@@ -215,12 +215,12 @@ class ContO {
                         if (aastring.StartsWith("noOutline")) {
                             bool15 = true;
                         }
-                        if (aastring.StartsWith("random()") || aastring.StartsWith("rainbow()")) {
-                            randomcolor = true;
-                        }
-                        if (aastring.StartsWith("randoutline()")) {
-                            randoutline = true;
-                        }
+//                        if (aastring.StartsWith("random()") || aastring.StartsWith("rainbow()")) {
+//                            randomcolor = true;
+//                        }
+//                        if (aastring.StartsWith("randoutline()")) {
+//                            randoutline = true;
+//                        }
                         if (aastring.StartsWith("p(")) {
                             is3[i] = (int) (getvalue("p", aastring, 0) * f * f2 * fs[0]);
                             is4[i] = (int) (getvalue("p", aastring, 1) * f * fs[1]);
@@ -233,7 +233,7 @@ class ContO {
                         }
                     }
                     if (aastring.StartsWith("</p>")) {
-                        p[npl] = new Plane(is3, is5, is4, i, is6, i14, i10, i11, 0, 0, 0, disline, 0, bool7, i13, bool15, randomcolor, randoutline, false, 1, 1, 1, 1);
+                        p[npl] = new Plane(is3, is5, is4, i, is6, i14, i10, i11, 0, 0, 0, disline, 0, bool7, i13, bool15);
                         if (is6[0] == fcol[0] && is6[1] == fcol[1] && is6[2] == fcol[2] && i14 == 0) {
                             p[npl].colnum = 1;
                         }
@@ -311,7 +311,7 @@ class ContO {
                     int i23 = getvalue("tracks", aastring, 0);
                     txy = new int[i23];
                     tzy = new int[i23];
-                    tc = new int[i23][3];
+                    tc = new int[i23,3];
                     tradx = new int[i23];
                     tradz = new int[i23];
                     trady = new int[i23];
@@ -337,15 +337,15 @@ class ContO {
                         trady[tnt] = 0;
                         tradx[tnt] = 0;
                         tradz[tnt] = 0;
-                        tc[tnt][0] = 0;
-                        tc[tnt][1] = 0;
-                        tc[tnt][2] = 0;
+                        tc[tnt,0] = 0;
+                        tc[tnt,1] = 0;
+                        tc[tnt,2] = 0;
                     }
                     if (bool1) {
                         if (aastring.StartsWith("c")) {
-                            tc[tnt][0] = getvalue("c", aastring, 0);
-                            tc[tnt][1] = getvalue("c", aastring, 1);
-                            tc[tnt][2] = getvalue("c", aastring, 2);
+                            tc[tnt,0] = getvalue("c", aastring, 0);
+                            tc[tnt,1] = getvalue("c", aastring, 1);
+                            tc[tnt,2] = getvalue("c", aastring, 2);
                         }
                         if (aastring.StartsWith("xy")) {
                             txy[tnt] = getvalue("xy", aastring, 0);
@@ -460,11 +460,8 @@ class ContO {
                     colok++;
                 }
             }
-            bufferedreader.close();
         } catch (Exception exception) {
-            if (exception instanceof RuntimeException)
-                throw new RuntimeException(exception);
-            else if (!errd) {
+            if (!errd) {
                 err = "Error While Loading 3D Model\n\nLine:     " + aastring + "\n\nError Detail:\n" + exception + "           \n \n";
                 Console.WriteLine(err);
                 errd = true;
@@ -883,7 +880,7 @@ class ContO {
             if (conto78.p[i82].master == 1) {
                 conto78.p[i82].n = 20;
             }
-            p[i82] = new Plane(conto78.p[i82].ox, conto78.p[i82].oz, conto78.p[i82].oy, conto78.p[i82].n, conto78.p[i82].oc, conto78.p[i82].glass, conto78.p[i82].gr, conto78.p[i82].fs, conto78.p[i82].wx, conto78.p[i82].wy, conto78.p[i82].wz, conto78.disline, conto78.p[i82].bfase, conto78.p[i82].road, conto78.p[i82].light, conto78.p[i82].solo, conto78.p[i82].randomcolor, conto78.p[i82].randoutline, conto78.p[i82].customstroke, conto78.p[i82].strokewidth, conto78.p[i82].strokecap, conto78.p[i82].strokejoin, conto78.p[i82].strokemtlimit);
+            p[i82] = new Plane(conto78.p[i82].ox, conto78.p[i82].oz, conto78.p[i82].oy, conto78.p[i82].n, conto78.p[i82].oc, conto78.p[i82].glass, conto78.p[i82].gr, conto78.p[i82].fs, conto78.p[i82].wx, conto78.p[i82].wy, conto78.p[i82].wz, conto78.disline, conto78.p[i82].bfase, conto78.p[i82].road, conto78.p[i82].light, conto78.p[i82].solo);
             p[i82].project = conto78.p[i82].project;
         }
         x = toX;
@@ -903,7 +900,7 @@ class ContO {
                 Trackers.xy[Trackers.nt] = (int) (conto78.txy[i84] * Medium.cos(i81) - conto78.tzy[i84] * Medium.sin(i81));
                 Trackers.zy[Trackers.nt] = (int) (conto78.tzy[i84] * Medium.cos(i81) + conto78.txy[i84] * Medium.sin(i81));
                 for (int i85 = 0; i85 < 3; i85++) {
-                    Trackers.c[Trackers.nt][i85] = (int) (conto78.tc[i84][i85] + conto78.tc[i84][i85] * (Medium.snap[i85] / 100.0F));
+                    Trackers.c[Trackers.nt][i85] = (int) (conto78.tc[i84,i85] + conto78.tc[i84,i85] * (Medium.snap[i85] / 100.0F));
                     if (Trackers.c[Trackers.nt][i85] > 255) {
                         Trackers.c[Trackers.nt][i85] = 255;
                     }
@@ -941,8 +938,8 @@ class ContO {
             scz = new int[20];
             osmag = new float[20];
             sav = new int[20];
-            smag = new float[20][8];
-            srgb = new int[20][3];
+            smag = new float[20,8];
+            srgb = new int[20,3];
             sbln = new float[20];
             ust = 0;
             for (int i88 = 0; i88 < 20; i88++) {
@@ -1134,7 +1131,7 @@ class ContO {
                 } else {
                     is106[i115] = (int) ((Medium.cpol[i115] + Medium.cgrnd[i115]) / (2.2F + f100 - f108));
                 }
-            p[i109] = new Plane(is112, is114, is113, 6, is106, 3, -8, 0, 0, 0, 0, disline, 0, true, 0, false, false, false, false, 1, 0, 0, 10);
+            p[i109] = new Plane(is112, is114, is113, 6, is106, 3, -8, 0, 0, 0, 0, disline, 0, true, 0, false);
         }
         f100 = (float) (0.02 * random.nextDouble());
         for (int i116 = 0; i116 < 3; i116++)
@@ -1143,7 +1140,7 @@ class ContO {
             } else {
                 is106[i116] = (int) ((Medium.cpol[i116] + Medium.cgrnd[i116]) / (2.15F + f100));
             }
-        p[4] = new Plane(is96, is97, is98, 8, is106, 3, -8, 0, 0, 0, 0, disline, 0, true, 0, false, false, false, false, 1, 0, 0, 10);
+        p[4] = new Plane(is96, is97, is98, 8, is106, 3, -8, 0, 0, 0, 0, disline, 0, true, 0, false);
         int[] is117 = new int[2];
         int[] is118 = new int[2];
         for (int i119 = 0; i119 < 4; i119++) {
@@ -1233,7 +1230,7 @@ class ContO {
         Trackers.nt++;
     }
 
-    void d(Graphics2D graphics2d) {
+    void d() {
         if (dist != 0) {
             dist = 0;
         }
@@ -1261,8 +1258,8 @@ class ContO {
                             if (i128 < 0) {
                                 i128 = 0;
                             }
-                            for (int i129 = Trackers.sect[i127][i128].length - 1; i129 >= 0; i129--) {
-                                int i130 = Trackers.sect[i127][i128][i129];
+                            for (int i129 = Trackers.sect[i127,i128].Length - 1; i129 >= 0; i129--) {
+                                int i130 = Trackers.sect[i127,i128][i129];
                                 if (Math.abs(Trackers.zy[i130]) != 90 && Math.abs(Trackers.xy[i130]) != 90 && Math.abs(x - Trackers.x[i130]) < Trackers.radx[i130] + maxR && Math.abs(z - Trackers.z[i130]) < Trackers.radz[i130] + maxR && (!Trackers.decor[i130] || Medium.resdown != 2)) {
                                     aabool = true;
                                     break;
@@ -1271,33 +1268,33 @@ class ContO {
                         }
                         if (aabool) {
                             for (int i131 = 0; i131 < npl; i131++) {
-                                p[i131].s(graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 0);
+                                p[i131].s(x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 0);
                             }
                         } else {
                             int i132 = Medium.cy + (int) ((Medium.ground - Medium.cy) * Medium.cos(Medium.zy) - (i124 - Medium.cz) * Medium.sin(Medium.zy));
                             int i133 = Medium.cz + (int) ((Medium.ground - Medium.cy) * Medium.sin(Medium.zy) + (i124 - Medium.cz) * Medium.cos(Medium.zy));
                             if (ys(i132 + maxR, i133) > 0 && ys(i132 - maxR, i133) < Medium.h) {
                                 for (int i134 = 0; i134 < npl; i134++) {
-                                    p[i134].s(graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 1);
+                                    p[i134].s(x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 1);
                                 }
                             }
                         }
                         Medium.addsp(x - Medium.x, z - Medium.z, (int) (maxR * 0.8));
                     } else {
-                        lowshadow(graphics2d, i125);
+                        lowshadow(i125);
                     }
                 } else {
                     for (int i135 = 0; i135 < npl; i135++) {
-                        p[i135].s(graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 2);
+                        p[i135].s(x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, 2);
                     }
                 }
             int i136 = Medium.cy + (int) ((y - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i124 - Medium.cz) * Medium.sin(Medium.zy));
             if (ys(i136 + maxR, i125) > Medium.ih && ys(i136 - maxR, i125) < Medium.h) {
                 if (elec && Medium.noelec == 0) {
-                    electrify(graphics2d);
+                    electrify();
                 }
                 if (fix) {
-                    fixit(graphics2d);
+                    fixit();
                 }
                 if (checkpoint != 0 && checkpoint - 1 == Medium.checkpoint) {
                     i126 = -1;
@@ -1306,25 +1303,25 @@ class ContO {
                     dist = (int) Math.sqrt((Medium.x + Medium.cx - x) * (Medium.x + Medium.cx - x) + (Medium.z - z) * (Medium.z - z) + (Medium.y + Medium.cy - y) * (Medium.y + Medium.cy - y));
                     for (int i137 = 0; i137 < 20; i137++)
                         if (stg[i137] != 0) {
-                            pdust(i137, graphics2d, true);
+                            pdust(i137, true);
                         }
-                    dsprk(graphics2d, true);
+                    dsprk(true);
                 }
-                Arrays.sort(p, 0, npl);
+                ArrayExt.sort(p, 0, npl);
                 
                 int _npl = npl - 1;
-                p[0].d(p[0], p[1], graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, wxz, wzy, noline, i126);
+                p[0].d(p[0], p[1], x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, wxz, wzy, noline, i126);
                 for (int j = 1; j < _npl; j++) {
-                    p[j].d(p[j-1], p[j+1], graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, wxz, wzy, noline, i126);
+                    p[j].d(p[j-1], p[j+1], x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, wxz, wzy, noline, i126);
                 }
-                p[_npl].d(p[_npl-1], null, graphics2d, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, wxz, wzy, noline, i126);
+                p[_npl].d(p[_npl-1], null, x - Medium.x, y - Medium.y, z - Medium.z, xz, xy, zy, wxz, wzy, noline, i126);
                 
                 if (shadow) {
                     for (int i143 = 0; i143 < 20; i143++)
                         if (stg[i143] != 0) {
-                            pdust(i143, graphics2d, false);
+                            pdust(i143, false);
                         }
-                    dsprk(graphics2d, false);
+                    dsprk(false);
                 }
                 dist = (int) (Math.sqrt((int) Math.sqrt((Medium.x + Medium.cx - x) * (Medium.x + Medium.cx - x) + (Medium.z - z) * (Medium.z - z) + (Medium.y + Medium.cy - y) * (Medium.y + Medium.cy - y))) * grounded);
             }
@@ -1344,7 +1341,7 @@ class ContO {
         }
     }
 
-    private void dsprk(Graphics2D graphics2d, boolean aabool) {
+    private void dsprk(boolean aabool) {
         if (aabool && sprk != 0) {
             int i = (int) (Math.sqrt(rcx * rcx + rcy * rcy + rcz * rcz) / 10.0);
             if (i > 5) {
@@ -1406,9 +1403,9 @@ class ContO {
                         vrz[i] = -((rcz + i243 * (1.0F - rcz / i243) * f244 * f245) * f);
                     }
                 }
-                rx[i] += vrx[i];
-                ry[i] += vry[i];
-                rz[i] += vrz[i];
+                rx[i] = (int) (rx[i] + vrx[i]);
+                ry[i] = (int) (ry[i] + vry[i]);
+                rz[i] = (int) (rz[i] + vrz[i]);
                 int i246 = Medium.cx + (int) ((rx[i] - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (rz[i] - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
                 int i247 = Medium.cz + (int) ((rx[i] - Medium.x - Medium.cx) * Medium.sin(Medium.xz) + (rz[i] - Medium.z - Medium.cz) * Medium.cos(Medium.xz));
                 int i248 = Medium.cy + (int) ((ry[i] - Medium.y - Medium.cy) * Medium.cos(Medium.zy) - (i247 - Medium.cz) * Medium.sin(Medium.zy));
@@ -1446,8 +1443,8 @@ class ContO {
                             i257 = (i257 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                             i258 = (i258 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                         }
-                    graphics2d.setColor(new Color(i256, i257, i258));
-                    graphics2d.drawLine(i252, i253, i254, i255);
+                    G.setColor(new Color(i256, i257, i258));
+                    G.drawLine(i252, i253, i254, i255);
                     vrx[i] = vrx[i] * 0.8F;
                     vry[i] = vry[i] * 0.8F;
                     vrz[i] = vrz[i] * 0.8F;
@@ -1500,7 +1497,7 @@ class ContO {
         }
     }
 
-    private void electrify(Graphics2D graphics2d) {
+    private void electrify() {
         for (int i = 0; i < 4; i++) {
             if (elc[i] == 0) {
                 edl[i] = (int) (380.0F - Medium.random() * 760.0F);
@@ -1593,8 +1590,8 @@ class ContO {
                     i197 = 128;
                     i198 = 0;
                 }
-                graphics2d.setColor(new Color(i196, i197, i198));
-                graphics2d.fillPolygon(is193, is194, 8);
+                G.setColor(new Color(i196, i197, i198));
+                G.fillPolygon(is193, is194, 8);
                 if (is187[0] < 4000) {
                     i196 = (int) (150.0F + 150.0F * (Medium.snap[0] / 500.0F));
                     if (i196 > 255) {
@@ -1617,8 +1614,8 @@ class ContO {
                     if (i198 < 0) {
                         i198 = 0;
                     }
-                    graphics2d.setColor(new Color(i196, i197, i198));
-                    graphics2d.drawPolygon(is193, is194, 8);
+                    G.setColor(new Color(i196, i197, i198));
+                    G.drawPolygon(is193, is194, 8);
                 }
             }
             if (elc[i] > Medium.random() * 60.0F) {
@@ -1640,7 +1637,7 @@ class ContO {
         }
     }
 
-    private void fixit(Graphics2D graphics2d) {
+    private void fixit() {
         if (fcnt == 1) {
             for (int i = 0; i < npl; i++) {
                 p[i].hsb[0] = 0.57F;
@@ -1686,10 +1683,10 @@ class ContO {
             int[] ais = new int[8];
             int[] is170 = new int[8];
             int[] is171 = new int[4];
-            for (int i = 0; i < 4; i++) {
-                ais[i] = keyx[i] + x - Medium.x;
-                is170[i] = grat + y - Medium.y;
-                is171[i] = keyz[i] + z - Medium.z;
+            for (int j = 0; j < 4; j++) {
+                ais[j] = keyx[j] + x - Medium.x;
+                is170[j] = grat + y - Medium.y;
+                is171[j] = keyz[j] + z - Medium.z;
             }
             rot(ais, is170, x - Medium.x, y - Medium.y, xy, 4);
             rot(is170, is171, y - Medium.y, z - Medium.y, zy, 4);
@@ -1775,8 +1772,8 @@ class ContO {
             if (i181 < 0) {
                 i181 = 0;
             }
-            graphics2d.setColor(new Color(i179, i180, i181));
-            graphics2d.fillPolygon(ais, is170, 8);
+            G.setColor(new Color(i179, i180, i181));
+            G.fillPolygon(ais, is170, 8);
             ais[0] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
             is170[0] = ys((int) (i178 - i172 / 2.4 - Medium.random() * (i172 / 9.6)), i177);
             ais[1] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
@@ -1814,8 +1811,8 @@ class ContO {
             if (i181 < 0) {
                 i181 = 0;
             }
-            graphics2d.setColor(new Color(i179, i180, i181));
-            graphics2d.fillPolygon(ais, is170, 8);
+            G.setColor(new Color(i179, i180, i181));
+            G.fillPolygon(ais, is170, 8);
         }
         if (fcnt > 7) {
             fcnt = 0;
@@ -1829,23 +1826,12 @@ class ContO {
         return (i - x) / 10 * ((i - x) / 10) + (i267 - y) / 10 * ((i267 - y) / 10) + (i268 - z) / 10 * ((i268 - z) / 10);
     }
 
-    private int getvalue(String aastring, String string262, int i) {
-        int i263 = 0;
-        String string264 = "";
-        for (int i265 = aastring.length() + 1; i265 < string262.length(); i265++) {
-            String string266 = "" + string262.charAt(i265);
-            if (string266.equals(",") || string266.equals(")")) {
-                i263++;
-                i265++;
-            }
-            if (i263 == i) {
-                string264 = "" + string264 + string262.charAt(i265);
-            }
-        }
-        return Integer.parseInt(string264);
+    private int getvalue(String aastring, String string262, int i)
+    {//TODO
+        return Utility.getint(aastring, string262, i);
     }
 
-    private void lowshadow(Graphics2D graphics2d, int i) {
+    private void lowshadow(int i) {
         int[] ais = new int[4];
         int[] is146 = new int[4];
         int[] is147 = new int[4];
@@ -1888,8 +1874,8 @@ class ContO {
             if (i155 < 0) {
                 i155 = 0;
             }
-            for (int i156 = Trackers.sect[i154][i155].length - 1; i156 >= 0; i156--) {
-                int i157 = Trackers.sect[i154][i155][i156];
+            for (int i156 = Trackers.sect[i154,i155].Length - 1; i156 >= 0; i156--) {
+                int i157 = Trackers.sect[i154,i155][i156];
                 int i158 = 0;
                 for (int i159 = 0; i159 < 4; i159++)
                     if (Math.abs(Trackers.zy[i157]) != 90 && Math.abs(Trackers.xy[i157]) != 90 && Trackers.rady[i157] != 801 && Math.abs(ais[i159] - (Trackers.x[i157] - Medium.x)) < Trackers.radx[i157] && Math.abs(is147[i159] - (Trackers.z[i157] - Medium.z)) < Trackers.radz[i157] && (!Trackers.decor[i157] || Medium.resdown != 2)) {
@@ -1899,10 +1885,10 @@ class ContO {
                     for (int i160 = 0; i160 < 4; i160++) {
                         is146[i160] = Trackers.y[i157] - Medium.y;
                         if (Trackers.zy[i157] != 0) {
-                            is146[i160] += (is147[i160] - (Trackers.z[i157] - Medium.z - Trackers.radz[i157])) * Medium.sin(Trackers.zy[i157]) / Medium.sin(90 - Trackers.zy[i157]) - Trackers.radz[i157] * Medium.sin(Trackers.zy[i157]) / Medium.sin(90 - Trackers.zy[i157]);
+                            is146[i160] = (int) (is146[i160] + (is147[i160] - (Trackers.z[i157] - Medium.z - Trackers.radz[i157])) * Medium.sin(Trackers.zy[i157]) / Medium.sin(90 - Trackers.zy[i157]) - Trackers.radz[i157] * Medium.sin(Trackers.zy[i157]) / Medium.sin(90 - Trackers.zy[i157]));
                         }
                         if (Trackers.xy[i157] != 0) {
-                            is146[i160] += (ais[i160] - (Trackers.x[i157] - Medium.x - Trackers.radx[i157])) * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]) - Trackers.radx[i157] * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]);
+                            is146[i160] = (int) (is146[i160] + (ais[i160] - (Trackers.x[i157] - Medium.x - Trackers.radx[i157])) * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]) - Trackers.radx[i157] * Medium.sin(Trackers.xy[i157]) / Medium.sin(90 - Trackers.xy[i157]));
                         }
                     }
                     i150 = (int) (Trackers.c[i157][0] / 1.5);
@@ -1945,20 +1931,21 @@ class ContO {
                     i151 = (i151 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                     i152 = (i152 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                 }
-            graphics2d.setColor(new Color(i150, i151, i152));
-            graphics2d.fillPolygon(ais, is146, 4);
+            G.setColor(new Color(i150, i151, i152));
+            G.fillPolygon(ais, is146, 4);
         }
     }
 
-    private void pdust(int i, Graphics2D graphics2d, boolean aabool) {
+    private void pdust(int i, boolean aabool) {
         if (aabool) {
             sav[i] = (int) Math.sqrt((Medium.x + Medium.cx - sx[i]) * (Medium.x + Medium.cx - sx[i]) + (Medium.y + Medium.cy - sy[i]) * (Medium.y + Medium.cy - sy[i]) + (Medium.z - sz[i]) * (Medium.z - sz[i]));
         }
         if (aabool && sav[i] > dist || !aabool && sav[i] <= dist) {
+            int[] ais;
             if (stg[i] == 1) {
                 sbln[i] = 0.6F;
                 boolean bool208 = false;
-                int[] ais = new int[3];
+                ais = new int[3];
                 for (int i209 = 0; i209 < 3; i209++) {
                     ais[i209] = (int) (255.0F + 255.0F * (Medium.snap[i209] / 100.0F));
                     if (ais[i209] > 255) {
@@ -1982,8 +1969,8 @@ class ContO {
                 if (i211 < 0) {
                     i211 = 0;
                 }
-                for (int i212 = 0; i212 < Trackers.sect[i210][i211].length; i212++) {
-                    int i213 = Trackers.sect[i210][i211][i212];
+                for (int i212 = 0; i212 < Trackers.sect[i210,i211].Length; i212++) {
+                    int i213 = Trackers.sect[i210,i211][i212];
                     if (Math.abs(Trackers.zy[i213]) != 90 && Math.abs(Trackers.xy[i213]) != 90 && Math.abs(sx[i] - Trackers.x[i213]) < Trackers.radx[i213] && Math.abs(sz[i] - Trackers.z[i213]) < Trackers.radz[i213]) {
                         if (Trackers.skd[i213] == 0) {
                             sbln[i] = 0.2F;
@@ -1995,14 +1982,14 @@ class ContO {
                             sbln[i] = 0.45F;
                         }
                         for (int i214 = 0; i214 < 3; i214++) {
-                            srgb[i][i214] = (Trackers.c[i213][i214] + ais[i214]) / 2;
+                            srgb[i,i214] = (Trackers.c[i213][i214] + ais[i214]) / 2;
                         }
                         bool208 = true;
                     }
                 }
                 if (!bool208) {
                     for (int i215 = 0; i215 < 3; i215++) {
-                        srgb[i][i215] = (Medium.crgrnd[i215] + ais[i215]) / 2;
+                        srgb[i,i215] = (Medium.crgrnd[i215] + ais[i215]) / 2;
                     }
                 }
                 float f = (float) (0.1 + Medium.random());
@@ -2012,7 +1999,7 @@ class ContO {
                 scx[i] = (int) (scx[i] * f);
                 scz[i] = (int) (scx[i] * f);
                 for (int i216 = 0; i216 < 8; i216++) {
-                    smag[i][i216] = osmag[i] * Medium.random() * 50.0F;
+                    smag[i,i216] = osmag[i] * Medium.random() * 50.0F;
                 }
                 for (int i217 = 0; i217 < 8; i217++) {
                     int i218 = i217 - 1;
@@ -2023,38 +2010,38 @@ class ContO {
                     if (i219 == 8) {
                         i219 = 0;
                     }
-                    smag[i][i217] = ((smag[i][i218] + smag[i][i219]) / 2.0F + smag[i][i217]) / 2.0F;
+                    smag[i,i217] = ((smag[i,i218] + smag[i,i219]) / 2.0F + smag[i,i217]) / 2.0F;
                 }
-                smag[i][6] = smag[i][7];
+                smag[i,6] = smag[i,7];
             }
             int i220 = Medium.cx + (int) ((sx[i] - Medium.x - Medium.cx) * Medium.cos(Medium.xz) - (sz[i] - Medium.z - Medium.cz) * Medium.sin(Medium.xz));
             int i221 = Medium.cz + (int) ((sx[i] - Medium.x - Medium.cx) * Medium.sin(Medium.xz) + (sz[i] - Medium.z - Medium.cz) * Medium.cos(Medium.xz));
-            int i222 = Medium.cy + (int) ((sy[i] - Medium.y - Medium.cy - smag[i][7]) * Medium.cos(Medium.zy) - (i221 - Medium.cz) * Medium.sin(Medium.zy));
-            i221 = Medium.cz + (int) ((sy[i] - Medium.y - Medium.cy - smag[i][7]) * Medium.sin(Medium.zy) + (i221 - Medium.cz) * Medium.cos(Medium.zy));
+            int i222 = Medium.cy + (int) ((sy[i] - Medium.y - Medium.cy - smag[i,7]) * Medium.cos(Medium.zy) - (i221 - Medium.cz) * Medium.sin(Medium.zy));
+            i221 = Medium.cz + (int) ((sy[i] - Medium.y - Medium.cy - smag[i,7]) * Medium.sin(Medium.zy) + (i221 - Medium.cz) * Medium.cos(Medium.zy));
             sx[i] += scx[i] / (stg[i] + 1);
             sz[i] += scz[i] / (stg[i] + 1);
-            int[] ais = new int[8];
+            ais = new int[8];
             int[] is223 = new int[8];
-            ais[0] = xs((int) (i220 + smag[i][0] * 0.9238F * 1.5F), i221);
-            is223[0] = ys((int) (i222 + smag[i][0] * 0.3826F * 1.5F), i221);
-            ais[1] = xs((int) (i220 + smag[i][1] * 0.9238F * 1.5F), i221);
-            is223[1] = ys((int) (i222 - smag[i][1] * 0.3826F * 1.5F), i221);
-            ais[2] = xs((int) (i220 + smag[i][2] * 0.3826F), i221);
-            is223[2] = ys((int) (i222 - smag[i][2] * 0.9238F), i221);
-            ais[3] = xs((int) (i220 - smag[i][3] * 0.3826F), i221);
-            is223[3] = ys((int) (i222 - smag[i][3] * 0.9238F), i221);
-            ais[4] = xs((int) (i220 - smag[i][4] * 0.9238F * 1.5F), i221);
-            is223[4] = ys((int) (i222 - smag[i][4] * 0.3826F * 1.5F), i221);
-            ais[5] = xs((int) (i220 - smag[i][5] * 0.9238F * 1.5F), i221);
-            is223[5] = ys((int) (i222 + smag[i][5] * 0.3826F * 1.5F), i221);
-            ais[6] = xs((int) (i220 - smag[i][6] * 0.3826F * 1.7F), i221);
-            is223[6] = ys((int) (i222 + smag[i][6] * 0.9238F), i221);
-            ais[7] = xs((int) (i220 + smag[i][7] * 0.3826F * 1.7F), i221);
-            is223[7] = ys((int) (i222 + smag[i][7] * 0.9238F), i221);
+            ais[0] = xs((int) (i220 + smag[i,0] * 0.9238F * 1.5F), i221);
+            is223[0] = ys((int) (i222 + smag[i,0] * 0.3826F * 1.5F), i221);
+            ais[1] = xs((int) (i220 + smag[i,1] * 0.9238F * 1.5F), i221);
+            is223[1] = ys((int) (i222 - smag[i,1] * 0.3826F * 1.5F), i221);
+            ais[2] = xs((int) (i220 + smag[i,2] * 0.3826F), i221);
+            is223[2] = ys((int) (i222 - smag[i,2] * 0.9238F), i221);
+            ais[3] = xs((int) (i220 - smag[i,3] * 0.3826F), i221);
+            is223[3] = ys((int) (i222 - smag[i,3] * 0.9238F), i221);
+            ais[4] = xs((int) (i220 - smag[i,4] * 0.9238F * 1.5F), i221);
+            is223[4] = ys((int) (i222 - smag[i,4] * 0.3826F * 1.5F), i221);
+            ais[5] = xs((int) (i220 - smag[i,5] * 0.9238F * 1.5F), i221);
+            is223[5] = ys((int) (i222 + smag[i,5] * 0.3826F * 1.5F), i221);
+            ais[6] = xs((int) (i220 - smag[i,6] * 0.3826F * 1.7F), i221);
+            is223[6] = ys((int) (i222 + smag[i,6] * 0.9238F), i221);
+            ais[7] = xs((int) (i220 + smag[i,7] * 0.3826F * 1.7F), i221);
+            is223[7] = ys((int) (i222 + smag[i,7] * 0.9238F), i221);
             for (int i224 = 0; i224 < 7; i224++) {
-                smag[i][i224] += 5.0F + Medium.random() * 15.0F;
+                smag[i,i224] += 5.0F + Medium.random() * 15.0F;
             }
-            smag[i][7] = smag[i][6];
+            smag[i,7] = smag[i,6];
             boolean bool225 = true;
             int i226 = 0;
             int i227 = 0;
@@ -2078,20 +2065,20 @@ class ContO {
                 bool225 = false;
             }
             if (bool225) {
-                int i231 = srgb[i][0];
-                int i232 = srgb[i][1];
-                int i233 = srgb[i][2];
+                int i231 = srgb[i,0];
+                int i232 = srgb[i,1];
+                int i233 = srgb[i,2];
                 for (int i234 = 0; i234 < 16; i234++)
                     if (sav[i] > Medium.fade[i234]) {
                         i231 = (i231 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
                         i232 = (i232 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                         i233 = (i233 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                     }
-                graphics2d.setColor(new Color(i231, i232, i233));
+                G.setColor(new Color(i231, i232, i233));
                 float f = sbln[i] - stg[i] * (sbln[i] / 8.0F);
-                graphics2d.setComposite(AlphaComposite.getInstance(3, f));
-                graphics2d.fillPolygon(ais, is223, 8);
-                graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
+                G.setAlpha(f);
+                G.fillPolygon(ais, is223, 8);
+                G.setAlpha(1.0F);
             }
             if (stg[i] == 7) {
                 stg[i] = 0;

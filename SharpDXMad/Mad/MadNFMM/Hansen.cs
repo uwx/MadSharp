@@ -72,6 +72,16 @@ namespace Cum
         {
             throw new NotImplementedException();
         }
+
+        public Color darker()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Color brighter()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class RadicalMusic
@@ -184,6 +194,16 @@ namespace Cum
                 }
             }
             return arr;
+        }
+
+        public static void sort<T>(T[] arr)
+        {//TODO
+            Array.Sort(arr);
+        }
+
+        public static void sort<T>(T[] arr, int from, int to)
+        {
+            Array.Sort(arr, from, to);
         }
     }
 

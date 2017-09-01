@@ -79,5 +79,20 @@ namespace MadGame
         {
             throw new NotImplementedException();
         }
+
+        public static void drawPolygon(int[] is85, int[] is86, int i)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void drawLine(int i252, int i253, int i254, int i255)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void setAlpha(float f)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
