@@ -854,7 +854,7 @@ namespace Cum
                             }
                             if (!astring.equals("")) {
                                 astring = astring.replace('|', ':');
-                                if (astring.toLowerCase().contains(GameSparker.tpass.getText().toLowerCase())) {
+                                if (astring.ToLower().contains(GameSparker.tpass.getText().ToLower())) {
                                     astring = " ";
                                 }
                                 if (!msgcheck(astring) && updatec[i57] > -12) {

@@ -1309,7 +1309,7 @@ namespace Cum
         temail = new TextField("");
         temail.setFont(new Font("Arial", 1, 13));
         cmsg = new TextField("");
-        if (System.getProperty("java.vendor").toLowerCase().Contains("oracle"))
+        if (System.getProperty("java.vendor").ToLower().Contains("oracle"))
         {
             cmsg.addKeyListener(new KeyAdapter()
             {
@@ -1991,7 +1991,7 @@ namespace Cum
 
     private static void preloadGame()
     {
-        if (System.getProperty("java.vendor").toLowerCase().Contains("apple"))
+        if (System.getProperty("java.vendor").ToLower().Contains("apple"))
         {
             applejava = true;
         }
