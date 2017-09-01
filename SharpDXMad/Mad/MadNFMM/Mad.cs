@@ -212,7 +212,7 @@ namespace Cum
                                 }
                                 if (Medium.random() > Medium.random())
                                 {
-                                    conto119.sprk((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
+                                    conto119.spark((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
                                         (fs121[i128] + fs124[i129]) / 2.0F, (mad118.scx[i129] + scx[i128]) / 4.0F,
                                         (mad118.scy[i129] + scy[i128]) / 4.0F, (mad118.scz[i129] + scz[i128]) / 4.0F,
                                         2);
@@ -262,7 +262,7 @@ namespace Cum
                                 }
                                 if (Medium.random() > Medium.random())
                                 {
-                                    conto119.sprk((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
+                                    conto119.spark((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
                                         (fs121[i128] + fs124[i129]) / 2.0F, (mad118.scx[i129] + scx[i128]) / 4.0F,
                                         (mad118.scy[i129] + scy[i128]) / 4.0F, (mad118.scz[i129] + scz[i128]) / 4.0F,
                                         2);
@@ -437,14 +437,14 @@ namespace Cum
                         }
                         if (ucomp < 20.0F)
                         {
-                            ucomp += 0.5 * stat.airs;
+                            ucomp += (int)(0.5 * stat.airs);
                         }
                         f = -stat.airc * Medium.sin(conto.xz) * i4;
                         f11 = stat.airc * Medium.cos(conto.xz) * i4;
                     }
                     else if (ucomp != 0.0F && ucomp > -2.0F)
                     {
-                        ucomp -= 0.5 * stat.airs;
+                        ucomp -= (int)(0.5 * stat.airs);
                     }
                     if (control.down)
                     {
@@ -463,13 +463,13 @@ namespace Cum
                         }
                         if (dcomp < 20.0F)
                         {
-                            dcomp += 0.5 * stat.airs;
+                            dcomp += (int)(0.5 * stat.airs);
                         }
                         f12 = -stat.airc;
                     }
                     else if (dcomp != 0.0F && ucomp > -2.0F)
                     {
-                        dcomp -= 0.5 * stat.airs;
+                        dcomp -= (int)(0.5 * stat.airs);
                     }
                     if (control.left)
                     {
@@ -505,16 +505,16 @@ namespace Cum
                     {
                         rcomp -= 2.0F * stat.airs;
                     }
-                    pzy += (dcomp - ucomp) * Medium.cos(pxy);
+                    pzy += (int)((dcomp - ucomp) * Medium.cos(pxy));
                     if (abool)
                     {
-                        conto.xz += (dcomp - ucomp) * Medium.sin(pxy);
+                        conto.xz += (int)((dcomp - ucomp) * Medium.sin(pxy));
                     }
                     else
                     {
-                        conto.xz -= (dcomp - ucomp) * Medium.sin(pxy);
+                        conto.xz -= (int)((dcomp - ucomp) * Medium.sin(pxy));
                     }
-                    pxy += rcomp - lcomp;
+                    pxy += (int)(rcomp - lcomp);
                 }
                 else
                 {
@@ -666,16 +666,16 @@ namespace Cum
                             }
                             pd = false;
                         }
-                        pzy += (dcomp - ucomp) * Medium.cos(pxy);
+                        pzy += (int)((dcomp - ucomp) * Medium.cos(pxy));
                         if (abool)
                         {
-                            conto.xz += (dcomp - ucomp) * Medium.sin(pxy);
+                            conto.xz += (int)((dcomp - ucomp) * Medium.sin(pxy));
                         }
                         else
                         {
-                            conto.xz -= (dcomp - ucomp) * Medium.sin(pxy);
+                            conto.xz -= (int)((dcomp - ucomp) * Medium.sin(pxy));
                         }
-                        pxy += rcomp - lcomp;
+                        pxy += (int)(rcomp - lcomp);
                     }
                 }
             float f20 = 20.0F * speed / (154.0F * stat.simag);
@@ -683,7 +683,7 @@ namespace Cum
             {
                 f20 = 20.0F;
             }
-            conto.wzy -= f20;
+            conto.wzy -= (int)(f20);
             if (conto.wzy < -30)
             {
                 conto.wzy += 30;
@@ -782,7 +782,7 @@ namespace Cum
                     }
                 if (Math.abs(mxz - cxz) < 30)
                 {
-                    cxz += (mxz - cxz) / 4.0F;
+                    cxz += (int)((mxz - cxz) / 4.0F);
                 }
                 else
                 {
@@ -857,9 +857,9 @@ namespace Cum
                 i31 = 0;
             }
             int i32 = 1;
-            for (int i33 = 0; i33 < Trackers.sect[i30][i31].length; i33++)
+            for (int i33 = 0; i33 < Trackers.sect[i30,i31].Length; i33++)
             {
-                int i34 = Trackers.sect[i30][i31][i33];
+                int i34 = Trackers.sect[i30,i31][i33];
                 if (Math.abs(Trackers.zy[i34]) != 90 && Math.abs(Trackers.xy[i34]) != 90 &&
                     Math.abs(conto.x - Trackers.x[i34]) < Trackers.radx[i34] &&
                     Math.abs(conto.z - Trackers.z[i34]) < Trackers.radz[i34] &&
@@ -890,11 +890,11 @@ namespace Cum
                 }
                 if (i32 == 1)
                 {
-                    f35 *= 0.75;
+                    f35 = (int)(f35 * 0.75);
                 }
                 if (i32 == 2)
                 {
-                    f35 *= 0.55;
+                    f35 = (int)(f35 * 0.55);
                 }
                 int i36 = -(int) (speed * Medium.sin(conto.xz) * Medium.cos(pzy));
                 int i37 = (int) (speed * Medium.cos(conto.xz) * Medium.cos(pzy));
@@ -1009,7 +1009,7 @@ namespace Cum
                                     f42 * stat.simag, (int) tilt, capsized && mtouch);
                                 if (im == xtGraphics.im && !capsized)
                                 {
-                                    xtGraphics.skid(im, i32,
+                                    xtPart2.skidf(im, i32,
                                         (float) Math.sqrt(scx[i41] * scx[i41] + scz[i41] * scz[i41]));
                                 }
                             }
@@ -1169,7 +1169,7 @@ namespace Cum
                         fs22[i58] > Trackers.z[i55] - Trackers.radz[i55] &&
                         fs22[i58] < Trackers.z[i55] + Trackers.radz[i55])
                     {
-                        conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
+                        conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
                         if (im == xtGraphics.im)
                         {
                             xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
@@ -1210,7 +1210,7 @@ namespace Cum
                             fs23[i58] = Trackers.y[i55];
                             if (capsized && (Trackers.skd[i55] == 0 || Trackers.skd[i55] == 1))
                             {
-                                conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
+                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
                                 if (im == xtGraphics.im)
                                 {
                                     xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
@@ -1253,10 +1253,10 @@ namespace Cum
                             }
                             if (crank[0][i58] > 1)
                             {
-                                conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
+                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
                                 {
-                                    xtGraphics.scrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
                             float f62 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
@@ -1303,10 +1303,10 @@ namespace Cum
                             }
                             if (crank[1][i58] > 1)
                             {
-                                conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
+                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
                                 {
-                                    xtGraphics.scrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
                             float f64 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
@@ -1353,10 +1353,10 @@ namespace Cum
                             }
                             if (crank[2][i58] > 1)
                             {
-                                conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
+                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
                                 {
-                                    xtGraphics.scrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
                             float f66 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
@@ -1403,10 +1403,10 @@ namespace Cum
                             }
                             if (crank[3][i58] > 1)
                             {
-                                conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
+                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
                                 {
-                                    xtGraphics.scrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
                             float f68 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
@@ -1467,7 +1467,7 @@ namespace Cum
                                 gtouch = false;
                                 if (capsized && (Trackers.skd[i55] == 0 || Trackers.skd[i55] == 1))
                                 {
-                                    conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
+                                    conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
                                     if (im == xtGraphics.im)
                                     {
                                         xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
@@ -1521,7 +1521,7 @@ namespace Cum
                                 gtouch = false;
                                 if (capsized && (Trackers.skd[i55] == 0 || Trackers.skd[i55] == 1))
                                 {
-                                    conto.sprk(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
+                                    conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
                                     if (im == xtGraphics.im)
                                     {
                                         xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);

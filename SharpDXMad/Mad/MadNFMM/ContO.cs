@@ -1460,7 +1460,7 @@ class ContO {
         }
     }
 
-    void dust(int i, float f, float f199, float f200, int i201, int i202, float f203, int i204, boolean aabool) {
+    internal void dust(int i, float f, float f199, float f200, int i201, int i202, float f203, int i204, boolean aabool) {
         boolean bool205 = false;
         if (i204 > 5 && (i == 0 || i == 2)) {
             bool205 = true;
@@ -2103,7 +2103,7 @@ class ContO {
         }
     }
 
-    void spark(float f, float f235, float f236, float f237, float f238, float f239, int i) {
+    internal void spark(float f, float f235, float f236, float f237, float f238, float f239, int i) {
         if (i != 1) {
             srx = (int) (f - sprkat * Medium.sin(xz));
             sry = (int) (f235 - sprkat * Medium.cos(zy) * Medium.cos(xy));
