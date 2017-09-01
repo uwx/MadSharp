@@ -1,7 +1,9 @@
 ﻿using System;
-using SharpDX;
+using Cum;
 using SharpDX.Direct2D1;
 using SharpDX.Mathematics.Interop;
+using Color = SharpDX.Color;
+using Image = Cum.Image;
 
 namespace MadGame
 {
@@ -91,6 +93,26 @@ namespace MadGame
         }
 
         public static void setAlpha(float f)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void drawImage(Image bggo, int p1, int p2, object p3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void setFont(Font p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static FontMetrics getFontMetrics()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void drawString(string multiplayerTipPressCToAccessChatQuicklyDuringTheGame, int p1, int p2)
         {
             throw new NotImplementedException();
         }

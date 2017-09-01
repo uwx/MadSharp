@@ -50,6 +50,11 @@ namespace Cum
             throw new NotImplementedException();
         }
 
+        public Color(int packed)//TODO uint
+        {
+            throw new NotImplementedException();
+        }
+
         public static Color getHSBColor(float p0, float p1, float p2)
         {
             throw new NotImplementedException();
@@ -207,7 +212,52 @@ namespace Cum
         }
     }
 
-    internal class Image : Bitmap
+    internal static class ImageIO
+    {
+        public static Image read(File file)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void GrabPixels(Image image, int[] flexpix)
+        {
+            throw new NotImplementedException();
+            /*
+            
+                PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, flexpix, 0, 800);
+                try {
+                    pixelgrabber.grabPixels();
+                } catch (InterruptedException ignored) {
+
+                }*/
+        }
+    }
+
+    internal struct File
+    {
+        private string _path;
+
+        public File(string str)
+        {
+            _path = str;
+        }
+    }
+
+    public struct Font
+    {
+        private string _fontName;
+        private int _flags;
+        private int _size;
+
+        public Font(string fontName, int flags, int size)
+        {
+            _fontName = fontName;
+            _flags = flags;
+            _size = size;
+        }
+    }
+
+    public class Image : Bitmap
     {
         public Image(RenderTarget renderTarget, Size2 size) : base(renderTarget, size)
         {

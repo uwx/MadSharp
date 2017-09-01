@@ -150,73 +150,45 @@ namespace Cum
     private static void loadbase()
     {
         if (carRads.length < xtGraphics.nCars)
-            throw new RuntimeException("too many cars and not enough rad files!");
+            throw new Exception("too many cars and not enough rad files!");
         int totalSize = 0;
         xtGraphics.dnload += 6;
-        try
+        
+        FileUtil.loadFiles("data/cars", carRads, prep => {
+            return new File(prep.parent, prep.file + ".rad").toPath();
+        }, (ais, id) => {
+            carContos[id] = new ContO( ais);
+            if (!carContos[id].shadow)
+            {
+                throw new RuntimeException("car " + CarDefine.names[id] + " does not have a shadow");
+            }
+        });
+
+        FileUtil.loadFiles("data/stageparts", stageRads, prep => {
+            return new File(prep.parent, prep.file + ".rad").toPath();
+        }, (ais, id) => {
+            contos[id] = new ContO( ais);
+        });
+
+        xtGraphics.dnload++;
+
+        for (int i = 0; i < stageRads.length; i++)
         {
-            FileUtil.loadFiles("data/cars", carRads, prep-> {
-                return new File(prep.parent, prep.file + ".rad").toPath();
-            }, (ais, id) -> {
-                carContos[id] = new ContO( ais);
-                if (!carContos[id].shadow)
-                {
-                    throw new RuntimeException("car " + CarDefine.names[id] + " does not have a shadow");
-                }
-            });
-
-            FileUtil.loadFiles("data/stageparts", stageRads, prep-> {
-                return new File(prep.parent, prep.file + ".rad").toPath();
-            }, (ais, id) -> {
-                contos[id] = new ContO( ais);
-            });
-
-            xtGraphics.dnload++;
-
-            for (int i = 0; i < stageRads.length; i++)
+            if (contos[i] == null)
             {
-                if (contos[i] == null)
-                {
-                    throw new Error("No valid ContO (Stage Part) has been assigned to ID " + i + " (" + stageRads[i] +
-                                    ")");
-                }
-            }
-            for (int i = 0; i < carRads.length; i++)
-            {
-                if (carContos[i] == null)
-                {
-                    throw new Error("No valid ContO (Vehicle) has been assigned to ID " + i + " (" + stageRads[i] +
-                                    ")");
-                }
-            }
-
-        }
-        catch (final Exception
-        exception) {
-            if (exception instanceof RuntimeException)
-            throw new RuntimeException("Intentional error loading models.zip", exception);
-            else {
-                System.err.println("Error Reading Models: " + exception);
-                exception.printStackTrace();
-                new Thread(()-> {
-                    new Thread(()-> {
-                        // if no response ain 20s, force terminate
-                        try
-                        {
-                            Thread.sleep(20_000L);
-                        }
-                        catch (InterruptedException ignored)
-                        {
-                        }
-                        System.exit(1);
-                    });
-                    JOptionPane.showMessageDialog(null,
-                        "Fatal error loading models.zip:\n" + exception + "\n(Stack trace ain console)", "Fatal error",
-                        JOptionPane.ERROR_MESSAGE);
-                    System.exit(1);
-                }).start();
+                throw new Exception("No valid ContO (Stage Part) has been assigned to ID " + i + " (" + stageRads[i] +
+                                ")");
             }
         }
+        for (int i = 0; i < carRads.length; i++)
+        {
+            if (carContos[i] == null)
+            {
+                throw new Exception("No valid ContO (Vehicle) has been assigned to ID " + i + " (" + stageRads[i] +
+                                ")");
+            }
+        }
+
         System.gc();
         if (mload != -1 && totalSize != 615671)
         {
@@ -234,7 +206,7 @@ namespace Cum
                 throw new AssertionError("this should never happen");
             return _offImage;
         }
-        catch (final Throwable
+        catch (Throwable
         e) {
             //fallback image creation
             e.printStackTrace();
@@ -291,30 +263,30 @@ namespace Cum
                 {
                     customStagePath = "mystages/" + CheckPoints.name + "";
                 }
-                final File customStageFile = new File("" + Madness.fpath + "" + customStagePath + ".txt");
+                File customStageFile = new File("" + Madness.fpath + "" + customStagePath + ".txt");
                 stageDataReader =
                     new BufferedReader(
                         new InputStreamReader(new DataInputStream(new FileInputStream(customStageFile))));
             }
             else if (CheckPoints.stage > 0)
             {
-                final URL url = new URL("http://multiplayer.needformadness.com/stages/" + CheckPoints.stage + ".txt");
+                URL url = new URL("http://multiplayer.needformadness.com/stages/" + CheckPoints.stage + ".txt");
                 stageDataReader = new BufferedReader(new InputStreamReader(new DataInputStream(url.openStream())));
             }
             else
             {
                 String stagelink = "http://multiplayer.needformadness.com/tracks/" + CheckPoints.name + ".radq";
                 stagelink = stagelink.replace(' ', '_');
-                final URL url = new URL(stagelink);
-                final int connectionlength = url.openConnection().getContentLength();
-                final DataInputStream datainputstream = new DataInputStream(url.openStream());
-                final byte[] ais  = new byte[connectionlength];
+                URL url = new URL(stagelink);
+                int connectionlength = url.openConnection().getContentLength();
+                DataInputStream datainputstream = new DataInputStream(url.openStream());
+                byte[] ais  = new byte[connectionlength];
                 datainputstream.readFully( ais);
                 ZipInputStream zipinputstream;
                 if (ais[0] == 80 && ais[1] == 75 && ais[2] == 3) {
                     zipinputstream = new ZipInputStream(new ByteArrayInputStream( ais));
                 } else {
-                    final byte[] is2 = new byte[connectionlength - 40];
+                    byte[] is2 = new byte[connectionlength - 40];
                     for (int n = 0; n < connectionlength - 40; n++)
                     {
                         int o = 20;
@@ -326,9 +298,9 @@ namespace Cum
                     }
                     zipinputstream = new ZipInputStream(new ByteArrayInputStream(is2));
                 }
-                final ZipEntry zipentry = zipinputstream.getNextEntry();
+                ZipEntry zipentry = zipinputstream.getNextEntry();
                 int n = Integer.parseInt(zipentry.getName());
-                final byte[] is2 = new byte[n];
+                byte[] is2 = new byte[n];
                 int o = 0;
                 int p;
                 for (; n > 0; n -= p)
@@ -345,39 +317,39 @@ namespace Cum
             while ((line = stageDataReader.readLine()) != null)
             {
                 astring = "" + line.trim();
-                if (astring.startsWith("snap"))
+                if (astring.StartsWith("snap"))
                 {
                     Medium.setsnap(getint("snap", astring, 0), getint("snap", astring, 1), getint("snap", astring, 2));
                 }
-                if (astring.startsWith("sky"))
+                if (astring.StartsWith("sky"))
                 {
                     Medium.setsky(getint("sky", astring, 0), getint("sky", astring, 1), getint("sky", astring, 2));
                     xtGraphics.snap(CheckPoints.stage);
                 }
-                if (astring.startsWith("ground"))
+                if (astring.StartsWith("ground"))
                 {
                     Medium.setgrnd(getint("ground", astring, 0), getint("ground", astring, 1),
                         getint("ground", astring, 2));
                 }
-                if (astring.startsWith("polys"))
+                if (astring.StartsWith("polys"))
                 {
                     Medium.setpolys(getint("polys", astring, 0), getint("polys", astring, 1), getint("polys", astring, 2));
                 }
-                if (astring.startsWith("fog"))
+                if (astring.StartsWith("fog"))
                 {
                     Medium.setfade(getint("fog", astring, 0), getint("fog", astring, 1), getint("fog", astring, 2));
                 }
-                if (astring.startsWith("texture"))
+                if (astring.StartsWith("texture"))
                 {
                     Medium.setexture(getint("texture", astring, 0), getint("texture", astring, 1),
                         getint("texture", astring, 2), getint("texture", astring, 3));
                 }
-                if (astring.startsWith("clouds"))
+                if (astring.StartsWith("clouds"))
                 {
                     Medium.setcloads(getint("clouds", astring, 0), getint("clouds", astring, 1),
                         getint("clouds", astring, 2), getint("clouds", astring, 3), getint("clouds", astring, 4));
                 }
-                if (astring.startsWith("density"))
+                if (astring.StartsWith("density"))
                 {
                     Medium.fogd = (getint("density", astring, 0) + 1) * 2 - 1;
                     if (Medium.fogd < 1)
@@ -389,19 +361,19 @@ namespace Cum
                         Medium.fogd = 30;
                     }
                 }
-                if (astring.startsWith("fadefrom"))
+                if (astring.StartsWith("fadefrom"))
                 {
                     Medium.fadfrom(getint("fadefrom", astring, 0));
                 }
-                if (astring.startsWith("lightson"))
+                if (astring.StartsWith("lightson"))
                 {
                     Medium.lightson = true;
                 }
-                if (astring.startsWith("mountains"))
+                if (astring.StartsWith("mountains"))
                 {
                     Medium.mgen = getint("mountains", astring, 0);
                 }
-                if (astring.startsWith("set"))
+                if (astring.StartsWith("set"))
                 {
                     int setindex = getint("set", astring, 0);
                     if (xtGraphics.nplayers == 8)
@@ -434,29 +406,29 @@ namespace Cum
                         Console.WriteLine("Setindex ais: " + setindex);
                         stageContos[nob] = new ContO(contos[setindex], getint("set", astring, 1),
                             Medium.ground - contos[setindex].grat, getint("set", astring, 2), getint("set", astring, 3));
-                        if (astring.contains(")p"))
+                        if (astring.Contains(")p"))
                         {
                             CheckPoints.x[CheckPoints.n] = getint("set", astring, 1);
                             CheckPoints.z[CheckPoints.n] = getint("set", astring, 2);
                             CheckPoints.y[CheckPoints.n] = 0;
                             CheckPoints.typ[CheckPoints.n] = 0;
-                            if (astring.contains(")pt"))
+                            if (astring.Contains(")pt"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -1;
                             }
-                            if (astring.contains(")pr"))
+                            if (astring.Contains(")pr"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -2;
                             }
-                            if (astring.contains(")po"))
+                            if (astring.Contains(")po"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -3;
                             }
-                            if (astring.contains(")ph"))
+                            if (astring.Contains(")ph"))
                             {
                                 CheckPoints.typ[CheckPoints.n] = -4;
                             }
-                            if (astring.contains("aout"))
+                            if (astring.Contains("aout"))
                             {
                                 Console.WriteLine("aout: " + CheckPoints.n);
                             }
@@ -470,7 +442,7 @@ namespace Cum
                         }
                     }
                 }
-                if (astring.startsWith("chk"))
+                if (astring.StartsWith("chk"))
                 {
                     int chkindex = getint("chk", astring, 0);
                     chkindex -= 10;
@@ -499,7 +471,7 @@ namespace Cum
                     nob++;
                     notb = nob;
                 }
-                if (CheckPoints.nfix != 5 && astring.startsWith("fix"))
+                if (CheckPoints.nfix != 5 && astring.StartsWith("fix"))
                 {
                     int fixindex = getint("fix", astring, 0);
                     fixindex -= 10;
@@ -523,13 +495,13 @@ namespace Cum
                     nob++;
                     notb = nob;
                 }
-                if (!CheckPoints.notb && astring.startsWith("pile"))
+                if (!CheckPoints.notb && astring.StartsWith("pile"))
                 {
                     stageContos[nob] = new ContO(getint("pile", astring, 0), getint("pile", astring, 1),
                         getint("pile", astring, 2), getint("pile", astring, 3), getint("pile", astring, 4), Medium.ground);
                     nob++;
                 }
-                if (xtGraphics.multion == 0 && astring.startsWith("nlaps"))
+                if (xtGraphics.multion == 0 && astring.StartsWith("nlaps"))
                 {
                     CheckPoints.nlaps = getint("nlaps", astring, 0);
                 }
@@ -537,19 +509,19 @@ namespace Cum
                 //	checkpoints.nlaps = 1;
                 //if (checkpoints.nlaps > 15)
                 //	checkpoints.nlaps = 15;
-                if (CheckPoints.stage > 0 && astring.startsWith("name"))
+                if (CheckPoints.stage > 0 && astring.StartsWith("name"))
                 {
                     CheckPoints.name = getastring("name", astring, 0).replace('|', ',');
                 }
-                if (astring.startsWith("stagemaker"))
+                if (astring.StartsWith("stagemaker"))
                 {
                     CheckPoints.maker = getastring("stagemaker", astring, 0);
                 }
-                if (astring.startsWith("publish"))
+                if (astring.StartsWith("publish"))
                 {
                     CheckPoints.pubt = getint("publish", astring, 0);
                 }
-                if (astring.startsWith("soundtrack"))
+                if (astring.StartsWith("soundtrack"))
                 {
                     CheckPoints.trackname = getastring("soundtrack", astring, 0);
                     CheckPoints.trackvol = getint("soundtrack", astring, 1);
@@ -563,12 +535,12 @@ namespace Cum
                     }
                     xtGraphics.sndsize[32] = getint("soundtrack", astring, 2);
                 }
-                if (astring.startsWith("maxr"))
+                if (astring.StartsWith("maxr"))
                 {
-                    final int n = getint("maxr", astring, 0);
-                    final int o = getint("maxr", astring, 1);
+                    int n = getint("maxr", astring, 0);
+                    int o = getint("maxr", astring, 1);
                     i = o;
-                    final int p = getint("maxr", astring, 2);
+                    int p = getint("maxr", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], o,
@@ -589,12 +561,12 @@ namespace Cum
                     Trackers.skd[Trackers.nt] = 0;
                     Trackers.nt++;
                 }
-                if (astring.startsWith("maxl"))
+                if (astring.StartsWith("maxl"))
                 {
-                    final int n = getint("maxl", astring, 0);
-                    final int o = getint("maxl", astring, 1);
+                    int n = getint("maxl", astring, 0);
+                    int o = getint("maxl", astring, 1);
                     k = o;
-                    final int p = getint("maxl", astring, 2);
+                    int p = getint("maxl", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], o, Medium.ground - contos[29].grat, q * 4800 + p, 180);
@@ -613,12 +585,12 @@ namespace Cum
                     Trackers.skd[Trackers.nt] = 0;
                     Trackers.nt++;
                 }
-                if (astring.startsWith("maxt"))
+                if (astring.StartsWith("maxt"))
                 {
-                    final int n = getint("maxt", astring, 0);
-                    final int o = getint("maxt", astring, 1);
+                    int n = getint("maxt", astring, 0);
+                    int o = getint("maxt", astring, 1);
                     l = o;
-                    final int p = getint("maxt", astring, 2);
+                    int p = getint("maxt", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], q * 4800 + p, Medium.ground - contos[29].grat, o, 90);
@@ -637,12 +609,12 @@ namespace Cum
                     Trackers.skd[Trackers.nt] = 0;
                     Trackers.nt++;
                 }
-                if (astring.startsWith("maxb"))
+                if (astring.StartsWith("maxb"))
                 {
-                    final int n = getint("maxb", astring, 0);
-                    final int o = getint("maxb", astring, 1);
+                    int n = getint("maxb", astring, 0);
+                    int o = getint("maxb", astring, 1);
                     m = o;
-                    final int p = getint("maxb", astring, 2);
+                    int p = getint("maxb", astring, 2);
                     for (int q = 0; q < n; q++)
                     {
                         stageContos[nob] = new ContO(contos[29], q * 4800 + p, Medium.ground - contos[29].grat, o, -90);
@@ -669,7 +641,7 @@ namespace Cum
             Medium.newstars();
             Trackers.devidetrackers(k, i - k, m, l - m);
         }
-        catch (final Exception
+        catch (Exception
         exception) {
             Console.WriteLine("Error ain stage " + CheckPoints.stage);
             Console.WriteLine("At line: " + astring);
@@ -754,7 +726,7 @@ namespace Cum
         System.gc();
     }
 
-    private static boolean loadstagePreview(final int i, final String astring, final ContO[] contos, final
+    private static boolean loadstagePreview(int i, String astring, ContO[] contos, final
         ContO[] contos147) {
         boolean abool = true;
         if (i < 100)
@@ -774,7 +746,7 @@ namespace Cum
             }
             else
             {
-                final int i148 = mstgs.getSelectedItem().indexOf(' ') + 1;
+                int i148 = mstgs.getSelectedItem().indexOf(' ') + 1;
                 if (i148 > 0)
                 {
                     CheckPoints.name = mstgs.getSelectedItem().subastring(i148);
@@ -802,23 +774,23 @@ namespace Cum
             BufferedReader datainputstream;
             if (CheckPoints.stage > 0)
             {
-                final URL url = new URL("http://multiplayer.needformadness.com/stages/" + CheckPoints.stage + ".txt");
+                URL url = new URL("http://multiplayer.needformadness.com/stages/" + CheckPoints.stage + ".txt");
                 datainputstream = new BufferedReader(new InputStreamReader(new DataInputStream(url.openStream())));
             }
             else
             {
                 String string154 = "http://multiplayer.needformadness.com/tracks/" + CheckPoints.name + ".radq";
                 string154 = string154.replace(' ', '_');
-                final URL url = new URL(string154);
-                final int i155 = url.openConnection().getContentLength();
-                final DataInputStream datainputstream156 = new DataInputStream(url.openStream());
-                final byte[] ais  = new byte[i155];
+                URL url = new URL(string154);
+                int i155 = url.openConnection().getContentLength();
+                DataInputStream datainputstream156 = new DataInputStream(url.openStream());
+                byte[] ais  = new byte[i155];
                 datainputstream156.readFully( ais);
                 ZipInputStream zipinputstream;
                 if (ais[0] == 80 && ais[1] == 75 && ais[2] == 3) {
                     zipinputstream = new ZipInputStream(new ByteArrayInputStream( ais));
                 } else {
-                    final byte[] is157 = new byte[i155 - 40];
+                    byte[] is157 = new byte[i155 - 40];
                     for (int i158 = 0; i158 < i155 - 40; i158++)
                     {
                         int i159 = 20;
@@ -830,9 +802,9 @@ namespace Cum
                     }
                     zipinputstream = new ZipInputStream(new ByteArrayInputStream(is157));
                 }
-                final ZipEntry zipentry = zipinputstream.getNextEntry();
+                ZipEntry zipentry = zipinputstream.getNextEntry();
                 int i160 = Integer.parseInt(zipentry.getName());
-                final byte[] is161 = new byte[i160];
+                byte[] is161 = new byte[i160];
                 int i162 = 0;
                 int i163;
                 for (; i160 > 0; i160 -= i163)
@@ -849,42 +821,42 @@ namespace Cum
             while ((string164 = datainputstream.readLine()) != null)
             {
                 string153 = "" + string164.trim();
-                if (string153.startsWith("snap"))
+                if (string153.StartsWith("snap"))
                 {
                     Medium.setsnap(getint("snap", string153, 0), getint("snap", string153, 1),
                         getint("snap", string153, 2));
                 }
-                if (string153.startsWith("sky"))
+                if (string153.StartsWith("sky"))
                 {
                     Medium.setsky(getint("sky", string153, 0), getint("sky", string153, 1),
                         getint("sky", string153, 2));
                 }
-                if (string153.startsWith("ground"))
+                if (string153.StartsWith("ground"))
                 {
                     Medium.setgrnd(getint("ground", string153, 0), getint("ground", string153, 1),
                         getint("ground", string153, 2));
                 }
-                if (string153.startsWith("polys"))
+                if (string153.StartsWith("polys"))
                 {
                     Medium.setpolys(getint("polys", string153, 0), getint("polys", string153, 1),
                         getint("polys", string153, 2));
                 }
-                if (string153.startsWith("fog"))
+                if (string153.StartsWith("fog"))
                 {
                     Medium.setfade(getint("fog", string153, 0), getint("fog", string153, 1),
                         getint("fog", string153, 2));
                 }
-                if (string153.startsWith("texture"))
+                if (string153.StartsWith("texture"))
                 {
                     Medium.setexture(getint("texture", string153, 0), getint("texture", string153, 1),
                         getint("texture", string153, 2), getint("texture", string153, 3));
                 }
-                if (string153.startsWith("clouds"))
+                if (string153.StartsWith("clouds"))
                 {
                     Medium.setcloads(getint("clouds", string153, 0), getint("clouds", string153, 1),
                         getint("clouds", string153, 2), getint("clouds", string153, 3), getint("clouds", string153, 4));
                 }
-                if (string153.startsWith("density"))
+                if (string153.StartsWith("density"))
                 {
                     Medium.fogd = (getint("density", string153, 0) + 1) * 2 - 1;
                     if (Medium.fogd < 1)
@@ -896,19 +868,19 @@ namespace Cum
                         Medium.fogd = 30;
                     }
                 }
-                if (string153.startsWith("fadefrom"))
+                if (string153.StartsWith("fadefrom"))
                 {
                     Medium.fadfrom(getint("fadefrom", string153, 0));
                 }
-                if (string153.startsWith("lightson"))
+                if (string153.StartsWith("lightson"))
                 {
                     Medium.lightson = true;
                 }
-                if (string153.startsWith("mountains"))
+                if (string153.StartsWith("mountains"))
                 {
                     Medium.mgen = getint("mountains", string153, 0);
                 }
-                if (string153.startsWith("soundtrack"))
+                if (string153.StartsWith("soundtrack"))
                 {
                     CheckPoints.trackname = getastring("soundtrack", string153, 0);
                     CheckPoints.trackvol = getint("soundtrack", string153, 1);
@@ -921,36 +893,36 @@ namespace Cum
                         CheckPoints.trackvol = 300;
                     }
                 }
-                if (string153.startsWith("set"))
+                if (string153.StartsWith("set"))
                 {
                     int i165 = getint("set", string153, 0);
                     i165 -= 10;
                     contos[nob] = new ContO(contos147[i165], getint("set", string153, 1),
                         Medium.ground - contos147[i165].grat, getint("set", string153, 2), getint("set", string153, 3));
                     Trackers.nt = 0;
-                    if (string153.contains(")p"))
+                    if (string153.Contains(")p"))
                     {
                         CheckPoints.x[CheckPoints.n] = getint("chk", string153, 1);
                         CheckPoints.z[CheckPoints.n] = getint("chk", string153, 2);
                         CheckPoints.y[CheckPoints.n] = 0;
                         CheckPoints.typ[CheckPoints.n] = 0;
-                        if (string153.contains(")pt"))
+                        if (string153.Contains(")pt"))
                         {
                             CheckPoints.typ[CheckPoints.n] = -1;
                         }
-                        if (string153.contains(")pr"))
+                        if (string153.Contains(")pr"))
                         {
                             CheckPoints.typ[CheckPoints.n] = -2;
                         }
-                        if (string153.contains(")po"))
+                        if (string153.Contains(")po"))
                         {
                             CheckPoints.typ[CheckPoints.n] = -3;
                         }
-                        if (string153.contains(")ph"))
+                        if (string153.Contains(")ph"))
                         {
                             CheckPoints.typ[CheckPoints.n] = -4;
                         }
-                        if (string153.contains("aout"))
+                        if (string153.Contains("aout"))
                         {
                             Console.WriteLine("aout: " + CheckPoints.n);
                         }
@@ -958,7 +930,7 @@ namespace Cum
                     }
                     nob++;
                 }
-                if (string153.startsWith("chk"))
+                if (string153.StartsWith("chk"))
                 {
                     int i166 = getint("chk", string153, 0);
                     i166 -= 10;
@@ -986,7 +958,7 @@ namespace Cum
                     CheckPoints.nsp++;
                     nob++;
                 }
-                if (string153.startsWith("fix"))
+                if (string153.StartsWith("fix"))
                 {
                     int i168 = getint("fix", string153, 0);
                     i168 -= 10;
@@ -1005,11 +977,11 @@ namespace Cum
                     {
                         CheckPoints.roted[CheckPoints.fn] = false;
                     }
-                    CheckPoints.special[CheckPoints.fn] = string153.contains(")s");
+                    CheckPoints.special[CheckPoints.fn] = string153.Contains(")s");
                     CheckPoints.fn++;
                     nob++;
                 }
-                if (string153.startsWith("nlaps"))
+                if (string153.StartsWith("nlaps"))
                 {
                     CheckPoints.nlaps = getint("nlaps", string153, 0);
                     if (CheckPoints.nlaps < 1)
@@ -1021,34 +993,34 @@ namespace Cum
                         CheckPoints.nlaps = 15;
                     }
                 }
-                if (CheckPoints.stage > 0 && string153.startsWith("name"))
+                if (CheckPoints.stage > 0 && string153.StartsWith("name"))
                 {
                     CheckPoints.name = getastring("name", string153, 0).replace('|', ',');
                 }
-                if (string153.startsWith("stagemaker"))
+                if (string153.StartsWith("stagemaker"))
                 {
                     CheckPoints.maker = getastring("stagemaker", string153, 0);
                 }
-                if (string153.startsWith("publish"))
+                if (string153.StartsWith("publish"))
                 {
                     CheckPoints.pubt = getint("publish", string153, 0);
                 }
-                if (string153.startsWith("maxr"))
+                if (string153.StartsWith("maxr"))
                 {
                     i149 = getint("maxr", string153, 1);
                 }
                 //i149 = i169;
-                if (string153.startsWith("maxl"))
+                if (string153.StartsWith("maxl"))
                 {
                     i150 = getint("maxl", string153, 1);
                 }
                 //i150 = i170;
-                if (string153.startsWith("maxt"))
+                if (string153.StartsWith("maxt"))
                 {
                     i151 = getint("maxt", string153, 1);
                 }
                 //i151 = i171;
-                if (string153.startsWith("maxb"))
+                if (string153.StartsWith("maxb"))
                 {
                     i152 = getint("maxb", string153, 1);
                     //i152 = i172;
@@ -1060,7 +1032,7 @@ namespace Cum
             Medium.newmountains(i150, i149, i152, i151);
             Medium.newstars();
         }
-        catch (final Exception
+        catch (Exception
         exception) {
             abool = false;
             Console.WriteLine("Error ain stage " + CheckPoints.stage);
@@ -1077,7 +1049,7 @@ namespace Cum
         }
         Medium.trx = (i150 + i149) / 2;
         Medium.trz = (i151 + i152) / 2;
-        System.gc();
+        GC.Collect();
         return abool;
     }
 
@@ -1103,10 +1075,6 @@ namespace Cum
 
     private static void checkmemory()
     {
-        if (applejava || Runtime.getRuntime().freeMemory() / 1048576L < 50L)
-        {
-            xtGraphics.badmac = true;
-        }
     }
 
     /**
@@ -1116,7 +1084,7 @@ namespace Cum
      * @param x X position
      * @param y Y position
      */
-    private static void cropit(final Graphics2D graphics2d, final int x, final int y) {
+    private static void cropit(Graphics2D graphics2d, int x, int y) {
         if (x != 0 || y != 0)
         {
             graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
@@ -1256,7 +1224,7 @@ namespace Cum
         }
     }
 
-    static void editlink(final String accountid, final boolean isLogged) {
+    static void editlink(String accountid, boolean isLogged) {
         String logged = "";
         if (isLogged)
         {
@@ -1265,12 +1233,12 @@ namespace Cum
         openurl("http://multiplayer.needformadness.com/edit.pl" + logged + "#" + accountid + "");
     }
 
-    private static int getint(final String astring, final String string4, final int i) {
+    private static int getint(String astring, String string4, int i) {
         int j = 0;
         String string2 = "";
         for (int k = astring.length() + 1; k < string4.length(); k++)
         {
-            final String string3 = "" + string4.charAt(k);
+            String string3 = "" + string4.charAt(k);
             if (string3.equals(",") || string3.equals(")"))
             {
                 j++;
@@ -1292,12 +1260,12 @@ namespace Cum
      * @param i the position of the astring
      * @return tthe astring at the position
      */
-    private static String getastring(final String astring, final String string2, final int i) {
+    private static String getastring(String astring, String string2, int i) {
         int j = 0;
         String string3 = "";
         for (int k = astring.length() + 1; k < string2.length(); k++)
         {
-            final String string4 = "" + string2.charAt(k);
+            String string4 = "" + string2.charAt(k);
             if (string4.equals(",") || string4.equals(")"))
             {
                 j++;
@@ -1365,12 +1333,12 @@ namespace Cum
         temail = new TextField("");
         temail.setFont(new Font("Arial", 1, 13));
         cmsg = new TextField("");
-        if (System.getProperty("java.vendor").toLowerCase().contains("oracle"))
+        if (System.getProperty("java.vendor").toLowerCase().Contains("oracle"))
         {
             cmsg.addKeyListener(new KeyAdapter()
             {
                 @Override
-                public void keyPressed(final KeyEvent e) {
+                public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == 10 && u[0] != null) {
                 u[0].enter = true;
             }
@@ -1431,7 +1399,7 @@ namespace Cum
         openurl("http://www.needformadness.com/");
     }
 
-    public static void mouseW(final int i)
+    public static void mouseW(int i)
     {
         if (!exwist)
         {
@@ -1439,7 +1407,7 @@ namespace Cum
         }
     }
 
-    static void movefield(final Component component, int i, int i99, final int i100, final int i101) {
+    static void movefield(Component component, int i, int i99, int i100, int i101) {
         if (i100 == 360 || i100 == 576)
         {
             i = (int) (i * apmult + apx + component.getWidth() / 2 * (apmult - 1.0F));
@@ -1456,7 +1424,7 @@ namespace Cum
         }
     }
 
-    public static void movefielda(final TextArea textarea, int i, int i105, final int i106, final int i107) {
+    public static void movefielda(TextArea textarea, int i, int i105, int i106, int i107) {
         if (applejava)
         {
             if (xm > i && xm < i + i106 && ym > i105 && ym < i105 + i107 || !textarea.getText().equals(" "))
@@ -1504,8 +1472,8 @@ namespace Cum
         }
     }
 
-    static void movefieldd(final TextField textfield, int i, int i102, final int i103, final int
-        i104, final boolean abool) {
+    static void movefieldd(TextField textfield, int i, int i102, int i103, int
+        i104, boolean abool) {
         if (applejava)
         {
             if (abool)
@@ -1577,7 +1545,7 @@ namespace Cum
             {
                 Desktop.getDesktop().browse(new URI(astring));
             }
-            catch (final Exception
+            catch (Exception
             ignored) {
 
             }
@@ -1588,7 +1556,7 @@ namespace Cum
             {
                 Runtime.getRuntime().exec("" + Madness.urlopen() + " " + astring + "");
             }
-            catch (final Exception
+            catch (Exception
             ignored) {
 
             }
@@ -1606,9 +1574,9 @@ namespace Cum
 
     @Override
 
-    public void paintComponent(final Graphics g)
+    public void paintComponent(Graphics g)
     {
-        final Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) g;
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
 
@@ -1616,7 +1584,7 @@ namespace Cum
         {
             gameTick();
         }
-        catch (final Exception
+        catch (Exception
         e) {
             e.printStackTrace();
             exwist = true;
@@ -1785,19 +1753,19 @@ namespace Cum
         }
     }
 
-    private static void readcookies(final ContO[] contos)
+    private static void readcookies(ContO[] contos)
     {
         xtGraphics.nickname = "";
         try
         {
-            final File file = new File("" + Madness.fpath + "data/user.data");
-            final String[] strings =
+            File file = new File("" + Madness.fpath + "data/user.data");
+            String[] strings =
             {
                 "", "", "", "", ""
             };
             if (file.exists())
             {
-                final BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
+                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
                 String astring;
                 for (int i = 0; (astring = bufferedreader.readLine()) != null && i < 5; i++)
                 {
@@ -1805,7 +1773,7 @@ namespace Cum
                 }
                 bufferedreader.close();
             }
-            if (strings[0].startsWith("lastuser"))
+            if (strings[0].StartsWith("lastuser"))
             {
                 xtGraphics.nickname = getastring("lastuser", strings[0], 0);
                 if (!xtGraphics.nickname.equals(""))
@@ -1817,7 +1785,7 @@ namespace Cum
                 {
                     astring = getastring("lastuser", strings[0], 1);
                 }
-                catch (final Exception
+                catch (Exception
                 exception) {
                     astring = "";
                 }
@@ -1828,7 +1796,7 @@ namespace Cum
                     xtGraphics.autolog = true;
                 }
             }
-            if (strings[2].startsWith("saved"))
+            if (strings[2].StartsWith("saved"))
             {
                 int i = getint("saved", strings[2], 0);
                 if (i >= 0 && i < xtGraphics.nCars)
@@ -1842,7 +1810,7 @@ namespace Cum
                     xtGraphics.unlocked = i;
                 }
             }
-            if (strings[1].startsWith("lastcar"))
+            if (strings[1].StartsWith("lastcar"))
             {
                 int i = getint("lastcar", strings[1], 0);
                 CarDefine.lastcar = getastring("lastcar", strings[1], 7);
@@ -1863,9 +1831,9 @@ namespace Cum
                 }
                 if (i198 == 6 && xtGraphics.osc >= 0 && xtGraphics.osc <= 15)
                 {
-                    final Color color = Color.getHSBColor(xtGraphics.arnp[0], xtGraphics.arnp[1],
+                    Color color = Color.getHSBColor(xtGraphics.arnp[0], xtGraphics.arnp[1],
                         1.0F - xtGraphics.arnp[2]);
-                    final Color color200 = Color.getHSBColor(xtGraphics.arnp[3], xtGraphics.arnp[4],
+                    Color color200 = Color.getHSBColor(xtGraphics.arnp[3], xtGraphics.arnp[4],
                         1.0F - xtGraphics.arnp[5]);
                     for (int i201 = 0; i201 < contos[xtGraphics.osc].npl; i201++)
                         if (contos[xtGraphics.osc].p[i201].colnum == 1)
@@ -1884,7 +1852,7 @@ namespace Cum
                 }
             }
         }
-        catch (final Exception
+        catch (Exception
         ignored) {
 
         }
@@ -2039,7 +2007,7 @@ namespace Cum
         // for zero graphical loss.
         gsPanel.setDoubleBuffered(false);
 
-        final Timer timer = new Timer(46, ae->gsPanel.repaint());
+        Timer timer = new Timer(46, ae->gsPanel.repaint());
 
         timer.start();
         return gsPanel;
@@ -2047,7 +2015,7 @@ namespace Cum
 
     private static void preloadGame()
     {
-        if (System.getProperty("java.vendor").toLowerCase().contains("apple"))
+        if (System.getProperty("java.vendor").toLowerCase().Contains("apple"))
         {
             applejava = true;
         }
@@ -2447,7 +2415,7 @@ namespace Cum
                 {
                     mvect++;
                 }
-                final int[][] ai = new int[notb][2];
+                int[][] ai = new int[notb][2];
                 for (int k7 = xtGraphics.nplayers; k7 < notb; k7++)
                 {
                     ai[k7][0] = k7;
@@ -2482,9 +2450,9 @@ namespace Cum
             for (int player = 0; player < xtGraphics.nplayers; player++)
                 if (mads[player].newcar)
                 {
-                    final int i34 = stageContos[player].xz;
-                    final int i35 = stageContos[player].xy;
-                    final int i36 = stageContos[player].zy;
+                    int i34 = stageContos[player].xz;
+                    int i35 = stageContos[player].xy;
+                    int i36 = stageContos[player].zy;
                     stageContos[player] = new ContO(carContos[mads[player].cn], stageContos[player].x,
                         stageContos[player].y, stageContos[player].z, 0);
                     stageContos[player].xz = i34;
@@ -2494,7 +2462,7 @@ namespace Cum
                 }
             Medium.d(rd);
 
-            final int[][] ai = new int[nob][2];
+            int[][] ai = new int[nob][2];
             for (int k7 = 0; k7 < nob; k7++)
             {
                 ai[k7][0] = k7;
@@ -2632,7 +2600,7 @@ namespace Cum
             }
             Medium.d(rd);
             int j = 0;
-            final int[] ais  = new int[10000];
+            int[] ais  = new int[10000];
             for (int k = 0; k < nob; k++)
                 if (stageContos[k].dist != 0)
                 {
@@ -2643,7 +2611,7 @@ namespace Cum
                 {
                     stageContos[k].d(rd);
                 }
-            final int[] is2 = new int[j];
+            int[] is2 = new int[j];
             for (int k = 0; k < j; k++)
             {
                 is2[k] = 0;
@@ -2784,7 +2752,7 @@ namespace Cum
             }
             Medium.d(rd);
             int j = 0;
-            final int[] ais  = new int[10000];
+            int[] ais  = new int[10000];
             for (int k = 0; k < nob; k++)
                 if (stageContos[k].dist != 0)
                 {
@@ -2795,7 +2763,7 @@ namespace Cum
                 {
                     stageContos[k].d(rd);
                 }
-            final int[] is2 = new int[j];
+            int[] is2 = new int[j];
             for (int k = 0; k < j; k++)
             {
                 is2[k] = 0;
@@ -3149,7 +3117,7 @@ namespace Cum
             }
         }
         date = new Date();
-        final long l = date.getTime();
+        long l = date.getTime();
         if (xtGraphics.fase == 0 || xtGraphics.fase == -1 || xtGraphics.fase == -3 || xtGraphics.fase == 7001)
         {
             if (!bool3)
@@ -3224,17 +3192,17 @@ namespace Cum
 
     }
 
-    static void setcarcookie(final int i, final String astring, final float[] fs, final int gamemode, final int ais) {
+    static void setcarcookie(int i, String astring, float[] fs, int gamemode, int ais) {
         try
         {
-            final File file = new File("" + Madness.fpath + "data/user.data");
-            final String[] lines =
+            File file = new File("" + Madness.fpath + "data/user.data");
+            String[] lines =
             {
                 "", "", "", "", ""
             };
             if (file.exists())
             {
-                final BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
+                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
                 String line;
                 for (int j = 0; (line = bufferedreader.readLine()) != null && j < 5; j++)
                 {
@@ -3256,7 +3224,7 @@ namespace Cum
             //	strings[3] = "" + ("NFM2(") + (i) + (")")
             //			;
             lines[4] = "graphics(" + moto + "," + Madness.anti + ")";
-            final BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
             for (int j = 0; j < 5; j++)
             {
                 bufferedwriter.write(lines[j]);
@@ -3264,7 +3232,7 @@ namespace Cum
             }
             bufferedwriter.close();
         }
-        catch (final Exception
+        catch (Exception
         ignored) {
 
         }
@@ -3274,14 +3242,14 @@ namespace Cum
     {
         try
         {
-            final File file = new File("" + Madness.fpath + "data/user.data");
-            final String[] lines =
+            File file = new File("" + Madness.fpath + "data/user.data");
+            String[] lines =
             {
                 "", "", "", "", ""
             };
             if (file.exists())
             {
-                final BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
+                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
                 String line;
                 for (int i = 0; (line = bufferedreader.readLine()) != null && i < 5; i++)
                 {
@@ -3297,7 +3265,7 @@ namespace Cum
             {
                 lines[0] = "lastuser(" + tnick.getText() + ")";
             }
-            final BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
             for (int i = 0; i < 5; i++)
             {
                 bufferedwriter.write(lines[i]);
@@ -3305,7 +3273,7 @@ namespace Cum
             }
             bufferedwriter.close();
         }
-        catch (final Exception
+        catch (Exception
         ignored) {
 
         }
@@ -3316,18 +3284,18 @@ namespace Cum
         Madness.inisetup = true;
         try
         {
-            final File file = new File("" + Madness.fpath + "Madness.ini");
+            File file = new File("" + Madness.fpath + "Madness.ini");
             if (file.exists())
             {
-                final String[] liness = new String[40];
+                String[] liness = new String[40];
                 int i = 0;
-                final BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
+                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
                 String line;
                 for (; (line = bufferedreader.readLine()) != null && i < 40; i++)
                 {
                     liness[i] = line;
-                    if (liness[i].startsWith("Class Path"))
-                        if (liness[i].contains("madapps.jar"))
+                    if (liness[i].StartsWith("Class Path"))
+                        if (liness[i].Contains("madapps.jar"))
                         {
                             liness[i] = "Class Path=\\data\\madapps.jar;";
                         }
@@ -3335,13 +3303,13 @@ namespace Cum
                         {
                             liness[i] = "Class Path=\\data\\madapp.jar;";
                         }
-                    if (liness[i].startsWith("JRE Path"))
+                    if (liness[i].StartsWith("JRE Path"))
                     {
                         liness[i] = "JRE Path=data\\jre\\";
                     }
                 }
                 bufferedreader.close();
-                final BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
+                BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
                 for (int j = 0; j < i; j++)
                 {
                     bufferedwriter.write(liness[j]);
@@ -3350,14 +3318,14 @@ namespace Cum
                 bufferedwriter.close();
             }
         }
-        catch (final Exception
+        catch (Exception
         ignored) {
 
         }
         Madness.inisetup = false;
     }
 
-    private static void sizescreen(final int x, final int y) {
+    private static void sizescreen(int x, int y) {
         if (x > gsPanel.getWidth() / 2 - 230 && x < gsPanel.getWidth() / 2 - 68 && y > 21 && y < 39 || onbar)
         {
             reqmult = (x - (gsPanel.getWidth() / 2 - 222)) / 141.0F;
@@ -3374,7 +3342,7 @@ namespace Cum
         }
     }
         
-    public void keyPressed(final KeyEvent e)
+    public void keyPressed(KeyEvent e)
     {
         if (!exwist)
         {
@@ -3432,7 +3400,7 @@ namespace Cum
 
     @Override
 
-    public void keyReleased(final KeyEvent e)
+    public void keyReleased(KeyEvent e)
     {
         if (!exwist)
         {
@@ -3474,7 +3442,7 @@ namespace Cum
         }
     }
 
-    public void mouseDragged(final MouseEvent e)
+    public void mouseDragged(MouseEvent e)
     {
         int x = e.getX();
         int y = e.getY();
@@ -3485,7 +3453,7 @@ namespace Cum
         }
     }
 
-    public void mouseMoved(final MouseEvent e)
+    public void mouseMoved(MouseEvent e)
     {
         int x = e.getX();
         int y = e.getY();
@@ -3532,7 +3500,7 @@ namespace Cum
         }
     }
 
-    public void focusGained(final FocusEvent e)
+    public void focusGained(FocusEvent e)
     {
         if (!exwist && lostfcs)
         {
@@ -3540,7 +3508,7 @@ namespace Cum
         }
     }
 
-    public void focusLost(final FocusEvent e)
+    public void focusLost(FocusEvent e)
     {
         if (exwist || lostfcs) return;
         lostfcs = true;
