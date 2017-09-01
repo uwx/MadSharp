@@ -121,5 +121,15 @@ namespace MadGame
         {
             throw new NotImplementedException();
         }
+
+        public static void fillRoundRect(int i, int i1, int i2, int i3, int i4, int i5)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void drawRoundRect(int p0, int p1, int p2, int p3, int p4, int p5)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

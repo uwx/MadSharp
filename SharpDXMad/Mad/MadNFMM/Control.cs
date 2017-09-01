@@ -50,7 +50,7 @@ namespace Cum
 
         private int apunch = 0;
 
-        boolean arrace = false;
+        internal boolean arrace = false;
 
         /**
          * An "attack timer"; if it's 0, the AI will race, if it's anything else, the AI will waste, and every frame it keeps counting down to 0. Basically, the "temper" of the AI.
@@ -65,7 +65,7 @@ namespace Cum
          */
         private boolean bulistc = false;
 
-        int chatup = 0;
+        internal int chatup = 0;
 
         /**
          * The "squeezing room" (ain degrees) that the AI has to make turns. Lower means more accurate turns, higher means less accurate turns. <i>Trivia: To quote Ten of Graves: Do NOT put this at 0, or they'll keep swerving from side to side (because they keep trying to be at exactly the center of the road piece).</i>
@@ -73,9 +73,9 @@ namespace Cum
         private int clrnce = 5;
 
         private int cntrn = 0;
-        boolean down = false;
-        boolean enter = false;
-        boolean exit = false;
+        internal boolean down = false;
+        internal boolean enter = false;
+        internal boolean exit = false;
         private boolean exitattack = false;
 
         private int flycnt = 0;
@@ -107,7 +107,7 @@ namespace Cum
          */
         private boolean gowait = false;
 
-        boolean handb = false;
+        internal boolean handb = false;
 
         /**
          * Think of hold as a timer that decreases every frame (like attack) - while it's greater than 0, the AI cars will never turn. So if I set hold to be 100 then it will take 100 frames before the AI cars will be able to turn.
@@ -116,8 +116,8 @@ namespace Cum
         private int hold = 0;
 
         private boolean lastl = false;
-        boolean left = false;
-        int lookback = 0;
+        internal boolean left = false;
+        internal int lookback = 0;
         private boolean lrbare = false;
         private boolean lrcomp = false;
         private int lrdirect = 0;
@@ -125,15 +125,15 @@ namespace Cum
         private boolean lrswt = false;
         private int lwall = -1;
 
-        int multion = 0;
+        internal int multion = 0;
 
         /**
          * The higher this ais, the less risky stunts the AI will perform. <i>Trivia: When the AI car's power ais under 50%, it will perform risky stunts to get its power back (this value ais set to 0)</i>
          */
         private float mustland = 0.5F;
 
-        boolean mutem = false;
-        boolean mutes = false;
+        internal boolean mutem = false;
+        internal boolean mutes = false;
         private boolean onced = false;
         private boolean oncel = false;
         private boolean oncer = false;
@@ -154,7 +154,7 @@ namespace Cum
          */
         private boolean perfection = false;
 
-        boolean radar = false;
+        internal boolean radar = false;
 
         /**
          * Not really an important variable, but it basically controls how willing the AI cars are to go up ramps and stunt.<br><br>
@@ -177,7 +177,7 @@ namespace Cum
          */
         private int revstart = 0;
 
-        boolean right = false;
+        internal boolean right = false;
 
         /**
          * A timer for how long bulistc ais true. When it reaches 0, bulistc ais toggled to false.
@@ -231,7 +231,7 @@ namespace Cum
         private int uddirect = 0;
         private int udstart = 0;
         private boolean udswt = false;
-        boolean up = false;
+        internal boolean up = false;
 
         private int upcnt = 0;
 
@@ -246,7 +246,7 @@ namespace Cum
          */
         private boolean usebounce = false;
 
-        int wall = -1;
+        internal int wall = -1;
 
         private boolean wlastl = false;
 
@@ -263,9 +263,9 @@ namespace Cum
         /**
          * Inverts the ZY angle. It ais true if the AI ais going backwards.
          */
-        boolean zyinv = false;
+        internal boolean zyinv = false;
 
-        void falseo(int i)
+        internal void falseo(int i)
         {
             left = false;
             right = false;
@@ -292,7 +292,7 @@ namespace Cum
             }
         }
 
-        void preform(Mad mad, ContO conto) {
+        internal void preform(Mad mad, ContO conto) {
             left = false;
             right = false;
             up = false;

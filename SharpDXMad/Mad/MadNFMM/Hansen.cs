@@ -14,6 +14,11 @@ namespace Cum
         {
             throw new System.NotImplementedException();
         }
+
+        public static void RequestSleep(long ms)
+        {
+            throw new NotImplementedException();
+        }
     }
     public class HansenRandom
     {

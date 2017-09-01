@@ -1681,7 +1681,7 @@ namespace Cum
 //                        g2.drawImage(tribuffer, apx + i, apy + i97, (int) (800.0F * apmult), (int) (450.0F * apmult),
 //                            this);
 //                        cropit(g2, i, i97);
-//                        tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
+//                        tG.setAlpha(mvect / 100.0F);
 //                        tg.drawImage(offImage, 0, 0, null);
 //                    }
 //                    else
@@ -1707,7 +1707,7 @@ namespace Cum
 //                    RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
 //                g2.drawImage(tribuffer, apx + i, apy + i97, this);
 //                cropit(g2, i, i97);
-//                tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
+//                tG.setAlpha(mvect / 100.0F);
 //                tg.drawImage(offImage, 0, 0, null);
 //            }
 //            else
@@ -1720,7 +1720,7 @@ namespace Cum
 //            rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
 //            g2.drawImage(tribuffer, apx + i, apy + i97, this);
 //            cropit(g2, i, i97);
-//            tg.setComposite(AlphaComposite.getInstance(3, mvect / 100.0F));
+//            tG.setAlpha(mvect / 100.0F);
 //            tg.drawImage(offImage, 0, 0, null);
 //        }
 //        else

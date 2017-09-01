@@ -196,9 +196,9 @@ namespace Cum
             flipo++;
         }
         mainbg(1);
-        G.setComposite(AlphaComposite.getInstance(3, 0.6F));
+        G.setAlpha(0.6F);
         G.drawImage(logomadbg, 65, 25, null);
-        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
+        G.setAlpha(1.0F);
         G.drawImage(logomadnes, 233, 186, null);
         float f = flkat / 800.0F;
         if (f > 0.2) {
@@ -214,9 +214,9 @@ namespace Cum
         if (flkat == 400) {
             flkat = 0;
         }
-        G.setComposite(AlphaComposite.getInstance(3, f));
+        G.setAlpha(f);
         G.drawImage(dude[0], 351 + gxdu, 28 + gydu, null);
-        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
+        G.setAlpha(1.0F);
         if (movly == 0) {
             gxdu = (int) (5.0 - 11.0 * HansenRandom.Double());
             gydu = (int) (5.0 - 11.0 * HansenRandom.Double());
@@ -365,8 +365,8 @@ namespace Cum
         if (shaded) {
             //app.repaint();
             try {
-                Thread.sleep(200L);
-            } catch (InterruptedException ignored) {
+                HansenSystem.RequestSleep(200L);
+            } catch (Exception ignored) {
 
             }
         }
@@ -381,126 +381,128 @@ namespace Cum
         opselect = 0;
     }
 
-    static private void makecarsbgc(Image image, Image image386) {
-        int[] ais = new int[268000];
-        PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, ais, 0, 670);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        int[] is387 = new int[20700];
-        PixelGrabber pixelgrabber388 = new PixelGrabber(image, 0, 0, 92, 225, is387, 0, 92);
-        try {
-            pixelgrabber388.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        int[] is389 = new int[2112];
-        PixelGrabber pixelgrabber390 = new PixelGrabber(image386, 0, 0, 88, 24, is389, 0, 88);
-        try {
-            pixelgrabber390.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        for (int i = 0; i < 670; i++) {
-            for (int i391 = 0; i391 < 400; i391++) {
-                if (i > 14 && i < 106 && i391 > 11 && i391 < 236 && is387[i - 14 + (i391 - 11) * 92] != is387[0]) {
-                    Color color = new Color(ais[i + i391 * 670]);
-                    Color color392 = new Color(is387[i - 14 + (i391 - 11) * 92]);
-                    int i393 = (int) (color.getRed() * 0.33 + color392.getRed() * 0.67);
-                    if (i393 > 255) {
-                        i393 = 255;
-                    }
-                    if (i393 < 0) {
-                        i393 = 0;
-                    }
-                    int i394 = (int) (color.getGreen() * 0.33 + color392.getGreen() * 0.67);
-                    if (i394 > 255) {
-                        i394 = 255;
-                    }
-                    if (i394 < 0) {
-                        i394 = 0;
-                    }
-                    int i395 = (int) (color.getBlue() * 0.33 + color392.getBlue() * 0.67);
-                    if (i395 > 255) {
-                        i395 = 255;
-                    }
-                    if (i395 < 0) {
-                        i395 = 0;
-                    }
-                    Color color396 = new Color(i393, i394, i395);
-                    ais[i + i391 * 670] = color396.getRGB();
-                }
-                if (i > 564 && i < 656 && i391 > 11 && i391 < 236 && is387[i - 564 + (i391 - 11) * 92] != is387[0]) {
-                    Color color = new Color(ais[i + i391 * 670]);
-                    Color color397 = new Color(is387[i - 564 + (i391 - 11) * 92]);
-                    int i398 = (int) (color.getRed() * 0.33 + color397.getRed() * 0.67);
-                    if (i398 > 255) {
-                        i398 = 255;
-                    }
-                    if (i398 < 0) {
-                        i398 = 0;
-                    }
-                    int i399 = (int) (color.getGreen() * 0.33 + color397.getGreen() * 0.67);
-                    if (i399 > 255) {
-                        i399 = 255;
-                    }
-                    if (i399 < 0) {
-                        i399 = 0;
-                    }
-                    int i400 = (int) (color.getBlue() * 0.33 + color397.getBlue() * 0.67);
-                    if (i400 > 255) {
-                        i400 = 255;
-                    }
-                    if (i400 < 0) {
-                        i400 = 0;
-                    }
-                    Color color401 = new Color(i398, i399, i400);
-                    ais[i + i391 * 670] = color401.getRGB();
-                }
-                if (i > 440 && i < 528 && i391 > 53 && i391 < 77 && is389[i - 440 + (i391 - 53) * 88] != is389[0]) {
-                    Color color = new Color(ais[i + i391 * 670]);
-                    Color color402 = new Color(is389[i - 440 + (i391 - 53) * 88]);
-                    int i403 = (int) (color.getRed() * 0.33 + color402.getRed() * 0.67);
-                    if (i403 > 255) {
-                        i403 = 255;
-                    }
-                    if (i403 < 0) {
-                        i403 = 0;
-                    }
-                    int i404 = (int) (color.getGreen() * 0.33 + color402.getGreen() * 0.67);
-                    if (i404 > 255) {
-                        i404 = 255;
-                    }
-                    if (i404 < 0) {
-                        i404 = 0;
-                    }
-                    int i405 = (int) (color.getBlue() * 0.33 + color402.getBlue() * 0.67);
-                    if (i405 > 255) {
-                        i405 = 255;
-                    }
-                    if (i405 < 0) {
-                        i405 = 0;
-                    }
-                    Color color406 = new Color(i403, i404, i405);
-                    ais[i + i391 * 670] = color406.getRGB();
-                }
-            }
-        }
-        carsbgc = xt.createImage(new MemoryImageSource(670, 400, ais, 0, 670));
+    static private void makecarsbgc(Image image, Image image386)
+    {
+        carsbgc = carsbg; // TODO
+//        int[] ais = new int[268000];
+//        PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, ais, 0, 670);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        int[] is387 = new int[20700];
+//        PixelGrabber pixelgrabber388 = new PixelGrabber(image, 0, 0, 92, 225, is387, 0, 92);
+//        try {
+//            pixelgrabber388.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        int[] is389 = new int[2112];
+//        PixelGrabber pixelgrabber390 = new PixelGrabber(image386, 0, 0, 88, 24, is389, 0, 88);
+//        try {
+//            pixelgrabber390.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        for (int i = 0; i < 670; i++) {
+//            for (int i391 = 0; i391 < 400; i391++) {
+//                if (i > 14 && i < 106 && i391 > 11 && i391 < 236 && is387[i - 14 + (i391 - 11) * 92] != is387[0]) {
+//                    Color color = new Color(ais[i + i391 * 670]);
+//                    Color color392 = new Color(is387[i - 14 + (i391 - 11) * 92]);
+//                    int i393 = (int) (color.getRed() * 0.33 + color392.getRed() * 0.67);
+//                    if (i393 > 255) {
+//                        i393 = 255;
+//                    }
+//                    if (i393 < 0) {
+//                        i393 = 0;
+//                    }
+//                    int i394 = (int) (color.getGreen() * 0.33 + color392.getGreen() * 0.67);
+//                    if (i394 > 255) {
+//                        i394 = 255;
+//                    }
+//                    if (i394 < 0) {
+//                        i394 = 0;
+//                    }
+//                    int i395 = (int) (color.getBlue() * 0.33 + color392.getBlue() * 0.67);
+//                    if (i395 > 255) {
+//                        i395 = 255;
+//                    }
+//                    if (i395 < 0) {
+//                        i395 = 0;
+//                    }
+//                    Color color396 = new Color(i393, i394, i395);
+//                    ais[i + i391 * 670] = color396.getRGB();
+//                }
+//                if (i > 564 && i < 656 && i391 > 11 && i391 < 236 && is387[i - 564 + (i391 - 11) * 92] != is387[0]) {
+//                    Color color = new Color(ais[i + i391 * 670]);
+//                    Color color397 = new Color(is387[i - 564 + (i391 - 11) * 92]);
+//                    int i398 = (int) (color.getRed() * 0.33 + color397.getRed() * 0.67);
+//                    if (i398 > 255) {
+//                        i398 = 255;
+//                    }
+//                    if (i398 < 0) {
+//                        i398 = 0;
+//                    }
+//                    int i399 = (int) (color.getGreen() * 0.33 + color397.getGreen() * 0.67);
+//                    if (i399 > 255) {
+//                        i399 = 255;
+//                    }
+//                    if (i399 < 0) {
+//                        i399 = 0;
+//                    }
+//                    int i400 = (int) (color.getBlue() * 0.33 + color397.getBlue() * 0.67);
+//                    if (i400 > 255) {
+//                        i400 = 255;
+//                    }
+//                    if (i400 < 0) {
+//                        i400 = 0;
+//                    }
+//                    Color color401 = new Color(i398, i399, i400);
+//                    ais[i + i391 * 670] = color401.getRGB();
+//                }
+//                if (i > 440 && i < 528 && i391 > 53 && i391 < 77 && is389[i - 440 + (i391 - 53) * 88] != is389[0]) {
+//                    Color color = new Color(ais[i + i391 * 670]);
+//                    Color color402 = new Color(is389[i - 440 + (i391 - 53) * 88]);
+//                    int i403 = (int) (color.getRed() * 0.33 + color402.getRed() * 0.67);
+//                    if (i403 > 255) {
+//                        i403 = 255;
+//                    }
+//                    if (i403 < 0) {
+//                        i403 = 0;
+//                    }
+//                    int i404 = (int) (color.getGreen() * 0.33 + color402.getGreen() * 0.67);
+//                    if (i404 > 255) {
+//                        i404 = 255;
+//                    }
+//                    if (i404 < 0) {
+//                        i404 = 0;
+//                    }
+//                    int i405 = (int) (color.getBlue() * 0.33 + color402.getBlue() * 0.67);
+//                    if (i405 > 255) {
+//                        i405 = 255;
+//                    }
+//                    if (i405 < 0) {
+//                        i405 = 0;
+//                    }
+//                    Color color406 = new Color(i403, i404, i405);
+//                    ais[i + i391 * 670] = color406.getRGB();
+//                }
+//            }
+//        }
+//        carsbgc = xt.createImage(new MemoryImageSource(670, 400, ais, 0, 670));
     }
 
     static boolean msgcheck(String astring) {
         boolean abool = false;
-        astring = astring.toLowerCase();
+        astring = astring.ToLower();
         String[] strings = {
                 "fu ", " rape", "slut ", "screw ", "redtube", "fuck", "fuk", "f*ck", "fu*k", "f**k", "ass hole",
                 "asshole", "dick", "dik", "cock", "cok ", "shit", "damn", "sex", "anal", "whore", "bitch", "biatch",
                 "bich", " ass", "bastard", "cunt", "dildo", "fag", "homo", "mothaf", "motherf", "negro", "nigga",
                 "nigger", "pussy", "gay", "homo", "you punk", "i will kill you"
         };
-        for (String string2 : strings)
+        foreach (String string2 in strings)
             if (astring.contains(string2)) {
                 abool = true;
             }
@@ -1601,9 +1603,9 @@ namespace Cum
             G.drawImage(fleximg, 0, 0, null);
         } else {
             G.setColor(new Color(0, 0, 0));
-            G.setComposite(AlphaComposite.getInstance(3, 0.5F));
+            G.setAlpha(0.5F);
             G.fillRect(0, 0, 800, 450);
-            G.setComposite(AlphaComposite.getInstance(3, 1.0F));
+            G.setAlpha(1.0F);
         }
     }
 
@@ -1863,10 +1865,10 @@ namespace Cum
     }
 
     static private void radarstat(Mad mad, ContO conto) {
-        G.setComposite(AlphaComposite.getInstance(3, 0.5F));
+        G.setAlpha(0.5F);
         G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
         G.fillRoundRect(10, 55, 172, 172, 30, 30);
-        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
+        G.setAlpha(1.0F);
         G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
         for (int i = 0; i < CheckPoints.n; i++) {
@@ -3592,9 +3594,9 @@ namespace Cum
                         duds = 2;
                     }
                     if (dudo != -1) {
-                        G.setComposite(AlphaComposite.getInstance(3, 0.3F));
+                        G.setAlpha(0.3F);
                         G.drawImage(dude[duds], dudo, 0, null);
-                        G.setComposite(AlphaComposite.getInstance(3, 1.0F));
+                        G.setAlpha(1.0F);
                     }
                     if (gocnt != 0) {
                         G.drawImage(cntdn[gocnt], 385, 50, null);
