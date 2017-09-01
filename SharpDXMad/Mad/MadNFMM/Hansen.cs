@@ -15,6 +15,10 @@ namespace Cum
         {
             throw new System.NotImplementedException();
         }
+        public static void ArrayCopy<T>(T[] src, int srcPos, T[] dest, int destPos, int length)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public static void RequestSleep(long ms)
         {
@@ -138,6 +142,11 @@ namespace Cum
         {
             throw new NotImplementedException();
         }
+
+        public void play()
+        {
+            throw new NotImplementedException();
+        }
     }
     
     internal class Math
@@ -162,7 +171,7 @@ namespace Cum
             throw new NotImplementedException();
         }
 
-        public static double abs(float p0)
+        public static float abs(float p0)
         {
             throw new NotImplementedException();
         }

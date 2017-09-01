@@ -242,13 +242,13 @@ namespace Cum
                 }
                 for (int i16 = 0; i16 < 8; i16++)
                 {
-                    HansenSystem.ArrayCopy(mtouch[i16], 0, hmtouch[i16], 0, 7);
+                    HansenSystem.ArrayCopy(mtouch.Slice(i16), 0, hmtouch.Slice(i16), 0, 7);
                 }
                 hcaught = true;
             }
         }
 
-        static void play(ContO conto, Mad mad, int i, int i30) {
+        internal static void play(ContO conto, Mad mad, int i, int i30) {
             conto.x = x[i30,i];
             conto.y = y[i30,i];
             conto.z = z[i30,i];
@@ -332,7 +332,7 @@ namespace Cum
             }
         }
 
-        static void playh(ContO conto, Mad mad, int i, int i38, int i39) {
+        internal static void playh(ContO conto, Mad mad, int i, int i38, int i39) {
             conto.x = hx[i38,i];
             conto.y = hy[i38,i];
             conto.z = hz[i38,i];
@@ -431,7 +431,7 @@ namespace Cum
             return (i - i74) * (i - i74) + (i75 - i76) * (i75 - i76);
         }
 
-        static void rec(ContO conto, int i, int i18, int i19, int i20, int i21) {
+        internal static void rec(ContO conto, int i, int i18, int i19, int i20, int i21) {
             if (i == i21)
             {
                 caught++;
@@ -549,7 +549,7 @@ namespace Cum
             }
         }
 
-        static void recx(int i, float f, int i48) {
+        internal static void recx(int i, float f, int i48) {
             rx[i48,i,nry[i48,i]] = 300;
             magx[i48,i,nry[i48,i]] = (int) f;
             nrx[i48,i]++;
@@ -559,7 +559,7 @@ namespace Cum
             }
         }
 
-        static void recy(int i, float f, boolean abool, int i47) {
+        internal static void recy(int i, float f, boolean abool, int i47) {
             ry[i47,i,nry[i47,i]] = 300;
             magy[i47,i,nry[i47,i]] = (int) f;
             mtouch[i47,nry[i47,i]] = abool;
@@ -570,7 +570,7 @@ namespace Cum
             }
         }
 
-        static void recz(int i, float f, int i49) {
+        internal static void recz(int i, float f, int i49) {
             rz[i49,i,nry[i49,i]] = 300;
             magz[i49,i,nry[i49,i]] = (int) f;
             nrz[i49,i]++;
@@ -600,8 +600,8 @@ namespace Cum
                             mad.stat.clrad)
                         {
                             f63 = f / 20.0F * Medium.random();
-                            conto.p[i62].oz[i64] -= f63 * Medium.sin(conto.xz) * Medium.cos(conto.zy);
-                            conto.p[i62].ox[i64] += f63 * Medium.cos(conto.xz) * Medium.cos(conto.xy);
+                            conto.p[i62].oz[i64] -= (int)(f63 * Medium.sin(conto.xz) * Medium.cos(conto.zy));
+                            conto.p[i62].ox[i64] += (int)(f63 * Medium.cos(conto.xz) * Medium.cos(conto.xy));
                         }
                     if (f63 != 0.0F)
                     {
@@ -644,7 +644,7 @@ namespace Cum
                             {
                                 conto.p[i62].hsb[0] = 0.05F;
                             }
-                            conto.p[i62].bfase += Math.abs(f63);
+                            conto.p[i62].bfase += (int)Math.abs(f63);
                             new Color(conto.p[i62].c[0], conto.p[i62].c[1], conto.p[i62].c[2]);
                             Color color = Color.getHSBColor(conto.p[i62].hsb[0], conto.p[i62].hsb[1],
                                 conto.p[i62].hsb[2]);
@@ -654,7 +654,7 @@ namespace Cum
                         }
                         if (conto.p[i62].glass == 1)
                         {
-                            conto.p[i62].gr += Math.abs(f63 * 1.5);
+                            conto.p[i62].gr += (int)Math.abs(f63 * 1.5);
                         }
                     }
                 }
@@ -712,8 +712,8 @@ namespace Cum
                                 mad.stat.clrad)
                             {
                                 f55 = f / 20.0F * Medium.random();
-                                conto.p[i54].oz[i56] += f55 * Medium.sin(i52);
-                                conto.p[i54].ox[i56] -= f55 * Medium.sin(i53);
+                                conto.p[i54].oz[i56] += (int)(f55 * Medium.sin(i52));
+                                conto.p[i54].ox[i56] -= (int)(f55 * Medium.sin(i53));
                             }
                         if (f55 != 0.0F)
                         {
@@ -756,7 +756,7 @@ namespace Cum
                                 {
                                     conto.p[i54].hsb[0] = 0.05F;
                                 }
-                                conto.p[i54].bfase += f55;
+                                conto.p[i54].bfase += (int)f55;
                                 new Color(conto.p[i54].c[0], conto.p[i54].c[1], conto.p[i54].c[2]);
                                 Color color = Color.getHSBColor(conto.p[i54].hsb[0], conto.p[i54].hsb[1],
                                     conto.p[i54].hsb[2]);
@@ -766,7 +766,7 @@ namespace Cum
                             }
                             if (conto.p[i54].glass == 1)
                             {
-                                conto.p[i54].gr += Math.abs(f55 * 1.5);
+                                conto.p[i54].gr += (int)Math.abs(f55 * 1.5);
                             }
                         }
                     }
@@ -787,8 +787,8 @@ namespace Cum
                                      conto.p[i59].oy[i61] < mad.stat.flipy + squash[0,mad.im]) &&
                                     squash[0,mad.im] < mad.stat.msquash)
                                 {
-                                    conto.p[i59].oy[i61] += f60;
-                                    i57 += f60;
+                                    conto.p[i59].oy[i61] += (int)f60;
+                                    i57 += (int)f60;
                                     i58++;
                                 }
                             }
@@ -798,7 +798,7 @@ namespace Cum
                         }
                         else if (f60 != 0.0F)
                         {
-                            conto.p[i59].bfase += f60;
+                            conto.p[i59].bfase += (int)f60;
                         }
                         if (Math.abs(f60) >= 1.0F)
                         {
@@ -831,8 +831,8 @@ namespace Cum
                             mad.stat.clrad)
                         {
                             f66 = f / 20.0F * Medium.random();
-                            conto.p[i65].oz[i67] += f66 * Medium.cos(conto.xz) * Medium.cos(conto.zy);
-                            conto.p[i65].ox[i67] += f66 * Medium.sin(conto.xz) * Medium.cos(conto.xy);
+                            conto.p[i65].oz[i67] += (int)(f66 * Medium.cos(conto.xz) * Medium.cos(conto.zy));
+                            conto.p[i65].ox[i67] += (int)(f66 * Medium.sin(conto.xz) * Medium.cos(conto.xy));
                         }
                     if (f66 != 0.0F)
                     {
@@ -875,7 +875,7 @@ namespace Cum
                             {
                                 conto.p[i65].hsb[0] = 0.05F;
                             }
-                            conto.p[i65].bfase += Math.abs(f66);
+                            conto.p[i65].bfase += (int)Math.abs(f66);
                             new Color(conto.p[i65].c[0], conto.p[i65].c[1], conto.p[i65].c[2]);
                             Color color = Color.getHSBColor(conto.p[i65].hsb[0], conto.p[i65].hsb[1],
                                 conto.p[i65].hsb[2]);
@@ -885,14 +885,14 @@ namespace Cum
                         }
                         if (conto.p[i65].glass == 1)
                         {
-                            conto.p[i65].gr += Math.abs(f66 * 1.5);
+                            conto.p[i65].gr += (int)Math.abs(f66 * 1.5);
                         }
                     }
                 }
             }
         }
 
-        static void reset(ContO[] contos)
+        internal static void reset(ContO[] contos)
         {
             caught = 0;
             hcaught = false;

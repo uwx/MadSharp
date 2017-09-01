@@ -37,7 +37,7 @@ namespace Cum
 //        return bufferedimage;
     }
 
-    static void mainbg(int i) {
+    internal static void mainbg(int i) {
         int i26 = 2;
         G.setColor(new Color(191, 184, 124));
         if (i == -1) {

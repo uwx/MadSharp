@@ -1111,11 +1111,11 @@ namespace Cum
                         }
                         if (i32 == 0)
                         {
-                            f50 += 1.1;
+                            f50 += 1.1f;
                         }
                         else
                         {
-                            f50 += 1.2;
+                            f50 += 1.2f;
                         }
                         conto.dust(i49, fs[i49], fs23[i49], fs22[i49], (int) scx[i49], (int) scz[i49], f50 * stat.simag,
                             0, capsized && mtouch);
@@ -1156,9 +1156,9 @@ namespace Cum
                     }
             }
             int i53 = 0;
-            for (int i54 = 0; i54 < Trackers.sect[i30][i31].length; i54++)
+            for (int i54 = 0; i54 < Trackers.sect[i30,i31].Length; i54++)
             {
-                int i55 = Trackers.sect[i30][i31][i54];
+                int i55 = Trackers.sect[i30,i31][i54];
                 int i56 = 0;
                 int i57 = 0;
                 for (int i58 = 0; i58 < 4; i58++)
@@ -1245,13 +1245,13 @@ namespace Cum
                             fs22[i58] = Trackers.z[i55] + Trackers.radz[i55];
                             if (Trackers.skd[i55] != 2)
                             {
-                                crank[0][i58]++;
+                                crank[0,i58]++;
                             }
                             if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
                             {
-                                crank[0][i58]++;
+                                crank[0,i58]++;
                             }
-                            if (crank[0][i58] > 1)
+                            if (crank[0,i58] > 1)
                             {
                                 conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
@@ -1295,13 +1295,13 @@ namespace Cum
                             fs22[i58] = Trackers.z[i55] - Trackers.radz[i55];
                             if (Trackers.skd[i55] != 2)
                             {
-                                crank[1][i58]++;
+                                crank[1,i58]++;
                             }
                             if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
                             {
-                                crank[1][i58]++;
+                                crank[1,i58]++;
                             }
-                            if (crank[1][i58] > 1)
+                            if (crank[1,i58] > 1)
                             {
                                 conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
@@ -1345,13 +1345,13 @@ namespace Cum
                             fs[i58] = Trackers.x[i55] + Trackers.radx[i55];
                             if (Trackers.skd[i55] != 2)
                             {
-                                crank[2][i58]++;
+                                crank[2,i58]++;
                             }
                             if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
                             {
-                                crank[2][i58]++;
+                                crank[2,i58]++;
                             }
-                            if (crank[2][i58] > 1)
+                            if (crank[2,i58] > 1)
                             {
                                 conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
@@ -1395,13 +1395,13 @@ namespace Cum
                             fs[i58] = Trackers.x[i55] - Trackers.radx[i55];
                             if (Trackers.skd[i55] != 2)
                             {
-                                crank[3][i58]++;
+                                crank[3,i58]++;
                             }
                             if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
                             {
-                                crank[3][i58]++;
+                                crank[3,i58]++;
                             }
-                            if (crank[3][i58] > 1)
+                            if (crank[3,i58] > 1)
                             {
                                 conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
                                 if (im == xtGraphics.im)
@@ -1561,11 +1561,11 @@ namespace Cum
             {
                 for (int i80 = 0; i80 < 4; i80++)
                 {
-                    if (crank[i79][i80] == lcrank[i79][i80])
+                    if (crank[i79,i80] == lcrank[i79,i80])
                     {
-                        crank[i79][i80] = 0;
+                        crank[i79,i80] = 0;
                     }
-                    lcrank[i79][i80] = crank[i79][i80];
+                    lcrank[i79,i80] = crank[i79,i80];
                 }
             }
             int i81 = 0;
@@ -1684,8 +1684,8 @@ namespace Cum
                     nmlt = -1;
                 }
             }
-            conto.xz += forca * (scz[0] * nmlt - scz[1] * pmlt + scz[2] * pmlt - scz[3] * nmlt + scx[0] * pmlt +
-                                 scx[1] * nmlt - scx[2] * nmlt - scx[3] * pmlt);
+            conto.xz += (int)(forca * (scz[0] * nmlt - scz[1] * pmlt + scz[2] * pmlt - scz[3] * nmlt + scx[0] * pmlt +
+                                 scx[1] * nmlt - scx[2] * nmlt - scx[3] * pmlt));
             if (Math.abs(i82) > Math.abs(i81))
             {
                 i81 = i82;
@@ -1844,31 +1844,31 @@ namespace Cum
                 float f87 = (float) (speed / stat.swits[2] * 14.0F * (stat.bounce - 0.4));
                 if (control.left && tilt < f87 && tilt >= 0.0F)
                 {
-                    tilt += 0.4;
+                    tilt += 0.4f;
                 }
                 else if (control.right && tilt > -f87 && tilt <= 0.0F)
                 {
-                    tilt -= 0.4;
+                    tilt -= 0.4f;
                 }
                 else if (Math.abs(tilt) > 3.0 * (stat.bounce - 0.4))
                 {
                     if (tilt > 0.0F)
                     {
-                        tilt -= 3.0 * (stat.bounce - 0.3);
+                        tilt -= 3.0f * (stat.bounce - 0.3f);
                     }
                     else
                     {
-                        tilt += 3.0 * (stat.bounce - 0.3);
+                        tilt += 3.0f * (stat.bounce - 0.3f);
                     }
                 }
                 else
                 {
                     tilt = 0.0F;
                 }
-                conto.xy += tilt;
+                conto.xy += (int)tilt;
                 if (gtouch)
                 {
-                    conto.y -= tilt / 1.5;
+                    conto.y -= (int)(tilt / 1.5f);
                 }
             }
             else if (tilt != 0.0F)
@@ -2178,12 +2178,12 @@ namespace Cum
                 }
                 if (loop == 2 || loop == -1)
                 {
-                    travxy += rcomp - lcomp;
+                    travxy += (int)(rcomp - lcomp);
                     if (Math.abs(travxy) > 135)
                     {
                         rtab = true;
                     }
-                    travzy += ucomp - dcomp;
+                    travzy += (int) (ucomp - dcomp);
                     if (travzy > 135)
                     {
                         ftab = true;

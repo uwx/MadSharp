@@ -2840,14 +2840,16 @@ class xtGraphics {
             if (string442.equals("")) {
                 string442 = "-1";
             }
-            i437 = Integer.parseInt(string442);
-        } catch (Exception ignored) {
-
+            i437 = int.Parse(string442);
+        }
+        catch (Exception ignored)
+        {
+            // ignored
         }
         return i437;
     }
 
-    static void gscrape(int im, int i, int i269, int i270) {
+    internal static void gscrape(int im, int i, int i269, int i270) {
         if ((bfsc1[im] == 0 || bfsc2[im] == 0) && Math.sqrt(i * i + i269 * i269 + i270 * i270) / 10.0 > 15.0)
             if (bfsc1[im] == 0) {
                 if (!mutes) {
@@ -2867,7 +2869,6 @@ class xtGraphics {
     }
 
     static internal void hidos() {
-        GameSparker.sgame.setVisible(false);
         //app.snfm1.setVisible(false);
         //app.snfm2.setVisible(false);
         GameSparker.mstgs.setVisible(false);
@@ -3280,9 +3281,6 @@ class xtGraphics {
         lsc = -1;
         mouson = -1;
         if (multion == 0) {
-            GameSparker.mycar.setLabel(" Include ain this game.");
-            GameSparker.mycar.setBackground(new Color(198, 179, 129));
-            GameSparker.mycar.setForeground(new Color(0, 0, 0));
             int i = 16;
             if (CarDefine.lastload == 2) {
                 i = CarDefine.nlocars;
@@ -3369,37 +3367,37 @@ class xtGraphics {
             } else if (winner/* || checkpoints.stage < 11*/) {
                 CheckPoints.stage = (int) (HansenRandom.Double() * nTracks) + 1;
             }
-        GameSparker.sgame.setBackground(new Color(0, 0, 0));
-        GameSparker.sgame.setForeground(new Color(47, 179, 255));
+//        GameSparker.sgame.setBackground(new Color(0, 0, 0));
+//        GameSparker.sgame.setForeground(new Color(47, 179, 255));
         //app.snfm1.setBackground(new Color(0, 0, 0));
         //app.snfm1.setForeground(new Color(47, 179, 255));
         //app.snfm2.setBackground(new Color(0, 0, 0));
         //app.snfm2.setForeground(new Color(47, 179, 255));
         GameSparker.mstgs.setBackground(new Color(0, 0, 0));
         GameSparker.mstgs.setForeground(new Color(47, 179, 255));
-        GameSparker.gmode.setBackground(new Color(49, 49, 0));
-        GameSparker.gmode.setForeground(new Color(148, 167, 0));
-        GameSparker.sgame.removeAll();
-        GameSparker.sgame.add(rd, " NFM 1     ");
-        GameSparker.sgame.add(rd, " NFM 2     ");
-        GameSparker.sgame.add(rd, " My Stages ");
-        GameSparker.sgame.add(rd, " Weekly Top20 ");
-        GameSparker.sgame.add(rd, " Monthly Top20 ");
-        GameSparker.sgame.add(rd, " Stage Maker ");
+//        GameSparker.gmode.setBackground(new Color(49, 49, 0));
+//        GameSparker.gmode.setForeground(new Color(148, 167, 0));
+//        GameSparker.sgame.removeAll();
+//        GameSparker.sgame.add(rd, " NFM 1     ");
+//        GameSparker.sgame.add(rd, " NFM 2     ");
+//        GameSparker.sgame.add(rd, " My Stages ");
+//        GameSparker.sgame.add(rd, " Weekly Top20 ");
+//        GameSparker.sgame.add(rd, " Monthly Top20 ");
+//        GameSparker.sgame.add(rd, " Stage Maker ");
         if (CheckPoints.stage > 0 && CheckPoints.stage <= 10) {
-            GameSparker.sgame.select(0);
+//            GameSparker.sgame.select(0);
             nfmtab = 0;
         }
         if (CheckPoints.stage > 10) {
-            GameSparker.sgame.select(1);
+//            GameSparker.sgame.select(1);
             nfmtab = 1;
         }
         if (CheckPoints.stage == -2) {
-            GameSparker.sgame.select(2);
+//            GameSparker.sgame.select(2);
             nfmtab = 2;
         }
         if (CheckPoints.stage == -1) {
-            GameSparker.sgame.select(5);
+//            GameSparker.sgame.select(5);
             nfmtab = 5;
         }
         removeds = 0;
