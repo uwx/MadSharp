@@ -725,7 +725,8 @@ class Plane : IComparable<Plane> {
             }
         }
         if (bool84) {
-            float f = (float) (projf / deltaf + 0.3);
+            float f = (projf / deltaf + 0.3).CapF();
+            
             if (abool && !solo) {
                 boolean bool113 = false;
                 if (f > 1.0F) {
