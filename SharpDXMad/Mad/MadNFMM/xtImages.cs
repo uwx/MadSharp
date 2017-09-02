@@ -1,4 +1,7 @@
 ﻿using System;
+using static Cum.xtImages.Images;
+using static Cum.xtGraphics;
+using static Cum.xtPart2;
 
 namespace Cum
 {
@@ -142,14 +145,13 @@ namespace Cum
         internal static Image youwon;
 
     }
-        internal interface ImageConsumer {
-            void accept(byte[] ais);
-        }
-    
+
+        internal delegate void Accept(byte[] ais);
+        
         internal class ImageIdentifier {
             internal readonly String fileName;
-            internal readonly ImageConsumer cons;
-            internal ImageIdentifier(String s, ImageConsumer c) {
+            internal readonly Accept cons;
+            internal ImageIdentifier(String s, Accept c) {
                 cons=c;
                 fileName=s;
             }

@@ -9,6 +9,25 @@ using Bitmap = SharpDX.Direct2D1.Bitmap;
 
 namespace Cum
 {
+    internal struct DistHolder
+    {
+        public int Id;
+        public int Dist;
+
+        public DistHolder(int dist, int id)
+        {
+            Dist = dist;
+            Id = id;
+        }
+    }
+    
+    public class HansenData
+    {
+        public static void SetCookie(string[] lines)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public class HansenSystem
     {
         public static void ArrayCopy(int[] src, int srcPos, int[] dest, int destPos, int length)
@@ -284,6 +303,16 @@ namespace Cum
                 list[n] = value;  
             }
             return list;
+        }
+
+        public static void sort<T>(T[] arr, Comparer<T> comparator)
+        {
+            Array.Sort(arr, comparator);
+        }
+        
+        public static void sort<T>(T[,] arr, Comparer<T[]> comparator)
+        {
+            Array.Sort(arr, comparator);
         }
     }
 

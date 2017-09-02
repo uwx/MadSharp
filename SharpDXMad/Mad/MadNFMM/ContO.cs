@@ -959,7 +959,7 @@ class ContO {
         }
     }
 
-    ContO(int i, int i90, int i91, int i92, int i93, int i94) {
+    internal ContO(int i, int i90, int i91, int i92, int i93, int i94) {
         keyx = new int[4];
         keyz = new int[4];
         sprkat = 0;
@@ -1230,7 +1230,7 @@ class ContO {
         Trackers.nt++;
     }
 
-    void d() {
+    internal void d() {
         if (dist != 0) {
             dist = 0;
         }

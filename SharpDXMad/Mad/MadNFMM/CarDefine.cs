@@ -400,7 +400,8 @@ class CarDefine {
     {
         
     }
-    static CarDefine create(ContO[] contos) {
+    
+    internal static CarDefine create(ContO[] contos) {
         thread = new CarDefine();
         bco = contos;
         return thread;

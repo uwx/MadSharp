@@ -88,7 +88,7 @@ namespace Cum
             this.stat = stat;
         }
 
-        void colide(ContO conto, Mad mad118, ContO conto119) {
+        internal void colide(ContO conto, Mad mad118, ContO conto119) {
             float[] fs = new float[4];
             float[] fs120 = new float[4];
             float[] fs121 = new float[4];
@@ -302,7 +302,7 @@ namespace Cum
                 }
         }
 
-        void drive(Control control, ContO conto) {
+        internal void drive(Control control, ContO conto) {
             int i = 1;
             int i4 = 1;
             boolean abool = false;
@@ -1198,11 +1198,11 @@ namespace Cum
                                 }
                                 if (i32 == 0)
                                 {
-                                    f59 += 1.1;
+                                    f59 += 1.1f;
                                 }
                                 else
                                 {
-                                    f59 += 1.2;
+                                    f59 += 1.2f;
                                 }
                                 conto.dust(i58, fs[i58], fs23[i58], fs22[i58], (int) scx[i58], (int) scz[i58],
                                     f59 * stat.simag, 0, capsized && mtouch);
@@ -1269,7 +1269,7 @@ namespace Cum
                             {
                                 f62 = 0.0F;
                             }
-                            f62 += stat.bounce - 0.2;
+                            f62 += stat.bounce - 0.2f;
                             if (f62 < 1.1)
                             {
                                 f62 = 1.1F;
@@ -1319,7 +1319,7 @@ namespace Cum
                             {
                                 f64 = 0.0F;
                             }
-                            f64 += stat.bounce - 0.2;
+                            f64 += stat.bounce - 0.2f;
                             if (f64 < 1.1)
                             {
                                 f64 = 1.1F;
@@ -1369,7 +1369,7 @@ namespace Cum
                             {
                                 f66 = 0.0F;
                             }
-                            f66 += stat.bounce - 0.2;
+                            f66 += stat.bounce - 0.2f;
                             if (f66 < 1.1)
                             {
                                 f66 = 1.1F;
@@ -1419,7 +1419,7 @@ namespace Cum
                             {
                                 f68 = 0.0F;
                             }
-                            f68 += stat.bounce - 0.2;
+                            f68 += stat.bounce - 0.2f;
                             if (f68 < 1.1)
                             {
                                 f68 = 1.1F;
@@ -2428,7 +2428,7 @@ namespace Cum
                 shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
                 if (im == xtGraphics.im || colidim)
                 {
-                    xtGraphics.crash(im, f, 0);
+                    xtGraphics.acrash(im, f, 0);
                 }
                 for (int i111 = 0; i111 < conto.npl; i111++)
                 {
@@ -2438,12 +2438,12 @@ namespace Cum
                                 conto.p[i111].oz[i113]) < stat.clrad)
                         {
                             f112 = f / 20.0F * Medium.random();
-                            conto.p[i111].oz[i113] -= f112 * Medium.sin(conto.xz) * Medium.cos(conto.zy);
-                            conto.p[i111].ox[i113] += f112 * Medium.cos(conto.xz) * Medium.cos(conto.xy);
+                            conto.p[i111].oz[i113] -= (int)(f112 * Medium.sin(conto.xz) * Medium.cos(conto.zy));
+                            conto.p[i111].ox[i113] += (int)(f112 * Medium.cos(conto.xz) * Medium.cos(conto.xy));
                             if (abool)
                             {
-                                hitmag += Math.abs(f112);
-                                i110 += Math.abs(f112);
+                                hitmag += (int)Math.abs(f112);
+                                i110 += (int)Math.abs(f112);
                             }
                         }
                     if (f112 != 0.0F)
@@ -2483,7 +2483,7 @@ namespace Cum
                             {
                                 conto.p[i111].hsb[0] = 0.05F;
                             }
-                            conto.p[i111].bfase += Math.abs(f112);
+                            conto.p[i111].bfase += (int)Math.abs(f112);
                             new Color(conto.p[i111].c[0], conto.p[i111].c[1], conto.p[i111].c[2]);
                             Color color = Color.getHSBColor(conto.p[i111].hsb[0], conto.p[i111].hsb[1],
                                 conto.p[i111].hsb[2]);
@@ -2493,7 +2493,7 @@ namespace Cum
                         }
                         if (conto.p[i111].glass == 1)
                         {
-                            conto.p[i111].gr += Math.abs(f112 * 1.5);
+                            conto.p[i111].gr += (int)Math.abs(f112 * 1.5);
                         }
                     }
                 }
@@ -2563,7 +2563,7 @@ namespace Cum
                 }
                 if (im == xtGraphics.im || colidim)
                 {
-                    xtGraphics.crash(im, f, i99 * i98);
+                    xtGraphics.acrash(im, f, i99 * i98);
                 }
                 if (i99 * i98 == 0 || mtouch)
                 {
@@ -2575,12 +2575,12 @@ namespace Cum
                                     conto.p[i102].oz[i104]) < stat.clrad)
                             {
                                 f103 = f / 20.0F * Medium.random();
-                                conto.p[i102].oz[i104] += f103 * Medium.sin(i100);
-                                conto.p[i102].ox[i104] -= f103 * Medium.sin(i101);
+                                conto.p[i102].oz[i104] += (int)(f103 * Medium.sin(i100));
+                                conto.p[i102].ox[i104] -= (int)(f103 * Medium.sin(i101));
                                 if (abool)
                                 {
-                                    hitmag += Math.abs(f103);
-                                    i97 += Math.abs(f103);
+                                    hitmag += (int)Math.abs(f103);
+                                    i97 += (int)Math.abs(f103);
                                 }
                             }
                         if (f103 != 0.0F)
@@ -2620,7 +2620,7 @@ namespace Cum
                                 {
                                     conto.p[i102].hsb[0] = 0.05F;
                                 }
-                                conto.p[i102].bfase += f103;
+                                conto.p[i102].bfase += (int)f103;
                                 new Color(conto.p[i102].c[0], conto.p[i102].c[1], conto.p[i102].c[2]);
                                 Color color = Color.getHSBColor(conto.p[i102].hsb[0], conto.p[i102].hsb[1],
                                     conto.p[i102].hsb[2]);
@@ -2630,7 +2630,7 @@ namespace Cum
                             }
                             if (conto.p[i102].glass == 1)
                             {
-                                conto.p[i102].gr += Math.abs(f103 * 1.5);
+                                conto.p[i102].gr += (int)Math.abs(f103 * 1.5);
                             }
                         }
                     }
@@ -2650,13 +2650,13 @@ namespace Cum
                                     if ((Math.abs(conto.p[i107].oy[i109] - stat.flipy - squash) < stat.msquash * 3 ||
                                          conto.p[i107].oy[i109] < stat.flipy + squash) && squash < stat.msquash)
                                     {
-                                        conto.p[i107].oy[i109] += f108;
-                                        i105 += f108;
+                                        conto.p[i107].oy[i109] += (int)f108;
+                                        i105 += (int)f108;
                                         i106++;
                                         if (abool)
                                         {
-                                            hitmag += Math.abs(f108);
-                                            i97 += Math.abs(f108);
+                                            hitmag += (int)Math.abs(f108);
+                                            i97 += (int)Math.abs(f108);
                                         }
                                     }
                                 }
@@ -2666,7 +2666,7 @@ namespace Cum
                             }
                             else if (f108 != 0.0F)
                             {
-                                conto.p[i107].bfase += f108;
+                                conto.p[i107].bfase += (int)f108;
                             }
                             if (Math.abs(f108) >= 1.0F)
                             {
@@ -2715,7 +2715,7 @@ namespace Cum
                 shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
                 if (im == xtGraphics.im || colidim)
                 {
-                    xtGraphics.crash(im, f, 0);
+                    xtGraphics.acrash(im, f, 0);
                 }
                 for (int i115 = 0; i115 < conto.npl; i115++)
                 {
@@ -2725,12 +2725,12 @@ namespace Cum
                                 conto.p[i115].oz[i117]) < stat.clrad)
                         {
                             f116 = f / 20.0F * Medium.random();
-                            conto.p[i115].oz[i117] += f116 * Medium.cos(conto.xz) * Medium.cos(conto.zy);
-                            conto.p[i115].ox[i117] += f116 * Medium.sin(conto.xz) * Medium.cos(conto.xy);
+                            conto.p[i115].oz[i117] += (int)(f116 * Medium.cos(conto.xz) * Medium.cos(conto.zy));
+                            conto.p[i115].ox[i117] += (int)(f116 * Medium.sin(conto.xz) * Medium.cos(conto.xy));
                             if (abool)
                             {
-                                hitmag += Math.abs(f116);
-                                i114 += Math.abs(f116);
+                                hitmag += (int)Math.abs(f116);
+                                i114 += (int)Math.abs(f116);
                             }
                         }
                     if (f116 != 0.0F)
@@ -2770,7 +2770,7 @@ namespace Cum
                             {
                                 conto.p[i115].hsb[0] = 0.05F;
                             }
-                            conto.p[i115].bfase += Math.abs(f116);
+                            conto.p[i115].bfase += (int)Math.abs(f116);
                             new Color(conto.p[i115].c[0], conto.p[i115].c[1], conto.p[i115].c[2]);
                             Color color = Color.getHSBColor(conto.p[i115].hsb[0], conto.p[i115].hsb[1],
                                 conto.p[i115].hsb[2]);
@@ -2780,7 +2780,7 @@ namespace Cum
                         }
                         if (conto.p[i115].glass == 1)
                         {
-                            conto.p[i115].gr += Math.abs(f116 * 1.5);
+                            conto.p[i115].gr += (int)Math.abs(f116 * 1.5);
                         }
                     }
                 }
@@ -2788,7 +2788,7 @@ namespace Cum
             return i114;
         }
 
-        void reseto(int i, ContO conto) {
+        internal void reseto(int i, ContO conto) {
             cn = i;
             for (int i0 = 0; i0 < 8; i0++)
             {
@@ -2846,8 +2846,8 @@ namespace Cum
             {
                 for (int i3 = 0; i3 < 4; i3++)
                 {
-                    crank[i2][i3] = 0;
-                    lcrank[i2][i3] = 0;
+                    crank[i2,i3] = 0;
+                    lcrank[i2,i3] = 0;
                 }
             }
             pcleared = CheckPoints.pcs;

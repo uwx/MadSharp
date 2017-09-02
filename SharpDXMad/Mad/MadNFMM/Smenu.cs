@@ -309,7 +309,7 @@ namespace Cum
         /**
          * Use setVisible instead.
          */
-        public void show()
+        public void showf()
         {
         }
 

@@ -191,7 +191,7 @@ namespace Cum
         G.fillRect(65, 425, 670, 25);
     }
 
-    static void maini(Control control) {
+        internal static void maini(Control control) {
         if (flipo == 0) {
             //app.setCursor(new Cursor(0));
             flipo++;
@@ -373,7 +373,7 @@ namespace Cum
         }
     }
 
-    static void maini2() {
+    internal static void maini2() {
         mainbg(1);
         multion = 0;
         clangame = 0;
@@ -1429,13 +1429,13 @@ namespace Cum
         drawcs(445, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
     }
 
-    static private boolean over(Image image, int i, int i294, int i295, int i296) {
+    static internal boolean over(Image image, int i, int i294, int i295, int i296) {
         int i297 = image.getHeight(null);
         int i298 = image.getWidth(null);
         return i > i295 - 5 && i < i295 + i298 + 5 && i294 > i296 - 5 && i294 < i296 + i297 + 5;
     }
 
-    static private boolean overon(int i, int i289, int i290, int i291, int i292, int i293) {
+    static internal boolean overon(int i, int i289, int i290, int i291, int i292, int i293) {
         return i292 > i && i292 < i + i290 && i293 > i289 && i293 < i289 + i291;
     }
 
@@ -2114,7 +2114,7 @@ namespace Cum
         }
     }
 
-    static private void rot(int[] ais, int[] is272, int i, int i273, int i274, int i275) {
+    static internal void rot(int[] ais, int[] is272, int i, int i273, int i274, int i275) {
         if (i274 != 0) {
             for (int i276 = 0; i276 < i275; i276++) {
                 int i277 = ais[i276];
@@ -2411,7 +2411,7 @@ namespace Cum
 //            }
     }
 
-    static void snap(int i) {
+        internal static void snap(int i) {
         dmg = loadsnap(odmg);
         pwr = loadsnap(opwr);
         was = loadsnap(owas);
@@ -2518,7 +2518,7 @@ namespace Cum
             }
     }
 
-    static void stageselect(Control control, int i, int i39, boolean abool) {
+    internal static void stageselect(Control control, int i, int i39, boolean abool) {
         G.drawImage(br, 65, 25, null);
         G.drawImage(select, 338, 35, null);
         if (testdrive != 3 && testdrive != 4) {
@@ -3130,7 +3130,7 @@ namespace Cum
         }
     }
 
-    static void stat(Mad mad, ContO conto, Control control, boolean abool) {
+    internal static void stat(Mad mad, ContO conto, Control control, boolean abool) {
         if (holdit) {
             int i = 250;
             if (fase == 7001)
@@ -3914,11 +3914,11 @@ namespace Cum
         }
     }
 
-    static void stopallnow() {
-        if (runner != null) {
-            runner.interrupt();
-            runner = null;
-        }
+    internal static void stopallnow() {
+//        if (runner != null) {
+//            runner.interrupt();
+//            runner = null;
+//        }
         runtyp = 0;
         if (loadedt) {
             strack.unload();
@@ -3927,10 +3927,10 @@ namespace Cum
         }
         for (int i = 0; i < 5; i++) {
             for (int i19 = 0; i19 < 5; i19++) {
-                if (engs[i][i19] != null) {
-                    engs[i][i19].stop();
+                if (engs[i,i19] != null) {
+                    engs[i,i19].stop();
                 }
-                engs[i][i19] = null;
+                engs[i,i19] = null;
             }
         }
         for (int i = 0; i < 6; i++) {
@@ -3964,13 +3964,13 @@ namespace Cum
         }
     }
 
-    static void stoploading() {
+        internal static void stoploading() {
         loading();
         //app.repaint();
         runtyp = 0;
     }
 
-    static void trackbg(boolean abool) {
+        internal static void trackbgf(boolean abool) {
         int i = 0;
         trkl++;
         if (trkl > trklim) {
@@ -3995,7 +3995,7 @@ namespace Cum
         G.fillRect(65, 425, 670, 25);
     }
 
-    static void waitenter() {
+        internal static void waitenter() {
         if (forstart < 690) {
             G.setFont(new Font("Arial", 1, 13));
             ftm = G.getFontMetrics();
@@ -4022,14 +4022,14 @@ namespace Cum
         }
     }
 
-    static private int xs(int i, int i279) {
+    static internal int xs(int i, int i279) {
         if (i279 < 50) {
             i279 = 50;
         }
         return (i279 - Medium.focusPoint) * (Medium.cx - i) / i279 + i;
     }
 
-    static private int ys(int i, int i280) {
+    static internal int ys(int i, int i280) {
         if (i280 < 50) {
             i280 = 50;
         }

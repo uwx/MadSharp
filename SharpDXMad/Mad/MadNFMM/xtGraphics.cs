@@ -67,10 +67,6 @@ class xtGraphics {
      */
     internal static int ana = 0;
     /**
-     * {@link GameSparker} object
-     */
-    internal static GameSparker app;
-    /**
      * The player car's HSB values, once for the first color and once for the second
      */
     internal static readonly float[] arnp = {
@@ -397,9 +393,7 @@ class xtGraphics {
             -760, -380, -380, 0, 380, 380, 760, 0
     };
 
-    internal static void create(GameSparker gamesparker) {
-        app = gamesparker;
-        
+    internal static void create() {
         hello = getImage("data/baseimages/hello.gif");
         sign = getImage("data/baseimages/sign.gif");
         loadbar = getImage("data/baseimages/loadbar.gif");
@@ -523,7 +517,6 @@ class xtGraphics {
         }
         rot(ais, is218, i219, i221, ana, 7);
         i224 = Math.abs(ana);
-        G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (!abool) {
             if (i224 > 7 || i216 > 0 || i216 == -2 || cntan != 0) {
                 for (int i231 = 0; i231 < 7; i231++) {
@@ -682,30 +675,31 @@ class xtGraphics {
             G.setColor(new Color(i238, i239, i240));
             G.drawPolygon(ais, is217, 7);
         }
-        G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
     }
 
-    internal static Image bressed(Image image) {
-        int i = image.getHeight(null);
-        int i340 = image.getWidth(null);
-        int[] ais = new int[i340 * i];
-        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i340, i, ais, 0, i340);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        Color color = new Color(247, 255, 165);
-        for (int i341 = 0; i341 < i340 * i; i341++)
-            if (ais[i341] != ais[i340 * i - 1]) {
-                ais[i341] = color.getRGB();
-            }
-        return xt.createImage(new MemoryImageSource(i340, i, ais, 0, i340));
+    internal static Image bressed(Image image)
+    {
+        return image;
+//        int i = image.getHeight(null);
+//        int i340 = image.getWidth(null);
+//        int[] ais = new int[i340 * i];
+//        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i340, i, ais, 0, i340);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        Color color = new Color(247, 255, 165);
+//        for (int i341 = 0; i341 < i340 * i; i341++)
+//            if (ais[i341] != ais[i340 * i - 1]) {
+//                ais[i341] = color.getRGB();
+//            }
+//        return xt.createImage(new MemoryImageSource(i340, i, ais, 0, i340));
     }
 
-    static void cantgo(Control control) {
+    internal static void cantgo(Control control) {
         pnext = 0;
-        trackbg(false);
+        trackbgf(false);
         G.drawImage(br, 65, 25, null);
         G.drawImage(select, 338, 35, null);
         G.setFont(new Font("Arial", 1, 13));
@@ -733,7 +727,7 @@ class xtGraphics {
         }
     }
 
-    static void cantreply() {
+    internal static void cantreply() {
         G.setColor(new Color(64, 143, 223));
         G.fillRoundRect(200, 73, 400, 23, 7, 20);
         G.setColor(new Color(0, 89, 223));
@@ -742,22 +736,22 @@ class xtGraphics {
     }
 
     internal static void carsbginflex() {
-        if (!badmac) {
-            flatr = 0;
-            flyr = (int) (Medium.random() * 160.0F - 80.0F);
-            flyrdest = (int) (flyr + Medium.random() * 160.0F - 80.0F);
-            flang = 1;
-            flexpix = new int[268000];
-            PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, flexpix, 0, 670);
-            try {
-                pixelgrabber.grabPixels();
-            } catch (InterruptedException ignored) {
-
-            }
-        }
+//        if (!badmac) {
+//            flatr = 0;
+//            flyr = (int) (Medium.random() * 160.0F - 80.0F);
+//            flyrdest = (int) (flyr + Medium.random() * 160.0F - 80.0F);
+//            flang = 1;
+//            flexpix = new int[268000];
+//            PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, flexpix, 0, 670);
+//            try {
+//                pixelgrabber.grabPixels();
+//            } catch (InterruptedException ignored) {
+//
+//            }
+//        }
     }
 
-    static void carselect(Control control, ContO[] cars, int i, int i104, boolean abool) {
+    internal static void carselect(Control control, ContO[] cars, int i, int i104, boolean abool) {
         G.setColor(new Color(0, 0, 0));
         G.fillRect(0, 0, 65, 450);
         G.fillRect(735, 0, 65, 450);
@@ -784,9 +778,7 @@ class xtGraphics {
             }
         }
         if (!remi) {
-            G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-            cars[sc[0]].d(rd);
-            G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            cars[sc[0]].d();
         }
         if (/*(multion != 0 || testdrive == 1 || testdrive == 2) && */lsc != sc[0]) {
             if (cars[sc[0]].xy != 0) {
@@ -862,7 +854,6 @@ class xtGraphics {
                         if (i112 == -1) {
                             cfase = 5;
                             CarDefine.action = 4;
-                            CarDefine.sparkactionloader();
                         }
                     }
                 } else {
@@ -975,12 +966,12 @@ class xtGraphics {
                     G.drawString("Endurance:", 473, 373);
                     G.drawImage(statb, 536, 367, null);
                     G.setColor(new Color(0, 0, 0));
-                    float f = (CarDefine.swits[sc[0]][2] - 220) / 90.0F;
+                    float f = (CarDefine.swits[sc[0],2] - 220) / 90.0F;
                     if (f < 0.2) {
                         f = 0.2F;
                     }
                     G.fillRect((int) (162.0F + 156.0F * f), 337, (int) (156.0F * (1.0F - f) + 1.0F), 7);
-                    f = CarDefine.acelf[sc[0]][1] * CarDefine.acelf[sc[0]][0] * CarDefine.acelf[sc[0]][2] * CarDefine.grip[sc[0]] / 7700.0F;
+                    f = CarDefine.acelf[sc[0],1] * CarDefine.acelf[sc[0],0] * CarDefine.acelf[sc[0],2] * CarDefine.grip[sc[0]] / 7700.0F;
                     if (f > 1.0F) {
                         f = 1.0F;
                     }
@@ -1218,9 +1209,6 @@ class xtGraphics {
             if (cfase == 11 || cfase == 101) {
                 CarDefine.action = 0;
             }
-            if (GameSparker.mycar.isShowing()) {
-                GameSparker.mycar.setVisible(false);
-            }
             pback = 0;
             pnext = 0;
             gatey = 300;
@@ -1335,9 +1323,9 @@ class xtGraphics {
                 if (gmode == 2) {
                     scm = sc[0];
                 }
-                if (GameSparker.mycar.isShowing()) {
-                    GameSparker.mycar.setVisible(false);
-                }
+//                if (GameSparker.mycar.isShowing()) {
+//                    GameSparker.mycar.setVisible(false);
+//                }
                 flexpix = null;
                 control.handb = false;
                 control.enter = false;
@@ -1355,20 +1343,20 @@ class xtGraphics {
             }
             if (cfase == 5 && CarDefine.action == 0 && control.enter) {
                 tcnt = 0;
-                if (!GameSparker.tnick.getText().equals("") && !GameSparker.tpass.getText().equals("")) {
-                    GameSparker.tnick.setVisible(false);
-                    GameSparker.tpass.setVisible(false);
-                    app.requestFocus();
-                    CarDefine.action = 1;
-                    CarDefine.sparkactionloader();
-                } else {
-                    if (GameSparker.tpass.getText().equals("")) {
-                        CarDefine.reco = -4;
-                    }
-                    if (GameSparker.tnick.getText().equals("")) {
-                        CarDefine.reco = -3;
-                    }
-                }
+//                if (!GameSparker.tnick.getText().equals("") && !GameSparker.tpass.getText().equals("")) {
+//                    GameSparker.tnick.setVisible(false);
+//                    GameSparker.tpass.setVisible(false);
+//                    //app.requestFocus();
+//                    CarDefine.action = 1;
+//                    CarDefine.sparkactionloader();
+//                } else {
+//                    if (GameSparker.tpass.getText().equals("")) {
+//                        CarDefine.reco = -4;
+//                    }
+//                    if (GameSparker.tnick.getText().equals("")) {
+//                        CarDefine.reco = -3;
+//                    }
+//                }
                 control.enter = false;
             }
         }
@@ -1389,16 +1377,16 @@ class xtGraphics {
             osc = sc[0];
             multion = 1;
             gmode = 0;
-            if (GameSparker.mycar.isShowing()) {
-                GameSparker.mycar.setVisible(false);
-            }
+//            if (GameSparker.mycar.isShowing()) {
+//                GameSparker.mycar.setVisible(false);
+//            }
             flexpix = null;
             control.handb = false;
             control.enter = false;
         }
     }
 
-    static void clicknow() {
+    internal static void clicknow() {
         G.setColor(new Color(198, 214, 255));
         G.fillRoundRect(250, 340, 300, 80, 30, 70);
         G.setColor(new Color(128, 167, 255));
@@ -1436,7 +1424,7 @@ class xtGraphics {
     internal static void closesounds() {
         for (int i = 0; i < 5; i++) {
             for (int i271 = 0; i271 < 5; i271++) {
-                engs[i][i271].checkopen();
+                engs[i,i271].checkopen();
             }
         }
         for (int i = 0; i < 6; i++) {
@@ -1461,11 +1449,11 @@ class xtGraphics {
         }
     }
 
-    static void colorCar(ContO conto, int i) {
+    internal static void colorCar(ContO conto, int i) {
         if (!plnames[i].contains("MadBot")) {
             for (int i132 = 0; i132 < conto.npl; i132++) {
                 if (conto.p[i132].colnum == 1) {
-                    Color color = Color.getHSBColor(allrnp[i][0], allrnp[i][1], 1.0F - allrnp[i][2]);
+                    Color color = Color.getHSBColor(allrnp[i,0], allrnp[i,1], 1.0F - allrnp[i][2]);
                     conto.p[i132].oc[0] = color.getRed();
                     conto.p[i132].oc[1] = color.getGreen();
                     conto.p[i132].oc[2] = color.getBlue();
@@ -1533,7 +1521,7 @@ class xtGraphics {
         return c;
     }
 
-    static void acrash(int im, float f, int i) {
+    internal static void acrash(int im, float f, int i) {
         if (bfcrash[im] == 0) {
             if (i == 0) {
                 if (Math.abs(f) > 25.0F && Math.abs(f) < 170.0F) {
@@ -1585,7 +1573,7 @@ class xtGraphics {
         }
     }
 
-    static void credits(Control control, int i, int i23, int i24) {
+    internal static void credits(Control control, int i, int i23, int i24) {
         if (flipo == 0) {
             powerup.play();
             flipo = 1;
@@ -1705,7 +1693,7 @@ class xtGraphics {
         }
     }
 
-    static void ctachm(int i, int i182, int i183, Control control) {
+    internal static void ctachm(int i, int i182, int i183, Control control) {
         if (fase == 1) {
             if (i183 == 1) {
                 if (over(next[0], i, i182, 625, 135)) {
@@ -2356,7 +2344,7 @@ class xtGraphics {
         }
     }
 
-    static void finish(ContO[] contos, Control control, int i, int i141, boolean abool) {
+    internal static void finish(ContO[] contos, Control control, int i, int i141, boolean abool) {
         /*if (chronostart) {
             chrono.stop();
             chronostart = false;
@@ -2731,62 +2719,62 @@ class xtGraphics {
         }
     }
 
-    static void fleximage(Image image, int i) {
-        if (!badmac) {
-            if (i == 0) {
-                flexpix = new int[360000];
-                ImageIO.GrabPixels(image, flexpix);
-            }
-            int i300 = 0;
-            int i301 = 0;
-            int i302 = 0;
-            int i303 = 0;
-            int i304 = (int) (HansenRandom.Double() * 128.0);
-            int i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
-            for (int i306 = 0; i306 < 360000; i306++) {
-                Color color = new Color(flexpix[i306]);
-                int i309;
-                int i310;
-                int i311;
-                if (i300 == 0) {
-                    i309 = color.getRed();
-                    i301 = i309;
-                    i310 = color.getGreen();
-                    i302 = i310;
-                    i311 = color.getBlue();
-                    i303 = i311;
-                } else {
-                    i309 = (int) ((color.getRed() + i301 * 0.38F * i) / (1.0F + 0.38F * i));
-                    i301 = i309;
-                    i310 = (int) ((color.getGreen() + i302 * 0.38F * i) / (1.0F + 0.38F * i));
-                    i302 = i310;
-                    i311 = (int) ((color.getBlue() + i303 * 0.38F * i) / (1.0F + 0.38F * i));
-                    i303 = i311;
-                }
-                if (++i300 == 800) {
-                    i300 = 0;
-                }
-                int i312 = (int) ((i309 * 17 + i310 + i311 + i304) / 21.0F);
-                int i313 = (int) ((i310 * 17 + i309 + i311 + i304) / 22.0F);
-                int i314 = (int) ((i311 * 17 + i309 + i310 + i304) / 24.0F);
-                if (--i305 == 0) {
-                    i304 = (int) (HansenRandom.Double() * 128.0);
-                    i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
-                }
-                Color color315 = new Color(i312, i313, i314);
-                flexpix[i306] = color315.getRGB();
-            }
-            fleximg = xt.createImage(new MemoryImageSource(800, 450, flexpix, 0, 800));
-            G.drawImage(fleximg, 0, 0, null);
-        } else {
+    internal static void fleximage(Image image, int i) {
+//        if (!badmac) {
+//            if (i == 0) {
+//                flexpix = new int[360000];
+//                ImageIO.GrabPixels(image, flexpix);
+//            }
+//            int i300 = 0;
+//            int i301 = 0;
+//            int i302 = 0;
+//            int i303 = 0;
+//            int i304 = (int) (HansenRandom.Double() * 128.0);
+//            int i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
+//            for (int i306 = 0; i306 < 360000; i306++) {
+//                Color color = new Color(flexpix[i306]);
+//                int i309;
+//                int i310;
+//                int i311;
+//                if (i300 == 0) {
+//                    i309 = color.getRed();
+//                    i301 = i309;
+//                    i310 = color.getGreen();
+//                    i302 = i310;
+//                    i311 = color.getBlue();
+//                    i303 = i311;
+//                } else {
+//                    i309 = (int) ((color.getRed() + i301 * 0.38F * i) / (1.0F + 0.38F * i));
+//                    i301 = i309;
+//                    i310 = (int) ((color.getGreen() + i302 * 0.38F * i) / (1.0F + 0.38F * i));
+//                    i302 = i310;
+//                    i311 = (int) ((color.getBlue() + i303 * 0.38F * i) / (1.0F + 0.38F * i));
+//                    i303 = i311;
+//                }
+//                if (++i300 == 800) {
+//                    i300 = 0;
+//                }
+//                int i312 = (int) ((i309 * 17 + i310 + i311 + i304) / 21.0F);
+//                int i313 = (int) ((i310 * 17 + i309 + i311 + i304) / 22.0F);
+//                int i314 = (int) ((i311 * 17 + i309 + i310 + i304) / 24.0F);
+//                if (--i305 == 0) {
+//                    i304 = (int) (HansenRandom.Double() * 128.0);
+//                    i305 = (int) (5.0 + HansenRandom.Double() * 15.0);
+//                }
+//                Color color315 = new Color(i312, i313, i314);
+//                flexpix[i306] = color315.getRGB();
+//            }
+//            fleximg = xt.createImage(new MemoryImageSource(800, 450, flexpix, 0, 800));
+//            G.drawImage(fleximg, 0, 0, null);
+//        } else {
             G.setColor(new Color(0, 0, 0));
             G.setAlpha(0.1F);
             G.fillRect(0, 0, 800, 450);
             G.setAlpha(1.0F);
-        }
+//        }
     }
 
-    static Image getImage(String astring) {
+    internal static Image getImage(String astring) {
         return ImageIO.read(new File(astring));
     }
 
@@ -3114,7 +3102,7 @@ class xtGraphics {
         }
     }
 
-    static void inishcarselect(ContO[] cars) {
+    internal static void inishcarselect(ContO[] cars) {
         nplayers = 7;
         im = 0;
         xstart[0] = 0;
@@ -3335,7 +3323,7 @@ class xtGraphics {
         }
     }
 
-    static void inishstageselect() {
+    internal static void inishstageselect() {
         if (CheckPoints.stage == -2 && (CarDefine.msloaded != 1 || !logged)) {
             CheckPoints.stage = (int) (HansenRandom.Double() * nTracks) + 1;
             CheckPoints.top20 = 0;
@@ -3406,7 +3394,7 @@ class xtGraphics {
         fase = 2;
     }
 
-    static void inst(Control control) {
+    internal static void inst(Control control) {
         if (flipo == 0) {
             flipo = 1;
         }
@@ -3704,7 +3692,7 @@ class xtGraphics {
         }
     }
 
-    static void levelhigh(int i, int i91, int i92, int i93, int i94) {
+    internal static void levelhigh(int i, int i91, int i92, int i93, int i94) {
         G.drawImage(gameh, 301, 20, null);
         int i95 = 16;
         int i96 = 48;
@@ -3740,65 +3728,67 @@ class xtGraphics {
         drawcs(380, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
     }
 
-    static internal Image loadBimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit, int i) {
-        Image image = toolkit.createImage(ais);
-        mediatracker.addImage(image, 0);
-        try {
-            mediatracker.waitForID(0);
-        } catch (Exception ignored) {
-
-        }
-        int i368 = image.getHeight(null);
-        int i369 = image.getWidth(null);
-        int[] is370 = new int[i369 * i368];
-        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i369, i368, is370, 0, i369);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        for (int i371 = 0; i371 < i369 * i368; i371++)
-            if (is370[i371] != is370[0] || i != 0) {
-                Color color = new Color(is370[i371]);
-                float[] fs = new float[3];
-                Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), fs);
-                fs[0] = 0.12F;
-                fs[1] = 0.45F;
-                if (i == 3) {
-                    fs[0] = 0.13F;
-                    fs[1] = 0.45F;
-                }
-                Color color372 = Color.getHSBColor(fs[0], fs[1], fs[2]);
-                is370[i371] = color372.getRGB();
-            }
-        if (i == 2) {
-            Color color = new Color(is370[0]);
-            int i373 = 0x40000000 | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
-            color = new Color(is370[1]);
-            int i374 = ~0x7fffffff | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
-            for (int i375 = 2; i375 < i369 * i368; i375++) {
-                if (is370[i375] == is370[0]) {
-                    is370[i375] = i373;
-                }
-                if (is370[i375] == is370[1]) {
-                    is370[i375] = i374;
-                }
-            }
-            is370[0] = i373;
-            is370[1] = i374;
-        }
-        Image image376;
-        if (i == 2) {
-            BufferedImage bufferedimage = new BufferedImage(i369, i368, 2);
-            bufferedimage.setRGB(0, 0, i369, i368, is370, 0, i369);
-            image376 = bufferedimage;
-        } else {
-            image376 = xt.createImage(new MemoryImageSource(i369, i368, is370, 0, i369));
-        }
-        return image376;
+    static internal Image loadBimage(byte[] ais, int i)
+    {
+        return loadimage(ais);
+//        Image image = toolkit.createImage(ais);
+//        mediatracker.addImage(image, 0);
+//        try {
+//            mediatracker.waitForID(0);
+//        } catch (Exception ignored) {
+//
+//        }
+//        int i368 = image.getHeight(null);
+//        int i369 = image.getWidth(null);
+//        int[] is370 = new int[i369 * i368];
+//        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i369, i368, is370, 0, i369);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        for (int i371 = 0; i371 < i369 * i368; i371++)
+//            if (is370[i371] != is370[0] || i != 0) {
+//                Color color = new Color(is370[i371]);
+//                float[] fs = new float[3];
+//                Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), fs);
+//                fs[0] = 0.12F;
+//                fs[1] = 0.45F;
+//                if (i == 3) {
+//                    fs[0] = 0.13F;
+//                    fs[1] = 0.45F;
+//                }
+//                Color color372 = Color.getHSBColor(fs[0], fs[1], fs[2]);
+//                is370[i371] = color372.getRGB();
+//            }
+//        if (i == 2) {
+//            Color color = new Color(is370[0]);
+//            int i373 = 0x40000000 | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
+//            color = new Color(is370[1]);
+//            int i374 = ~0x7fffffff | color.getRed() << 16 | color.getGreen() << 8 | color.getBlue();
+//            for (int i375 = 2; i375 < i369 * i368; i375++) {
+//                if (is370[i375] == is370[0]) {
+//                    is370[i375] = i373;
+//                }
+//                if (is370[i375] == is370[1]) {
+//                    is370[i375] = i374;
+//                }
+//            }
+//            is370[0] = i373;
+//            is370[1] = i374;
+//        }
+//        Image image376;
+//        if (i == 2) {
+//            BufferedImage bufferedimage = new BufferedImage(i369, i368, 2);
+//            bufferedimage.setRGB(0, 0, i369, i368, is370, 0, i369);
+//            image376 = bufferedimage;
+//        } else {
+//            image376 = xt.createImage(new MemoryImageSource(i369, i368, is370, 0, i369));
+//        }
+//        return image376;
     }
 
-    static void loaddata() {
+    internal static void loaddata() {
         kbload = 637;
         //runtyp = 176;
         //runner = new Thread(xt);
@@ -3813,7 +3803,7 @@ class xtGraphics {
         loadsounds();
     }
 
-    static internal Image loadimage(byte[] ais, MediaTracker mediatracker, Toolkit toolkit) {
+    static internal Image loadimage(byte[] ais) {
         Image image = toolkit.createImage(ais);
         mediatracker.addImage(image, 0);
         try {
@@ -3841,7 +3831,7 @@ class xtGraphics {
         GC.Collect();
     }
 
-    static void loading() {
+    internal static void loading() {
         G.setColor(new Color(0, 0, 0));
         G.fillRect(0, 0, 800, 450);
         G.drawImage(sign, 362, 35, null);
@@ -3868,9 +3858,9 @@ class xtGraphics {
         G.fillRect(287, 371, 26 + (int) (shload / kbload * 200.0F), 10);
     }
 
-    static void loadingstage(boolean abool) {
+    internal static void loadingstage(boolean abool) {
 
-        trackbg(true);
+        trackbgf(true);
         G.drawImage(br, 65, 25, null);
         G.setColor(new Color(212, 214, 138));
         G.fillRoundRect(265, 201, 270, 26, 20, 40);
@@ -3884,14 +3874,14 @@ class xtGraphics {
         }
         //app.repaint();
         if (CarDefine.staction != 0) {
-            GameSparker.tnick.setVisible(false);
-            GameSparker.tpass.setVisible(false);
+//            GameSparker.tnick.setVisible(false);
+//            GameSparker.tpass.setVisible(false);
             CarDefine.staction = 0;
         }
         removeds = 0;
     }
 
-    static void loadmusic(int i, String astring, int i51) {
+    internal static void loadmusic(int i, String astring, int i51) {
         hipnoload(i, false);
         //app.setCursor(new Cursor(3));
         //app.repaint();

@@ -2992,7 +2992,7 @@ namespace Cum
             return (int) Math.sqrt((i - i50) * (i - i50) + (i51 - i52) * (i51 - i52));
         }
 
-        void reset(int i)
+        internal void reset(int i)
         {
             pan = 0;
             attack = 0;

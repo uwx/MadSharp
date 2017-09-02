@@ -859,7 +859,7 @@ public class Medium {
         }
     }
 
-    private static void drawstars() {
+    internal static void drawstars() {
         for (int i = 0; i < nst; i++) {
             int i215 = cx + (int) (stx[i] * cos(xz) - stz[i] * sin(xz));
             int i216 = cz + (int) (stx[i] * sin(xz) + stz[i] * cos(xz));
@@ -914,7 +914,7 @@ public class Medium {
         }
     }
 
-    static void fadfrom(int i) {
+    internal static void fadfrom(int i) {
         if (i > 8000) {
             i = 8000;
         }
@@ -923,7 +923,7 @@ public class Medium {
         }
     }
 
-    static void follow(ContO conto, int i, int i27) {
+    internal static void follow(ContO conto, int i, int i27) {
         zy = 10;
         int i28 = 2 + Math.abs(bcxz) / 4;
         if (i28 > 20) {
@@ -962,7 +962,7 @@ public class Medium {
         y = conto.y - 250 - cy;
     }
 
-    static void getaround(ContO conto) {
+    internal static void getaround(ContO conto) {
         if (!vert) {
             adv += 2;
         } else {
@@ -1088,7 +1088,7 @@ public class Medium {
         zy += (i17 - zy) / 10;
     }
 
-    static void getfollow(ContO conto, int i, int i29) {
+    internal static void getfollow(ContO conto, int i, int i29) {
         zy = 10;
         int i30 = 2 + Math.abs(bcxz) / 4;
         if (i30 > 20) {
@@ -1315,7 +1315,7 @@ public class Medium {
         }
     }
 
-    static void newclouds(int i, int i88, int i89, int i90) {
+    internal static void newclouds(int i, int i88, int i89, int i90) {
         clx = null;
         clz = null;
         cmx = null;
@@ -1451,7 +1451,7 @@ public class Medium {
         }
     }
 
-    static void newmountains(int i, int i167, int i168, int i169) {
+    internal static void newmountains(int i, int i167, int i168, int i169) {
         Random random = new Random(mgen);
         nmt = (int) (20.0 + 10.0 * random.nextDouble());
         int i170 = (i + i167) / 60;
@@ -1545,7 +1545,7 @@ public class Medium {
         }
     }
 
-    static void newpolys(int i, int i35, int i36, int i37, int i38) {
+    internal static void newpolys(int i, int i35, int i36, int i37, int i38) {
         Random random = new Random((i38 + cgrnd[0] + cgrnd[1] + cgrnd[2]) * 1671);
         nrw = i35 / 1200 + 9;
         ncl = i37 / 1200 + 9;
@@ -1725,7 +1725,7 @@ public class Medium {
         }
     }
 
-    static void setcloads(int i, int i252, int i253, int i254, int i255) {
+    internal static void setcloads(int i, int i252, int i253, int i254, int i255) {
         if (i254 < 0) {
             i254 = 0;
         }
@@ -1755,7 +1755,7 @@ public class Medium {
         }
     }
 
-    static void setexture(int i, int i261, int i262, int i263) {
+    internal static void setexture(int i, int i261, int i262, int i263) {
         if (i263 < 20) {
             i263 = 20;
         }
@@ -1795,7 +1795,7 @@ public class Medium {
         }
     }
 
-    static void setfade(int i, int i268, int i269) {
+    internal static void setfade(int i, int i268, int i269) {
         cfade[0] = (int) (i + i * (snap[0] / 100.0F));
         if (cfade[0] > 255) {
             cfade[0] = 255;
@@ -1819,7 +1819,7 @@ public class Medium {
         }
     }
 
-    static void setgrnd(int i, int i257, int i258) {
+    internal static void setgrnd(int i, int i257, int i258) {
         ogrnd[0] = i;
         ogrnd[1] = i257;
         ogrnd[2] = i258;
@@ -1859,7 +1859,7 @@ public class Medium {
         }
     }
 
-    static void setpolys(int i, int i265, int i266) {
+    internal static void setpolys(int i, int i265, int i266) {
         cpol[0] = (int) (i + i * (snap[0] / 100.0F));
         if (cpol[0] > 255) {
             cpol[0] = 255;
@@ -1886,7 +1886,7 @@ public class Medium {
         }
     }
 
-    static void setsky(int i, int i249, int i250) {
+    internal static void setsky(int i, int i249, int i250) {
         osky[0] = i;
         osky[1] = i249;
         osky[2] = i250;
@@ -1926,7 +1926,7 @@ public class Medium {
         darksky = fs[2] < 0.6;
     }
 
-    static void setsnap(int i, int i247, int i248) {
+    internal static void setsnap(int i, int i247, int i248) {
         snap[0] = i;
         snap[1] = i247;
         snap[2] = i248;
@@ -1942,7 +1942,7 @@ public class Medium {
         return tsin[i];
     }
 
-    static void transaround(ContO conto, ContO conto18, int i) {
+    internal static void transaround(ContO conto, ContO conto18, int i) {
         int i19 = (conto.x * (20 - i) + conto18.x * i) / 20;
         int i20 = (conto.y * (20 - i) + conto18.y * i) / 20;
         int i21 = (conto.z * (20 - i) + conto18.z * i) / 20;
@@ -1982,7 +1982,7 @@ public class Medium {
         zy += (i26 - zy) / 10;
     }
 
-    static void watch(ContO conto, int i) {
+    internal static void watch(ContO conto, int i) {
         if (td) {
             y = (int) (conto.y - 300 - 1100.0F * random());
             x = conto.x + (int) ((conto.x + 400 - conto.x) * cos(i) - (conto.z + 5000 - conto.z) * sin(i));

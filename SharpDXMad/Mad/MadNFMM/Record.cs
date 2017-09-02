@@ -104,7 +104,7 @@ namespace Cum
         private static readonly int[,] z = new int[300,8];
         private static readonly int[,] zy = new int[300,8];
 
-        Record()
+        internal Record()
         {
             caught = 0;
             cotchinow(0);
@@ -876,7 +876,7 @@ namespace Cum
                                 conto.p[i65].hsb[0] = 0.05F;
                             }
                             conto.p[i65].bfase += (int)Math.abs(f66);
-                            new Color(conto.p[i65].c[0], conto.p[i65].c[1], conto.p[i65].c[2]);
+                            //new Color(conto.p[i65].c[0], conto.p[i65].c[1], conto.p[i65].c[2]);
                             Color color = Color.getHSBColor(conto.p[i65].hsb[0], conto.p[i65].hsb[1],
                                 conto.p[i65].hsb[2]);
                             conto.p[i65].c[0] = color.getRed();

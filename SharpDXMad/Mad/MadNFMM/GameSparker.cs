@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Windows.Forms;
+using MadGame;
+using Images = Cum.xtImages.Images;
 using boolean = System.Boolean;
 
 namespace Cum
@@ -10,7 +14,8 @@ namespace Cum
      */
     private static readonly long serialVersionUID = -5976860556958716653L;
 
-    private static readonly Comparer<int[]> contoComparator = Comparer<int[]>.Create((arg0, arg1) => arg1[1].CompareTo(arg0[1]));
+        private static readonly Comparer<int[]> contoComparator = Comparer<int[]>.Create((arg0, arg1) => arg1[1].CompareTo(arg0[1]));
+        private static readonly Comparer<DistHolder> contoComparator2 = Comparer<DistHolder>.Create((arg0, arg1) => arg1.Dist.CompareTo(arg0.Dist));
 
     /**
      * Game size multiplier
@@ -232,68 +237,14 @@ namespace Cum
         String astring = "";
         try
         {
-            BufferedReader stageDataReader;
-            if (xtGraphics.multion == 0 && CheckPoints.stage != -2)
+            String customStagePath = "stages/" + CheckPoints.stage + ".txt";
+            if (CheckPoints.stage == -1)
             {
-                String customStagePath = "stages/" + CheckPoints.stage + "";
-                if (CheckPoints.stage == -1)
-                {
-                    customStagePath = "mystages/" + CheckPoints.name + "";
-                }
-                File customStageFile = new File("" + Madness.fpath + "" + customStagePath + ".txt");
-                stageDataReader =
-                    new BufferedReader(
-                        new InputStreamReader(new DataInputStream(new FileInputStream(customStageFile))));
+                customStagePath = "mystages/" + CheckPoints.name + ".txt";
             }
-            else if (CheckPoints.stage > 0)
+            foreach (var line in System.IO.File.ReadAllLines(customStagePath))
             {
-                URL url = new URL("http://multiplayer.needformadness.com/stages/" + CheckPoints.stage + ".txt");
-                stageDataReader = new BufferedReader(new InputStreamReader(new DataInputStream(url.openStream())));
-            }
-            else
-            {
-                String stagelink = "http://multiplayer.needformadness.com/tracks/" + CheckPoints.name + ".radq";
-                stagelink = stagelink.replace(' ', '_');
-                URL url = new URL(stagelink);
-                int connectionlength = url.openConnection().getContentLength();
-                DataInputStream datainputstream = new DataInputStream(url.openStream());
-                byte[] ais  = new byte[connectionlength];
-                datainputstream.readFully( ais);
-                ZipInputStream zipinputstream;
-                if (ais[0] == 80 && ais[1] == 75 && ais[2] == 3) {
-                    zipinputstream = new ZipInputStream(new ByteArrayInputStream( ais));
-                } else {
-                    byte[] is2 = new byte[connectionlength - 40];
-                    for (int n = 0; n < connectionlength - 40; n++)
-                    {
-                        int o = 20;
-                        if (n >= 500)
-                        {
-                            o = 40;
-                        }
-                        is2[n] =  ais[n + o];
-                    }
-                    zipinputstream = new ZipInputStream(new ByteArrayInputStream(is2));
-                }
-                ZipEntry zipentry = zipinputstream.getNextEntry();
-                int n = Integer.parseInt(zipentry.getName());
-                byte[] is2 = new byte[n];
-                int o = 0;
-                int p;
-                for (; n > 0; n -= p)
-                {
-                    p = zipinputstream.read(is2, o, n);
-                    o += p;
-                }
-                zipinputstream.close();
-                datainputstream.close();
-                stageDataReader =
-                    new BufferedReader(new InputStreamReader(new DataInputStream(new ByteArrayInputStream(is2))));
-            }
-            String line;
-            while ((line = stageDataReader.readLine()) != null)
-            {
-                astring = "" + line.trim();
+                astring = "" + line.Trim();
                 if (astring.StartsWith("snap"))
                 {
                     Medium.setsnap(getint("snap", astring, 0), getint("snap", astring, 1), getint("snap", astring, 2));
@@ -301,7 +252,7 @@ namespace Cum
                 if (astring.StartsWith("sky"))
                 {
                     Medium.setsky(getint("sky", astring, 0), getint("sky", astring, 1), getint("sky", astring, 2));
-                    xtGraphics.snap(CheckPoints.stage);
+                    xtPart2.snap(CheckPoints.stage);
                 }
                 if (astring.StartsWith("ground"))
                 {
@@ -467,7 +418,7 @@ namespace Cum
                     {
                         CheckPoints.roted[CheckPoints.fn] = false;
                     }
-                    CheckPoints.special[CheckPoints.fn] = astring.indexOf(")s") != -1;
+                    CheckPoints.special[CheckPoints.fn] = astring.IndexOf(")s") != -1;
                     CheckPoints.fn++;
                     nob++;
                     notb = nob;
@@ -488,7 +439,7 @@ namespace Cum
                 //	checkpoints.nlaps = 15;
                 if (CheckPoints.stage > 0 && astring.StartsWith("name"))
                 {
-                    CheckPoints.name = getastring("name", astring, 0).replace('|', ',');
+                    CheckPoints.name = getastring("name", astring, 0).Replace('|', ',');
                 }
                 if (astring.StartsWith("stagemaker"))
                 {
@@ -611,19 +562,17 @@ namespace Cum
                     Trackers.nt++;
                 }
             }
-            stageDataReader.close();
             Medium.newpolys(k, i - k, m, l - m, notb);
             Medium.newclouds(k, i, m, l);
             Medium.newmountains(k, i, m, l);
             Medium.newstars();
             Trackers.devidetrackers(k, i - k, m, l - m);
         }
-        catch (Exception
-        exception) {
+        catch (Exception exception) {
             Console.WriteLine("Error ain stage " + CheckPoints.stage);
             Console.WriteLine("At line: " + astring);
             CheckPoints.stage = -3;
-            exception.printStackTrace();
+            Console.WriteLine(exception);
         }
         if (CheckPoints.nsp < 2)
         {
@@ -650,7 +599,7 @@ namespace Cum
                 u[n].reset(xtGraphics.sc[n]);
                 mads[n].setStat(new Stat(xtGraphics.sc[n]));
             }
-            xtGraphics.resetstat(CheckPoints.stage);
+            xtPart2.resetstat(CheckPoints.stage);
             CheckPoints.calprox();
 
             for (int j = 0; j < xtGraphics.nplayers; j++)
@@ -704,329 +653,318 @@ namespace Cum
     }
 
     private static boolean loadstagePreview(int i, String astring, ContO[] contos, ContO[] contos147) {
-        boolean abool = true;
-        if (i < 100)
-        {
-            CheckPoints.stage = i;
-            if (CheckPoints.stage < 0)
-            {
-                CheckPoints.name = astring;
-            }
-        }
-        else
-        {
-            CheckPoints.stage = -2;
-            if (sgame.getSelectedIndex() == 3 || sgame.getSelectedIndex() == 4)
-            {
-                CheckPoints.name = mstgs.getSelectedItem();
-            }
-            else
-            {
-                int i148 = mstgs.getSelectedItem().indexOf(' ') + 1;
-                if (i148 > 0)
-                {
-                    CheckPoints.name = mstgs.getSelectedItem().subastring(i148);
-                }
-            }
-        }
-        nob = 0;
-        CheckPoints.n = 0;
-        CheckPoints.nsp = 0;
-        CheckPoints.fn = 0;
-        CheckPoints.haltall = false;
-        CheckPoints.wasted = 0;
-        CheckPoints.catchfin = 0;
-        Medium.ground = 250;
-        view = 0;
-        Medium.trx = 0L;
-        Medium.trz = 0L;
-        int i149 = 0;
-        int i150 = 100;
-        int i151 = 0;
-        int i152 = 100;
-        String string153 = "";
-        try
-        {
-            BufferedReader datainputstream;
-            if (CheckPoints.stage > 0)
-            {
-                URL url = new URL("http://multiplayer.needformadness.com/stages/" + CheckPoints.stage + ".txt");
-                datainputstream = new BufferedReader(new InputStreamReader(new DataInputStream(url.openStream())));
-            }
-            else
-            {
-                String string154 = "http://multiplayer.needformadness.com/tracks/" + CheckPoints.name + ".radq";
-                string154 = string154.replace(' ', '_');
-                URL url = new URL(string154);
-                int i155 = url.openConnection().getContentLength();
-                DataInputStream datainputstream156 = new DataInputStream(url.openStream());
-                byte[] ais  = new byte[i155];
-                datainputstream156.readFully( ais);
-                ZipInputStream zipinputstream;
-                if (ais[0] == 80 && ais[1] == 75 && ais[2] == 3) {
-                    zipinputstream = new ZipInputStream(new ByteArrayInputStream( ais));
-                } else {
-                    byte[] is157 = new byte[i155 - 40];
-                    for (int i158 = 0; i158 < i155 - 40; i158++)
-                    {
-                        int i159 = 20;
-                        if (i158 >= 500)
-                        {
-                            i159 = 40;
-                        }
-                        is157[i158] =  ais[i158 + i159];
-                    }
-                    zipinputstream = new ZipInputStream(new ByteArrayInputStream(is157));
-                }
-                ZipEntry zipentry = zipinputstream.getNextEntry();
-                int i160 = Integer.parseInt(zipentry.getName());
-                byte[] is161 = new byte[i160];
-                int i162 = 0;
-                int i163;
-                for (; i160 > 0; i160 -= i163)
-                {
-                    i163 = zipinputstream.read(is161, i162, i160);
-                    i162 += i163;
-                }
-                zipinputstream.close();
-                datainputstream156.close();
-                datainputstream =
-                    new BufferedReader(new InputStreamReader(new DataInputStream(new ByteArrayInputStream(is161))));
-            }
-            String string164;
-            while ((string164 = datainputstream.readLine()) != null)
-            {
-                string153 = "" + string164.trim();
-                if (string153.StartsWith("snap"))
-                {
-                    Medium.setsnap(getint("snap", string153, 0), getint("snap", string153, 1),
-                        getint("snap", string153, 2));
-                }
-                if (string153.StartsWith("sky"))
-                {
-                    Medium.setsky(getint("sky", string153, 0), getint("sky", string153, 1),
-                        getint("sky", string153, 2));
-                }
-                if (string153.StartsWith("ground"))
-                {
-                    Medium.setgrnd(getint("ground", string153, 0), getint("ground", string153, 1),
-                        getint("ground", string153, 2));
-                }
-                if (string153.StartsWith("polys"))
-                {
-                    Medium.setpolys(getint("polys", string153, 0), getint("polys", string153, 1),
-                        getint("polys", string153, 2));
-                }
-                if (string153.StartsWith("fog"))
-                {
-                    Medium.setfade(getint("fog", string153, 0), getint("fog", string153, 1),
-                        getint("fog", string153, 2));
-                }
-                if (string153.StartsWith("texture"))
-                {
-                    Medium.setexture(getint("texture", string153, 0), getint("texture", string153, 1),
-                        getint("texture", string153, 2), getint("texture", string153, 3));
-                }
-                if (string153.StartsWith("clouds"))
-                {
-                    Medium.setcloads(getint("clouds", string153, 0), getint("clouds", string153, 1),
-                        getint("clouds", string153, 2), getint("clouds", string153, 3), getint("clouds", string153, 4));
-                }
-                if (string153.StartsWith("density"))
-                {
-                    Medium.fogd = (getint("density", string153, 0) + 1) * 2 - 1;
-                    if (Medium.fogd < 1)
-                    {
-                        Medium.fogd = 1;
-                    }
-                    if (Medium.fogd > 30)
-                    {
-                        Medium.fogd = 30;
-                    }
-                }
-                if (string153.StartsWith("fadefrom"))
-                {
-                    Medium.fadfrom(getint("fadefrom", string153, 0));
-                }
-                if (string153.StartsWith("lightson"))
-                {
-                    Medium.lightson = true;
-                }
-                if (string153.StartsWith("mountains"))
-                {
-                    Medium.mgen = getint("mountains", string153, 0);
-                }
-                if (string153.StartsWith("soundtrack"))
-                {
-                    CheckPoints.trackname = getastring("soundtrack", string153, 0);
-                    CheckPoints.trackvol = getint("soundtrack", string153, 1);
-                    if (CheckPoints.trackvol < 50)
-                    {
-                        CheckPoints.trackvol = 50;
-                    }
-                    if (CheckPoints.trackvol > 300)
-                    {
-                        CheckPoints.trackvol = 300;
-                    }
-                }
-                if (string153.StartsWith("set"))
-                {
-                    int i165 = getint("set", string153, 0);
-                    i165 -= 10;
-                    contos[nob] = new ContO(contos147[i165], getint("set", string153, 1),
-                        Medium.ground - contos147[i165].grat, getint("set", string153, 2), getint("set", string153, 3));
-                    Trackers.nt = 0;
-                    if (string153.Contains(")p"))
-                    {
-                        CheckPoints.x[CheckPoints.n] = getint("chk", string153, 1);
-                        CheckPoints.z[CheckPoints.n] = getint("chk", string153, 2);
-                        CheckPoints.y[CheckPoints.n] = 0;
-                        CheckPoints.typ[CheckPoints.n] = 0;
-                        if (string153.Contains(")pt"))
-                        {
-                            CheckPoints.typ[CheckPoints.n] = -1;
-                        }
-                        if (string153.Contains(")pr"))
-                        {
-                            CheckPoints.typ[CheckPoints.n] = -2;
-                        }
-                        if (string153.Contains(")po"))
-                        {
-                            CheckPoints.typ[CheckPoints.n] = -3;
-                        }
-                        if (string153.Contains(")ph"))
-                        {
-                            CheckPoints.typ[CheckPoints.n] = -4;
-                        }
-                        if (string153.Contains("aout"))
-                        {
-                            Console.WriteLine("aout: " + CheckPoints.n);
-                        }
-                        CheckPoints.n++;
-                    }
-                    nob++;
-                }
-                if (string153.StartsWith("chk"))
-                {
-                    int i166 = getint("chk", string153, 0);
-                    i166 -= 10;
-                    int i167 = Medium.ground - contos147[i166].grat;
-                    if (i166 == 110)
-                    {
-                        i167 = getint("chk", string153, 4);
-                    }
-                    contos[nob] = new ContO(contos147[i166], getint("chk", string153, 1), i167,
-                        getint("chk", string153, 2), getint("chk", string153, 3));
-                    CheckPoints.x[CheckPoints.n] = getint("chk", string153, 1);
-                    CheckPoints.z[CheckPoints.n] = getint("chk", string153, 2);
-                    CheckPoints.y[CheckPoints.n] = i167;
-                    if (getint("chk", string153, 3) == 0)
-                    {
-                        CheckPoints.typ[CheckPoints.n] = 1;
-                    }
-                    else
-                    {
-                        CheckPoints.typ[CheckPoints.n] = 2;
-                    }
-                    CheckPoints.pcs = CheckPoints.n;
-                    CheckPoints.n++;
-                    contos[nob].checkpoint = CheckPoints.nsp + 1;
-                    CheckPoints.nsp++;
-                    nob++;
-                }
-                if (string153.StartsWith("fix"))
-                {
-                    int i168 = getint("fix", string153, 0);
-                    i168 -= 10;
-                    contos[nob] = new ContO(contos147[i168], getint("fix", string153, 1), getint("fix", string153, 3),
-                        getint("fix", string153, 2), getint("fix", string153, 4));
-                    CheckPoints.fx[CheckPoints.fn] = getint("fix", string153, 1);
-                    CheckPoints.fz[CheckPoints.fn] = getint("fix", string153, 2);
-                    CheckPoints.fy[CheckPoints.fn] = getint("fix", string153, 3);
-                    contos[nob].elec = true;
-                    if (getint("fix", string153, 4) != 0)
-                    {
-                        CheckPoints.roted[CheckPoints.fn] = true;
-                        contos[nob].roted = true;
-                    }
-                    else
-                    {
-                        CheckPoints.roted[CheckPoints.fn] = false;
-                    }
-                    CheckPoints.special[CheckPoints.fn] = string153.Contains(")s");
-                    CheckPoints.fn++;
-                    nob++;
-                }
-                if (string153.StartsWith("nlaps"))
-                {
-                    CheckPoints.nlaps = getint("nlaps", string153, 0);
-                    if (CheckPoints.nlaps < 1)
-                    {
-                        CheckPoints.nlaps = 1;
-                    }
-                    if (CheckPoints.nlaps > 15)
-                    {
-                        CheckPoints.nlaps = 15;
-                    }
-                }
-                if (CheckPoints.stage > 0 && string153.StartsWith("name"))
-                {
-                    CheckPoints.name = getastring("name", string153, 0).replace('|', ',');
-                }
-                if (string153.StartsWith("stagemaker"))
-                {
-                    CheckPoints.maker = getastring("stagemaker", string153, 0);
-                }
-                if (string153.StartsWith("publish"))
-                {
-                    CheckPoints.pubt = getint("publish", string153, 0);
-                }
-                if (string153.StartsWith("maxr"))
-                {
-                    i149 = getint("maxr", string153, 1);
-                }
-                //i149 = i169;
-                if (string153.StartsWith("maxl"))
-                {
-                    i150 = getint("maxl", string153, 1);
-                }
-                //i150 = i170;
-                if (string153.StartsWith("maxt"))
-                {
-                    i151 = getint("maxt", string153, 1);
-                }
-                //i151 = i171;
-                if (string153.StartsWith("maxb"))
-                {
-                    i152 = getint("maxb", string153, 1);
-                    //i152 = i172;
-                }
-            }
-            datainputstream.close();
-            Medium.newpolys(i150, i149 - i150, i152, i151 - i152, notb);
-            Medium.newclouds(i150, i149, i152, i151);
-            Medium.newmountains(i150, i149, i152, i151);
-            Medium.newstars();
-        }
-        catch (Exception
-        exception) {
-            abool = false;
-            Console.WriteLine("Error ain stage " + CheckPoints.stage);
-            Console.WriteLine("" + exception);
-            Console.WriteLine("At line: " + string153);
-        }
-        if (CheckPoints.nsp < 2)
-        {
-            abool = false;
-        }
-        if (Medium.nrw * Medium.ncl >= 16000)
-        {
-            abool = false;
-        }
-        Medium.trx = (i150 + i149) / 2;
-        Medium.trz = (i151 + i152) / 2;
-        GC.Collect();
-        return abool;
+        throw new NotImplementedException();
+//        boolean abool = true;
+//        if (i < 100)
+//        {
+//            CheckPoints.stage = i;
+//            if (CheckPoints.stage < 0)
+//            {
+//                CheckPoints.name = astring;
+//            }
+//        }
+//        else
+//        {
+//            CheckPoints.stage = -2;
+//        }
+//        nob = 0;
+//        CheckPoints.n = 0;
+//        CheckPoints.nsp = 0;
+//        CheckPoints.fn = 0;
+//        CheckPoints.haltall = false;
+//        CheckPoints.wasted = 0;
+//        CheckPoints.catchfin = 0;
+//        Medium.ground = 250;
+//        view = 0;
+//        Medium.trx = 0L;
+//        Medium.trz = 0L;
+//        int i149 = 0;
+//        int i150 = 100;
+//        int i151 = 0;
+//        int i152 = 100;
+//        String string153 = "";
+//        try
+//        {
+//            BufferedReader datainputstream;
+//            if (CheckPoints.stage > 0)
+//            {
+//                URL url = new URL("http://multiplayer.needformadness.com/stages/" + CheckPoints.stage + ".txt");
+//                datainputstream = new BufferedReader(new InputStreamReader(new DataInputStream(url.openStream())));
+//            }
+//            else
+//            {
+//                String string154 = "http://multiplayer.needformadness.com/tracks/" + CheckPoints.name + ".radq";
+//                string154 = string154.replace(' ', '_');
+//                URL url = new URL(string154);
+//                int i155 = url.openConnection().getContentLength();
+//                DataInputStream datainputstream156 = new DataInputStream(url.openStream());
+//                byte[] ais  = new byte[i155];
+//                datainputstream156.readFully( ais);
+//                ZipInputStream zipinputstream;
+//                if (ais[0] == 80 && ais[1] == 75 && ais[2] == 3) {
+//                    zipinputstream = new ZipInputStream(new ByteArrayInputStream( ais));
+//                } else {
+//                    byte[] is157 = new byte[i155 - 40];
+//                    for (int i158 = 0; i158 < i155 - 40; i158++)
+//                    {
+//                        int i159 = 20;
+//                        if (i158 >= 500)
+//                        {
+//                            i159 = 40;
+//                        }
+//                        is157[i158] =  ais[i158 + i159];
+//                    }
+//                    zipinputstream = new ZipInputStream(new ByteArrayInputStream(is157));
+//                }
+//                ZipEntry zipentry = zipinputstream.getNextEntry();
+//                int i160 = Integer.parseInt(zipentry.getName());
+//                byte[] is161 = new byte[i160];
+//                int i162 = 0;
+//                int i163;
+//                for (; i160 > 0; i160 -= i163)
+//                {
+//                    i163 = zipinputstream.read(is161, i162, i160);
+//                    i162 += i163;
+//                }
+//                zipinputstream.close();
+//                datainputstream156.close();
+//                datainputstream =
+//                    new BufferedReader(new InputStreamReader(new DataInputStream(new ByteArrayInputStream(is161))));
+//            }
+//            String string164;
+//            while ((string164 = datainputstream.readLine()) != null)
+//            {
+//                string153 = "" + string164.trim();
+//                if (string153.StartsWith("snap"))
+//                {
+//                    Medium.setsnap(getint("snap", string153, 0), getint("snap", string153, 1),
+//                        getint("snap", string153, 2));
+//                }
+//                if (string153.StartsWith("sky"))
+//                {
+//                    Medium.setsky(getint("sky", string153, 0), getint("sky", string153, 1),
+//                        getint("sky", string153, 2));
+//                }
+//                if (string153.StartsWith("ground"))
+//                {
+//                    Medium.setgrnd(getint("ground", string153, 0), getint("ground", string153, 1),
+//                        getint("ground", string153, 2));
+//                }
+//                if (string153.StartsWith("polys"))
+//                {
+//                    Medium.setpolys(getint("polys", string153, 0), getint("polys", string153, 1),
+//                        getint("polys", string153, 2));
+//                }
+//                if (string153.StartsWith("fog"))
+//                {
+//                    Medium.setfade(getint("fog", string153, 0), getint("fog", string153, 1),
+//                        getint("fog", string153, 2));
+//                }
+//                if (string153.StartsWith("texture"))
+//                {
+//                    Medium.setexture(getint("texture", string153, 0), getint("texture", string153, 1),
+//                        getint("texture", string153, 2), getint("texture", string153, 3));
+//                }
+//                if (string153.StartsWith("clouds"))
+//                {
+//                    Medium.setcloads(getint("clouds", string153, 0), getint("clouds", string153, 1),
+//                        getint("clouds", string153, 2), getint("clouds", string153, 3), getint("clouds", string153, 4));
+//                }
+//                if (string153.StartsWith("density"))
+//                {
+//                    Medium.fogd = (getint("density", string153, 0) + 1) * 2 - 1;
+//                    if (Medium.fogd < 1)
+//                    {
+//                        Medium.fogd = 1;
+//                    }
+//                    if (Medium.fogd > 30)
+//                    {
+//                        Medium.fogd = 30;
+//                    }
+//                }
+//                if (string153.StartsWith("fadefrom"))
+//                {
+//                    Medium.fadfrom(getint("fadefrom", string153, 0));
+//                }
+//                if (string153.StartsWith("lightson"))
+//                {
+//                    Medium.lightson = true;
+//                }
+//                if (string153.StartsWith("mountains"))
+//                {
+//                    Medium.mgen = getint("mountains", string153, 0);
+//                }
+//                if (string153.StartsWith("soundtrack"))
+//                {
+//                    CheckPoints.trackname = getastring("soundtrack", string153, 0);
+//                    CheckPoints.trackvol = getint("soundtrack", string153, 1);
+//                    if (CheckPoints.trackvol < 50)
+//                    {
+//                        CheckPoints.trackvol = 50;
+//                    }
+//                    if (CheckPoints.trackvol > 300)
+//                    {
+//                        CheckPoints.trackvol = 300;
+//                    }
+//                }
+//                if (string153.StartsWith("set"))
+//                {
+//                    int i165 = getint("set", string153, 0);
+//                    i165 -= 10;
+//                    contos[nob] = new ContO(contos147[i165], getint("set", string153, 1),
+//                        Medium.ground - contos147[i165].grat, getint("set", string153, 2), getint("set", string153, 3));
+//                    Trackers.nt = 0;
+//                    if (string153.Contains(")p"))
+//                    {
+//                        CheckPoints.x[CheckPoints.n] = getint("chk", string153, 1);
+//                        CheckPoints.z[CheckPoints.n] = getint("chk", string153, 2);
+//                        CheckPoints.y[CheckPoints.n] = 0;
+//                        CheckPoints.typ[CheckPoints.n] = 0;
+//                        if (string153.Contains(")pt"))
+//                        {
+//                            CheckPoints.typ[CheckPoints.n] = -1;
+//                        }
+//                        if (string153.Contains(")pr"))
+//                        {
+//                            CheckPoints.typ[CheckPoints.n] = -2;
+//                        }
+//                        if (string153.Contains(")po"))
+//                        {
+//                            CheckPoints.typ[CheckPoints.n] = -3;
+//                        }
+//                        if (string153.Contains(")ph"))
+//                        {
+//                            CheckPoints.typ[CheckPoints.n] = -4;
+//                        }
+//                        if (string153.Contains("aout"))
+//                        {
+//                            Console.WriteLine("aout: " + CheckPoints.n);
+//                        }
+//                        CheckPoints.n++;
+//                    }
+//                    nob++;
+//                }
+//                if (string153.StartsWith("chk"))
+//                {
+//                    int i166 = getint("chk", string153, 0);
+//                    i166 -= 10;
+//                    int i167 = Medium.ground - contos147[i166].grat;
+//                    if (i166 == 110)
+//                    {
+//                        i167 = getint("chk", string153, 4);
+//                    }
+//                    contos[nob] = new ContO(contos147[i166], getint("chk", string153, 1), i167,
+//                        getint("chk", string153, 2), getint("chk", string153, 3));
+//                    CheckPoints.x[CheckPoints.n] = getint("chk", string153, 1);
+//                    CheckPoints.z[CheckPoints.n] = getint("chk", string153, 2);
+//                    CheckPoints.y[CheckPoints.n] = i167;
+//                    if (getint("chk", string153, 3) == 0)
+//                    {
+//                        CheckPoints.typ[CheckPoints.n] = 1;
+//                    }
+//                    else
+//                    {
+//                        CheckPoints.typ[CheckPoints.n] = 2;
+//                    }
+//                    CheckPoints.pcs = CheckPoints.n;
+//                    CheckPoints.n++;
+//                    contos[nob].checkpoint = CheckPoints.nsp + 1;
+//                    CheckPoints.nsp++;
+//                    nob++;
+//                }
+//                if (string153.StartsWith("fix"))
+//                {
+//                    int i168 = getint("fix", string153, 0);
+//                    i168 -= 10;
+//                    contos[nob] = new ContO(contos147[i168], getint("fix", string153, 1), getint("fix", string153, 3),
+//                        getint("fix", string153, 2), getint("fix", string153, 4));
+//                    CheckPoints.fx[CheckPoints.fn] = getint("fix", string153, 1);
+//                    CheckPoints.fz[CheckPoints.fn] = getint("fix", string153, 2);
+//                    CheckPoints.fy[CheckPoints.fn] = getint("fix", string153, 3);
+//                    contos[nob].elec = true;
+//                    if (getint("fix", string153, 4) != 0)
+//                    {
+//                        CheckPoints.roted[CheckPoints.fn] = true;
+//                        contos[nob].roted = true;
+//                    }
+//                    else
+//                    {
+//                        CheckPoints.roted[CheckPoints.fn] = false;
+//                    }
+//                    CheckPoints.special[CheckPoints.fn] = string153.Contains(")s");
+//                    CheckPoints.fn++;
+//                    nob++;
+//                }
+//                if (string153.StartsWith("nlaps"))
+//                {
+//                    CheckPoints.nlaps = getint("nlaps", string153, 0);
+//                    if (CheckPoints.nlaps < 1)
+//                    {
+//                        CheckPoints.nlaps = 1;
+//                    }
+//                    if (CheckPoints.nlaps > 15)
+//                    {
+//                        CheckPoints.nlaps = 15;
+//                    }
+//                }
+//                if (CheckPoints.stage > 0 && string153.StartsWith("name"))
+//                {
+//                    CheckPoints.name = getastring("name", string153, 0).replace('|', ',');
+//                }
+//                if (string153.StartsWith("stagemaker"))
+//                {
+//                    CheckPoints.maker = getastring("stagemaker", string153, 0);
+//                }
+//                if (string153.StartsWith("publish"))
+//                {
+//                    CheckPoints.pubt = getint("publish", string153, 0);
+//                }
+//                if (string153.StartsWith("maxr"))
+//                {
+//                    i149 = getint("maxr", string153, 1);
+//                }
+//                //i149 = i169;
+//                if (string153.StartsWith("maxl"))
+//                {
+//                    i150 = getint("maxl", string153, 1);
+//                }
+//                //i150 = i170;
+//                if (string153.StartsWith("maxt"))
+//                {
+//                    i151 = getint("maxt", string153, 1);
+//                }
+//                //i151 = i171;
+//                if (string153.StartsWith("maxb"))
+//                {
+//                    i152 = getint("maxb", string153, 1);
+//                    //i152 = i172;
+//                }
+//            }
+//            datainputstream.close();
+//            Medium.newpolys(i150, i149 - i150, i152, i151 - i152, notb);
+//            Medium.newclouds(i150, i149, i152, i151);
+//            Medium.newmountains(i150, i149, i152, i151);
+//            Medium.newstars();
+//        }
+//        catch (Exception
+//        exception) {
+//            abool = false;
+//            Console.WriteLine("Error ain stage " + CheckPoints.stage);
+//            Console.WriteLine("" + exception);
+//            Console.WriteLine("At line: " + string153);
+//        }
+//        if (CheckPoints.nsp < 2)
+//        {
+//            abool = false;
+//        }
+//        if (Medium.nrw * Medium.ncl >= 16000)
+//        {
+//            abool = false;
+//        }
+//        Medium.trx = (i150 + i149) / 2;
+//        Medium.trz = (i151 + i152) / 2;
+//        GC.Collect();
+//        return abool;
     }
 
     /**
@@ -1051,153 +989,154 @@ namespace Cum
 
     private static void checkmemory()
     {
+        //TODO
     }
 
-    /**
-     * I forgot what this does lmao
-     *
-     * @param graphics2d graphics2d object
-     * @param x X position
-     * @param y Y position
-     */
-    private static void cropit(Graphics2D graphics2d, int x, int y) {
-        if (x != 0 || y != 0)
-        {
-            graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
-            graphics2d.setColor(new Color(0, 0, 0));
-        }
-        if (x != 0)
-            if (x < 0)
-            {
-                graphics2d.fillRect(apx + x, apy - (int) (25.0F * apmult), Math.abs(x), (int) (500.0F * apmult));
-            }
-            else
-            {
-                graphics2d.fillRect(apx + (int) (800.0F * apmult), apy - (int) (25.0F * apmult), x,
-                    (int) (500.0F * apmult));
-            }
-        if (y != 0)
-            if (y < 0)
-            {
-                graphics2d.fillRect(apx - (int) (25.0F * apmult), apy + y, (int) (850.0F * apmult), Math.abs(y));
-            }
-            else
-            {
-                graphics2d.fillRect(apx - (int) (25.0F * apmult), apy + (int) (450.0F * apmult),
-                    (int) (850.0F * apmult), y);
-            }
-    }
+//    /**
+//     * I forgot what this does lmao
+//     *
+//     * @param graphics2d graphics2d object
+//     * @param x X position
+//     * @param y Y position
+//     */
+//    private static void cropit(int x, int y) {
+//        if (x != 0 || y != 0)
+//        {
+//            graphics2d.setComposite(AlphaComposite.getInstance(3, 1.0F));
+//            graphics2d.setColor(new Color(0, 0, 0));
+//        }
+//        if (x != 0)
+//            if (x < 0)
+//            {
+//                graphics2d.fillRect(apx + x, apy - (int) (25.0F * apmult), Math.abs(x), (int) (500.0F * apmult));
+//            }
+//            else
+//            {
+//                graphics2d.fillRect(apx + (int) (800.0F * apmult), apy - (int) (25.0F * apmult), x,
+//                    (int) (500.0F * apmult));
+//            }
+//        if (y != 0)
+//            if (y < 0)
+//            {
+//                graphics2d.fillRect(apx - (int) (25.0F * apmult), apy + y, (int) (850.0F * apmult), Math.abs(y));
+//            }
+//            else
+//            {
+//                graphics2d.fillRect(apx - (int) (25.0F * apmult), apy + (int) (450.0F * apmult),
+//                    (int) (850.0F * apmult), y);
+//            }
+//    }
 
     /**
      * Draws SMenus
      */
     static void drawms()
     {
-        openm = gmode.draw(rd, xm, ym, moused, 450, true);
-        if (swait.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (slaps.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (snpls.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (snbts.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (scars.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (sgame.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        //if (snfm1.draw(rd, xm, ym, moused, 450, false))
-        //  openm = true;
-        //if (snfm2.draw(rd, xm, ym, moused, 450, false))
-        //  openm = true;
-        if (snfmm.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (mstgs.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (mcars.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (pgame.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (vnpls.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (vtyp.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (warb.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (wgame.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (rooms.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (sendtyp.draw(rd, xm, ym, moused, 450, true))
-        {
-            openm = true;
-        }
-        if (senditem.draw(rd, xm, ym, moused, 450, true))
-        {
-            openm = true;
-        }
-        if (datat.draw(rd, xm, ym, moused, 450, true))
-        {
-            openm = true;
-        }
-        if (clanlev.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (clcars.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (ilaps.draw(rd, xm, ym, moused, 450, true))
-        {
-            openm = true;
-        }
-        if (icars.draw(rd, xm, ym, moused, 450, true))
-        {
-            openm = true;
-        }
-        if (proitem.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (sfix.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
-        if (sclass.draw(rd, xm, ym, moused, 450, false))
-        {
-            openm = true;
-        }
+//        openm = gmode.draw(rd, xm, ym, moused, 450, true);
+//        if (swait.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (slaps.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (snpls.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (snbts.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (scars.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (sgame.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        //if (snfm1.draw(rd, xm, ym, moused, 450, false))
+//        //  openm = true;
+//        //if (snfm2.draw(rd, xm, ym, moused, 450, false))
+//        //  openm = true;
+//        if (snfmm.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (mstgs.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (mcars.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (pgame.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (vnpls.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (vtyp.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (warb.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (wgame.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (rooms.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (sendtyp.draw(rd, xm, ym, moused, 450, true))
+//        {
+//            openm = true;
+//        }
+//        if (senditem.draw(rd, xm, ym, moused, 450, true))
+//        {
+//            openm = true;
+//        }
+//        if (datat.draw(rd, xm, ym, moused, 450, true))
+//        {
+//            openm = true;
+//        }
+//        if (clanlev.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (clcars.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (ilaps.draw(rd, xm, ym, moused, 450, true))
+//        {
+//            openm = true;
+//        }
+//        if (icars.draw(rd, xm, ym, moused, 450, true))
+//        {
+//            openm = true;
+//        }
+//        if (proitem.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (sfix.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
+//        if (sclass.draw(rd, xm, ym, moused, 450, false))
+//        {
+//            openm = true;
+//        }
     }
 
     static void editlink(String accountid, boolean isLogged) {
@@ -1210,22 +1149,8 @@ namespace Cum
     }
 
     private static int getint(String astring, String string4, int i) {
-        int j = 0;
-        String string2 = "";
-        for (int k = astring.length() + 1; k < string4.length(); k++)
-        {
-            String string3 = "" + string4.charAt(k);
-            if (string3.equals(",") || string3.equals(")"))
-            {
-                j++;
-                k++;
-            }
-            if (j == i)
-            {
-                string2 = string2 + string4.charAt(k);
-            }
-        }
-        return Integer.parseInt(string2);
+        // TODO
+        return Utility.getint(astring, string4, i);
     }
 
     /**
@@ -1260,114 +1185,114 @@ namespace Cum
      */
     private static void hidefields()
     {
-        ilaps.setVisible(false);
-        icars.setVisible(false);
-        proitem.setVisible(false);
-        clcars.setVisible(false);
-        clanlev.setVisible(false);
-        mmsg.setVisible(false);
-        datat.setVisible(false);
-        senditem.setVisible(false);
-        sendtyp.setVisible(false);
-        rooms.setVisible(false);
+//        ilaps.setVisible(false);
+//        icars.setVisible(false);
+//        proitem.setVisible(false);
+//        clcars.setVisible(false);
+//        clanlev.setVisible(false);
+//        mmsg.setVisible(false);
+//        datat.setVisible(false);
+//        senditem.setVisible(false);
+//        sendtyp.setVisible(false);
+//        rooms.setVisible(false);
         mcars.setVisible(false);
         mstgs.setVisible(false);
-        gmode.setVisible(false);
-        sclass.setVisible(false);
-        scars.setVisible(false);
-        sfix.setVisible(false);
-        mycar.setVisible(false);
-        notp.setVisible(false);
-        keplo.setVisible(false);
-        tnick.setVisible(false);
-        tpass.setVisible(false);
-        temail.setVisible(false);
-        cmsg.setVisible(false);
-        sgame.setVisible(false);
-        wgame.setVisible(false);
-        pgame.setVisible(false);
-        vnpls.setVisible(false);
-        vtyp.setVisible(false);
-        warb.setVisible(false);
-        slaps.setVisible(false);
-        //snfm1.setVisible(false);
-        snfmm.setVisible(false);
-        //snfm2.setVisible(false);
-        snpls.setVisible(false);
-        snbts.setVisible(false);
-        swait.setVisible(false);
+//        gmode.setVisible(false);
+//        sclass.setVisible(false);
+//        scars.setVisible(false);
+//        sfix.setVisible(false);
+//        mycar.setVisible(false);
+//        notp.setVisible(false);
+//        keplo.setVisible(false);
+//        tnick.setVisible(false);
+//        tpass.setVisible(false);
+//        temail.setVisible(false);
+//        cmsg.setVisible(false);
+//        sgame.setVisible(false);
+//        wgame.setVisible(false);
+//        pgame.setVisible(false);
+//        vnpls.setVisible(false);
+//        vtyp.setVisible(false);
+//        warb.setVisible(false);
+//        slaps.setVisible(false);
+//        //snfm1.setVisible(false);
+//        snfmm.setVisible(false);
+//        //snfm2.setVisible(false);
+//        snpls.setVisible(false);
+//        snbts.setVisible(false);
+//        swait.setVisible(false);
     }
 
     //@Override
     private static void initFields()
     {
-        tnick = new TextField("Nickbname");
-        tnick.setFont(new Font("Arial", 1, 13));
-        tpass = new TextField("");
-        tpass.setFont(new Font("Arial", 1, 13));
-        tpass.setEchoChar('*');
-        temail = new TextField("");
-        temail.setFont(new Font("Arial", 1, 13));
-        cmsg = new TextField("");
-        if (System.getProperty("java.vendor").ToLower().Contains("oracle"))
-        {
-            cmsg.addKeyListener(new KeyAdapter()
-            {
-                @Override
-                public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == 10 && u[0] != null) {
-                u[0].enter = true;
-            }
-            }
-            });
-        }
-        mmsg = new TextArea("", 200, 20, 3);
-        cmsg.setFont(new Font("Tahoma", 0, 11));
-        mmsg.setFont(new Font("Tahoma", 0, 11));
-        mycar = new Checkbox("Sword of Justice Game!");
-        notp = new Checkbox("No Trees & Piles");
-        keplo = new Checkbox("Stay logged ain");
-        keplo.setState(true);
-        gsPanel.add(tnick);
-        gsPanel.add(tpass);
-        gsPanel.add(temail);
-        gsPanel.add(cmsg);
-        gsPanel.add(mmsg);
-        gsPanel.add(mycar);
-        gsPanel.add(notp);
-        gsPanel.add(keplo);
-        sgame.setFont();
-        wgame.setFont();
-        warb.setFont();
-        pgame.setFont();
-        vnpls.setFont();
-        vtyp.setFont();
-        snfmm.setFont();
+//        tnick = new TextField("Nickbname");
+//        tnick.setFont(new Font("Arial", 1, 13));
+//        tpass = new TextField("");
+//        tpass.setFont(new Font("Arial", 1, 13));
+//        tpass.setEchoChar('*');
+//        temail = new TextField("");
+//        temail.setFont(new Font("Arial", 1, 13));
+//        cmsg = new TextField("");
+//        if (System.getProperty("java.vendor").ToLower().Contains("oracle"))
+//        {
+//            cmsg.addKeyListener(new KeyAdapter()
+//            {
+//                @Override
+//                public void keyPressed(KeyEvent e) {
+//                if (e.getKeyCode() == 10 && u[0] != null) {
+//                u[0].enter = true;
+//            }
+//            }
+//            });
+//        }
+//        mmsg = new TextArea("", 200, 20, 3);
+//        cmsg.setFont(new Font("Tahoma", 0, 11));
+//        mmsg.setFont(new Font("Tahoma", 0, 11));
+//        mycar = new Checkbox("Sword of Justice Game!");
+//        notp = new Checkbox("No Trees & Piles");
+//        keplo = new Checkbox("Stay logged ain");
+//        keplo.setState(true);
+//        gsPanel.add(tnick);
+//        gsPanel.add(tpass);
+//        gsPanel.add(temail);
+//        gsPanel.add(cmsg);
+//        gsPanel.add(mmsg);
+//        gsPanel.add(mycar);
+//        gsPanel.add(notp);
+//        gsPanel.add(keplo);
+//        sgame.setFont();
+//        wgame.setFont();
+//        warb.setFont();
+//        pgame.setFont();
+//        vnpls.setFont();
+//        vtyp.setFont();
+//        snfmm.setFont();
         //snfm1.setFont(new Font("Arial", 1, 13));
         //snfm2.setFont(new Font("Arial", 1, 13));
         mstgs.setFont();
         mcars.setFont();
-        slaps.setFont();
-        snpls.setFont();
-        snbts.setFont();
-        swait.setFont();
-        sclass.setFont();
-        scars.setFont();
-        sfix.setFont();
-        mycar.setFont(new Font("Arial", 1, 12));
-        notp.setFont(new Font("Arial", 1, 12));
-        keplo.setFont(new Font("Arial", 1, 12));
-        gmode.setFont();
-        rooms.setFont();
-        sendtyp.setFont();
-        senditem.setFont();
-        datat.setFont();
-        clanlev.setFont();
-        clcars.setFont();
-        clcars.alphad = true;
-        ilaps.setFont();
-        icars.setFont();
-        proitem.setFont();
+//        slaps.setFont();
+//        snpls.setFont();
+//        snbts.setFont();
+//        swait.setFont();
+//        sclass.setFont();
+//        scars.setFont();
+//        sfix.setFont();
+//        mycar.setFont(new Font("Arial", 1, 12));
+//        notp.setFont(new Font("Arial", 1, 12));
+//        keplo.setFont(new Font("Arial", 1, 12));
+//        gmode.setFont();
+//        rooms.setFont();
+//        sendtyp.setFont();
+//        senditem.setFont();
+//        datat.setFont();
+//        clanlev.setFont();
+//        clcars.setFont();
+//        clcars.alphad = true;
+//        ilaps.setFont();
+//        icars.setFont();
+//        proitem.setFont();
     }
 
     static void madlink()
@@ -1383,119 +1308,119 @@ namespace Cum
         }
     }
 
-    static void movefield(Component component, int i, int i99, int i100, int i101) {
-        if (i100 == 360 || i100 == 576)
-        {
-            i = (int) (i * apmult + apx + component.getWidth() / 2 * (apmult - 1.0F));
-            i99 = (int) (i99 * apmult + apy + 12.0F * (apmult - 1.0F));
-        }
-        else
-        {
-            i = (int) (i * apmult + apx);
-            i99 = (int) (i99 * apmult + apy + 12.0F * (apmult - 1.0F));
-        }
-        if (component.getX() != i || component.getY() != i99)
-        {
-            component.setBounds(i, i99, i100, i101);
-        }
+    static void movefield(object component, int i, int i99, int i100, int i101) {
+//        if (i100 == 360 || i100 == 576)
+//        {
+//            i = (int) (i * apmult + apx + component.getWidth() / 2 * (apmult - 1.0F));
+//            i99 = (int) (i99 * apmult + apy + 12.0F * (apmult - 1.0F));
+//        }
+//        else
+//        {
+//            i = (int) (i * apmult + apx);
+//            i99 = (int) (i99 * apmult + apy + 12.0F * (apmult - 1.0F));
+//        }
+//        if (component.getX() != i || component.getY() != i99)
+//        {
+//            component.setBounds(i, i99, i100, i101);
+//        }
     }
 
-    public static void movefielda(TextArea textarea, int i, int i105, int i106, int i107) {
-        if (applejava)
-        {
-            if (xm > i && xm < i + i106 && ym > i105 && ym < i105 + i107 || !textarea.getText().equals(" "))
-            {
-                if (!textarea.isShowing())
-                {
-                    textarea.setVisible(true);
-                    textarea.requestFocus();
-                }
-                if (i106 == 360 || i106 == 576)
-                {
-                    i = (int) (i * apmult + apx + textarea.getWidth() / 2 * (apmult - 1.0F));
-                    i105 = (int) (i105 * apmult + apy + 12.0F * (apmult - 1.0F));
-                }
-                else
-                {
-                    i = (int) (i * apmult + apx);
-                    i105 = (int) (i105 * apmult + apy + 12.0F * (apmult - 1.0F));
-                }
-                if (textarea.getX() != i || textarea.getY() != i105)
-                {
-                    textarea.setBounds(i, i105, i106, i107);
-                }
-            }
-            else
-            {
-                if (textarea.isShowing())
-                {
-                    textarea.setVisible(false);
-                    gsPanel.requestFocus();
-                }
-                rd.setColor(textarea.getBackground());
-                rd.fillRect(i, i105, i106 - 1, i107 - 1);
-                rd.setColor(textarea.getBackground().darker());
-                rd.drawRect(i, i105, i106 - 1, i107 - 1);
-            }
-        }
-        else
-        {
-            if (!textarea.isShowing())
-            {
-                textarea.setVisible(true);
-            }
-            movefield(textarea, i, i105, i106, i107);
-        }
+    public static void movefielda(object textarea, int i, int i105, int i106, int i107) {
+//        if (applejava)
+//        {
+//            if (xm > i && xm < i + i106 && ym > i105 && ym < i105 + i107 || !textarea.getText().equals(" "))
+//            {
+//                if (!textarea.isShowing())
+//                {
+//                    textarea.setVisible(true);
+//                    textarea.requestFocus();
+//                }
+//                if (i106 == 360 || i106 == 576)
+//                {
+//                    i = (int) (i * apmult + apx + textarea.getWidth() / 2 * (apmult - 1.0F));
+//                    i105 = (int) (i105 * apmult + apy + 12.0F * (apmult - 1.0F));
+//                }
+//                else
+//                {
+//                    i = (int) (i * apmult + apx);
+//                    i105 = (int) (i105 * apmult + apy + 12.0F * (apmult - 1.0F));
+//                }
+//                if (textarea.getX() != i || textarea.getY() != i105)
+//                {
+//                    textarea.setBounds(i, i105, i106, i107);
+//                }
+//            }
+//            else
+//            {
+//                if (textarea.isShowing())
+//                {
+//                    textarea.setVisible(false);
+//                    gsPanel.requestFocus();
+//                }
+//                rd.setColor(textarea.getBackground());
+//                rd.fillRect(i, i105, i106 - 1, i107 - 1);
+//                rd.setColor(textarea.getBackground().darker());
+//                rd.drawRect(i, i105, i106 - 1, i107 - 1);
+//            }
+//        }
+//        else
+//        {
+//            if (!textarea.isShowing())
+//            {
+//                textarea.setVisible(true);
+//            }
+//            movefield(textarea, i, i105, i106, i107);
+//        }
     }
 
-    static void movefieldd(TextField textfield, int i, int i102, int i103, int
+    static void movefieldd(object textfield, int i, int i102, int i103, int
         i104, boolean abool) {
-        if (applejava)
-        {
-            if (abool)
-                if (xm > i && xm < i + i103 && ym > i102 && ym < i102 + i104 || !textfield.getText().equals(""))
-                {
-                    if (!textfield.isShowing())
-                    {
-                        textfield.setVisible(true);
-                        textfield.requestFocus();
-                    }
-                    if (i103 == 360 || i103 == 576)
-                    {
-                        i = (int) (i * apmult + apx + textfield.getWidth() / 2 * (apmult - 1.0F));
-                        i102 = (int) (i102 * apmult + apy + 12.0F * (apmult - 1.0F));
-                    }
-                    else
-                    {
-                        i = (int) (i * apmult + apx);
-                        i102 = (int) (i102 * apmult + apy + 12.0F * (apmult - 1.0F));
-                    }
-                    if (textfield.getX() != i || textfield.getY() != i102)
-                    {
-                        textfield.setBounds(i, i102, i103, i104);
-                    }
-                }
-                else
-                {
-                    if (textfield.isShowing())
-                    {
-                        textfield.setVisible(false);
-                        gsPanel.requestFocus();
-                    }
-                    rd.setColor(textfield.getBackground());
-                    rd.fillRect(i, i102, i103 - 1, i104 - 1);
-                    rd.setColor(textfield.getBackground().darker());
-                    rd.drawRect(i, i102, i103 - 1, i104 - 1);
-                }
-        }
-        else
-        {
-            if (abool && !textfield.isShowing())
-            {
-                textfield.setVisible(true);
-            }
-            movefield(textfield, i, i102, i103, i104);
-        }
+//        if (applejava)
+//        {
+//            if (abool)
+//                if (xm > i && xm < i + i103 && ym > i102 && ym < i102 + i104 || !textfield.getText().equals(""))
+//                {
+//                    if (!textfield.isShowing())
+//                    {
+//                        textfield.setVisible(true);
+//                        textfield.requestFocus();
+//                    }
+//                    if (i103 == 360 || i103 == 576)
+//                    {
+//                        i = (int) (i * apmult + apx + textfield.getWidth() / 2 * (apmult - 1.0F));
+//                        i102 = (int) (i102 * apmult + apy + 12.0F * (apmult - 1.0F));
+//                    }
+//                    else
+//                    {
+//                        i = (int) (i * apmult + apx);
+//                        i102 = (int) (i102 * apmult + apy + 12.0F * (apmult - 1.0F));
+//                    }
+//                    if (textfield.getX() != i || textfield.getY() != i102)
+//                    {
+//                        textfield.setBounds(i, i102, i103, i104);
+//                    }
+//                }
+//                else
+//                {
+//                    if (textfield.isShowing())
+//                    {
+//                        textfield.setVisible(false);
+//                        gsPanel.requestFocus();
+//                    }
+//                    rd.setColor(textfield.getBackground());
+//                    rd.fillRect(i, i102, i103 - 1, i104 - 1);
+//                    rd.setColor(textfield.getBackground().darker());
+//                    rd.drawRect(i, i102, i103 - 1, i104 - 1);
+//                }
+//        }
+//        else
+//        {
+//            if (abool && !textfield.isShowing())
+//            {
+//                textfield.setVisible(true);
+//            }
+//            movefield(textfield, i, i102, i103, i104);
+//        }
     }
 
     static void multlink()
@@ -1515,34 +1440,35 @@ namespace Cum
 
     private static void openurl(String astring)
     {
-        if (Desktop.isDesktopSupported())
-        {
-            try
-            {
-                Desktop.getDesktop().browse(new URI(astring));
-            }
-            catch (Exception
-            ignored) {
-
-            }
-        }
-        else
-        {
-            try
-            {
-                Runtime.getRuntime().exec("" + Madness.urlopen() + " " + astring + "");
-            }
-            catch (Exception
-            ignored) {
-
-            }
-        }
+        throw new NotImplementedException();
+//        if (Desktop.isDesktopSupported())
+//        {
+//            try
+//            {
+//                Desktop.getDesktop().browse(new URI(astring));
+//            }
+//            catch (Exception
+//            ignored) {
+//
+//            }
+//        }
+//        else
+//        {
+//            try
+//            {
+//                Runtime.getRuntime().exec("" + Madness.urlopen() + " " + astring + "");
+//            }
+//            catch (Exception
+//            ignored) {
+//
+//            }
+//        }
     }
 
     private static void trash()
     {
-        rd.dispose();
-        xtGraphics.stopallnow();
+//        rd.dispose();
+        xtPart2.stopallnow();
         //cardefine.stopallnow();
         //udpmistro.UDPquit();
         GC.Collect();
@@ -1731,107 +1657,108 @@ namespace Cum
 
     private static void readcookies(ContO[] contos)
     {
-        xtGraphics.nickname = "";
-        try
-        {
-            File file = new File("" + Madness.fpath + "data/user.data");
-            String[] strings =
-            {
-                "", "", "", "", ""
-            };
-            if (file.exists())
-            {
-                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
-                String astring;
-                for (int i = 0; (astring = bufferedreader.readLine()) != null && i < 5; i++)
-                {
-                    strings[i] = astring;
-                }
-                bufferedreader.close();
-            }
-            if (strings[0].StartsWith("lastuser"))
-            {
-                xtGraphics.nickname = getastring("lastuser", strings[0], 0);
-                if (!xtGraphics.nickname.equals(""))
-                {
-                    xtGraphics.opselect = 1;
-                }
-                String astring;
-                try
-                {
-                    astring = getastring("lastuser", strings[0], 1);
-                }
-                catch (Exception
-                exception) {
-                    astring = "";
-                }
-                if (!astring.equals(""))
-                {
-                    tnick.setText(xtGraphics.nickname);
-                    tpass.setText(astring);
-                    xtGraphics.autolog = true;
-                }
-            }
-            if (strings[2].StartsWith("saved"))
-            {
-                int i = getint("saved", strings[2], 0);
-                if (i >= 0 && i < xtGraphics.nCars)
-                {
-                    xtGraphics.scm = i;
-                    xtGraphics.firstime = false;
-                }
-                i = getint("saved", strings[2], 1);
-                if (i >= 1 && i <= xtGraphics.nTracks)
-                {
-                    xtGraphics.unlocked = i;
-                }
-            }
-            if (strings[1].StartsWith("lastcar"))
-            {
-                int i = getint("lastcar", strings[1], 0);
-                CarDefine.lastcar = getastring("lastcar", strings[1], 7);
-                if (i >= 0 && i < 36)
-                {
-                    xtGraphics.osc = i;
-                    xtGraphics.firstime = false;
-                }
-                int i198 = 0;
-                for (int i199 = 0; i199 < 6; i199++)
-                {
-                    i = getint("lastcar", strings[1], i199 + 1);
-                    if (i >= 0 && i <= 100)
-                    {
-                        xtGraphics.arnp[i199] = i / 100.0F;
-                        i198++;
-                    }
-                }
-                if (i198 == 6 && xtGraphics.osc >= 0 && xtGraphics.osc <= 15)
-                {
-                    Color color = Color.getHSBColor(xtGraphics.arnp[0], xtGraphics.arnp[1],
-                        1.0F - xtGraphics.arnp[2]);
-                    Color color200 = Color.getHSBColor(xtGraphics.arnp[3], xtGraphics.arnp[4],
-                        1.0F - xtGraphics.arnp[5]);
-                    for (int i201 = 0; i201 < contos[xtGraphics.osc].npl; i201++)
-                        if (contos[xtGraphics.osc].p[i201].colnum == 1)
-                        {
-                            contos[xtGraphics.osc].p[i201].c[0] = color.getRed();
-                            contos[xtGraphics.osc].p[i201].c[1] = color.getGreen();
-                            contos[xtGraphics.osc].p[i201].c[2] = color.getBlue();
-                        }
-                    for (int i202 = 0; i202 < contos[xtGraphics.osc].npl; i202++)
-                        if (contos[xtGraphics.osc].p[i202].colnum == 2)
-                        {
-                            contos[xtGraphics.osc].p[i202].c[0] = color200.getRed();
-                            contos[xtGraphics.osc].p[i202].c[1] = color200.getGreen();
-                            contos[xtGraphics.osc].p[i202].c[2] = color200.getBlue();
-                        }
-                }
-            }
-        }
-        catch (Exception
-        ignored) {
-
-        }
+        //TODO important
+//        xtGraphics.nickname = "";
+//        try
+//        {
+//            File file = new File("" + Madness.fpath + "data/user.data");
+//            String[] strings =
+//            {
+//                "", "", "", "", ""
+//            };
+//            if (file.exists())
+//            {
+//                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
+//                String astring;
+//                for (int i = 0; (astring = bufferedreader.readLine()) != null && i < 5; i++)
+//                {
+//                    strings[i] = astring;
+//                }
+//                bufferedreader.close();
+//            }
+//            if (strings[0].StartsWith("lastuser"))
+//            {
+//                xtGraphics.nickname = getastring("lastuser", strings[0], 0);
+//                if (!xtGraphics.nickname.equals(""))
+//                {
+//                    xtGraphics.opselect = 1;
+//                }
+//                String astring;
+//                try
+//                {
+//                    astring = getastring("lastuser", strings[0], 1);
+//                }
+//                catch (Exception
+//                exception) {
+//                    astring = "";
+//                }
+//                if (!astring.equals(""))
+//                {
+//                    tnick.setText(xtGraphics.nickname);
+//                    tpass.setText(astring);
+//                    xtGraphics.autolog = true;
+//                }
+//            }
+//            if (strings[2].StartsWith("saved"))
+//            {
+//                int i = getint("saved", strings[2], 0);
+//                if (i >= 0 && i < xtGraphics.nCars)
+//                {
+//                    xtGraphics.scm = i;
+//                    xtGraphics.firstime = false;
+//                }
+//                i = getint("saved", strings[2], 1);
+//                if (i >= 1 && i <= xtGraphics.nTracks)
+//                {
+//                    xtGraphics.unlocked = i;
+//                }
+//            }
+//            if (strings[1].StartsWith("lastcar"))
+//            {
+//                int i = getint("lastcar", strings[1], 0);
+//                CarDefine.lastcar = getastring("lastcar", strings[1], 7);
+//                if (i >= 0 && i < 36)
+//                {
+//                    xtGraphics.osc = i;
+//                    xtGraphics.firstime = false;
+//                }
+//                int i198 = 0;
+//                for (int i199 = 0; i199 < 6; i199++)
+//                {
+//                    i = getint("lastcar", strings[1], i199 + 1);
+//                    if (i >= 0 && i <= 100)
+//                    {
+//                        xtGraphics.arnp[i199] = i / 100.0F;
+//                        i198++;
+//                    }
+//                }
+//                if (i198 == 6 && xtGraphics.osc >= 0 && xtGraphics.osc <= 15)
+//                {
+//                    Color color = Color.getHSBColor(xtGraphics.arnp[0], xtGraphics.arnp[1],
+//                        1.0F - xtGraphics.arnp[2]);
+//                    Color color200 = Color.getHSBColor(xtGraphics.arnp[3], xtGraphics.arnp[4],
+//                        1.0F - xtGraphics.arnp[5]);
+//                    for (int i201 = 0; i201 < contos[xtGraphics.osc].npl; i201++)
+//                        if (contos[xtGraphics.osc].p[i201].colnum == 1)
+//                        {
+//                            contos[xtGraphics.osc].p[i201].c[0] = color.getRed();
+//                            contos[xtGraphics.osc].p[i201].c[1] = color.getGreen();
+//                            contos[xtGraphics.osc].p[i201].c[2] = color.getBlue();
+//                        }
+//                    for (int i202 = 0; i202 < contos[xtGraphics.osc].npl; i202++)
+//                        if (contos[xtGraphics.osc].p[i202].colnum == 2)
+//                        {
+//                            contos[xtGraphics.osc].p[i202].c[0] = color200.getRed();
+//                            contos[xtGraphics.osc].p[i202].c[1] = color200.getGreen();
+//                            contos[xtGraphics.osc].p[i202].c[2] = color200.getBlue();
+//                        }
+//                }
+//            }
+//        }
+//        catch (Exception
+//        ignored) {
+//
+//        }
     }
 
     static void reglink()
@@ -1846,163 +1773,165 @@ namespace Cum
 
     private static void makeMenus()
     {
-        rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        sgame.add(rd, " NFM 1     ");
-        sgame.add(rd, " NFM 2     ");
-        sgame.add(rd, " My Stages ");
-        sgame.add(rd, " Weekly Top20 ");
-        sgame.add(rd, " Monthly Top20 ");
-        sgame.add(rd, " All Time Top20 ");
-        sgame.add(rd, " Stage Maker ");
-        wgame.add(rd, " Normal Game");
-        wgame.add(rd, " War / Battle");
-        wgame.add(rd, " War / Battle - Practice");
-        warb.add(rd, " Loading your clan's wars and battles, please wait...");
-        pgame.add(rd, " Select the game you want to practice");
-        vnpls.add(rd, "Players");
-        vnpls.add(rd, " 2 VS 2");
-        vnpls.add(rd, " 3 VS 3");
-        vnpls.add(rd, " 4 VS 4");
-        vtyp.add(rd, "Normal clan game");
-        vtyp.add(rd, "Racing only");
-        vtyp.add(rd, "Wasting only");
-        vtyp.add(rd, "Racers VS Wasters - my clan wastes");
-        vtyp.add(rd, "Racers VS Wasters - my clan races");
-        snfmm.add(rd, "Select Stage");
+//        rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+//        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        sgame.add(rd, " NFM 1     ");
+//        sgame.add(rd, " NFM 2     ");
+//        sgame.add(rd, " My Stages ");
+//        sgame.add(rd, " Weekly Top20 ");
+//        sgame.add(rd, " Monthly Top20 ");
+//        sgame.add(rd, " All Time Top20 ");
+//        sgame.add(rd, " Stage Maker ");
+//        wgame.add(rd, " Normal Game");
+//        wgame.add(rd, " War / Battle");
+//        wgame.add(rd, " War / Battle - Practice");
+//        warb.add(rd, " Loading your clan's wars and battles, please wait...");
+//        pgame.add(rd, " Select the game you want to practice");
+//        vnpls.add(rd, "Players");
+//        vnpls.add(rd, " 2 VS 2");
+//        vnpls.add(rd, " 3 VS 3");
+//        vnpls.add(rd, " 4 VS 4");
+//        vtyp.add(rd, "Normal clan game");
+//        vtyp.add(rd, "Racing only");
+//        vtyp.add(rd, "Wasting only");
+//        vtyp.add(rd, "Racers VS Wasters - my clan wastes");
+//        vtyp.add(rd, "Racers VS Wasters - my clan races");
+//        snfmm.add(rd, "Select Stage");
         //snfm1.add(rd, "Select Stage");
         //snfm2.add(rd, "Select Stage");
-        mstgs.add(rd, "Suddenly the King becomes Santa's Little Helper");
-        mcars.add(rd, "Sword of Justice");
-        snpls.add(rd, "Select");
-        swait.add(rd, "1 Minute");
-        ilaps.add(rd, "Laps");
-        ilaps.add(rd, "1 Lap");
-        for (int i = 0; i < xtGraphics.nTracks; i++)
-        {
-            snfmm.add(rd, " Stage " + (i + 1) + "");
-        }
+        mstgs.add("Suddenly the King becomes Santa's Little Helper");
+        mcars.add("Sword of Justice");
+//        snpls.add(rd, "Select");
+//        swait.add(rd, "1 Minute");
+//        ilaps.add(rd, "Laps");
+//        ilaps.add(rd, "1 Lap");
+//        for (int i = 0; i < xtGraphics.nTracks; i++)
+//        {
+//            snfmm.add(rd, " Stage " + (i + 1) + "");
+//        }
         /*for (int i = 0; i < 10; i++)
         	snfm1.add(rd, "" + (" Stage ") + (i + 1) + (""));
         for (int i = 0; i < 17; i++)
         	snfm2.add(rd, "" + (" Stage ") + (i + 1) + (""));*/
-        for (int i = 0; i < 7; i++)
-        {
-            snpls.add(rd, "    " + (i + 2) + "");
-        }
-        for (int i = 0; i < 7; i++)
-        {
-            snbts.add(rd, "    " + i + "    ");
-        }
-        for (int i = 0; i < 2; i++)
-        {
-            swait.add(rd, "" + (i + 2) + " Minutes");
-        }
-        for (int i = 0; i < 15; i++)
-        {
-            slaps.add(rd, "" + (i + 1) + "");
-        }
-        for (int i = 0; i < 14; i++)
-        {
-            ilaps.add(rd, "" + (i + 2) + " Laps");
-        }
-        sclass.add(rd, "All Classes");
-        sclass.add(rd, "Class C Cars");
-        sclass.add(rd, "Class B & C Cars");
-        sclass.add(rd, "Class B Cars");
-        sclass.add(rd, "Class A & B Cars");
-        sclass.add(rd, "Class A Cars");
-        scars.add(rd, "All Cars");
-        scars.add(rd, "Custom Cars");
-        scars.add(rd, "Game Cars");
-        sfix.add(rd, "Unlimited Fixing");
-        sfix.add(rd, "4 Fixes");
-        sfix.add(rd, "3 Fixes");
-        sfix.add(rd, "2 Fixes");
-        sfix.add(rd, "1 Fix");
-        sfix.add(rd, "No Fixing");
-        icars.add(rd, "Type of Cars");
-        icars.add(rd, "All Cars");
-        icars.add(rd, "Clan Cars");
-        icars.add(rd, "Game Cars");
-        icars.w = 140;
-        gmode.add(rd, " Normal Game ");
-        gmode.add(rd, " Practice Game ");
-        rooms.rooms = true;
-        rooms.add(rd, "Ghostrider :: 1");
-        sendtyp.add(rd, "Write a Message");
-        sendtyp.add(rd, "Share a Custom Car");
-        sendtyp.add(rd, "Share a Custom Stage");
-        sendtyp.add(rd, "Send a Clan Invitation");
-        sendtyp.add(rd, "Share a Relative Date");
-        senditem.add(rd, "Suddenly the King becomes Santa's Little Helper");
-        for (int i = 0; i < 6; i++)
-        {
-            clanlev.add(rd, "" + (i + 1) + "");
-        }
-        clanlev.add(rd, "7 - Admin");
+//        for (int i = 0; i < 7; i++)
+//        {
+//            snpls.add(rd, "    " + (i + 2) + "");
+//        }
+//        for (int i = 0; i < 7; i++)
+//        {
+//            snbts.add(rd, "    " + i + "    ");
+//        }
+//        for (int i = 0; i < 2; i++)
+//        {
+//            swait.add(rd, "" + (i + 2) + " Minutes");
+//        }
+//        for (int i = 0; i < 15; i++)
+//        {
+//            slaps.add(rd, "" + (i + 1) + "");
+//        }
+//        for (int i = 0; i < 14; i++)
+//        {
+//            ilaps.add(rd, "" + (i + 2) + " Laps");
+//        }
+//        sclass.add(rd, "All Classes");
+//        sclass.add(rd, "Class C Cars");
+//        sclass.add(rd, "Class B & C Cars");
+//        sclass.add(rd, "Class B Cars");
+//        sclass.add(rd, "Class A & B Cars");
+//        sclass.add(rd, "Class A Cars");
+//        scars.add(rd, "All Cars");
+//        scars.add(rd, "Custom Cars");
+//        scars.add(rd, "Game Cars");
+//        sfix.add(rd, "Unlimited Fixing");
+//        sfix.add(rd, "4 Fixes");
+//        sfix.add(rd, "3 Fixes");
+//        sfix.add(rd, "2 Fixes");
+//        sfix.add(rd, "1 Fix");
+//        sfix.add(rd, "No Fixing");
+//        icars.add(rd, "Type of Cars");
+//        icars.add(rd, "All Cars");
+//        icars.add(rd, "Clan Cars");
+//        icars.add(rd, "Game Cars");
+//        icars.w = 140;
+//        gmode.add(rd, " Normal Game ");
+//        gmode.add(rd, " Practice Game ");
+//        rooms.rooms = true;
+//        rooms.add(rd, "Ghostrider :: 1");
+//        sendtyp.add(rd, "Write a Message");
+//        sendtyp.add(rd, "Share a Custom Car");
+//        sendtyp.add(rd, "Share a Custom Stage");
+//        sendtyp.add(rd, "Send a Clan Invitation");
+//        sendtyp.add(rd, "Share a Relative Date");
+//        senditem.add(rd, "Suddenly the King becomes Santa's Little Helper");
+//        for (int i = 0; i < 6; i++)
+//        {
+//            clanlev.add(rd, "" + (i + 1) + "");
+//        }
+//        clanlev.add(rd, "7 - Admin");
         hidefields();
     }
 
     private GameSparker()
     {
-        super();
+        
     }
 
     public static GameSparker create()
     {
-        gsPanel = new GameSparker();
+//        gsPanel = new GameSparker();
 
-        BASSLoader.initializeBASS();
+//        BASSLoader.initializeBASS();
         initFields();
 
-        gsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        //
-        gsPanel.setBackground(Color.black);
-        gsPanel.setOpaque(true);
-        //
-        gsPanel.setLayout(null);
+//        gsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+//        //
+//        gsPanel.setBackground(Color.black);
+//        gsPanel.setOpaque(true);
+//        //
+//        gsPanel.setLayout(null);
 
         makeMenus();
 
         preloadGame();
 
-        new Thread(GameSparker::loadGame).start();
+        new Thread(GameSparker.loadGame).Start();
 
-        gsPanel.addKeyListener(gsPanel);
-        gsPanel.addMouseListener(gsPanel);
-        gsPanel.addMouseMotionListener(gsPanel);
-        gsPanel.addFocusListener(gsPanel);
-        gsPanel.setFocusable(true);
-        gsPanel.requestFocusInWindow();
-        gsPanel.setIgnoreRepaint(true);
+//        gsPanel.addKeyListener(gsPanel);
+//        gsPanel.addMouseListener(gsPanel);
+//        gsPanel.addMouseMotionListener(gsPanel);
+//        gsPanel.addFocusListener(gsPanel);
+//        gsPanel.setFocusable(true);
+//        gsPanel.requestFocusInWindow();
+//        gsPanel.setIgnoreRepaint(true);
+//
+//        // disable Swing's double buffering. we don't need it since we have our own offscreen image (offImage)
+//        // this means we get a slight performance gain
+//        // ("You may find that your numbers for direct rendering far exceed those for double-buffering" from https://docs.oracle.com/javase/tutorial/extra/fullscreen/doublebuf.html)
+//        // for zero graphical loss.
+//        gsPanel.setDoubleBuffered(false);
 
-        // disable Swing's double buffering. we don't need it since we have our own offscreen image (offImage)
-        // this means we get a slight performance gain
-        // ("You may find that your numbers for direct rendering far exceed those for double-buffering" from https://docs.oracle.com/javase/tutorial/extra/fullscreen/doublebuf.html)
-        // for zero graphical loss.
-        gsPanel.setDoubleBuffered(false);
+//        Timer timer = new Timer(46, ae->gsPanel.repaint());
 
-        Timer timer = new Timer(46, ae->gsPanel.repaint());
+//        timer.start();
+//        return gsPanel;
 
-        timer.start();
-        return gsPanel;
+        return new GameSparker();
     }
 
     private static void preloadGame()
     {
-        if (System.getProperty("java.vendor").ToLower().Contains("apple"))
-        {
-            applejava = true;
-        }
+//        if (System.getProperty("java.vendor").ToLower().Contains("apple"))
+//        {
+//            applejava = true;
+//        }
 
         new Medium();
         new Trackers();
         new CheckPoints();
-        carContos = new ContO[carRads.length];
-        contos = new ContO[stageRads.length];
+        carContos = new ContO[carRads.Length];
+        contos = new ContO[stageRads.Length];
         CarDefine.create(contos);
-        xtGraphics.create(rd, gsPanel);
+        xtGraphics.create();
 
         new Record();
         mads = new Mad[8];
@@ -2028,22 +1957,22 @@ namespace Cum
     //@Override
     private static void loadGame()
     {
-        gsPanel.requestFocus();
+//        gsPanel.requestFocus();
         try
         {
             sizebar = xtGraphics.getImage("data/baseimages/sizebar.gif");
             blb = xtGraphics.getImage("data/baseimages/b.gif");
             fulls = xtGraphics.getImage("data/baseimages/fullscreen.gif");
-            chkbx[0] = xtGraphics.getImage("data/baseimages/checkbox1.gif");
-            chkbx[1] = xtGraphics.getImage("data/baseimages/checkbox2.gif");
-            carmaker[0] = xtGraphics.getImage("data/baseimages/carmaker1.gif");
-            carmaker[1] = xtGraphics.getImage("data/baseimages/carmaker2.gif");
+//            chkbx[0] = xtGraphics.getImage("data/baseimages/checkbox1.gif");
+//            chkbx[1] = xtGraphics.getImage("data/baseimages/checkbox2.gif");
+//            carmaker[0] = xtGraphics.getImage("data/baseimages/carmaker1.gif");
+//            carmaker[1] = xtGraphics.getImage("data/baseimages/carmaker2.gif");
             stagemaker[0] = xtGraphics.getImage("data/baseimages/stagemaker1.gif");
             stagemaker[1] = xtGraphics.getImage("data/baseimages/stagemaker2.gif");
         }
-        catch (IOException e)
+        catch (Exception e)
         {
-            e.printStackTrace();
+            Console.WriteLine(e);
         }
         xtGraphics.loaddata();
 
@@ -2053,28 +1982,28 @@ namespace Cum
 
         f = 47.0F;
         readcookies(contos);
-        xtGraphics.testdrive = Madness.testdrive;
-        if (xtGraphics.testdrive != 0)
-            if (xtGraphics.testdrive <= 2)
-            {
-                xtGraphics.sc[0] = CarDefine.loadcar(Madness.testcar, 16);
-                if (xtGraphics.sc[0] != -1)
-                {
-                    xtGraphics.fase = -9;
-                }
-                else
-                {
-                    Madness.testcar = "Failx12";
-                    Madness.carmaker();
-                }
-            }
-            else
-            {
-                CheckPoints.name = Madness.testcar;
-                xtGraphics.fase = -9;
-            }
-        xtGraphics.stoploading();
-        gsPanel.requestFocus();
+//        xtGraphics.testdrive = Madness.testdrive;
+//        if (xtGraphics.testdrive != 0)
+//            if (xtGraphics.testdrive <= 2)
+//            {
+//                xtGraphics.sc[0] = CarDefine.loadcar(Madness.testcar, 16);
+//                if (xtGraphics.sc[0] != -1)
+//                {
+//                    xtGraphics.fase = -9;
+//                }
+//                else
+//                {
+//                    Madness.testcar = "Failx12";
+//                    Madness.carmaker();
+//                }
+//            }
+//            else
+//            {
+//                CheckPoints.name = Madness.testcar;
+//                xtGraphics.fase = -9;
+//            }
+        xtPart2.stoploading();
+//        gsPanel.requestFocus();
         if (xtGraphics.testdrive == 0 && xtGraphics.firstime)
         {
             setupini();
@@ -2122,7 +2051,7 @@ namespace Cum
         if (xtGraphics.fase == 9)
             if (clicknowtime < 76)
             {
-                xtGraphics.rad(clicknowtime);
+                xtPart2.rad(clicknowtime);
                 catchlink();
                 if (mouses == 2)
                 {
@@ -2150,22 +2079,22 @@ namespace Cum
         {
             if (xtGraphics.loadedt)
             {
-                xtGraphics.mainbg(-101);
-                rd.setColor(new Color(0, 0, 0));
-                rd.fillRect(0, 0, 800, 450);
+                xtPart2.mainbg(-101);
+                G.setColor(new Color(0, 0, 0));
+                G.fillRect(0, 0, 800, 450);
                 //repaint();
                 xtGraphics.strack.unload();
                 xtGraphics.strack = null;
                 xtGraphics.flexpix = null;
-                Images.fleximg = null;
+                xtImages.Images.fleximg = null;
                 GC.Collect();
                 xtGraphics.loadedt = false;
             }
             if (clicknowtime < 2)
             {
-                xtGraphics.mainbg(-101);
-                rd.setColor(new Color(0, 0, 0));
-                rd.fillRect(65, 25, 670, 400);
+                xtPart2.mainbg(-101);
+                G.setColor(new Color(0, 0, 0));
+                G.fillRect(65, 25, 670, 400);
                 clicknowtime++;
             }
             else
@@ -2198,7 +2127,7 @@ namespace Cum
         if (xtGraphics.fase == 10)
         {
             mvect = 100;
-            xtGraphics.maini(u[0]);
+            xtPart2.maini(u[0]);
             xtGraphics.ctachm(xm, ym, mouses, u[0]);
             if (mouses == 2)
             {
@@ -2214,26 +2143,26 @@ namespace Cum
             mvect = 100;
             if (xtGraphics.loadedt)
             {
-                rd.setColor(new Color(0, 0, 0));
-                rd.fillRect(0, 0, 800, 450);
+                G.setColor(new Color(0, 0, 0));
+                G.fillRect(0, 0, 800, 450);
                 //repaint();
                 checkmemory();
                 xtGraphics.strack.unload();
                 xtGraphics.strack = null;
                 xtGraphics.flexpix = null;
-                Images.fleximg = null;
+                xtImages.Images.fleximg = null;
                 GC.Collect();
                 xtGraphics.loadedt = false;
             }
-            if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)
-            {
-                Madness.carmaker();
-            }
-            if (xtGraphics.testdrive == 3 || xtGraphics.testdrive == 4)
-            {
-                Madness.stagemaker();
-            }
-            xtGraphics.maini(u[0]);
+//            if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)
+//            {
+//                Madness.carmaker();
+//            }
+//            if (xtGraphics.testdrive == 3 || xtGraphics.testdrive == 4)
+//            {
+//                Madness.stagemaker();
+//            }
+            xtPart2.maini(u[0]);
             xtGraphics.fase = 10;
             if (mouses == 2)
             {
@@ -2249,8 +2178,8 @@ namespace Cum
             mvect = 100;
             if (xtGraphics.loadedt)
             {
-                rd.setColor(new Color(0, 0, 0));
-                rd.fillRect(0, 0, 800, 450);
+                G.setColor(new Color(0, 0, 0));
+                G.fillRect(0, 0, 800, 450);
                 //repaint();
                 checkmemory();
                 xtGraphics.strack.unload();
@@ -2260,15 +2189,15 @@ namespace Cum
                 GC.Collect();
                 xtGraphics.loadedt = false;
             }
-            if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)
-            {
-                Madness.carmaker();
-            }
-            if (xtGraphics.testdrive == 3 || xtGraphics.testdrive == 4)
-            {
-                Madness.stagemaker();
-            }
-            xtGraphics.maini2();
+//            if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)
+//            {
+//                Madness.carmaker();
+//            }
+//            if (xtGraphics.testdrive == 3 || xtGraphics.testdrive == 4)
+//            {
+//                Madness.stagemaker();
+//            }
+            xtPart2.maini2();
             xtGraphics.ctachm(xm, ym, mouses, u[0]);
             if (mouses == 2)
             {
@@ -2281,14 +2210,14 @@ namespace Cum
         }
         if (xtGraphics.fase == -22)
         {
-            CheckPoints.name = Madness.testcar;
+//            CheckPoints.name = Madness.testcar;
             CheckPoints.stage = -1;
             loadstage();
-            if (CheckPoints.stage == -3)
-            {
-                Madness.testcar = "Failx12";
-                Madness.stagemaker();
-            }
+//            if (CheckPoints.stage == -3)
+//            {
+//                Madness.testcar = "Failx12";
+//                Madness.stagemaker();
+//            }
         }
         if (xtGraphics.fase == 11)
         {
@@ -2333,7 +2262,7 @@ namespace Cum
         }
         if (xtGraphics.fase == 6)
         {
-            xtGraphics.musicomp(CheckPoints.stage, u[0]);
+            xtPart2.musicomp(CheckPoints.stage, u[0]);
             xtGraphics.ctachm(xm, ym, mouses, u[0]);
             if (mouses == 2)
             {
@@ -2364,8 +2293,8 @@ namespace Cum
         }
         if (xtGraphics.fase == 3)
         {
-            rd.setColor(new Color(0, 0, 0));
-            rd.fillRect(65, 25, 670, 400);
+            G.setColor(new Color(0, 0, 0));
+            G.fillRect(65, 25, 670, 400);
             //repaint();
             xtGraphics.inishstageselect();
         }
@@ -2377,13 +2306,13 @@ namespace Cum
             CheckPoints.notb = false;
             loadstage();
             u[0].falseo(0);
-            udpmistro.freg = 0.0F;
+//            udpmistro.freg = 0.0F;
             mvect = 20;
         }
         if (xtGraphics.fase == 1)
         {
-            xtGraphics.trackbg(false);
-            rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+            xtPart2.trackbgf(false);
+//            rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
             if (CheckPoints.stage != -3)
             {
                 Medium.aroundtrack();
@@ -2391,18 +2320,17 @@ namespace Cum
                 {
                     mvect++;
                 }
-                int[][] ai = new int[notb][2];
+                DistHolder[] ai = new DistHolder[notb];
                 for (int k7 = xtGraphics.nplayers; k7 < notb; k7++)
                 {
-                    ai[k7][0] = k7;
-                    ai[k7][1] = stageContos[k7].dist;
+                    ai[k7] = new DistHolder(k7, stageContos[k7].dist);
                 }
 
-                Arrays.sort(ai, contoComparator);
+                ArrayExt.sort(ai, contoComparator2);
 
                 for (int i14 = 0; i14 < notb; i14++)
                 {
-                    stageContos[ai[i14][0]].d(rd);
+                    stageContos[ai[i14].Id].d();
                 }
             }
             if (!openm)
@@ -2417,8 +2345,7 @@ namespace Cum
             {
                 mouses = 2;
             }
-            rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            xtGraphics.stageselect(u[0], xm, ym, moused);
+            xtPart2.stageselect(u[0], xm, ym, moused);
             drawms();
         }
         if (xtGraphics.fase == 0)
@@ -2436,30 +2363,29 @@ namespace Cum
                     stageContos[player].zy = i36;
                     mads[player].newcar = false;
                 }
-            Medium.d(rd);
+            Medium.d();
 
-            int[][] ai = new int[nob][2];
+            DistHolder[] ai = new DistHolder[nob];
             for (int k7 = 0; k7 < nob; k7++)
             {
-                ai[k7][0] = k7;
-                ai[k7][1] = stageContos[k7].dist;
+                ai[k7] = new DistHolder(k7, stageContos[k7].dist);
             }
 
-            Arrays.sort(ai, contoComparator);
+            ArrayExt.sort(ai, contoComparator2);
 
             for (int i14 = 0; i14 < nob; i14++)
             {
-                stageContos[ai[i14][0]].d(rd);
+                stageContos[ai[i14].Id].d();
             }
 
             if (xtGraphics.starcnt == 0)
             {
                 for (int k = 0; k < xtGraphics.nplayers; k++)
                 {
-                    for (int l = 0; l < xtGraphics.nplayers; l++)
-                        if (l != k)
+                    for (int m = 0; m < xtGraphics.nplayers; m++)
+                        if (m != k)
                         {
-                            mads[k].colide(stageContos[k], mads[l], stageContos[l]);
+                            mads[k].colide(stageContos[k], mads[m], stageContos[m]);
                         }
                 }
                 for (int k = 0; k < xtGraphics.nplayers; k++)
@@ -2483,8 +2409,8 @@ namespace Cum
                     Medium.adv = 1900;
                     Medium.zy = 40;
                     Medium.vxz = 70;
-                    rd.setColor(new Color(255, 255, 255));
-                    rd.fillRect(0, 0, 800, 450);
+                    G.setColor(new Color(255, 255, 255));
+                    G.fillRect(0, 0, 800, 450);
                 }
                 if (xtGraphics.starcnt != 0)
                 {
@@ -2496,7 +2422,7 @@ namespace Cum
                 if (view == 0)
                 {
                     Medium.follow(stageContos[0], mads[0].cxz, u[0].lookback);
-                    xtGraphics.stat(mads[0], stageContos[0], u[0], true);
+                    xtPart2.stat(mads[0], stageContos[0], u[0], true);
                     if (mads[0].outshakedam > 0)
                     {
                         shaka = mads[0].outshakedam / 20;
@@ -2515,13 +2441,13 @@ namespace Cum
                 if (view == 1)
                 {
                     Medium.around(stageContos[0], false);
-                    xtGraphics.stat(mads[0], stageContos[0], u[0], false);
+                    xtPart2.stat(mads[0], stageContos[0], u[0], false);
                     mvect = 80;
                 }
                 if (view == 2)
                 {
                     Medium.watch(stageContos[0], mads[0].mxz);
-                    xtGraphics.stat(mads[0], stageContos[0], u[0], false);
+                    xtPart2.stat(mads[0], stageContos[0], u[0], false);
                     mvect = 65 + Math.abs(lmxz - Medium.xz) / 5 * 100;
                     if (mvect > 90)
                     {
@@ -2558,9 +2484,9 @@ namespace Cum
                     Medium.vxz = 180;
                     CheckPoints.checkstat(mads, stageContos, xtGraphics.nplayers, xtGraphics.im, 0);
                     Medium.follow(stageContos[0], mads[0].cxz, 0);
-                    xtGraphics.stat(mads[0], stageContos[0], u[0], true);
-                    rd.setColor(new Color(255, 255, 255));
-                    rd.fillRect(0, 0, 800, 450);
+                    xtPart2.stat(mads[0], stageContos[0], u[0], true);
+//                    G.setColor(new Color(255, 255, 255));
+//                    G.fillRect(0, 0, 800, 450);
                 }
             }
         }
@@ -2568,13 +2494,13 @@ namespace Cum
         {
             if (recordtime == 0)
             {
-                for (int j = 0; j < xtGraphics.nplayers; j++)
+                for (int k = 0; k < xtGraphics.nplayers; k++)
                 {
-                    Record.ocar[j] = new ContO(stageContos[j], 0, 0, 0, 0);
-                    stageContos[j] = new ContO(Record.car[0][j], 0, 0, 0, 0);
+                    Record.ocar[k] = new ContO(stageContos[k], 0, 0, 0, 0);
+                    stageContos[k] = new ContO(Record.car[0,k], 0, 0, 0, 0);
                 }
             }
-            Medium.d(rd);
+            Medium.d();
             int j = 0;
             int[] ais  = new int[10000];
             for (int k = 0; k < nob; k++)
@@ -2585,7 +2511,7 @@ namespace Cum
                 }
                 else
                 {
-                    stageContos[k].d(rd);
+                    stageContos[k].d();
                 }
             int[] is2 = new int[j];
             for (int k = 0; k < j; k++)
@@ -2594,29 +2520,28 @@ namespace Cum
             }
             for (int k = 0; k < j; k++)
             {
-                for (int l = k + 1; l < j; l++)
-                    if (stageContos[ ais [
-                k]].dist != stageContos[ ais [l]].dist) {
-                    if (stageContos[ ais [k]].dist < stageContos[ ais [l]].dist) {
+                for (int m = k + 1; m < j; m++)
+                    if (stageContos[ais[k]].dist != stageContos[ ais [m]].dist) {
+                    if (stageContos[ais[k]].dist < stageContos[ ais [m]].dist) {
                         is2[k]++;
                     } else {
-                        is2[l]++;
+                        is2[m]++;
                     }
-                } else if (l > k)
+                } else if (m > k)
                 {
                     is2[k]++;
                 }
                 else
                 {
-                    is2[l]++;
+                    is2[m]++;
                 }
             }
             for (int k = 0; k < j; k++)
             {
-                for (int l = 0; l < j; l++)
-                    if (is2[l] == k)
+                for (int m = 0; m < j; m++)
+                    if (is2[m] == k)
                     {
-                        stageContos[ ais [l]].d(rd);
+                        stageContos[ ais [m]].d();
                     }
             }
             if (u[0].enter || u[0].handb || mouses == 1)
@@ -2655,7 +2580,7 @@ namespace Cum
             }
             else
             {
-                xtGraphics.replyn();
+                xtPart2.replyn();
             }
             Medium.around(stageContos[0], false);
         }
@@ -2673,8 +2598,8 @@ namespace Cum
             }
             if (Record.hcaught)
             {
-                rd.setColor(new Color(0, 0, 0));
-                rd.fillRect(0, 0, 800, 450);
+                G.setColor(new Color(0, 0, 0));
+                G.fillRect(0, 0, 800, 450);
                 //repaint();
             }
             if (Record.hcaught)
@@ -2721,12 +2646,12 @@ namespace Cum
                 {
                     Medium.vxz += 90;
                 }
-                for (int j = 0; j < xtGraphics.nplayers; j++)
+                for (int m = 0; m < xtGraphics.nplayers; m++)
                 {
-                    stageContos[j] = new ContO(Record.starcar[j], 0, 0, 0, 0);
+                    stageContos[m] = new ContO(Record.starcar[m], 0, 0, 0, 0);
                 }
             }
-            Medium.d(rd);
+            Medium.d();
             int j = 0;
             int[] ais  = new int[10000];
             for (int k = 0; k < nob; k++)
@@ -2737,7 +2662,7 @@ namespace Cum
                 }
                 else
                 {
-                    stageContos[k].d(rd);
+                    stageContos[k].d();
                 }
             int[] is2 = new int[j];
             for (int k = 0; k < j; k++)
@@ -2746,29 +2671,29 @@ namespace Cum
             }
             for (int k = 0; k < j; k++)
             {
-                for (int l = k + 1; l < j; l++)
+                for (int m = k + 1; m < j; m++)
                     if (stageContos[ ais [
-                k]].dist != stageContos[ ais [l]].dist) {
-                    if (stageContos[ ais [k]].dist < stageContos[ ais [l]].dist) {
+                k]].dist != stageContos[ ais [m]].dist) {
+                    if (stageContos[ ais [k]].dist < stageContos[ ais [m]].dist) {
                         is2[k]++;
                     } else {
-                        is2[l]++;
+                        is2[m]++;
                     }
-                } else if (l > k)
+                } else if (m > k)
                 {
                     is2[k]++;
                 }
                 else
                 {
-                    is2[l]++;
+                    is2[m]++;
                 }
             }
             for (int k = 0; k < j; k++)
             {
-                for (int l = 0; l < j; l++)
-                    if (is2[l] == k)
+                for (int m = 0; m < j; m++)
+                    if (is2[m] == k)
                     {
-                        stageContos[ ais [l]].d(rd);
+                        stageContos[ ais [m]].d();
                     }
             }
             for (int k = 0; k < xtGraphics.nplayers; k++)
@@ -2806,8 +2731,8 @@ namespace Cum
                     CheckPoints.stage);
                 if (recordtime == 0 || recordtime == 1 || recordtime == 2)
                 {
-                    rd.setColor(new Color(0, 0, 0));
-                    rd.fillRect(0, 0, 800, 450);
+                    G.setColor(new Color(0, 0, 0));
+                    G.fillRect(0, 0, 800, 450);
                 }
                 if (Record.wasted != xtGraphics.im)
                 {
@@ -2815,8 +2740,8 @@ namespace Cum
                     {
                         if (clicknowtime == 9 || clicknowtime == 11)
                         {
-                            rd.setColor(new Color(255, 255, 255));
-                            rd.fillRect(0, 0, 800, 450);
+                            G.setColor(new Color(255, 255, 255));
+                            G.fillRect(0, 0, 800, 450);
                         }
                         if (clicknowtime == 0)
                         {
@@ -2963,20 +2888,20 @@ namespace Cum
                 {
                     if (wastedpoint == 67 && (clicknowtime == 3 || clicknowtime == 31 || clicknowtime == 66))
                     {
-                        rd.setColor(new Color(255, 255, 255));
-                        rd.fillRect(0, 0, 800, 450);
+                        G.setColor(new Color(255, 255, 255));
+                        G.fillRect(0, 0, 800, 450);
                     }
                     if (wastedpoint == 69 && (clicknowtime == 3 || clicknowtime == 5 || clicknowtime == 31 ||
                                               clicknowtime == 33 || clicknowtime == 66 || clicknowtime == 68))
                     {
-                        rd.setColor(new Color(255, 255, 255));
-                        rd.fillRect(0, 0, 800, 450);
+                        G.setColor(new Color(255, 255, 255));
+                        G.fillRect(0, 0, 800, 450);
                     }
                     if (wastedpoint == 30 && clicknowtime >= 1 && clicknowtime < 30)
                         if (clicknowtime % (int) (2.0F + Medium.random() * 3.0F) == 0 && !flashingscreen)
                         {
-                            rd.setColor(new Color(255, 255, 255));
-                            rd.fillRect(0, 0, 800, 450);
+                            G.setColor(new Color(255, 255, 255));
+                            G.fillRect(0, 0, 800, 450);
                             flashingscreen = true;
                         }
                         else
@@ -3001,7 +2926,7 @@ namespace Cum
         {
             if (recordtime == 0)
             {
-                xtGraphics.sendwin();
+                xtPart2.sendwin();
                 if (xtGraphics.winner && xtGraphics.multion == 0 && xtGraphics.gmode != 0 &&
                     CheckPoints.stage != xtGraphics.nTracks && CheckPoints.stage == xtGraphics.unlocked)
                 {
@@ -3013,30 +2938,30 @@ namespace Cum
             }
             if (recordtime <= 0)
             {
-                rd.drawImage(Images.mdness, 289, 30, null);
-                rd.drawImage(Images.dude[0], 135, 10, null);
+                G.drawImage(Images.mdness, 289, 30, null);
+                G.drawImage(Images.dude[0], 135, 10, null);
             }
             if (recordtime >= 0)
             {
-                xtGraphics.fleximage(offImage, recordtime);
+                xtGraphics.fleximage(null, recordtime);
             }
             if (++recordtime == 7)
             {
                 xtGraphics.fase = -5;
-                rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-                rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//                rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+//                rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             }
         }
         if (xtGraphics.fase == -6)
         {
             //repaint();
-            xtGraphics.pauseimage(offImage);
+            xtPart2.pauseimage(null);
             xtGraphics.fase = -7;
             mouses = 0;
         }
         if (xtGraphics.fase == -7)
         {
-            xtGraphics.pausedgame(u[0]);
+            xtPart2.pausedgame(u[0]);
             if (recordtime != 0)
             {
                 recordtime = 0;
@@ -3065,10 +2990,10 @@ namespace Cum
         if (lostfcs && xtGraphics.fase == 7001)
             if (fcscnt == 0)
             {
-                if (u[0].chatup == 0)
-                {
-                    gsPanel.requestFocus();
-                }
+//                if (u[0].chatup == 0)
+//                {
+//                    gsPanel.requestFocus();
+//                }
                 fcscnt = 10;
             }
             else
@@ -3088,12 +3013,14 @@ namespace Cum
             {
                 for (int i = 0; i < xtGraphics.nplayers; i++)
                 {
-                    xtGraphics.playsounds(i, mads[i], u[i], stageContos[0], stageContos[i]);
+                    xtPart2.playsounds(i, mads[i], u[i], stageContos[0], stageContos[i]);
                 }
             }
         }
         date = new Date();
         long l = date.getTime();
+        
+        //TODO
         if (xtGraphics.fase == 0 || xtGraphics.fase == -1 || xtGraphics.fase == -3 || xtGraphics.fase == 7001)
         {
             if (!bool3)
@@ -3106,30 +3033,30 @@ namespace Cum
                 bool3 = true;
                 i5 = 0;
             }
-            if (i5 == 10)
-            {
-                float f = (i4 + udpmistro.freg - (l - l1)) / 20.0F;
-                if (f > 40.0F)
-                {
-                    f = 40.0F;
-                }
-                if (f < -40.0F)
-                {
-                    f = -40.0F;
-                }
-                f2 += f;
-                if (f2 < 5.0F)
-                {
-                    f2 = 5.0F;
-                }
-                Medium.adjstfade(f2, f, xtGraphics.starcnt, gsPanel);
-                l1 = l;
-                i5 = 0;
-            }
-            else
-            {
-                i5++;
-            }
+//            if (i5 == 10)
+//            {
+//                float f = (i4 + udpmistro.freg - (l - l1)) / 20.0F;
+//                if (f > 40.0F)
+//                {
+//                    f = 40.0F;
+//                }
+//                if (f < -40.0F)
+//                {
+//                    f = -40.0F;
+//                }
+//                f2 += f;
+//                if (f2 < 5.0F)
+//                {
+//                    f2 = 5.0F;
+//                }
+//                Medium.adjstfade(f2, f, xtGraphics.starcnt, gsPanel);
+//                l1 = l;
+//                i5 = 0;
+//            }
+//            else
+//            {
+//                i5++;
+//            }
         }
         else
         {
@@ -3143,11 +3070,11 @@ namespace Cum
             {
                 if (l - l1 < 400L)
                 {
-                    f2 += 3.5;
+                    f2 += 3.5f;
                 }
                 else
                 {
-                    f2 -= 3.5;
+                    f2 -= 3.5f;
                     if (f2 < 5.0F)
                     {
                         f2 = 5.0F;
@@ -3168,202 +3095,91 @@ namespace Cum
 
     }
 
-    static void setcarcookie(int i, String astring, float[] fs, int gamemode, int ais) {
-        try
+    internal static void setcarcookie(int i, String astring, float[] fs, int gamemode, int ais)
+    {
+        HansenData.SetCookie(new[]
         {
-            File file = new File("" + Madness.fpath + "data/user.data");
-            String[] lines =
-            {
-                "", "", "", "", ""
-            };
-            if (file.exists())
-            {
-                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
-                String line;
-                for (int j = 0; (line = bufferedreader.readLine()) != null && j < 5; j++)
-                {
-                    lines[j] = line;
-                }
-                bufferedreader.close();
-            }
-            if (gamemode == 0)
-            {
-                lines[1] = "lastcar(" + i + "," + (int) (fs[0] * 100.0F) + "," + (int) (fs[1] * 100.0F) + "," +
-                           (int) (fs[2] * 100.0F) + "," + (int) (fs[3] * 100.0F) + "," + (int) (fs[4] * 100.0F) + "," +
-                           (int) (fs[5] * 100.0F) + "," + astring + ")";
-            }
-            if (gamemode == 1 || gamemode == 2)
-            {
-                lines[2] = "saved(" + i + "," + ais +")";
-            }
-            //if (i191 == 2)
-            //	strings[3] = "" + ("NFM2(") + (i) + (")")
-            //			;
-            lines[4] = "graphics(" + moto + "," + Madness.anti + ")";
-            BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
-            for (int j = 0; j < 5; j++)
-            {
-                bufferedwriter.write(lines[j]);
-                bufferedwriter.newLine();
-            }
-            bufferedwriter.close();
-        }
-        catch (Exception
-        ignored) {
-
-        }
+            "lastcar(" + i + "," + (int) (fs[0] * 100.0F) + "," + (int) (fs[1] * 100.0F) + "," +
+            (int) (fs[2] * 100.0F) + "," + (int) (fs[3] * 100.0F) + "," + (int) (fs[4] * 100.0F) + "," +
+            (int) (fs[5] * 100.0F) + "," + astring + ")",
+            "saved(" + i + "," + ais + ")",
+            "graphics(" + moto + ")"
+        });
     }
 
     static void setloggedcookie()
     {
-        try
-        {
-            File file = new File("" + Madness.fpath + "data/user.data");
-            String[] lines =
-            {
-                "", "", "", "", ""
-            };
-            if (file.exists())
-            {
-                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
-                String line;
-                for (int i = 0; (line = bufferedreader.readLine()) != null && i < 5; i++)
-                {
-                    lines[i] = line;
-                }
-                bufferedreader.close();
-            }
-            if (keplo.getState())
-            {
-                lines[0] = "lastuser(" + tnick.getText() + "," + tpass.getText() + ")";
-            }
-            else
-            {
-                lines[0] = "lastuser(" + tnick.getText() + ")";
-            }
-            BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
-            for (int i = 0; i < 5; i++)
-            {
-                bufferedwriter.write(lines[i]);
-                bufferedwriter.newLine();
-            }
-            bufferedwriter.close();
-        }
-        catch (Exception
-        ignored) {
-
-        }
+        // TODO
     }
 
     private static void setupini()
     {
-        Madness.inisetup = true;
-        try
-        {
-            File file = new File("" + Madness.fpath + "Madness.ini");
-            if (file.exists())
-            {
-                String[] liness = new String[40];
-                int i = 0;
-                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
-                String line;
-                for (; (line = bufferedreader.readLine()) != null && i < 40; i++)
-                {
-                    liness[i] = line;
-                    if (liness[i].StartsWith("Class Path"))
-                        if (liness[i].Contains("madapps.jar"))
-                        {
-                            liness[i] = "Class Path=\\data\\madapps.jar;";
-                        }
-                        else
-                        {
-                            liness[i] = "Class Path=\\data\\madapp.jar;";
-                        }
-                    if (liness[i].StartsWith("JRE Path"))
-                    {
-                        liness[i] = "JRE Path=data\\jre\\";
-                    }
-                }
-                bufferedreader.close();
-                BufferedWriter bufferedwriter = new BufferedWriter(new FileWriter(file));
-                for (int j = 0; j < i; j++)
-                {
-                    bufferedwriter.write(liness[j]);
-                    bufferedwriter.newLine();
-                }
-                bufferedwriter.close();
-            }
-        }
-        catch (Exception
-        ignored) {
-
-        }
-        Madness.inisetup = false;
+        // TODO
     }
 
-    private static void sizescreen(int x, int y) {
-        if (x > gsPanel.getWidth() / 2 - 230 && x < gsPanel.getWidth() / 2 - 68 && y > 21 && y < 39 || onbar)
-        {
-            reqmult = (x - (gsPanel.getWidth() / 2 - 222)) / 141.0F;
-            if (reqmult < 0.1)
-            {
-                reqmult = 0.0F;
-            }
-            if (reqmult > 1.0F)
-            {
-                reqmult = 1.0F;
-            }
-            onbar = true;
-            showsize = 100;
-        }
-    }
+//    private static void sizescreen(int x, int y) {
+//        if (x > gsPanel.getWidth() / 2 - 230 && x < gsPanel.getWidth() / 2 - 68 && y > 21 && y < 39 || onbar)
+//        {
+//            reqmult = (x - (gsPanel.getWidth() / 2 - 222)) / 141.0F;
+//            if (reqmult < 0.1)
+//            {
+//                reqmult = 0.0F;
+//            }
+//            if (reqmult > 1.0F)
+//            {
+//                reqmult = 1.0F;
+//            }
+//            onbar = true;
+//            showsize = 100;
+//        }
+//    }
         
-    public void keyPressed(KeyEvent e)
+    public void keyPressed(Keys key)
     {
         if (!exwist)
         {
             //115 114 99
-            if (e.getKeyCode() == KeyEvent.VK_UP)
+            if (key == Keys.Up)
             {
                 u[0].up = true;
             }
-            if (e.getKeyCode() == KeyEvent.VK_DOWN)
+            if (key == Keys.Down)
             {
                 u[0].down = true;
             }
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+            if (key == Keys.Right)
             {
                 u[0].right = true;
             }
-            if (e.getKeyCode() == KeyEvent.VK_LEFT)
+            if (key == Keys.Left)
             {
                 u[0].left = true;
             }
-            if (e.getKeyCode() == KeyEvent.VK_SPACE)
+            if (key == Keys.Space)
             {
                 u[0].handb = true;
             }
-            if (e.getKeyCode() == KeyEvent.VK_ENTER)
+            if (key == Keys.Enter)
             {
                 u[0].enter = true;
             }
-            if (e.getKeyCode() == KeyEvent.VK_Z)
+            if (key == Keys.Z)
             {
                 u[0].lookback = -1;
             }
-            if (e.getKeyCode() == KeyEvent.VK_X)
+            if (key == Keys.X)
             {
                 u[0].lookback = 1;
             }
-            if (e.getKeyCode() == KeyEvent.VK_M)
+            if (key == Keys.M)
                 u[0].mutem = !u[0].mutem;
-            if (e.getKeyCode() == KeyEvent.VK_N)
+            if (key == Keys.N)
                 u[0].mutes = !u[0].mutes;
-            if (e.getKeyCode() == KeyEvent.VK_A)
+            if (key == Keys.A)
                 u[0].arrace = !u[0].arrace;
-            if (e.getKeyCode() == KeyEvent.VK_S)
+            if (key == Keys.S)
                 u[0].radar = !u[0].radar;
-            if (e.getKeyCode() == KeyEvent.VK_V)
+            if (key == Keys.V)
             {
                 view++;
                 if (view == 3)
@@ -3374,54 +3190,50 @@ namespace Cum
         }
     }
 
-    @Override
-
-    public void keyReleased(KeyEvent e)
+    public void keyReleased(Keys key)
     {
         if (!exwist)
         {
             if (u[0].multion < 2)
             {
-                if (e.getKeyCode() == KeyEvent.VK_UP)
+                if (key == Keys.Up)
                 {
                     u[0].up = false;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_DOWN)
+                if (key == Keys.Down)
                 {
                     u[0].down = false;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+                if (key == Keys.Right)
                 {
                     u[0].right = false;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_LEFT)
+                if (key == Keys.Left)
                 {
                     u[0].left = false;
                 }
-                if (e.getKeyCode() == KeyEvent.VK_SPACE)
+                if (key == Keys.Space)
                 {
                     u[0].handb = false;
                 }
             }
-            if (e.getKeyCode() == 27)
+            if (key == Keys.Escape)
             {
                 u[0].exit = false;
-                if (Madness.fullscreen)
-                {
-                    Madness.exitfullscreen();
-                }
+//                if (Madness.fullscreen)
+//                {
+//                    Madness.exitfullscreen();
+//                }
             }
-            if (e.getKeyCode() == KeyEvent.VK_X || e.getKeyCode() == KeyEvent.VK_Z)
+            if (key == Keys.X || key == Keys.Z)
             {
                 u[0].lookback = 0;
             }
         }
     }
 
-    public void mouseDragged(MouseEvent e)
+    public void mouseDragged(int x, int y)
     {
-        int x = e.getX();
-        int y = e.getY();
         if (!exwist && !lostfcs)
         {
             xm = (int) ((x - apx) / apmult);
@@ -3429,10 +3241,8 @@ namespace Cum
         }
     }
 
-    public void mouseMoved(MouseEvent e)
+    public void mouseMoved(int x, int y)
     {
-        int x = e.getX();
-        int y = e.getY();
         if (!exwist && !lostfcs)
         {
             xm = (int) ((x - apx) / apmult);
@@ -3440,10 +3250,8 @@ namespace Cum
         }
     }
 
-    public void mousePressed(MouseEvent e)
+    public void mousePressed(int x, int y)
     {
-        int x = e.getX();
-        int y = e.getY();
         if (!exwist)
         {
             if (mouses == 0)
@@ -3454,16 +3262,14 @@ namespace Cum
             }
             moused = true;
         }
-        if (!Madness.fullscreen)
-        {
-            sizescreen(x, y);
-        }
+//        if (!Madness.fullscreen)
+//        {
+//            sizescreen(x, y);
+//        }
     }
 
-    public void mouseReleased(MouseEvent e)
+    public void mouseReleased(int x, int y)
     {
-        int x = e.getX();
-        int y = e.getY();
         if (!exwist)
         {
             if (mouses == 11)
@@ -3476,7 +3282,7 @@ namespace Cum
         }
     }
 
-    public void focusGained(FocusEvent e)
+    public void focusGained()
     {
         if (!exwist && lostfcs)
         {
@@ -3484,7 +3290,7 @@ namespace Cum
         }
     }
 
-    public void focusLost(FocusEvent e)
+    public void focusLost()
     {
         if (exwist || lostfcs) return;
         lostfcs = true;
