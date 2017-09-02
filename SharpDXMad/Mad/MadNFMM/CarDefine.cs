@@ -493,7 +493,7 @@ class CarDefine {
                         }
                         dishandle[i2] = i12 / 200.0F;
                     } catch (Exception ignored) {
-
+                        Console.WriteLine(ignored);
                     }
                 }
                 if (line.StartsWith("carmaker(")) {

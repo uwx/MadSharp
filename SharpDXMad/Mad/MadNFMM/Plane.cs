@@ -1050,9 +1050,9 @@ class Plane : IComparable<Plane> {
     }
 
     internal void deltafntyp() {
-        int i = Math.Abs(ox[2] - ox[1]);
-        int i24 = Math.Abs(oy[2] - oy[1]);
-        int i25 = Math.Abs(oz[2] - oz[1]);
+        int i = HMath.SafeAbs(ox[2] - ox[1]);
+        int i24 = HMath.SafeAbs(oy[2] - oy[1]);
+        int i25 = HMath.SafeAbs(oz[2] - oz[1]);
         if (i24 <= i && i24 <= i25) {
             typ = 2;
         }
