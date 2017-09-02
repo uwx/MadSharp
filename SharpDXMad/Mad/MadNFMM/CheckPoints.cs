@@ -79,11 +79,11 @@ class CheckPoints {
         int i = 0;
         for (int i9 = 0; i9 < n - 1; i9++) {
             for (int i10 = i9 + 1; i10 < n; i10++) {
-                if (Math.abs(x[i9] - x[i10]) > i) {
-                    i = Math.abs(x[i9] - x[i10]);
+                if (Math.Abs(x[i9] - x[i10]) > i) {
+                    i = Math.Abs(x[i9] - x[i10]);
                 }
-                if (Math.abs(z[i9] - z[i10]) > i) {
-                    i = Math.abs(z[i9] - z[i10]);
+                if (Math.Abs(z[i9] - z[i10]) > i) {
+                    i = Math.Abs(z[i9] - z[i10]);
                 }
             }
         }

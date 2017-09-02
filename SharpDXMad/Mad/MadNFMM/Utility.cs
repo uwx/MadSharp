@@ -158,11 +158,11 @@ public class Utility {
     private readonly static double EPSILON_DOUBLE = 0.0000001D;
 
     static boolean fEquals(float a, float b) {
-        return Math.abs(a - b) < EPSILON;
+        return Math.Abs(a - b) < EPSILON;
     }
 
     static boolean dEquals(double a, double b) {
-        return Math.abs(a - b) < EPSILON_DOUBLE;
+        return Math.Abs(a - b) < EPSILON_DOUBLE;
     }
 
     /**
@@ -289,8 +289,8 @@ public class Utility {
         int dy = y1 - y2;
         int dz = z1 - z2;
 
-        // We should avoid Math.pow or Math.hypot due to perfomance reasons
-        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+        // We should avoid Math.Pow or Math.Hypot due to perfomance reasons
+        return Math.Sqrt(dx * dx + dy * dy + dz * dz);
     }
 
     public static double getDistance(float x1, float y1, float z1, float x2, float y2, float z2) {
@@ -298,8 +298,8 @@ public class Utility {
         float dy = y1 - y2;
         float dz = z1 - z2;
 
-        // We should avoid Math.pow or Math.hypot due to perfomance reasons
-        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+        // We should avoid Math.Pow or Math.Hypot due to perfomance reasons
+        return Math.Sqrt(dx * dx + dy * dy + dz * dz);
     }
 
     public static class ArrayUtilities {
@@ -331,7 +331,7 @@ public class Utility {
     }
 
     public static int pointDirection(int x, int y, int tX, int tY) {
-        int angle = (int) Math.toDegrees(Math.atan2(tY - y, tX - x));
+        int angle = (int) (Math.Atan2(tY - y, tX - x) * 0.0174532925199433D);
 
         return angle < 0 ? angle + 360 : angle;
     }

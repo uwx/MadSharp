@@ -129,11 +129,11 @@ namespace Cum
             {
                 if (!caught[mad118.im] && (speed != 0.0F || mad118.speed != 0.0F))
                 {
-                    if (Math.abs(power * speed * stat.moment) !=
-                        Math.abs(mad118.power * mad118.speed * mad118.stat.moment))
+                    if (Math.Abs(power * speed * stat.moment) !=
+                        Math.Abs(mad118.power * mad118.speed * mad118.stat.moment))
                     {
-                        dominate[mad118.im] = Math.abs(power * speed * stat.moment) >
-                                              Math.abs(mad118.power * mad118.speed * mad118.stat.moment);
+                        dominate[mad118.im] = Math.Abs(power * speed * stat.moment) >
+                                              Math.Abs(mad118.power * mad118.speed * mad118.stat.moment);
                     }
                     else dominate[mad118.im] = stat.moment > mad118.stat.moment;
                     caught[mad118.im] = true;
@@ -168,7 +168,7 @@ namespace Cum
                         if (rpy(fs[i128], fs122[i129], fs120[i128], fs123[i129], fs121[i128], fs124[i129]) <
                             (i126 + i127) * (mad118.stat.comprad + stat.comprad))
                         {
-                            if (Math.abs(scx[i128] * stat.moment) > Math.abs(mad118.scx[i129] * mad118.stat.moment))
+                            if (Math.Abs(scx[i128] * stat.moment) > Math.Abs(mad118.scx[i129] * mad118.stat.moment))
                             {
                                 float f130 = mad118.scx[i129] * stat.revpush;
                                 if (f130 > 300.0F)
@@ -218,7 +218,7 @@ namespace Cum
                                         2);
                                 }
                             }
-                            if (Math.abs(scz[i128] * stat.moment) > Math.abs(mad118.scz[i129] * mad118.stat.moment))
+                            if (Math.Abs(scz[i128] * stat.moment) > Math.Abs(mad118.scz[i129] * mad118.stat.moment))
                             {
                                 float f132 = mad118.scz[i129] * stat.revpush;
                                 if (f132 > 300.0F)
@@ -310,22 +310,22 @@ namespace Cum
             boolean bool6 = false;
             capsized = false;
             int i7;
-            for (i7 = Math.abs(pzy); i7 > 270; i7 -= 360)
+            for (i7 = Math.Abs(pzy); i7 > 270; i7 -= 360)
             {
 
             }
-            i7 = Math.abs(i7);
+            i7 = Math.Abs(i7);
             if (i7 > 90)
             {
                 abool = true;
             }
             boolean bool8 = false;
             int i9;
-            for (i9 = Math.abs(pxy); i9 > 270; i9 -= 360)
+            for (i9 = Math.Abs(pxy); i9 > 270; i9 -= 360)
             {
 
             }
-            i9 = Math.abs(i9);
+            i9 = Math.Abs(i9);
             if (i9 > 90)
             {
                 bool8 = true;
@@ -567,7 +567,7 @@ namespace Cum
                                 speed = stat.swits[2] / 2 + f15 * stat.swits[2] / 196.0F;
                             }
                         }
-                    if (control.handb && Math.abs(speed) > stat.handb)
+                    if (control.handb && Math.Abs(speed) > stat.handb)
                         if (speed < 0.0F)
                         {
                             speed += stat.handb;
@@ -709,9 +709,9 @@ namespace Cum
                 }
             }
             if (conto.wxz != 0 && !control.left && !control.right)
-                if (Math.abs(speed) < 10.0F)
+                if (Math.Abs(speed) < 10.0F)
                 {
-                    if (Math.abs(conto.wxz) == 1)
+                    if (Math.Abs(conto.wxz) == 1)
                     {
                         conto.wxz = 0;
                     }
@@ -726,7 +726,7 @@ namespace Cum
                 }
                 else
                 {
-                    if (Math.abs(conto.wxz) < stat.turn * 2)
+                    if (Math.Abs(conto.wxz) < stat.turn * 2)
                     {
                         conto.wxz = 0;
                     }
@@ -771,7 +771,7 @@ namespace Cum
             }
             if (speed > 30.0F || speed < -100.0F)
             {
-                while (Math.abs(mxz - cxz) > 180)
+                while (Math.Abs(mxz - cxz) > 180)
                     if (cxz > mxz)
                     {
                         cxz -= 360;
@@ -780,7 +780,7 @@ namespace Cum
                     {
                         cxz += 360;
                     }
-                if (Math.abs(mxz - cxz) < 30)
+                if (Math.Abs(mxz - cxz) < 30)
                 {
                     cxz += (int)((mxz - cxz) / 4.0F);
                 }
@@ -860,9 +860,9 @@ namespace Cum
             for (int i33 = 0; i33 < Trackers.sect[i30,i31].Length; i33++)
             {
                 int i34 = Trackers.sect[i30,i31][i33];
-                if (Math.abs(Trackers.zy[i34]) != 90 && Math.abs(Trackers.xy[i34]) != 90 &&
-                    Math.abs(conto.x - Trackers.x[i34]) < Trackers.radx[i34] &&
-                    Math.abs(conto.z - Trackers.z[i34]) < Trackers.radz[i34] &&
+                if (Math.Abs(Trackers.zy[i34]) != 90 && Math.Abs(Trackers.xy[i34]) != 90 &&
+                    Math.Abs(conto.x - Trackers.x[i34]) < Trackers.radx[i34] &&
+                    Math.Abs(conto.z - Trackers.z[i34]) < Trackers.radz[i34] &&
                     (!Trackers.decor[i34] || Medium.resdown != 2 || xtGraphics.multion != 0))
                 {
                     i32 = Trackers.skd[i34];
@@ -871,10 +871,10 @@ namespace Cum
             if (mtouch)
             {
                 float f35 = stat.grip;
-                f35 -= Math.abs(txz - conto.xz) * speed / 250.0F;
+                f35 -= Math.Abs(txz - conto.xz) * speed / 250.0F;
                 if (control.handb)
                 {
-                    f35 -= Math.abs(txz - conto.xz) * 4;
+                    f35 -= Math.Abs(txz - conto.xz) * 4;
                 }
                 if (f35 < stat.grip)
                 {
@@ -914,7 +914,7 @@ namespace Cum
                         speed += 2.0F;
                     }
                 }
-                if (Math.abs(speed) > drag)
+                if (Math.Abs(speed) > drag)
                 {
                     if (speed > 0.0F)
                     {
@@ -941,7 +941,7 @@ namespace Cum
                 float f40 = 0.0F;
                 for (int i41 = 0; i41 < 4; i41++)
                 {
-                    if (Math.abs(scx[i41] - i36) > f35)
+                    if (Math.Abs(scx[i41] - i36) > f35)
                     {
                         if (scx[i41] < i36)
                         {
@@ -956,7 +956,7 @@ namespace Cum
                     {
                         scx[i41] = i36;
                     }
-                    if (Math.abs(scz[i41] - i37) > f35)
+                    if (Math.Abs(scz[i41] - i37) > f35)
                     {
                         if (scz[i41] < i37)
                         {
@@ -971,7 +971,7 @@ namespace Cum
                     {
                         scz[i41] = i37;
                     }
-                    if (Math.abs(scy[i41] - i38) > f35)
+                    if (Math.Abs(scy[i41] - i38) > f35)
                     {
                         if (scy[i41] < i38)
                         {
@@ -1010,7 +1010,7 @@ namespace Cum
                                 if (im == xtGraphics.im && !capsized)
                                 {
                                     xtPart2.skidf(im, i32,
-                                        (float) Math.sqrt(scx[i41] * scx[i41] + scz[i41] * scz[i41]));
+                                        (float) Math.Sqrt(scx[i41] * scx[i41] + scz[i41] * scz[i41]));
                                 }
                             }
                         }
@@ -1058,8 +1058,8 @@ namespace Cum
                 {
                     i = 1;
                 }
-                d = f40 / Math.sqrt(f39 * f39 + f40 * f40);
-                mxz = (int) (Math.acos(d) / 0.017453292519943295 * i);
+                d = f40 / Math.Sqrt(f39 * f39 + f40 * f40);
+                mxz = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 if (skid == 2)
                 {
                     if (!capsized)
@@ -1068,11 +1068,11 @@ namespace Cum
                         f40 /= 4.0F;
                         if (bool5)
                         {
-                            speed = -((float) Math.sqrt(f39 * f39 + f40 * f40) * Medium.cos(mxz - conto.xz));
+                            speed = -((float) Math.Sqrt(f39 * f39 + f40 * f40) * Medium.cos(mxz - conto.xz));
                         }
                         else
                         {
-                            speed = (float) Math.sqrt(f39 * f39 + f40 * f40) * Medium.cos(mxz - conto.xz);
+                            speed = (float) Math.Sqrt(f39 * f39 + f40 * f40) * Medium.cos(mxz - conto.xz);
                         }
                     }
                     skid = 0;
@@ -1123,7 +1123,7 @@ namespace Cum
                     fs23[i49] = 250.0F;
                     bools47[i49] = true;
                     f48 += fs23[i49] - 250.0F;
-                    float f51 = Math.abs(Medium.sin(pxy)) + Math.abs(Medium.sin(pzy));
+                    float f51 = Math.Abs(Medium.sin(pxy)) + Math.Abs(Medium.sin(pzy));
                     f51 /= 3.0F;
                     if (f51 > 0.4)
                     {
@@ -1134,10 +1134,10 @@ namespace Cum
                     {
                         f51 = 1.1F;
                     }
-                    regy(i49, Math.abs(scy[i49] * f51), conto);
+                    regy(i49, Math.Abs(scy[i49] * f51), conto);
                     if (scy[i49] > 0.0F)
                     {
-                        scy[i49] -= Math.abs(scy[i49] * f51);
+                        scy[i49] -= Math.Abs(scy[i49] * f51);
                     }
                     if (capsized)
                     {
@@ -1216,7 +1216,7 @@ namespace Cum
                                     xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
-                            float f60 = Math.abs(Medium.sin(pxy)) + Math.abs(Medium.sin(pzy));
+                            float f60 = Math.Abs(Medium.sin(pxy)) + Math.Abs(Medium.sin(pzy));
                             f60 /= 3.0F;
                             if (f60 > 0.4)
                             {
@@ -1227,10 +1227,10 @@ namespace Cum
                             {
                                 f60 = 1.1F;
                             }
-                            regy(i58, Math.abs(scy[i58] * f60), conto);
+                            regy(i58, Math.Abs(scy[i58] * f60), conto);
                             if (scy[i58] > 0.0F)
                             {
-                                scy[i58] -= Math.abs(scy[i58] * f60);
+                                scy[i58] -= Math.Abs(scy[i58] * f60);
                             }
                             bools[i58] = true;
                         }
@@ -1259,7 +1259,7 @@ namespace Cum
                                     xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
-                            float f62 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
+                            float f62 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
                             f62 /= 4.0F;
                             if (f62 > 0.3)
                             {
@@ -1274,8 +1274,8 @@ namespace Cum
                             {
                                 f62 = 1.1F;
                             }
-                            regz(i58, Math.abs(scz[i58] * f62 * Trackers.dam[i55]), conto);
-                            scz[i58] += Math.abs(scz[i58] * f62);
+                            regz(i58, Math.Abs(scz[i58] * f62 * Trackers.dam[i55]), conto);
+                            scz[i58] += Math.Abs(scz[i58] * f62);
                             skid = 2;
                             bool6 = true;
                             bools[i58] = true;
@@ -1309,7 +1309,7 @@ namespace Cum
                                     xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
-                            float f64 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
+                            float f64 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
                             f64 /= 4.0F;
                             if (f64 > 0.3)
                             {
@@ -1324,8 +1324,8 @@ namespace Cum
                             {
                                 f64 = 1.1F;
                             }
-                            regz(i58, -Math.abs(scz[i58] * f64 * Trackers.dam[i55]), conto);
-                            scz[i58] -= Math.abs(scz[i58] * f64);
+                            regz(i58, -Math.Abs(scz[i58] * f64 * Trackers.dam[i55]), conto);
+                            scz[i58] -= Math.Abs(scz[i58] * f64);
                             skid = 2;
                             bool6 = true;
                             bools[i58] = true;
@@ -1359,7 +1359,7 @@ namespace Cum
                                     xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
-                            float f66 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
+                            float f66 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
                             f66 /= 4.0F;
                             if (f66 > 0.3)
                             {
@@ -1374,8 +1374,8 @@ namespace Cum
                             {
                                 f66 = 1.1F;
                             }
-                            regx(i58, Math.abs(scx[i58] * f66 * Trackers.dam[i55]), conto);
-                            scx[i58] += Math.abs(scx[i58] * f66);
+                            regx(i58, Math.Abs(scx[i58] * f66 * Trackers.dam[i55]), conto);
+                            scx[i58] += Math.Abs(scx[i58] * f66);
                             skid = 2;
                             bool6 = true;
                             bools[i58] = true;
@@ -1409,7 +1409,7 @@ namespace Cum
                                     xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
                                 }
                             }
-                            float f68 = Math.abs(Medium.cos(pxy)) + Math.abs(Medium.cos(pzy));
+                            float f68 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
                             f68 /= 4.0F;
                             if (f68 > 0.3)
                             {
@@ -1424,8 +1424,8 @@ namespace Cum
                             {
                                 f68 = 1.1F;
                             }
-                            regx(i58, -Math.abs(scx[i58] * f68 * Trackers.dam[i55]), conto);
-                            scx[i58] -= Math.abs(scx[i58] * f68);
+                            regx(i58, -Math.Abs(scx[i58] * f68 * Trackers.dam[i55]), conto);
+                            scx[i58] -= Math.Abs(scx[i58] * f68);
                             skid = 2;
                             bool6 = true;
                             bools[i58] = true;
@@ -1437,7 +1437,7 @@ namespace Cum
                         if (Trackers.zy[i55] != 0 && Trackers.zy[i55] != 90 && Trackers.zy[i55] != -90)
                         {
                             int i69 = 90 + Trackers.zy[i55];
-                            float f70 = 1.0F + (50 - Math.abs(Trackers.zy[i55])) / 30.0F;
+                            float f70 = 1.0F + (50 - Math.Abs(Trackers.zy[i55])) / 30.0F;
                             if (f70 < 1.0F)
                             {
                                 f70 = 1.0F;
@@ -1491,7 +1491,7 @@ namespace Cum
                         if (Trackers.xy[i55] != 0 && Trackers.xy[i55] != 90 && Trackers.xy[i55] != -90)
                         {
                             int i74 = 90 + Trackers.xy[i55];
-                            float f75 = 1.0F + (50 - Math.abs(Trackers.xy[i55])) / 30.0F;
+                            float f75 = 1.0F + (50 - Math.Abs(Trackers.xy[i55])) / 30.0F;
                             if (f75 < 1.0F)
                             {
                                 f75 = 1.0F;
@@ -1582,15 +1582,15 @@ namespace Cum
                 {
                     i = 1;
                 }
-                d = Math.sqrt((fs22[0] - fs22[2]) * (fs22[0] - fs22[2]) + (fs23[0] - fs23[2]) * (fs23[0] - fs23[2]) +
-                              (fs[0] - fs[2]) * (fs[0] - fs[2])) / (Math.abs(conto.keyz[0]) + Math.abs(conto.keyz[2]));
+                d = Math.Sqrt((fs22[0] - fs22[2]) * (fs22[0] - fs22[2]) + (fs23[0] - fs23[2]) * (fs23[0] - fs23[2]) +
+                              (fs[0] - fs[2]) * (fs[0] - fs[2])) / (Math.Abs(conto.keyz[0]) + Math.Abs(conto.keyz[2]));
                 if (d >= 0.9998)
                 {
                     i81 = i;
                 }
                 else
                 {
-                    i81 = (int) (Math.acos(d) / 0.017453292519943295 * i);
+                    i81 = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 }
             }
             if (scy[3] != scy[1])
@@ -1603,15 +1603,15 @@ namespace Cum
                 {
                     i = 1;
                 }
-                d = Math.sqrt((fs22[1] - fs22[3]) * (fs22[1] - fs22[3]) + (fs23[1] - fs23[3]) * (fs23[1] - fs23[3]) +
-                              (fs[1] - fs[3]) * (fs[1] - fs[3])) / (Math.abs(conto.keyz[1]) + Math.abs(conto.keyz[3]));
+                d = Math.Sqrt((fs22[1] - fs22[3]) * (fs22[1] - fs22[3]) + (fs23[1] - fs23[3]) * (fs23[1] - fs23[3]) +
+                              (fs[1] - fs[3]) * (fs[1] - fs[3])) / (Math.Abs(conto.keyz[1]) + Math.Abs(conto.keyz[3]));
                 if (d >= 0.9998)
                 {
                     i82 = i;
                 }
                 else
                 {
-                    i82 = (int) (Math.acos(d) / 0.017453292519943295 * i);
+                    i82 = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 }
             }
             if (scy[1] != scy[0])
@@ -1624,15 +1624,15 @@ namespace Cum
                 {
                     i = 1;
                 }
-                d = Math.sqrt((fs22[0] - fs22[1]) * (fs22[0] - fs22[1]) + (fs23[0] - fs23[1]) * (fs23[0] - fs23[1]) +
-                              (fs[0] - fs[1]) * (fs[0] - fs[1])) / (Math.abs(conto.keyx[0]) + Math.abs(conto.keyx[1]));
+                d = Math.Sqrt((fs22[0] - fs22[1]) * (fs22[0] - fs22[1]) + (fs23[0] - fs23[1]) * (fs23[0] - fs23[1]) +
+                              (fs[0] - fs[1]) * (fs[0] - fs[1])) / (Math.Abs(conto.keyx[0]) + Math.Abs(conto.keyx[1]));
                 if (d >= 0.9998)
                 {
                     i83 = i;
                 }
                 else
                 {
-                    i83 = (int) (Math.acos(d) / 0.017453292519943295 * i);
+                    i83 = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 }
             }
             if (scy[3] != scy[2])
@@ -1645,25 +1645,25 @@ namespace Cum
                 {
                     i = 1;
                 }
-                d = Math.sqrt((fs22[2] - fs22[3]) * (fs22[2] - fs22[3]) + (fs23[2] - fs23[3]) * (fs23[2] - fs23[3]) +
-                              (fs[2] - fs[3]) * (fs[2] - fs[3])) / (Math.abs(conto.keyx[2]) + Math.abs(conto.keyx[3]));
+                d = Math.Sqrt((fs22[2] - fs22[3]) * (fs22[2] - fs22[3]) + (fs23[2] - fs23[3]) * (fs23[2] - fs23[3]) +
+                              (fs[2] - fs[3]) * (fs[2] - fs[3])) / (Math.Abs(conto.keyx[2]) + Math.Abs(conto.keyx[3]));
                 if (d >= 0.9998)
                 {
                     i84 = i;
                 }
                 else
                 {
-                    i84 = (int) (Math.acos(d) / 0.017453292519943295 * i);
+                    i84 = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 }
             }
             if (bool6)
             {
                 int i85;
-                for (i85 = Math.abs(conto.xz + 45); i85 > 180; i85 -= 360)
+                for (i85 = Math.Abs(conto.xz + 45); i85 > 180; i85 -= 360)
                 {
 
                 }
-                if (Math.abs(i85) > 90)
+                if (Math.Abs(i85) > 90)
                 {
                     pmlt = 1;
                 }
@@ -1671,11 +1671,11 @@ namespace Cum
                 {
                     pmlt = -1;
                 }
-                for (i85 = Math.abs(conto.xz - 45); i85 > 180; i85 -= 360)
+                for (i85 = Math.Abs(conto.xz - 45); i85 > 180; i85 -= 360)
                 {
 
                 }
-                if (Math.abs(i85) > 90)
+                if (Math.Abs(i85) > 90)
                 {
                     nmlt = 1;
                 }
@@ -1686,11 +1686,11 @@ namespace Cum
             }
             conto.xz += (int)(forca * (scz[0] * nmlt - scz[1] * pmlt + scz[2] * pmlt - scz[3] * nmlt + scx[0] * pmlt +
                                  scx[1] * nmlt - scx[2] * nmlt - scx[3] * pmlt));
-            if (Math.abs(i82) > Math.abs(i81))
+            if (Math.Abs(i82) > Math.Abs(i81))
             {
                 i81 = i82;
             }
-            if (Math.abs(i84) > Math.abs(i83))
+            if (Math.Abs(i84) > Math.Abs(i83))
             {
                 i83 = i84;
             }
@@ -1806,9 +1806,9 @@ namespace Cum
                               i * conto.keyz[3] * Medium.cos(conto.xz) - conto.keyx[3] * Medium.sin(conto.xz)) / 4.0F +
                              i10 * Medium.sin(pxy) * Medium.sin(conto.xz) -
                              i10 * Medium.sin(pzy) * Medium.cos(conto.xz) + f11);
-            if (Math.abs(speed) > 10.0F || !mtouch)
+            if (Math.Abs(speed) > 10.0F || !mtouch)
             {
-                if (Math.abs(pxy - conto.xy) >= 4)
+                if (Math.Abs(pxy - conto.xy) >= 4)
                 {
                     if (pxy > conto.xy)
                     {
@@ -1823,7 +1823,7 @@ namespace Cum
                 {
                     conto.xy = pxy;
                 }
-                if (Math.abs(pzy - conto.zy) >= 4)
+                if (Math.Abs(pzy - conto.zy) >= 4)
                 {
                     if (pzy > conto.zy)
                     {
@@ -1850,7 +1850,7 @@ namespace Cum
                 {
                     tilt -= 0.4f;
                 }
-                else if (Math.abs(tilt) > 3.0 * (stat.bounce - 0.4))
+                else if (Math.Abs(tilt) > 3.0 * (stat.bounce - 0.4))
                 {
                     if (tilt > 0.0F)
                     {
@@ -1941,10 +1941,10 @@ namespace Cum
                         {
                             i4 = 1;
                         }
-                        if (Math.abs(conto.z - CheckPoints.z[i92]) <
-                            60.0F + Math.abs(scz[0] + scz[1] + scz[2] + scz[3]) / 4.0F &&
-                            Math.abs(conto.x - CheckPoints.x[i92]) < 700 &&
-                            Math.abs(conto.y - CheckPoints.y[i92] + 350) < 450 &&
+                        if (Math.Abs(conto.z - CheckPoints.z[i92]) <
+                            60.0F + Math.Abs(scz[0] + scz[1] + scz[2] + scz[3]) / 4.0F &&
+                            Math.Abs(conto.x - CheckPoints.x[i92]) < 700 &&
+                            Math.Abs(conto.y - CheckPoints.y[i92] + 350) < 450 &&
                             clear == i91 + nlaps * CheckPoints.nsp - 1)
                         {
                             clear = i91 + nlaps * CheckPoints.nsp;
@@ -1958,10 +1958,10 @@ namespace Cum
                         {
                             i4 = 1;
                         }
-                        if (Math.abs(conto.x - CheckPoints.x[i92]) <
-                            60.0F + Math.abs(scx[0] + scx[1] + scx[2] + scx[3]) / 4.0F &&
-                            Math.abs(conto.z - CheckPoints.z[i92]) < 700 &&
-                            Math.abs(conto.y - CheckPoints.y[i92] + 350) < 450 &&
+                        if (Math.Abs(conto.x - CheckPoints.x[i92]) <
+                            60.0F + Math.Abs(scx[0] + scx[1] + scx[2] + scx[3]) / 4.0F &&
+                            Math.Abs(conto.z - CheckPoints.z[i92]) < 700 &&
+                            Math.Abs(conto.y - CheckPoints.y[i92] + 350) < 450 &&
                             clear == i91 + nlaps * CheckPoints.nsp - 1)
                         {
                             clear = i91 + nlaps * CheckPoints.nsp;
@@ -2063,17 +2063,17 @@ namespace Cum
                 i89 = focus;
                 if (im == xtGraphics.im)
                 {
-                    if (missedcp == 0 && mtouch && Math.sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
+                    if (missedcp == 0 && mtouch && Math.Sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
                             CheckPoints.z[focus] / 10)) > 800.0)
                     {
                         missedcp = 1;
                     }
-                    if (missedcp == -2 && Math.sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
+                    if (missedcp == -2 && Math.Sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
                             CheckPoints.z[focus] / 10)) < 400.0)
                     {
                         missedcp = 0;
                     }
-                    if (missedcp != 0 && mtouch && Math.sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
+                    if (missedcp != 0 && mtouch && Math.Sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
                             CheckPoints.z[focus] / 10)) < 250.0)
                     {
                         missedcp = 68;
@@ -2101,7 +2101,7 @@ namespace Cum
                     for (int i93 = 0; i93 < CheckPoints.fn; i93++)
                         if (!CheckPoints.roted[i93])
                         {
-                            if (Math.abs(conto.z - CheckPoints.fz[i93]) < 200 && py(conto.x / 100,
+                            if (Math.Abs(conto.z - CheckPoints.fz[i93]) < 200 && py(conto.x / 100,
                                     CheckPoints.fx[i93] / 100, conto.y / 100, CheckPoints.fy[i93] / 100) < 30)
                             {
                                 if (conto.dist == 0)
@@ -2119,7 +2119,7 @@ namespace Cum
                                 Record.fix[im] = 300;
                             }
                         }
-                        else if (Math.abs(conto.x - CheckPoints.fx[i93]) < 200 && py(conto.z / 100,
+                        else if (Math.Abs(conto.x - CheckPoints.fx[i93]) < 200 && py(conto.z / 100,
                                      CheckPoints.fz[i93] / 100, conto.y / 100, CheckPoints.fy[i93] / 100) < 30)
                         {
                             if (conto.dist == 0)
@@ -2179,7 +2179,7 @@ namespace Cum
                 if (loop == 2 || loop == -1)
                 {
                     travxy += (int)(rcomp - lcomp);
-                    if (Math.abs(travxy) > 135)
+                    if (Math.Abs(travxy) > 135)
                     {
                         rtab = true;
                     }
@@ -2220,17 +2220,17 @@ namespace Cum
                         if (trcnt == 9)
                         {
                             powerup = 0.0F;
-                            if (Math.abs(travxy) > 90)
+                            if (Math.Abs(travxy) > 90)
                             {
-                                powerup += Math.abs(travxy) / 24.0F;
+                                powerup += Math.Abs(travxy) / 24.0F;
                             }
                             else if (rtab)
                             {
                                 powerup += 30.0F;
                             }
-                            if (Math.abs(travzy) > 90)
+                            if (Math.Abs(travzy) > 90)
                             {
-                                powerup += Math.abs(travzy) / 18.0F;
+                                powerup += Math.Abs(travzy) / 18.0F;
                             }
                             else
                             {
@@ -2243,9 +2243,9 @@ namespace Cum
                                     powerup += 40.0F;
                                 }
                             }
-                            if (Math.abs(travxz) > 90)
+                            if (Math.Abs(travxz) > 90)
                             {
-                                powerup += Math.abs(travxz) / 18.0F;
+                                powerup += Math.Abs(travxz) / 18.0F;
                             }
                             if (surfer)
                             {
@@ -2314,7 +2314,7 @@ namespace Cum
                     {
                         int i95 = 0;
                         for (int i96 = 0; i96 < 4; i96++)
-                            if (Math.abs(scz[i96]) < 70.0F && Math.abs(scx[i96]) < 70.0F)
+                            if (Math.Abs(scz[i96]) < 70.0F && Math.Abs(scx[i96]) < 70.0F)
                             {
                                 i95++;
                             }
@@ -2414,7 +2414,7 @@ namespace Cum
                 abool = true;
             }
             f *= stat.dammult;
-            if (Math.abs(f) > 100.0F)
+            if (Math.Abs(f) > 100.0F)
             {
                 Record.recx(i, f, im);
                 if (f > 100.0F)
@@ -2425,7 +2425,7 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
+                shakedam = (int) ((Math.Abs(f) + shakedam) / 2.0F);
                 if (im == xtGraphics.im || colidim)
                 {
                     xtGraphics.acrash(im, f, 0);
@@ -2442,13 +2442,13 @@ namespace Cum
                             conto.p[i111].ox[i113] += (int)(f112 * Medium.cos(conto.xz) * Medium.cos(conto.xy));
                             if (abool)
                             {
-                                hitmag += (int)Math.abs(f112);
-                                i110 += (int)Math.abs(f112);
+                                hitmag += (int)Math.Abs(f112);
+                                i110 += (int)Math.Abs(f112);
                             }
                         }
                     if (f112 != 0.0F)
                     {
-                        if (Math.abs(f112) >= 1.0F)
+                        if (Math.Abs(f112) >= 1.0F)
                         {
                             conto.p[i111].chip = 1;
                             conto.p[i111].ctmag = f112;
@@ -2483,7 +2483,7 @@ namespace Cum
                             {
                                 conto.p[i111].hsb[0] = 0.05F;
                             }
-                            conto.p[i111].bfase += (int)Math.abs(f112);
+                            conto.p[i111].bfase += (int)Math.Abs(f112);
                             new Color(conto.p[i111].c[0], conto.p[i111].c[1], conto.p[i111].c[2]);
                             Color color = Color.getHSBColor(conto.p[i111].hsb[0], conto.p[i111].hsb[1],
                                 conto.p[i111].hsb[2]);
@@ -2493,7 +2493,7 @@ namespace Cum
                         }
                         if (conto.p[i111].glass == 1)
                         {
-                            conto.p[i111].gr += (int)Math.abs(f112 * 1.5);
+                            conto.p[i111].gr += (int)Math.Abs(f112 * 1.5);
                         }
                     }
                 }
@@ -2559,7 +2559,7 @@ namespace Cum
                 }
                 if (i99 * i98 == 0)
                 {
-                    shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
+                    shakedam = (int) ((Math.Abs(f) + shakedam) / 2.0F);
                 }
                 if (im == xtGraphics.im || colidim)
                 {
@@ -2579,13 +2579,13 @@ namespace Cum
                                 conto.p[i102].ox[i104] -= (int)(f103 * Medium.sin(i101));
                                 if (abool)
                                 {
-                                    hitmag += (int)Math.abs(f103);
-                                    i97 += (int)Math.abs(f103);
+                                    hitmag += (int)Math.Abs(f103);
+                                    i97 += (int)Math.Abs(f103);
                                 }
                             }
                         if (f103 != 0.0F)
                         {
-                            if (Math.abs(f103) >= 1.0F)
+                            if (Math.Abs(f103) >= 1.0F)
                             {
                                 conto.p[i102].chip = 1;
                                 conto.p[i102].ctmag = f103;
@@ -2630,7 +2630,7 @@ namespace Cum
                             }
                             if (conto.p[i102].glass == 1)
                             {
-                                conto.p[i102].gr += (int)Math.abs(f103 * 1.5);
+                                conto.p[i102].gr += (int)Math.Abs(f103 * 1.5);
                             }
                         }
                     }
@@ -2647,7 +2647,7 @@ namespace Cum
                                 if (conto.p[i107].wz == 0)
                                 {
                                     f108 = f / 15.0F * Medium.random();
-                                    if ((Math.abs(conto.p[i107].oy[i109] - stat.flipy - squash) < stat.msquash * 3 ||
+                                    if ((Math.Abs(conto.p[i107].oy[i109] - stat.flipy - squash) < stat.msquash * 3 ||
                                          conto.p[i107].oy[i109] < stat.flipy + squash) && squash < stat.msquash)
                                     {
                                         conto.p[i107].oy[i109] += (int)f108;
@@ -2655,8 +2655,8 @@ namespace Cum
                                         i106++;
                                         if (abool)
                                         {
-                                            hitmag += (int)Math.abs(f108);
-                                            i97 += (int)Math.abs(f108);
+                                            hitmag += (int)Math.Abs(f108);
+                                            i97 += (int)Math.Abs(f108);
                                         }
                                     }
                                 }
@@ -2668,7 +2668,7 @@ namespace Cum
                             {
                                 conto.p[i107].bfase += (int)f108;
                             }
-                            if (Math.abs(f108) >= 1.0F)
+                            if (Math.Abs(f108) >= 1.0F)
                             {
                                 conto.p[i107].chip = 1;
                                 conto.p[i107].ctmag = f108;
@@ -2701,7 +2701,7 @@ namespace Cum
                 abool = true;
             }
             f *= stat.dammult;
-            if (Math.abs(f) > 100.0F)
+            if (Math.Abs(f) > 100.0F)
             {
                 Record.recz(i, f, im);
                 if (f > 100.0F)
@@ -2712,7 +2712,7 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                shakedam = (int) ((Math.abs(f) + shakedam) / 2.0F);
+                shakedam = (int) ((Math.Abs(f) + shakedam) / 2.0F);
                 if (im == xtGraphics.im || colidim)
                 {
                     xtGraphics.acrash(im, f, 0);
@@ -2729,13 +2729,13 @@ namespace Cum
                             conto.p[i115].ox[i117] += (int)(f116 * Medium.sin(conto.xz) * Medium.cos(conto.xy));
                             if (abool)
                             {
-                                hitmag += (int)Math.abs(f116);
-                                i114 += (int)Math.abs(f116);
+                                hitmag += (int)Math.Abs(f116);
+                                i114 += (int)Math.Abs(f116);
                             }
                         }
                     if (f116 != 0.0F)
                     {
-                        if (Math.abs(f116) >= 1.0F)
+                        if (Math.Abs(f116) >= 1.0F)
                         {
                             conto.p[i115].chip = 1;
                             conto.p[i115].ctmag = f116;
@@ -2770,7 +2770,7 @@ namespace Cum
                             {
                                 conto.p[i115].hsb[0] = 0.05F;
                             }
-                            conto.p[i115].bfase += (int)Math.abs(f116);
+                            conto.p[i115].bfase += (int)Math.Abs(f116);
                             new Color(conto.p[i115].c[0], conto.p[i115].c[1], conto.p[i115].c[2]);
                             Color color = Color.getHSBColor(conto.p[i115].hsb[0], conto.p[i115].hsb[1],
                                 conto.p[i115].hsb[2]);
@@ -2780,7 +2780,7 @@ namespace Cum
                         }
                         if (conto.p[i115].glass == 1)
                         {
-                            conto.p[i115].gr += (int)Math.abs(f116 * 1.5);
+                            conto.p[i115].gr += (int)Math.Abs(f116 * 1.5);
                         }
                     }
                 }
@@ -2806,10 +2806,10 @@ namespace Cum
                 scx[i1] = 0.0F;
                 scz[i1] = 0.0F;
             }
-            forca = ((float) Math.sqrt(conto.keyz[0] * conto.keyz[0] + conto.keyx[0] * conto.keyx[0]) +
-                     (float) Math.sqrt(conto.keyz[1] * conto.keyz[1] + conto.keyx[1] * conto.keyx[1]) +
-                     (float) Math.sqrt(conto.keyz[2] * conto.keyz[2] + conto.keyx[2] * conto.keyx[2]) +
-                     (float) Math.sqrt(conto.keyz[3] * conto.keyz[3] + conto.keyx[3] * conto.keyx[3])) / 10000.0F *
+            forca = ((float) Math.Sqrt(conto.keyz[0] * conto.keyz[0] + conto.keyx[0] * conto.keyx[0]) +
+                     (float) Math.Sqrt(conto.keyz[1] * conto.keyz[1] + conto.keyx[1] * conto.keyx[1]) +
+                     (float) Math.Sqrt(conto.keyz[2] * conto.keyz[2] + conto.keyx[2] * conto.keyx[2]) +
+                     (float) Math.Sqrt(conto.keyz[3] * conto.keyz[3] + conto.keyx[3] * conto.keyx[3])) / 10000.0F *
                     (float) (stat.bounce - 0.3);
             mtouch = false;
             wtouch = false;

@@ -1,0 +1,86 @@
+{
+  "menus": {
+    "Roads": {
+      "NormalRoad": "0",
+      "NormalRoad Turn": "4",
+      "NormalRoad End": "13",
+      "NormalRoad TwistedLeft": "3",
+      "NormalRoad TwistedRight": "2",
+      "NormalRoad Edged": "1",
+      "NormalRoad-Raised Ramp": "35",
+      "NormalRoad Raised": "36",
+      "Normal-Off-Road Blend": "10",
+      "OffRoad": "5",
+      "OffRoad Turn": "7",
+      "OffRoad End": "14",
+      "OffRoad BumpyGreen": "6",
+      "OffRoad-BumpySides Start": "34",
+      "OffRoad BumpySides": "33",
+      "Off-Halfpipe-Road Blend": "11",
+      "HalfpipeRoad": "8",
+      "HalfpipeRoad Turn": "9",
+      "HalfpipeRoad-Ramp Filler": "15",
+      "Halfpipe-Normal-Road Blend": "12",
+      "Rollercoaster Start/End": "46",
+      "Rollercoaster Road1": "47",
+      "Rollercoaster Road2": "50",
+      "Rollercoaster Road3": "48",
+      "Rollercoaster Road4": "49",
+      "Rollercoaster Road5": "51"
+    },
+    "Ramps": {
+      "Basic Ramp": "16",
+      "Two-Way Ramp": "18",
+      "Two-Way High-Low Ramp": "19",
+      "Small Ramp": "22",
+      "Crash Ramp": "17",
+      "Big-Takeoff Ramp": "21",
+      "Landing Ramp": "20",
+      "Tunnel Side Ramp": "39",
+      "Speed Ramp": "42",
+      "Launch Pad Ramp": "40",
+      "Offroad Bump Ramp": "23",
+      "Offroad Ramp": "25",
+      "Offroad Big Ramp": "24",
+      "Offroad Hill Ramp": "43",
+      "Offroad Big Hill Ramp": "45",
+      "Halfpipe": "26"
+    },
+    "Obstacles": {
+      "Spiky Pillars": "27",
+      "Rail Doorway": "28",
+      "The Net": "41",
+      "Bump Slide": "44",
+      "Offroad Dirt-Pile 1": "52",
+      "Offroad Dirt-Pile 2": "53"
+    },
+    "Checkpoints": {
+      "Checkpoint": "30",
+      "Offroad Checkpoint": "32",
+      "Flying Checkpoint": "54"
+    },
+    "Trees": {
+      "Tree 1": "55",
+      "Tree 2": "56",
+      "Tree 3": "57",
+      "Tree 4": "58",
+      "Tree 5": "59",
+      "Palm Tree 1": "60",
+      "Palm Tree 2": "61",
+      "Palm Tree 3": "62",
+      "Cactus 1": "63",
+      "Cactus 2": "64",
+      "Cactus 3": "65",
+      "<Unknown>": "66"
+    },
+    "Unsorted": {
+      "Placeholder item": "0"
+    },
+    "Fix Hoop": {
+      "Fix Hoop": "31"
+    },
+    "Ground Pile": {
+      "Placeholder item (do not edit)": "0"
+    }
+  }
+}

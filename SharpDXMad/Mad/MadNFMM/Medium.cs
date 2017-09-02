@@ -1,3 +1,4 @@
+using System;
 using MadGame;
 using boolean = System.Boolean;
 
@@ -141,10 +142,10 @@ public class Medium {
 
     static Medium() {
         for (int i = 0; i < 360; i++) {
-            tcos[i] = (float) Math.cos(i * 0.017453292519943295);
+            tcos[i] = (float) Math.Cos(i * 0.017453292519943295);
         }
         for (int i = 0; i < 360; i++) {
-            tsin[i] = (float) Math.sin(i * 0.017453292519943295);
+            tsin[i] = (float) Math.Sin(i * 0.017453292519943295);
         }
     }
 
@@ -224,8 +225,8 @@ public class Medium {
         if (conto.y - i5 - cy < 0) {
             i4 = -180;
         }
-        int i6 = (int) Math.sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
-        int i7 = (int) (90 + i4 - Math.atan((double) i6 / (double) (conto.y - i5 - cy)) / 0.017453292519943295);
+        int i6 = (int) Math.Sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
+        int i7 = (int) (90 + i4 - Math.Atan((double) i6 / (double) (conto.y - i5 - cy)) / 0.017453292519943295);
         xz = -vxz + 90;
         if (abool) {
             i7 -= 15;
@@ -270,7 +271,7 @@ public class Medium {
             vxz += 3;
         } else {
             focusPoint = (int) (400.0F * fo);
-            if (Math.abs(fo - gofo) > 0.005) {
+            if (Math.Abs(fo - gofo) > 0.005) {
                 if (fo < gofo) {
                     fo += 0.005F;
                 } else {
@@ -299,7 +300,7 @@ public class Medium {
         xz = -vxz - 90;
         if (-y - cy < 0) {
         }
-        Math.sqrt((trz - z + cz) * (trz - z + cz) + (trx - x - cx) * (trx - x - cx));
+        Math.Sqrt((trz - z + cz) * (trz - z + cz) + (trx - x - cx) * (trx - x - cx));
         cpflik = !cpflik;
     }
 
@@ -377,8 +378,8 @@ public class Medium {
                 }
             }
             if (is223[0] < h && is223[1] > ih) {
-                G.setColor(new Color(i, i224, i225));
-                G.fillPolygon(ais, is223, 4);
+                G.SetColor(new Color(i, i224, i225));
+                G.FillPolygon(ais, is223, 4);
             }
         }
         if (lightn != -1 && lton) {
@@ -458,8 +459,8 @@ public class Medium {
                 i235 = i225;
             }
             if (is223[0] > ih && is223[1] < h) {
-                G.setColor(new Color(i, i224, i225));
-                G.fillPolygon(ais, is223, 4);
+                G.SetColor(new Color(i, i224, i225));
+                G.FillPolygon(ais, is223, 4);
             }
         }
         ais[0] = iw;
@@ -471,7 +472,7 @@ public class Medium {
         ais[3] = w;
         is223[3] = i238;
         if (is223[0] < h && is223[1] > ih) {
-            float f = (Math.abs(y) - 250.0F) / (fade[0] * 2);
+            float f = (Math.Abs(y) - 250.0F) / (fade[0] * 2);
             if (f < 0.0F) {
                 f = 0.0F;
             }
@@ -481,8 +482,8 @@ public class Medium {
             i = (int) ((i * (1.0F - f) + i226 * (1.0F + f)) / 2.0F);
             i224 = (int) ((i224 * (1.0F - f) + i227 * (1.0F + f)) / 2.0F);
             i225 = (int) ((i225 * (1.0F - f) + i228 * (1.0F + f)) / 2.0F);
-            G.setColor(new Color(i, i224, i225));
-            G.fillPolygon(ais, is223, 4);
+            G.SetColor(new Color(i, i224, i225));
+            G.FillPolygon(ais, is223, 4);
         }
         if (resdown != 2) {
             for (int i242 = 1; i242 < 20; i242++) {
@@ -515,8 +516,8 @@ public class Medium {
                 i234 = (int) (i234 * 0.991);
                 i235 = (int) (i235 * 0.998);
                 if (is223[1] > ih && is223[0] < h) {
-                    G.setColor(new Color(i233, i234, i235));
-                    G.fillPolygon(ais, is223, 4);
+                    G.SetColor(new Color(i233, i234, i235));
+                    G.FillPolygon(ais, is223, 4);
                 }
             }
             if (lightson) {
@@ -630,7 +631,7 @@ public class Medium {
                         i128 /= 6;
                         i127 /= 6;
                         i129 /= 6;
-                        int i133 = (int) Math.sqrt((cy - i127) * (cy - i127) + (cx - i128) * (cx - i128) + i129 * i129);
+                        int i133 = (int) Math.Sqrt((cy - i127) * (cy - i127) + (cx - i128) * (cx - i128) + i129 * i129);
                         if (i133 < fade[7]) {
                             int i134 = clc[i,1,i122 / 2,0];
                             int i135 = clc[i,1,i122 / 2,1];
@@ -641,8 +642,8 @@ public class Medium {
                                     i135 = (i135 * fogd + cfade[1]) / (fogd + 1);
                                     i136 = (i136 * fogd + cfade[2]) / (fogd + 1);
                                 }
-                            G.setColor(new Color(i134, i135, i136));
-                            G.fillPolygon(is111, is112, 6);
+                            G.SetColor(new Color(i134, i135, i136));
+                            G.FillPolygon(is111, is112, 6);
                         }
                     }
                 }
@@ -716,7 +717,7 @@ public class Medium {
                         i144 /= 6;
                         i143 /= 6;
                         i145 /= 6;
-                        int i149 = (int) Math.sqrt((cy - i143) * (cy - i143) + (cx - i144) * (cx - i144) + i145 * i145);
+                        int i149 = (int) Math.Sqrt((cy - i143) * (cy - i143) + (cx - i144) * (cx - i144) + i145 * i145);
                         if (i149 < fade[7]) {
                             int i150 = clc[i,0,i138 / 2,0];
                             int i151 = clc[i,0,i138 / 2,1];
@@ -727,8 +728,8 @@ public class Medium {
                                     i151 = (i151 * fogd + cfade[1]) / (fogd + 1);
                                     i152 = (i152 * fogd + cfade[2]) / (fogd + 1);
                                 }
-                            G.setColor(new Color(i150, i151, i152));
-                            G.fillPolygon(is111, is112, 6);
+                            G.SetColor(new Color(i150, i151, i152));
+                            G.FillPolygon(is111, is112, 6);
                         }
                     }
                 }
@@ -766,7 +767,7 @@ public class Medium {
                     i159 /= 12;
                     i158 /= 12;
                     i160 /= 12;
-                    int i162 = (int) Math.sqrt((cy - i158) * (cy - i158) + (cx - i159) * (cx - i159) + i160 * i160);
+                    int i162 = (int) Math.Sqrt((cy - i158) * (cy - i158) + (cx - i159) * (cx - i159) + i160 * i160);
                     if (i162 < fade[7]) {
                         int i163 = clds[0];
                         int i164 = clds[1];
@@ -777,8 +778,8 @@ public class Medium {
                                 i164 = (i164 * fogd + cfade[1]) / (fogd + 1);
                                 i165 = (i165 * fogd + cfade[2]) / (fogd + 1);
                             }
-                        G.setColor(new Color(i163, i164, i165));
-                        G.fillPolygon(is111, is112, 12);
+                        G.SetColor(new Color(i163, i164, i165));
+                        G.FillPolygon(is111, is112, 12);
                     }
                 }
             }
@@ -803,7 +804,7 @@ public class Medium {
                     is192[i194] = mty[i185][i194] - y / 30;
                     is193[i194] = mtz[i185][i194] - z / 30;
                 }
-                int i195 = (int) Math.sqrt(ais[nmv[i185] / 4] * ais[nmv[i185] / 4] + is193[nmv[i185] / 4] * is193[nmv[i185] / 4]);
+                int i195 = (int) Math.Sqrt(ais[nmv[i185] / 4] * ais[nmv[i185] / 4] + is193[nmv[i185] / 4] * is193[nmv[i185] / 4]);
                 rot(ais, is193, cx, cz, xz, nmv[i185] * 2);
                 rot(is192, is193, cy, cz, zy, nmv[i185] * 2);
                 int[] is196 = new int[4];
@@ -842,7 +843,7 @@ public class Medium {
                         bool201 = false;
                     }
                     if (bool201) {
-                        float f = i195 / 2500.0F + (8000.0F - fade[0]) / 1000.0F - 2.0F - (Math.abs(y) - 250.0F) / 5000.0F;
+                        float f = i195 / 2500.0F + (8000.0F - fade[0]) / 1000.0F - 2.0F - (Math.Abs(y) - 250.0F) / 5000.0F;
                         if (f > 0.0F && f < 10.0F) {
                             if (f < 3.5) {
                                 f = 3.5F;
@@ -850,8 +851,8 @@ public class Medium {
                             int i209 = (int) ((mtc[i185][i202][0] + cgrnd[0] + csky[0] * f + cfade[0] * f) / (2.0F + f * 2.0F));
                             int i210 = (int) ((mtc[i185][i202][1] + cgrnd[1] + csky[1] * f + cfade[1] * f) / (2.0F + f * 2.0F));
                             int i211 = (int) ((mtc[i185][i202][2] + cgrnd[2] + csky[2] * f + cfade[2] * f) / (2.0F + f * 2.0F));
-                            G.setColor(new Color(i209, i210, i211));
-                            G.fillPolygon(is196, is197, 4);
+                            G.SetColor(new Color(i209, i210, i211));
+                            G.FillPolygon(is196, is197, 4);
                         }
                     }
                 }
@@ -905,11 +906,11 @@ public class Medium {
                 if (bst[i]) {
                     i222 = 1;
                 }
-                G.setColor(new Color(stc[i,1,0], stc[i,1,1], stc[i,1,2]));
-                G.fillRect(i215 - 1, i217, 3 + i222, 1 + i222);
-                G.fillRect(i215, i217 - 1, 1 + i222, 3 + i222);
-                G.setColor(new Color(stc[i,0,0], stc[i,0,1], stc[i,0,2]));
-                G.fillRect(i215, i217, 1 + i222, 1 + i222);
+                G.SetColor(new Color(stc[i,1,0], stc[i,1,1], stc[i,1,2]));
+                G.FillRect(i215 - 1, i217, 3 + i222, 1 + i222);
+                G.FillRect(i215, i217 - 1, 1 + i222, 3 + i222);
+                G.SetColor(new Color(stc[i,0,0], stc[i,0,1], stc[i,0,2]));
+                G.FillRect(i215, i217, 1 + i222, 1 + i222);
             }
         }
     }
@@ -925,7 +926,7 @@ public class Medium {
 
     internal static void follow(ContO conto, int i, int i27) {
         zy = 10;
-        int i28 = 2 + Math.abs(bcxz) / 4;
+        int i28 = 2 + Math.Abs(bcxz) / 4;
         if (i28 > 20) {
             i28 = 20;
         }
@@ -946,7 +947,7 @@ public class Medium {
                     bcxz = -180;
                 }
             }
-        } else if (Math.abs(bcxz) > i28) {
+        } else if (Math.Abs(bcxz) > i28) {
             if (bcxz > 0) {
                 bcxz -= i28;
             } else {
@@ -985,7 +986,7 @@ public class Medium {
         int i9 = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
         int i10 = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
         int i11 = 0;
-        if (Math.abs(i8 - y) > fvect) {
+        if (Math.Abs(i8 - y) > fvect) {
             if (y < i8) {
                 y += fvect;
             } else {
@@ -995,7 +996,7 @@ public class Medium {
             y = i8;
             i11++;
         }
-        if (Math.abs(i9 - x) > fvect) {
+        if (Math.Abs(i9 - x) > fvect) {
             if (x < i9) {
                 x += fvect;
             } else {
@@ -1005,7 +1006,7 @@ public class Medium {
             x = i9;
             i11++;
         }
-        if (Math.abs(i10 - z) > fvect) {
+        if (Math.Abs(i10 - z) > fvect) {
             if (z < i10) {
                 z += fvect;
             } else {
@@ -1028,7 +1029,7 @@ public class Medium {
         if (conto.x - x - cx > 0) {
             i13 = 180;
         }
-        int i14 = -(int) (90 + i13 + Math.atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295);
+        int i14 = -(int) (90 + i13 + Math.Atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295);
         int i15 = y;
         i13 = 0;
         if (i15 > 0) {
@@ -1037,10 +1038,10 @@ public class Medium {
         if (conto.y - i15 - cy < 0) {
             i13 = -180;
         }
-        int i16 = (int) Math.sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
+        int i16 = (int) Math.Sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
         int i17 = 25;
         if (i16 != 0) {
-            i17 = (int) (90 + i13 - Math.atan((double) i16 / (double) (conto.y - i15 - cy)) / 0.017453292519943295);
+            i17 = (int) (90 + i13 - Math.Atan((double) i16 / (double) (conto.y - i15 - cy)) / 0.017453292519943295);
         }
         for (/**/; i12 < 0; i12 += 360) {
 
@@ -1054,9 +1055,9 @@ public class Medium {
         for (/**/; i14 > 360; i14 -= 360) {
 
         }
-        if ((Math.abs(i12 - i14) < 30 || Math.abs(i12 - i14) > 330) && i11 == 3) {
-            if (Math.abs(i12 - xz) > 7 && Math.abs(i12 - xz) < 353) {
-                if (Math.abs(i12 - xz) > 180) {
+        if ((Math.Abs(i12 - i14) < 30 || Math.Abs(i12 - i14) > 330) && i11 == 3) {
+            if (Math.Abs(i12 - xz) > 7 && Math.Abs(i12 - xz) < 353) {
+                if (Math.Abs(i12 - xz) > 180) {
                     if (xz > i12) {
                         xz += 7;
                     } else {
@@ -1070,8 +1071,8 @@ public class Medium {
             } else {
                 xz = i12;
             }
-        } else if (Math.abs(i14 - xz) > 6 && Math.abs(i14 - xz) < 354) {
-            if (Math.abs(i14 - xz) > 180) {
+        } else if (Math.Abs(i14 - xz) > 6 && Math.Abs(i14 - xz) < 354) {
+            if (Math.Abs(i14 - xz) > 180) {
                 if (xz > i14) {
                     xz += 3;
                 } else {
@@ -1090,7 +1091,7 @@ public class Medium {
 
     internal static void getfollow(ContO conto, int i, int i29) {
         zy = 10;
-        int i30 = 2 + Math.abs(bcxz) / 4;
+        int i30 = 2 + Math.Abs(bcxz) / 4;
         if (i30 > 20) {
             i30 = 20;
         }
@@ -1111,7 +1112,7 @@ public class Medium {
                     bcxz = -180;
                 }
             }
-        } else if (Math.abs(bcxz) > i30) {
+        } else if (Math.Abs(bcxz) > i30) {
             if (bcxz > 0) {
                 bcxz -= i30;
             } else {
@@ -1126,7 +1127,7 @@ public class Medium {
         int i32 = conto.z - cz + (int) ((conto.z - 800 - conto.z) * cos(i));
         int i33 = conto.y - 250 - cy;
         int i34 = 0;
-        if (Math.abs(i33 - y) > fvect) {
+        if (Math.Abs(i33 - y) > fvect) {
             if (y < i33) {
                 y += fvect;
             } else {
@@ -1136,7 +1137,7 @@ public class Medium {
             y = i33;
             i34++;
         }
-        if (Math.abs(i31 - x) > fvect) {
+        if (Math.Abs(i31 - x) > fvect) {
             if (x < i31) {
                 x += fvect;
             } else {
@@ -1146,7 +1147,7 @@ public class Medium {
             x = i31;
             i34++;
         }
-        if (Math.abs(i32 - z) > fvect) {
+        if (Math.Abs(i32 - z) > fvect) {
             if (z < i32) {
                 z += fvect;
             } else {
@@ -1247,8 +1248,8 @@ public class Medium {
                                 i69 = (i69 * 7 + cfade[1]) / 8;
                                 i70 = (i70 * 7 + cfade[2]) / 8;
                             }
-                            G.setColor(new Color(i68, i69, i70));
-                            G.fillPolygon(is61, is62, 8);
+                            G.SetColor(new Color(i68, i69, i70));
+                            G.FillPolygon(is61, is62, 8);
                         }
                     }
                 }
@@ -1308,8 +1309,8 @@ public class Medium {
                             i86 = (i86 * 7 + cfade[1]) / 8;
                             i87 = (i87 * 7 + cfade[2]) / 8;
                         }
-                        G.setColor(new Color(i85, i86, i87));
-                        G.fillPolygon(is78, is79, 8);
+                        G.SetColor(new Color(i85, i86, i87));
+                        G.FillPolygon(is78, is79, 8);
                     }
                 }
         }
@@ -1422,7 +1423,7 @@ public class Medium {
                 }
                 clay[i91,1,i97] = ((clay[i91,1,i98] + clay[i91,1,i99]) / 2 + clay[i91,1,i97]) / 2;
                 clay[i91,2,i97] = ((clay[i91,2,i98] + clay[i91,2,i99]) / 2 + clay[i91,2,i97]) / 2;
-                int i100 = (int) Math.sqrt(clax[i91,2,i97] * clax[i91,2,i97] + claz[i91,2,i97] * claz[i91,2,i97]);
+                int i100 = (int) Math.Sqrt(clax[i91,2,i97] * clax[i91,2,i97] + claz[i91,2,i97] * claz[i91,2,i97]);
                 if (i100 > cmx[i91]) {
                     cmx[i91] = i100;
                 }
@@ -1456,7 +1457,7 @@ public class Medium {
         nmt = (int) (20.0 + 10.0 * random.nextDouble());
         int i170 = (i + i167) / 60;
         int i171 = (i168 + i169) / 60;
-        int i172 = Math.max(i167 - i, i169 - i168) / 60;
+        int i172 = Math.Max(i167 - i, i169 - i168) / 60;
         mrd = null;
         nmv = null;
         mtx = null;
@@ -1572,13 +1573,13 @@ public class Medium {
             cgpz[i41] = sgpz + i40 * 1200 + (int) (random.nextDouble() * 1000.0 - 500.0);
             for (int i42 = 0; i42 < Trackers.nt; i42++)
                 if (Trackers.zy[i42] == 0 && Trackers.xy[i42] == 0) {
-                    if (Trackers.radx[i42] < Trackers.radz[i42] && Math.abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]) {
-                        for (/**/; Math.abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]; cgpx[i41] += Math.round(random.nextDouble() * Trackers.radx[i42] * 2.0 - Trackers.radx[i42])) {
+                    if (Trackers.radx[i42] < Trackers.radz[i42] && Math.Abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]) {
+                        for (/**/; Math.Abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]; cgpx[i41] += Math.Round(random.nextDouble() * Trackers.radx[i42] * 2.0 - Trackers.radx[i42])) {
 
                         }
                     }
-                    if (Trackers.radz[i42] < Trackers.radx[i42] && Math.abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]) {
-                        for (/**/; Math.abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]; cgpz[i41] += Math.round(random.nextDouble() * Trackers.radz[i42] * 2.0 - Trackers.radz[i42])) {
+                    if (Trackers.radz[i42] < Trackers.radx[i42] && Math.Abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]) {
+                        for (/**/; Math.Abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]; cgpz[i41] += Math.Round(random.nextDouble() * Trackers.radz[i42] * 2.0 - Trackers.radz[i42])) {
 
                         }
                     }
@@ -1618,7 +1619,7 @@ public class Medium {
                 ogpx[i43,i44] = ((ogpx[i43,i45] + ogpx[i43,i46]) / 2 + ogpx[i43,i44]) / 2;
                 ogpz[i43,i44] = ((ogpz[i43,i45] + ogpz[i43,i46]) / 2 + ogpz[i43,i44]) / 2;
                 pvr[i43,i44] = (float) (1.1 + random.nextDouble() * 0.8);
-                int i47 = (int) Math.sqrt((int) (ogpx[i43,i44] * ogpx[i43,i44] * pvr[i43,i44] * pvr[i43,i44] + ogpz[i43,i44] * ogpz[i43,i44] * pvr[i43,i44] * pvr[i43,i44]));
+                int i47 = (int) Math.Sqrt((int) (ogpx[i43,i44] * ogpx[i43,i44] * pvr[i43,i44] * pvr[i43,i44] + ogpz[i43,i44] * ogpz[i43,i44] * pvr[i43,i44] * pvr[i43,i44]));
                 if (i47 > pmx[i43]) {
                     pmx[i43] = i47;
                 }
@@ -1976,8 +1977,8 @@ public class Medium {
         if (i20 - i24 - cy < 0) {
             i23 = -180;
         }
-        int i25 = (int) Math.sqrt((i21 - z + cz) * (i21 - z + cz) + (i19 - x - cx) * (i19 - x - cx));
-        int i26 = (int) (90 + i23 - Math.atan((double) i25 / (double) (i20 - i24 - cy)) / 0.017453292519943295);
+        int i25 = (int) Math.Sqrt((i21 - z + cz) * (i21 - z + cz) + (i19 - x - cx) * (i19 - x - cx));
+        int i26 = (int) (90 + i23 - Math.Atan((double) i25 / (double) (i20 - i24 - cy)) / 0.017453292519943295);
         xz = -vxz + 90;
         zy += (i26 - zy) / 10;
     }
@@ -1993,13 +1994,13 @@ public class Medium {
         if (conto.x - x - cx > 0) {
             i0 = 180;
         }
-        int i1 = -(int) (90 + i0 + Math.atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295);
+        int i1 = -(int) (90 + i0 + Math.Atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295);
         i0 = 0;
         if (conto.y - y - cy < 0) {
             i0 = -180;
         }
-        int i2 = (int) Math.sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx));
-        int i3 = (int) (90 + i0 - Math.atan((double) i2 / (double) (conto.y - y - cy)) / 0.017453292519943295);
+        int i2 = (int) Math.Sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx));
+        int i3 = (int) (90 + i0 - Math.Atan((double) i2 / (double) (conto.y - y - cy)) / 0.017453292519943295);
         for (/**/; i1 < 0; i1 += 360) {
 
         }
@@ -2008,7 +2009,7 @@ public class Medium {
         }
         xz = i1;
         zy += (i3 - zy) / 5;
-        if ((int) Math.sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx) + (conto.y - y - cy) * (conto.y - y - cy)) > 6000) {
+        if ((int) Math.Sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx) + (conto.y - y - cy) * (conto.y - y - cy)) > 6000) {
             td = true;
         }
     }

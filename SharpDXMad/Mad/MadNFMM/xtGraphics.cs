@@ -435,7 +435,7 @@ class xtGraphics {
             if (CheckPoints.x[i] - CheckPoints.opx[im] >= 0) {
                 i225 = 180;
             }
-            i224 = (int) (90 + i225 + Math.atan((double) (CheckPoints.z[i] - CheckPoints.opz[im]) / (double) (CheckPoints.x[i] - CheckPoints.opx[im])) / 0.017453292519943295);
+            i224 = (int) (90 + i225 + Math.Atan((double) (CheckPoints.z[i] - CheckPoints.opz[im]) / (double) (CheckPoints.x[i] - CheckPoints.opx[im])) / 0.017453292519943295);
         } else {
             int i226 = 0;
             if (multion == 0 || alocked == -1) {
@@ -456,20 +456,20 @@ class xtGraphics {
             if (CheckPoints.opx[i226] - CheckPoints.opx[im] >= 0) {
                 i230 = 180;
             }
-            i224 = (int) (90 + i230 + Math.atan((double) (CheckPoints.opz[i226] - CheckPoints.opz[im]) / (double) (CheckPoints.opx[i226] - CheckPoints.opx[im])) / 0.017453292519943295);
+            i224 = (int) (90 + i230 + Math.Atan((double) (CheckPoints.opz[i226] - CheckPoints.opz[im]) / (double) (CheckPoints.opx[i226] - CheckPoints.opx[im])) / 0.017453292519943295);
             if (multion == 0) {
                 drawcs(13, "[                                ]", 76, 67, 240, 0);
                 drawcs(13, CarDefine.names[sc[i226]], 0, 0, 0, 0);
             } else {
-                G.setFont(new Font("Arial", 1, 12));
-                ftm = G.getFontMetrics();
+                G.SetFont(new Font("Arial", 1, 12));
+                ftm = G.GetFontMetrics();
                 drawcs(17, "[                                ]", 76, 67, 240, 0);
                 drawcs(12, plnames[i226], 0, 0, 0, 0);
-                G.setFont(new Font("Arial", 0, 10));
-                ftm = G.getFontMetrics();
+                G.SetFont(new Font("Arial", 0, 10));
+                ftm = G.GetFontMetrics();
                 drawcs(24, CarDefine.names[sc[i226]], 0, 0, 0, 0);
-                G.setFont(new Font("Arial", 1, 11));
-                ftm = G.getFontMetrics();
+                G.SetFont(new Font("Arial", 1, 11));
+                ftm = G.GetFontMetrics();
             }
         }
         for (i224 += Medium.xz; i224 < 0; i224 += 360) {
@@ -493,8 +493,8 @@ class xtGraphics {
                 i224 = -100;
             }
         }
-        if (Math.abs(ana - i224) < 180) {
-            if (Math.abs(ana - i224) < 10) {
+        if (Math.Abs(ana - i224) < 180) {
+            if (Math.Abs(ana - i224) < 10) {
                 ana = i224;
             } else if (ana < i224) {
                 ana += 10;
@@ -516,7 +516,7 @@ class xtGraphics {
             }
         }
         rot(ais, is218, i219, i221, ana, 7);
-        i224 = Math.abs(ana);
+        i224 = Math.Abs(ana);
         if (!abool) {
             if (i224 > 7 || i216 > 0 || i216 == -2 || cntan != 0) {
                 for (int i231 = 0; i231 < 7; i231++) {
@@ -583,8 +583,8 @@ class xtGraphics {
                     }
                     flk = true;
                 }
-                G.setColor(new Color(i232, i233, i234));
-                G.fillPolygon(ais, is217, 7);
+                G.SetColor(new Color(i232, i233, i234));
+                G.FillPolygon(ais, is217, 7);
                 i232 = (int) (115.0F + 115.0F * (Medium.snap[0] / 100.0F));
                 if (i232 > 255) {
                     i232 = 255;
@@ -616,8 +616,8 @@ class xtGraphics {
                     }
                     i233 = 0;
                 }
-                G.setColor(new Color(i232, i233, i234));
-                G.drawPolygon(ais, is217, 7);
+                G.SetColor(new Color(i232, i233, i234));
+                G.DrawPolygon(ais, is217, 7);
             }
         } else {
             int i236 = 0;
@@ -649,8 +649,8 @@ class xtGraphics {
             if (i240 < 0) {
                 i240 = 0;
             }
-            G.setColor(new Color(i238, i239, i240));
-            G.fillPolygon(ais, is217, 7);
+            G.SetColor(new Color(i238, i239, i240));
+            G.FillPolygon(ais, is217, 7);
             i238 = (int) (120.0F + 120.0F * (Medium.snap[0] / 100.0F));
             if (i238 > 255) {
                 i238 = 255;
@@ -672,8 +672,8 @@ class xtGraphics {
             if (i240 < 0) {
                 i240 = 0;
             }
-            G.setColor(new Color(i238, i239, i240));
-            G.drawPolygon(ais, is217, 7);
+            G.SetColor(new Color(i238, i239, i240));
+            G.DrawPolygon(ais, is217, 7);
         }
     }
 
@@ -700,16 +700,16 @@ class xtGraphics {
     internal static void cantgo(Control control) {
         pnext = 0;
         trackbgf(false);
-        G.drawImage(br, 65, 25, null);
-        G.drawImage(select, 338, 35, null);
-        G.setFont(new Font("Arial", 1, 13));
-        ftm = G.getFontMetrics();
+        G.DrawImage(br, 65, 25, null);
+        G.DrawImage(select, 338, 35, null);
+        G.SetFont(new Font("Arial", 1, 13));
+        ftm = G.GetFontMetrics();
         drawcs(130, "This stage will be unlocked when stage " + unlocked + " ais complete!", 177, 177, 177, 3);
         for (int i = 0; i < 9; i++) {
-            G.drawImage(pgate, 277 + i * 30, 215, null);
+            G.DrawImage(pgate, 277 + i * 30, 215, null);
         }
-        G.setFont(new Font("Arial", 1, 12));
-        ftm = G.getFontMetrics();
+        G.SetFont(new Font("Arial", 1, 12));
+        ftm = G.GetFontMetrics();
         if (aflk) {
             drawcs(185, "[ Stage " + (unlocked + 1) + " Locked ]", 255, 128, 0, 3);
             aflk = false;
@@ -717,7 +717,7 @@ class xtGraphics {
             drawcs(185, "[ Stage " + (unlocked + 1) + " Locked ]", 255, 0, 0, 3);
             aflk = true;
         }
-        G.drawImage(back[pback], 370, 345, null);
+        G.DrawImage(back[pback], 370, 345, null);
         lockcnt--;
         if (lockcnt == 0 || control.enter || control.handb || control.left) {
             control.left = false;
@@ -728,10 +728,10 @@ class xtGraphics {
     }
 
     internal static void cantreply() {
-        G.setColor(new Color(64, 143, 223));
-        G.fillRoundRect(200, 73, 400, 23, 7, 20);
-        G.setColor(new Color(0, 89, 223));
-        G.drawRoundRect(200, 73, 400, 23, 7, 20);
+        G.SetColor(new Color(64, 143, 223));
+        G.FillRoundRect(200, 73, 400, 23, 7, 20);
+        G.SetColor(new Color(0, 89, 223));
+        G.DrawRoundRect(200, 73, 400, 23, 7, 20);
         drawcs(89, "Sorry not enough replay data to play available, please try again later.", 255, 255, 255, 1);
     }
 
@@ -752,29 +752,29 @@ class xtGraphics {
     }
 
     internal static void carselect(Control control, ContO[] cars, int i, int i104, boolean abool) {
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(0, 0, 65, 450);
-        G.fillRect(735, 0, 65, 450);
-        G.fillRect(65, 0, 670, 25);
-        G.fillRect(65, 425, 670, 25);
+        G.SetColor(new Color(0, 0, 0));
+        G.FillRect(0, 0, 65, 450);
+        G.FillRect(735, 0, 65, 450);
+        G.FillRect(65, 0, 670, 25);
+        G.FillRect(65, 425, 670, 25);
         if (flatrstart == 6) {
             //if (multion != 0 || testdrive == 1 || testdrive == 2)
-            G.drawImage(carsbgc, 65, 25, null);
+            G.DrawImage(carsbgc, 65, 25, null);
         } else if (flatrstart <= 1) {
             drawSmokeCarsbg();
         } else {
-            G.setColor(new Color(255, 255, 255));
-            G.fillRect(65, 25, 670, 400);
+            G.SetColor(new Color(255, 255, 255));
+            G.FillRect(65, 25, 670, 400);
             carsbginflex();
             flatrstart = 6;
         }
-        G.drawImage(selectcar, 321, 37, null);
+        G.DrawImage(selectcar, 321, 37, null);
         if (cfase == 3 || cfase == 7 || remi) {
             if (CarDefine.lastload == 1) {
-                G.drawImage(ycmc, 337, 58, null);
+                G.DrawImage(ycmc, 337, 58, null);
             }
             if (CarDefine.lastload == 2) {
-                G.drawImage(yac, 323, 58, null);
+                G.DrawImage(yac, 323, 58, null);
             }
         }
         if (!remi) {
@@ -836,8 +836,8 @@ class xtGraphics {
         int i113 = 0;
         boolean bool114 = false;
         if (flipo == 0) {
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
             int i115 = 0;
             if (flatrstart < 6) {
                 i115 = 2;
@@ -894,10 +894,10 @@ class xtGraphics {
             }
             if (!remi) {
                 if (sc[0] != minsl) {
-                    G.drawImage(back[pback], 95, 275, null);
+                    G.DrawImage(back[pback], 95, 275, null);
                 }
                 if (sc[0] != maxsl) {
-                    G.drawImage(next[pnext], 645, 275, null);
+                    G.DrawImage(next[pnext], 645, 275, null);
                 }
             }
             /*if (gmode == 1) {
@@ -924,10 +924,10 @@ class xtGraphics {
                     pgas[0] = true;
                 }
                 for (int i118 = 0; i118 < 9; i118++) {
-                    G.drawImage(pgate, pgatx[i118], pgaty[i118] + pgady[i118] - gatey, null);
+                    G.DrawImage(pgate, pgatx[i118], pgaty[i118] + pgady[i118] - gatey, null);
                     if (flatrstart == 6)
                         if (pgas[i118]) {
-                            pgady[i118] -= (80 + 100 / (i118 + 1) - Math.abs(pgady[i118])) / 3;
+                            pgady[i118] -= (80 + 100 / (i118 + 1) - Math.Abs(pgady[i118])) / 3;
                             if (pgady[i118] < -(70 + 100 / (i118 + 1))) {
                                 pgas[i118] = false;
                                 if (i118 != 8) {
@@ -935,7 +935,7 @@ class xtGraphics {
                                 }
                             }
                         } else {
-                            pgady[i118] += (80 + 100 / (i118 + 1) - Math.abs(pgady[i118])) / 3;
+                            pgady[i118] += (80 + 100 / (i118 + 1) - Math.Abs(pgady[i118])) / 3;
                             if (pgady[i118] > 0) {
                                 pgady[i118] = 0;
                             }
@@ -950,56 +950,56 @@ class xtGraphics {
                 }
             } else {
                 if (flatrstart == 6) {
-                    G.setFont(new Font("Arial", 1, 11));
-                    ftm = G.getFontMetrics();
-                    G.setColor(new Color(181, 120, 40));
-                    G.drawString("Top Speed:", 98, 343);
-                    G.drawImage(statb, 162, 337, null);
-                    G.drawString("Acceleration:", 88, 358);
-                    G.drawImage(statb, 162, 352, null);
-                    G.drawString("Handling:", 110, 373);
-                    G.drawImage(statb, 162, 367, null);
-                    G.drawString("Stunts:", 495, 343);
-                    G.drawImage(statb, 536, 337, null);
-                    G.drawString("Strength:", 483, 358);
-                    G.drawImage(statb, 536, 352, null);
-                    G.drawString("Endurance:", 473, 373);
-                    G.drawImage(statb, 536, 367, null);
-                    G.setColor(new Color(0, 0, 0));
+                    G.SetFont(new Font("Arial", 1, 11));
+                    ftm = G.GetFontMetrics();
+                    G.SetColor(new Color(181, 120, 40));
+                    G.DrawString("Top Speed:", 98, 343);
+                    G.DrawImage(statb, 162, 337, null);
+                    G.DrawString("Acceleration:", 88, 358);
+                    G.DrawImage(statb, 162, 352, null);
+                    G.DrawString("Handling:", 110, 373);
+                    G.DrawImage(statb, 162, 367, null);
+                    G.DrawString("Stunts:", 495, 343);
+                    G.DrawImage(statb, 536, 337, null);
+                    G.DrawString("Strength:", 483, 358);
+                    G.DrawImage(statb, 536, 352, null);
+                    G.DrawString("Endurance:", 473, 373);
+                    G.DrawImage(statb, 536, 367, null);
+                    G.SetColor(new Color(0, 0, 0));
                     float f = (CarDefine.swits[sc[0],2] - 220) / 90.0F;
                     if (f < 0.2) {
                         f = 0.2F;
                     }
-                    G.fillRect((int) (162.0F + 156.0F * f), 337, (int) (156.0F * (1.0F - f) + 1.0F), 7);
+                    G.FillRect((int) (162.0F + 156.0F * f), 337, (int) (156.0F * (1.0F - f) + 1.0F), 7);
                     f = CarDefine.acelf[sc[0],1] * CarDefine.acelf[sc[0],0] * CarDefine.acelf[sc[0],2] * CarDefine.grip[sc[0]] / 7700.0F;
                     if (f > 1.0F) {
                         f = 1.0F;
                     }
-                    G.fillRect((int) (162.0F + 156.0F * f), 352, (int) (156.0F * (1.0F - f) + 1.0F), 7);
+                    G.FillRect((int) (162.0F + 156.0F * f), 352, (int) (156.0F * (1.0F - f) + 1.0F), 7);
                     f = CarDefine.dishandle[sc[0]];
-                    G.fillRect((int) (162.0F + 156.0F * f), 367, (int) (156.0F * (1.0F - f) + 1.0F), 7);
+                    G.FillRect((int) (162.0F + 156.0F * f), 367, (int) (156.0F * (1.0F - f) + 1.0F), 7);
                     f = (CarDefine.airc[sc[0]] * CarDefine.airs[sc[0]] * CarDefine.bounce[sc[0]] + 28.0F) / 139.0F;
                     if (f > 1.0F) {
                         f = 1.0F;
                     }
-                    G.fillRect((int) (536.0F + 156.0F * f), 337, (int) (156.0F * (1.0F - f) + 1.0F), 7);
+                    G.FillRect((int) (536.0F + 156.0F * f), 337, (int) (156.0F * (1.0F - f) + 1.0F), 7);
                     float f127 = 0.5F;
                     f = (CarDefine.moment[sc[0]] + f127) / 2.6F;
                     if (f > 1.0F) {
                         f = 1.0F;
                     }
-                    G.fillRect((int) (536.0F + 156.0F * f), 352, (int) (156.0F * (1.0F - f) + 1.0F), 7);
+                    G.FillRect((int) (536.0F + 156.0F * f), 352, (int) (156.0F * (1.0F - f) + 1.0F), 7);
                     f = CarDefine.outdam[sc[0]];
-                    G.fillRect((int) (536.0F + 156.0F * f), 367, (int) (156.0F * (1.0F - f) + 1.0F), 7);
-                    G.drawImage(statbo, 162, 337, null);
-                    G.drawImage(statbo, 162, 352, null);
-                    G.drawImage(statbo, 162, 367, null);
-                    G.drawImage(statbo, 536, 337, null);
-                    G.drawImage(statbo, 536, 352, null);
-                    G.drawImage(statbo, 536, 367, null);
+                    G.FillRect((int) (536.0F + 156.0F * f), 367, (int) (156.0F * (1.0F - f) + 1.0F), 7);
+                    G.DrawImage(statbo, 162, 337, null);
+                    G.DrawImage(statbo, 162, 352, null);
+                    G.DrawImage(statbo, 162, 367, null);
+                    G.DrawImage(statbo, 536, 337, null);
+                    G.DrawImage(statbo, 536, 352, null);
+                    G.DrawImage(statbo, 536, 367, null);
                     {
-                        G.setFont(new Font("Arial", 1, 13));
-                        ftm = G.getFontMetrics();
+                        G.SetFont(new Font("Arial", 1, 13));
+                        ftm = G.GetFontMetrics();
                         String astring = "Class C";
                         if (CarDefine.cclass[sc[0]] == 1) {
                             astring = "Class B & C";
@@ -1014,61 +1014,61 @@ class xtGraphics {
                             astring = "Class A";
                         }
                         if (kbload < 7) {
-                            G.setColor(new Color(0, 0, 0));
+                            G.SetColor(new Color(0, 0, 0));
                             kbload++;
                         } else {
-                            G.setColor(new Color(176, 41, 0));
+                            G.SetColor(new Color(176, 41, 0));
                             kbload = 0;
                         }
                         if (cfase != 10 || CarDefine.action != 0 && CarDefine.action < 14) {
-                            G.drawString(astring, 549 - ftm.stringWidth(astring) / 2, 95);
+                            G.DrawString(astring, 549 - ftm.stringWidth(astring) / 2, 95);
                         }
-                        G.setFont(new Font("Arial", 1, 12));
-                        ftm = G.getFontMetrics();
-                        G.setColor(new Color(0, 0, 0));
-                        G.drawString("1st Color", 100, 55);
-                        G.drawString("2nd Color", 649, 55);
-                        G.setFont(new Font("Arial", 1, 10));
-                        ftm = G.getFontMetrics();
-                        G.drawString("Hue  | ", 97, 70);
-                        G.drawImage(brt, 137, 63, null);
-                        G.drawString("Hue  | ", 647, 70);
-                        G.drawImage(brt, 687, 63, null);
-                        G.drawString("Intensity", 121, 219);
-                        G.drawString("Intensity", 671, 219);
-                        G.drawString("Reset", 110, 257);
-                        G.drawString("Reset", 660, 257);
+                        G.SetFont(new Font("Arial", 1, 12));
+                        ftm = G.GetFontMetrics();
+                        G.SetColor(new Color(0, 0, 0));
+                        G.DrawString("1st Color", 100, 55);
+                        G.DrawString("2nd Color", 649, 55);
+                        G.SetFont(new Font("Arial", 1, 10));
+                        ftm = G.GetFontMetrics();
+                        G.DrawString("Hue  | ", 97, 70);
+                        G.DrawImage(brt, 137, 63, null);
+                        G.DrawString("Hue  | ", 647, 70);
+                        G.DrawImage(brt, 687, 63, null);
+                        G.DrawString("Intensity", 121, 219);
+                        G.DrawString("Intensity", 671, 219);
+                        G.DrawString("Reset", 110, 257);
+                        G.DrawString("Reset", 660, 257);
                         for (int i128 = 0; i128 < 161; i128++) {
-                            G.setColor(Color.getHSBColor((float) (i128 * 0.00625), 1.0F, 1.0F));
-                            G.drawLine(102, 75 + i128, 110, 75 + i128);
+                            G.SetColor(Color.getHSBColor((float) (i128 * 0.00625), 1.0F, 1.0F));
+                            G.DrawLine(102, 75 + i128, 110, 75 + i128);
                             if (i128 <= 128) {
-                                G.setColor(Color.getHSBColor(1.0F, 0.0F, (float) (1.0 - i128 * 0.00625)));
-                                G.drawLine(137, 75 + i128, 145, 75 + i128);
+                                G.SetColor(Color.getHSBColor(1.0F, 0.0F, (float) (1.0 - i128 * 0.00625)));
+                                G.DrawLine(137, 75 + i128, 145, 75 + i128);
                             }
-                            G.setColor(Color.getHSBColor((float) (i128 * 0.00625), 1.0F, 1.0F));
-                            G.drawLine(652, 75 + i128, 660, 75 + i128);
+                            G.SetColor(Color.getHSBColor((float) (i128 * 0.00625), 1.0F, 1.0F));
+                            G.DrawLine(652, 75 + i128, 660, 75 + i128);
                             if (i128 <= 128) {
-                                G.setColor(Color.getHSBColor(1.0F, 0.0F, (float) (1.0 - i128 * 0.00625)));
-                                G.drawLine(687, 75 + i128, 695, 75 + i128);
+                                G.SetColor(Color.getHSBColor(1.0F, 0.0F, (float) (1.0 - i128 * 0.00625)));
+                                G.DrawLine(687, 75 + i128, 695, 75 + i128);
                             }
                         }
                         for (int i129 = 0; i129 < 40; i129++) {
-                            G.setColor(Color.getHSBColor(arnp[0], (float) (i129 * 0.025), 1.0F - arnp[2]));
-                            G.drawLine(121 + i129, 224, 121 + i129, 230);
-                            G.setColor(Color.getHSBColor(arnp[3], (float) (i129 * 0.025), 1.0F - arnp[5]));
-                            G.drawLine(671 + i129, 224, 671 + i129, 230);
+                            G.SetColor(Color.getHSBColor(arnp[0], (float) (i129 * 0.025), 1.0F - arnp[2]));
+                            G.DrawLine(121 + i129, 224, 121 + i129, 230);
+                            G.SetColor(Color.getHSBColor(arnp[3], (float) (i129 * 0.025), 1.0F - arnp[5]));
+                            G.DrawLine(671 + i129, 224, 671 + i129, 230);
                         }
-                        G.drawImage(arn, 110, 71 + (int) (arnp[0] * 160.0F), null);
-                        G.drawImage(arn, 145, 71 + (int) (arnp[2] * 160.0F), null);
-                        G.drawImage(arn, 660, 71 + (int) (arnp[3] * 160.0F), null);
-                        G.drawImage(arn, 695, 71 + (int) (arnp[5] * 160.0F), null);
-                        G.setColor(new Color(0, 0, 0));
-                        G.fillRect(120 + (int) (arnp[1] * 40.0F), 222, 3, 3);
-                        G.drawLine(121 + (int) (arnp[1] * 40.0F), 224, 121 + (int) (arnp[1] * 40.0F), 230);
-                        G.fillRect(120 + (int) (arnp[1] * 40.0F), 230, 3, 3);
-                        G.fillRect(670 + (int) (arnp[4] * 40.0F), 222, 3, 3);
-                        G.drawLine(671 + (int) (arnp[4] * 40.0F), 224, 671 + (int) (arnp[4] * 40.0F), 230);
-                        G.fillRect(670 + (int) (arnp[4] * 40.0F), 230, 3, 3);
+                        G.DrawImage(arn, 110, 71 + (int) (arnp[0] * 160.0F), null);
+                        G.DrawImage(arn, 145, 71 + (int) (arnp[2] * 160.0F), null);
+                        G.DrawImage(arn, 660, 71 + (int) (arnp[3] * 160.0F), null);
+                        G.DrawImage(arn, 695, 71 + (int) (arnp[5] * 160.0F), null);
+                        G.SetColor(new Color(0, 0, 0));
+                        G.FillRect(120 + (int) (arnp[1] * 40.0F), 222, 3, 3);
+                        G.DrawLine(121 + (int) (arnp[1] * 40.0F), 224, 121 + (int) (arnp[1] * 40.0F), 230);
+                        G.FillRect(120 + (int) (arnp[1] * 40.0F), 230, 3, 3);
+                        G.FillRect(670 + (int) (arnp[4] * 40.0F), 222, 3, 3);
+                        G.DrawLine(671 + (int) (arnp[4] * 40.0F), 224, 671 + (int) (arnp[4] * 40.0F), 230);
+                        G.FillRect(670 + (int) (arnp[4] * 40.0F), 230, 3, 3);
                         if (abool) {
                             if (mouson == -1) {
                                 if (i > 96 && i < 152 && i104 > 248 && i104 < 258) {
@@ -1170,7 +1170,7 @@ class xtGraphics {
                     }
                 }
                 if (!remi/* && cfase != 10 && cfase != 11 && cfase != 100 && cfase != 101*/) {
-                    G.drawImage(contin[pcontin], 355, 385, null);
+                    G.DrawImage(contin[pcontin], 355, 385, null);
                     /*else {
                     	if (cfase == 11 && drawcarb(true, null, "Add to My Cars", 345, 385, i, i104, abool)
                     			&& stat.action == 0) {
@@ -1198,8 +1198,8 @@ class xtGraphics {
                     				}
                     			}
                     		} else {
-                    			G.setFont(new Font("Arial", 1, 12));
-                    			ftm = G.getFontMetrics();
+                    			G.SetFont(new Font("Arial", 1, 12));
+                    			ftm = G.GetFontMetrics();
                     			drawcs(405, "Private Car", 193, 106, 0, 3);
                     		}
                     }*/
@@ -1235,7 +1235,7 @@ class xtGraphics {
                         		sc[0] = 14;
                         }*/
                         if (multion != 0 && onjoin != -1 && ontyp > 0 && ontyp <= 5) {
-                            for (; sc[0] < maxsl && Math.abs(CarDefine.cclass[sc[0]] - (ontyp - 1)) > 1; sc[0]++) {
+                            for (; sc[0] < maxsl && Math.Abs(CarDefine.cclass[sc[0]] - (ontyp - 1)) > 1; sc[0]++) {
 
                             }
                         }
@@ -1249,7 +1249,7 @@ class xtGraphics {
                         		sc[0] = 6;
                         }*/
                         if (multion != 0 && onjoin != -1 && ontyp > 0 && ontyp <= 5) {
-                            for (; sc[0] > minsl && Math.abs(CarDefine.cclass[sc[0]] - (ontyp - 1)) > 1; sc[0]--) {
+                            for (; sc[0] > minsl && Math.Abs(CarDefine.cclass[sc[0]] - (ontyp - 1)) > 1; sc[0]--) {
 
                             }
                         }
@@ -1387,10 +1387,10 @@ class xtGraphics {
     }
 
     internal static void clicknow() {
-        G.setColor(new Color(198, 214, 255));
-        G.fillRoundRect(250, 340, 300, 80, 30, 70);
-        G.setColor(new Color(128, 167, 255));
-        G.drawRoundRect(250, 340, 300, 80, 30, 70);
+        G.SetColor(new Color(198, 214, 255));
+        G.FillRoundRect(250, 340, 300, 80, 30, 70);
+        G.SetColor(new Color(128, 167, 255));
+        G.DrawRoundRect(250, 340, 300, 80, 30, 70);
         if (aflk) {
             drawcs(380, "Click here to Start", 0, 0, 0, 3);
             aflk = false;
@@ -1402,10 +1402,10 @@ class xtGraphics {
 
     public static boolean clink(String astring, int i, int i134, boolean abool) {
         boolean bool135 = false;
-        G.drawString("Created by :  " + astring + "", 241, 160);
+        G.DrawString("Created by :  " + astring + "", 241, 160);
         int i136 = ftm.stringWidth(astring);
         int i137 = 241 + ftm.stringWidth("Created by :  " + astring + "") - i136;
-        G.drawLine(i137, 162, i137 + i136 - 2, 162);
+        G.DrawLine(i137, 162, i137 + i136 - 2, 162);
         if (i > i137 - 2 && i < i137 + i136 && i134 > 147 && i134 < 164) {
             if (abool) {
                 bool135 = true;
@@ -1517,26 +1517,26 @@ class xtGraphics {
             a = 0;
         }
         Color c = new Color(nr, ng, nb, a);
-        G.setColor(c);
+        G.SetColor(c);
         return c;
     }
 
     internal static void acrash(int im, float f, int i) {
         if (bfcrash[im] == 0) {
             if (i == 0) {
-                if (Math.abs(f) > 25.0F && Math.abs(f) < 170.0F) {
+                if (Math.Abs(f) > 25.0F && Math.Abs(f) < 170.0F) {
                     if (!mutes) {
                         lowcrash[crshturn].play();
                     }
                     bfcrash[im] = 2;
                 }
-                if (Math.abs(f) >= 170.0F) {
+                if (Math.Abs(f) >= 170.0F) {
                     if (!mutes) {
                         crash[crshturn].play();
                     }
                     bfcrash[im] = 2;
                 }
-                if (Math.abs(f) > 25.0F) {
+                if (Math.Abs(f) > 25.0F) {
                     if (crashup) {
                         crshturn--;
                     } else {
@@ -1551,13 +1551,13 @@ class xtGraphics {
                 }
             }
             if (i == -1) {
-                if (Math.abs(f) > 25.0F && Math.abs(f) < 170.0F) {
+                if (Math.Abs(f) > 25.0F && Math.Abs(f) < 170.0F) {
                     if (!mutes) {
                         lowcrash[2].play();
                     }
                     bfcrash[im] = 2;
                 }
-                if (Math.abs(f) > 170.0F) {
+                if (Math.Abs(f) > 170.0F) {
                     if (!mutes) {
                         crash[2].play();
                     }
@@ -1587,31 +1587,31 @@ class xtGraphics {
         }
         if (flipo == 101) {
             mainbg(-1);
-            G.drawImage(mdness, 283, 32, null);
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.DrawImage(mdness, 283, 32, null);
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
             drawcs(90, "At Radicalplay.com", 0, 0, 0, 3);
             drawcs(165, "Cartoon 3D Engine, Game Programming, 3D Models, Graphics and Sound Effects", 0, 0, 0, 3);
             drawcs(185, "By Omar Waly", 40, 60, 0, 3);
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
             drawcs(225, "Special Thanks!", 0, 0, 0, 3);
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 11));
+            ftm = G.GetFontMetrics();
             drawcs(245, "Thanks to Dany Fernandez Diaz (DragShot) for imporving the game\u2019s music player to play more mod formats & effects!", 66, 98, 0, 3);
             drawcs(260, "Thanks to Badie El Zaman (Kingofspeed) for helping make the trees & cactus 3D models.", 66, 98, 0, 3);
             drawcs(275, "Thanks to Timothy Audrain Hardin (Legnak) for making hazard designs on stage parts & the new fence 3D model.", 66, 98, 0, 3);
             drawcs(290, "Thanks to Alex Miles (A-Mile) & Jaroslav Beleren (Phyrexian) for making trailer videos for the game.", 66, 98, 0, 3);
             drawcs(305, "A big thank you to everyone playing the game for sending their feedback, supporting the game and helping it improve!", 66, 98, 0, 3);
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
             drawcs(345, "Music from ModArchive.org", 0, 0, 0, 3);
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 11));
+            ftm = G.GetFontMetrics();
             drawcs(365, "Most of the tracks where remixed by Omar Waly to match the game.", 66, 98, 0, 3);
             drawcs(380, "More details about the tracks and their original composers at:", 66, 98, 0, 3);
             drawcs(395, "http://multiplayer.needformadness.com/music.html", 33, 49, 0, 3);
-            G.drawLine(400 - ftm.stringWidth("http://multiplayer.needformadness.com/music.html") / 2, 396, ftm.stringWidth("http://multiplayer.needformadness.com/music.html") / 2 + 400, 396);
+            G.DrawLine(400 - ftm.stringWidth("http://multiplayer.needformadness.com/music.html") / 2, 396, ftm.stringWidth("http://multiplayer.needformadness.com/music.html") / 2 + 400, 396);
             if (i > 258 && i < 542 && i23 > 385 && i23 < 399) {
                 //app.setCursor(new Cursor(12));
                 if (i24 == 2) {
@@ -1623,26 +1623,26 @@ class xtGraphics {
         }
         if (flipo == 102) {
             mainbg(-1);
-            G.drawImage(onfmm, 283, 32, null);
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.DrawImage(onfmm, 283, 32, null);
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
             drawcs(165, "Decompiled and fixed by", 0, 0, 0, 3);
             drawcs(185, "rafa1231518 aka chrishansen69", 40, 60, 0, 3);
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
             drawcs(225, "~~~~~~ Special Thanks ~~~~~~", 0, 0, 0, 3);
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 11));
+            ftm = G.GetFontMetrics();
             drawcs(245, "Dany Fernandez Diaz (DragShot) for some code I stole-uh, I mean borrowed!", 66, 98, 0, 3);
             drawcs(260, "Thanks to Kaffeinated, Ten Graves & everyone else for their awesome work ain NFM2!", 66, 98, 0, 3);
             drawcs(275, "Thanks to Emmanuel Dupuy for JD-GUI, Pavel Kouznetsov for JAD and Jochen Hoenicke for JODE.", 66, 98, 0, 3);
             drawcs(290, "Thanks to Allan for being a glorious bastard and please add credits.", 66, 98, 0, 3);
             drawcs(305, "Thanks to the Eclipse Foundation for this laggy piece of shit-uh, I mean great IDE!", 66, 98, 0, 3);
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
             drawcs(345, "~~~~~~ License ~~~~~~", 0, 0, 0, 3);
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
+            G.SetFont(new Font("Arial", 1, 11));
+            ftm = G.GetFontMetrics();
             drawcs(365, "All code ais licensed under the BSD license, unless noted otherwise.", 66, 98, 0, 3);
             drawcs(380, "Need for Madness Multiplayer created by Omar Waly, copyright (c) Radical Play 2005-2015. All rights reserved.", 66, 98, 0, 3);
             drawcs(395, "OpenNFMM copyright (c) C. Hansen 2015. Some rights reserved.", 66, 98, 0, 3);
@@ -1664,7 +1664,7 @@ class xtGraphics {
         }
         if (flipo == 103) {
             mainbg(0);
-            G.drawImage(nfmcom, 190, 195, null);
+            G.DrawImage(nfmcom, 190, 195, null);
             if (i > 190 && i < 609 && i23 > 195 && i23 < 216) {
                 //app.setCursor(new Cursor(12));
                 if (i24 == 2) {
@@ -1674,7 +1674,7 @@ class xtGraphics {
                 //app.setCursor(new Cursor(0));
             }
         }
-        G.drawImage(next[pnext], 665, 395, null);
+        G.DrawImage(next[pnext], 665, 395, null);
 
         if (control.enter || control.handb || control.right) {
             if (flipo >= 1 && flipo <= 100) {
@@ -1984,8 +1984,8 @@ class xtGraphics {
 
     static boolean drawcarb(boolean abool, Image image, String astring, int i, int i429, int i430, int i431, boolean bool432) {
         boolean bool433 = false;
-        G.setFont(new Font("Arial", 1, 13));
-        ftm = G.getFontMetrics();
+        G.SetFont(new Font("Arial", 1, 13));
+        ftm = G.GetFontMetrics();
         int i435;
         if (abool) {
             i435 = ftm.stringWidth(astring);
@@ -2002,25 +2002,25 @@ class xtGraphics {
                 bool433 = true;
             }
         }
-        G.drawImage(bcl[i436], i, i429, null);
-        G.drawImage(bc[i436], i + 4, i429, i435 + 6, 28, null);
-        G.drawImage(bcr[i436], i + i435 + 10, i429, null);
+        G.DrawImage(bcl[i436], i, i429, null);
+        G.DrawImage(bc[i436], i + 4, i429, i435 + 6, 28, null);
+        G.DrawImage(bcr[i436], i + i435 + 10, i429, null);
         if (!abool && i435 == 73) {
             i429--;
         }
         if (abool) {
             if (astring.equals("X") && i436 == 1) {
-                G.setColor(new Color(255, 0, 0));
+                G.SetColor(new Color(255, 0, 0));
             } else {
-                G.setColor(new Color(0, 0, 0));
+                G.SetColor(new Color(0, 0, 0));
             }
             if (astring.startsWith("Class")) {
-                G.drawString(astring, 400 - ftm.stringWidth(astring) / 2, i429 + 19);
+                G.DrawString(astring, 400 - ftm.stringWidth(astring) / 2, i429 + 19);
             } else {
-                G.drawString(astring, i + 7, i429 + 19);
+                G.DrawString(astring, i + 7, i429 + 19);
             }
         } else {
-            G.drawImage(image, i + 7, i429 + 7, null);
+            G.DrawImage(image, i + 7, i429 + 7, null);
         }
         return bool433;
     }
@@ -2073,8 +2073,8 @@ class xtGraphics {
             }
         }
         if (i215 == 1) {
-            G.setColor(new Color(0, 0, 0));
-            G.drawString(astring, 400 - ftm.stringWidth(astring) / 2 + 1, i + 1);
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawString(astring, 400 - ftm.stringWidth(astring) / 2 + 1, i + 1);
         }
         if (i215 == 2) {
             i212 = (i212 * 2 + Medium.csky[0]) / 3;
@@ -2100,20 +2100,20 @@ class xtGraphics {
             }
         }
         if (i215 == 5) {
-            G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
-            G.drawString(astring, 400 - ftm.stringWidth(astring) / 2 + 1, i + 1);
+            G.SetColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+            G.DrawString(astring, 400 - ftm.stringWidth(astring) / 2 + 1, i + 1);
         }
-        G.setColor(new Color(i212, i213, i214));
-        G.drawString(astring, 400 - ftm.stringWidth(astring) / 2, i);
+        G.SetColor(new Color(i212, i213, i214));
+        G.DrawString(astring, 400 - ftm.stringWidth(astring) / 2, i);
     }
 
     internal static void drawdprom(int i, int i139) {
-        G.setAlpha(0.9F);
-        G.setColor(new Color(129, 203, 237));
-        G.fillRoundRect(205, i, 390, i139, 30, 30);
-        G.setColor(new Color(0, 0, 0));
-        G.drawRoundRect(205, i, 390, i139, 30, 30);
-        G.setAlpha(1.0F);
+        G.SetAlpha(0.9F);
+        G.SetColor(new Color(129, 203, 237));
+        G.FillRoundRect(205, i, 390, i139, 30, 30);
+        G.SetColor(new Color(0, 0, 0));
+        G.DrawRoundRect(205, i, 390, i139, 30, 30);
+        G.SetAlpha(1.0F);
     }
 
     internal static void drawhi(Image image, int i) {
@@ -2122,35 +2122,35 @@ class xtGraphics {
             Color.RGBtoHSB(Medium.csky[0], Medium.csky[1], Medium.csky[2], fs);
             fs[2] = 0.6F;
             Color color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-            G.setColor(color);
-            G.fillRoundRect(390 - image.getWidth(null) / 2, i - 2, image.getWidth(null) + 20, image.getHeight(null) + 2, 7, 20);
-            G.setColor(new Color((int) (color.getRed() / 1.1), (int) (color.getGreen() / 1.1), (int) (color.getBlue() / 1.1)));
-            G.drawRoundRect(390 - image.getWidth(null) / 2, i - 2, image.getWidth(null) + 20, image.getHeight(null) + 2, 7, 20);
+            G.SetColor(color);
+            G.FillRoundRect(390 - image.getWidth(null) / 2, i - 2, image.getWidth(null) + 20, image.getHeight(null) + 2, 7, 20);
+            G.SetColor(new Color((int) (color.getRed() / 1.1), (int) (color.getGreen() / 1.1), (int) (color.getBlue() / 1.1)));
+            G.DrawRoundRect(390 - image.getWidth(null) / 2, i - 2, image.getWidth(null) + 20, image.getHeight(null) + 2, 7, 20);
         }
-        G.drawImage(image, 400 - image.getWidth(null) / 2, i, null);
+        G.DrawImage(image, 400 - image.getWidth(null) / 2, i, null);
     }
 
     public static void drawlprom(int i, int i140) {
-        G.setAlpha(0.5F);
-        G.setColor(new Color(129, 203, 237));
-        G.fillRoundRect(277, i, 390, i140, 30, 30);
-        G.setColor(new Color(0, 0, 0));
-        G.drawRoundRect(277, i, 390, i140, 30, 30);
-        G.setAlpha(1.0F);
+        G.SetAlpha(0.5F);
+        G.SetColor(new Color(129, 203, 237));
+        G.FillRoundRect(277, i, 390, i140, 30, 30);
+        G.SetColor(new Color(0, 0, 0));
+        G.DrawRoundRect(277, i, 390, i140, 30, 30);
+        G.SetAlpha(1.0F);
     }
 
     public static void drawprom(int i, int i138) {
-        G.setAlpha(0.76F);
-        G.setColor(new Color(129, 203, 237));
-        G.fillRoundRect(205, i, 390, i138, 30, 30);
-        G.setColor(new Color(0, 0, 0));
-        G.drawRoundRect(205, i, 390, i138, 30, 30);
-        G.setAlpha(1.0F);
+        G.SetAlpha(0.76F);
+        G.SetColor(new Color(129, 203, 237));
+        G.FillRoundRect(205, i, 390, i138, 30, 30);
+        G.SetColor(new Color(0, 0, 0));
+        G.DrawRoundRect(205, i, 390, i138, 30, 30);
+        G.SetAlpha(1.0F);
     }
 
     internal static void drawSmokeCarsbg() {
 //        if (!badmac) {
-//            if (Math.abs(flyr - flyrdest) > 20) {
+//            if (Math.Abs(flyr - flyrdest) > 20) {
 //                if (flyr > flyrdest) {
 //                    flyr -= 20;
 //                } else {
@@ -2212,9 +2212,9 @@ class xtGraphics {
 //            flang += 2;
 //            flatr += 10 + flatrstart * 2;
 //            Image image = xt.createImage(new MemoryImageSource(670, 400, flexpix, 0, 670));
-//            G.drawImage(image, 65, 25, null);
+//            G.DrawImage(image, 65, 25, null);
 //        } else {
-            G.drawImage(carsbg, 65, 25, null);
+            G.DrawImage(carsbg, 65, 25, null);
             flatrstart++;
 //        }
     }
@@ -2274,8 +2274,8 @@ class xtGraphics {
         if (i211 < 0) {
             i211 = 0;
         }
-        G.setColor(new Color(i209, i210, i211));
-        G.fillPolygon(ais, is207, 4);
+        G.SetColor(new Color(i209, i210, i211));
+        G.FillPolygon(ais, is207, 4);
         ais[0] = 662;
         is207[0] = 31;
         ais[1] = 662;
@@ -2316,21 +2316,21 @@ class xtGraphics {
         if (i211 < 0) {
             i211 = 0;
         }
-        G.setColor(new Color(i209, i210, i211));
-        G.fillPolygon(ais, is207, 4);
+        G.SetColor(new Color(i209, i210, i211));
+        G.FillPolygon(ais, is207, 4);
     }
 
     static void drawWarning() {
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(0, 0, 800, 450);
-        G.setFont(new Font("Arial", 1, 22));
-        ftm = G.getFontMetrics();
+        G.SetColor(new Color(0, 0, 0));
+        G.FillRect(0, 0, 800, 450);
+        G.SetFont(new Font("Arial", 1, 22));
+        ftm = G.GetFontMetrics();
         drawcs(100, "Warning!", 255, 0, 0, 3);
-        G.setFont(new Font("Arial", 1, 18));
-        ftm = G.getFontMetrics();
+        G.SetFont(new Font("Arial", 1, 18));
+        ftm = G.GetFontMetrics();
         drawcs(150, "Bad language and flooding ais strictly prohibited ain this game!", 255, 255, 255, 3);
-        G.setFont(new Font("Arial", 1, 13));
-        ftm = G.getFontMetrics();
+        G.SetFont(new Font("Arial", 1, 13));
+        ftm = G.GetFontMetrics();
         if (warning < 210) {
             drawcs(200, "If you continue typing bad language or flooding your game will shut down.", 200, 200, 200, 3);
         }
@@ -2352,13 +2352,13 @@ class xtGraphics {
             chronostart = false;
         }*/
         if (!badmac) {
-            G.drawImage(fleximg, 0, 0, null);
+            G.DrawImage(fleximg, 0, 0, null);
         } else {
-            G.setColor(new Color(0, 0, 0, (int) (255 * 0.1f)));
-            G.fillRect(0, 0, 800, 450);
+            G.SetColor(new Color(0, 0, 0, (int) (255 * 0.1f)));
+            G.FillRect(0, 0, 800, 450);
         }
-        G.setFont(new Font("Arial", 1, 11));
-        ftm = G.getFontMetrics();
+        G.SetFont(new Font("Arial", 1, 11));
+        ftm = G.GetFontMetrics();
         int i142 = 0;
         String astring = ":";
         if (CheckPoints.stage > 0) {
@@ -2369,12 +2369,12 @@ class xtGraphics {
         }
         if (multion < 3) {
             if (winner) {
-                G.drawImage(congrd, 265, 87, null);
+                G.DrawImage(congrd, 265, 87, null);
                 drawcs(137, "You Won!  At Stage" + astring, 255, 161, 85, 3);
                 drawcs(154, CheckPoints.name, 255, 115, 0, 3);
                 i142 = 154;
             } else {
-                G.drawImage(gameov, 315, 117, null);
+                G.DrawImage(gameov, 315, 117, null);
                 if (multion != 0 && (forstart == 700 || discon == 240)) {
                     drawcs(167, "Sorry, You where Disconnected from Game!", 255, 161, 85, 3);
                     drawcs(184, "Please check your connection!", 255, 115, 0, 3);
@@ -2384,9 +2384,9 @@ class xtGraphics {
                     i142 = 184;
                 }
             }
-            G.setColor(new Color(193, 106, 0));
+            G.SetColor(new Color(193, 106, 0));
         } else {
-            G.drawImage(gameov, 315, 117, null);
+            G.DrawImage(gameov, 315, 117, null);
             drawcs(167, "Finished Watching Game!  At Stage" + astring + "", 255, 161, 85, 3);
             drawcs(184, CheckPoints.name, 255, 115, 0, 3);
             i142 = 184;
@@ -2478,8 +2478,8 @@ class xtGraphics {
                 }
             }
             if (CheckPoints.stage != nTracks) {
-                G.setFont(new Font("Arial", 1, 13));
-                ftm = G.getFontMetrics();
+                G.SetFont(new Font("Arial", 1, 13));
+                ftm = G.GetFontMetrics();
                 if (aflk) {
                     drawcs(200 + pin, "Stage " + (CheckPoints.stage + 1) + " ais now unlocked!", 196, 176, 0, 3);
                 } else {
@@ -2491,17 +2491,17 @@ class xtGraphics {
                     } else {
                         drawcs(200, "And:", 255, 247, 165, 3);
                     }
-                    G.setColor(new Color(236, 226, 202));
+                    G.SetColor(new Color(236, 226, 202));
                     if (HansenRandom.Double() > 0.5) {
-                        G.setAlpha(0.5F);
-                        G.fillRect(226, 211, 344, 125);
-                        G.setAlpha(1.0F);
+                        G.SetAlpha(0.5F);
+                        G.FillRect(226, 211, 344, 125);
+                        G.SetAlpha(1.0F);
                     }
-                    G.setColor(new Color(0, 0, 0));
-                    G.fillRect(226, 211, 348, 4);
-                    G.fillRect(226, 211, 4, 125);
-                    G.fillRect(226, 332, 348, 4);
-                    G.fillRect(570, 211, 4, 125);
+                    G.SetColor(new Color(0, 0, 0));
+                    G.FillRect(226, 211, 348, 4);
+                    G.FillRect(226, 211, 4, 125);
+                    G.FillRect(226, 332, 348, 4);
+                    G.FillRect(570, 211, 4, 125);
                     contos[i144].y = i145;
                     Medium.crs = true;
                     Medium.x = -400;
@@ -2517,12 +2517,12 @@ class xtGraphics {
                     contos[i144].wzy -= 10;
                     contos[i144].d();
                     if (HansenRandom.Double() < 0.5) {
-                        G.setAlpha(0.4F);
-                        G.setColor(new Color(236, 226, 202));
+                        G.SetAlpha(0.4F);
+                        G.SetColor(new Color(236, 226, 202));
                         for (int i146 = 0; i146 < 30; i146++) {
-                            G.drawLine(230, 215 + 4 * i146, 569, 215 + 4 * i146);
+                            G.DrawLine(230, 215 + 4 * i146, 569, 215 + 4 * i146);
                         }
-                        G.setAlpha(1.0F);
+                        G.SetAlpha(1.0F);
                     }
                     String string147 = "";
                     if (i144 == 13) {
@@ -2535,8 +2535,8 @@ class xtGraphics {
                     }
                     pin = 140;
                 }
-                G.setFont(new Font("Arial", 1, 11));
-                ftm = G.getFontMetrics();
+                G.SetFont(new Font("Arial", 1, 11));
+                ftm = G.GetFontMetrics();
                 drawcs(220 + pin, "GAME SAVED", 230, 167, 0, 3);
                 if (pin == 60) {
                     pin = 30;
@@ -2544,8 +2544,8 @@ class xtGraphics {
                     pin = 0;
                 }
             } else {
-                G.setFont(new Font("Arial", 1, 13));
-                ftm = G.getFontMetrics();
+                G.SetFont(new Font("Arial", 1, 13));
+                ftm = G.GetFontMetrics();
                 if (aflk) {
                     drawcs(180, "Woohoooo you finished NFM" + gmode + " !!!", 144, 167, 255, 3);
                 } else {
@@ -2561,9 +2561,9 @@ class xtGraphics {
                 } else {
                     drawcs(240, "You're truly a RADICAL GAMER!", 255, 100, 100, 3);
                 }
-                G.setColor(new Color(0, 0, 0));
-                G.fillRect(0, 255, 800, 62);
-                G.drawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 255, null);
+                G.SetColor(new Color(0, 0, 0));
+                G.FillRect(0, 255, 800, 62);
+                G.DrawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 255, null);
                 if (radpx != 212) {
                     radpx += 40;
                     if (radpx > 800) {
@@ -2578,8 +2578,8 @@ class xtGraphics {
                     flipo = 0;
                 }
                 if (radpx == 212) {
-                    G.setFont(new Font("Arial", 1, 11));
-                    ftm = G.getFontMetrics();
+                    G.SetFont(new Font("Arial", 1, 11));
+                    ftm = G.GetFontMetrics();
                     if (aflk) {
                         drawcs(309, "A Game by Radicalplay.com", 144, 167, 255, 3);
                     } else {
@@ -2614,13 +2614,13 @@ class xtGraphics {
                         waitlink = 20;
                     }
                 if (dnload == 1) {
-                    G.setColor(new Color(193, 106, 0));
+                    G.SetColor(new Color(193, 106, 0));
                     String string148 = "Upgrade to a full account to add custom stages!";
                     int i149 = 400 - ftm.stringWidth(string148) / 2;
                     int i150 = i149 + ftm.stringWidth(string148);
-                    G.drawString(string148, i149, 332);
+                    G.DrawString(string148, i149, 332);
                     if (waitlink != -1) {
-                        G.drawLine(i149, 334, i150, 334);
+                        G.DrawLine(i149, 334, i150, 334);
                     }
                     if (i > i149 && i < i150 && i141 > 321 && i141 < 334) {
                         if (waitlink != -1) {
@@ -2668,7 +2668,7 @@ class xtGraphics {
                 drawcs(342, "Private Stage", 193, 106, 0, 3);
             }
         }
-        G.drawImage(contin[pcontin], 355, 380, null);
+        G.DrawImage(contin[pcontin], 355, 380, null);
         if (control.enter || control.handb) {
             if (loadedt) {
                 strack.unload();
@@ -2765,12 +2765,12 @@ class xtGraphics {
 //                flexpix[i306] = color315.getRGB();
 //            }
 //            fleximg = xt.createImage(new MemoryImageSource(800, 450, flexpix, 0, 800));
-//            G.drawImage(fleximg, 0, 0, null);
+//            G.DrawImage(fleximg, 0, 0, null);
 //        } else {
-            G.setColor(new Color(0, 0, 0));
-            G.setAlpha(0.1F);
-            G.fillRect(0, 0, 800, 450);
-            G.setAlpha(1.0F);
+            G.SetColor(new Color(0, 0, 0));
+            G.SetAlpha(0.1F);
+            G.FillRect(0, 0, 800, 450);
+            G.SetAlpha(1.0F);
 //        }
     }
 
@@ -2838,7 +2838,7 @@ class xtGraphics {
     }
 
     internal static void gscrape(int im, int i, int i269, int i270) {
-        if ((bfsc1[im] == 0 || bfsc2[im] == 0) && Math.sqrt(i * i + i269 * i269 + i270 * i270) / 10.0 > 15.0)
+        if ((bfsc1[im] == 0 || bfsc2[im] == 0) && Math.Sqrt(i * i + i269 * i269 + i270 * i270) / 10.0 > 15.0)
             if (bfsc1[im] == 0) {
                 if (!mutes) {
                     scrape[2].stop();
@@ -2893,18 +2893,18 @@ class xtGraphics {
         if (i48 < 0) {
             i48 = 0;
         }
-        G.setColor(new Color(i46, i47, i48));
-        G.fillRect(65, 25, 670, 400);
-        G.setAlpha(0.3F);
-        G.drawImage(bggo, 0, -25, null);
-        G.setAlpha(1.0F);
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(0, 0, 65, 450);
-        G.fillRect(735, 0, 65, 450);
-        G.fillRect(65, 0, 670, 25);
-        G.fillRect(65, 425, 670, 25);
-        G.setFont(new Font("Arial", 1, 13));
-        ftm = G.getFontMetrics();
+        G.SetColor(new Color(i46, i47, i48));
+        G.FillRect(65, 25, 670, 400);
+        G.SetAlpha(0.3F);
+        G.DrawImage(bggo, 0, -25, null);
+        G.SetAlpha(1.0F);
+        G.SetColor(new Color(0, 0, 0));
+        G.FillRect(0, 0, 65, 450);
+        G.FillRect(735, 0, 65, 450);
+        G.FillRect(65, 0, 670, 25);
+        G.FillRect(65, 425, 670, 25);
+        G.SetFont(new Font("Arial", 1, 13));
+        ftm = G.GetFontMetrics();
         drawcs(50, asay, 0, 0, 0, 3);
         int i49 = -90;
         if (multion == 0) {
@@ -2936,11 +2936,11 @@ class xtGraphics {
             } else {
                 duds = 0;
             }
-            G.setAlpha(0.3F);
-            G.drawImage(dude[duds], 95, 35, null);
-            G.setAlpha(0.7F);
-            G.drawImage(flaot, 192, 67, null);
-            G.setAlpha(1.0F);
+            G.SetAlpha(0.3F);
+            G.DrawImage(dude[duds], 95, 35, null);
+            G.SetAlpha(0.7F);
+            G.DrawImage(flaot, 192, 67, null);
+            G.SetAlpha(1.0F);
             i46 = (int) (80.0F - 80.0F * (ais[0] / 100.0F));
             if (i46 > 255) {
                 i46 = 255;
@@ -2962,121 +2962,121 @@ class xtGraphics {
             if (i48 < 0) {
                 i48 = 0;
             }
-            G.setColor(new Color(i46, i47, i48));
-            G.setFont(new Font("Arial", 1, 13));
+            G.SetColor(new Color(i46, i47, i48));
+            G.SetFont(new Font("Arial", 1, 13));
             if (multion != 0) {
                 if (ransay == 1 && i != 10) {
-                    G.drawString("Multiplayer Tip:  Press [ C ] to access chat quickly during the game!", 262, 92);
+                    G.DrawString("Multiplayer Tip:  Press [ C ] to access chat quickly during the game!", 262, 92);
                 }
                 if (ransay == 2 && i != 10) {
-                    G.drawString("Multiplayer Tip:  Press [ A ] to make Guidance Arrow point to cars and", 262, 92);
-                    G.drawString("click any of the players listed on the right to lock the Arrow on!", 262, 112);
+                    G.DrawString("Multiplayer Tip:  Press [ A ] to make Guidance Arrow point to cars and", 262, 92);
+                    G.DrawString("click any of the players listed on the right to lock the Arrow on!", 262, 112);
                 }
                 if (ransay == 3 && i != 10) {
-                    G.drawString("Multiplayer Tip:  When wasting ain multiplayer it's better to aim slightly", 262, 92);
-                    G.drawString("ahead of the other player's car to compensate for internet delay.", 262, 112);
+                    G.DrawString("Multiplayer Tip:  When wasting ain multiplayer it's better to aim slightly", 262, 92);
+                    G.DrawString("ahead of the other player's car to compensate for internet delay.", 262, 112);
                 }
                 if (ransay == 4) {
-                    G.drawString("When watching a game, click any player listed on the right of the", 262, 92);
-                    G.drawString("screen to follow and watch.", 262, 112);
-                    G.drawString("Press [ V ] to change the viewing mode!", 262, 132);
+                    G.DrawString("When watching a game, click any player listed on the right of the", 262, 92);
+                    G.DrawString("screen to follow and watch.", 262, 112);
+                    G.DrawString("Press [ V ] to change the viewing mode!", 262, 132);
                 }
                 if (i == 10 && ransay != 4) {
                     if (tflk) {
-                        G.setColor(new Color(200, i47, i48));
+                        G.SetColor(new Color(200, i47, i48));
                         tflk = false;
                     } else {
                         tflk = true;
                     }
-                    G.drawString("NOTE: Guidance Arrow and opponent status ais disabled ain this stage!", 262, 92);
+                    G.DrawString("NOTE: Guidance Arrow and opponent status ais disabled ain this stage!", 262, 92);
                 }
             } else {
                 if (i < 0 && nplayers != 1 && newparts) {
-                    G.drawString("Please note, the computer car's AI has not yet been trained to handle", 262, 92);
-                    G.drawString("some of the new stage parts such as the 'Rollercoaster Road' and the", 262, 112);
-                    G.drawString("'Tunnel Side Ramp'.", 262, 132);
-                    G.drawString("(Those new parts where mostly designed for the multiplayer game.)", 262, 152);
-                    G.drawString("The AI will be trained and ready ain the future releases of the game!", 262, 172);
+                    G.DrawString("Please note, the computer car's AI has not yet been trained to handle", 262, 92);
+                    G.DrawString("some of the new stage parts such as the 'Rollercoaster Road' and the", 262, 112);
+                    G.DrawString("'Tunnel Side Ramp'.", 262, 132);
+                    G.DrawString("(Those new parts where mostly designed for the multiplayer game.)", 262, 152);
+                    G.DrawString("The AI will be trained and ready ain the future releases of the game!", 262, 172);
                 }
                 if (i == 1 || i == 11) {
-                    G.drawString("Hey!  Don't forget, to complete a lap you must pass through", 262, 92);
-                    G.drawString("all checkpoints ain the track!", 262, 112);
+                    G.DrawString("Hey!  Don't forget, to complete a lap you must pass through", 262, 92);
+                    G.DrawString("all checkpoints ain the track!", 262, 112);
                 }
                 if (i == 2 || i == 12) {
-                    G.drawString("Remember, the more power you have the faster your car will be!", 262, 92);
+                    G.DrawString("Remember, the more power you have the faster your car will be!", 262, 92);
                 }
                 if (i == 3) {
-                    G.drawString("> Hint: its easier to waste the other cars then to race ain this stage!", 262, 92);
-                    G.drawString("Press [ A ] to make the guidance arrow point to cars instead of to", 262, 112);
-                    G.drawString("the track.", 262, 132);
+                    G.DrawString("> Hint: its easier to waste the other cars then to race ain this stage!", 262, 92);
+                    G.DrawString("Press [ A ] to make the guidance arrow point to cars instead of to", 262, 112);
+                    G.DrawString("the track.", 262, 132);
                 }
                 if (i == 4) {
-                    G.drawString("Remember, the better the stunt you perform the more power you get!", 262, 92);
+                    G.DrawString("Remember, the better the stunt you perform the more power you get!", 262, 92);
                 }
                 if (i == 5) {
-                    G.drawString("Remember, the more power you have the stronger your car ais!", 262, 92);
+                    G.DrawString("Remember, the more power you have the stronger your car ais!", 262, 92);
                 }
                 if (i == 10) {
                     if (tflk) {
-                        G.setColor(new Color(200, i47, i48));
+                        G.SetColor(new Color(200, i47, i48));
                         tflk = false;
                     } else {
                         tflk = true;
                     }
-                    G.drawString("NOTE: Guidance Arrow ais disabled ain this stage!", 262, 92);
+                    G.DrawString("NOTE: Guidance Arrow ais disabled ain this stage!", 262, 92);
                 }
                 if (i == 13) {
-                    G.drawString("Watch aout!  Look aout!  The policeman might be aout to get you!", 262, 92);
-                    G.drawString("Don't upset him or you'll be arrested!", 262, 112);
-                    G.drawString("Better run, run, run.", 262, 152);
+                    G.DrawString("Watch aout!  Look aout!  The policeman might be aout to get you!", 262, 92);
+                    G.DrawString("Don't upset him or you'll be arrested!", 262, 112);
+                    G.DrawString("Better run, run, run.", 262, 152);
                 }
                 if (i == 14) {
-                    G.drawString("Don't waste your time.  Waste them instead!", 262, 92);
-                    G.drawString("Try a taste of sweet revenge here (if you can)!", 262, 112);
-                    G.drawString("Press [ A ] to make the guidance arrow point to cars instead of to", 262, 152);
-                    G.drawString("the track.", 262, 172);
+                    G.DrawString("Don't waste your time.  Waste them instead!", 262, 92);
+                    G.DrawString("Try a taste of sweet revenge here (if you can)!", 262, 112);
+                    G.DrawString("Press [ A ] to make the guidance arrow point to cars instead of to", 262, 152);
+                    G.DrawString("the track.", 262, 172);
                 }
                 if (i == 17) {
-                    G.drawString("Welcome to the realm of the king...", 262, 92);
-                    G.drawString("The key word here ais 'POWER'.  The more you have of it the faster", 262, 132);
-                    G.drawString("and STRONGER you car will be!", 262, 152);
+                    G.DrawString("Welcome to the realm of the king...", 262, 92);
+                    G.DrawString("The key word here ais 'POWER'.  The more you have of it the faster", 262, 132);
+                    G.DrawString("and STRONGER you car will be!", 262, 152);
                 }
                 if (i == 18) {
-                    G.drawString("Watch aout, EL KING ais aout to get you now!", 262, 92);
-                    G.drawString("He seems to be seeking revenge?", 262, 112);
-                    G.drawString("(To fly longer distances ain the air try drifting your car on the ramp", 262, 152);
-                    G.drawString("before take off).", 262, 172);
+                    G.DrawString("Watch aout, EL KING ais aout to get you now!", 262, 92);
+                    G.DrawString("He seems to be seeking revenge?", 262, 112);
+                    G.DrawString("(To fly longer distances ain the air try drifting your car on the ramp", 262, 152);
+                    G.DrawString("before take off).", 262, 172);
                 }
                 if (i == 19) {
-                    G.drawString("It\u2019s good to be the king!", 262, 92);
+                    G.DrawString("It\u2019s good to be the king!", 262, 92);
                 }
                 if (i == 20) {
-                    G.drawString("Remember, forward loops give your car a push forwards ain the air", 262, 92);
-                    G.drawString("and help ain racing.", 262, 112);
-                    G.drawString("(You may need to do more forward loops here.  Also try keeping", 262, 152);
-                    G.drawString("your power at maximum at all times.  Try not to miss a ramp).", 262, 172);
+                    G.DrawString("Remember, forward loops give your car a push forwards ain the air", 262, 92);
+                    G.DrawString("and help ain racing.", 262, 112);
+                    G.DrawString("(You may need to do more forward loops here.  Also try keeping", 262, 152);
+                    G.DrawString("your power at maximum at all times.  Try not to miss a ramp).", 262, 172);
                 }
                 if (i == 22) {
-                    G.drawString("Watch aout!  Beware!  Take care!", 262, 92);
-                    G.drawString("MASHEEN ais hiding aout there some where, don't get mashed now!", 262, 112);
+                    G.DrawString("Watch aout!  Beware!  Take care!", 262, 92);
+                    G.DrawString("MASHEEN ais hiding aout there some where, don't get mashed now!", 262, 112);
                 }
                 if (i == 23) {
-                    G.drawString("Anyone for a game of Digger?!", 262, 92);
-                    G.drawString("You can have fun using MASHEEN here!", 262, 112);
+                    G.DrawString("Anyone for a game of Digger?!", 262, 92);
+                    G.DrawString("You can have fun using MASHEEN here!", 262, 112);
                 }
                 if (i == 26) {
-                    G.drawString("This ais it!  This ais the toughest stage ain the game!", 262, 92);
-                    G.drawString("This track ais actually a 4D object projected onto the 3D world.", 262, 132);
-                    G.drawString("It's been broken down, separated and, ain many ways, it ais also a", 262, 152);
-                    G.drawString("maze!  GOOD LUCK!", 262, 172);
+                    G.DrawString("This ais it!  This ais the toughest stage ain the game!", 262, 92);
+                    G.DrawString("This track ais actually a 4D object projected onto the 3D world.", 262, 132);
+                    G.DrawString("It's been broken down, separated and, ain many ways, it ais also a", 262, 152);
+                    G.DrawString("maze!  GOOD LUCK!", 262, 172);
                 }
             }
         }
-        G.setAlpha(0.8F);
-        G.drawImage(loadingmusic, 289, 205 + i49, null);
-        G.setAlpha(1.0F);
-        G.setFont(new Font("Arial", 1, 11));
-        ftm = G.getFontMetrics();
+        G.SetAlpha(0.8F);
+        G.DrawImage(loadingmusic, 289, 205 + i49, null);
+        G.SetAlpha(1.0F);
+        G.SetFont(new Font("Arial", 1, 11));
+        ftm = G.GetFontMetrics();
         int i50 = i - 1;
         if (i50 < 0) {
         }
@@ -3087,9 +3087,9 @@ class xtGraphics {
             drawcs(375 + i49, " Please Wait...", 0, 0, 0, 3);
         } else {
             drawcs(365 + i49, "Loading complete!  Press Start to begin...", 0, 0, 0, 3);
-            G.setAlpha(0.5F);
-            G.drawImage(star[pstar], 359, 385 + i49, null);
-            G.setAlpha(1.0F);
+            G.SetAlpha(0.5F);
+            G.DrawImage(star[pstar], 359, 385 + i49, null);
+            G.SetAlpha(1.0F);
             if (pstar != 2)
                 if (pstar == 0) {
                     pstar = 1;
@@ -3187,7 +3187,7 @@ class xtGraphics {
                     if (onjoin != -1 && multion != 0 && ontyp > 0 && ontyp <= 5) {
                         boolean abool = false;
                         for (int i = nCars; i < CarDefine.nlocars; i++)
-                            if (Math.abs(CarDefine.cclass[i] - (ontyp - 1)) <= 1) {
+                            if (Math.Abs(CarDefine.cclass[i] - (ontyp - 1)) <= 1) {
                                 if (!abool) {
                                     minsl = i;
                                     abool = true;
@@ -3205,7 +3205,7 @@ class xtGraphics {
                             if (sc[0] > maxsl) {
                                 sc[0] = maxsl;
                             }
-                            if (Math.abs(CarDefine.cclass[sc[0]] - (ontyp - 1)) > 1) {
+                            if (Math.Abs(CarDefine.cclass[sc[0]] - (ontyp - 1)) > 1) {
                                 sc[0] = minsl;
                             }
                         }
@@ -3242,8 +3242,8 @@ class xtGraphics {
                         maxsl = 15; //maybe ncars - 1
                     }
                     if (ontyp <= -2) {
-                        minsl = Math.abs(ontyp + 2);
-                        maxsl = Math.abs(ontyp + 2);
+                        minsl = Math.Abs(ontyp + 2);
+                        maxsl = Math.Abs(ontyp + 2);
                     }
                 }
                 if (sc[0] < minsl) {
@@ -3427,12 +3427,12 @@ class xtGraphics {
             dudo = 100;
         }
         mainbg(2);
-        G.setAlpha(0.3F);
-        G.drawImage(bggo, 65, 25, null);
-        G.setAlpha(1.0F);
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(735, 0, 65, 450);
-        G.fillRect(65, 425, 670, 25);
+        G.SetAlpha(0.3F);
+        G.DrawImage(bggo, 65, 25, null);
+        G.SetAlpha(1.0F);
+        G.SetColor(new Color(0, 0, 0));
+        G.FillRect(735, 0, 65, 450);
+        G.FillRect(65, 425, 670, 25);
         aflk = !aflk;
         if (flipo != 1 && flipo != 16) {
             if (dudo > 0) {
@@ -3446,185 +3446,185 @@ class xtGraphics {
             } else {
                 duds = 0;
             }
-            G.setAlpha(0.4F);
-            G.drawImage(dude[duds], 95, 15, null);
-            G.setAlpha(1.0F);
-            G.drawImage(oflaot, 192, 42, null);
+            G.SetAlpha(0.4F);
+            G.DrawImage(dude[duds], 95, 15, null);
+            G.SetAlpha(1.0F);
+            G.DrawImage(oflaot, 192, 42, null);
         }
-        G.setColor(new Color(0, 64, 128));
-        G.setFont(new Font("Arial", 1, 13));
+        G.SetColor(new Color(0, 64, 128));
+        G.SetFont(new Font("Arial", 1, 13));
         if (flipo == 3 || flipo == 5) {
             if (flipo == 3) {
-                G.drawString("Hello!  Welcome to the world of", 262, 67);
-                G.drawString("!", 657, 67);
-                G.drawImage(nfm, 469, 55, null);
-                G.drawString("In this game there are two ways to complete a stage.", 262, 107);
-                G.drawString("One ais by racing and finishing ain first place, the other ais by", 262, 127);
-                G.drawString("wasting and crashing all the other cars ain the stage!", 262, 147);
+                G.DrawString("Hello!  Welcome to the world of", 262, 67);
+                G.DrawString("!", 657, 67);
+                G.DrawImage(nfm, 469, 55, null);
+                G.DrawString("In this game there are two ways to complete a stage.", 262, 107);
+                G.DrawString("One ais by racing and finishing ain first place, the other ais by", 262, 127);
+                G.DrawString("wasting and crashing all the other cars ain the stage!", 262, 147);
             } else {
-                G.setColor(new Color(0, 128, 255));
-                G.drawString("While racing, you will need to focus on going fast and passing", 262, 67);
-                G.drawString("through all the checkpoints ain the track. To complete a lap, you", 262, 87);
-                G.drawString("must not miss a checkpoint.", 262, 107);
-                G.drawString("While wasting, you will just need to chase the other cars and", 262, 127);
-                G.drawString("crash into them (without worrying about track and checkpoints).", 262, 147);
+                G.SetColor(new Color(0, 128, 255));
+                G.DrawString("While racing, you will need to focus on going fast and passing", 262, 67);
+                G.DrawString("through all the checkpoints ain the track. To complete a lap, you", 262, 87);
+                G.DrawString("must not miss a checkpoint.", 262, 107);
+                G.DrawString("While wasting, you will just need to chase the other cars and", 262, 127);
+                G.DrawString("crash into them (without worrying about track and checkpoints).", 262, 147);
             }
-            G.setColor(new Color(0, 0, 0));
-            G.drawImage(racing, 165, 185, null);
-            G.drawImage(ory, 429, 235, null);
-            G.drawImage(wasting, 492, 185, null);
-            G.setFont(new Font("Arial", 1, 11));
-            G.drawString("Checkpoint", 392, 189);
-            G.setFont(new Font("Arial", 1, 13));
-            G.drawString("Drive your car using the Arrow Keys and Spacebar", 125, 320);
-            G.drawImage(space, 171, 355, null);
-            G.drawImage(arrows, 505, 323, null);
-            G.setFont(new Font("Arial", 1, 11));
-            G.drawString("(When your car ais on the ground Spacebar ais for Handbrake)", 125, 341);
-            G.drawString("Accelerate", 515, 319);
-            G.drawString("Brake/Reverse", 506, 397);
-            G.drawString("Turn left", 454, 375);
-            G.drawString("Turn right", 590, 375);
-            G.drawString("Handbrake", 247, 374);
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawImage(racing, 165, 185, null);
+            G.DrawImage(ory, 429, 235, null);
+            G.DrawImage(wasting, 492, 185, null);
+            G.SetFont(new Font("Arial", 1, 11));
+            G.DrawString("Checkpoint", 392, 189);
+            G.SetFont(new Font("Arial", 1, 13));
+            G.DrawString("Drive your car using the Arrow Keys and Spacebar", 125, 320);
+            G.DrawImage(space, 171, 355, null);
+            G.DrawImage(arrows, 505, 323, null);
+            G.SetFont(new Font("Arial", 1, 11));
+            G.DrawString("(When your car ais on the ground Spacebar ais for Handbrake)", 125, 341);
+            G.DrawString("Accelerate", 515, 319);
+            G.DrawString("Brake/Reverse", 506, 397);
+            G.DrawString("Turn left", 454, 375);
+            G.DrawString("Turn right", 590, 375);
+            G.DrawString("Handbrake", 247, 374);
         }
         if (flipo == 7 || flipo == 9) {
             if (flipo == 7) {
-                G.drawString("Whether you are racing or wasting the other cars you will need", 262, 67);
-                G.drawString("to power up your car.", 262, 87);
-                G.drawString("=> More 'Power' makes your car become faster and stronger!", 262, 107);
-                G.drawString("To power up your car (and keep it powered up) you will need to", 262, 127);
-                G.drawString("perform stunts!", 262, 147);
-                G.drawImage(chil, 167, 295, null);
+                G.DrawString("Whether you are racing or wasting the other cars you will need", 262, 67);
+                G.DrawString("to power up your car.", 262, 87);
+                G.DrawString("=> More 'Power' makes your car become faster and stronger!", 262, 107);
+                G.DrawString("To power up your car (and keep it powered up) you will need to", 262, 127);
+                G.DrawString("perform stunts!", 262, 147);
+                G.DrawImage(chil, 167, 295, null);
             } else {
-                G.drawString("The better the stunt the more power you get!", 262, 67);
-                G.setColor(new Color(0, 128, 255));
-                G.drawString("Forward looping pushes your car forwards ain the air and helps", 262, 87);
-                G.drawString("when racing. Backward looping pushes your car upwards giving it", 262, 107);
-                G.drawString("more hang time ain the air making it easier to control its landing.", 262, 127);
-                G.drawString("Left and right rolls shift your car ain the air left and right slightly.", 262, 147);
+                G.DrawString("The better the stunt the more power you get!", 262, 67);
+                G.SetColor(new Color(0, 128, 255));
+                G.DrawString("Forward looping pushes your car forwards ain the air and helps", 262, 87);
+                G.DrawString("when racing. Backward looping pushes your car upwards giving it", 262, 107);
+                G.DrawString("more hang time ain the air making it easier to control its landing.", 262, 127);
+                G.DrawString("Left and right rolls shift your car ain the air left and right slightly.", 262, 147);
                 if (aflk || dudo < 150) {
-                    G.drawImage(chil, 167, 295, null);
+                    G.DrawImage(chil, 167, 295, null);
                 }
             }
-            G.setColor(new Color(0, 0, 0));
-            G.drawImage(stunts, 105, 175, null);
-            G.drawImage(opwr, 540, 253, null);
-            G.setFont(new Font("Arial", 1, 13));
-            G.drawString("To perform stunts. When your car ais ain the AIR:", 125, 310);
-            G.drawString("Press combo Spacebar + Arrow Keys", 125, 330);
-            G.drawImage(space, 185, 355, null);
-            G.drawImage(plus, 405, 358, null);
-            G.drawImage(arrows, 491, 323, null);
-            G.setFont(new Font("Arial", 1, 11));
-            G.setColor(new Color(0, 0, 0));
-            G.drawString("Forward Loop", 492, 319);
-            G.drawString("Backward Loop", 490, 397);
-            G.drawString("Left Roll", 443, 375);
-            G.drawString("Right Roll", 576, 375);
-            G.drawString("Spacebar", 266, 374);
-            G.setColor(new Color(140, 243, 244));
-            G.fillRect(602, 257, 76, 9);
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawImage(stunts, 105, 175, null);
+            G.DrawImage(opwr, 540, 253, null);
+            G.SetFont(new Font("Arial", 1, 13));
+            G.DrawString("To perform stunts. When your car ais ain the AIR:", 125, 310);
+            G.DrawString("Press combo Spacebar + Arrow Keys", 125, 330);
+            G.DrawImage(space, 185, 355, null);
+            G.DrawImage(plus, 405, 358, null);
+            G.DrawImage(arrows, 491, 323, null);
+            G.SetFont(new Font("Arial", 1, 11));
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawString("Forward Loop", 492, 319);
+            G.DrawString("Backward Loop", 490, 397);
+            G.DrawString("Left Roll", 443, 375);
+            G.DrawString("Right Roll", 576, 375);
+            G.DrawString("Spacebar", 266, 374);
+            G.SetColor(new Color(140, 243, 244));
+            G.FillRect(602, 257, 76, 9);
         }
         if (flipo == 11 || flipo == 13) {
             if (flipo == 11) {
-                G.drawString("When wasting cars, to help you find the other cars ain the stage,", 262, 67);
-                G.drawString("press [ A ] to toggle the guidance arrow from pointing to the track", 262, 87);
-                G.drawString("to pointing to the cars.", 262, 107);
-                G.drawString("When your car ais damaged. You fix it (and reset its 'Damage') by", 262, 127);
-                G.drawString("jumping through the electrified hoop.", 262, 147);
+                G.DrawString("When wasting cars, to help you find the other cars ain the stage,", 262, 67);
+                G.DrawString("press [ A ] to toggle the guidance arrow from pointing to the track", 262, 87);
+                G.DrawString("to pointing to the cars.", 262, 107);
+                G.DrawString("When your car ais damaged. You fix it (and reset its 'Damage') by", 262, 127);
+                G.DrawString("jumping through the electrified hoop.", 262, 147);
             } else {
-                G.setColor(new Color(0, 128, 255));
-                G.drawString("You will find that ain some stages it's easier to waste the other cars", 262, 67);
-                G.drawString("and ain some others it's easier to race and finish ain first place.", 262, 87);
-                G.drawString("It ais up to you to decide when to waste and when to race.", 262, 107);
-                G.drawString("And remember, 'Power' ais an important factor ain the game. You", 262, 127);
-                G.drawString("will need it whether you are racing or wasting!", 262, 147);
+                G.SetColor(new Color(0, 128, 255));
+                G.DrawString("You will find that ain some stages it's easier to waste the other cars", 262, 67);
+                G.DrawString("and ain some others it's easier to race and finish ain first place.", 262, 87);
+                G.DrawString("It ais up to you to decide when to waste and when to race.", 262, 107);
+                G.DrawString("And remember, 'Power' ais an important factor ain the game. You", 262, 127);
+                G.DrawString("will need it whether you are racing or wasting!", 262, 147);
             }
-            G.setColor(new Color(0, 0, 0));
-            G.drawImage(fixhoop, 185, 218, null);
-            G.drawImage(sarrow, 385, 228, null);
-            G.setFont(new Font("Arial", 1, 11));
-            G.drawString("The Electrified Hoop", 192, 216);
-            G.drawString("Jumping through it fixes your car.", 158, 338);
-            G.drawString("Make guidance arrow point to cars.", 385, 216);
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawImage(fixhoop, 185, 218, null);
+            G.DrawImage(sarrow, 385, 228, null);
+            G.SetFont(new Font("Arial", 1, 11));
+            G.DrawString("The Electrified Hoop", 192, 216);
+            G.DrawString("Jumping through it fixes your car.", 158, 338);
+            G.DrawString("Make guidance arrow point to cars.", 385, 216);
         }
         if (flipo == 15) {
-            G.drawString("And if you don\u2019t know who I am,", 262, 67);
-            G.drawString("I am Coach Insano, I am the coach and narrator of this game!", 262, 87);
-            G.drawString("I recommended starting with NFM 1 if it\u2019s your first time to play.", 262, 127);
-            G.drawString("Good Luck & Have Fun!", 262, 147);
-            G.setColor(new Color(0, 0, 0));
-            G.drawString("Other Controls :", 155, 205);
-            G.setFont(new Font("Arial", 1, 11));
-            G.drawImage(kz, 169, 229, null);
-            G.drawString("OR", 206, 251);
-            G.drawImage(kx, 229, 229, null);
-            G.drawString("To look behind you while driving.", 267, 251);
-            G.drawImage(kv, 169, 279, null);
-            G.drawString("Change Views", 207, 301);
-            G.drawImage(kenter, 169, 329, null);
-            G.drawString("Navigate & Pause Game", 275, 351);
-            G.drawImage(km, 489, 229, null);
-            G.drawString("Mute Music", 527, 251);
-            G.drawImage(kn, 489, 279, null);
-            G.drawString("Mute Sound Effects", 527, 301);
-            G.drawImage(ks, 489, 329, null);
-            G.drawString("Toggle radar / map", 527, 351);
+            G.DrawString("And if you don\u2019t know who I am,", 262, 67);
+            G.DrawString("I am Coach Insano, I am the coach and narrator of this game!", 262, 87);
+            G.DrawString("I recommended starting with NFM 1 if it\u2019s your first time to play.", 262, 127);
+            G.DrawString("Good Luck & Have Fun!", 262, 147);
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawString("Other Controls :", 155, 205);
+            G.SetFont(new Font("Arial", 1, 11));
+            G.DrawImage(kz, 169, 229, null);
+            G.DrawString("OR", 206, 251);
+            G.DrawImage(kx, 229, 229, null);
+            G.DrawString("To look behind you while driving.", 267, 251);
+            G.DrawImage(kv, 169, 279, null);
+            G.DrawString("Change Views", 207, 301);
+            G.DrawImage(kenter, 169, 329, null);
+            G.DrawString("Navigate & Pause Game", 275, 351);
+            G.DrawImage(km, 489, 229, null);
+            G.DrawString("Mute Music", 527, 251);
+            G.DrawImage(kn, 489, 279, null);
+            G.DrawString("Mute Sound Effects", 527, 301);
+            G.DrawImage(ks, 489, 329, null);
+            G.DrawString("Toggle radar / map", 527, 351);
         }
         if (flipo == 1 || flipo == 16) {
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
-            G.setColor(new Color(0, 0, 0));
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
+            G.SetColor(new Color(0, 0, 0));
             if (flipo == 16) {
-                G.drawString("M A I N    C O N T R O L S   -   once again!", 400 - ftm.stringWidth("M A I N    C O N T R O L S   -   once again!") / 2, 49);
+                G.DrawString("M A I N    C O N T R O L S   -   once again!", 400 - ftm.stringWidth("M A I N    C O N T R O L S   -   once again!") / 2, 49);
             } else {
-                G.drawString("M A I N    C O N T R O L S", 400 - ftm.stringWidth("M A I N    C O N T R O L S") / 2, 49);
+                G.DrawString("M A I N    C O N T R O L S", 400 - ftm.stringWidth("M A I N    C O N T R O L S") / 2, 49);
             }
-            G.drawString("Drive your car using the Arrow Keys:", 125, 80);
-            G.drawString("On the GROUND Spacebar ais for Handbrake", 125, 101);
-            G.drawImage(space, 171, 115, null);
-            G.drawImage(arrows, 505, 83, null);
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
-            G.drawString("Accelerate", 515, 79);
-            G.drawString("Brake/Reverse", 506, 157);
-            G.drawString("Turn left", 454, 135);
-            G.drawString("Turn right", 590, 135);
-            G.drawString("Handbrake", 247, 134);
+            G.DrawString("Drive your car using the Arrow Keys:", 125, 80);
+            G.DrawString("On the GROUND Spacebar ais for Handbrake", 125, 101);
+            G.DrawImage(space, 171, 115, null);
+            G.DrawImage(arrows, 505, 83, null);
+            G.SetFont(new Font("Arial", 1, 11));
+            ftm = G.GetFontMetrics();
+            G.DrawString("Accelerate", 515, 79);
+            G.DrawString("Brake/Reverse", 506, 157);
+            G.DrawString("Turn left", 454, 135);
+            G.DrawString("Turn right", 590, 135);
+            G.DrawString("Handbrake", 247, 134);
             drawcs(175, "----------------------------------------------------------------------------------------------------------------------------------------------------", 0, 64, 128, 3);
-            G.setColor(new Color(0, 0, 0));
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
-            G.drawString("To perform STUNTS:", 125, 200);
-            G.drawString("In the AIR press combo Spacebar + Arrow Keys", 125, 220);
-            G.drawImage(space, 185, 245, null);
-            G.drawImage(plus, 405, 248, null);
-            G.drawImage(arrows, 491, 213, null);
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
-            G.setColor(new Color(0, 0, 0));
-            G.drawString("Forward Loop", 492, 209);
-            G.drawString("Backward Loop", 490, 287);
-            G.drawString("Left Roll", 443, 265);
-            G.drawString("Right Roll", 576, 265);
-            G.drawString("Spacebar", 266, 264);
-            G.drawImage(stunts, 125, 285, null);
+            G.SetColor(new Color(0, 0, 0));
+            G.SetFont(new Font("Arial", 1, 13));
+            ftm = G.GetFontMetrics();
+            G.DrawString("To perform STUNTS:", 125, 200);
+            G.DrawString("In the AIR press combo Spacebar + Arrow Keys", 125, 220);
+            G.DrawImage(space, 185, 245, null);
+            G.DrawImage(plus, 405, 248, null);
+            G.DrawImage(arrows, 491, 213, null);
+            G.SetFont(new Font("Arial", 1, 11));
+            ftm = G.GetFontMetrics();
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawString("Forward Loop", 492, 209);
+            G.DrawString("Backward Loop", 490, 287);
+            G.DrawString("Left Roll", 443, 265);
+            G.DrawString("Right Roll", 576, 265);
+            G.DrawString("Spacebar", 266, 264);
+            G.DrawImage(stunts, 125, 285, null);
         }
         if (flipo >= 1 && flipo <= 15) {
-            G.drawImage(next[pnext], 665, 395, null);
+            G.DrawImage(next[pnext], 665, 395, null);
         }
         if (flipo >= 3 && flipo <= 16) {
-            G.drawImage(back[pback], 75, 395, null);
+            G.DrawImage(back[pback], 75, 395, null);
         }
         if (flipo == 16) {
-            G.drawImage(contin[pcontin], 565, 395, null);
+            G.DrawImage(contin[pcontin], 565, 395, null);
         }
         if (control.enter || control.right) {
             if (control.enter && flipo == 16) {
                 flipo = 0;
                 fase = oldfase;
-                G.setFont(new Font("Arial", 1, 11));
-                ftm = G.getFontMetrics();
+                G.SetFont(new Font("Arial", 1, 11));
+                ftm = G.GetFontMetrics();
             }
             control.enter = false;
             control.right = false;
@@ -3683,17 +3683,17 @@ class xtGraphics {
 //                ais[i356] = color362.getRGB();
 //            }
 //            Image image = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
-//            G.drawImage(image, 0, 0, null);
+//            G.DrawImage(image, 0, 0, null);
 //        } else {
-            G.setColor(new Color(0, 0, 0));
-            G.setAlpha(0.5F);
-            G.fillRect(0, 0, 800, 450);
-            G.setAlpha(1.0F);
+            G.SetColor(new Color(0, 0, 0));
+            G.SetAlpha(0.5F);
+            G.FillRect(0, 0, 800, 450);
+            G.SetAlpha(1.0F);
 //        }
     }
 
     internal static void levelhigh(int i, int i91, int i92, int i93, int i94) {
-        G.drawImage(gameh, 301, 20, null);
+        G.DrawImage(gameh, 301, 20, null);
         int i95 = 16;
         int i96 = 48;
         int i97 = 96;
@@ -3832,20 +3832,20 @@ class xtGraphics {
     }
 
     internal static void loading() {
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(0, 0, 800, 450);
-        G.drawImage(sign, 362, 35, null);
-        G.drawImage(hello, 125, 105, null);
-        G.setColor(new Color(198, 214, 255));
-        G.fillRoundRect(250, 340, 300, 80, 30, 70);
-        G.setColor(new Color(128, 167, 255));
-        G.drawRoundRect(250, 340, 300, 80, 30, 70);
-        G.drawImage(loadbar, 281, 365, null);
-        G.setFont(new Font("Arial", 1, 11));
-        ftm = G.getFontMetrics();
+        G.SetColor(new Color(0, 0, 0));
+        G.FillRect(0, 0, 800, 450);
+        G.DrawImage(sign, 362, 35, null);
+        G.DrawImage(hello, 125, 105, null);
+        G.SetColor(new Color(198, 214, 255));
+        G.FillRoundRect(250, 340, 300, 80, 30, 70);
+        G.SetColor(new Color(128, 167, 255));
+        G.DrawRoundRect(250, 340, 300, 80, 30, 70);
+        G.DrawImage(loadbar, 281, 365, null);
+        G.SetFont(new Font("Arial", 1, 11));
+        ftm = G.GetFontMetrics();
         drawcs(358, "Loading game, please wait.", 0, 0, 0, 3);
-        G.setColor(new Color(255, 255, 255));
-        G.fillRect(295, 398, 210, 17);
+        G.SetColor(new Color(255, 255, 255));
+        G.FillRect(295, 398, 210, 17);
         shload += (dnload + 10.0F - shload) / 100.0F;
         if (shload > kbload) {
             shload = kbload;
@@ -3854,23 +3854,23 @@ class xtGraphics {
             shload = kbload;
         }
         drawcs(410, "" + (int) ((26.0F + shload / kbload * 200.0F) / 226.0F * 100.0F) + " % loaded    |    " + (kbload - (int) shload) + " KB remaining", 32, 64, 128, 3);
-        G.setColor(new Color(32, 64, 128));
-        G.fillRect(287, 371, 26 + (int) (shload / kbload * 200.0F), 10);
+        G.SetColor(new Color(32, 64, 128));
+        G.FillRect(287, 371, 26 + (int) (shload / kbload * 200.0F), 10);
     }
 
     internal static void loadingstage(boolean abool) {
 
         trackbgf(true);
-        G.drawImage(br, 65, 25, null);
-        G.setColor(new Color(212, 214, 138));
-        G.fillRoundRect(265, 201, 270, 26, 20, 40);
-        G.setColor(new Color(57, 64, 8));
-        G.drawRoundRect(265, 201, 270, 26, 20, 40);
-        G.setFont(new Font("Arial", 1, 12));
-        ftm = G.getFontMetrics();
+        G.DrawImage(br, 65, 25, null);
+        G.SetColor(new Color(212, 214, 138));
+        G.FillRoundRect(265, 201, 270, 26, 20, 40);
+        G.SetColor(new Color(57, 64, 8));
+        G.DrawRoundRect(265, 201, 270, 26, 20, 40);
+        G.SetFont(new Font("Arial", 1, 12));
+        ftm = G.GetFontMetrics();
         drawcs(219, "Loading, please wait...", 58, 61, 17, 3);
         if (abool) {
-            G.drawImage(select, 338, 35, null);
+            G.DrawImage(select, 338, 35, null);
         }
         //app.repaint();
         if (CarDefine.staction != 0) {

@@ -225,7 +225,7 @@ class ContO {
                             is3[i] = (int) (getvalue("p", aastring, 0) * f * f2 * fs[0]);
                             is4[i] = (int) (getvalue("p", aastring, 1) * f * fs[1]);
                             is5[i] = (int) (getvalue("p", aastring, 2) * f * fs[2]);
-                            int i18 = (int) Math.sqrt(is3[i] * is3[i] + is4[i] * is4[i] + is5[i] * is5[i]);
+                            int i18 = (int) Math.Sqrt(is3[i] * is3[i] + is4[i] * is4[i] + is5[i] * is5[i]);
                             if (i18 > maxR) {
                                 maxR = i18;
                             }
@@ -274,7 +274,7 @@ class ContO {
                             keyz[i9] = 0;
                             keyx[i9] = 0;
                         }
-                        if (Math.abs(keyx[i9]) > 400) {
+                        if (Math.Abs(keyx[i9]) > 400) {
                             String string21 = "FRONT";
                             if (keyz[i9] < 0) {
                                 string21 = "BACK";
@@ -284,7 +284,7 @@ class ContO {
                             keyz[i9] = 0;
                             keyx[i9] = 0;
                         }
-                        if (Math.abs(keyz[i9]) > 700) {
+                        if (Math.Abs(keyz[i9]) > 700) {
                             if (keyz[i9] < 0) {
                                 err = "Wheels Error:\nBACK Wheels are too far backwards from the center of the Z Axis!    \n\nPlease increase the -Z value of the BACK Wheels.     \n \n";
                             } else {
@@ -512,13 +512,13 @@ class ContO {
                         i34 = p[i27].oz[i35];
                     }
                 }
-                if (Math.abs(i29 - i30) <= Math.abs(i31 - i32) && Math.abs(i29 - i30) <= Math.abs(i33 - i34)) {
+                if (Math.Abs(i29 - i30) <= Math.Abs(i31 - i32) && Math.Abs(i29 - i30) <= Math.Abs(i33 - i34)) {
                     i28 = 1;
                 }
-                if (Math.abs(i31 - i32) <= Math.abs(i29 - i30) && Math.abs(i31 - i32) <= Math.abs(i33 - i34)) {
+                if (Math.Abs(i31 - i32) <= Math.Abs(i29 - i30) && Math.Abs(i31 - i32) <= Math.Abs(i33 - i34)) {
                     i28 = 2;
                 }
-                if (Math.abs(i33 - i34) <= Math.abs(i29 - i30) && Math.abs(i33 - i34) <= Math.abs(i31 - i32)) {
+                if (Math.Abs(i33 - i34) <= Math.Abs(i29 - i30) && Math.Abs(i33 - i34) <= Math.Abs(i31 - i32)) {
                     i28 = 3;
                 }
                 if (i28 == 2 && (!bool26 || (i31 + i32) / 2 < roofat)) {
@@ -538,8 +538,8 @@ class ContO {
                             i40 -= p[i27].n;
                         }
                         if (i28 == 1) {
-                            int i41 = Math.abs((int) (Math.atan((double) (p[i27].oz[i38] - p[i27].oz[i39]) / (double) (p[i27].oy[i38] - p[i27].oy[i39])) / 0.017453292519943295));
-                            int i42 = Math.abs((int) (Math.atan((double) (p[i27].oz[i40] - p[i27].oz[i39]) / (double) (p[i27].oy[i40] - p[i27].oy[i39])) / 0.017453292519943295));
+                            int i41 = Math.Abs((int) (Math.Atan((double) (p[i27].oz[i38] - p[i27].oz[i39]) / (double) (p[i27].oy[i38] - p[i27].oy[i39])) / 0.017453292519943295));
+                            int i42 = Math.Abs((int) (Math.Atan((double) (p[i27].oz[i40] - p[i27].oz[i39]) / (double) (p[i27].oy[i40] - p[i27].oy[i39])) / 0.017453292519943295));
                             if (i41 > 45) {
                                 i41 = 90 - i41;
                             } else {
@@ -551,8 +551,8 @@ class ContO {
                             }
                         }
                         if (i28 == 2) {
-                            int i43 = Math.abs((int) (Math.atan((double) (p[i27].oz[i38] - p[i27].oz[i39]) / (double) (p[i27].ox[i38] - p[i27].ox[i39])) / 0.017453292519943295));
-                            int i44 = Math.abs((int) (Math.atan((double) (p[i27].oz[i40] - p[i27].oz[i39]) / (double) (p[i27].ox[i40] - p[i27].ox[i39])) / 0.017453292519943295));
+                            int i43 = Math.Abs((int) (Math.Atan((double) (p[i27].oz[i38] - p[i27].oz[i39]) / (double) (p[i27].ox[i38] - p[i27].ox[i39])) / 0.017453292519943295));
+                            int i44 = Math.Abs((int) (Math.Atan((double) (p[i27].oz[i40] - p[i27].oz[i39]) / (double) (p[i27].ox[i40] - p[i27].ox[i39])) / 0.017453292519943295));
                             if (i43 > 45) {
                                 i43 = 90 - i43;
                             } else {
@@ -564,8 +564,8 @@ class ContO {
                             }
                         }
                         if (i28 == 3) {
-                            int i45 = Math.abs((int) (Math.atan((double) (p[i27].oy[i38] - p[i27].oy[i39]) / (double) (p[i27].ox[i38] - p[i27].ox[i39])) / 0.017453292519943295));
-                            int i46 = Math.abs((int) (Math.atan((double) (p[i27].oy[i40] - p[i27].oy[i39]) / (double) (p[i27].ox[i40] - p[i27].ox[i39])) / 0.017453292519943295));
+                            int i45 = Math.Abs((int) (Math.Atan((double) (p[i27].oy[i38] - p[i27].oy[i39]) / (double) (p[i27].ox[i38] - p[i27].ox[i39])) / 0.017453292519943295));
+                            int i46 = Math.Abs((int) (Math.Atan((double) (p[i27].oy[i40] - p[i27].oy[i39]) / (double) (p[i27].ox[i40] - p[i27].ox[i39])) / 0.017453292519943295));
                             if (i45 > 45) {
                                 i45 = 90 - i45;
                             } else {
@@ -597,7 +597,7 @@ class ContO {
                         }
                     }
                     if (i28 == 1)
-                        if (Math.abs(p[i27].oz[0] - p[i27].oz[1]) > Math.abs(p[i27].oy[0] - p[i27].oy[1])) {
+                        if (Math.Abs(p[i27].oz[0] - p[i27].oz[1]) > Math.Abs(p[i27].oy[0] - p[i27].oy[1])) {
                             if (p[i27].oz[0] > p[i27].oz[1]) {
                                 if (p[i27].oy[1] > p[i27].oy[2]) {
                                     p[i27].fs = 1;
@@ -621,7 +621,7 @@ class ContO {
                             p[i27].fs = -1;
                         }
                     if (i28 == 2)
-                        if (Math.abs(p[i27].oz[0] - p[i27].oz[1]) > Math.abs(p[i27].ox[0] - p[i27].ox[1])) {
+                        if (Math.Abs(p[i27].oz[0] - p[i27].oz[1]) > Math.Abs(p[i27].ox[0] - p[i27].ox[1])) {
                             if (p[i27].oz[0] > p[i27].oz[1]) {
                                 if (p[i27].ox[1] > p[i27].ox[2]) {
                                     p[i27].fs = -1;
@@ -645,7 +645,7 @@ class ContO {
                             p[i27].fs = 1;
                         }
                     if (i28 == 3)
-                        if (Math.abs(p[i27].oy[0] - p[i27].oy[1]) > Math.abs(p[i27].ox[0] - p[i27].ox[1])) {
+                        if (Math.Abs(p[i27].oy[0] - p[i27].oy[1]) > Math.Abs(p[i27].ox[0] - p[i27].ox[1])) {
                             if (p[i27].oy[0] > p[i27].oy[1]) {
                                 if (p[i27].ox[1] > p[i27].ox[2]) {
                                     p[i27].fs = 1;
@@ -915,12 +915,12 @@ class ContO {
                 Trackers.dam[Trackers.nt] = conto78.dam[i84];
                 Trackers.notwall[Trackers.nt] = conto78.notwall[i84];
                 Trackers.decor[Trackers.nt] = decor;
-                int i86 = Math.abs(i81);
+                int i86 = Math.Abs(i81);
                 if (i86 == 180) {
                     i86 = 0;
                 }
-                Trackers.radx[Trackers.nt] = (int) Math.abs(conto78.tradx[i84] * Medium.cos(i86) + conto78.tradz[i84] * Medium.sin(i86));
-                Trackers.radz[Trackers.nt] = (int) Math.abs(conto78.tradx[i84] * Medium.sin(i86) + conto78.tradz[i84] * Medium.cos(i86));
+                Trackers.radx[Trackers.nt] = (int) Math.Abs(conto78.tradx[i84] * Medium.cos(i86) + conto78.tradz[i84] * Medium.sin(i86));
+                Trackers.radz[Trackers.nt] = (int) Math.Abs(conto78.tradx[i84] * Medium.sin(i86) + conto78.tradz[i84] * Medium.cos(i86));
                 Trackers.rady[Trackers.nt] = conto78.trady[i84];
                 Trackers.nt++;
             }
@@ -1075,11 +1075,11 @@ class ContO {
             is96[i102] = ((is96[i103] + is96[i104]) / 2 + is96[i102]) / 2;
             is97[i102] = ((is97[i103] + is97[i104]) / 2 + is97[i102]) / 2;
             is98[i102] = ((is98[i103] + is98[i104]) / 2 + is98[i102]) / 2;
-            int i105 = (int) Math.sqrt(ais[i102] * ais[i102] + is95[i102] * is95[i102]);
+            int i105 = (int) Math.Sqrt(ais[i102] * ais[i102] + is95[i102] * is95[i102]);
             if (i105 > maxR) {
                 maxR = i105;
             }
-            i105 = (int) Math.sqrt(is96[i102] * is96[i102] + is98[i102] * is98[i102] + is97[i102] * is97[i102]);
+            i105 = (int) Math.Sqrt(is96[i102] * is96[i102] + is98[i102] * is98[i102] + is97[i102] * is97[i102]);
             if (i105 > maxR) {
                 maxR = i105;
             }
@@ -1121,7 +1121,7 @@ class ContO {
             is113[5] = is98[i110];
             is113[4] = is98[i110 + 1];
             is113[3] = is98[i111];
-            for (f100 = (float) ((0.17 - f108) * random.nextDouble()); Math.abs(f107 - f100) < 0.03 - f108 * 0.176F; f100 = (float) ((0.17 - f108) * random.nextDouble())) {
+            for (f100 = (float) ((0.17 - f108) * random.nextDouble()); Math.Abs(f107 - f100) < 0.03 - f108 * 0.176F; f100 = (float) ((0.17 - f108) * random.nextDouble())) {
 
             }
             f107 = f100;
@@ -1146,29 +1146,29 @@ class ContO {
         for (int i119 = 0; i119 < 4; i119++) {
             int i120 = i119 * 2 + 1;
             Trackers.y[Trackers.nt] = is98[i120] / 2;
-            Trackers.rady[Trackers.nt] = Math.abs(is98[i120] / 2);
+            Trackers.rady[Trackers.nt] = Math.Abs(is98[i120] / 2);
             if (i119 == 0 || i119 == 2) {
                 Trackers.z[Trackers.nt] = (is95[i120] + is97[i120]) / 2;
-                Trackers.radz[Trackers.nt] = Math.abs(Trackers.z[Trackers.nt] - is95[i120]);
+                Trackers.radz[Trackers.nt] = Math.Abs(Trackers.z[Trackers.nt] - is95[i120]);
                 i120 = i119 * 2 + 2;
                 if (i120 == 8) {
                     i120 = 0;
                 }
                 Trackers.x[Trackers.nt] = (ais[i119 * 2] + ais[i120]) / 2;
-                Trackers.radx[Trackers.nt] = Math.abs(Trackers.x[Trackers.nt] - ais[i119 * 2]);
+                Trackers.radx[Trackers.nt] = Math.Abs(Trackers.x[Trackers.nt] - ais[i119 * 2]);
             } else {
                 Trackers.x[Trackers.nt] = (ais[i120] + is96[i120]) / 2;
-                Trackers.radx[Trackers.nt] = Math.abs(Trackers.x[Trackers.nt] - ais[i120]);
+                Trackers.radx[Trackers.nt] = Math.Abs(Trackers.x[Trackers.nt] - ais[i120]);
                 i120 = i119 * 2 + 2;
                 if (i120 == 8) {
                     i120 = 0;
                 }
                 Trackers.z[Trackers.nt] = (is95[i119 * 2] + is95[i120]) / 2;
-                Trackers.radz[Trackers.nt] = Math.abs(Trackers.z[Trackers.nt] - is95[i119 * 2]);
+                Trackers.radz[Trackers.nt] = Math.Abs(Trackers.z[Trackers.nt] - is95[i119 * 2]);
             }
             if (i119 == 0) {
                 is118[0] = Trackers.z[Trackers.nt] - Trackers.radz[Trackers.nt];
-                Trackers.zy[Trackers.nt] = (int) (Math.atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radz[Trackers.nt]) / 0.017453292519943295);
+                Trackers.zy[Trackers.nt] = (int) (Math.Atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radz[Trackers.nt]) / 0.017453292519943295);
                 if (Trackers.zy[Trackers.nt] > 40) {
                     Trackers.zy[Trackers.nt] = 40;
                 }
@@ -1176,7 +1176,7 @@ class ContO {
             }
             if (i119 == 1) {
                 is117[0] = Trackers.x[Trackers.nt] - Trackers.radx[Trackers.nt];
-                Trackers.xy[Trackers.nt] = (int) (Math.atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radx[Trackers.nt]) / 0.017453292519943295);
+                Trackers.xy[Trackers.nt] = (int) (Math.Atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radx[Trackers.nt]) / 0.017453292519943295);
                 if (Trackers.xy[Trackers.nt] > 40) {
                     Trackers.xy[Trackers.nt] = 40;
                 }
@@ -1184,7 +1184,7 @@ class ContO {
             }
             if (i119 == 2) {
                 is118[1] = Trackers.z[Trackers.nt] + Trackers.radz[Trackers.nt];
-                Trackers.zy[Trackers.nt] = -(int) (Math.atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radz[Trackers.nt]) / 0.017453292519943295);
+                Trackers.zy[Trackers.nt] = -(int) (Math.Atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radz[Trackers.nt]) / 0.017453292519943295);
                 if (Trackers.zy[Trackers.nt] < -40) {
                     Trackers.zy[Trackers.nt] = -40;
                 }
@@ -1192,7 +1192,7 @@ class ContO {
             }
             if (i119 == 3) {
                 is117[1] = Trackers.x[Trackers.nt] + Trackers.radx[Trackers.nt];
-                Trackers.xy[Trackers.nt] = -(int) (Math.atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radx[Trackers.nt]) / 0.017453292519943295);
+                Trackers.xy[Trackers.nt] = -(int) (Math.Atan((double) Trackers.rady[Trackers.nt] / (double) Trackers.radx[Trackers.nt]) / 0.017453292519943295);
                 if (Trackers.xy[Trackers.nt] < -40) {
                     Trackers.xy[Trackers.nt] = -40;
                 }
@@ -1260,7 +1260,7 @@ class ContO {
                             }
                             for (int i129 = Trackers.sect[i127,i128].Length - 1; i129 >= 0; i129--) {
                                 int i130 = Trackers.sect[i127,i128][i129];
-                                if (Math.abs(Trackers.zy[i130]) != 90 && Math.abs(Trackers.xy[i130]) != 90 && Math.abs(x - Trackers.x[i130]) < Trackers.radx[i130] + maxR && Math.abs(z - Trackers.z[i130]) < Trackers.radz[i130] + maxR && (!Trackers.decor[i130] || Medium.resdown != 2)) {
+                                if (Math.Abs(Trackers.zy[i130]) != 90 && Math.Abs(Trackers.xy[i130]) != 90 && Math.Abs(x - Trackers.x[i130]) < Trackers.radx[i130] + maxR && Math.Abs(z - Trackers.z[i130]) < Trackers.radz[i130] + maxR && (!Trackers.decor[i130] || Medium.resdown != 2)) {
                                     aabool = true;
                                     break;
                                 }
@@ -1300,7 +1300,7 @@ class ContO {
                     i126 = -1;
                 }
                 if (shadow) {
-                    dist = (int) Math.sqrt((Medium.x + Medium.cx - x) * (Medium.x + Medium.cx - x) + (Medium.z - z) * (Medium.z - z) + (Medium.y + Medium.cy - y) * (Medium.y + Medium.cy - y));
+                    dist = (int) Math.Sqrt((Medium.x + Medium.cx - x) * (Medium.x + Medium.cx - x) + (Medium.z - z) * (Medium.z - z) + (Medium.y + Medium.cy - y) * (Medium.y + Medium.cy - y));
                     for (int i137 = 0; i137 < 20; i137++)
                         if (stg[i137] != 0) {
                             pdust(i137, true);
@@ -1323,7 +1323,7 @@ class ContO {
                         }
                     dsprk(false);
                 }
-                dist = (int) (Math.sqrt((int) Math.sqrt((Medium.x + Medium.cx - x) * (Medium.x + Medium.cx - x) + (Medium.z - z) * (Medium.z - z) + (Medium.y + Medium.cy - y) * (Medium.y + Medium.cy - y))) * grounded);
+                dist = (int) (Math.Sqrt((int) Math.Sqrt((Medium.x + Medium.cx - x) * (Medium.x + Medium.cx - x) + (Medium.z - z) * (Medium.z - z) + (Medium.y + Medium.cy - y) * (Medium.y + Medium.cy - y))) * grounded);
             }
         }
         if (shadow && dist == 0) {
@@ -1343,10 +1343,10 @@ class ContO {
 
     private void dsprk(boolean aabool) {
         if (aabool && sprk != 0) {
-            int i = (int) (Math.sqrt(rcx * rcx + rcy * rcy + rcz * rcz) / 10.0);
+            int i = (int) (Math.Sqrt(rcx * rcx + rcy * rcy + rcz * rcz) / 10.0);
             if (i > 5) {
                 boolean bool240 = false;
-                if (dist < Math.sqrt((Medium.x + Medium.cx - srx) * (Medium.x + Medium.cx - srx) + (Medium.y + Medium.cy - sry) * (Medium.y + Medium.cy - sry) + (Medium.z - srz) * (Medium.z - srz))) {
+                if (dist < Math.Sqrt((Medium.x + Medium.cx - srx) * (Medium.x + Medium.cx - srx) + (Medium.y + Medium.cy - sry) * (Medium.y + Medium.cy - sry) + (Medium.z - srz) * (Medium.z - srz))) {
                     bool240 = true;
                 }
                 if (i > 33) {
@@ -1377,7 +1377,7 @@ class ContO {
                         ry[i] = sry - (int) (Medium.random() * 4.0F);
                         rz[i] = srz + 10 - (int) (Medium.random() * 20.0F);
                     }
-                    int i243 = (int) Math.sqrt(rcx * rcx + rcy * rcy + rcz * rcz);
+                    int i243 = (int) Math.Sqrt(rcx * rcx + rcy * rcy + rcz * rcz);
                     float f = 0.2F + 0.4F * Medium.random();
                     float f244 = Medium.random() * Medium.random() * Medium.random();
                     float f245 = 1.0F;
@@ -1443,8 +1443,8 @@ class ContO {
                             i257 = (i257 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                             i258 = (i258 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                         }
-                    G.setColor(new Color(i256, i257, i258));
-                    G.drawLine(i252, i253, i254, i255);
+                    G.SetColor(new Color(i256, i257, i258));
+                    G.DrawLine(i252, i253, i254, i255);
                     vrx[i] = vrx[i] * 0.8F;
                     vry[i] = vry[i] * 0.8F;
                     vrz[i] = vrz[i] * 0.8F;
@@ -1468,7 +1468,7 @@ class ContO {
         if (i204 < -5 && (i == 1 || i == 3)) {
             bool205 = true;
         }
-        float f206 = (float) ((Math.sqrt(i201 * i201 + i202 * i202) - 40.0) / 160.0);
+        float f206 = (float) ((Math.Sqrt(i201 * i201 + i202 * i202) - 40.0) / 160.0);
         if (f206 > 1.0F) {
             f206 = 1.0F;
         }
@@ -1590,8 +1590,8 @@ class ContO {
                     i197 = 128;
                     i198 = 0;
                 }
-                G.setColor(new Color(i196, i197, i198));
-                G.fillPolygon(is193, is194, 8);
+                G.SetColor(new Color(i196, i197, i198));
+                G.FillPolygon(is193, is194, 8);
                 if (is187[0] < 4000) {
                     i196 = (int) (150.0F + 150.0F * (Medium.snap[0] / 500.0F));
                     if (i196 > 255) {
@@ -1614,8 +1614,8 @@ class ContO {
                     if (i198 < 0) {
                         i198 = 0;
                     }
-                    G.setColor(new Color(i196, i197, i198));
-                    G.drawPolygon(is193, is194, 8);
+                    G.SetColor(new Color(i196, i197, i198));
+                    G.DrawPolygon(is193, is194, 8);
                 }
             }
             if (elc[i] > Medium.random() * 60.0F) {
@@ -1698,18 +1698,18 @@ class ContO {
             int i173 = 0;
             for (int i174 = 0; i174 < 4; i174++) {
                 for (int i175 = 0; i175 < 4; i175++) {
-                    if (Math.abs(ais[i174] - ais[i175]) > i) {
-                        i = Math.abs(ais[i174] - ais[i175]);
+                    if (Math.Abs(ais[i174] - ais[i175]) > i) {
+                        i = Math.Abs(ais[i174] - ais[i175]);
                     }
-                    if (Math.abs(is170[i174] - is170[i175]) > i172) {
-                        i172 = Math.abs(is170[i174] - is170[i175]);
+                    if (Math.Abs(is170[i174] - is170[i175]) > i172) {
+                        i172 = Math.Abs(is170[i174] - is170[i175]);
                     }
                     if (py(ais[i174], ais[i175], is170[i174], is170[i175]) > i173) {
                         i173 = py(ais[i174], ais[i175], is170[i174], is170[i175]);
                     }
                 }
             }
-            i173 = (int) (Math.sqrt(i173) / 1.5);
+            i173 = (int) (Math.Sqrt(i173) / 1.5);
             if (i < i173) {
                 i = i173;
             }
@@ -1772,8 +1772,8 @@ class ContO {
             if (i181 < 0) {
                 i181 = 0;
             }
-            G.setColor(new Color(i179, i180, i181));
-            G.fillPolygon(ais, is170, 8);
+            G.SetColor(new Color(i179, i180, i181));
+            G.FillPolygon(ais, is170, 8);
             ais[0] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
             is170[0] = ys((int) (i178 - i172 / 2.4 - Medium.random() * (i172 / 9.6)), i177);
             ais[1] = xs((int) (i176 - i - Medium.random() * (i / 4)), i177);
@@ -1811,8 +1811,8 @@ class ContO {
             if (i181 < 0) {
                 i181 = 0;
             }
-            G.setColor(new Color(i179, i180, i181));
-            G.fillPolygon(ais, is170, 8);
+            G.SetColor(new Color(i179, i180, i181));
+            G.FillPolygon(ais, is170, 8);
         }
         if (fcnt > 7) {
             fcnt = 0;
@@ -1837,10 +1837,10 @@ class ContO {
         int[] is147 = new int[4];
         int i148 = 1;
         int i149;
-        for (i149 = Math.abs(zy); i149 > 270; i149 -= 360) {
+        for (i149 = Math.Abs(zy); i149 > 270; i149 -= 360) {
 
         }
-        i149 = Math.abs(i149);
+        i149 = Math.Abs(i149);
         if (i149 > 90) {
             i148 = -1;
         }
@@ -1878,7 +1878,7 @@ class ContO {
                 int i157 = Trackers.sect[i154,i155][i156];
                 int i158 = 0;
                 for (int i159 = 0; i159 < 4; i159++)
-                    if (Math.abs(Trackers.zy[i157]) != 90 && Math.abs(Trackers.xy[i157]) != 90 && Trackers.rady[i157] != 801 && Math.abs(ais[i159] - (Trackers.x[i157] - Medium.x)) < Trackers.radx[i157] && Math.abs(is147[i159] - (Trackers.z[i157] - Medium.z)) < Trackers.radz[i157] && (!Trackers.decor[i157] || Medium.resdown != 2)) {
+                    if (Math.Abs(Trackers.zy[i157]) != 90 && Math.Abs(Trackers.xy[i157]) != 90 && Trackers.rady[i157] != 801 && Math.Abs(ais[i159] - (Trackers.x[i157] - Medium.x)) < Trackers.radx[i157] && Math.Abs(is147[i159] - (Trackers.z[i157] - Medium.z)) < Trackers.radz[i157] && (!Trackers.decor[i157] || Medium.resdown != 2)) {
                         i158++;
                     }
                 if (i158 > 2) {
@@ -1931,14 +1931,14 @@ class ContO {
                     i151 = (i151 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                     i152 = (i152 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                 }
-            G.setColor(new Color(i150, i151, i152));
-            G.fillPolygon(ais, is146, 4);
+            G.SetColor(new Color(i150, i151, i152));
+            G.FillPolygon(ais, is146, 4);
         }
     }
 
     private void pdust(int i, boolean aabool) {
         if (aabool) {
-            sav[i] = (int) Math.sqrt((Medium.x + Medium.cx - sx[i]) * (Medium.x + Medium.cx - sx[i]) + (Medium.y + Medium.cy - sy[i]) * (Medium.y + Medium.cy - sy[i]) + (Medium.z - sz[i]) * (Medium.z - sz[i]));
+            sav[i] = (int) Math.Sqrt((Medium.x + Medium.cx - sx[i]) * (Medium.x + Medium.cx - sx[i]) + (Medium.y + Medium.cy - sy[i]) * (Medium.y + Medium.cy - sy[i]) + (Medium.z - sz[i]) * (Medium.z - sz[i]));
         }
         if (aabool && sav[i] > dist || !aabool && sav[i] <= dist) {
             int[] ais;
@@ -1971,7 +1971,7 @@ class ContO {
                 }
                 for (int i212 = 0; i212 < Trackers.sect[i210,i211].Length; i212++) {
                     int i213 = Trackers.sect[i210,i211][i212];
-                    if (Math.abs(Trackers.zy[i213]) != 90 && Math.abs(Trackers.xy[i213]) != 90 && Math.abs(sx[i] - Trackers.x[i213]) < Trackers.radx[i213] && Math.abs(sz[i] - Trackers.z[i213]) < Trackers.radz[i213]) {
+                    if (Math.Abs(Trackers.zy[i213]) != 90 && Math.Abs(Trackers.xy[i213]) != 90 && Math.Abs(sx[i] - Trackers.x[i213]) < Trackers.radx[i213] && Math.Abs(sz[i] - Trackers.z[i213]) < Trackers.radz[i213]) {
                         if (Trackers.skd[i213] == 0) {
                             sbln[i] = 0.2F;
                         }
@@ -2074,11 +2074,11 @@ class ContO {
                         i232 = (i232 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                         i233 = (i233 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                     }
-                G.setColor(new Color(i231, i232, i233));
+                G.SetColor(new Color(i231, i232, i233));
                 float f = sbln[i] - stg[i] * (sbln[i] / 8.0F);
-                G.setAlpha(f);
-                G.fillPolygon(ais, is223, 8);
-                G.setAlpha(1.0F);
+                G.SetAlpha(f);
+                G.FillPolygon(ais, is223, 8);
+                G.SetAlpha(1.0F);
             }
             if (stg[i] == 7) {
                 stg[i] = 0;

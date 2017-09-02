@@ -111,7 +111,7 @@ namespace Cum
         }
 
         private static void chipx(int i, float f, ContO conto, Mad mad) {
-            if (Math.abs(f) > 100.0F)
+            if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
                 {
@@ -131,7 +131,7 @@ namespace Cum
                         {
                             f69 = f / 20.0F * Medium.random();
                         }
-                    if (f69 != 0.0F && Math.abs(f69) >= 1.0F)
+                    if (f69 != 0.0F && Math.Abs(f69) >= 1.0F)
                     {
                         conto.p[i68].chip = 1;
                         conto.p[i68].ctmag = f69;
@@ -141,7 +141,7 @@ namespace Cum
         }
 
         private static void chipz(int i, float f, ContO conto, Mad mad) {
-            if (Math.abs(f) > 100.0F)
+            if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
                 {
@@ -161,7 +161,7 @@ namespace Cum
                         {
                             f72 = f / 20.0F * Medium.random();
                         }
-                    if (f72 != 0.0F && Math.abs(f72) >= 1.0F)
+                    if (f72 != 0.0F && Math.Abs(f72) >= 1.0F)
                     {
                         conto.p[i71].chip = 1;
                         conto.p[i71].ctmag = f72;
@@ -581,7 +581,7 @@ namespace Cum
         }
 
         private static void regx(int i, float f, ContO conto, Mad mad) {
-            if (Math.abs(f) > 100.0F)
+            if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
                 {
@@ -605,7 +605,7 @@ namespace Cum
                         }
                     if (f63 != 0.0F)
                     {
-                        if (Math.abs(f63) >= 1.0F)
+                        if (Math.Abs(f63) >= 1.0F)
                         {
                             conto.p[i62].chip = 1;
                             conto.p[i62].ctmag = f63;
@@ -644,7 +644,7 @@ namespace Cum
                             {
                                 conto.p[i62].hsb[0] = 0.05F;
                             }
-                            conto.p[i62].bfase += (int)Math.abs(f63);
+                            conto.p[i62].bfase += (int)Math.Abs(f63);
                             new Color(conto.p[i62].c[0], conto.p[i62].c[1], conto.p[i62].c[2]);
                             Color color = Color.getHSBColor(conto.p[i62].hsb[0], conto.p[i62].hsb[1],
                                 conto.p[i62].hsb[2]);
@@ -654,7 +654,7 @@ namespace Cum
                         }
                         if (conto.p[i62].glass == 1)
                         {
-                            conto.p[i62].gr += (int)Math.abs(f63 * 1.5);
+                            conto.p[i62].gr += (int)Math.Abs(f63 * 1.5);
                         }
                     }
                 }
@@ -717,7 +717,7 @@ namespace Cum
                             }
                         if (f55 != 0.0F)
                         {
-                            if (Math.abs(f55) >= 1.0F)
+                            if (Math.Abs(f55) >= 1.0F)
                             {
                                 conto.p[i54].chip = 1;
                                 conto.p[i54].ctmag = f55;
@@ -766,7 +766,7 @@ namespace Cum
                             }
                             if (conto.p[i54].glass == 1)
                             {
-                                conto.p[i54].gr += (int)Math.abs(f55 * 1.5);
+                                conto.p[i54].gr += (int)Math.Abs(f55 * 1.5);
                             }
                         }
                     }
@@ -782,7 +782,7 @@ namespace Cum
                             if (conto.p[i59].wz == 0)
                             {
                                 f60 = f / 15.0F * Medium.random();
-                                if ((Math.abs(conto.p[i59].oy[i61] - mad.stat.flipy - squash[0,mad.im]) <
+                                if ((Math.Abs(conto.p[i59].oy[i61] - mad.stat.flipy - squash[0,mad.im]) <
                                      mad.stat.msquash * 3 ||
                                      conto.p[i59].oy[i61] < mad.stat.flipy + squash[0,mad.im]) &&
                                     squash[0,mad.im] < mad.stat.msquash)
@@ -800,7 +800,7 @@ namespace Cum
                         {
                             conto.p[i59].bfase += (int)f60;
                         }
-                        if (Math.abs(f60) >= 1.0F)
+                        if (Math.Abs(f60) >= 1.0F)
                         {
                             conto.p[i59].chip = 1;
                             conto.p[i59].ctmag = f60;
@@ -812,7 +812,7 @@ namespace Cum
         }
 
         private static void regz(int i, float f, ContO conto, Mad mad) {
-            if (Math.abs(f) > 100.0F)
+            if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
                 {
@@ -836,7 +836,7 @@ namespace Cum
                         }
                     if (f66 != 0.0F)
                     {
-                        if (Math.abs(f66) >= 1.0F)
+                        if (Math.Abs(f66) >= 1.0F)
                         {
                             conto.p[i65].chip = 1;
                             conto.p[i65].ctmag = f66;
@@ -875,7 +875,7 @@ namespace Cum
                             {
                                 conto.p[i65].hsb[0] = 0.05F;
                             }
-                            conto.p[i65].bfase += (int)Math.abs(f66);
+                            conto.p[i65].bfase += (int)Math.Abs(f66);
                             //new Color(conto.p[i65].c[0], conto.p[i65].c[1], conto.p[i65].c[2]);
                             Color color = Color.getHSBColor(conto.p[i65].hsb[0], conto.p[i65].hsb[1],
                                 conto.p[i65].hsb[2]);
@@ -885,7 +885,7 @@ namespace Cum
                         }
                         if (conto.p[i65].glass == 1)
                         {
-                            conto.p[i65].gr += (int)Math.abs(f66 * 1.5);
+                            conto.p[i65].gr += (int)Math.Abs(f66 * 1.5);
                         }
                     }
                 }

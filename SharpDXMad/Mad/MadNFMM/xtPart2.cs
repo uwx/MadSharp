@@ -39,7 +39,7 @@ namespace Cum
 
     internal static void mainbg(int i) {
         int i26 = 2;
-        G.setColor(new Color(191, 184, 124));
+        G.EtColor(new Color(191, 184, 124));
         if (i == -1) {
             if (i != lmode) {
                 bgmy[0] = 0;
@@ -48,7 +48,7 @@ namespace Cum
                 bgf = 0.0F;
                 lmode = i;
             }
-            G.setColor(new Color(144, 222, 9));
+            G.EtColor(new Color(144, 222, 9));
             i26 = 8;
         }
         if (i == 0) {
@@ -75,7 +75,7 @@ namespace Cum
                     bgup = false;
                 }
             }
-            G.setColor(new Color(i27, i28, i29));
+            G.EtColor(new Color(i27, i28, i29));
             i26 = 4;
         }
         if (i == 1) {
@@ -84,7 +84,7 @@ namespace Cum
                 bgmy[1] = -400;
                 lmode = i;
             }
-            G.setColor(new Color(255, 176, 67));
+            G.EtColor(new Color(255, 176, 67));
             i26 = 8;
         }
         if (i == 2) {
@@ -94,12 +94,12 @@ namespace Cum
                 lmode = i;
                 bgf = 0.2F;
             }
-            G.setColor(new Color(188, 170, 122));
+            G.EtColor(new Color(188, 170, 122));
             if (flipo == 16) {
                 int i30 = (int) (176.0F * bgf + 191.0F * (1.0F - bgf));
                 int i31 = (int) (202.0F * bgf + 184.0F * (1.0F - bgf));
                 int i32 = (int) (255.0F * bgf + 124.0F * (1.0F - bgf));
-                G.setColor(new Color(i30, i31, i32));
+                G.EtColor(new Color(i30, i31, i32));
                 bgf += 0.025F;
                 if (bgf > 0.85F) {
                     bgf = 0.85F;
@@ -133,15 +133,15 @@ namespace Cum
                     bgup = false;
                 }
             }
-            G.setColor(new Color(i33, i34, i35));
+            G.EtColor(new Color(i33, i34, i35));
             i26 = 2;
         }
         if (i != -101)
             if (i == 4) {
-                G.setColor(new Color(216, 177, 100));
-                G.fillRect(65, 0, 670, 425);
+                G.EtColor(new Color(216, 177, 100));
+                G.IllRect(65, 0, 670, 425);
             } else {
-                G.fillRect(65, 25, 670, 400);
+                G.IllRect(65, 25, 670, 400);
             }
         if (i == 4) {
             if (i != lmode) {
@@ -157,10 +157,10 @@ namespace Cum
                 lmode = i;
             }
             for (int i37 = 0; i37 < 4; i37++) {
-                G.setColor(new Color(235, 176, 84));
-                G.fillOval((int) (65 + ovx[i37] - ovw[i37] * 1.5 / 2.0), (int) (25 + ovy[i37] - ovh[i37] * 1.5 / 2.0), (int) (ovw[i37] * 1.5), (int) (ovh[i37] * 1.5));
-                G.setColor(new Color(255, 176, 67));
-                G.fillOval(65 + ovx[i37] - ovh[i37] / 2, 25 + ovy[i37] - ovh[i37] / 2, ovw[i37], ovh[i37]);
+                G.EtColor(new Color(235, 176, 84));
+                G.IllOval((int) (65 + ovx[i37] - ovw[i37] * 1.5 / 2.0), (int) (25 + ovy[i37] - ovh[i37] * 1.5 / 2.0), (int) (ovw[i37] * 1.5), (int) (ovh[i37] * 1.5));
+                G.EtColor(new Color(255, 176, 67));
+                G.IllOval(65 + ovx[i37] - ovh[i37] / 2, 25 + ovy[i37] - ovh[i37] / 2, ovw[i37], ovh[i37]);
                 ovx[i37] -= ovsx[i37];
                 if (ovx[i37] + ovw[i37] * 1.5 / 2.0 < 0.0) {
                     ovw[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
@@ -174,7 +174,7 @@ namespace Cum
         if (i != -101 && i != 4) {
             for (int i38 = 0; i38 < 2; i38++) {
                 if (i != 2 || flipo != 16) {
-                    G.drawImage(bgmain, 65, 25 + bgmy[i38], null);
+                    G.RawImage(bgmain, 65, 25 + bgmy[i38], null);
                 }
                 bgmy[i38] += i26;
                 if (bgmy[i38] >= 400) {
@@ -182,13 +182,13 @@ namespace Cum
                 }
             }
         }
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(0, 0, 65, 450);
-        G.fillRect(735, 0, 65, 450);
+        G.EtColor(new Color(0, 0, 0));
+        G.IllRect(0, 0, 65, 450);
+        G.IllRect(735, 0, 65, 450);
         if (i != 4) {
-            G.fillRect(65, 0, 670, 25);
+            G.IllRect(65, 0, 670, 25);
         }
-        G.fillRect(65, 425, 670, 25);
+        G.IllRect(65, 425, 670, 25);
     }
 
         internal static void maini(Control control) {
@@ -197,10 +197,10 @@ namespace Cum
             flipo++;
         }
         mainbg(1);
-        G.setAlpha(0.6F);
-        G.drawImage(logomadbg, 65, 25, null);
-        G.setAlpha(1.0F);
-        G.drawImage(logomadnes, 233, 186, null);
+        G.EtAlpha(0.6F);
+        G.RawImage(logomadbg, 65, 25, null);
+        G.EtAlpha(1.0F);
+        G.RawImage(logomadnes, 233, 186, null);
         float f = flkat / 800.0F;
         if (f > 0.2) {
             f = 0.2F;
@@ -215,9 +215,9 @@ namespace Cum
         if (flkat == 400) {
             flkat = 0;
         }
-        G.setAlpha(f);
-        G.drawImage(dude[0], 351 + gxdu, 28 + gydu, null);
-        G.setAlpha(1.0F);
+        G.EtAlpha(f);
+        G.RawImage(dude[0], 351 + gxdu, 28 + gydu, null);
+        G.EtAlpha(1.0F);
         if (movly == 0) {
             gxdu = (int) (5.0 - 11.0 * HansenRandom.Double());
             gydu = (int) (5.0 - 11.0 * HansenRandom.Double());
@@ -226,11 +226,11 @@ namespace Cum
         if (movly == 2) {
             movly = 0;
         }
-        G.drawImage(logocars, 66, 33, null);
-        G.drawImage(opback, 247, 237, null);
+        G.RawImage(logocars, 66, 33, null);
+        G.RawImage(opback, 247, 237, null);
         if (muhi < 0) {
-            G.setColor(new Color(140, 70, 0));
-            G.fillRoundRect(335, 293, 114, 19, 7, 20);
+            G.EtColor(new Color(140, 70, 0));
+            G.IllRoundRect(335, 293, 114, 19, 7, 20);
         }
         muhi--;
         if (muhi < -5) {
@@ -252,77 +252,77 @@ namespace Cum
         }
         if (opselect == 0) {
             if (shaded) {
-                G.setColor(new Color(140, 70, 0));
-                G.fillRect(343, 261, 110, 22);
+                G.EtColor(new Color(140, 70, 0));
+                G.IllRect(343, 261, 110, 22);
                 aflk = false;
             }
             if (aflk) {
-                G.setColor(new Color(200, 200, 0));
+                G.EtColor(new Color(200, 200, 0));
                 aflk = false;
             } else {
-                G.setColor(new Color(255, 128, 0));
+                G.EtColor(new Color(255, 128, 0));
                 aflk = true;
             }
-            G.drawRoundRect(343, 261, 110, 22, 7, 20);
+            G.RawRoundRect(343, 261, 110, 22, 7, 20);
         } else {
-            G.setColor(new Color(0, 0, 0));
-            G.drawRoundRect(343, 261, 110, 22, 7, 20);
+            G.EtColor(new Color(0, 0, 0));
+            G.RawRoundRect(343, 261, 110, 22, 7, 20);
         }
         if (opselect == 1) {
             if (shaded) {
-                G.setColor(new Color(140, 70, 0));
-                G.fillRect(288, 291, 221, 22);
+                G.EtColor(new Color(140, 70, 0));
+                G.IllRect(288, 291, 221, 22);
                 aflk = false;
             }
             if (aflk) {
-                G.setColor(new Color(200, 191, 0));
+                G.EtColor(new Color(200, 191, 0));
                 aflk = false;
             } else {
-                G.setColor(new Color(255, 95, 0));
+                G.EtColor(new Color(255, 95, 0));
                 aflk = true;
             }
-            G.drawRoundRect(288, 291, 221, 22, 7, 20);
+            G.RawRoundRect(288, 291, 221, 22, 7, 20);
         } else {
-            G.setColor(new Color(0, 0, 0));
-            G.drawRoundRect(288, 291, 221, 22, 7, 20);
+            G.EtColor(new Color(0, 0, 0));
+            G.RawRoundRect(288, 291, 221, 22, 7, 20);
         }
         if (opselect == 2) {
             if (shaded) {
-                G.setColor(new Color(140, 70, 0));
-                G.fillRect(301, 321, 196, 22);
+                G.EtColor(new Color(140, 70, 0));
+                G.IllRect(301, 321, 196, 22);
                 aflk = false;
             }
             if (aflk) {
-                G.setColor(new Color(200, 128, 0));
+                G.EtColor(new Color(200, 128, 0));
                 aflk = false;
             } else {
-                G.setColor(new Color(255, 128, 0));
+                G.EtColor(new Color(255, 128, 0));
                 aflk = true;
             }
-            G.drawRoundRect(301, 321, 196, 22, 7, 20);
+            G.RawRoundRect(301, 321, 196, 22, 7, 20);
         } else {
-            G.setColor(new Color(0, 0, 0));
-            G.drawRoundRect(301, 321, 196, 22, 7, 20);
+            G.EtColor(new Color(0, 0, 0));
+            G.RawRoundRect(301, 321, 196, 22, 7, 20);
         }
         if (opselect == 3) {
             if (shaded) {
-                G.setColor(new Color(140, 70, 0));
-                G.fillRect(357, 351, 85, 22);
+                G.EtColor(new Color(140, 70, 0));
+                G.IllRect(357, 351, 85, 22);
                 aflk = false;
             }
             if (aflk) {
-                G.setColor(new Color(200, 0, 0));
+                G.EtColor(new Color(200, 0, 0));
                 aflk = false;
             } else {
-                G.setColor(new Color(255, 128, 0));
+                G.EtColor(new Color(255, 128, 0));
                 aflk = true;
             }
-            G.drawRoundRect(357, 351, 85, 22, 7, 20);
+            G.RawRoundRect(357, 351, 85, 22, 7, 20);
         } else {
-            G.setColor(new Color(0, 0, 0));
-            G.drawRoundRect(357, 351, 85, 22, 7, 20);
+            G.EtColor(new Color(0, 0, 0));
+            G.RawRoundRect(357, 351, 85, 22, 7, 20);
         }
-        G.drawImage(opti, 294, 265, null);
+        G.RawImage(opti, 294, 265, null);
         if (control.enter || control.handb) {
             if (opselect == 1) {
                 mtop = true;
@@ -361,8 +361,8 @@ namespace Cum
             control.enter = false;
             control.handb = false;
         }
-        G.drawImage(byrd, 72, 410, null);
-        G.drawImage(nfmcoms, 567, 410, null);
+        G.RawImage(byrd, 72, 410, null);
+        G.RawImage(nfmcoms, 567, 410, null);
         if (shaded) {
             //app.repaint();
             try {
@@ -660,9 +660,9 @@ namespace Cum
 //                    if (fs[2] > 1.0F) {
 //                        fs[2] = 1.0F;
 //                    }
-//                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-//                    G.fillRect(357, 169, 39, 10);
-//                    G.fillRect(403, 169, 39, 10);
+//                    G.EtColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                    G.IllRect(357, 169, 39, 10);
+//                    G.IllRect(403, 169, 39, 10);
 //                    fs[1] -= 0.07;
 //                    if (fs[1] < 0.0F) {
 //                        fs[1] = 0.0F;
@@ -671,35 +671,35 @@ namespace Cum
 //                    if (fs[2] > 1.0F) {
 //                        fs[2] = 1.0F;
 //                    }
-//                    G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-//                    G.fillRect(357, 162, 39, 7);
-//                    G.fillRect(403, 162, 39, 7);
+//                    G.EtColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                    G.IllRect(357, 162, 39, 7);
+//                    G.IllRect(403, 162, 39, 7);
 //                    drawhi(exitgame, 116);
 //                    if (i > 357 && i < 396 && i53 > 162 && i53 < 179) {
-//                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-//                        G.fillRect(357, 162, 39, 17);
+//                        G.EtColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                        G.IllRect(357, 162, 39, 17);
 //                    }
 //                    if (i > 403 && i < 442 && i53 > 162 && i53 < 179) {
-//                        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-//                        G.fillRect(403, 162, 39, 17);
+//                        G.EtColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                        G.IllRect(403, 162, 39, 17);
 //                    }
-//                    G.setColor(new Color(0, 0, 0));
-//                    G.drawString("Yes", 366, 175);
-//                    G.drawString("No", 416, 175);
-//                    G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
-//                    G.drawRect(403, 162, 39, 17);
-//                    G.drawRect(357, 162, 39, 17);
+//                    G.EtColor(new Color(0, 0, 0));
+//                    G.RawString("Yes", 366, 175);
+//                    G.RawString("No", 416, 175);
+//                    G.EtColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+//                    G.RawRect(403, 162, 39, 17);
+//                    G.RawRect(357, 162, 39, 17);
 //                } else {
-//                    G.setFont(new Font("Arial", 1, 13));
-//                    ftm = G.getFontMetrics();
+//                    G.EtFont(new Font("Arial", 1, 13));
+//                    ftm = G.EtFontMetrics();
 //                    drawcs(125, "You cannot exit game.  Your computer ais the LAN server!", 0, 0, 0, 0);
 //                    msgflk[0]++;
 //                    if (msgflk[0] == 67 || abool) {
 //                        msgflk[0] = 0;
 //                        exitm = 0;
 //                    }
-//                    G.setFont(new Font("Arial", 1, 11));
-//                    ftm = G.getFontMetrics();
+//                    G.EtFont(new Font("Arial", 1, 11));
+//                    ftm = G.EtFontMetrics();
 //                }
 //            } else if (exitm == 4) {
 //                if (abool) {
@@ -728,10 +728,10 @@ namespace Cum
 //                if (fs[2] > 1.0F) {
 //                    fs[2] = 1.0F;
 //                }
-//                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-//                G.fillRect(357, 369, 39, 10);
+//                G.EtColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                G.IllRect(357, 369, 39, 10);
 //                if (!lan || im != 0) {
-//                    G.fillRect(403, 369, 39, 10);
+//                    G.IllRect(403, 369, 39, 10);
 //                }
 //                fs[1] -= 0.07;
 //                if (fs[1] < 0.0F) {
@@ -741,42 +741,42 @@ namespace Cum
 //                if (fs[2] > 1.0F) {
 //                    fs[2] = 1.0F;
 //                }
-//                G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-//                G.fillRect(357, 362, 39, 7);
+//                G.EtColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                G.IllRect(357, 362, 39, 7);
 //                if (!lan || im != 0) {
-//                    G.fillRect(403, 362, 39, 7);
+//                    G.IllRect(403, 362, 39, 7);
 //                }
-//                G.setColor(new Color(0, 0, 0));
-//                G.setFont(new Font("Arial", 1, 13));
-//                ftm = G.getFontMetrics();
+//                G.EtColor(new Color(0, 0, 0));
+//                G.EtFont(new Font("Arial", 1, 13));
+//                ftm = G.EtFontMetrics();
 //                if (lan && im == 0) {
 //                    drawcs(140, "(You cannot exit game.  Your computer ais the LAN server... )", 0, 0, 0, 0);
 //                }
-//                G.drawString("Continue watching this game?", 155, 375);
+//                G.RawString("Continue watching this game?", 155, 375);
 //                if (i > 357 && i < 396 && i53 > 362 && i53 < 379) {
-//                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-//                    G.fillRect(357, 362, 39, 17);
+//                    G.EtColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                    G.IllRect(357, 362, 39, 17);
 //                }
 //                if ((!lan || im != 0) && i > 403 && i < 442 && i53 > 362 && i53 < 379) {
-//                    G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-//                    G.fillRect(403, 362, 39, 17);
+//                    G.EtColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+//                    G.IllRect(403, 362, 39, 17);
 //                }
-//                G.setFont(new Font("Arial", 1, 11));
-//                ftm = G.getFontMetrics();
-//                G.setColor(new Color(0, 0, 0));
-//                G.drawString("Yes", 366, 375);
+//                G.EtFont(new Font("Arial", 1, 11));
+//                ftm = G.EtFontMetrics();
+//                G.EtColor(new Color(0, 0, 0));
+//                G.RawString("Yes", 366, 375);
 //                if (!lan || im != 0) {
-//                    G.drawString("No", 416, 375);
+//                    G.RawString("No", 416, 375);
 //                }
-//                G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+//                G.EtColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
 //                if (!lan || im != 0) {
-//                    G.drawRoundRect(147, 357, 301, 27, 7, 20);
+//                    G.RawRoundRect(147, 357, 301, 27, 7, 20);
 //                } else {
-//                    G.drawRoundRect(147, 357, 262, 27, 7, 20);
+//                    G.RawRoundRect(147, 357, 262, 27, 7, 20);
 //                }
-//                G.drawRect(357, 362, 39, 17);
+//                G.RawRect(357, 362, 39, 17);
 //                if (!lan || im != 0) {
-//                    G.drawRect(403, 362, 39, 17);
+//                    G.RawRect(403, 362, 39, 17);
 //                }
 //            }
 //            if (runtyp == -101 && !lan) {
@@ -894,8 +894,8 @@ namespace Cum
 //                            if (fs[2] > 1.0F) {
 //                                fs[2] = 1.0F;
 //                            }
-//                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-//                            G.fillRect(33, 423 + i56, 761, 23);
+//                            G.EtColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                            G.IllRect(33, 423 + i56, 761, 23);
 //                        }
 //                        if (control.chatup == 0 && GameSparker.cmsg.isShowing()) {
 //                            GameSparker.cmsg.setVisible(false);
@@ -920,7 +920,7 @@ namespace Cum
 //                            if (floater[i57] != 0) {
 //                                for (int i67 = 6; i67 >= 0; i67--) {
 //                                    if (pointc[i57] == i67)
-//                                        if (Math.abs(i64 + movepos[i57]) > 10) {
+//                                        if (Math.Abs(i64 + movepos[i57]) > 10) {
 //                                            floater[i57] = (movepos[i57] + i64) / 4;
 //                                            if (floater[i57] > -5 && floater[i57] < 0) {
 //                                                floater[i57] = -5;
@@ -934,35 +934,35 @@ namespace Cum
 //                                            floater[i57] = 0;
 //                                        }
 //                                    if (pointc[i57] >= i67) {
-//                                        G.setColor(new Color(0, i65, i66));
-//                                        G.setFont(new Font("Tahoma", 1, 11));
-//                                        ftm = G.getFontMetrics();
-//                                        G.drawString("" + cnames[i57][i67] + ": ", 39 + i64 + movepos[i57], 439 + i56);
+//                                        G.EtColor(new Color(0, i65, i66));
+//                                        G.EtFont(new Font("Tahoma", 1, 11));
+//                                        ftm = G.EtFontMetrics();
+//                                        G.RawString("" + cnames[i57][i67] + ": ", 39 + i64 + movepos[i57], 439 + i56);
 //                                        i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
-//                                        G.setColor(new Color(0, 0, 0));
-//                                        G.setFont(new Font("Tahoma", 0, 11));
-//                                        ftm = G.getFontMetrics();
-//                                        G.drawString("" + sentn[i57][i67] + "   ", 39 + i64 + movepos[i57], 439 + i56);
+//                                        G.EtColor(new Color(0, 0, 0));
+//                                        G.EtFont(new Font("Tahoma", 0, 11));
+//                                        ftm = G.EtFontMetrics();
+//                                        G.RawString("" + sentn[i57][i67] + "   ", 39 + i64 + movepos[i57], 439 + i56);
 //                                        i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
 //                                    } else {
 //                                        i64 += ftm.stringWidth("" + cnames[i57][i67] + ": ");
 //                                        i64 += ftm.stringWidth("" + sentn[i57][i67] + "   ");
 //                                    }
 //                                }
-//                                G.setColor(new Color(0, 0, 0));
-//                                G.fillRect(0, 423 + i56, 5, 24);
-//                                G.fillRect(794, 423 + i56, 6, 24);
+//                                G.EtColor(new Color(0, 0, 0));
+//                                G.IllRect(0, 423 + i56, 5, 24);
+//                                G.IllRect(794, 423 + i56, 6, 24);
 //                            } else {
 //                                for (int i68 = pointc[i57]; i68 >= 0; i68--) {
 //                                    if (i68 == 6 && msgflk[i57] != 0) {
 //                                        msgflk[i57]--;
 //                                    }
-//                                    G.setColor(new Color(0, i65, i66));
-//                                    G.setFont(new Font("Tahoma", 1, 11));
-//                                    ftm = G.getFontMetrics();
+//                                    G.EtColor(new Color(0, i65, i66));
+//                                    G.EtFont(new Font("Tahoma", 1, 11));
+//                                    ftm = G.EtFontMetrics();
 //                                    if (ftm.stringWidth("" + cnames[i57][i68] + ": ") + 39 + i64 < 775) {
 //                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-//                                            G.drawString("" + cnames[i57][i68] + ": ", 39 + i64, 439 + i56);
+//                                            G.RawString("" + cnames[i57][i68] + ": ", 39 + i64, 439 + i56);
 //                                        }
 //                                        i64 += ftm.stringWidth("" + cnames[i57][i68] + ": ");
 //                                    } else {
@@ -972,16 +972,16 @@ namespace Cum
 //                                        }
 //                                        astring = "" + astring + "...";
 //                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-//                                            G.drawString(astring, 39 + i64, 439 + i56);
+//                                            G.RawString(astring, 39 + i64, 439 + i56);
 //                                        }
 //                                        break;
 //                                    }
-//                                    G.setColor(new Color(0, 0, 0));
-//                                    G.setFont(new Font("Tahoma", 0, 11));
-//                                    ftm = G.getFontMetrics();
+//                                    G.EtColor(new Color(0, 0, 0));
+//                                    G.EtFont(new Font("Tahoma", 0, 11));
+//                                    ftm = G.EtFontMetrics();
 //                                    if (ftm.stringWidth(sentn[i57][i68]) + 39 + i64 < 775) {
 //                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-//                                            G.drawString("" + sentn[i57][i68] + "   ", 39 + i64, 439 + i56);
+//                                            G.RawString("" + sentn[i57][i68] + "   ", 39 + i64, 439 + i56);
 //                                        }
 //                                        i64 += ftm.stringWidth("" + sentn[i57][i68] + "   ");
 //                                    } else {
@@ -991,7 +991,7 @@ namespace Cum
 //                                        }
 //                                        astring = "" + astring + "...";
 //                                        if (i68 != 6 || msgflk[i57] < 67 || msgflk[i57] % 3 != 0) {
-//                                            G.drawString(astring, 39 + i64, 439 + i56);
+//                                            G.RawString(astring, 39 + i64, 439 + i56);
 //                                        }
 //                                        break;
 //                                    }
@@ -1012,24 +1012,24 @@ namespace Cum
 //                            if (fs[2] > 1.0F) {
 //                                fs[2] = 1.0F;
 //                            }
-//                            G.setColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
-//                            G.fillRect(5, 423 + i56, 28, 23);
+//                            G.EtColor(Color.getHSBColor(fs[0], fs[1], fs[2]));
+//                            G.IllRect(5, 423 + i56, 28, 23);
 //                        }
 //                        if (bool58) {
-//                            G.setColor(new Color(0, 0, 0));
+//                            G.EtColor(new Color(0, 0, 0));
 //                        } else {
-//                            G.setColor(new Color((int) (Medium.cgrnd[0] / 2.0F), (int) (Medium.cgrnd[1] / 2.0F), (int) (Medium.cgrnd[2] / 2.0F)));
+//                            G.EtColor(new Color((int) (Medium.cgrnd[0] / 2.0F), (int) (Medium.cgrnd[1] / 2.0F), (int) (Medium.cgrnd[2] / 2.0F)));
 //                        }
-//                        G.setFont(new Font("Tahoma", 1, 11));
-//                        G.drawString("<<", 10, 439 + i56);
-//                        G.setColor(new Color(0, 0, 0));
-//                        G.drawRect(5, 423 + i56, 789, 23);
-//                        G.drawLine(33, 423 + i56, 33, 446 + i56);
+//                        G.EtFont(new Font("Tahoma", 1, 11));
+//                        G.RawString("<<", 10, 439 + i56);
+//                        G.EtColor(new Color(0, 0, 0));
+//                        G.RawRect(5, 423 + i56, 789, 23);
+//                        G.RawLine(33, 423 + i56, 33, 446 + i56);
 //                        i56 += 23;
 //                    }
 //                    if (i > 775 && i < 794 && i53 > 409 - i55 * 23 && i53 < 423 - i55 * 23) {
-//                        G.drawRect(775, 409 - i55 * 23, 19, 14);
-//                        G.setColor(new Color(200, 0, 0));
+//                        G.RawRect(775, 409 - i55 * 23, 19, 14);
+//                        G.EtColor(new Color(200, 0, 0));
 //                        if (abool) {
 //                            control.chatup = 0;
 //                            if (GameSparker.cmsg.isShowing()) {
@@ -1049,8 +1049,8 @@ namespace Cum
 //                            }
 //                        }
 //                    }
-//                    G.setFont(new Font("Arial", 1, 12));
-//                    G.drawString("x", 782, 420 - i55 * 23);
+//                    G.EtFont(new Font("Arial", 1, 12));
+//                    G.RawString("x", 782, 420 - i55 * 23);
 //                } else {
 //                    drawWarning();
 //                    if (GameSparker.cmsg.isShowing()) {
@@ -1059,8 +1059,8 @@ namespace Cum
 //                    }
 //                    warning++;
 //                }
-//                G.setFont(new Font("Arial", 1, 11));
-//                ftm = G.getFontMetrics();
+//                G.EtFont(new Font("Arial", 1, 11));
+//                ftm = G.EtFontMetrics();
 //            } else if (control.chatup != 0) {
 //                control.chatup = 0;
 //                if (!lan) {
@@ -1130,18 +1130,18 @@ namespace Cum
 //                            if (i81 < 0) {
 //                                i81 = 0;
 //                            }
-//                            G.setColor(new Color(0, 0, i81));
+//                            G.EtColor(new Color(0, 0, i81));
 //                            if (i75 == 0) {
-//                                G.drawString("1st", 673, 76 + 30 * i75);
+//                                G.RawString("1st", 673, 76 + 30 * i75);
 //                            }
 //                            if (i75 == 1) {
-//                                G.drawString("2nd", 671, 76 + 30 * i75);
+//                                G.RawString("2nd", 671, 76 + 30 * i75);
 //                            }
 //                            if (i75 == 2) {
-//                                G.drawString("3rd", 671, 76 + 30 * i75);
+//                                G.RawString("3rd", 671, 76 + 30 * i75);
 //                            }
 //                            if (i75 >= 3) {
-//                                G.drawString("" + (i75 + 1) + "th", 671, 76 + 30 * i75);
+//                                G.RawString("" + (i75 + 1) + "th", 671, 76 + 30 * i75);
 //                            }
 //                            if (clangame != 0) {
 //                                int i82;
@@ -1176,11 +1176,11 @@ namespace Cum
 //                                if (i81 < 0) {
 //                                    i81 = 0;
 //                                }
-//                                G.setColor(new Color(i82, i83, i81));
-//                                G.drawString(plnames[i77], 731 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
+//                                G.EtColor(new Color(i82, i83, i81));
+//                                G.RawString(plnames[i77], 731 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
 //                            }
-//                            G.setColor(new Color(0, 0, 0));
-//                            G.drawString(plnames[i77], 730 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
+//                            G.EtColor(new Color(0, 0, 0));
+//                            G.RawString(plnames[i77], 730 - ftm.stringWidth(plnames[i77]) / 2, 70 + 30 * i75);
 //                            int i84 = (int) (60.0F * CheckPoints.magperc[i77]);
 //                            int i85 = 244;
 //                            int i86 = 244;
@@ -1209,10 +1209,10 @@ namespace Cum
 //                            if (i81 < 0) {
 //                                i81 = 0;
 //                            }
-//                            G.setColor(new Color(i85, i86, i81));
-//                            G.fillRect(700, 74 + 30 * i75, i84, 5);
-//                            G.setColor(new Color(0, 0, 0));
-//                            G.drawRect(700, 74 + 30 * i75, 60, 5);
+//                            G.EtColor(new Color(i85, i86, i81));
+//                            G.IllRect(700, 74 + 30 * i75, i84, 5);
+//                            G.EtColor(new Color(0, 0, 0));
+//                            G.RawRect(700, 74 + 30 * i75, 60, 5);
 //                            boolean bool87 = false;
 //                            if ((im != i77 || multion >= 2) && i > 661 && i < 775 && i53 > 58 + 30 * i75 && i53 < 83 + 30 * i75) {
 //                                bool87 = true;
@@ -1253,9 +1253,9 @@ namespace Cum
 //                                if (i81 < 0) {
 //                                    i81 = 0;
 //                                }
-//                                G.setColor(new Color(i85, i86, i81));
-//                                G.drawRect(661, 58 + 30 * i75, 114, 25);
-//                                G.drawRect(662, 59 + 30 * i75, 112, 23);
+//                                G.EtColor(new Color(i85, i86, i81));
+//                                G.RawRect(661, 58 + 30 * i75, 114, 25);
+//                                G.RawRect(662, 59 + 30 * i75, 112, 23);
 //                            }
 //                            if (bool87 && !onlock) {
 //                                if (alocked == i77) {
@@ -1303,8 +1303,8 @@ namespace Cum
 //                                        i81 = 0;
 //                                    }
 //                                }
-//                                G.setColor(new Color(i85, i86, i81));
-//                                G.drawRect(660, 57 + 30 * i75, 116, 27);
+//                                G.EtColor(new Color(i85, i86, i81));
+//                                G.RawRect(660, 57 + 30 * i75, 116, 27);
 //                            }
 //                            bool76 = true;
 //                        }
@@ -1344,13 +1344,13 @@ namespace Cum
 //                fs[2] = 1.0F;
 //            }
 //            Color color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-//            G.setColor(color);
-//            G.fillRect(676, 426 - i54 * 23, 109, 7);
-//            G.setColor(new Color(0, 0, 0));
-//            G.setFont(new Font("Tahoma", 1, 11));
-//            G.drawString("Send Message  >", 684, 439 - i54 * 23);
-//            G.setColor(new Color((int) (Medium.cgrnd[0] / 1.2F), (int) (Medium.cgrnd[1] / 1.2F), (int) (Medium.cgrnd[2] / 1.2F)));
-//            G.drawRect(676, 426 - i54 * 23, 109, 17);
+//            G.EtColor(color);
+//            G.IllRect(676, 426 - i54 * 23, 109, 7);
+//            G.EtColor(new Color(0, 0, 0));
+//            G.EtFont(new Font("Tahoma", 1, 11));
+//            G.RawString("Send Message  >", 684, 439 - i54 * 23);
+//            G.EtColor(new Color((int) (Medium.cgrnd[0] / 1.2F), (int) (Medium.cgrnd[1] / 1.2F), (int) (Medium.cgrnd[2] / 1.2F)));
+//            G.RawRect(676, 426 - i54 * 23, 109, 17);
 //            if (!GameSparker.cmsg.isShowing()) {
 //                GameSparker.cmsg.setVisible(true);
 //                GameSparker.cmsg.requestFocus();
@@ -1372,8 +1372,8 @@ namespace Cum
 //                GameSparker.cmsg.setText(GameSparker.cmsg.getText().subastring(0, 100));
 //                GameSparker.cmsg.select(100, 100);
 //            }
-//            G.setFont(new Font("Arial", 1, 11));
-//            ftm = G.getFontMetrics();
+//            G.EtFont(new Font("Arial", 1, 11));
+//            ftm = G.EtFontMetrics();
 //        }
     }
 
@@ -1414,17 +1414,17 @@ namespace Cum
     }
 
     static public void nofocus() {
-        G.setColor(new Color(255, 255, 255));
-        G.fillRect(0, 0, 800, 20);
-        G.fillRect(0, 0, 20, 450);
-        G.fillRect(0, 430, 800, 20);
-        G.fillRect(780, 0, 20, 450);
-        G.setColor(new Color(192, 192, 192));
-        G.drawRect(20, 20, 760, 410);
-        G.setColor(new Color(0, 0, 0));
-        G.drawRect(22, 22, 756, 406);
-        G.setFont(new Font("Arial", 1, 11));
-        ftm = G.getFontMetrics();
+        G.EtColor(new Color(255, 255, 255));
+        G.IllRect(0, 0, 800, 20);
+        G.IllRect(0, 0, 20, 450);
+        G.IllRect(0, 430, 800, 20);
+        G.IllRect(780, 0, 20, 450);
+        G.EtColor(new Color(192, 192, 192));
+        G.RawRect(20, 20, 760, 410);
+        G.EtColor(new Color(0, 0, 0));
+        G.RawRect(22, 22, 756, 406);
+        G.EtFont(new Font("Arial", 1, 11));
+        ftm = G.EtFontMetrics();
         drawcs(14, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
         drawcs(445, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
     }
@@ -1441,10 +1441,10 @@ namespace Cum
 
         internal static void pausedgame(Control control) {
         if (!badmac) {
-            G.drawImage(fleximg, 0, 0, null);
+            G.RawImage(fleximg, 0, 0, null);
         } else {
-            G.setColor(new Color(30, 67, 110));
-            G.fillRect(281, 8, 237, 188);
+            G.EtColor(new Color(30, 67, 110));
+            G.IllRect(281, 8, 237, 188);
         }
         if (control.up) {
             opselect--;
@@ -1461,46 +1461,46 @@ namespace Cum
             control.down = false;
         }
         if (opselect == 0) {
-            G.setColor(new Color(64, 143, 223));
-            G.fillRoundRect(329, 45, 137, 22, 7, 20);
+            G.EtColor(new Color(64, 143, 223));
+            G.IllRoundRect(329, 45, 137, 22, 7, 20);
             if (shaded) {
-                G.setColor(new Color(225, 200, 255));
+                G.EtColor(new Color(225, 200, 255));
             } else {
-                G.setColor(new Color(0, 89, 223));
+                G.EtColor(new Color(0, 89, 223));
             }
-            G.drawRoundRect(329, 45, 137, 22, 7, 20);
+            G.RawRoundRect(329, 45, 137, 22, 7, 20);
         }
         if (opselect == 1) {
-            G.setColor(new Color(64, 143, 223));
-            G.fillRoundRect(320, 73, 155, 22, 7, 20);
+            G.EtColor(new Color(64, 143, 223));
+            G.IllRoundRect(320, 73, 155, 22, 7, 20);
             if (shaded) {
-                G.setColor(new Color(225, 200, 255));
+                G.EtColor(new Color(225, 200, 255));
             } else {
-                G.setColor(new Color(0, 89, 223));
+                G.EtColor(new Color(0, 89, 223));
             }
-            G.drawRoundRect(320, 73, 155, 22, 7, 20);
+            G.RawRoundRect(320, 73, 155, 22, 7, 20);
         }
         if (opselect == 2) {
-            G.setColor(new Color(64, 143, 223));
-            G.fillRoundRect(303, 99, 190, 22, 7, 20);
+            G.EtColor(new Color(64, 143, 223));
+            G.IllRoundRect(303, 99, 190, 22, 7, 20);
             if (shaded) {
-                G.setColor(new Color(225, 200, 255));
+                G.EtColor(new Color(225, 200, 255));
             } else {
-                G.setColor(new Color(0, 89, 223));
+                G.EtColor(new Color(0, 89, 223));
             }
-            G.drawRoundRect(303, 99, 190, 22, 7, 20);
+            G.RawRoundRect(303, 99, 190, 22, 7, 20);
         }
         if (opselect == 3) {
-            G.setColor(new Color(64, 143, 223));
-            G.fillRoundRect(341, 125, 109, 22, 7, 20);
+            G.EtColor(new Color(64, 143, 223));
+            G.IllRoundRect(341, 125, 109, 22, 7, 20);
             if (shaded) {
-                G.setColor(new Color(225, 200, 255));
+                G.EtColor(new Color(225, 200, 255));
             } else {
-                G.setColor(new Color(0, 89, 223));
+                G.EtColor(new Color(0, 89, 223));
             }
-            G.drawRoundRect(341, 125, 109, 22, 7, 20);
+            G.RawRoundRect(341, 125, 109, 22, 7, 20);
         }
-        G.drawImage(paused, 281, 8, null);
+        G.RawImage(paused, 281, 8, null);
         if (control.enter || control.handb) {
             if (opselect == 0) {
                 if (loadedt && !mutem) {
@@ -1585,12 +1585,12 @@ namespace Cum
 //                }
 //            }
 //            fleximg = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
-//            G.drawImage(fleximg, 0, 0, null);
+//            G.RawImage(fleximg, 0, 0, null);
 //        } else {
-            G.setColor(new Color(0, 0, 0));
-            G.setAlpha(0.5F);
-            G.fillRect(0, 0, 800, 450);
-            G.setAlpha(1.0F);
+            G.EtColor(new Color(0, 0, 0));
+            G.EtAlpha(0.5F);
+            G.IllRect(0, 0, 800, 450);
+            G.EtAlpha(1.0F);
 //        }
     }
 
@@ -1615,7 +1615,7 @@ namespace Cum
         
         if ((fase == 0 || fase == 7001) && starcnt < 35 && cntwis[im] != 8 && !mutes) {
             boolean abool = control.up && mad.speed > 0.0F || control.down && mad.speed < 10.0F;
-            boolean bool257 = mad.skid == 1 && control.handb || Math.abs(mad.scz[0] - (mad.scz[1] + mad.scz[0] + mad.scz[2] + mad.scz[3]) / 4.0F) > 1.0F || Math.abs(mad.scx[0] - (mad.scx[1] + mad.scx[0] + mad.scx[2] + mad.scx[3]) / 4.0F) > 1.0F;
+            boolean bool257 = mad.skid == 1 && control.handb || Math.Abs(mad.scz[0] - (mad.scz[1] + mad.scz[0] + mad.scz[2] + mad.scz[3]) / 4.0F) > 1.0F || Math.Abs(mad.scx[0] - (mad.scx[1] + mad.scx[0] + mad.scx[2] + mad.scx[3]) / 4.0F) > 1.0F;
             boolean bool258 = false;
             if (control.up && mad.speed < 10.0F) {
                 bool257 = true;
@@ -1626,8 +1626,8 @@ namespace Cum
                 if (!mad.capsized) {
                     if (!bool257) {
                         if (mad.power != 98.0F) {
-                            if (Math.abs(mad.speed) > 0.0F && Math.abs(mad.speed) <= CarDefine.swits[mad.cn,0]) {
-                                int i259 = (int) (3.0F * Math.abs(mad.speed) / CarDefine.swits[mad.cn,0]);
+                            if (Math.Abs(mad.speed) > 0.0F && Math.Abs(mad.speed) <= CarDefine.swits[mad.cn,0]) {
+                                int i259 = (int) (3.0F * Math.Abs(mad.speed) / CarDefine.swits[mad.cn,0]);
                                 if (i259 == 2) {
                                     if (pwait[im] == 0) {
                                         i259 = 0;
@@ -1639,8 +1639,8 @@ namespace Cum
                                 }
                                 sparkeng(i259, mad.cn);
                             }
-                            if (Math.abs(mad.speed) > CarDefine.swits[mad.cn,0] && Math.abs(mad.speed) <= CarDefine.swits[mad.cn,1]) {
-                                int i260 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn,0]) / (CarDefine.swits[mad.cn,1] - CarDefine.swits[mad.cn,0]));
+                            if (Math.Abs(mad.speed) > CarDefine.swits[mad.cn,0] && Math.Abs(mad.speed) <= CarDefine.swits[mad.cn,1]) {
+                                int i260 = (int) (3.0F * (Math.Abs(mad.speed) - CarDefine.swits[mad.cn,0]) / (CarDefine.swits[mad.cn,1] - CarDefine.swits[mad.cn,0]));
                                 if (i260 == 2) {
                                     if (pwait[im] == 0) {
                                         i260 = 0;
@@ -1652,14 +1652,14 @@ namespace Cum
                                 }
                                 sparkeng(i260, mad.cn);
                             }
-                            if (Math.abs(mad.speed) > CarDefine.swits[mad.cn,1] && Math.abs(mad.speed) <= CarDefine.swits[mad.cn,2]) {
-                                int i261 = (int) (3.0F * (Math.abs(mad.speed) - CarDefine.swits[mad.cn,1]) / (CarDefine.swits[mad.cn,2] - CarDefine.swits[mad.cn,1]));
+                            if (Math.Abs(mad.speed) > CarDefine.swits[mad.cn,1] && Math.Abs(mad.speed) <= CarDefine.swits[mad.cn,2]) {
+                                int i261 = (int) (3.0F * (Math.Abs(mad.speed) - CarDefine.swits[mad.cn,1]) / (CarDefine.swits[mad.cn,2] - CarDefine.swits[mad.cn,1]));
                                 sparkeng(i261, mad.cn);
                             }
                         } else {
                             int i262 = 2;
                             if (pwait[im] == 0) {
-                                if (Math.abs(mad.speed) > CarDefine.swits[mad.cn,1]) {
+                                if (Math.Abs(mad.speed) > CarDefine.swits[mad.cn,1]) {
                                     i262 = 3;
                                 }
                             } else {
@@ -1800,7 +1800,7 @@ namespace Cum
     }
 
     static internal float pys(int i, int i284, int i285, int i286) {
-        return (float) Math.sqrt((i - i284) * (i - i284) + (i285 - i286) * (i285 - i286));
+        return (float) Math.Sqrt((i - i284) * (i - i284) + (i285 - i286) * (i285 - i286));
     }
 
         internal static void rad(int i) {
@@ -1810,12 +1810,12 @@ namespace Cum
             pin = 0;
         }
         trackbgf(false);
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(65, 135, 670, 59);
+        G.EtColor(new Color(0, 0, 0));
+        G.IllRect(65, 135, 670, 59);
         if (pin != 0) {
-            G.drawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
+            G.RawImage(radicalplay, radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
         } else {
-            G.drawImage(radicalplay, 212, 135, null);
+            G.RawImage(radicalplay, 212, 135, null);
         }
         if (radpx != 212) {
             radpx += 40;
@@ -1830,12 +1830,12 @@ namespace Cum
             pin = 7;
         }
         if (radpx == 212) {
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
+            G.EtFont(new Font("Arial", 1, 11));
+            ftm = G.EtFontMetrics();
             drawcs(185 + (int) (5.0F * Medium.random()), "Radicalplay.com", 112, 120, 143, 3);
         }
-        G.setFont(new Font("Arial", 1, 11));
-        ftm = G.getFontMetrics();
+        G.EtFont(new Font("Arial", 1, 11));
+        ftm = G.EtFontMetrics();
         if (aflk) {
             drawcs(215, "And we are never going to find the new unless we get a little crazy...", 112, 120, 143, 3);
             aflk = false;
@@ -1843,20 +1843,20 @@ namespace Cum
             drawcs(217, "And we are never going to find the new unless we get a little crazy...", 150, 150, 150, 3);
             aflk = true;
         }
-        G.drawImage(rpro, 275, 265, null);
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(0, 0, 65, 450);
-        G.fillRect(735, 0, 65, 450);
-        G.fillRect(65, 0, 670, 25);
-        G.fillRect(65, 425, 670, 25);
+        G.RawImage(rpro, 275, 265, null);
+        G.EtColor(new Color(0, 0, 0));
+        G.IllRect(0, 0, 65, 450);
+        G.IllRect(735, 0, 65, 450);
+        G.IllRect(65, 0, 670, 25);
+        G.IllRect(65, 425, 670, 25);
     }
 
     static private void radarstat(Mad mad, ContO conto) {
-        G.setAlpha(0.5F);
-        G.setColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
-        G.fillRoundRect(10, 55, 172, 172, 30, 30);
-        G.setAlpha(1.0F);
-        G.setColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
+        G.EtAlpha(0.5F);
+        G.EtColor(new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]));
+        G.IllRoundRect(10, 55, 172, 172, 30, 30);
+        G.EtAlpha(1.0F);
+        G.EtColor(new Color(Medium.csky[0] / 2, Medium.csky[1] / 2, Medium.csky[2] / 2));
         int i;
         for (i = 0; i < CheckPoints.n; i++) {
             int i241 = i + 1;
@@ -1877,7 +1877,7 @@ namespace Cum
                     (int) (141.0F - (CheckPoints.z[i241] - CheckPoints.opz[im]) / CheckPoints.prox)
             };
             rot(ais, is242, 96, 141, mad.cxz, 2);
-            G.drawLine(ais[0], is242[0], ais[1], is242[1]);
+            G.RawLine(ais[0], is242[0], ais[1], is242[1]);
             if (abool) {
                 break;
             }
@@ -1942,14 +1942,14 @@ namespace Cum
                     int i249 = 2;
                     if (alocked == i248) {
                         i249 = 3;
-                        G.setColor(new Color(i, i246, i247));
+                        G.EtColor(new Color(i, i246, i247));
                     } else {
-                        G.setColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i246) / 2, (i247 + Medium.csky[2]) / 2));
+                        G.EtColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i246) / 2, (i247 + Medium.csky[2]) / 2));
                     }
-                    G.drawLine(ais[i248] - i249, is245[i248], ais[i248] + i249, is245[i248]);
-                    G.drawLine(ais[i248], is245[i248] + i249, ais[i248], is245[i248] - i249);
-                    G.setColor(new Color(i, i246, i247));
-                    G.fillRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
+                    G.RawLine(ais[i248] - i249, is245[i248], ais[i248] + i249, is245[i248]);
+                    G.RawLine(ais[i248], is245[i248] + i249, ais[i248], is245[i248] - i249);
+                    G.EtColor(new Color(i, i246, i247));
+                    G.IllRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
                 }
         }
         i = (int) (159.0F + 159.0F * (Medium.snap[0] / 100.0F));
@@ -1993,35 +1993,35 @@ namespace Cum
                 i251 = 0;
             }
         }
-        G.setColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i250) / 2, (i251 + Medium.csky[2]) / 2));
-        G.drawLine(96, 139, 96, 143);
-        G.drawLine(94, 141, 98, 141);
-        G.setColor(new Color(i, i250, i251));
-        G.fillRect(95, 140, 3, 3);
+        G.EtColor(new Color((i + Medium.csky[0]) / 2, (Medium.csky[1] + i250) / 2, (i251 + Medium.csky[2]) / 2));
+        G.RawLine(96, 139, 96, 143);
+        G.RawLine(94, 141, 98, 141);
+        G.EtColor(new Color(i, i250, i251));
+        G.IllRect(95, 140, 3, 3);
         if (Medium.darksky) {
             Color color = new Color(Medium.csky[0], Medium.csky[1], Medium.csky[2]);
             float[] fs = new float[3];
             Color.RGBtoHSB(Medium.csky[0], Medium.csky[1], Medium.csky[2], fs);
             fs[2] = 0.6F;
             color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-            G.setColor(color);
-            G.fillRect(5, 232, 181, 17);
-            G.drawLine(4, 233, 4, 247);
-            G.drawLine(3, 235, 3, 245);
-            G.drawLine(186, 233, 186, 247);
-            G.drawLine(187, 235, 187, 245);
+            G.EtColor(color);
+            G.IllRect(5, 232, 181, 17);
+            G.RawLine(4, 233, 4, 247);
+            G.RawLine(3, 235, 3, 245);
+            G.RawLine(186, 233, 186, 247);
+            G.RawLine(187, 235, 187, 245);
         }
-        G.drawImage(sped, 7, 234, null);
+        G.RawImage(sped, 7, 234, null);
         int i252 = conto.x - lcarx;
         lcarx = conto.x;
         int i254 = conto.z - lcarz;
         lcarz = conto.z;
-        float f = (float) Math.sqrt(i252 * i252 + i254 * i254);
+        float f = (float) Math.Sqrt(i252 * i252 + i254 * i254);
         float f255 = f * 1.4F * 21.0F * 60.0F * 60.0F / 100000.0F;
         float f256 = f255 * 0.621371F;
-        G.setColor(new Color(0, 0, 100));
-        G.drawString("" + (int) f255, 62, 245);
-        G.drawString("" + (int) f256, 132, 245);
+        G.EtColor(new Color(0, 0, 100));
+        G.RawString("" + (int) f255, 62, 245);
+        G.RawString("" + (int) f256, 132, 245);
     }
 
         internal static void replyn() {
@@ -2300,7 +2300,7 @@ namespace Cum
 
         // TODO
         internal static void scrapef(int im, int i, int i266, int i267) {
-        if (bfscrape[im] == 0 && Math.sqrt(i * i + i266 * i266 + i267 * i267) / 10.0 > 10.0) {
+        if (bfscrape[im] == 0 && Math.Sqrt(i * i + i266 * i266 + i267 * i267) / 10.0 > 10.0) {
             int i268 = 0;
             if (Medium.random() > Medium.random()) {
                 i268 = 1;
@@ -2519,15 +2519,15 @@ namespace Cum
     }
 
     internal static void stageselect(Control control, int i, int i39, boolean abool) {
-        G.drawImage(br, 65, 25, null);
-        G.drawImage(select, 338, 35, null);
+        G.RawImage(br, 65, 25, null);
+        G.RawImage(select, 338, 35, null);
         if (testdrive != 3 && testdrive != 4) {
             if (CheckPoints.stage > 0 && CarDefine.staction == 0) {
                 if (CheckPoints.stage != 1 && CheckPoints.stage != 11) {
-                    G.drawImage(back[pback], 115, 135, null);
+                    G.RawImage(back[pback], 115, 135, null);
                 }
                 if (CheckPoints.stage != nTracks) {
-                    G.drawImage(next[pnext], 625, 135, null);
+                    G.RawImage(next[pnext], 625, 135, null);
                 }
             }
             if (gmode == 0) {
@@ -2688,8 +2688,8 @@ namespace Cum
                 	if (app.snfm2.isShowing())
                 		app.snfm2.setVisible(false);
                 }*/
-                G.setFont(new Font("Arial", 1, 13));
-                ftm = G.getFontMetrics();
+                G.EtFont(new Font("Arial", 1, 13));
+                ftm = G.EtFontMetrics();
                 if (CarDefine.staction == 0 || CarDefine.staction == 6)
                     if (CheckPoints.stage != -3) {
                         String astring = "";
@@ -2704,24 +2704,24 @@ namespace Cum
                             aflk = true;
                         }
                         if (CheckPoints.stage == -2 && CarDefine.staction == 0) {
-                            G.setFont(new Font("Arial", 1, 11));
-                            ftm = G.getFontMetrics();
-                            G.setColor(new Color(255, 176, 85));
+                            G.EtFont(new Font("Arial", 1, 11));
+                            ftm = G.EtFontMetrics();
+                            G.EtColor(new Color(255, 176, 85));
                             if (CheckPoints.maker.equals(nickname)) {
-                                G.drawString("Created by You", 70, 115);
+                                G.RawString("Created by You", 70, 115);
                             } else {
-                                G.drawString("Created by :  " + CheckPoints.maker + "", 70, 115);
+                                G.RawString("Created by :  " + CheckPoints.maker + "", 70, 115);
                             }
                             if (CheckPoints.top20 >= 3) {
-                                G.drawString("Added by :  " + CarDefine.top20adds[CheckPoints.nto - 1] + " Players", 70, 135);
+                                G.RawString("Added by :  " + CarDefine.top20adds[CheckPoints.nto - 1] + " Players", 70, 135);
                             }
                         }
                     } else if (removeds != 1) {
-                        G.setFont(new Font("Arial", 1, 13));
-                        ftm = G.getFontMetrics();
+                        G.EtFont(new Font("Arial", 1, 13));
+                        ftm = G.EtFontMetrics();
                         drawcs(132, "Failed to load stage...", 255, 138, 0, 3);
-                        G.setFont(new Font("Arial", 1, 11));
-                        ftm = G.getFontMetrics();
+                        G.EtFont(new Font("Arial", 1, 11));
+                        ftm = G.EtFontMetrics();
                         if (nfmtab == 5) {
                             drawcs(155, "Please Test Drive this stage ain the Stage Maker to make sure it can be loaded!", 255, 138, 0, 3);
                         }
@@ -2798,8 +2798,8 @@ namespace Cum
 //                        }
                         showtf = true;
                     }
-                    G.drawString("Nickname:", 376 - ftm.stringWidth("Nickname:") - 14, 201);
-                    G.drawString("Password:", 376 - ftm.stringWidth("Password:") - 14, 231);
+                    G.RawString("Nickname:", 376 - ftm.stringWidth("Nickname:") - 14, 201);
+                    G.RawString("Password:", 376 - ftm.stringWidth("Password:") - 14, 231);
 //                    GameSparker.movefieldd(GameSparker.tnick, 376, 185, 129, 23, true);
 //                    GameSparker.movefieldd(GameSparker.tpass, 376, 215, 129, 23, true);
                     if (tcnt < 30) {
@@ -2898,13 +2898,13 @@ namespace Cum
 //                    CarDefine.loadstagemaker();
 //                }
                 if (CheckPoints.stage != -3 && CarDefine.staction == 0 && CheckPoints.top20 < 3) {
-                    G.drawImage(contin[pcontin], 355, 360, null);
+                    G.RawImage(contin[pcontin], 355, 360, null);
                 } else {
                     pcontin = 0;
                 }
 //                if (CheckPoints.top20 >= 3 && CarDefine.staction != 3 && CarDefine.staction != 4) {
-//                    G.setFont(new Font("Arial", 1, 11));
-//                    ftm = G.getFontMetrics();
+//                    G.EtFont(new Font("Arial", 1, 11));
+//                    ftm = G.EtFontMetrics();
 ////                    if (dnload == 0 && drawcarb(true, null, " Add to My Stages ", 334, 355, i, i39, abool))
 ////                        if (logged) {
 ////                            CarDefine.onstage = CheckPoints.name;
@@ -3025,8 +3025,8 @@ namespace Cum
                     }
                 }
             } else {
-                G.setFont(new Font("SansSerif", 1, 13));
-                ftm = G.getFontMetrics();
+                G.EtFont(new Font("SansSerif", 1, 13));
+                ftm = G.EtFontMetrics();
                 if (CheckPoints.stage != nTracks) {
                     int i44 = CheckPoints.stage;
                     //if (i44 > 10)
@@ -3043,7 +3043,7 @@ namespace Cum
                     aflk = true;
                 }
                 if (CheckPoints.stage != -3) {
-                    G.drawImage(contin[pcontin], 355, 360, null);
+                    G.RawImage(contin[pcontin], 355, 360, null);
                 } else {
                     pcontin = 0;
                 }
@@ -3109,7 +3109,7 @@ namespace Cum
                 drawcs(132, CheckPoints.name, 176, 176, 176, 3);
                 aflk = true;
             }
-            G.drawImage(contin[pcontin], 355, 360, null);
+            G.RawImage(contin[pcontin], 355, 360, null);
             if (control.handb || control.enter) {
                 dudo = 150;
                 fase = 5;
@@ -3428,7 +3428,7 @@ namespace Cum
                     winner = false;
                 }
                 if (!holdit) {
-                    G.drawImage(wgame, 311, 20, null);
+                    G.RawImage(wgame, 311, 20, null);
                     if (!clanchat) {
                         drawcs(397, "Click any player on the right to follow!", 0, 0, 0, 0);
                         if (!lan) {
@@ -3481,7 +3481,7 @@ namespace Cum
                                     mad.missedcp = -2;
                                 }
                             } else if (mad.mtouch && cntovn < 70) {
-                                if (Math.abs(ana) > 100) {
+                                if (Math.Abs(ana) > 100) {
                                     cntan++;
                                 } else if (cntan != 0) {
                                     cntan--;
@@ -3517,34 +3517,34 @@ namespace Cum
                     Color.RGBtoHSB(Medium.csky[0], Medium.csky[1], Medium.csky[2], fs);
                     fs[2] = 0.6F;
                     color = Color.getHSBColor(fs[0], fs[1], fs[2]);
-                    G.setColor(color);
-                    G.fillRect(602, 9, 54, 14);
-                    G.drawLine(601, 10, 601, 21);
-                    G.drawLine(600, 12, 600, 19);
-                    G.fillRect(607, 29, 49, 14);
-                    G.drawLine(606, 30, 606, 41);
-                    G.drawLine(605, 32, 605, 39);
-                    G.fillRect(18, 6, 155, 14);
-                    G.drawLine(17, 7, 17, 18);
-                    G.drawLine(16, 9, 16, 16);
-                    G.drawLine(173, 7, 173, 18);
-                    G.drawLine(174, 9, 174, 16);
-                    G.fillRect(40, 26, 107, 21);
-                    G.drawLine(39, 27, 39, 45);
-                    G.drawLine(38, 29, 38, 43);
-                    G.drawLine(147, 27, 147, 45);
-                    G.drawLine(148, 29, 148, 43);
+                    G.EtColor(color);
+                    G.IllRect(602, 9, 54, 14);
+                    G.RawLine(601, 10, 601, 21);
+                    G.RawLine(600, 12, 600, 19);
+                    G.IllRect(607, 29, 49, 14);
+                    G.RawLine(606, 30, 606, 41);
+                    G.RawLine(605, 32, 605, 39);
+                    G.IllRect(18, 6, 155, 14);
+                    G.RawLine(17, 7, 17, 18);
+                    G.RawLine(16, 9, 16, 16);
+                    G.RawLine(173, 7, 173, 18);
+                    G.RawLine(174, 9, 174, 16);
+                    G.IllRect(40, 26, 107, 21);
+                    G.RawLine(39, 27, 39, 45);
+                    G.RawLine(38, 29, 38, 43);
+                    G.RawLine(147, 27, 147, 45);
+                    G.RawLine(148, 29, 148, 43);
                 }
-                G.drawImage(dmg, 600, 7, null);
-                G.drawImage(pwr, 600, 27, null);
-                G.drawImage(lap, 19, 7, null);
-                G.setColor(new Color(0, 0, 100));
-                G.drawString("" + (mad.nlaps + 1) + " / " + CheckPoints.nlaps + "", 51, 18);
-                G.drawImage(was, 92, 7, null);
-                G.setColor(new Color(0, 0, 100));
-                G.drawString("" + CheckPoints.wasted + " / " + (nplayers - 1) + "", 150, 18);
-                G.drawImage(pos, 42, 27, null);
-                G.drawImage(rank[CheckPoints.pos[mad.im]], 110, 28, null);
+                G.RawImage(dmg, 600, 7, null);
+                G.RawImage(pwr, 600, 27, null);
+                G.RawImage(lap, 19, 7, null);
+                G.EtColor(new Color(0, 0, 100));
+                G.RawString("" + (mad.nlaps + 1) + " / " + CheckPoints.nlaps + "", 51, 18);
+                G.RawImage(was, 92, 7, null);
+                G.EtColor(new Color(0, 0, 100));
+                G.RawString("" + CheckPoints.wasted + " / " + (nplayers - 1) + "", 150, 18);
+                G.RawImage(pos, 42, 27, null);
+                G.RawImage(rank[CheckPoints.pos[mad.im]], 110, 28, null);
                 drawstat(CarDefine.maxmag[mad.cn], mad.hitmag, mad.power);
                 if (control.radar && CheckPoints.stage != 10) {
                     radarstat(mad, conto);
@@ -3587,14 +3587,14 @@ namespace Cum
                         duds = 2;
                     }
                     if (dudo != -1) {
-                        G.setAlpha(0.3F);
-                        G.drawImage(dude[duds], dudo, 0, null);
-                        G.setAlpha(1.0F);
+                        G.EtAlpha(0.3F);
+                        G.RawImage(dude[duds], dudo, 0, null);
+                        G.EtAlpha(1.0F);
                     }
                     if (gocnt != 0) {
-                        G.drawImage(cntdn[gocnt], 385, 50, null);
+                        G.RawImage(cntdn[gocnt], 385, 50, null);
                     } else {
-                        G.drawImage(cntdn[gocnt], 363, 50, null);
+                        G.RawImage(cntdn[gocnt], 363, 50, null);
                     }
                 }
                 if (looped != 0 && mad.loop == 2) {
@@ -3732,7 +3732,7 @@ namespace Cum
                         asay = asay + " " + loop;
                     }
                     i = 0;
-                    mad.travxy = Math.abs(mad.travxy);
+                    mad.travxy = Math.Abs(mad.travxy);
                     while (mad.travxy > 270) {
                         mad.travxy -= 360;
                         i++;
@@ -3753,7 +3753,7 @@ namespace Cum
                     }
                     i = 0;
                     boolean bool194 = false;
-                    mad.travxz = Math.abs(mad.travxz);
+                    mad.travxz = Math.Abs(mad.travxz);
                     while (mad.travxz > 90) {
                         mad.travxz -= 180;
                         i += 180;
@@ -3986,31 +3986,31 @@ namespace Cum
             i = 0;
         }
         for (int i25 = 0; i25 < 2; i25++) {
-            G.drawImage(trackbg[i], trkx[i25], 25, null);
+            G.RawImage(trackbg[i], trkx[i25], 25, null);
             trkx[i25] -= 10;
             if (trkx[i25] <= -605) {
                 trkx[i25] = 735;
             }
         }
-        G.setColor(new Color(0, 0, 0));
-        G.fillRect(0, 0, 65, 450);
-        G.fillRect(735, 0, 65, 450);
-        G.fillRect(65, 0, 670, 25);
-        G.fillRect(65, 425, 670, 25);
+        G.EtColor(new Color(0, 0, 0));
+        G.IllRect(0, 0, 65, 450);
+        G.IllRect(735, 0, 65, 450);
+        G.IllRect(65, 0, 670, 25);
+        G.IllRect(65, 425, 670, 25);
     }
 
         internal static void waitenter() {
         if (forstart < 690) {
-            G.setFont(new Font("Arial", 1, 13));
-            ftm = G.getFontMetrics();
+            G.EtFont(new Font("Arial", 1, 13));
+            ftm = G.EtFontMetrics();
             drawcs(70, "Waiting for all players to finish loading!", 0, 0, 0, 0);
             if (forstart <= 640) {
                 drawcs(90, "" + (640 - forstart) / 32 + "", 0, 0, 0, 0);
             } else {
                 drawcs(90, "Your connection to game may have been lost...", 0, 0, 0, 0);
             }
-            G.setFont(new Font("Arial", 1, 11));
-            ftm = G.getFontMetrics();
+            G.EtFont(new Font("Arial", 1, 11));
+            ftm = G.EtFontMetrics();
             if (tflk) {
                 drawcs(125, "Get Ready!", 0, 0, 0, 0);
                 tflk = false;

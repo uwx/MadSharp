@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using MadGame;
+using MiscUtil;
 using SharpDX;
 using SharpDX.Direct2D1;
 using SharpDX.DXGI;
 using SharpDX.WIC;
+using SharpDXMad;
 using Bitmap = SharpDX.Direct2D1.Bitmap;
 
 namespace Cum
@@ -32,11 +36,11 @@ namespace Cum
     {
         public static void ArrayCopy(int[] src, int srcPos, int[] dest, int destPos, int length)
         {
-            throw new System.NotImplementedException();
+            Array.Copy(src, srcPos, dest, destPos, length);
         }
         public static void ArrayCopy<T>(T[] src, int srcPos, T[] dest, int destPos, int length)
         {
-            throw new System.NotImplementedException();
+            Array.Copy(src, srcPos, dest, destPos, length);
         }
 
         public static void RequestSleep(long ms)
@@ -54,27 +58,30 @@ namespace Cum
             else
             {
                 // Console app
-                System.Environment.Exit(1);
+                Environment.Exit(1);
             }
         }
     }
     public class HansenRandom
     {
+    
         public static double Double()
         {
-            throw new System.NotImplementedException();
+            return StaticRandom.NextDouble();
         }
     }
     
     internal class Random {
+        private System.Random _rand;
+
         public Random(long l)
         {
-            throw new NotImplementedException();
+            _rand = new System.Random((int)l);
         }
 
         public double nextDouble()
         {
-            throw new NotImplementedException();
+            return _rand.NextDouble();
         }
     }
 
@@ -95,9 +102,17 @@ namespace Cum
 
     internal class FileUtil
     {
-        public static void loadFiles(string dataCars, string[] carRads, Func<File, File> p2, Action<byte[], int> p3)
+        public static void loadFiles(string folder, string[] fileNames, Action<byte[], int> p3)
         {
-            throw new NotImplementedException();
+            fileNames = fileNames.CloneArray();
+            foreach (var file in Directory.GetFiles(folder))
+            {
+                var a = fileNames.IndexOf(Path.GetFileNameWithoutExtension(file));
+                if (a != -1)
+                {
+                    p3.Invoke(System.IO.File.ReadAllBytes(file), a);
+                }
+            }
         }
     }
 
@@ -105,47 +120,68 @@ namespace Cum
     {
         public int stringWidth(string astring)
         {
-            throw new NotImplementedException();
+            return 50;
         }
     }
 
-    public class Color
+    public struct Color
     {
+        public int _r, _g, _b, _a;
+        
         public Color(int r, int g, int b, int a)
         {
-            throw new NotImplementedException();
+            _r = r;
+            _g = g;
+            _b = b;
+            _a = a;
         }
         public Color(int r, int g, int b)
         {
-            throw new NotImplementedException();
+            _r = r;
+            _g = g;
+            _b = b;
+            _a = 255;
         }
 
         public Color(int packed)//TODO uint
         {
-            throw new NotImplementedException();
+            // TODO order?
+            _b = (byte)(packed);
+            _g = (byte)(packed >> 8);
+            _r = (byte)(packed >> 16);
+            _a = (byte)(packed >> 24);
+        }
+        
+        public Color(uint packed)
+        {
+            // TODO order?
+            _b = (byte)(packed);
+            _g = (byte)(packed >> 8);
+            _r = (byte)(packed >> 16);
+            _a = (byte)(packed >> 24);
         }
 
         public static Color getHSBColor(float p0, float p1, float p2)
         {
-            throw new NotImplementedException();
+            return new Color(Colors.HSBtoRGB(p0, p1, p2));
         }
 
         public int getRed()
         {
-            throw new NotImplementedException();
+            return _r;
         }
         public int getGreen()
         {
-            throw new NotImplementedException();
+            return _g;
         }
         public int getBlue()
         {
-            throw new NotImplementedException();
+            return _b;
         }
 
         public static void RGBtoHSB(int i, int i1, int i2, float[] fs)
         {
-            throw new NotImplementedException();
+            Colors.RGBtoHSB(i, i1, i2, fs);
         }
 
         public Color darker()
@@ -168,93 +204,25 @@ namespace Cum
     {
         public RadicalMusic(File file)
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void setPaused(bool p0)
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void unload()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void play()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
     }
     
-    internal class Math
-    {
-        public static int sqrt(int p0)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public static int abs(int p0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static float cos(double d)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static float sin(double d)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static float abs(float p0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static double abs(double p0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static double sqrt(float p0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int toDegrees(object atan2)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static object atan2(int i, int i1)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static double atan(double p0)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int max(int i, int i1)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int round(double d)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static double acos(double p0)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public static class ArrayExt
     {
         private static readonly System.Random Rng = new System.Random();
@@ -333,6 +301,38 @@ namespace Cum
         {
             Array.Sort(arr, comparator);
         }
+        
+        ///<summary>Finds the index of the first item matching an expression in an enumerable.</summary>
+        ///<param name="items">The enumerable to search.</param>
+        ///<param name="predicate">The expression to test the items against.</param>
+        ///<returns>The index of the first matching item, or -1 if no items match.</returns>
+        public static int FindIndex<T>(this IEnumerable<T> items, Func<T, bool> predicate) {
+            if (items == null) throw new ArgumentNullException(nameof(items));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+
+            var retVal = 0;
+            foreach (var item in items) {
+                if (predicate(item)) return retVal;
+                retVal++;
+            }
+            return -1;
+        }
+
+        ///<summary>Finds the index of the first occurrence of an item in an enumerable.</summary>
+        ///<param name="items">The enumerable to search.</param>
+        ///<param name="target">The item to find.</param>
+        ///<returns>The index of the first matching item, or -1 if the item was not found.</returns>
+        public static int IndexOf<T>(this IEnumerable<T> items, T target)
+        {
+            if (items == null) throw new ArgumentNullException(nameof(items));
+
+            var retVal = 0;
+            foreach (var item in items) {
+                if (Equals(item, target)) return retVal;
+                retVal++;
+            }
+            return -1;
+        }
     }
 
     public static class StringShim
@@ -367,13 +367,18 @@ namespace Cum
         {
             return self.Equals(other, StringComparison.OrdinalIgnoreCase);
         }
+
+        public static string SubFromEnd(this string self, int amount)
+        {
+            return self.Substring(0, self.Length - amount);
+        }
     }
 
     internal static class ImageIO
     {
         public static Image read(File file)
         {
-            throw new NotImplementedException();
+            return new Image(G.D2D, Images.LoadFromFile(G.D2D, file.Path));
         }
 
         public static void GrabPixels(Image image, int[] flexpix)
@@ -391,28 +396,28 @@ namespace Cum
 
         public static Image read(byte[] file)
         {
-            throw new NotImplementedException();
+            return new Image(G.D2D, Images.LoadFromFile(G.D2D, file));
         }
     }
 
     internal struct File
     {
-        private string _path;
+        internal string Path;
 
         public File(string str)
         {
-            _path = str;
+            Path = str;
         }
 
         public File(File parent, string child)
         {
-            _path = $@"{parent._path}\{child}";
+            Path = $@"{parent.Path}\{child}";
         }
 
         public File parent => new File(_getParent());
-        public string file => Path.GetFileNameWithoutExtension(_path);
+        public string file => System.IO.Path.GetFileNameWithoutExtension(Path);
 
-        private string _getParent() => Path.GetDirectoryName(_path);
+        private string _getParent() => System.IO.Path.GetDirectoryName(Path);
     }
 
     public struct Font

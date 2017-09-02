@@ -629,7 +629,7 @@ namespace Cum
                         }
                         if (CheckPoints.stage == 20)
                             if (CheckPoints.pos[0] < CheckPoints.pos[mad.im] ||
-                                Math.abs(CheckPoints.clear[0] - mad.clear) >= 2 || mad.clear < 2)
+                                Math.Abs(CheckPoints.clear[0] - mad.clear) >= 2 || mad.clear < 2)
                             {
                                 stuntf = 4;
                                 saftey = 10;
@@ -904,7 +904,7 @@ namespace Cum
                                         i8 = 180;
                                     }
                                     int i9;
-                                    for (i9 = (int) (90 + i8 + Math.atan(
+                                    for (i9 = (int) (90 + i8 + Math.Atan(
                                                          (double) (CheckPoints.opz[i6] - conto.z) /
                                                          (double) (CheckPoints.opx[i6] - conto.x)) /
                                                      0.017453292519943295);
@@ -917,12 +917,12 @@ namespace Cum
                                     {
 
                                     }
-                                    int i10 = Math.abs(i7 - i9);
+                                    int i10 = Math.Abs(i7 - i9);
                                     if (i10 > 180)
                                     {
-                                        i10 = Math.abs(i10 - 360);
+                                        i10 = Math.Abs(i10 - 360);
                                     }
-                                    int i11 = 2000 * (Math.abs(CheckPoints.clear[i6] - mad.clear) + 1);
+                                    int i11 = 2000 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
                                     if ((CheckPoints.stage == 6 || CheckPoints.stage == 9) && bulistc)
                                     {
                                         i11 = 6000;
@@ -974,10 +974,10 @@ namespace Cum
                                     }
                                     if (CheckPoints.stage == 25)
                                     {
-                                        i11 *= Math.abs(CheckPoints.clear[i6] - mad.clear) + 1;
+                                        i11 *= Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1;
                                         if (bulistc)
                                         {
-                                            i11 = 4000 * (Math.abs(CheckPoints.clear[i6] - mad.clear) + 1);
+                                            i11 = 4000 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
                                             i10 = 10;
                                         }
                                     }
@@ -1005,14 +1005,14 @@ namespace Cum
                                         }
                                         if (mad.cn == 15 || mad.cn == 9)
                                         {
-                                            i11 *= Math.abs(CheckPoints.clear[i6] - mad.clear) + 1;
+                                            i11 *= Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1;
                                         }
                                         if (mad.cn == 11)
                                         {
-                                            i11 = 4000 * (Math.abs(CheckPoints.clear[i6] - mad.clear) + 1);
+                                            i11 = 4000 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
                                         }
                                     }
-                                    int i12 = 85 + 15 * (Math.abs(CheckPoints.clear[i6] - mad.clear) + 1);
+                                    int i12 = 85 + 15 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
                                     if (CheckPoints.stage == 23)
                                     {
                                         i12 = 45;
@@ -1020,13 +1020,13 @@ namespace Cum
                                     if (CheckPoints.stage == 26 &&
                                         (mad.cn == 15 || mad.cn == 9 || mad.cn == 11 || mad.cn == 14))
                                     {
-                                        i12 = 50 + 70 * Math.abs(CheckPoints.clear[i6] - mad.clear);
+                                        i12 = 50 + 70 * Math.Abs(CheckPoints.clear[i6] - mad.clear);
                                     }
                                     if (i10 < i12 &&
                                         py(conto.x / 100, CheckPoints.opx[i6] / 100, conto.z / 100,
                                             CheckPoints.opz[i6] / 100) < i11 && afta && mad.power > i5)
                                     {
-                                        float f13 = 35 - Math.abs(CheckPoints.clear[i6] - mad.clear) * 10;
+                                        float f13 = 35 - Math.Abs(CheckPoints.clear[i6] - mad.clear) * 10;
                                         if (f13 < 1.0F)
                                         {
                                             f13 = 1.0F;
@@ -1208,7 +1208,7 @@ namespace Cum
                                         }
                                         if (Medium.random() < f14)
                                         {
-                                            attack = 40 * (Math.abs(CheckPoints.clear[i6] - mad.clear) + 1);
+                                            attack = 40 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
                                             if (attack > 500)
                                             {
                                                 attack = 500;
@@ -1290,7 +1290,7 @@ namespace Cum
                                                 else
                                                 {
                                                     aim = Medium.random() * 1.5F;
-                                                    if (Math.abs(CheckPoints.clear[i6] - mad.clear) <= 2 ||
+                                                    if (Math.Abs(CheckPoints.clear[i6] - mad.clear) <= 2 ||
                                                         mad.cn == 14)
                                                     {
                                                         attack = attack / 3;
@@ -1419,12 +1419,12 @@ namespace Cum
                             if ((CheckPoints.stage == 6 || CheckPoints.stage == 8 || CheckPoints.stage == 12 ||
                                  CheckPoints.stage == 13 || CheckPoints.stage == 14 || CheckPoints.stage == 15 ||
                                  CheckPoints.stage == 18 || CheckPoints.stage == 20 || CheckPoints.stage == 23) &&
-                                mad.cn == 13 && Math.abs(CheckPoints.clear[0] - mad.clear) >= 2)
+                                mad.cn == 13 && Math.Abs(CheckPoints.clear[0] - mad.clear) >= 2)
                             {
                                 bulistc = true;
                             }
                             if ((CheckPoints.stage == 8 || CheckPoints.stage == 20) && mad.cn == 11 &&
-                                Math.abs(CheckPoints.clear[0] - mad.clear) >= 1)
+                                Math.Abs(CheckPoints.clear[0] - mad.clear) >= 1)
                             {
                                 bulistc = true;
                             }
@@ -1834,7 +1834,7 @@ namespace Cum
                                         i26 = 180;
                                     }
                                     int i27;
-                                    for (i27 = (int) (90 + i26 + Math.atan(
+                                    for (i27 = (int) (90 + i26 + Math.Atan(
                                                           (double) (CheckPoints.opz[0] - conto.z) /
                                                           (double) (CheckPoints.opx[0] - conto.x)) /
                                                       0.017453292519943295);
@@ -1847,10 +1847,10 @@ namespace Cum
                                     {
 
                                     }
-                                    int i28 = Math.abs(i25 - i27);
+                                    int i28 = Math.Abs(i25 - i27);
                                     if (i28 > 180)
                                     {
-                                        i28 = Math.abs(i28 - 360);
+                                        i28 = Math.Abs(i28 - 360);
                                     }
                                     if (i28 < 90)
                                     {
@@ -2279,7 +2279,7 @@ namespace Cum
                                 {
                                     i40 = 180;
                                 }
-                                pan = (int) (90 + i40 + Math.atan(
+                                pan = (int) (90 + i40 + Math.Atan(
                                                  (double) (CheckPoints.z[i] - conto.z) /
                                                  (double) (CheckPoints.x[i] - conto.x)) / 0.017453292519943295);
                             }
@@ -2290,7 +2290,7 @@ namespace Cum
                                 {
                                     i41 = 180;
                                 }
-                                pan = (int) (90 + i41 + Math.atan((double) (wtz - conto.z) / (double) (wtx - conto.x)) /
+                                pan = (int) (90 + i41 + Math.Atan((double) (wtz - conto.z) / (double) (wtx - conto.x)) /
                                              0.017453292519943295);
                             }
                             turncnt = 0;
@@ -2313,7 +2313,7 @@ namespace Cum
                         {
                             i = 180;
                         }
-                        pan = (int) (90 + i + Math.atan((double) (i44 - conto.z) / (double) (i43 - conto.x)) /
+                        pan = (int) (90 + i + Math.Atan((double) (i44 - conto.z) / (double) (i43 - conto.x)) /
                                      0.017453292519943295);
                         attack--;
                         if (attack <= 0)
@@ -2366,9 +2366,9 @@ namespace Cum
                         clrnce = 0;
                     }
                     if (hold == 0)
-                        if (Math.abs(i - pan) < 180)
+                        if (Math.Abs(i - pan) < 180)
                         {
-                            if (Math.abs(i - pan) > clrnce)
+                            if (Math.Abs(i - pan) > clrnce)
                             {
                                 if (i < pan)
                                 {
@@ -2380,7 +2380,7 @@ namespace Cum
                                     right = true;
                                     lastl = false;
                                 }
-                                if (Math.abs(i - pan) > 50 && mad.speed > mad.stat.swits[0] && turntyp != 0)
+                                if (Math.Abs(i - pan) > 50 && mad.speed > mad.stat.swits[0] && turntyp != 0)
                                 {
                                     if (turntyp == 1)
                                     {
@@ -2397,7 +2397,7 @@ namespace Cum
                                 }
                             }
                         }
-                        else if (Math.abs(i - pan) < 360 - clrnce)
+                        else if (Math.Abs(i - pan) < 360 - clrnce)
                         {
                             if (i < pan)
                             {
@@ -2409,7 +2409,7 @@ namespace Cum
                                 left = true;
                                 lastl = true;
                             }
-                            if (Math.abs(i - pan) < 310 && mad.speed > mad.stat.swits[0] && turntyp != 0)
+                            if (Math.Abs(i - pan) < 310 && mad.speed > mad.stat.swits[0] && turntyp != 0)
                             {
                                 if (turntyp == 1)
                                 {
@@ -2680,7 +2680,7 @@ namespace Cum
                         flycnt++;
                         if (lrdirect != 0 && flycnt > lrstart)
                         {
-                            if (lrswt && Math.abs(mad.pxy - oxy) > 180)
+                            if (lrswt && Math.Abs(mad.pxy - oxy) > 180)
                             {
                                 if (lrdirect == -1)
                                 {
@@ -2705,7 +2705,7 @@ namespace Cum
                         }
                         if (uddirect != 0 && flycnt > udstart)
                         {
-                            if (udswt && Math.abs(mad.pzy - ozy) > 180)
+                            if (udswt && Math.Abs(mad.pzy - ozy) > 180)
                             {
                                 if (uddirect == -1)
                                 {
@@ -2794,7 +2794,7 @@ namespace Cum
                             {
 
                             }
-                            i = Math.abs(i);
+                            i = Math.Abs(i);
                             if (mad.lcomp - mad.rcomp < 5.0F && (onced || onceu))
                             {
                                 udcomp = true;
@@ -2823,7 +2823,7 @@ namespace Cum
                                 {
                                     if (udcomp)
                                     {
-                                        if (perfection && Math.abs(i - 90) > 30)
+                                        if (perfection && Math.Abs(i - 90) > 30)
                                             if (i > 90)
                                             {
                                                 up = true;
@@ -2862,7 +2862,7 @@ namespace Cum
                             {
                                 if (udcomp)
                                 {
-                                    if (perfection && Math.abs(i - 90) > 30)
+                                    if (perfection && Math.Abs(i - 90) > 30)
                                         if (i > 90)
                                         {
                                             up = true;
@@ -2894,7 +2894,7 @@ namespace Cum
                             {
 
                             }
-                            i = Math.abs(i);
+                            i = Math.Abs(i);
                             if (mad.lcomp - mad.rcomp < 10.0F && (oncel || oncer))
                             {
                                 lrcomp = true;
@@ -2923,7 +2923,7 @@ namespace Cum
                                 {
                                     if (lrcomp)
                                     {
-                                        if (perfection && Math.abs(i - 90) > 30)
+                                        if (perfection && Math.Abs(i - 90) > 30)
                                             if (i > 90)
                                             {
                                                 left = true;
@@ -2962,7 +2962,7 @@ namespace Cum
                             {
                                 if (lrcomp)
                                 {
-                                    if (perfection && Math.abs(i - 90) > 30)
+                                    if (perfection && Math.Abs(i - 90) > 30)
                                         if (i > 90)
                                         {
                                             left = true;
@@ -2989,7 +2989,7 @@ namespace Cum
         }
 
         private int pys(int i, int i50, int i51, int i52) {
-            return (int) Math.sqrt((i - i50) * (i - i50) + (i51 - i52) * (i51 - i52));
+            return (int) Math.Sqrt((i - i50) * (i - i50) + (i51 - i52) * (i51 - i52));
         }
 
         internal void reset(int i)

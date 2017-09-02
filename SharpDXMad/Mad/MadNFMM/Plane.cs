@@ -208,8 +208,8 @@ class Plane : IComparable<Plane> {
                     is42[i44] = xs(_x[i44], _z[i44]);
                     is43[i44] = ys(_y[i44], _z[i44]);
                 }
-                G.setColor(new Color(230, 230, 230));
-                G.fillPolygon(is42, is43, n);
+                G.SetColor(new Color(230, 230, 230));
+                G.FillPolygon(is42, is43, n);
             }
             float f = 1.0F;
             if (embos <= 4) {
@@ -255,18 +255,18 @@ class Plane : IComparable<Plane> {
                 int i45 = 1;
                 int i46 = 1;
                 int i47;
-                for (i47 = Math.abs(_yz); i47 > 270; i47 -= 360) {
+                for (i47 = Math.Abs(_yz); i47 > 270; i47 -= 360) {
 
                 }
-                i47 = Math.abs(i47);
+                i47 = Math.Abs(i47);
                 if (i47 > 90) {
                     i45 = -1;
                 }
                 int i48;
-                for (i48 = Math.abs(_xy); i48 > 270; i48 -= 360) {
+                for (i48 = Math.Abs(_xy); i48 > 270; i48 -= 360) {
 
                 }
-                i48 = Math.abs(i48);
+                i48 = Math.Abs(i48);
                 if (i48 > 90) {
                     i46 = -1;
                 }
@@ -278,23 +278,23 @@ class Plane : IComparable<Plane> {
                 _x[1] = ox[pb] + _mx;
                 _y[1] = oy[pb] + _my;
                 _z[1] = oz[pb] + _mz;
-                while (Math.abs(_x[0] - _x[1]) > 100)
+                while (Math.Abs(_x[0] - _x[1]) > 100)
                     if (_x[1] > _x[0]) {
                         _x[1] -= 30;
                     } else {
                         _x[1] += 30;
                     }
-                while (Math.abs(_z[0] - _z[1]) > 100)
+                while (Math.Abs(_z[0] - _z[1]) > 100)
                     if (_z[1] > _z[0]) {
                         _z[1] -= 30;
                     } else {
                         _z[1] += 30;
                     }
-                int i51 = (int) (Math.abs(_x[0] - _x[1]) / 3 * (0.5 - Medium.random()));
-                int i52 = (int) (Math.abs(_z[0] - _z[1]) / 3 * (0.5 - Medium.random()));
+                int i51 = (int) (Math.Abs(_x[0] - _x[1]) / 3 * (0.5 - Medium.random()));
+                int i52 = (int) (Math.Abs(_z[0] - _z[1]) / 3 * (0.5 - Medium.random()));
                 _x[2] = (_x[0] + _x[1]) / 2 + i51;
                 _z[2] = (_z[0] + _z[1]) / 2 + i52;
-                int i53 = (int) ((Math.abs(_x[0] - _x[1]) + Math.abs(_z[0] - _z[1])) / 1.5 * (Medium.random() / 2.0F + 0.5));
+                int i53 = (int) ((Math.Abs(_x[0] - _x[1]) + Math.Abs(_z[0] - _z[1])) / 1.5 * (Medium.random() / 2.0F + 0.5));
                 _y[2] = (_y[0] + _y[1]) / 2 - i45 * i46 * i53;
                 rot(_x, _y, _mx, _my, _xy, 3);
                 rot(_y, _z, _my, _mz, _yz, 3);
@@ -326,21 +326,21 @@ class Plane : IComparable<Plane> {
                 if (i57 < 0) {
                     i57 = 0;
                 }
-                G.setColor(new Color(i55, i56, i57));
-                G.fillPolygon(is49, is50, 3);
+                G.SetColor(new Color(i55, i56, i57));
+                G.FillPolygon(is49, is50, 3);
                 _x[0] = ox[pa] + _mx;
                 _y[0] = oy[pa] + _my;
                 _z[0] = oz[pa] + _mz;
                 _x[1] = ox[pb] + _mx;
                 _y[1] = oy[pb] + _my;
                 _z[1] = oz[pb] + _mz;
-                while (Math.abs(_x[0] - _x[1]) > 100)
+                while (Math.Abs(_x[0] - _x[1]) > 100)
                     if (_x[1] > _x[0]) {
                         _x[1] -= 30;
                     } else {
                         _x[1] += 30;
                     }
-                while (Math.abs(_z[0] - _z[1]) > 100)
+                while (Math.Abs(_z[0] - _z[1]) > 100)
                     if (_z[1] > _z[0]) {
                         _z[1] -= 30;
                     } else {
@@ -380,8 +380,8 @@ class Plane : IComparable<Plane> {
                 if (i57 < 0) {
                     i57 = 0;
                 }
-                G.setColor(new Color(i55, i56, i57));
-                G.fillPolygon(is49, is50, 3);
+                G.SetColor(new Color(i55, i56, i57));
+                G.FillPolygon(is49, is50, 3);
             }
             for (int i59 = 0; i59 < n; i59++) {
                 if (typ == 1) {
@@ -487,18 +487,18 @@ class Plane : IComparable<Plane> {
             int i69 = (int) (Medium.random() * 3.0F);
             if (bfase != -7) {
                 if (i69 == 0) {
-                    G.setColor(new Color(c[0], c[1], c[2]).darker());
+                    G.SetColor(new Color(c[0], c[1], c[2]).darker());
                 }
                 if (i69 == 1) {
-                    G.setColor(new Color(c[0], c[1], c[2]));
+                    G.SetColor(new Color(c[0], c[1], c[2]));
                 }
                 if (i69 == 2) {
-                    G.setColor(new Color(c[0], c[1], c[2]).brighter());
+                    G.SetColor(new Color(c[0], c[1], c[2]).brighter());
                 }
             } else {
-                G.setColor(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
+                G.SetColor(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
             }
-            G.fillPolygon(is66, is67, 3);
+            G.FillPolygon(is66, is67, 3);
             chip++;
             if (chip == 20) {
                 chip = 0;
@@ -512,7 +512,7 @@ class Plane : IComparable<Plane> {
             for (int i70 = 0; i70 < 3; i70++) {
                 for (int i71 = 0; i71 < 3; i71++)
                     if (i71 != i70) {
-                        projf *= (float) (Math.sqrt((_x[i70] - _x[i71]) * (_x[i70] - _x[i71]) + (_z[i70] - _z[i71]) * (_z[i70] - _z[i71])) / 100.0);
+                        projf *= (float) (Math.Sqrt((_x[i70] - _x[i71]) * (_x[i70] - _x[i71]) + (_z[i70] - _z[i71]) * (_z[i70] - _z[i71])) / 100.0);
                     }
             }
             projf = projf / 3.0F;
@@ -530,10 +530,10 @@ class Plane : IComparable<Plane> {
         int i78 = 1;
         for (int i79 = 0; i79 < n; i79++) {
             for (int i80 = i79; i80 < n; i80++)
-                if (i79 != i80 && Math.abs(is73[i79] - is73[i80]) - Math.abs(is74[i79] - is74[i80]) < i75) {
+                if (i79 != i80 && Math.Abs(is73[i79] - is73[i80]) - Math.Abs(is74[i79] - is74[i80]) < i75) {
                     i78 = i79;
                     i77 = i80;
-                    i75 = Math.abs(is73[i79] - is73[i80]) - Math.abs(is74[i79] - is74[i80]);
+                    i75 = Math.Abs(is73[i79] - is73[i80]) - Math.Abs(is74[i79] - is74[i80]);
                 }
         }
         if (is74[i77] < is74[i78]) {
@@ -600,11 +600,11 @@ class Plane : IComparable<Plane> {
             for (int i95 = 0; i95 < n; i95++) {
                 for (int i96 = i95; i96 < n; i96++)
                     if (i95 != i96) {
-                        if (Math.abs(is85[i95] - is85[i96]) > i93) {
-                            i93 = Math.abs(is85[i95] - is85[i96]);
+                        if (Math.Abs(is85[i95] - is85[i96]) > i93) {
+                            i93 = Math.Abs(is85[i95] - is85[i96]);
                         }
-                        if (Math.abs(is86[i95] - is86[i96]) > i94) {
-                            i94 = Math.abs(is86[i95] - is86[i96]);
+                        if (Math.Abs(is86[i95] - is86[i96]) > i94) {
+                            i94 = Math.Abs(is86[i95] - is86[i96]);
                         }
                     }
             }
@@ -635,7 +635,7 @@ class Plane : IComparable<Plane> {
             if (fs != 0) {
                 int i101;
                 int i102;
-                if (Math.abs(is86[0] - is86[1]) > Math.abs(is86[2] - is86[1])) {
+                if (Math.Abs(is86[0] - is86[1]) > Math.Abs(is86[2] - is86[1])) {
                     i101 = 0;
                     i102 = 2;
                 } else {
@@ -689,7 +689,7 @@ class Plane : IComparable<Plane> {
             int i110 = (i103 + i104) / 2;
             int i111 = (i105 + i106) / 2;
             int i112 = (i107 + i108) / 2;
-            av = (int) Math.sqrt((Medium.cy - i110) * (Medium.cy - i110) + (Medium.cx - i111) * (Medium.cx - i111) + i112 * i112 + i98 * i98 * i98);
+            av = (int) Math.Sqrt((Medium.cy - i110) * (Medium.cy - i110) + (Medium.cx - i111) * (Medium.cx - i111) + i112 * i112 + i98 * i98 * i98);
             if (Medium.trk == 0 && (av > Medium.fade[disline] || av == 0)) {
                 bool84 = false;
             }
@@ -858,8 +858,8 @@ class Plane : IComparable<Plane> {
                         i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                     }
             }
-            G.setColor(new Color(i114, i115, i116));
-            G.fillPolygon(is85, is86, n);
+            G.SetColor(new Color(i114, i115, i116));
+            G.FillPolygon(is85, is86, n);
             if (Medium.trk != 0 && gr == -10) {
                 abool = false;
             }
@@ -899,13 +899,13 @@ class Plane : IComparable<Plane> {
                                 i116 = 0;
                             }
                         }
-                        G.setColor(new Color(i114, i115, i116));
-                        G.drawPolygon(is85, is86, n);
+                        G.SetColor(new Color(i114, i115, i116));
+                        G.DrawPolygon(is85, is86, n);
                     }
                 } else {
                     if (flx == 2) {
-                        G.setColor(new Color(0, 0, 0));
-                        G.drawPolygon(is85, is86, n);
+                        G.SetColor(new Color(0, 0, 0));
+                        G.DrawPolygon(is85, is86, n);
                     }
                     if (flx == 1) {
                         i114 = 0;
@@ -923,8 +923,8 @@ class Plane : IComparable<Plane> {
                         if (i116 < 0) {
                             i116 = 0;
                         }
-                        G.setColor(new Color(i114, i115, i116));
-                        G.drawPolygon(is85, is86, n);
+                        G.SetColor(new Color(i114, i115, i116));
+                        G.DrawPolygon(is85, is86, n);
                         flx = 2;
                     }
                     if (flx == 3) {
@@ -943,13 +943,13 @@ class Plane : IComparable<Plane> {
                         if (i116 < 0) {
                             i116 = 0;
                         }
-                        G.setColor(new Color(i114, i115, i116));
-                        G.drawPolygon(is85, is86, n);
+                        G.SetColor(new Color(i114, i115, i116));
+                        G.DrawPolygon(is85, is86, n);
                         flx = 2;
                     }
                     if (flx == 77) {
-                        G.setColor(new Color(16, 198, 255));
-                        G.drawPolygon(is85, is86, n);
+                        G.SetColor(new Color(16, 198, 255));
+                        G.DrawPolygon(is85, is86, n);
                         flx = 0;
                     }
                 }
@@ -966,8 +966,8 @@ class Plane : IComparable<Plane> {
                 if (i116 < 0) {
                     i116 = 0;
                 }
-                G.setColor(new Color(i114, i115, i116));
-                G.drawPolygon(is85, is86, n);
+                G.SetColor(new Color(i114, i115, i116));
+                G.DrawPolygon(is85, is86, n);
             }
             if (gr == -10)
                 if (Medium.trk == 0) {
@@ -994,8 +994,8 @@ class Plane : IComparable<Plane> {
                             i115 = (i115 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                             i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                         }
-                    G.setColor(new Color(i114, i115, i116));
-                    G.drawPolygon(is85, is86, n);
+                    G.SetColor(new Color(i114, i115, i116));
+                    G.DrawPolygon(is85, is86, n);
                 } else if (Medium.cpflik && Medium.hit == 5000) {
                     i115 = (int) (HansenRandom.Double() * 115.0);
                     i114 = i115 * 2 - 54;
@@ -1019,8 +1019,8 @@ class Plane : IComparable<Plane> {
                     if (i115 > 255) {
                         i115 = 255;
                     }
-                    G.setColor(new Color(i114, i115, i116));
-                    G.drawPolygon(is85, is86, n);
+                    G.SetColor(new Color(i114, i115, i116));
+                    G.DrawPolygon(is85, is86, n);
                 }
             if (gr == -18 && Medium.trk == 0) {
                 i114 = c[0];
@@ -1043,16 +1043,16 @@ class Plane : IComparable<Plane> {
                         i115 = (i115 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                         i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                     }
-                G.setColor(new Color(i114, i115, i116));
-                G.drawPolygon(is85, is86, n);
+                G.SetColor(new Color(i114, i115, i116));
+                G.DrawPolygon(is85, is86, n);
             }
         }
     }
 
     internal void deltafntyp() {
-        int i = Math.abs(ox[2] - ox[1]);
-        int i24 = Math.abs(oy[2] - oy[1]);
-        int i25 = Math.abs(oz[2] - oz[1]);
+        int i = Math.Abs(ox[2] - ox[1]);
+        int i24 = Math.Abs(oy[2] - oy[1]);
+        int i25 = Math.Abs(oz[2] - oz[1]);
         if (i24 <= i && i24 <= i25) {
             typ = 2;
         }
@@ -1066,7 +1066,7 @@ class Plane : IComparable<Plane> {
         for (int i26 = 0; i26 < 3; i26++) {
             for (int i27 = 0; i27 < 3; i27++)
                 if (i27 != i26) {
-                    deltaf *= (float) (Math.sqrt((ox[i27] - ox[i26]) * (ox[i27] - ox[i26]) + (oy[i27] - oy[i26]) * (oy[i27] - oy[i26]) + (oz[i27] - oz[i26]) * (oz[i27] - oz[i26])) / 100.0);
+                    deltaf *= (float) (Math.Sqrt((ox[i27] - ox[i26]) * (ox[i27] - ox[i26]) + (oy[i27] - oy[i26]) * (oy[i27] - oy[i26]) + (oz[i27] - oz[i26]) * (oz[i27] - oz[i26])) / 100.0);
                 }
         }
         deltaf = deltaf / 3.0F;
@@ -1077,7 +1077,7 @@ class Plane : IComparable<Plane> {
         for (int i = 0; i < 3; i++) {
             for (int i28 = 0; i28 < 3; i28++)
                 if (i28 != i) {
-                    projf *= (float) (Math.sqrt((ox[i] - ox[i28]) * (ox[i] - ox[i28]) + (oz[i] - oz[i28]) * (oz[i] - oz[i28])) / 100.0);
+                    projf *= (float) (Math.Sqrt((ox[i] - ox[i28]) * (ox[i] - ox[i28]) + (oz[i] - oz[i28]) * (oz[i] - oz[i28])) / 100.0);
                 }
         }
         projf = projf / 3.0F;
@@ -1168,7 +1168,7 @@ class Plane : IComparable<Plane> {
             for (int i147 = Trackers.sect[i145,i146].Length - 1; i147 >= 0; i147--) {
                 int i148 = Trackers.sect[i145,i146][i147];
                 int i149 = 0;
-                if (Math.abs(Trackers.zy[i148]) != 90 && Math.abs(Trackers.xy[i148]) != 90 && Trackers.rady[i148] != 801 && Math.abs(i143 - (Trackers.x[i148] - Medium.x)) < Trackers.radx[i148] && Math.abs(i144 - (Trackers.z[i148] - Medium.z)) < Trackers.radz[i148] && (!Trackers.decor[i148] || Medium.resdown != 2)) {
+                if (Math.Abs(Trackers.zy[i148]) != 90 && Math.Abs(Trackers.xy[i148]) != 90 && Trackers.rady[i148] != 801 && Math.Abs(i143 - (Trackers.x[i148] - Medium.x)) < Trackers.radx[i148] && Math.Abs(i144 - (Trackers.z[i148] - Medium.z)) < Trackers.radz[i148] && (!Trackers.decor[i148] || Medium.resdown != 2)) {
                     i149++;
                 }
                 if (i149 != 0) {
@@ -1198,7 +1198,7 @@ class Plane : IComparable<Plane> {
         } else {
             for (int i153 = 0; i153 < Medium.nsp; i153++) {
                 for (int i154 = 0; i154 < n; i154++)
-                    if (Math.abs(ais[i154] - Medium.spx[i153]) < Medium.sprad[i153] && Math.abs(is126[i154] - Medium.spz[i153]) < Medium.sprad[i153]) {
+                    if (Math.Abs(ais[i154] - Medium.spx[i153]) < Medium.sprad[i153] && Math.Abs(is126[i154] - Medium.spz[i153]) < Medium.sprad[i153]) {
                         abool = false;
                     }
             }
@@ -1237,13 +1237,13 @@ class Plane : IComparable<Plane> {
                     i130 = (i130 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
                     i131 = (i131 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
                 }
-            G.setColor(new Color(i129, i130, i131));
-            G.fillPolygon(is151, is152, n);
+            G.SetColor(new Color(i129, i130, i131));
+            G.FillPolygon(is151, is152, n);
         }
     }
 
     private int spy(int i, int i170) {
-        return (int) Math.sqrt((i - Medium.cx) * (i - Medium.cx) + i170 * i170);
+        return (int) Math.Sqrt((i - Medium.cx) * (i - Medium.cx) + i170 * i170);
     }
 
     private int xs(int i, int i161) {

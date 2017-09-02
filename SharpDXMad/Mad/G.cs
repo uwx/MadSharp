@@ -1,5 +1,6 @@
 ﻿using System;
 using Cum;
+using SharpDX;
 using SharpDX.Direct2D1;
 using SharpDX.Mathematics.Interop;
 using Color = SharpDX.Color;
@@ -67,79 +68,81 @@ namespace MadGame
             }
         }
 
-        public static void setColor(Cum.Color color)
+        public static void SetColor(Cum.Color color)
         {
-            throw new NotImplementedException();
+            if (_currentColor == null)
+            {
+                _currentColor = new SolidColorBrush(D2D, new RawColor4());
+            }
+            var currentColorColor = _currentColor.Color;
+            currentColorColor.R = color._r / 255f;
+            currentColorColor.G = color._g / 255f;
+            currentColorColor.B = color._b / 255f;
+            currentColorColor.A = color._a / 255f;
+            _currentColor.Color = currentColorColor;
         }
 
-        public static void fillPolygon(int[] is78, int[] is79, int i)
+        public static void FillRect(int x1, int y1, int width, int height)
         {
-            throw new NotImplementedException();
+            D2D.FillRectangle(new RawRectangleF(x1, y1, 800-width, 450-height), _currentColor);
         }
 
-        public static void fillRect(int p0, int i217, int p2, int p3)
+        public static void DrawLine(int i252, int i253, int i254, int i255)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public static void drawPolygon(int[] is85, int[] is86, int i)
+        public static void SetAlpha(float f)
         {
-            throw new NotImplementedException();
+            var currentColorColor = _currentColor.Color;
+            currentColorColor.A = f;
+            _currentColor.Color = currentColorColor;
         }
 
-        public static void drawLine(int i252, int i253, int i254, int i255)
+        public static void DrawImage(Image image, int x, int y, object p3)
         {
-            throw new NotImplementedException();
+//            D2D.DrawBitmap(image, new RawRectangleF(x, y, image.getWidth(null), image.getHeight(null)), 1.0f, BitmapInterpolationMode.NearestNeighbor);
         }
 
-        public static void setAlpha(float f)
+        public static void SetFont(Font p0)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public static void drawImage(Image bggo, int p1, int p2, object p3)
+        public static FontMetrics GetFontMetrics()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return new FontMetrics();
         }
 
-        public static void setFont(Font p0)
+        public static void DrawString(string multiplayerTipPressCToAccessChatQuicklyDuringTheGame, int p1, int p2)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public static FontMetrics getFontMetrics()
+        public static void FillOval(int p0, int p1, int p2, int p3)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public static void drawString(string multiplayerTipPressCToAccessChatQuicklyDuringTheGame, int p1, int p2)
+        public static void FillRoundRect(int i, int i1, int i2, int i3, int i4, int i5)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public static void fillOval(int p0, int p1, int p2, int p3)
+        public static void DrawRoundRect(int p0, int p1, int p2, int p3, int p4, int p5)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public static void fillRoundRect(int i, int i1, int i2, int i3, int i4, int i5)
+        public static void DrawRect(int p0, int p1, int p2, int p3)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        public static void drawRoundRect(int p0, int p1, int p2, int p3, int p4, int p5)
+        public static void DrawImage(Image bggo, int p1, int i429, int p3, int i, object o)
         {
-            throw new NotImplementedException();
-        }
-
-        public static void drawRect(int p0, int p1, int p2, int p3)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void drawImage(Image bggo, int p1, int i429, int p3, int i, object o)
-        {
-            throw new NotImplementedException();
+            ////throw new NotImplementedException();
         }
     }
 }

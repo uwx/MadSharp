@@ -584,7 +584,7 @@ namespace Cum
         }
         if (CheckPoints.stage != -3)
         {
-            CheckPoints.top20 = Math.abs(CheckPoints.top20);
+            CheckPoints.top20 = Math.Abs(CheckPoints.top20);
             if (CheckPoints.stage == 26)
             {
                 Medium.lightn = 0;
@@ -1008,7 +1008,7 @@ namespace Cum
 //        if (x != 0)
 //            if (x < 0)
 //            {
-//                graphics2d.fillRect(apx + x, apy - (int) (25.0F * apmult), Math.abs(x), (int) (500.0F * apmult));
+//                graphics2d.fillRect(apx + x, apy - (int) (25.0F * apmult), Math.Abs(x), (int) (500.0F * apmult));
 //            }
 //            else
 //            {
@@ -1018,7 +1018,7 @@ namespace Cum
 //        if (y != 0)
 //            if (y < 0)
 //            {
-//                graphics2d.fillRect(apx - (int) (25.0F * apmult), apy + y, (int) (850.0F * apmult), Math.abs(y));
+//                graphics2d.fillRect(apx - (int) (25.0F * apmult), apy + y, (int) (850.0F * apmult), Math.Abs(y));
 //            }
 //            else
 //            {
@@ -1607,7 +1607,7 @@ namespace Cum
 //                        g2.drawImage(tribuffer, apx + i, apy + i97, (int) (800.0F * apmult), (int) (450.0F * apmult),
 //                            this);
 //                        cropit(g2, i, i97);
-//                        tG.setAlpha(mvect / 100.0F);
+//                        tG.SetAlpha(mvect / 100.0F);
 //                        tg.drawImage(offImage, 0, 0, null);
 //                    }
 //                    else
@@ -1633,7 +1633,7 @@ namespace Cum
 //                    RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
 //                g2.drawImage(tribuffer, apx + i, apy + i97, this);
 //                cropit(g2, i, i97);
-//                tG.setAlpha(mvect / 100.0F);
+//                tG.SetAlpha(mvect / 100.0F);
 //                tg.drawImage(offImage, 0, 0, null);
 //            }
 //            else
@@ -1646,7 +1646,7 @@ namespace Cum
 //            rd.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
 //            g2.drawImage(tribuffer, apx + i, apy + i97, this);
 //            cropit(g2, i, i97);
-//            tG.setAlpha(mvect / 100.0F);
+//            tG.SetAlpha(mvect / 100.0F);
 //            tg.drawImage(offImage, 0, 0, null);
 //        }
 //        else
@@ -2080,8 +2080,8 @@ namespace Cum
             if (xtGraphics.loadedt)
             {
                 xtPart2.mainbg(-101);
-                G.setColor(new Color(0, 0, 0));
-                G.fillRect(0, 0, 800, 450);
+                G.SetColor(new Color(0, 0, 0));
+                G.FillRect(0, 0, 800, 450);
                 //repaint();
                 xtGraphics.strack.unload();
                 xtGraphics.strack = null;
@@ -2093,8 +2093,8 @@ namespace Cum
             if (clicknowtime < 2)
             {
                 xtPart2.mainbg(-101);
-                G.setColor(new Color(0, 0, 0));
-                G.fillRect(65, 25, 670, 400);
+                G.SetColor(new Color(0, 0, 0));
+                G.FillRect(65, 25, 670, 400);
                 clicknowtime++;
             }
             else
@@ -2143,8 +2143,8 @@ namespace Cum
             mvect = 100;
             if (xtGraphics.loadedt)
             {
-                G.setColor(new Color(0, 0, 0));
-                G.fillRect(0, 0, 800, 450);
+                G.SetColor(new Color(0, 0, 0));
+                G.FillRect(0, 0, 800, 450);
                 //repaint();
                 checkmemory();
                 xtGraphics.strack.unload();
@@ -2178,8 +2178,8 @@ namespace Cum
             mvect = 100;
             if (xtGraphics.loadedt)
             {
-                G.setColor(new Color(0, 0, 0));
-                G.fillRect(0, 0, 800, 450);
+                G.SetColor(new Color(0, 0, 0));
+                G.FillRect(0, 0, 800, 450);
                 //repaint();
                 checkmemory();
                 xtGraphics.strack.unload();
@@ -2293,8 +2293,8 @@ namespace Cum
         }
         if (xtGraphics.fase == 3)
         {
-            G.setColor(new Color(0, 0, 0));
-            G.fillRect(65, 25, 670, 400);
+            G.SetColor(new Color(0, 0, 0));
+            G.FillRect(65, 25, 670, 400);
             //repaint();
             xtGraphics.inishstageselect();
         }
@@ -2409,8 +2409,8 @@ namespace Cum
                     Medium.adv = 1900;
                     Medium.zy = 40;
                     Medium.vxz = 70;
-                    G.setColor(new Color(255, 255, 255));
-                    G.fillRect(0, 0, 800, 450);
+                    G.SetColor(new Color(255, 255, 255));
+                    G.FillRect(0, 0, 800, 450);
                 }
                 if (xtGraphics.starcnt != 0)
                 {
@@ -2431,7 +2431,7 @@ namespace Cum
                             shaka = 25;
                         }
                     }
-                    mvect = 65 + Math.abs(lmxz - Medium.xz) / 5 * 100;
+                    mvect = 65 + Math.Abs(lmxz - Medium.xz) / 5 * 100;
                     if (mvect > 90)
                     {
                         mvect = 90;
@@ -2448,7 +2448,7 @@ namespace Cum
                 {
                     Medium.watch(stageContos[0], mads[0].mxz);
                     xtPart2.stat(mads[0], stageContos[0], u[0], false);
-                    mvect = 65 + Math.abs(lmxz - Medium.xz) / 5 * 100;
+                    mvect = 65 + Math.Abs(lmxz - Medium.xz) / 5 * 100;
                     if (mvect > 90)
                     {
                         mvect = 90;
@@ -2485,8 +2485,8 @@ namespace Cum
                     CheckPoints.checkstat(mads, stageContos, xtGraphics.nplayers, xtGraphics.im, 0);
                     Medium.follow(stageContos[0], mads[0].cxz, 0);
                     xtPart2.stat(mads[0], stageContos[0], u[0], true);
-//                    G.setColor(new Color(255, 255, 255));
-//                    G.fillRect(0, 0, 800, 450);
+//                    G.SetColor(new Color(255, 255, 255));
+//                    G.FillRect(0, 0, 800, 450);
                 }
             }
         }
@@ -2598,8 +2598,8 @@ namespace Cum
             }
             if (Record.hcaught)
             {
-                G.setColor(new Color(0, 0, 0));
-                G.fillRect(0, 0, 800, 450);
+                G.SetColor(new Color(0, 0, 0));
+                G.FillRect(0, 0, 800, 450);
                 //repaint();
             }
             if (Record.hcaught)
@@ -2731,8 +2731,8 @@ namespace Cum
                     CheckPoints.stage);
                 if (recordtime == 0 || recordtime == 1 || recordtime == 2)
                 {
-                    G.setColor(new Color(0, 0, 0));
-                    G.fillRect(0, 0, 800, 450);
+                    G.SetColor(new Color(0, 0, 0));
+                    G.FillRect(0, 0, 800, 450);
                 }
                 if (Record.wasted != xtGraphics.im)
                 {
@@ -2740,8 +2740,8 @@ namespace Cum
                     {
                         if (clicknowtime == 9 || clicknowtime == 11)
                         {
-                            G.setColor(new Color(255, 255, 255));
-                            G.fillRect(0, 0, 800, 450);
+                            G.SetColor(new Color(255, 255, 255));
+                            G.FillRect(0, 0, 800, 450);
                         }
                         if (clicknowtime == 0)
                         {
@@ -2888,20 +2888,20 @@ namespace Cum
                 {
                     if (wastedpoint == 67 && (clicknowtime == 3 || clicknowtime == 31 || clicknowtime == 66))
                     {
-                        G.setColor(new Color(255, 255, 255));
-                        G.fillRect(0, 0, 800, 450);
+                        G.SetColor(new Color(255, 255, 255));
+                        G.FillRect(0, 0, 800, 450);
                     }
                     if (wastedpoint == 69 && (clicknowtime == 3 || clicknowtime == 5 || clicknowtime == 31 ||
                                               clicknowtime == 33 || clicknowtime == 66 || clicknowtime == 68))
                     {
-                        G.setColor(new Color(255, 255, 255));
-                        G.fillRect(0, 0, 800, 450);
+                        G.SetColor(new Color(255, 255, 255));
+                        G.FillRect(0, 0, 800, 450);
                     }
                     if (wastedpoint == 30 && clicknowtime >= 1 && clicknowtime < 30)
                         if (clicknowtime % (int) (2.0F + Medium.random() * 3.0F) == 0 && !flashingscreen)
                         {
-                            G.setColor(new Color(255, 255, 255));
-                            G.fillRect(0, 0, 800, 450);
+                            G.SetColor(new Color(255, 255, 255));
+                            G.FillRect(0, 0, 800, 450);
                             flashingscreen = true;
                         }
                         else
@@ -2938,8 +2938,8 @@ namespace Cum
             }
             if (recordtime <= 0)
             {
-                G.drawImage(Images.mdness, 289, 30, null);
-                G.drawImage(Images.dude[0], 135, 10, null);
+                G.DrawImage(Images.mdness, 289, 30, null);
+                G.DrawImage(Images.dude[0], 135, 10, null);
             }
             if (recordtime >= 0)
             {

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using Cum;
 using MadGame;
 using SharpDX;
 using SharpDX.Direct3D;
@@ -28,23 +30,23 @@ namespace MadGame
         private const int FrameDelay = (int)(1000 / 21f);
         
         private static readonly Stopwatch Stopwatch = new Stopwatch();
-
+        
+        public GameSparker GameSparker { get; set; }
+        
         protected override void Initialize(DemoConfiguration demoConfiguration)
         {
             base.Initialize(demoConfiguration);
+            Directory.SetCurrentDirectory(@"C:\Users\Rafael\Documents\GitHub\MadGame\GameData");
             //_bitmap = LoadFromFile(RenderTarget2D, "sharpdx.png");
             G.D2D = RenderTarget2D;
             G.Factory = Factory2D;
-            F51 = new F51();
-            F51.run();
+//            F51.run();
         }
 
         public void SetupAndRun()
         {
             Run(new DemoConfiguration("Mad.cs", 800, 450));
         }
-
-        public F51 F51 { get; set; }
 
         protected override void Draw(DemoTime time)
         {
@@ -55,7 +57,12 @@ namespace MadGame
             // Draw the TextLayout
             //RenderTarget2D.DrawBitmap(_bitmap, 1.0f, Direct2D1.BitmapInterpolationMode.Linear);
             
-            F51.wtrue();
+            if (GameSparker == null)
+            {
+                GameSparker = GameSparker.create();
+            }
+            
+            GameSparker.gameTick();
 
             var delay = FrameDelay - (int)Stopwatch.ElapsedMilliseconds;
             if (delay > 0)
@@ -80,20 +87,13 @@ namespace MadGame
 
         private void HandleKeyPress(KeyEventArgs args, bool isDown)
         {
-            switch (args.KeyCode)
+            if (isDown)
             {
-                case Keys.Up:
-                    F51.up = isDown;
-                    break;
-                case Keys.Down:
-                    F51.down = isDown;
-                    break;
-                case Keys.Left:
-                    F51.left = isDown;
-                    break;
-                case Keys.Right:
-                    F51.right = isDown;
-                    break;
+                GameSparker.keyPressed(args.KeyCode);
+            }
+            else
+            {
+                GameSparker.keyReleased(args.KeyCode);
             }
         }
 
