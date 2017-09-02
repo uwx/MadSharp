@@ -6,10 +6,13 @@ using MadGame;
 using MiscUtil;
 using SharpDX;
 using SharpDX.Direct2D1;
+using SharpDX.DirectWrite;
 using SharpDX.DXGI;
 using SharpDX.WIC;
 using SharpDXMad;
 using Bitmap = SharpDX.Direct2D1.Bitmap;
+using Factory = SharpDX.DirectWrite.Factory;
+using TextRenderer = System.Windows.Forms.TextRenderer;
 
 namespace Cum
 {
@@ -116,11 +119,44 @@ namespace Cum
         }
     }
 
-    public class FontMetrics
+    public struct FontMetrics
     {
+        private System.Drawing.Font _font;
+
+        public FontMetrics(Font font)
+        {
+            _font = new System.Drawing.Font(font.FontName, font.Size);
+        }
+
         public int stringWidth(string astring)
         {
-            return 50;
+            return TextRenderer.MeasureText(astring, _font).Width;
+        }
+    }
+
+    public struct CachedFont
+    {
+        public TextFormat Format;
+        public FontMetrics Metrics;
+
+        public CachedFont((TextFormat, FontMetrics) res)
+        {
+            Format = res.Item1;
+            Metrics = res.Item2;
+        }
+    }
+    
+    public static class Fonts
+    {
+        private static readonly Dictionary<Font, CachedFont> Dict = new Dictionary<Font, CachedFont>();
+
+        public static CachedFont GetOrCompute(Font fontCached, Func<(TextFormat, FontMetrics)> func)
+        {
+            if (Dict.ContainsKey(fontCached))
+            {
+                return Dict[fontCached];
+            }
+            return Dict[fontCached] = new CachedFont(func());
         }
     }
 
@@ -430,72 +466,97 @@ namespace Cum
 
     public struct Font
     {
-        private string _fontName;
+        internal string FontName;
         private int _flags;
-        private int _size;
+        internal int Size;
 
         public Font(string fontName, int flags, int size)
         {
-            _fontName = fontName;
+            FontName = fontName;
             _flags = flags;
-            _size = size;
+            Size = size;
         }
     }
 
     public class Image : Bitmap
     {
+        private readonly int _width;
+        private readonly int _height;
+        
         public Image(RenderTarget renderTarget, Size2 size) : base(renderTarget, size)
         {
+            _width = size.Width;
+            _height = size.Height;
         }
 
         public Image(RenderTarget renderTarget, Size2 size, BitmapProperties bitmapProperties) : base(renderTarget, size, bitmapProperties)
         {
+            _width = size.Width;
+            _height = size.Height;
         }
 
         public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch) : base(renderTarget, size, dataPointer, pitch)
         {
+            _width = size.Width;
+            _height = size.Height;
         }
 
         public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch, BitmapProperties bitmapProperties) : base(renderTarget, size, dataPointer, pitch, bitmapProperties)
         {
+            _width = size.Width;
+            _height = size.Height;
         }
 
         public Image(RenderTarget renderTarget, Bitmap bitmap) : base(renderTarget, bitmap)
         {
+            _width = (int) bitmap.Size.Width;
+            _height = (int) bitmap.Size.Height;
         }
 
         public Image(RenderTarget renderTarget, Bitmap bitmap, BitmapProperties? bitmapProperties) : base(renderTarget, bitmap, bitmapProperties)
         {
+            _width = (int) bitmap.Size.Width;
+            _height = (int) bitmap.Size.Height;
         }
 
         public Image(RenderTarget renderTarget, Surface surface) : base(renderTarget, surface)
         {
+            _width = (int) Size.Width;
+            _height = (int) Size.Height;
         }
 
         public Image(RenderTarget renderTarget, Surface surface, BitmapProperties? bitmapProperties) : base(renderTarget, surface, bitmapProperties)
         {
+            _width = (int) Size.Width;
+            _height = (int) Size.Height;
         }
 
         public Image(RenderTarget renderTarget, BitmapLock bitmapLock) : base(renderTarget, bitmapLock)
         {
+            _width = (int) Size.Width;
+            _height = (int) Size.Height;
         }
 
         public Image(RenderTarget renderTarget, BitmapLock bitmapLock, BitmapProperties? bitmapProperties) : base(renderTarget, bitmapLock, bitmapProperties)
         {
+            _width = (int) Size.Width;
+            _height = (int) Size.Height;
         }
 
         public Image(IntPtr nativePtr) : base(nativePtr)
         {
+            _width = (int) Size.Width;
+            _height = (int) Size.Height;
         }
 
         public int getHeight(object o)
         {
-            throw new NotImplementedException();
+            return _height;
         }
 
         public int getWidth(object o)
         {
-            throw new NotImplementedException();
+            return _width;
         }
     }
 

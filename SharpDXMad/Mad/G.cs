@@ -2,8 +2,14 @@
 using Cum;
 using SharpDX;
 using SharpDX.Direct2D1;
+using SharpDX.DirectWrite;
+using DW = SharpDX.DirectWrite;
+using D2D = SharpDX.Direct2D1;
 using SharpDX.Mathematics.Interop;
 using Color = SharpDX.Color;
+using Factory = SharpDX.Direct2D1.Factory;
+using Font = Cum.Font;
+using FontMetrics = Cum.FontMetrics;
 using Image = Cum.Image;
 
 namespace MadGame
@@ -15,8 +21,11 @@ namespace MadGame
         
         public static RenderTarget D2D { get; set; }
         public static Factory Factory { get; set; }
-        
-        private static SolidColorBrush _currentColor = null;
+        public static DW.Factory FactoryDW { get; set; }
+
+        private static SolidColorBrush _currentColor;
+        private static TextFormat _textFormat;
+        private static CachedFont _fontCached;
 
         private static RawColor4 ToRaw(Color c)
         {
@@ -84,7 +93,7 @@ namespace MadGame
 
         public static void FillRect(int x1, int y1, int width, int height)
         {
-            D2D.FillRectangle(new RawRectangleF(x1, y1, 800-width, 450-height), _currentColor);
+            D2D.FillRectangle(new RectangleF(x1, y1, 800, 450), _currentColor);
         }
 
         public static void DrawLine(int i252, int i253, int i254, int i255)
@@ -101,23 +110,26 @@ namespace MadGame
 
         public static void DrawImage(Image image, int x, int y, object p3)
         {
-//            D2D.DrawBitmap(image, new RawRectangleF(x, y, image.getWidth(null), image.getHeight(null)), 1.0f, BitmapInterpolationMode.NearestNeighbor);
+            D2D.DrawBitmap(image, new RectangleF(x, y, image.getWidth(null), image.getHeight(null)), 1.0f, BitmapInterpolationMode.NearestNeighbor);
         }
 
         public static void SetFont(Font p0)
         {
-            //throw new NotImplementedException();
+            _fontCached = Fonts.GetOrCompute(p0, () => (
+                new TextFormat(FactoryDW, p0.FontName, p0.Size),
+                new FontMetrics(p0)
+            ));
+            _textFormat = _fontCached.Format;
         }
 
         public static FontMetrics GetFontMetrics()
         {
-            //throw new NotImplementedException();
-            return new FontMetrics();
+            return _fontCached.Metrics;
         }
 
-        public static void DrawString(string multiplayerTipPressCToAccessChatQuicklyDuringTheGame, int p1, int p2)
+        public static void DrawString(string text, int x, int y)
         {
-            //throw new NotImplementedException();
+            D2D.DrawText(text, _textFormat, new RectangleF(x, y, 400, 400), _currentColor);
         }
 
         public static void FillOval(int p0, int p1, int p2, int p3)

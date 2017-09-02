@@ -40,6 +40,7 @@ namespace MadGame
             //_bitmap = LoadFromFile(RenderTarget2D, "sharpdx.png");
             G.D2D = RenderTarget2D;
             G.Factory = Factory2D;
+            G.FactoryDW = FactoryDWrite;
 //            F51.run();
         }
 

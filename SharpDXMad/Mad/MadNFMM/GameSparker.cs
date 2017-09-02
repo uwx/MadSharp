@@ -1894,7 +1894,8 @@ namespace Cum
 
         preloadGame();
 
-        new Thread(GameSparker.loadGame).Start();
+        //new Thread(GameSparker.loadGame).Start();
+        loadGame();
 
 //        gsPanel.addKeyListener(gsPanel);
 //        gsPanel.addMouseListener(gsPanel);

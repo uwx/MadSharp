@@ -1,5 +1,6 @@
 using boolean = System.Boolean;
 using System;
+using System.IO;
 using MadGame;
 using static Cum.xtImages.Images;
 using static Cum.xtPart2;
@@ -2800,7 +2801,7 @@ class xtGraphics {
             }
             string443 = string448;
         } catch (Exception ignored) {
-
+                        Console.WriteLine(ignored);
         }
         return string443;
     }
@@ -4062,6 +4063,74 @@ class xtGraphics {
 
     static internal void loadsounds() {
         dnload += 3;
+        foreach (var file in Directory.GetFiles("temp-sound/"))
+        {
+            var astring = Path.GetFileName(file);
+            for (int i2 = 0; i2 < 5; i2++) {
+                for (int i3 = 0; i3 < 5; i3++)
+                    if (astring.equals("" + i3 + "" + i2 + ".wav")) {
+                        engs[i3,i2] = new SoundClip("temp-sound/" + astring);
+                    }
+            }
+            for (int i4 = 0; i4 < 6; i4++)
+                if (astring.equals("air" + i4 + ".wav")) {
+                    air[i4] = new SoundClip("temp-sound/" + astring);
+                }
+            for (int i5 = 0; i5 < 3; i5++)
+                if (astring.equals("crash" + (i5 + 1) + ".wav")) {
+                    crash[i5] = new SoundClip("temp-sound/" + astring);
+                }
+            for (int i6 = 0; i6 < 3; i6++)
+                if (astring.equals("lowcrash" + (i6 + 1) + ".wav")) {
+                    lowcrash[i6] = new SoundClip("temp-sound/" + astring);
+                }
+            for (int i7 = 0; i7 < 3; i7++)
+                if (astring.equals("skid" + (i7 + 1) + ".wav")) {
+                    skid[i7] = new SoundClip("temp-sound/" + astring);
+                }
+            for (int i8 = 0; i8 < 3; i8++)
+                if (astring.equals("dustskid" + (i8 + 1) + ".wav")) {
+                    dustskid[i8] = new SoundClip("temp-sound/" + astring);
+                }
+            for (int i9 = 0; i9 < 3; i9++)
+                if (astring.equals("scrape" + (i9 + 1) + ".wav")) {
+                    scrape[i9] = new SoundClip("temp-sound/" + astring);
+                    if (i9 == 2) {
+                        scrape[3] = new SoundClip("temp-sound/" + astring);
+                    }
+                }
+            if (astring.equals("powerup.wav")) {
+                powerup = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("tires.wav")) {
+                tires = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("checkpoint.wav")) {
+                checkpoint = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("carfixed.wav")) {
+                carfixed = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("three.wav")) {
+                three = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("two.wav")) {
+                two = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("one.wav")) {
+                one = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("go.wav")) {
+                go = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("wasted.wav")) {
+                wastd = new SoundClip("temp-sound/" + astring);
+            }
+            if (astring.equals("firewasted.wav")) {
+                firewasted = new SoundClip("temp-sound/" + astring);
+            }
+        }
+        
 //        try {
 //            File file = new File("" + Madness.fpath + "data/sounds.zip");
 //            FileInputStream fileinputstream = new FileInputStream(file);
