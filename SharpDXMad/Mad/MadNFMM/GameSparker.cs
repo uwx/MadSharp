@@ -3107,7 +3107,7 @@ namespace Cum
         });
     }
 
-    static void setloggedcookie()
+        public static void setloggedcookie()
     {
         // TODO
     }

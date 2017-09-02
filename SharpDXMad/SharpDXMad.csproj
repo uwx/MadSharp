@@ -96,7 +96,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\SharpDX-Samples-ed7e80cdcac145cf1864c6b9358a558e5fe8deb6\Desktop\Common\SharpDX.Samples.csproj">
+    <ProjectReference Include="..\SharpDX-Samples-ed7e80cdcac145cf1864c6b9358a558e5fe8deb6\Desktop\Common\SharpDX.Samples.csproj">
       <Project>{93716298-9fa4-4002-ae0b-4c9f4705ccea}</Project>
       <Name>SharpDX.Samples</Name>
     </ProjectReference>

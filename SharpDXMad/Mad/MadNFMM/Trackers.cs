@@ -5,7 +5,7 @@ namespace Cum
     internal class Trackers
     {
         //private Trackers() {}
-        internal static readonly int[][] c = new int[75000][3];
+        internal static readonly int[][] c = ArrayExt.New<int>(75000,3);
         internal static readonly int[] dam = new int[75000];
         internal static readonly boolean[] decor = new boolean[75000];
         internal static int ncx = 0;

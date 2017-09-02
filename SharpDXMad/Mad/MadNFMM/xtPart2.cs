@@ -10,7 +10,7 @@ namespace Cum
     public class xtPart2
     {
         
-    static private Image loadude(byte[] ais)
+    static internal Image loadude(byte[] ais)
     {
         return ImageIO.read(ais);
 //        Image image = ImageIO.read(ais);
@@ -1809,7 +1809,7 @@ namespace Cum
             radpx = 212;
             pin = 0;
         }
-        trackbg(false);
+        trackbgf(false);
         G.setColor(new Color(0, 0, 0));
         G.fillRect(65, 135, 670, 59);
         if (pin != 0) {
@@ -2492,7 +2492,7 @@ namespace Cum
         // it ais only here for extra safety
         for (int j = 0; j < nplayers; j++) {
             if (sc[j] > nCars)
-                throw new Error("there are too many tracks and not enough cars");
+                throw new Exception("there are too many tracks and not enough cars");
         }
     }
 
@@ -2500,7 +2500,7 @@ namespace Cum
         if (lcn != i263) {
             for (int i264 = 0; i264 < 5; i264++)
                 if (pengs[i264]) {
-                    engs[CarDefine.enginsignature[lcn]][i264].stop();
+                    engs[CarDefine.enginsignature[lcn],i264].stop();
                     pengs[i264] = false;
                 }
             lcn = i263;
@@ -2509,11 +2509,11 @@ namespace Cum
         for (int i265 = 0; i265 < 5; i265++)
             if (i == i265) {
                 if (!pengs[i265]) {
-                    engs[CarDefine.enginsignature[i263]][i265].loop();
+                    engs[CarDefine.enginsignature[i263],i265].loop();
                     pengs[i265] = true;
                 }
             } else if (pengs[i265]) {
-                engs[CarDefine.enginsignature[i263]][i265].stop();
+                engs[CarDefine.enginsignature[i263],i265].stop();
                 pengs[i265] = false;
             }
     }
@@ -2533,14 +2533,14 @@ namespace Cum
             if (gmode == 0) {
                 boolean bool40 = false;
                 int i41 = 0;
-                if (nfmtab != GameSparker.sgame.getSelectedIndex()) {
-                    nfmtab = GameSparker.sgame.getSelectedIndex();
-                    //app.snfm1.select(0);
-                    //app.snfm2.select(0);
-                    GameSparker.mstgs.select(0);
-                    app.requestFocus();
-                    bool40 = true;
-                }
+//                if (nfmtab != GameSparker.sgame.getSelectedIndex()) {
+//                    nfmtab = GameSparker.sgame.getSelectedIndex();
+//                    //app.snfm1.select(0);
+//                    //app.snfm2.select(0);
+//                    GameSparker.mstgs.select(0);
+////                    app.requestFocus();
+//                    bool40 = true;
+//                }
                 if (CarDefine.staction == 5) {
                     if (lfrom == 0) {
                         CarDefine.staction = 0;
@@ -2551,7 +2551,7 @@ namespace Cum
                         CarDefine.staction = 2;
                         dnload = 2;
                     }
-                    nickname = GameSparker.tnick.getText();
+//                    nickname = GameSparker.tnick.getText();
                     backlog = nickname;
                     nickey = CarDefine.tnickey;
                     clan = CarDefine.tclan;
@@ -2579,79 +2579,79 @@ namespace Cum
                     CheckPoints.stage = -3;
                 }
                 if (GameSparker.openm && CarDefine.staction == 3) {
-                    GameSparker.tnick.setVisible(false);
-                    GameSparker.tpass.setVisible(false);
+//                    GameSparker.tnick.setVisible(false);
+//                    GameSparker.tpass.setVisible(false);
                     CarDefine.staction = 0;
                 }
                 int i42 = 0;
-                GameSparker.sgame.setSize(131);
+//                GameSparker.sgame.setSize(131);
                 //if (app.sgame.getSelectedIndex() == 0)
                 //	i42 = 400 - (app.sgame.getWidth() + 6 + app.snfm1.getWidth()) / 2;
                 //if (app.sgame.getSelectedIndex() == 1)
                 //	i42 = 400 - (app.sgame.getWidth() + 6 + app.snfm2.getWidth()) / 2;
-                if (GameSparker.sgame.getSelectedIndex() == 2) {
-                    GameSparker.mstgs.setSize(338);
-                    if (bool40)
-                        if (logged) {
-                            if (CarDefine.msloaded != 1) {
-                                GameSparker.mstgs.removeAll();
-                                GameSparker.mstgs.add(rd, "Loading your stages now, please wait...");
-                                GameSparker.mstgs.select(0);
-                                i41 = 1;
-                            }
-                        } else {
-                            GameSparker.mstgs.removeAll();
-                            GameSparker.mstgs.add(rd, "Please login first to load your stages...");
-                            GameSparker.mstgs.select(0);
-                            CarDefine.msloaded = 0;
-                            lfrom = 0;
-                            CarDefine.staction = 3;
-                            showtf = false;
-                            tcnt = 0;
-                            cntflock = 0;
-                            CarDefine.reco = -2;
-                        }
-                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
-                }
-                if (GameSparker.sgame.getSelectedIndex() == 3) {
-                    GameSparker.mstgs.setSize(338);
-                    if (bool40 && CarDefine.msloaded != 3) {
-                        GameSparker.mstgs.removeAll();
-                        GameSparker.mstgs.add(rd, "Loading Top20 list, please wait...");
-                        GameSparker.mstgs.select(0);
-                        i41 = 3;
-                    }
-                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
-                }
-                if (GameSparker.sgame.getSelectedIndex() == 4) {
-                    GameSparker.mstgs.setSize(338);
-                    if (bool40 && CarDefine.msloaded != 4) {
-                        GameSparker.mstgs.removeAll();
-                        GameSparker.mstgs.add(rd, "Loading Top20 list, please wait...");
-                        GameSparker.mstgs.select(0);
-                        i41 = 4;
-                    }
-                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
-                }
-                if (GameSparker.sgame.getSelectedIndex() == 5) {
-                    if (CarDefine.staction != 0) {
-                        GameSparker.tnick.setVisible(false);
-                        GameSparker.tpass.setVisible(false);
-                        CarDefine.staction = 0;
-                    }
-                    GameSparker.mstgs.setSize(338);
-                    if (bool40 && CarDefine.msloaded != 2) {
-                        GameSparker.mstgs.removeAll();
-                        GameSparker.mstgs.add(rd, "Loading Stage Maker stages, please wait...");
-                        GameSparker.mstgs.select(0);
-                        i41 = 2;
-                    }
-                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
-                }
-                if (!GameSparker.sgame.isShowing()) {
-                    GameSparker.sgame.setVisible(true);
-                }
-                GameSparker.sgame.move(i42, 62);
+//                if (GameSparker.sgame.getSelectedIndex() == 2) {
+//                    GameSparker.mstgs.setSize(338);
+//                    if (bool40)
+//                        if (logged) {
+//                            if (CarDefine.msloaded != 1) {
+//                                GameSparker.mstgs.removeAll();
+//                                GameSparker.mstgs.add(rd, "Loading your stages now, please wait...");
+//                                GameSparker.mstgs.select(0);
+//                                i41 = 1;
+//                            }
+//                        } else {
+//                            GameSparker.mstgs.removeAll();
+//                            GameSparker.mstgs.add(rd, "Please login first to load your stages...");
+//                            GameSparker.mstgs.select(0);
+//                            CarDefine.msloaded = 0;
+//                            lfrom = 0;
+//                            CarDefine.staction = 3;
+//                            showtf = false;
+//                            tcnt = 0;
+//                            cntflock = 0;
+//                            CarDefine.reco = -2;
+//                        }
+//                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
+//                }
+//                if (GameSparker.sgame.getSelectedIndex() == 3) {
+//                    GameSparker.mstgs.setSize(338);
+//                    if (bool40 && CarDefine.msloaded != 3) {
+//                        GameSparker.mstgs.removeAll();
+//                        GameSparker.mstgs.add(rd, "Loading Top20 list, please wait...");
+//                        GameSparker.mstgs.select(0);
+//                        i41 = 3;
+//                    }
+//                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
+//                }
+//                if (GameSparker.sgame.getSelectedIndex() == 4) {
+//                    GameSparker.mstgs.setSize(338);
+//                    if (bool40 && CarDefine.msloaded != 4) {
+//                        GameSparker.mstgs.removeAll();
+//                        GameSparker.mstgs.add(rd, "Loading Top20 list, please wait...");
+//                        GameSparker.mstgs.select(0);
+//                        i41 = 4;
+//                    }
+//                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
+//                }
+//                if (GameSparker.sgame.getSelectedIndex() == 5) {
+//                    if (CarDefine.staction != 0) {
+//                        GameSparker.tnick.setVisible(false);
+//                        GameSparker.tpass.setVisible(false);
+//                        CarDefine.staction = 0;
+//                    }
+//                    GameSparker.mstgs.setSize(338);
+//                    if (bool40 && CarDefine.msloaded != 2) {
+//                        GameSparker.mstgs.removeAll();
+//                        GameSparker.mstgs.add(rd, "Loading Stage Maker stages, please wait...");
+//                        GameSparker.mstgs.select(0);
+//                        i41 = 2;
+//                    }
+//                    i42 = 400 - (GameSparker.sgame.getWidth() + 6 + GameSparker.mstgs.getWidth()) / 2;
+//                }
+//                if (!GameSparker.sgame.isShowing()) {
+//                    GameSparker.sgame.setVisible(true);
+//                }
+//                GameSparker.sgame.move(i42, 62);
                 /*if (nfmtab == 0) {
                 	if (!app.snfm1.isShowing()) {
                 		app.snfm1.setVisible(true);
@@ -2731,11 +2731,11 @@ namespace Cum
                         if (nfmtab == 1 || nfmtab == 0) {
                             drawcs(155, "Will try to load another stage...", 255, 138, 0, 3);
                             //app.repaint();
-                            try {
-                                Thread.sleep(5000L);
-                            } catch (InterruptedException ignored) {
-
-                            }
+//                            try {
+//                                Thread.sleep(5000L);
+//                            } catch (InterruptedException ignored) {
+//
+//                            }
                             //if (nfmtab == 0)
                             //	app.snfm1.select(1 + (int) (HansenRandom.Double() * 10.0));
                             //if (nfmtab == 1)
@@ -2761,7 +2761,7 @@ namespace Cum
                     }
                     if (CarDefine.reco == -167 || CarDefine.reco == -177) {
                         if (CarDefine.reco == -167) {
-                            nickname = GameSparker.tnick.getText();
+//                            nickname = GameSparker.tnick.getText();
                             backlog = nickname;
                             CarDefine.reco = -177;
                         }
@@ -2774,201 +2774,209 @@ namespace Cum
                         drawcs(171, "Please enter your Password!", 0, 0, 0, 3);
                     }
                     if (!showtf) {
-                        GameSparker.tnick.setBackground(new Color(206, 237, 255));
-                        if (CarDefine.reco != 1) {
-                            if (CarDefine.reco != 2) {
-                                GameSparker.tnick.setText(nickname);
-                            }
-                            GameSparker.tnick.setForeground(new Color(0, 0, 0));
-                        } else {
-                            GameSparker.tnick.setForeground(new Color(255, 0, 0));
-                        }
-                        GameSparker.tnick.requestFocus();
-                        GameSparker.tpass.setBackground(new Color(206, 237, 255));
-                        if (CarDefine.reco != 2) {
-                            if (!autolog) {
-                                GameSparker.tpass.setText("");
-                            }
-                            GameSparker.tpass.setForeground(new Color(0, 0, 0));
-                        } else {
-                            GameSparker.tpass.setForeground(new Color(255, 0, 0));
-                        }
-                        if (!GameSparker.tnick.getText().equals("") && CarDefine.reco != 1) {
-                            GameSparker.tpass.requestFocus();
-                        }
+//                        GameSparker.tnick.setBackground(new Color(206, 237, 255));
+//                        if (CarDefine.reco != 1) {
+//                            if (CarDefine.reco != 2) {
+//                                GameSparker.tnick.setText(nickname);
+//                            }
+//                            GameSparker.tnick.setForeground(new Color(0, 0, 0));
+//                        } else {
+//                            GameSparker.tnick.setForeground(new Color(255, 0, 0));
+//                        }
+//                        GameSparker.tnick.requestFocus();
+//                        GameSparker.tpass.setBackground(new Color(206, 237, 255));
+//                        if (CarDefine.reco != 2) {
+//                            if (!autolog) {
+//                                GameSparker.tpass.setText("");
+//                            }
+//                            GameSparker.tpass.setForeground(new Color(0, 0, 0));
+//                        } else {
+//                            GameSparker.tpass.setForeground(new Color(255, 0, 0));
+//                        }
+//                        if (!GameSparker.tnick.getText().equals("") && CarDefine.reco != 1) {
+//                            GameSparker.tpass.requestFocus();
+//                        }
                         showtf = true;
                     }
                     G.drawString("Nickname:", 376 - ftm.stringWidth("Nickname:") - 14, 201);
                     G.drawString("Password:", 376 - ftm.stringWidth("Password:") - 14, 231);
-                    GameSparker.movefieldd(GameSparker.tnick, 376, 185, 129, 23, true);
-                    GameSparker.movefieldd(GameSparker.tpass, 376, 215, 129, 23, true);
+//                    GameSparker.movefieldd(GameSparker.tnick, 376, 185, 129, 23, true);
+//                    GameSparker.movefieldd(GameSparker.tpass, 376, 215, 129, 23, true);
                     if (tcnt < 30) {
                         tcnt++;
                         if (tcnt == 30) {
-                            if (CarDefine.reco == 2) {
-                                GameSparker.tpass.setText("");
-                            }
-                            GameSparker.tnick.setForeground(new Color(0, 0, 0));
-                            GameSparker.tpass.setForeground(new Color(0, 0, 0));
+//                            if (CarDefine.reco == 2) {
+//                                GameSparker.tpass.setText("");
+//                            }
+//                            GameSparker.tnick.setForeground(new Color(0, 0, 0));
+//                            GameSparker.tpass.setForeground(new Color(0, 0, 0));
                         }
                     }
-                    if (CarDefine.reco != -177) {
-                        if ((drawcarb(true, null, "       Login       ", 347, 247, i, i39, abool) || control.handb || control.enter) && tcnt > 5) {
-                            tcnt = 0;
-                            if (!GameSparker.tnick.getText().equals("") && !GameSparker.tpass.getText().equals("")) {
-                                autolog = false;
-                                GameSparker.tnick.setVisible(false);
-                                GameSparker.tpass.setVisible(false);
-                                app.requestFocus();
-                                CarDefine.staction = 4;
-                                CarDefine.sparkstageaction();
-                            } else {
-                                if (GameSparker.tpass.getText().equals("")) {
-                                    CarDefine.reco = -4;
-                                }
-                                if (GameSparker.tnick.getText().equals("")) {
-                                    CarDefine.reco = -3;
-                                }
-                            }
-                        }
-                    } else if (drawcarb(true, null, "  Upgrade to have your own stages!  ", 277, 247, i, i39, abool) && cntflock == 0) {
-                        GameSparker.editlink(nickname, true);
-                        cntflock = 100;
-                    }
-                    if (drawcarb(true, null, "  Cancel  ", 409, 282, i, i39, abool)) {
-                        GameSparker.tnick.setVisible(false);
-                        GameSparker.tpass.setVisible(false);
-                        app.requestFocus();
-                        CarDefine.staction = 0;
-                    }
-                    if (drawcarb(true, null, "  Register!  ", 316, 282, i, i39, abool)) {
-                        if (cntflock == 0) {
-                            GameSparker.reglink();
-                            cntflock = 100;
-                        }
-                    } else if (cntflock != 0) {
-                        cntflock--;
-                    }
+//                    if (CarDefine.reco != -177) {
+////                        if ((drawcarb(true, null, "       Login       ", 347, 247, i, i39, abool) || control.handb || control.enter) && tcnt > 5) {
+////                            tcnt = 0;
+////                            if (!GameSparker.tnick.getText().equals("") && !GameSparker.tpass.getText().equals("")) {
+////                                autolog = false;
+////                                GameSparker.tnick.setVisible(false);
+////                                GameSparker.tpass.setVisible(false);
+////                                app.requestFocus();
+////                                CarDefine.staction = 4;
+////                                CarDefine.sparkstageaction();
+////                            } else {
+////                                if (GameSparker.tpass.getText().equals("")) {
+////                                    CarDefine.reco = -4;
+////                                }
+////                                if (GameSparker.tnick.getText().equals("")) {
+////                                    CarDefine.reco = -3;
+////                                }
+////                            }
+////                        }
+//                    } else if (drawcarb(true, null, "  Upgrade to have your own stages!  ", 277, 247, i, i39, abool) && cntflock == 0) {
+//                        GameSparker.editlink(nickname, true);
+//                        cntflock = 100;
+//                    }
+//                    if (drawcarb(true, null, "  Cancel  ", 409, 282, i, i39, abool)) {
+//                        GameSparker.tnick.setVisible(false);
+//                        GameSparker.tpass.setVisible(false);
+//                        app.requestFocus();
+//                        CarDefine.staction = 0;
+//                    }
+//                    if (drawcarb(true, null, "  Register!  ", 316, 282, i, i39, abool)) {
+//                        if (cntflock == 0) {
+//                            GameSparker.reglink();
+//                            cntflock = 100;
+//                        }
+//                    } else if (cntflock != 0) {
+//                        cntflock--;
+//                    }
                 }
-                if (CarDefine.staction == 4) {
-                    drawdprom(145, 170);
-                    drawcs(195, "Logging ain to your account...", 0, 0, 0, 3);
-                }
-                if (CheckPoints.stage == -2 && CarDefine.msloaded == 1 && CheckPoints.top20 < 3 && !GameSparker.openm && drawcarb(true, null, "X", 609, 113, i, i39, abool)) {
-                    CarDefine.staction = 6;
-                }
-                if (CarDefine.staction == -1 && CheckPoints.top20 < 3) {
-                    removeds = 0;
-                    drawdprom(145, 95);
-                    drawcs(175, "Failed to remove stage from your account, try again later.", 0, 0, 0, 3);
-                    if (drawcarb(true, null, " OK ", 379, 195, i, i39, abool)) {
-                        CarDefine.staction = 0;
-                    }
-                }
-                if (CarDefine.staction == 1) {
-                    drawdprom(145, 95);
-                    drawcs(195, "Removing stage from your account...", 0, 0, 0, 3);
-                    removeds = 1;
-                }
-                if (CarDefine.staction == 6) {
-                    drawdprom(145, 95);
-                    drawcs(175, "Remove this stage from your account?", 0, 0, 0, 3);
-                    if (drawcarb(true, null, " Yes ", 354, 195, i, i39, abool)) {
-                        CarDefine.onstage = GameSparker.mstgs.getSelectedItem();
-                        CarDefine.staction = 1;
-                        CarDefine.sparkstageaction();
-                    }
-                    if (drawcarb(true, null, " No ", 408, 195, i, i39, abool)) {
-                        CarDefine.staction = 0;
-                    }
-                }
-                if (i41 == 1) {
-                    GameSparker.drawms();
-                    //app.repaint();
-                    CarDefine.loadmystages();
-                }
-                if (i41 >= 3) {
-                    GameSparker.drawms();
-                    //app.repaint();
-                    CarDefine.loadtop20(i41);
-                }
-                if (i41 == 2) {
-                    GameSparker.drawms();
-                    //app.repaint();
-                    CarDefine.loadstagemaker();
-                }
+//                if (CarDefine.staction == 4) {
+//                    drawdprom(145, 170);
+//                    drawcs(195, "Logging ain to your account...", 0, 0, 0, 3);
+//                }
+////                if (CheckPoints.stage == -2 && CarDefine.msloaded == 1 && CheckPoints.top20 < 3 && !GameSparker.openm && drawcarb(true, null, "X", 609, 113, i, i39, abool)) {
+////                    CarDefine.staction = 6;
+////                }
+//                if (CarDefine.staction == -1 && CheckPoints.top20 < 3) {
+//                    removeds = 0;
+//                    drawdprom(145, 95);
+//                    drawcs(175, "Failed to remove stage from your account, try again later.", 0, 0, 0, 3);
+//                    if (drawcarb(true, null, " OK ", 379, 195, i, i39, abool)) {
+//                        CarDefine.staction = 0;
+//                    }
+//                }
+//                if (CarDefine.staction == 1) {
+//                    drawdprom(145, 95);
+//                    drawcs(195, "Removing stage from your account...", 0, 0, 0, 3);
+//                    removeds = 1;
+//                }
+//                if (CarDefine.staction == 6) {
+//                    drawdprom(145, 95);
+//                    drawcs(175, "Remove this stage from your account?", 0, 0, 0, 3);
+//                    if (drawcarb(true, null, " Yes ", 354, 195, i, i39, abool)) {
+//                        CarDefine.onstage = GameSparker.mstgs.getSelectedItem();
+//                        CarDefine.staction = 1;
+//                        CarDefine.sparkstageaction();
+//                    }
+//                    if (drawcarb(true, null, " No ", 408, 195, i, i39, abool)) {
+//                        CarDefine.staction = 0;
+//                    }
+//                }
+//                if (i41 == 1) {
+//                    GameSparker.drawms();
+//                    //app.repaint();
+//                    CarDefine.loadmystages();
+//                }
+//                if (i41 >= 3) {
+//                    GameSparker.drawms();
+//                    //app.repaint();
+//                    CarDefine.loadtop20(i41);
+//                }
+//                if (i41 == 2) {
+//                    GameSparker.drawms();
+//                    //app.repaint();
+//                    CarDefine.loadstagemaker();
+//                }
                 if (CheckPoints.stage != -3 && CarDefine.staction == 0 && CheckPoints.top20 < 3) {
                     G.drawImage(contin[pcontin], 355, 360, null);
                 } else {
                     pcontin = 0;
                 }
-                if (CheckPoints.top20 >= 3 && CarDefine.staction != 3 && CarDefine.staction != 4) {
-                    G.setFont(new Font("Arial", 1, 11));
-                    ftm = G.getFontMetrics();
-                    if (dnload == 0 && drawcarb(true, null, " Add to My Stages ", 334, 355, i, i39, abool))
-                        if (logged) {
-                            CarDefine.onstage = CheckPoints.name;
-                            CarDefine.staction = 2;
-                            CarDefine.sparkstageaction();
-                            dnload = 2;
-                        } else {
-                            lfrom = 1;
-                            CarDefine.staction = 3;
-                            showtf = false;
-                            tcnt = 0;
-                            cntflock = 0;
-                            CarDefine.reco = -2;
-                        }
-                    if (dnload == 2) {
-                        drawcs(370, "Adding stage please wait...", 193, 106, 0, 3);
-                        if (CarDefine.staction == 0) {
-                            dnload = 3;
-                        }
-                        if (CarDefine.staction == -2) {
-                            dnload = 4;
-                        }
-                        if (CarDefine.staction == -3) {
-                            dnload = 5;
-                        }
-                        if (CarDefine.staction == -1) {
-                            dnload = 6;
-                        }
-                        if (dnload != 2) {
-                            CarDefine.staction = 0;
-                        }
-                    }
-                    if (dnload == 3) {
-                        drawcs(370, "Stage has been successfully added to your stages!", 193, 106, 0, 3);
-                    }
-                    if (dnload == 4) {
-                        drawcs(370, "You already have this stage!", 193, 106, 0, 3);
-                    }
-                    if (dnload == 5) {
-                        drawcs(370, "Cannot add more then 20 stages to your account!", 193, 106, 0, 3);
-                    }
-                    if (dnload == 6) {
-                        drawcs(370, "Failed to add stage, unknown error, please try again later.", 193, 106, 0, 3);
-                    }
-                }
-                if (testdrive == 0 && CheckPoints.top20 < 3) {
-                    if (!GameSparker.gmode.isShowing()) {
-                        GameSparker.gmode.select(0);
-                        GameSparker.gmode.setVisible(true);
-                    }
-                    GameSparker.gmode.move(400 - GameSparker.gmode.getWidth() / 2, 395);
-                    if (GameSparker.gmode.getSelectedIndex() == 0 && nplayers != 7) {
+//                if (CheckPoints.top20 >= 3 && CarDefine.staction != 3 && CarDefine.staction != 4) {
+//                    G.setFont(new Font("Arial", 1, 11));
+//                    ftm = G.getFontMetrics();
+////                    if (dnload == 0 && drawcarb(true, null, " Add to My Stages ", 334, 355, i, i39, abool))
+////                        if (logged) {
+////                            CarDefine.onstage = CheckPoints.name;
+////                            CarDefine.staction = 2;
+////                            CarDefine.sparkstageaction();
+////                            dnload = 2;
+////                        } else {
+////                            lfrom = 1;
+////                            CarDefine.staction = 3;
+////                            showtf = false;
+////                            tcnt = 0;
+////                            cntflock = 0;
+////                            CarDefine.reco = -2;
+////                        }
+//                    if (dnload == 2) {
+//                        drawcs(370, "Adding stage please wait...", 193, 106, 0, 3);
+//                        if (CarDefine.staction == 0) {
+//                            dnload = 3;
+//                        }
+//                        if (CarDefine.staction == -2) {
+//                            dnload = 4;
+//                        }
+//                        if (CarDefine.staction == -3) {
+//                            dnload = 5;
+//                        }
+//                        if (CarDefine.staction == -1) {
+//                            dnload = 6;
+//                        }
+//                        if (dnload != 2) {
+//                            CarDefine.staction = 0;
+//                        }
+//                    }
+//                    if (dnload == 3) {
+//                        drawcs(370, "Stage has been successfully added to your stages!", 193, 106, 0, 3);
+//                    }
+//                    if (dnload == 4) {
+//                        drawcs(370, "You already have this stage!", 193, 106, 0, 3);
+//                    }
+//                    if (dnload == 5) {
+//                        drawcs(370, "Cannot add more then 20 stages to your account!", 193, 106, 0, 3);
+//                    }
+//                    if (dnload == 6) {
+//                        drawcs(370, "Failed to add stage, unknown error, please try again later.", 193, 106, 0, 3);
+//                    }
+//                }
+//                
+                /*
+                
                         nplayers = 7;
-                        fase = 2;
-                        app.requestFocus();
-                    }
-                    if (GameSparker.gmode.getSelectedIndex() == 1 && nplayers != 1) {
-                        nplayers = 1;
-                        fase = 2;
-                        app.requestFocus();
-                    }
-                } else if (GameSparker.gmode.isShowing()) {
-                    GameSparker.gmode.setVisible(false);
-                }
+                        fase = 2;*/
+                
+//                if (testdrive == 0 && CheckPoints.top20 < 3) {
+//                    if (!GameSparker.gmode.isShowing()) {
+//                        GameSparker.gmode.select(0);
+//                        GameSparker.gmode.setVisible(true);
+//                    }
+//                    GameSparker.gmode.move(400 - GameSparker.gmode.getWidth() / 2, 395);
+//                    if (GameSparker.gmode.getSelectedIndex() == 0 && nplayers != 7) {
+//                        nplayers = 7;
+//                        fase = 2;
+//                        app.requestFocus();
+//                    }
+//                    if (GameSparker.gmode.getSelectedIndex() == 1 && nplayers != 1) {
+//                        nplayers = 1;
+//                        fase = 2;
+//                        app.requestFocus();
+//                    }
+//                    nplayers = 7;
+//                    fase = 2;
+//                } else if (GameSparker.gmode.isShowing()) {
+//                    GameSparker.gmode.setVisible(false);
+//                }
                 /*if (nfmtab == 0 && app.snfm1.getSelectedIndex() != checkpoints.stage
                 		&& app.snfm1.getSelectedIndex() != 0) {
                 	checkpoints.stage = app.snfm1.getSelectedIndex();
@@ -2998,13 +3006,13 @@ namespace Cum
                     CheckPoints.nto = 0;
                     hidos();
                     fase = 2;
-                    app.requestFocus();
+//                    app.requestFocus();
                 }
                 if (nfmtab == 3 || nfmtab == 4) {
                     String astring = "";
-                    int i43 = GameSparker.mstgs.getSelectedItem().indexOf(' ') + 1;
+                    int i43 = GameSparker.mstgs.getSelectedItem().IndexOf(' ') + 1;
                     if (i43 > 0) {
-                        astring = GameSparker.mstgs.getSelectedItem().subastring(i43);
+                        astring = GameSparker.mstgs.getSelectedItem().Substring(i43);
                     }
                     if (!astring.equals("") && !astring.equals(CheckPoints.name) && GameSparker.mstgs.getSelectedIndex() != 0) {
                         CheckPoints.stage = -2;
@@ -3013,7 +3021,7 @@ namespace Cum
                         CheckPoints.nto = GameSparker.mstgs.getSelectedIndex();
                         hidos();
                         fase = 2;
-                        app.requestFocus();
+//                        app.requestFocus();
                     }
                 }
             } else {
@@ -3042,7 +3050,7 @@ namespace Cum
             }
             if (CarDefine.staction == 0) {
                 if ((control.handb || control.enter) && CheckPoints.stage != -3 && CheckPoints.top20 < 3) {
-                    GameSparker.gmode.setVisible(false);
+//                    GameSparker.gmode.setVisible(false);
                     hidos();
                     dudo = 150;
                     fase = 5;
@@ -3062,10 +3070,10 @@ namespace Cum
                                 //if (gmode == 1 && checkpoints.stage == 11)
                                 //	checkpoints.stage = 27;
                                 if (CheckPoints.stage > 10) {
-                                    GameSparker.sgame.select(1);
+//                                    GameSparker.sgame.select(1);
                                     nfmtab = 1;
                                 } else {
-                                    GameSparker.sgame.select(0);
+//                                    GameSparker.sgame.select(0);
                                     nfmtab = 0;
                                 }
                                 fase = 2;
@@ -3082,10 +3090,10 @@ namespace Cum
                         //if (gmode == 1 && checkpoints.stage == 26)
                         //	checkpoints.stage = 10;
                         if (CheckPoints.stage > 10) {
-                            GameSparker.sgame.select(1);
+//                            GameSparker.sgame.select(1);
                             nfmtab = 1;
                         } else {
-                            GameSparker.sgame.select(0);
+//                            GameSparker.sgame.select(0);
                             nfmtab = 0;
                         }
                         fase = 2;
@@ -3111,23 +3119,23 @@ namespace Cum
                 intertrack.unload();
             }
         }
-        if (drawcarb(true, null, " Exit X ", 670, 30, i, i39, abool)) {
-            fase = 103;
-            //fase = 102;
-            if (gmode == 0) {
-                opselect = 3;
-            }
-            //if (gmode == 1)
-            //	opselect = 0;
-            if (gmode == 2) {
-                opselect = 1;
-            }
-            GameSparker.gmode.setVisible(false);
-            hidos();
-            GameSparker.tnick.setVisible(false);
-            GameSparker.tpass.setVisible(false);
-            intertrack.setPaused(true);
-        }
+//        if (drawcarb(true, null, " Exit X ", 670, 30, i, i39, abool)) {
+//            fase = 103;
+//            //fase = 102;
+//            if (gmode == 0) {
+//                opselect = 3;
+//            }
+//            //if (gmode == 1)
+//            //	opselect = 0;
+//            if (gmode == 2) {
+//                opselect = 1;
+//            }
+//            GameSparker.gmode.setVisible(false);
+//            hidos();
+//            GameSparker.tnick.setVisible(false);
+//            GameSparker.tpass.setVisible(false);
+//            intertrack.setPaused(true);
+//        }
     }
 
     internal static void stat(Mad mad, ContO conto, Control control, boolean abool) {
@@ -3720,7 +3728,7 @@ namespace Cum
                     if (i < 0 && mad.ftab) {
                         loop = "Hanged " + loop;
                     }
-                    if (!Objects.equals(loop, "")) {
+                    if (loop != "") {
                         asay = asay + " " + loop;
                     }
                     i = 0;
@@ -3730,11 +3738,7 @@ namespace Cum
                         i++;
                     }
                     if (i == 0 && mad.rtab)
-                        if (Objects.equals(loop, "")) {
-                            spin = "Tabletop";
-                        } else {
-                            spin = "Flipside";
-                        }
+                        spin = loop == "" ? "Tabletop" : "Flipside";
                     if (i == 1) {
                         spin = "Rollspin";
                     }
@@ -3759,14 +3763,14 @@ namespace Cum
                         }
                     }
                     if (i != 0) {
-                        if (Objects.equals(loop, "") && Objects.equals(spin, "")) {
+                        if (loop == "" && spin == "") {
                             asay = asay + " " + i;
                             if (bool194) {
                                 asay = asay + " and beyond";
                             }
                         } else {
-                            if (!Objects.equals(spin, ""))
-                                if (Objects.equals(loop, "")) {
+                            if (spin != "")
+                                if (loop == "") {
                                     asay = asay + " " + spin;
                                 } else {
                                     asay = asay + " with " + spin;
@@ -3776,19 +3780,19 @@ namespace Cum
                                 asay = asay + " and beyond";
                             }
                         }
-                    } else if (!Objects.equals(spin, ""))
-                        if (Objects.equals(loop, "")) {
+                    } else if (spin != "")
+                        if (loop == "") {
                             asay = asay + " " + spin;
                         } else {
                             asay = asay + " by " + spin;
                         }
-                    if (!Objects.equals(asay, "")) {
+                    if (asay != "") {
                         auscnt -= 15;
                     }
-                    if (!Objects.equals(loop, "")) {
+                    if (loop != "") {
                         auscnt -= 25;
                     }
-                    if (!Objects.equals(spin, "")) {
+                    if (spin != "") {
                         auscnt -= 25;
                     }
                     if (i != 0) {
@@ -3812,12 +3816,12 @@ namespace Cum
                             i205 = 3;
                         }
                         if (mad.surfer) {
-                            asay = " " + adj[4][(int) (Medium.random() * 3.0F)] + asay;
+                            asay = " " + adj[4,(int) (Medium.random() * 3.0F)] + asay;
                         }
                         if (i205 != 3) {
-                            asay = "" + adj[i205][(int) (Medium.random() * 3.0F)] + asay + exlm[i205];
+                            asay = "" + adj[i205,(int) (Medium.random() * 3.0F)] + asay + exlm[i205];
                         } else {
-                            asay = adj[i205][(int) (Medium.random() * 3.0F)];
+                            asay = adj[i205,(int) (Medium.random() * 3.0F)];
                         }
                         if (!wasay) {
                             tcnt = auscnt;
@@ -3952,12 +3956,12 @@ namespace Cum
         if (runtyp == -101) {
             runtyp = 0;
             try {
-                socket.close();
-                socket = null;
-                din.close();
-                din = null;
-                dout.close();
-                dout = null;
+//                socket.close();
+//                socket = null;
+//                din.close();
+//                din = null;
+//                dout.close();
+//                dout = null;
             } catch (Exception ignored) {
 
             }

@@ -86,7 +86,7 @@ namespace Cum
             is12[18] = (int) (i6 + 10.0F * size);
             is11[19] = (int) (i5 - 3.3646F * f15);
             is12[19] = (int) (i6 + 12.557F * f15);
-            planes[i] = new Plane(ais, is12, is11, 20, is13, 0, i10, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 20, is13, 0, i10, 0, i14, i5, i6, 7, 0, false, 0, false);
             planes[i].master = 1;
             i++;
                 ais[2] = (int) (i4 - depth * f);
@@ -101,7 +101,7 @@ namespace Cum
             is12[0] = (int) (i6 + 10.0F * size);
             is11[1] = (int) (i5 + 8.66 * size);
             is12[1] = (int) (i6 + 5.0F * size);
-            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -111,7 +111,7 @@ namespace Cum
             is12[0] = (int) (i6 + 5.0F * size);
             is11[1] = (int) (i5 + 8.66 * size);
             is12[1] = (int) (i6 - 5.0F * size);
-            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -121,7 +121,7 @@ namespace Cum
             is12[0] = (int) (i6 - 5.0F * size);
             is11[1] = i5;
             is12[1] = (int) (i6 - 10.0F * size);
-            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -131,7 +131,7 @@ namespace Cum
             is12[0] = (int) (i6 - 10.0F * size);
             is11[1] = (int) (i5 - 8.66 * size);
             is12[1] = (int) (i6 - 5.0F * size);
-            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -141,7 +141,7 @@ namespace Cum
             is12[0] = (int) (i6 - 5.0F * size);
             is11[1] = (int) (i5 - 8.66 * size);
             is12[1] = (int) (i6 + 5.0F * size);
-            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -151,7 +151,7 @@ namespace Cum
             is12[0] = (int) (i6 + 5.0F * size);
             is11[1] = i5;
             is12[1] = (int) (i6 + 10.0F * size);
-            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 3, rc, 0, i18, 0, i14, i5, i6, 7, 0, false, 0, false);
             if (depth / size < 7.0F)
             {
                 planes[i].master = 2;
@@ -169,7 +169,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 12.557F * f15);
             is12[3] = (int) (i6 + 3.3646F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
@@ -183,7 +183,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
@@ -197,7 +197,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 3.3646F * f15);
@@ -211,7 +211,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 3.3646F * f15);
             is12[3] = (int) (i6 - 12.557F * f15);
-            planes[i] = new Plane( ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane( ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
@@ -225,7 +225,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
@@ -239,7 +239,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 - 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 12.557F * f15);
@@ -253,7 +253,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 12.557F * f15);
             is12[3] = (int) (i6 - 3.3646F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
@@ -267,7 +267,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 9.1923F * f15);
@@ -281,7 +281,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 + 3.3646F * f15);
@@ -295,7 +295,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 + 3.3646F * f15);
             is12[3] = (int) (i6 + 12.557F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, -1 * i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
@@ -309,7 +309,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
                 ais[0] = (int) (i4 - 4.0F * f);
             is11[0] = (int) (i5 - 9.1923F * f15);
@@ -323,7 +323,7 @@ namespace Cum
                 ais[3] = (int) (i4 + 4.0F * f);
             is11[3] = (int) (i5 - 9.1923F * f15);
             is12[3] = (int) (i6 + 9.1923F * f15);
-            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true, false, false, false, 1, 0, 0, 10);
+            planes[i] = new Plane(ais, is12, is11, 4, is13, 0, i10, i16, i14, i5, i6, 7, 0, false, 0, true);
             i++;
         }
 

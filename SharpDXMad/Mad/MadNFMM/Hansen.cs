@@ -515,6 +515,11 @@ namespace Cum
         {
             throw new NotImplementedException();
         }
+
+        public static void stopAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     internal class TrackZipLoader
