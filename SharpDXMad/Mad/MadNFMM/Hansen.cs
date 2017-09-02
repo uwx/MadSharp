@@ -373,23 +373,6 @@ namespace Cum
 
     public static class StringShim
     {
-        public static bool startsWith(this string self, string other)
-        {
-            return self.StartsWith(other);
-        }
-        public static bool endsWith(this string self, string other)
-        {
-            return self.EndsWith(other);
-        }
-        public static bool equals(this string self, string other)
-        {
-            return self.Equals(other);
-        }
-        public static bool contains(this string self, string other)
-        {
-            return self.Contains(other);
-        }
-
         public static int length(this string self)
         {
             return self.Length;
@@ -399,7 +382,7 @@ namespace Cum
             return self[at];
         }
 
-        public static bool equalsIgnoreCase(this string self, string other)
+        public static bool EqualsIgnoreCase(this string self, string other)
         {
             return self.Equals(other, StringComparison.OrdinalIgnoreCase);
         }
@@ -567,32 +550,32 @@ namespace Cum
 
         public SoundClip(string s)
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void play()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void checkopen()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void loop()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public void stop()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
 
         public static void stopAll()
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
     }
 

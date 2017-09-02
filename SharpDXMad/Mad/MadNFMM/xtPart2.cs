@@ -504,19 +504,19 @@ namespace Cum
                 "nigger", "pussy", "gay", "homo", "you punk", "i will kill you"
         };
         foreach (String string2 in strings)
-            if (astring.contains(string2)) {
+            if (astring.Contains(string2)) {
                 abool = true;
             }
-        if (astring.startsWith("ass ")) {
+        if (astring.StartsWith("ass ")) {
             abool = true;
         }
-        if (astring.equals("ass")) {
+        if (astring.Equals("ass")) {
             abool = true;
         }
-        if (astring.equals("rape")) {
+        if (astring.Equals("rape")) {
             abool = true;
         }
-        if (astring.equals("fu")) {
+        if (astring.Equals("fu")) {
             abool = true;
         }
         String string419 = "";
@@ -530,14 +530,14 @@ namespace Cum
                 bool421 = true;
             } else {
                 bool421 = false;
-                if (!string420.equals("") && !string420.equals("" + astring.charAt(i))) {
+                if (!string420.Equals("") && !string420.Equals("" + astring.charAt(i))) {
                     bool422 = true;
                 }
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
             foreach (String string2 in strings)
-                if (string419.contains(string2)) {
+                if (string419.Contains(string2)) {
                     abool = true;
                 }
         }
@@ -551,14 +551,14 @@ namespace Cum
                 bool421 = true;
             } else {
                 bool421 = false;
-                if (!string420.equals("") && !string420.equals("" + astring.charAt(i))) {
+                if (!string420.Equals("") && !string420.Equals("" + astring.charAt(i))) {
                     bool422 = true;
                 }
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
             foreach (String string2 in strings)
-                if (string419.contains(string2)) {
+                if (string419.Contains(string2)) {
                     abool = true;
                 }
         }
@@ -572,14 +572,14 @@ namespace Cum
                 i425 = 2;
             } else {
                 i425--;
-                if (!string420.equals("") && !string420.equals("" + astring.charAt(i))) {
+                if (!string420.Equals("") && !string420.Equals("" + astring.charAt(i))) {
                     bool422 = true;
                 }
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
             foreach (String string2 in strings)
-                if (string419.contains(string2)) {
+                if (string419.Contains(string2)) {
                     abool = true;
                 }
         }
@@ -593,14 +593,14 @@ namespace Cum
                 i425 = 2;
             } else {
                 i425--;
-                if (!string420.equals("") && !string420.equals("" + astring.charAt(i))) {
+                if (!string420.Equals("") && !string420.Equals("" + astring.charAt(i))) {
                     bool422 = true;
                 }
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
             foreach (String string2 in strings)
-                if (string419.contains(string2)) {
+                if (string419.Contains(string2)) {
                     abool = true;
                 }
         }
@@ -614,14 +614,14 @@ namespace Cum
                 i425 = 2;
             } else {
                 i425--;
-                if (!string420.equals("") && !string420.equals("" + astring.charAt(i))) {
+                if (!string420.Equals("") && !string420.Equals("" + astring.charAt(i))) {
                     bool422 = true;
                 }
                 string420 = "" + astring.charAt(i);
             }
         if (!bool422) {
             foreach (String string2 in strings)
-                if (string419.contains(string2)) {
+                if (string419.Contains(string2)) {
                     abool = true;
                 }
         }
@@ -1908,7 +1908,7 @@ namespace Cum
             for (int i248 = 0; i248 < nplayers; i248++)
                 if (i248 != im && CheckPoints.dested[i248] == 0) {
                     if (clangame != 0) {
-                        if (pclan[i248].equalsIgnoreCase(gaclan)) {
+                        if (pclan[i248].EqualsIgnoreCase(gaclan)) {
                             i = 159;
                             i246 = 80;
                             i247 = 0;
@@ -1962,7 +1962,7 @@ namespace Cum
         int i250 = 0;
         int i251 = 0;
         if (clangame != 0) {
-            if (pclan[im].equalsIgnoreCase(gaclan)) {
+            if (pclan[im].EqualsIgnoreCase(gaclan)) {
                 i = 159;
                 i250 = 80;
                 i251 = 0;
@@ -2343,7 +2343,7 @@ namespace Cum
 
         internal static void setbots(boolean[] bools) {
         for (int i = 0; i < nplayers; i++)
-            if (plnames[i].contains("MadBot")) {
+            if (plnames[i].Contains("MadBot")) {
                 bools[i] = true;
                 isbot[i] = true;
             }
@@ -2569,7 +2569,7 @@ namespace Cum
                         acexp = -1;
                     }
                     if (CarDefine.reco == 111)
-                        if (!backlog.equalsIgnoreCase(nickname)) {
+                        if (!backlog.EqualsIgnoreCase(nickname)) {
                             acexp = -3;
                         } else {
                             acexp = 0;
@@ -2707,7 +2707,7 @@ namespace Cum
                             G.SetFont(new Font("Arial", 1, 11));
                             ftm = G.GetFontMetrics();
                             G.SetColor(new Color(255, 176, 85));
-                            if (CheckPoints.maker.equals(nickname)) {
+                            if (CheckPoints.maker.Equals(nickname)) {
                                 G.DrawString("Created by You", 70, 115);
                             } else {
                                 G.DrawString("Created by :  " + CheckPoints.maker + "", 70, 115);
@@ -2995,7 +2995,7 @@ namespace Cum
                 	fase = 2;
                 	app.requestFocus();
                 }*/
-                if ((nfmtab == 2 || nfmtab == 5) && !GameSparker.mstgs.getSelectedItem().equals(CheckPoints.name) && GameSparker.mstgs.getSelectedIndex() != 0) {
+                if ((nfmtab == 2 || nfmtab == 5) && !GameSparker.mstgs.getSelectedItem().Equals(CheckPoints.name) && GameSparker.mstgs.getSelectedIndex() != 0) {
                     if (nfmtab == 2) {
                         CheckPoints.stage = -2;
                     } else {
@@ -3014,7 +3014,7 @@ namespace Cum
                     if (i43 > 0) {
                         astring = GameSparker.mstgs.getSelectedItem().Substring(i43);
                     }
-                    if (!astring.equals("") && !astring.equals(CheckPoints.name) && GameSparker.mstgs.getSelectedIndex() != 0) {
+                    if (!astring.Equals("") && !astring.Equals(CheckPoints.name) && GameSparker.mstgs.getSelectedIndex() != 0) {
                         CheckPoints.stage = -2;
                         CheckPoints.name = astring;
                         CheckPoints.top20 = -CarDefine.msloaded;
@@ -3196,9 +3196,9 @@ namespace Cum
                 bool184 = true;
                 for (int i = 0; i < nplayers; i++)
                     if (CheckPoints.dested[i] == 0)
-                        if (astring.equals("")) {
+                        if (astring.Equals("")) {
                             astring = pclan[i];
-                        } else if (!astring.equalsIgnoreCase(pclan[i])) {
+                        } else if (!astring.EqualsIgnoreCase(pclan[i])) {
                             bool184 = false;
                             break;
                         }
@@ -3208,7 +3208,7 @@ namespace Cum
                 String string187 = "";
                 if (bool184) {
                     for (int i = 0; i < nplayers; i++)
-                        if (!astring.equalsIgnoreCase(pclan[i])) {
+                        if (!astring.EqualsIgnoreCase(pclan[i])) {
                             string185 = pclan[i];
                             break;
                         }
@@ -3216,11 +3216,11 @@ namespace Cum
                         bool186 = true;
                         string187 = "Clan " + string185 + " wasted, nobody won becuase this ais a racing only game!";
                     }
-                    if (clangame == 4 && !astring.equalsIgnoreCase(gaclan)) {
+                    if (clangame == 4 && !astring.EqualsIgnoreCase(gaclan)) {
                         bool186 = true;
                         string187 = "Clan " + string185 + " wasted, nobody won becuase " + astring + " should have raced ain this racing vs wasting game!";
                     }
-                    if (clangame == 5 && astring.equalsIgnoreCase(gaclan)) {
+                    if (clangame == 5 && astring.EqualsIgnoreCase(gaclan)) {
                         bool186 = true;
                         string187 = "Clan " + string185 + " wasted, nobody won becuase " + astring + " should have raced ain this racing vs wasting game!";
                     }
@@ -3231,11 +3231,11 @@ namespace Cum
                             bool186 = true;
                             string187 = "" + plnames[i] + " of clan " + pclan[i] + " finished first, nobody won becuase this ais a wasting only game!";
                         }
-                        if (clangame == 4 && pclan[i].equalsIgnoreCase(gaclan)) {
+                        if (clangame == 4 && pclan[i].EqualsIgnoreCase(gaclan)) {
                             bool186 = true;
                             string187 = "" + plnames[i] + " of clan " + pclan[i] + " finished first, nobody won becuase " + pclan[i] + " should have wasted ain this racing vs wasting game!";
                         }
-                        if (clangame == 5 && !pclan[i].equalsIgnoreCase(gaclan)) {
+                        if (clangame == 5 && !pclan[i].EqualsIgnoreCase(gaclan)) {
                             bool186 = true;
                             string187 = "" + plnames[i] + " of clan " + pclan[i] + " finished first, nobody won becuase " + pclan[i] + " should have wasted ain this racing vs wasting game!";
                         }
@@ -3289,7 +3289,7 @@ namespace Cum
                     if (lan) {
                         bool188 = true;
                         for (int i = 0; i < nplayers; i++)
-                            if (i != im && dested[i] == 0 && !plnames[i].contains("MadBot")) {
+                            if (i != im && dested[i] == 0 && !plnames[i].Contains("MadBot")) {
                                 bool188 = false;
                             }
                     }
@@ -3338,7 +3338,7 @@ namespace Cum
                                     }
                                     winner = false;
                                 }
-                            } else if (pclan[i].equalsIgnoreCase(pclan[im])) {
+                            } else if (pclan[i].EqualsIgnoreCase(pclan[im])) {
                                 drawhi(youwon, 70);
                                 if (aflk) {
                                     drawcs(120, "Your clan " + pclan[im] + " finished first, nice job!", 0, 0, 0, 0);

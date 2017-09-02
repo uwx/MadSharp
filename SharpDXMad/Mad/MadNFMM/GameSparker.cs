@@ -1167,7 +1167,7 @@ namespace Cum
         for (int k = astring.length() + 1; k < string2.length(); k++)
         {
             String string4 = "" + string2.charAt(k);
-            if (string4.equals(",") || string4.equals(")"))
+            if (StringShim.Equals(string4, ",") || StringShim.Equals(string4, ")"))
             {
                 j++;
                 k++;

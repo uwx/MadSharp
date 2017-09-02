@@ -847,9 +847,9 @@ class xtGraphics {
                 if (cfase == 3 && CarDefine.lastload == 2) {
                     GameSparker.mcars.move(400 - GameSparker.mcars.w / 2, 78);
                     GameSparker.mcars.show = true;
-                    if (!GameSparker.mcars.getSelectedItem().equals(CarDefine.names[sc[0]])) {
+                    if (!GameSparker.mcars.getSelectedItem().Equals(CarDefine.names[sc[0]])) {
                         for (int i116 = 16; i116 < CarDefine.nlocars; i116++)
-                            if (CarDefine.names[i116].equals(GameSparker.mcars.getSelectedItem())) {
+                            if (CarDefine.names[i116].Equals(GameSparker.mcars.getSelectedItem())) {
                                 i112 = i116;
                             }
                         if (i112 == -1) {
@@ -1451,7 +1451,7 @@ class xtGraphics {
     }
 
     internal static void colorCar(ContO conto, int i) {
-        if (!plnames[i].contains("MadBot")) {
+        if (!plnames[i].Contains("MadBot")) {
             for (int i132 = 0; i132 < conto.npl; i132++) {
                 if (conto.p[i132].colnum == 1) {
                     Color color = Color.getHSBColor(allrnp[i,0], allrnp[i,1], 1.0F - allrnp[i,2]);
@@ -1990,7 +1990,7 @@ class xtGraphics {
         int i435;
         if (abool) {
             i435 = ftm.stringWidth(astring);
-            if (astring.startsWith("Class")) {
+            if (astring.StartsWith("Class")) {
                 i435 = 112;
             }
         } else {
@@ -2010,12 +2010,12 @@ class xtGraphics {
             i429--;
         }
         if (abool) {
-            if (astring.equals("X") && i436 == 1) {
+            if (astring.Equals("X") && i436 == 1) {
                 G.SetColor(new Color(255, 0, 0));
             } else {
                 G.SetColor(new Color(0, 0, 0));
             }
-            if (astring.startsWith("Class")) {
+            if (astring.StartsWith("Class")) {
                 G.DrawString(astring, 400 - ftm.stringWidth(astring) / 2, i429 + 19);
             } else {
                 G.DrawString(astring, i + 7, i429 + 19);
@@ -2789,7 +2789,7 @@ class xtGraphics {
             String string448 = "";
             for (; i444 < astring.length() && i446 != 2; i444++) {
                 string447 = "" + astring.charAt(i444);
-                if (string447.equals("|")) {
+                if (string447.Equals("|")) {
                     i445++;
                     if (i446 == 1 || i445 > i) {
                         i446 = 2;
@@ -2816,7 +2816,7 @@ class xtGraphics {
             String string442 = "";
             for (; i438 < astring.length() && i440 != 2; i438++) {
                 string441 = "" + astring.charAt(i438);
-                if (string441.equals("|")) {
+                if (string441.Equals("|")) {
                     i439++;
                     if (i440 == 1 || i439 > i) {
                         i440 = 2;
@@ -2826,7 +2826,7 @@ class xtGraphics {
                     i440 = 1;
                 }
             }
-            if (string442.equals("")) {
+            if (string442.Equals("")) {
                 string442 = "-1";
             }
             i437 = int.Parse(string442);
@@ -3335,7 +3335,7 @@ class xtGraphics {
         if (CheckPoints.stage == -2) {
             boolean abool = false;
             for (int i = 1; i < GameSparker.mstgs.getItemCount(); i++)
-                if (GameSparker.mstgs.getItem(i).equals(CheckPoints.name)) {
+                if (GameSparker.mstgs.getItem(i).Equals(CheckPoints.name)) {
                     abool = true;
                 }
             if (!abool) {
@@ -4068,65 +4068,65 @@ class xtGraphics {
             var astring = Path.GetFileName(file);
             for (int i2 = 0; i2 < 5; i2++) {
                 for (int i3 = 0; i3 < 5; i3++)
-                    if (astring.equals("" + i3 + "" + i2 + ".wav")) {
+                    if (astring.Equals("" + i3 + "" + i2 + ".wav")) {
                         engs[i3,i2] = new SoundClip("temp-sound/" + astring);
                     }
             }
             for (int i4 = 0; i4 < 6; i4++)
-                if (astring.equals("air" + i4 + ".wav")) {
+                if (astring.Equals("air" + i4 + ".wav")) {
                     air[i4] = new SoundClip("temp-sound/" + astring);
                 }
             for (int i5 = 0; i5 < 3; i5++)
-                if (astring.equals("crash" + (i5 + 1) + ".wav")) {
+                if (astring.Equals("crash" + (i5 + 1) + ".wav")) {
                     crash[i5] = new SoundClip("temp-sound/" + astring);
                 }
             for (int i6 = 0; i6 < 3; i6++)
-                if (astring.equals("lowcrash" + (i6 + 1) + ".wav")) {
+                if (astring.Equals("lowcrash" + (i6 + 1) + ".wav")) {
                     lowcrash[i6] = new SoundClip("temp-sound/" + astring);
                 }
             for (int i7 = 0; i7 < 3; i7++)
-                if (astring.equals("skid" + (i7 + 1) + ".wav")) {
+                if (astring.Equals("skid" + (i7 + 1) + ".wav")) {
                     skid[i7] = new SoundClip("temp-sound/" + astring);
                 }
             for (int i8 = 0; i8 < 3; i8++)
-                if (astring.equals("dustskid" + (i8 + 1) + ".wav")) {
+                if (astring.Equals("dustskid" + (i8 + 1) + ".wav")) {
                     dustskid[i8] = new SoundClip("temp-sound/" + astring);
                 }
             for (int i9 = 0; i9 < 3; i9++)
-                if (astring.equals("scrape" + (i9 + 1) + ".wav")) {
+                if (astring.Equals("scrape" + (i9 + 1) + ".wav")) {
                     scrape[i9] = new SoundClip("temp-sound/" + astring);
                     if (i9 == 2) {
                         scrape[3] = new SoundClip("temp-sound/" + astring);
                     }
                 }
-            if (astring.equals("powerup.wav")) {
+            if (astring.Equals("powerup.wav")) {
                 powerup = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("tires.wav")) {
+            if (astring.Equals("tires.wav")) {
                 tires = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("checkpoint.wav")) {
+            if (astring.Equals("checkpoint.wav")) {
                 checkpoint = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("carfixed.wav")) {
+            if (astring.Equals("carfixed.wav")) {
                 carfixed = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("three.wav")) {
+            if (astring.Equals("three.wav")) {
                 three = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("two.wav")) {
+            if (astring.Equals("two.wav")) {
                 two = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("one.wav")) {
+            if (astring.Equals("one.wav")) {
                 one = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("go.wav")) {
+            if (astring.Equals("go.wav")) {
                 go = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("wasted.wav")) {
+            if (astring.Equals("wasted.wav")) {
                 wastd = new SoundClip("temp-sound/" + astring);
             }
-            if (astring.equals("firewasted.wav")) {
+            if (astring.Equals("firewasted.wav")) {
                 firewasted = new SoundClip("temp-sound/" + astring);
             }
         }
