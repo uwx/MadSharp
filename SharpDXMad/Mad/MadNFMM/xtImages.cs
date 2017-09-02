@@ -159,7 +159,7 @@ namespace Cum
         
         private static Image cbg1, cbg2;
     
-    private static readonly ImageIdentifier[] idts = {
+    internal static readonly ImageIdentifier[] idts = {
 
         new ImageIdentifier("cars.gif", (ais) => {
             carsbg = loadBimage(ais, 1);

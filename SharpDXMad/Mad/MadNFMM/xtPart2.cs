@@ -382,7 +382,7 @@ namespace Cum
         opselect = 0;
     }
 
-    static private void makecarsbgc(Image image, Image image386)
+        internal static void makecarsbgc(Image image, Image image386)
     {
         carsbgc = carsbg; // TODO
 //        int[] ais = new int[268000];
@@ -2386,7 +2386,7 @@ namespace Cum
         }
     }
 
-    static private void smokeypix(byte[] ais) {
+        internal static void smokeypix(byte[] ais) {
 //        mediatracker.addImage(image, 0);
 //        try {
 //            mediatracker.waitForID(0);

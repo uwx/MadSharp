@@ -1453,13 +1453,13 @@ class xtGraphics {
         if (!plnames[i].contains("MadBot")) {
             for (int i132 = 0; i132 < conto.npl; i132++) {
                 if (conto.p[i132].colnum == 1) {
-                    Color color = Color.getHSBColor(allrnp[i,0], allrnp[i,1], 1.0F - allrnp[i][2]);
+                    Color color = Color.getHSBColor(allrnp[i,0], allrnp[i,1], 1.0F - allrnp[i,2]);
                     conto.p[i132].oc[0] = color.getRed();
                     conto.p[i132].oc[1] = color.getGreen();
                     conto.p[i132].oc[2] = color.getBlue();
                 }
                 if (conto.p[i132].colnum == 2) {
-                    Color color = Color.getHSBColor(allrnp[i][3], allrnp[i][4], 1.0F - allrnp[i][5]);
+                    Color color = Color.getHSBColor(allrnp[i,3], allrnp[i,4], 1.0F - allrnp[i,5]);
                     conto.p[i132].oc[0] = color.getRed();
                     conto.p[i132].oc[1] = color.getGreen();
                     conto.p[i132].oc[2] = color.getBlue();
@@ -1941,43 +1941,45 @@ class xtGraphics {
         }
     }
 
-    internal static Image dodgen(Image image) {
-        int i = image.getHeight(null);
-        int i378 = image.getWidth(null);
-        int[] ais = new int[i378 * i];
-        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i378, i, ais, 0, i378);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        for (int i379 = 0; i379 < i378 * i; i379++) {
-            Color color = new Color(ais[i379]);
-            int i380 = color.getRed() * 4 + 90;
-            if (i380 > 255) {
-                i380 = 255;
-            }
-            if (i380 < 0) {
-                i380 = 0;
-            }
-            int i381 = color.getGreen() * 4 + 90;
-            if (i381 > 255) {
-                i381 = 255;
-            }
-            if (i381 < 0) {
-                i381 = 0;
-            }
-            int i382 = color.getBlue() * 4 + 90;
-            if (i382 > 255) {
-                i382 = 255;
-            }
-            if (i382 < 0) {
-                i382 = 0;
-            }
-            Color color383 = new Color(i380, i381, i382);
-            ais[i379] = color383.getRGB();
-        }
-        return xt.createImage(new MemoryImageSource(i378, i, ais, 0, i378));
+    internal static Image dodgen(Image image)
+    {
+        return image;
+//        int i = image.getHeight(null);
+//        int i378 = image.getWidth(null);
+//        int[] ais = new int[i378 * i];
+//        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i378, i, ais, 0, i378);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        for (int i379 = 0; i379 < i378 * i; i379++) {
+//            Color color = new Color(ais[i379]);
+//            int i380 = color.getRed() * 4 + 90;
+//            if (i380 > 255) {
+//                i380 = 255;
+//            }
+//            if (i380 < 0) {
+//                i380 = 0;
+//            }
+//            int i381 = color.getGreen() * 4 + 90;
+//            if (i381 > 255) {
+//                i381 = 255;
+//            }
+//            if (i381 < 0) {
+//                i381 = 0;
+//            }
+//            int i382 = color.getBlue() * 4 + 90;
+//            if (i382 > 255) {
+//                i382 = 255;
+//            }
+//            if (i382 < 0) {
+//                i382 = 0;
+//            }
+//            Color color383 = new Color(i380, i381, i382);
+//            ais[i379] = color383.getRGB();
+//        }
+//        return xt.createImage(new MemoryImageSource(i378, i, ais, 0, i378));
     }
 
     static boolean drawcarb(boolean abool, Image image, String astring, int i, int i429, int i430, int i431, boolean bool432) {
@@ -2147,74 +2149,74 @@ class xtGraphics {
     }
 
     internal static void drawSmokeCarsbg() {
-        if (!badmac) {
-            if (Math.abs(flyr - flyrdest) > 20) {
-                if (flyr > flyrdest) {
-                    flyr -= 20;
-                } else {
-                    flyr += 20;
-                }
-            } else {
-                flyr = flyrdest;
-                flyrdest = (int) (flyr + Medium.random() * 160.0F - 80.0F);
-            }
-            if (flyr > 160) {
-                flyr = 160;
-            }
-            if (flatr > 170) {
-                flatrstart++;
-                flatr = flatrstart * 3;
-                flyr = (int) (Medium.random() * 160.0F - 80.0F);
-                flyrdest = (int) (flyr + Medium.random() * 160.0F - 80.0F);
-                flang = 1;
-            }
-            for (int i = 0; i < 466; i++) {
-                for (int i407 = 0; i407 < 202; i407++)
-                    if (smokey[i + i407 * 466] != smokey[0]) {
-                        float f = pys(i, 233, i407, flyr);
-                        int i408 = (int) ((i - 233) / f * flatr);
-                        int i409 = (int) ((i407 - flyr) / f * flatr);
-                        int i410 = i + i408 + 100 + (i407 + i409 + 110) * 670;
-                        if (i + i408 + 100 < 670 && i + i408 + 100 > 0 && i407 + i409 + 110 < 400 && i407 + i409 + 110 > 0 && i410 < 268000 && i410 >= 0) {
-                            Color color = new Color(flexpix[i410]);
-                            Color color411 = new Color(smokey[i + i407 * 466]);
-                            float f412 = (255.0F - color411.getRed()) / 255.0F;
-                            float f413 = (255.0F - color411.getGreen()) / 255.0F;
-                            float f414 = (255.0F - color411.getBlue()) / 255.0F;
-                            int i415 = (int) ((color.getRed() * (flang * f412) + color411.getRed() * (1.0F - f412)) / (flang * f412 + (1.0F - f412)));
-                            int i416 = (int) ((color.getGreen() * (flang * f413) + color411.getGreen() * (1.0F - f413)) / (flang * f413 + (1.0F - f413)));
-                            int i417 = (int) ((color.getBlue() * (flang * f414) + color411.getBlue() * (1.0F - f414)) / (flang * f414 + (1.0F - f414)));
-                            if (i415 > 255) {
-                                i415 = 255;
-                            }
-                            if (i415 < 0) {
-                                i415 = 0;
-                            }
-                            if (i416 > 255) {
-                                i416 = 255;
-                            }
-                            if (i416 < 0) {
-                                i416 = 0;
-                            }
-                            if (i417 > 255) {
-                                i417 = 255;
-                            }
-                            if (i417 < 0) {
-                                i417 = 0;
-                            }
-                            Color color418 = new Color(i415, i416, i417);
-                            flexpix[i410] = color418.getRGB();
-                        }
-                    }
-            }
-            flang += 2;
-            flatr += 10 + flatrstart * 2;
-            Image image = xt.createImage(new MemoryImageSource(670, 400, flexpix, 0, 670));
-            G.drawImage(image, 65, 25, null);
-        } else {
+//        if (!badmac) {
+//            if (Math.abs(flyr - flyrdest) > 20) {
+//                if (flyr > flyrdest) {
+//                    flyr -= 20;
+//                } else {
+//                    flyr += 20;
+//                }
+//            } else {
+//                flyr = flyrdest;
+//                flyrdest = (int) (flyr + Medium.random() * 160.0F - 80.0F);
+//            }
+//            if (flyr > 160) {
+//                flyr = 160;
+//            }
+//            if (flatr > 170) {
+//                flatrstart++;
+//                flatr = flatrstart * 3;
+//                flyr = (int) (Medium.random() * 160.0F - 80.0F);
+//                flyrdest = (int) (flyr + Medium.random() * 160.0F - 80.0F);
+//                flang = 1;
+//            }
+//            for (int i = 0; i < 466; i++) {
+//                for (int i407 = 0; i407 < 202; i407++)
+//                    if (smokey[i + i407 * 466] != smokey[0]) {
+//                        float f = pys(i, 233, i407, flyr);
+//                        int i408 = (int) ((i - 233) / f * flatr);
+//                        int i409 = (int) ((i407 - flyr) / f * flatr);
+//                        int i410 = i + i408 + 100 + (i407 + i409 + 110) * 670;
+//                        if (i + i408 + 100 < 670 && i + i408 + 100 > 0 && i407 + i409 + 110 < 400 && i407 + i409 + 110 > 0 && i410 < 268000 && i410 >= 0) {
+//                            Color color = new Color(flexpix[i410]);
+//                            Color color411 = new Color(smokey[i + i407 * 466]);
+//                            float f412 = (255.0F - color411.getRed()) / 255.0F;
+//                            float f413 = (255.0F - color411.getGreen()) / 255.0F;
+//                            float f414 = (255.0F - color411.getBlue()) / 255.0F;
+//                            int i415 = (int) ((color.getRed() * (flang * f412) + color411.getRed() * (1.0F - f412)) / (flang * f412 + (1.0F - f412)));
+//                            int i416 = (int) ((color.getGreen() * (flang * f413) + color411.getGreen() * (1.0F - f413)) / (flang * f413 + (1.0F - f413)));
+//                            int i417 = (int) ((color.getBlue() * (flang * f414) + color411.getBlue() * (1.0F - f414)) / (flang * f414 + (1.0F - f414)));
+//                            if (i415 > 255) {
+//                                i415 = 255;
+//                            }
+//                            if (i415 < 0) {
+//                                i415 = 0;
+//                            }
+//                            if (i416 > 255) {
+//                                i416 = 255;
+//                            }
+//                            if (i416 < 0) {
+//                                i416 = 0;
+//                            }
+//                            if (i417 > 255) {
+//                                i417 = 255;
+//                            }
+//                            if (i417 < 0) {
+//                                i417 = 0;
+//                            }
+//                            Color color418 = new Color(i415, i416, i417);
+//                            flexpix[i410] = color418.getRGB();
+//                        }
+//                    }
+//            }
+//            flang += 2;
+//            flatr += 10 + flatrstart * 2;
+//            Image image = xt.createImage(new MemoryImageSource(670, 400, flexpix, 0, 670));
+//            G.drawImage(image, 65, 25, null);
+//        } else {
             G.drawImage(carsbg, 65, 25, null);
             flatrstart++;
-        }
+//        }
     }
 
     internal static void drawstat(int i, int i206, float f) {
@@ -2251,21 +2253,21 @@ class xtGraphics {
                 dmcnt = 0;
             }
         }
-        i209 += i209 * (Medium.snap[0] / 100.0F);
+        i209 += (int)(i209 * (Medium.snap[0] / 100.0F));
         if (i209 > 255) {
             i209 = 255;
         }
         if (i209 < 0) {
             i209 = 0;
         }
-        i210 += i210 * (Medium.snap[1] / 100.0F);
+        i210 += (int)(i210 * (Medium.snap[1] / 100.0F));
         if (i210 > 255) {
             i210 = 255;
         }
         if (i210 < 0) {
             i210 = 0;
         }
-        i211 += i211 * (Medium.snap[2] / 100.0F);
+        i211 += (int)(i211 * (Medium.snap[2] / 100.0F));
         if (i211 > 255) {
             i211 = 255;
         }
@@ -2293,21 +2295,21 @@ class xtGraphics {
             i210 = 244;
             i211 = 244;
         }
-        i209 += i209 * (Medium.snap[0] / 100.0F);
+        i209 += (int)(i209 * (Medium.snap[0] / 100.0F));
         if (i209 > 255) {
             i209 = 255;
         }
         if (i209 < 0) {
             i209 = 0;
         }
-        i210 += i210 * (Medium.snap[1] / 100.0F);
+        i210 += (int)(i210 * (Medium.snap[1] / 100.0F));
         if (i210 > 255) {
             i210 = 255;
         }
         if (i210 < 0) {
             i210 = 0;
         }
-        i211 += i211 * (Medium.snap[2] / 100.0F);
+        i211 += (int)(i211 * (Medium.snap[2] / 100.0F));
         if (i211 > 255) {
             i211 = 255;
         }
@@ -2339,7 +2341,7 @@ class xtGraphics {
             stopallnow();
             runtyp = 0;
             //app.repaint();
-            System.exit(0);
+            HansenSystem.Exit(0);
             //app.gamer.interrupt();
         }
     }
@@ -2513,9 +2515,7 @@ class xtGraphics {
                     contos[i144].xz += 5;
                     contos[i144].zy = 0;
                     contos[i144].wzy -= 10;
-                    G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-                    contos[i144].d(rd);
-                    G.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                    contos[i144].d();
                     if (HansenRandom.Double() < 0.5) {
                         G.setAlpha(0.4F);
                         G.setColor(new Color(236, 226, 202));
@@ -2607,7 +2607,7 @@ class xtGraphics {
                     if (logged) {
                         CarDefine.onstage = CheckPoints.name;
                         CarDefine.staction = 2;
-                        CarDefine.sparkstageaction();
+//                        CarDefine.sparkstageaction();
                         dnload = 2;
                     } else {
                         dnload = 1;
@@ -3644,52 +3644,52 @@ class xtGraphics {
     }
 
     static void jflexo() {
-        if (!badmac) {
-            int[] ais = new int[360000];
-            PixelGrabber pixelgrabber = new PixelGrabber(GameSparker.offImage, 0, 0, 800, 450, ais, 0, 800);
-            try {
-                pixelgrabber.grabPixels();
-            } catch (InterruptedException ignored) {
-
-            }
-            int i = 0;
-            int i353 = 0;
-            int i354 = 0;
-            int i355 = 0;
-            for (int i356 = 0; i356 < 360000; i356++) {
-                Color color = new Color(ais[i356]);
-                int i359;
-                int i360;
-                int i361;
-                if (i355 == 0) {
-                    i359 = color.getRed();
-                    i = i359;
-                    i360 = color.getGreen();
-                    i354 = i360;
-                    i361 = color.getBlue();
-                    i353 = i361;
-                } else {
-                    i359 = (color.getRed() + i * 10) / 11;
-                    i = i359;
-                    i360 = (color.getGreen() + i354 * 10) / 11;
-                    i354 = i360;
-                    i361 = (color.getBlue() + i353 * 10) / 11;
-                    i353 = i361;
-                }
-                if (++i355 == 800) {
-                    i355 = 0;
-                }
-                Color color362 = new Color(i359, i360, i361);
-                ais[i356] = color362.getRGB();
-            }
-            Image image = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
-            G.drawImage(image, 0, 0, null);
-        } else {
+//        if (!badmac) {
+//            int[] ais = new int[360000];
+//            PixelGrabber pixelgrabber = new PixelGrabber(GameSparker.offImage, 0, 0, 800, 450, ais, 0, 800);
+//            try {
+//                pixelgrabber.grabPixels();
+//            } catch (InterruptedException ignored) {
+//
+//            }
+//            int i = 0;
+//            int i353 = 0;
+//            int i354 = 0;
+//            int i355 = 0;
+//            for (int i356 = 0; i356 < 360000; i356++) {
+//                Color color = new Color(ais[i356]);
+//                int i359;
+//                int i360;
+//                int i361;
+//                if (i355 == 0) {
+//                    i359 = color.getRed();
+//                    i = i359;
+//                    i360 = color.getGreen();
+//                    i354 = i360;
+//                    i361 = color.getBlue();
+//                    i353 = i361;
+//                } else {
+//                    i359 = (color.getRed() + i * 10) / 11;
+//                    i = i359;
+//                    i360 = (color.getGreen() + i354 * 10) / 11;
+//                    i354 = i360;
+//                    i361 = (color.getBlue() + i353 * 10) / 11;
+//                    i353 = i361;
+//                }
+//                if (++i355 == 800) {
+//                    i355 = 0;
+//                }
+//                Color color362 = new Color(i359, i360, i361);
+//                ais[i356] = color362.getRGB();
+//            }
+//            Image image = xt.createImage(new MemoryImageSource(800, 450, ais, 0, 800));
+//            G.drawImage(image, 0, 0, null);
+//        } else {
             G.setColor(new Color(0, 0, 0));
             G.setAlpha(0.5F);
             G.fillRect(0, 0, 800, 450);
             G.setAlpha(1.0F);
-        }
+//        }
     }
 
     internal static void levelhigh(int i, int i91, int i92, int i93, int i94) {
@@ -3794,39 +3794,39 @@ class xtGraphics {
         //runner = new Thread(xt);
         //runner.start();
         loadimages();
-        try {
-            intertrack = new RadicalBASS(new File("music/interface.zip"));
-        } catch (Exception e) {
-            intertrack = new RadicalMod("music/interface.zip");
-        }
+        
+        intertrack = new RadicalMusic(new File("music/interface.zip"));
+    
         dnload += 44;
         loadsounds();
     }
 
     static internal Image loadimage(byte[] ais) {
-        Image image = toolkit.createImage(ais);
-        mediatracker.addImage(image, 0);
-        try {
-            mediatracker.waitForID(0);
-        } catch (Exception ignored) {
-
-        }
-        return image;
+//        Image image = toolkit.createImage(ais);
+//        mediatracker.addImage(image, 0);
+//        try {
+//            mediatracker.waitForID(0);
+//        } catch (Exception ignored) {
+//
+//        }
+        return ImageIO.read(ais);
     }
     
     static internal void loadimages() {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        MediaTracker mediatracker = new MediaTracker(app);
+//        Toolkit toolkit = Toolkit.getDefaultToolkit();
+//        MediaTracker mediatracker = new MediaTracker(app);
         dnload += 8;
-        try {
-            for (int i = 0; i < idts.length; i++) {
-                idts[i].cons.accept(Files.readAllBytes(new File(Madness.fpath + "data/images/" + idts[i].fileName).toPath()), mediatracker, toolkit);
+        try
+        {
+            foreach (var t in xtImages.idts)
+            {
+                t.cons(System.IO.File.ReadAllBytes("data/images/" + t.fileName));
             }
-            
+
             dnload += 2;
-            
         } catch (Exception exception) {
-            System.err.println("Error Loading Images: " + exception);
+            Console.WriteLine(exception);
+            HansenSystem.Exit(1);
         }
         GC.Collect();
     }
@@ -3902,20 +3902,12 @@ class xtGraphics {
         loadstrack(i, astring, i51);
         GC.Collect();
         if (multion == 0 && GameSparker.applejava) {
-            try {
-                Thread.sleep(1000L);
-            } catch (InterruptedException ignored) {
-
-            }
+            HansenSystem.RequestSleep(1000L);
         }
         if (!lan) {
             strack.play();
         } else if (im != 0) {
-            try {
-                Thread.sleep(1000L);
-            } catch (InterruptedException ignored) {
-
-            }
+            HansenSystem.RequestSleep(1000L);
         }
         //app.setCursor(new Cursor(0));
         pcontin = 0;
@@ -3924,232 +3916,236 @@ class xtGraphics {
         fase = 6;
     }
 
-    static internal Image loadopsnap(Image image, int i, int i323) {
-        int i324 = image.getHeight(null);
-        int i325 = image.getWidth(null);
-        int[] ais = new int[i325 * i324];
-        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i325, i324, ais, 0, i325);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        if (i < 0) {
-            i = 33;
-        }
-        int i326 = 0;
-        if (i323 == 1) {
-            i326 = ais[61993];
-        }
-        int[] is327 = {
-                Medium.snap[0], Medium.snap[1], Medium.snap[2]
-        };
-        while (is327[0] + is327[1] + is327[2] < -30) {
-            for (int i328 = 0; i328 < 3; i328++)
-                if (is327[i328] < 50) {
-                    is327[i328]++;
-                }
-        }
-        for (int i329 = 0; i329 < i325 * i324; i329++)
-            if (ais[i329] != ais[i323]) {
-                Color color = new Color(ais[i329]);
-                int i332;
-                int i333;
-                int i334;
-                if (i323 == 1 && ais[i329] == i326) {
-                    i332 = (int) (237.0F - 237.0F * (is327[0] / 150.0F));
-                    if (i332 > 255) {
-                        i332 = 255;
-                    }
-                    if (i332 < 0) {
-                        i332 = 0;
-                    }
-                    i333 = (int) (237.0F - 237.0F * (is327[1] / 150.0F));
-                    if (i333 > 255) {
-                        i333 = 255;
-                    }
-                    if (i333 < 0) {
-                        i333 = 0;
-                    }
-                    i334 = (int) (237.0F - 237.0F * (is327[2] / 150.0F));
-                    if (i334 > 255) {
-                        i334 = 255;
-                    }
-                    if (i334 < 0) {
-                        i334 = 0;
-                    }
-                    if (i == 11) {
-                        i332 = 250;
-                        i333 = 250;
-                        i334 = 250;
-                    }
-                } else {
-                    i332 = (int) (color.getRed() - color.getRed() * (is327[0] / 100.0F));
-                    if (i332 > 255) {
-                        i332 = 255;
-                    }
-                    if (i332 < 0) {
-                        i332 = 0;
-                    }
-                    i333 = (int) (color.getGreen() - color.getGreen() * (is327[1] / 100.0F));
-                    if (i333 > 255) {
-                        i333 = 255;
-                    }
-                    if (i333 < 0) {
-                        i333 = 0;
-                    }
-                    i334 = (int) (color.getBlue() - color.getBlue() * (is327[2] / 100.0F));
-                    if (i334 > 255) {
-                        i334 = 255;
-                    }
-                    if (i334 < 0) {
-                        i334 = 0;
-                    }
-                }
-                Color color335 = new Color(i332, i333, i334);
-                ais[i329] = color335.getRGB();
-            }
-        return xt.createImage(new MemoryImageSource(i325, i324, ais, 0, i325));
+    static internal Image loadopsnap(Image image, int i, int i323)
+    {
+        return image;
+//        int i324 = image.getHeight(null);
+//        int i325 = image.getWidth(null);
+//        int[] ais = new int[i325 * i324];
+//        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i325, i324, ais, 0, i325);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        if (i < 0) {
+//            i = 33;
+//        }
+//        int i326 = 0;
+//        if (i323 == 1) {
+//            i326 = ais[61993];
+//        }
+//        int[] is327 = {
+//                Medium.snap[0], Medium.snap[1], Medium.snap[2]
+//        };
+//        while (is327[0] + is327[1] + is327[2] < -30) {
+//            for (int i328 = 0; i328 < 3; i328++)
+//                if (is327[i328] < 50) {
+//                    is327[i328]++;
+//                }
+//        }
+//        for (int i329 = 0; i329 < i325 * i324; i329++)
+//            if (ais[i329] != ais[i323]) {
+//                Color color = new Color(ais[i329]);
+//                int i332;
+//                int i333;
+//                int i334;
+//                if (i323 == 1 && ais[i329] == i326) {
+//                    i332 = (int) (237.0F - 237.0F * (is327[0] / 150.0F));
+//                    if (i332 > 255) {
+//                        i332 = 255;
+//                    }
+//                    if (i332 < 0) {
+//                        i332 = 0;
+//                    }
+//                    i333 = (int) (237.0F - 237.0F * (is327[1] / 150.0F));
+//                    if (i333 > 255) {
+//                        i333 = 255;
+//                    }
+//                    if (i333 < 0) {
+//                        i333 = 0;
+//                    }
+//                    i334 = (int) (237.0F - 237.0F * (is327[2] / 150.0F));
+//                    if (i334 > 255) {
+//                        i334 = 255;
+//                    }
+//                    if (i334 < 0) {
+//                        i334 = 0;
+//                    }
+//                    if (i == 11) {
+//                        i332 = 250;
+//                        i333 = 250;
+//                        i334 = 250;
+//                    }
+//                } else {
+//                    i332 = (int) (color.getRed() - color.getRed() * (is327[0] / 100.0F));
+//                    if (i332 > 255) {
+//                        i332 = 255;
+//                    }
+//                    if (i332 < 0) {
+//                        i332 = 0;
+//                    }
+//                    i333 = (int) (color.getGreen() - color.getGreen() * (is327[1] / 100.0F));
+//                    if (i333 > 255) {
+//                        i333 = 255;
+//                    }
+//                    if (i333 < 0) {
+//                        i333 = 0;
+//                    }
+//                    i334 = (int) (color.getBlue() - color.getBlue() * (is327[2] / 100.0F));
+//                    if (i334 > 255) {
+//                        i334 = 255;
+//                    }
+//                    if (i334 < 0) {
+//                        i334 = 0;
+//                    }
+//                }
+//                Color color335 = new Color(i332, i333, i334);
+//                ais[i329] = color335.getRGB();
+//            }
+//        return xt.createImage(new MemoryImageSource(i325, i324, ais, 0, i325));
     }
 
-    static internal Image loadsnap(Image image) {
-        int i = image.getHeight(null);
-        int i316 = image.getWidth(null);
-        int[] ais = new int[i316 * i];
-        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i316, i, ais, 0, i316);
-        try {
-            pixelgrabber.grabPixels();
-        } catch (InterruptedException ignored) {
-
-        }
-        for (int i317 = 0; i317 < i316 * i; i317++) {
-            Color color = new Color(ais[i316 * i - 1]);
-            Color color318 = new Color(ais[i317]);
-            if (color318.getRed() != color318.getGreen() && color318.getGreen() != color318.getBlue()) {
-                int i319 = (int) (color318.getRed() + color318.getRed() * (Medium.snap[0] / 100.0F));
-                if (i319 > 255) {
-                    i319 = 255;
-                }
-                if (i319 < 0) {
-                    i319 = 0;
-                }
-                int i320 = (int) (color318.getGreen() + color318.getGreen() * (Medium.snap[1] / 100.0F));
-                if (i320 > 255) {
-                    i320 = 255;
-                }
-                if (i320 < 0) {
-                    i320 = 0;
-                }
-                int i321 = (int) (color318.getBlue() + color318.getBlue() * (Medium.snap[2] / 100.0F));
-                if (i321 > 255) {
-                    i321 = 255;
-                }
-                if (i321 < 0) {
-                    i321 = 0;
-                }
-                ais[i317] = ~0xffffff | i319 << 16 | i320 << 8 | i321;
-            } else {
-                int i322 = (int) ((float) (color.getRed() - color318.getRed()) / (float) color.getRed() * 255.0F);
-                if (i322 > 255) {
-                    i322 = 255;
-                }
-                if (i322 < 0) {
-                    i322 = 0;
-                }
-                ais[i317] = i322 << 24 | 0x0 | 0x0 | 0x0;
-            }
-        }
-        BufferedImage bufferedimage = new BufferedImage(i316, i, 2);
-        bufferedimage.setRGB(0, 0, i316, i, ais, 0, i316);
-        return bufferedimage;
+    static internal Image loadsnap(Image image)
+    {
+        return image;
+//        int i = image.getHeight(null);
+//        int i316 = image.getWidth(null);
+//        int[] ais = new int[i316 * i];
+//        PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, i316, i, ais, 0, i316);
+//        try {
+//            pixelgrabber.grabPixels();
+//        } catch (InterruptedException ignored) {
+//
+//        }
+//        for (int i317 = 0; i317 < i316 * i; i317++) {
+//            Color color = new Color(ais[i316 * i - 1]);
+//            Color color318 = new Color(ais[i317]);
+//            if (color318.getRed() != color318.getGreen() && color318.getGreen() != color318.getBlue()) {
+//                int i319 = (int) (color318.getRed() + color318.getRed() * (Medium.snap[0] / 100.0F));
+//                if (i319 > 255) {
+//                    i319 = 255;
+//                }
+//                if (i319 < 0) {
+//                    i319 = 0;
+//                }
+//                int i320 = (int) (color318.getGreen() + color318.getGreen() * (Medium.snap[1] / 100.0F));
+//                if (i320 > 255) {
+//                    i320 = 255;
+//                }
+//                if (i320 < 0) {
+//                    i320 = 0;
+//                }
+//                int i321 = (int) (color318.getBlue() + color318.getBlue() * (Medium.snap[2] / 100.0F));
+//                if (i321 > 255) {
+//                    i321 = 255;
+//                }
+//                if (i321 < 0) {
+//                    i321 = 0;
+//                }
+//                ais[i317] = ~0xffffff | i319 << 16 | i320 << 8 | i321;
+//            } else {
+//                int i322 = (int) ((float) (color.getRed() - color318.getRed()) / (float) color.getRed() * 255.0F);
+//                if (i322 > 255) {
+//                    i322 = 255;
+//                }
+//                if (i322 < 0) {
+//                    i322 = 0;
+//                }
+//                ais[i317] = i322 << 24 | 0x0 | 0x0 | 0x0;
+//            }
+//        }
+//        BufferedImage bufferedimage = new BufferedImage(i316, i, 2);
+//        bufferedimage.setRGB(0, 0, i316, i, ais, 0, i316);
+//        return bufferedimage;
     }
 
     static internal void loadsounds() {
         dnload += 3;
-        try {
-            File file = new File("" + Madness.fpath + "data/sounds.zip");
-            FileInputStream fileinputstream = new FileInputStream(file);
-            ZipInputStream zipinputstream = new ZipInputStream(fileinputstream);
-            for (ZipEntry zipentry = zipinputstream.getNextEntry(); zipentry != null; zipentry = zipinputstream.getNextEntry()) {
-                int i = (int) zipentry.getSize();
-                String astring = zipentry.getName();
-                byte[] ais = new byte[i];
-                int i0 = 0;
-                int i1;
-                for (; i > 0; i -= i1) {
-                    i1 = zipinputstream.read(ais, i0, i);
-                    i0 += i1;
-                }
-                for (int i2 = 0; i2 < 5; i2++) {
-                    for (int i3 = 0; i3 < 5; i3++)
-                        if (astring.equals("" + i3 + "" + i2 + ".wav")) {
-                            engs[i3][i2] = new SoundClip("temp-sound/" + astring);
-                        }
-                }
-                for (int i4 = 0; i4 < 6; i4++)
-                    if (astring.equals("air" + i4 + ".wav")) {
-                        air[i4] = new SoundClip("temp-sound/" + astring);
-                    }
-                for (int i5 = 0; i5 < 3; i5++)
-                    if (astring.equals("crash" + (i5 + 1) + ".wav")) {
-                        crash[i5] = new SoundClip("temp-sound/" + astring);
-                    }
-                for (int i6 = 0; i6 < 3; i6++)
-                    if (astring.equals("lowcrash" + (i6 + 1) + ".wav")) {
-                        lowcrash[i6] = new SoundClip("temp-sound/" + astring);
-                    }
-                for (int i7 = 0; i7 < 3; i7++)
-                    if (astring.equals("skid" + (i7 + 1) + ".wav")) {
-                        skid[i7] = new SoundClip("temp-sound/" + astring);
-                    }
-                for (int i8 = 0; i8 < 3; i8++)
-                    if (astring.equals("dustskid" + (i8 + 1) + ".wav")) {
-                        dustskid[i8] = new SoundClip("temp-sound/" + astring);
-                    }
-                for (int i9 = 0; i9 < 3; i9++)
-                    if (astring.equals("scrape" + (i9 + 1) + ".wav")) {
-                        scrape[i9] = new SoundClip("temp-sound/" + astring);
-                        if (i9 == 2) {
-                            scrape[3] = new SoundClip("temp-sound/" + astring);
-                        }
-                    }
-                if (astring.equals("powerup.wav")) {
-                    powerup = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("tires.wav")) {
-                    tires = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("checkpoint.wav")) {
-                    checkpoint = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("carfixed.wav")) {
-                    carfixed = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("three.wav")) {
-                    three = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("two.wav")) {
-                    two = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("one.wav")) {
-                    one = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("go.wav")) {
-                    go = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("wasted.wav")) {
-                    wastd = new SoundClip("temp-sound/" + astring);
-                }
-                if (astring.equals("firewasted.wav")) {
-                    firewasted = new SoundClip("temp-sound/" + astring);
-                }
-                dnload += 5;
-            }
-            fileinputstream.close();
-            zipinputstream.close();
-        } catch (Exception exception) {
-            Console.WriteLine("Error Loading Sounds: " + exception);
-        }
+//        try {
+//            File file = new File("" + Madness.fpath + "data/sounds.zip");
+//            FileInputStream fileinputstream = new FileInputStream(file);
+//            ZipInputStream zipinputstream = new ZipInputStream(fileinputstream);
+//            for (ZipEntry zipentry = zipinputstream.getNextEntry(); zipentry != null; zipentry = zipinputstream.getNextEntry()) {
+//                int i = (int) zipentry.getSize();
+//                String astring = zipentry.getName();
+//                byte[] ais = new byte[i];
+//                int i0 = 0;
+//                int i1;
+//                for (; i > 0; i -= i1) {
+//                    i1 = zipinputstream.read(ais, i0, i);
+//                    i0 += i1;
+//                }
+//                for (int i2 = 0; i2 < 5; i2++) {
+//                    for (int i3 = 0; i3 < 5; i3++)
+//                        if (astring.equals("" + i3 + "" + i2 + ".wav")) {
+//                            engs[i3,i2] = new SoundClip("temp-sound/" + astring);
+//                        }
+//                }
+//                for (int i4 = 0; i4 < 6; i4++)
+//                    if (astring.equals("air" + i4 + ".wav")) {
+//                        air[i4] = new SoundClip("temp-sound/" + astring);
+//                    }
+//                for (int i5 = 0; i5 < 3; i5++)
+//                    if (astring.equals("crash" + (i5 + 1) + ".wav")) {
+//                        crash[i5] = new SoundClip("temp-sound/" + astring);
+//                    }
+//                for (int i6 = 0; i6 < 3; i6++)
+//                    if (astring.equals("lowcrash" + (i6 + 1) + ".wav")) {
+//                        lowcrash[i6] = new SoundClip("temp-sound/" + astring);
+//                    }
+//                for (int i7 = 0; i7 < 3; i7++)
+//                    if (astring.equals("skid" + (i7 + 1) + ".wav")) {
+//                        skid[i7] = new SoundClip("temp-sound/" + astring);
+//                    }
+//                for (int i8 = 0; i8 < 3; i8++)
+//                    if (astring.equals("dustskid" + (i8 + 1) + ".wav")) {
+//                        dustskid[i8] = new SoundClip("temp-sound/" + astring);
+//                    }
+//                for (int i9 = 0; i9 < 3; i9++)
+//                    if (astring.equals("scrape" + (i9 + 1) + ".wav")) {
+//                        scrape[i9] = new SoundClip("temp-sound/" + astring);
+//                        if (i9 == 2) {
+//                            scrape[3] = new SoundClip("temp-sound/" + astring);
+//                        }
+//                    }
+//                if (astring.equals("powerup.wav")) {
+//                    powerup = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("tires.wav")) {
+//                    tires = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("checkpoint.wav")) {
+//                    checkpoint = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("carfixed.wav")) {
+//                    carfixed = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("three.wav")) {
+//                    three = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("two.wav")) {
+//                    two = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("one.wav")) {
+//                    one = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("go.wav")) {
+//                    go = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("wasted.wav")) {
+//                    wastd = new SoundClip("temp-sound/" + astring);
+//                }
+//                if (astring.equals("firewasted.wav")) {
+//                    firewasted = new SoundClip("temp-sound/" + astring);
+//                }
+//                dnload += 5;
+//            }
+//            fileinputstream.close();
+//            zipinputstream.close();
+//        } catch (Exception exception) {
+//            Console.WriteLine("Error Loading Sounds: " + exception);
+//        }
         GC.Collect();
     }
 

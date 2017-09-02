@@ -136,5 +136,10 @@ namespace MadGame
         {
             throw new NotImplementedException();
         }
+
+        public static void drawImage(Image bggo, int p1, int i429, int p3, int i, object o)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

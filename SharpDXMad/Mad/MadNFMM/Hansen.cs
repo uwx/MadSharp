@@ -43,6 +43,20 @@ namespace Cum
         {
             throw new NotImplementedException();
         }
+
+        public static void Exit(int i)
+        {
+            if (System.Windows.Forms.Application.MessageLoop) 
+            {
+                // WinForms app
+                System.Windows.Forms.Application.Exit();
+            }
+            else
+            {
+                // Console app
+                System.Environment.Exit(1);
+            }
+        }
     }
     public class HansenRandom
     {
@@ -152,6 +166,11 @@ namespace Cum
 
     internal class RadicalMusic
     {
+        public RadicalMusic(File file)
+        {
+            throw new NotImplementedException();
+        }
+
         public void setPaused(bool p0)
         {
             throw new NotImplementedException();
@@ -472,6 +491,11 @@ namespace Cum
         public static ContO source;
         public static ContO player;
 
+        public SoundClip(string s)
+        {
+            throw new NotImplementedException();
+        }
+
         public void play()
         {
             throw new NotImplementedException();
@@ -488,6 +512,14 @@ namespace Cum
         }
 
         public void stop()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal class TrackZipLoader
+    {
+        public static RadicalMusic loadLegacy(int i, string astring, int i52)
         {
             throw new NotImplementedException();
         }

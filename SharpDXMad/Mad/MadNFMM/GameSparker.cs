@@ -1139,7 +1139,7 @@ namespace Cum
 //        }
     }
 
-    static void editlink(String accountid, boolean isLogged) {
+        internal static void editlink(String accountid, boolean isLogged) {
         String logged = "";
         if (isLogged)
         {
@@ -1295,7 +1295,7 @@ namespace Cum
 //        proitem.setFont();
     }
 
-    static void madlink()
+        internal static void madlink()
     {
         openurl("http://www.needformadness.com/");
     }
@@ -1423,17 +1423,17 @@ namespace Cum
 //        }
     }
 
-    static void multlink()
+        internal static void multlink()
     {
         openurl("http://multiplayer.needformadness.com/");
     }
 
-    static void musiclink()
+    internal static void musiclink()
     {
         openurl("http://multiplayer.needformadness.com/music.html");
     }
 
-    static void onfmmlink()
+        internal static void onfmmlink()
     {
         openurl("https://github.com/chrishansen69/OpenNFMM");
     }
