@@ -44,6 +44,14 @@ namespace MadGame
 //            F51.run();
         }
 
+        protected override Form CreateForm(DemoConfiguration config)
+        {
+            var form = base.CreateForm(config);
+            form.MouseDown += MouseDown;
+            form.MouseDown += MouseUp;
+            return form;
+        }
+
         public void SetupAndRun()
         {
             Run(new DemoConfiguration("Mad.cs", 800, 450));
@@ -84,6 +92,16 @@ namespace MadGame
         {
             const bool isDown = false;
             HandleKeyPress(args, isDown);
+        }
+        
+        private void MouseUp(object sender, MouseEventArgs e)
+        {
+            GameSparker.mouseReleased(e.X, e.Y);
+        }
+
+        private void MouseDown(object sender, MouseEventArgs e)
+        {
+            GameSparker.mousePressed(e.X, e.Y);
         }
 
         private void HandleKeyPress(KeyEventArgs args, bool isDown)

@@ -71,7 +71,7 @@ namespace MiscUtil
 		{
 			lock (myLock)
 			{
-				return random.Next();
+				return random.NextDouble();
 			}
 		}
 
