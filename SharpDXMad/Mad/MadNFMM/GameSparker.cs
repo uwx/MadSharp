@@ -2013,7 +2013,7 @@ namespace Cum
         gameLoaded = true;
     }
 
-    private static void gameTick()
+        public static void gameTick()
     {
 
         date = new Date();
