@@ -1574,12 +1574,12 @@ public class Medium {
             for (int i42 = 0; i42 < Trackers.nt; i42++)
                 if (Trackers.zy[i42] == 0 && Trackers.xy[i42] == 0) {
                     if (Trackers.radx[i42] < Trackers.radz[i42] && Math.Abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]) {
-                        for (/**/; Math.Abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]; cgpx[i41] += Math.Round(random.nextDouble() * Trackers.radx[i42] * 2.0 - Trackers.radx[i42])) {
+                        for (/**/; Math.Abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]; cgpx[i41] += (int)(random.nextDouble() * Trackers.radx[i42] * 2.0 - Trackers.radx[i42])) {
 
                         }
                     }
                     if (Trackers.radz[i42] < Trackers.radx[i42] && Math.Abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]) {
-                        for (/**/; Math.Abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]; cgpz[i41] += Math.Round(random.nextDouble() * Trackers.radz[i42] * 2.0 - Trackers.radz[i42])) {
+                        for (/**/; Math.Abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]; cgpz[i41] += (int)(random.nextDouble() * Trackers.radz[i42] * 2.0 - Trackers.radz[i42])) {
 
                         }
                     }

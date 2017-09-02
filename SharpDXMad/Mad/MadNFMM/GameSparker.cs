@@ -8,7 +8,7 @@ using boolean = System.Boolean;
 
 namespace Cum
 {
-    internal class GameSparker {
+    public class GameSparker {
     /**
      *
      */
@@ -159,7 +159,7 @@ namespace Cum
         int totalSize = 0;
         xtGraphics.dnload += 6;
         
-        FileUtil.loadFiles("data/cars", carRads, prep => new File(prep.parent, prep.file + ".rad"), (ais, id) => {
+        FileUtil.loadFiles("data/cars", carRads, (ais, id) => {
             carContos[id] = new ContO( ais);
             if (!carContos[id].shadow)
             {
@@ -167,7 +167,7 @@ namespace Cum
             }
         });
 
-        FileUtil.loadFiles("data/stageparts", stageRads, prep => new File(prep.parent, prep.file + ".rad"), (ais, id) => {
+        FileUtil.loadFiles("data/stageparts", stageRads, (ais, id) => {
             contos[id] = new ContO( ais);
         });
 
