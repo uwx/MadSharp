@@ -1,561 +1,560 @@
-﻿using System;
-using static Cum.xtImages.Images;
-using static Cum.xtGraphics;
-using static Cum.xtPart2;
+﻿using static Cum.XTImages.Images;
+using static Cum.XTGraphics;
+using static Cum.XTPart2;
 
 namespace Cum
 {
-    public class xtImages
+    public class XTImages
     {
         
     internal static class Images {
-        internal static Image arn;
-        internal static Image arrows;
-        internal static Image asd;
-        internal static Image asu;
-        internal static readonly Image[] back = new Image[2];
-        internal static readonly Image[] bc = new Image[2];
-        internal static readonly Image[] bcl = new Image[2];
-        internal static readonly Image[] bcr = new Image[2];
-        internal static Image bggo;
-        internal static Image bgmain;
-        internal static Image bob;
-        internal static Image bol;
-        internal static Image bolp;
-        internal static Image bolps;
-        internal static Image bols;
-        internal static Image bor;
-        internal static Image borp;
-        internal static Image borps;
-        internal static Image bors;
-        internal static Image bot;
-        internal static Image br;
-        internal static Image brt;
-        internal static Image byrd;
-        internal static Image cancel;
-        internal static Image carsbg;
-        internal static Image carsbgc;
-        internal static Image ccar;
-        internal static Image cgame;
-        internal static Image change;
-        internal static Image chil;
-        internal static readonly Image[] cntdn = new Image[4];
-        internal static Image congrd;
-        internal static readonly Image[] contin = new Image[2];
-        internal static Image crd;
-        internal static Image disco;
-        internal static Image dmg;
-        internal static readonly Image[] dude = new Image[3];
-        internal static Image exit;
-        internal static Image exitgame;
-        internal static Image fixhoop;
-        internal static Image flaot;
-        internal static Image fleximg;
-        internal static Image gamefinished;
-        internal static Image gameh;
-        internal static Image gameov;
-        internal static Image games;
-        internal static Image gmc;
-        internal static Image hello;
-        internal static Image kenter;
-        internal static Image km;
-        internal static Image kn;
-        internal static Image ks;
-        internal static Image kv;
-        internal static Image kx;
-        internal static Image kz;
-        internal static Image lanm;
-        internal static Image lap;
-        internal static Image loadbar;
-        internal static Image loadingmusic;
-        internal static Image login;
-        internal static Image logocars;
-        internal static Image logomadbg;
-        internal static Image logomadnes;
-        internal static Image logout;
-        internal static Image mdness;
-        internal static Image mload;
-        internal static readonly Image[] next = new Image[2];
-        internal static Image nfm;
-        internal static Image nfmcom;
-        internal static Image nfmcoms;
-        internal static Image ntrg;
-        internal static readonly Image[] ocntdn = new Image[4];
-        internal static Image odisco;
-        internal static Image odmg;
-        internal static Image oexitgame;
-        internal static Image oflaot;
-        internal static Image ogamefinished;
-        internal static Image ogameh;
-        internal static Image olap;
-        internal static Image oloadingmusic;
-        internal static Image onfmm;
-        internal static Image opback;
-        internal static Image opos;
-        internal static Image opti;
-        internal static Image opwr;
-        internal static readonly Image[] orank = new Image[8];
-        internal static Image ory;
-        internal static Image osped;
-        internal static readonly Image[] ostar = new Image[2];
-        internal static Image owas;
-        internal static Image owgame;
-        internal static Image oyoulost;
-        internal static Image oyourwasted;
-        internal static Image oyouwastedem;
-        internal static Image oyouwon;
-        internal static Image paused;
-        internal static Image pgate;
-        internal static Image play;
-        internal static Image pln;
-        internal static Image pls;
-        internal static Image plus;
-        internal static Image pos;
-        internal static Image pwr;
-        internal static Image racing;
-        internal static Image radicalplay;
-        internal static readonly Image[] rank = new Image[8];
-        internal static Image redy;
-        internal static Image register;
-        internal static Image roomp;
-        internal static Image rpro;
-        internal static Image sarrow;
-        internal static Image sdets;
-        internal static Image select;
-        internal static Image selectcar;
-        internal static Image sign;
-        internal static Image space;
-        internal static Image sped;
-        internal static readonly Image[] star = new Image[3];
-        internal static Image statb;
-        internal static Image statbo;
-        internal static Image stg;
-        internal static Image sts;
-        internal static Image stunts;
-        internal static readonly Image[] trackbg = new Image[2];
-        internal static Image upgrade;
-        internal static Image was;
-        internal static Image wasting;
-        internal static Image wgame;
-        internal static Image yac;
-        internal static Image ycmc;
-        internal static Image youlost;
-        internal static Image yourwasted;
-        internal static Image youwastedem;
-        internal static Image youwon;
+        internal static Image Arn;
+        internal static Image Arrows;
+        internal static Image Asd;
+        internal static Image Asu;
+        internal static readonly Image[] Back = new Image[2];
+        internal static readonly Image[] Bc = new Image[2];
+        internal static readonly Image[] Bcl = new Image[2];
+        internal static readonly Image[] Bcr = new Image[2];
+        internal static Image Bggo;
+        internal static Image Bgmain;
+        internal static Image Bob;
+        internal static Image Bol;
+        internal static Image Bolp;
+        internal static Image Bolps;
+        internal static Image Bols;
+        internal static Image Bor;
+        internal static Image Borp;
+        internal static Image Borps;
+        internal static Image Bors;
+        internal static Image Bot;
+        internal static Image Br;
+        internal static Image Brt;
+        internal static Image Byrd;
+        internal static Image Cancel;
+        internal static Image Carsbg;
+        internal static Image Carsbgc;
+        internal static Image Ccar;
+        internal static Image Cgame;
+        internal static Image Change;
+        internal static Image Chil;
+        internal static readonly Image[] Cntdn = new Image[4];
+        internal static Image Congrd;
+        internal static readonly Image[] Contin = new Image[2];
+        internal static Image Crd;
+        internal static Image Disco;
+        internal static Image Dmg;
+        internal static readonly Image[] Dude = new Image[3];
+        internal static Image Exit;
+        internal static Image Exitgame;
+        internal static Image Fixhoop;
+        internal static Image Flaot;
+        internal static Image Fleximg;
+        internal static Image Gamefinished;
+        internal static Image Gameh;
+        internal static Image Gameov;
+        internal static Image Games;
+        internal static Image Gmc;
+        internal static Image Hello;
+        internal static Image Kenter;
+        internal static Image Km;
+        internal static Image Kn;
+        internal static Image Ks;
+        internal static Image Kv;
+        internal static Image Kx;
+        internal static Image Kz;
+        internal static Image Lanm;
+        internal static Image Lap;
+        internal static Image Loadbar;
+        internal static Image Loadingmusic;
+        internal static Image Login;
+        internal static Image Logocars;
+        internal static Image Logomadbg;
+        internal static Image Logomadnes;
+        internal static Image Logout;
+        internal static Image Mdness;
+        internal static Image Mload;
+        internal static readonly Image[] Next = new Image[2];
+        internal static Image Nfm;
+        internal static Image Nfmcom;
+        internal static Image Nfmcoms;
+        internal static Image Ntrg;
+        internal static readonly Image[] Ocntdn = new Image[4];
+        internal static Image Odisco;
+        internal static Image Odmg;
+        internal static Image Oexitgame;
+        internal static Image Oflaot;
+        internal static Image Ogamefinished;
+        internal static Image Ogameh;
+        internal static Image Olap;
+        internal static Image Oloadingmusic;
+        internal static Image Onfmm;
+        internal static Image Opback;
+        internal static Image Opos;
+        internal static Image Opti;
+        internal static Image Opwr;
+        internal static readonly Image[] Orank = new Image[8];
+        internal static Image Ory;
+        internal static Image Osped;
+        internal static readonly Image[] Ostar = new Image[2];
+        internal static Image Owas;
+        internal static Image Owgame;
+        internal static Image Oyoulost;
+        internal static Image Oyourwasted;
+        internal static Image Oyouwastedem;
+        internal static Image Oyouwon;
+        internal static Image Paused;
+        internal static Image Pgate;
+        internal static Image Play;
+        internal static Image Pln;
+        internal static Image Pls;
+        internal static Image Plus;
+        internal static Image Pos;
+        internal static Image Pwr;
+        internal static Image Racing;
+        internal static Image Radicalplay;
+        internal static readonly Image[] Rank = new Image[8];
+        internal static Image Redy;
+        internal static Image Register;
+        internal static Image Roomp;
+        internal static Image Rpro;
+        internal static Image Sarrow;
+        internal static Image Sdets;
+        internal static Image Select;
+        internal static Image Selectcar;
+        internal static Image Sign;
+        internal static Image Space;
+        internal static Image Sped;
+        internal static readonly Image[] Star = new Image[3];
+        internal static Image Statb;
+        internal static Image Statbo;
+        internal static Image Stg;
+        internal static Image Sts;
+        internal static Image Stunts;
+        internal static readonly Image[] Trackbg = new Image[2];
+        internal static Image Upgrade;
+        internal static Image Was;
+        internal static Image Wasting;
+        internal static Image Wgame;
+        internal static Image Yac;
+        internal static Image Ycmc;
+        internal static Image Youlost;
+        internal static Image Yourwasted;
+        internal static Image Youwastedem;
+        internal static Image Youwon;
 
     }
 
         internal delegate void Accept(byte[] ais);
         
         internal class ImageIdentifier {
-            internal readonly String fileName;
-            internal readonly Accept cons;
-            internal ImageIdentifier(String s, Accept c) {
-                cons=c;
-                fileName=s;
+            internal readonly string FileName;
+            internal readonly Accept Cons;
+            internal ImageIdentifier(string s, Accept c) {
+                Cons=c;
+                FileName=s;
             }
         }
         
-        private static Image cbg1, cbg2;
+        private static Image _cbg1, _cbg2;
     
-    internal static readonly ImageIdentifier[] idts = {
+    internal static readonly ImageIdentifier[] Idts = {
 
-        new ImageIdentifier("cars.gif", (ais) => {
-            carsbg = loadBimage(ais, 1);
+        new ImageIdentifier("cars.gif", ais => {
+            Carsbg = LoadBimage(ais, 1);
         }),
-        new ImageIdentifier("color.gif", (ais) => {
-            cbg1 = loadBimage(ais, 0);
+        new ImageIdentifier("color.gif", ais => {
+            _cbg1 = LoadBimage(ais, 0);
             
-            if (cbg1 != null && cbg2 != null)
-                makecarsbgc(cbg1, cbg2);
+            if (_cbg1 != null && _cbg2 != null)
+                Makecarsbgc(_cbg1, _cbg2);
         }),
-        new ImageIdentifier("class.gif", (ais) => {
-            cbg2 = loadBimage(ais, 0);
+        new ImageIdentifier("class.gif", ais => {
+            _cbg2 = LoadBimage(ais, 0);
 
-            if (cbg1 != null && cbg2 != null)
-                makecarsbgc(cbg1, cbg2);
+            if (_cbg1 != null && _cbg2 != null)
+                Makecarsbgc(_cbg1, _cbg2);
         }),
-        new ImageIdentifier("smokey.gif", (ais) => {
-            smokeypix(ais);
+        new ImageIdentifier("smokey.gif", ais => {
+            Smokeypix(ais);
         }),
-        new ImageIdentifier("1.gif", (ais) => {
-            orank[0] = loadimage(ais);
+        new ImageIdentifier("1.gif", ais => {
+            Orank[0] = Loadimage(ais);
         }),
-        new ImageIdentifier("gameh.gif", (ais) => {
-            ogameh = loadimage(ais);
+        new ImageIdentifier("gameh.gif", ais => {
+            Ogameh = Loadimage(ais);
         }),
-        new ImageIdentifier("wgame.gif", (ais) => {
-            owgame = loadimage(ais);
+        new ImageIdentifier("wgame.gif", ais => {
+            Owgame = Loadimage(ais);
         }),
-        new ImageIdentifier("gameov.gif", (ais) => {
-            gameov = loadimage(ais);
+        new ImageIdentifier("gameov.gif", ais => {
+            Gameov = Loadimage(ais);
         }),
-        new ImageIdentifier("lap.gif", (ais) => {
-            olap = loadimage(ais);
+        new ImageIdentifier("lap.gif", ais => {
+            Olap = Loadimage(ais);
         }),
-        new ImageIdentifier("paused.gif", (ais) => {
-            paused = loadimage(ais);
+        new ImageIdentifier("paused.gif", ais => {
+            Paused = Loadimage(ais);
         }),
-        new ImageIdentifier("select.gif", (ais) => {
-            select = loadimage(ais);
+        new ImageIdentifier("select.gif", ais => {
+            Select = Loadimage(ais);
         }),
-        new ImageIdentifier("yourwasted.gif", (ais) => {
-            oyourwasted = loadimage(ais);
+        new ImageIdentifier("yourwasted.gif", ais => {
+            Oyourwasted = Loadimage(ais);
         }),
-        new ImageIdentifier("disco.gif", (ais) => {
-            odisco = loadimage(ais);
+        new ImageIdentifier("disco.gif", ais => {
+            Odisco = Loadimage(ais);
         }),
-        new ImageIdentifier("youwastedem.gif", (ais) => {
-            oyouwastedem = loadimage(ais);
+        new ImageIdentifier("youwastedem.gif", ais => {
+            Oyouwastedem = Loadimage(ais);
         }),
-        new ImageIdentifier("gamefinished.gif", (ais) => {
-            ogamefinished = loadimage(ais);
+        new ImageIdentifier("gamefinished.gif", ais => {
+            Ogamefinished = Loadimage(ais);
         }),
-        new ImageIdentifier("exitgame.gif", (ais) => {
-            oexitgame = loadimage(ais);
+        new ImageIdentifier("exitgame.gif", ais => {
+            Oexitgame = Loadimage(ais);
         }),
-        new ImageIdentifier("pgate.gif", (ais) => {
-            pgate = loadimage(ais);
+        new ImageIdentifier("pgate.gif", ais => {
+            Pgate = Loadimage(ais);
         }),
-        new ImageIdentifier("d1.png", (ais) => {
-            dude[0] = loadimage(ais);
+        new ImageIdentifier("d1.png", ais => {
+            Dude[0] = Loadimage(ais);
         }),
-        new ImageIdentifier("d2.png", (ais) => {
-            dude[1] = loadimage(ais);
+        new ImageIdentifier("d2.png", ais => {
+            Dude[1] = Loadimage(ais);
         }),
-        new ImageIdentifier("d3.png", (ais) => {
-            dude[2] = loadimage(ais);
+        new ImageIdentifier("d3.png", ais => {
+            Dude[2] = Loadimage(ais);
         }),
-        new ImageIdentifier("float.gif", (ais) => {
-            oflaot = loadimage(ais);
+        new ImageIdentifier("float.gif", ais => {
+            Oflaot = Loadimage(ais);
         }),
-        new ImageIdentifier("1c.gif", (ais) => {
-            ocntdn[1] = loadimage(ais);
+        new ImageIdentifier("1c.gif", ais => {
+            Ocntdn[1] = Loadimage(ais);
         }),
-        new ImageIdentifier("2c.gif", (ais) => {
-            ocntdn[2] = loadimage(ais);
+        new ImageIdentifier("2c.gif", ais => {
+            Ocntdn[2] = Loadimage(ais);
         }),
-        new ImageIdentifier("3c.gif", (ais) => {
-            ocntdn[3] = loadimage(ais);
+        new ImageIdentifier("3c.gif", ais => {
+            Ocntdn[3] = Loadimage(ais);
         }),
-        new ImageIdentifier("2.gif", (ais) => {
-            orank[1] = loadimage(ais);
+        new ImageIdentifier("2.gif", ais => {
+            Orank[1] = Loadimage(ais);
         }),
-        new ImageIdentifier("3.gif", (ais) => {
-            orank[2] = loadimage(ais);
+        new ImageIdentifier("3.gif", ais => {
+            Orank[2] = Loadimage(ais);
         }),
-        new ImageIdentifier("4.gif", (ais) => {
-            orank[3] = loadimage(ais);
+        new ImageIdentifier("4.gif", ais => {
+            Orank[3] = Loadimage(ais);
         }),
-        new ImageIdentifier("5.gif", (ais) => {
-            orank[4] = loadimage(ais);
+        new ImageIdentifier("5.gif", ais => {
+            Orank[4] = Loadimage(ais);
         }),
-        new ImageIdentifier("6.gif", (ais) => {
-            orank[5] = loadimage(ais);
+        new ImageIdentifier("6.gif", ais => {
+            Orank[5] = Loadimage(ais);
         }),
-        new ImageIdentifier("7.gif", (ais) => {
-            orank[6] = loadimage(ais);
+        new ImageIdentifier("7.gif", ais => {
+            Orank[6] = Loadimage(ais);
         }),
-        new ImageIdentifier("8.gif", (ais) => {
-            orank[7] = loadimage(ais);
+        new ImageIdentifier("8.gif", ais => {
+            Orank[7] = Loadimage(ais);
         }),
-        new ImageIdentifier("bgmain.jpg", (ais) => {
-            bgmain = loadBimage(ais, 2);
+        new ImageIdentifier("bgmain.jpg", ais => {
+            Bgmain = LoadBimage(ais, 2);
         }),
-        new ImageIdentifier("br.png", (ais) => {
-            br = loadimage(ais);
+        new ImageIdentifier("br.png", ais => {
+            Br = Loadimage(ais);
         }),
-        new ImageIdentifier("loadingmusic.gif", (ais) => {
-            oloadingmusic = loadimage(ais);
+        new ImageIdentifier("loadingmusic.gif", ais => {
+            Oloadingmusic = Loadimage(ais);
         }),
-        new ImageIdentifier("radicalplay.gif", (ais) => {
-            radicalplay = loadimage(ais);
+        new ImageIdentifier("radicalplay.gif", ais => {
+            Radicalplay = Loadimage(ais);
         }),
-        new ImageIdentifier("back.gif", (ais) => {
-            back[0] = loadimage(ais);
-            back[1] = bressed(back[0]);
+        new ImageIdentifier("back.gif", ais => {
+            Back[0] = Loadimage(ais);
+            Back[1] = Bressed(Back[0]);
         }),
-        new ImageIdentifier("continue.gif", (ais) => {
-            contin[0] = loadimage(ais);
-            contin[1] = bressed(contin[0]);
+        new ImageIdentifier("continue.gif", ais => {
+            Contin[0] = Loadimage(ais);
+            Contin[1] = Bressed(Contin[0]);
         }),
-        new ImageIdentifier("next.gif", (ais) => {
-            next[0] = loadimage(ais);
-            next[1] = bressed(next[0]);
+        new ImageIdentifier("next.gif", ais => {
+            Next[0] = Loadimage(ais);
+            Next[1] = Bressed(Next[0]);
         }),
-        new ImageIdentifier("rpro.gif", (ais) => {
-            rpro = loadimage(ais);
+        new ImageIdentifier("rpro.gif", ais => {
+            Rpro = Loadimage(ais);
         }),
-        new ImageIdentifier("selectcar.gif", (ais) => {
-            selectcar = loadimage(ais);
+        new ImageIdentifier("selectcar.gif", ais => {
+            Selectcar = Loadimage(ais);
         }),
-        new ImageIdentifier("track.jpg", (ais) => {
-            trackbg[0] = loadBimage(ais, 3);
-            trackbg[1] = dodgen(trackbg[0]);
+        new ImageIdentifier("track.jpg", ais => {
+            Trackbg[0] = LoadBimage(ais, 3);
+            Trackbg[1] = Dodgen(Trackbg[0]);
         }),
-        new ImageIdentifier("youlost.gif", (ais) => {
-            oyoulost = loadimage(ais);
+        new ImageIdentifier("youlost.gif", ais => {
+            Oyoulost = Loadimage(ais);
         }),
-        new ImageIdentifier("youwon.gif", (ais) => {
-            oyouwon = loadimage(ais);
+        new ImageIdentifier("youwon.gif", ais => {
+            Oyouwon = Loadimage(ais);
         }),
-        new ImageIdentifier("0c.gif", (ais) => {
-            ocntdn[0] = loadimage(ais);
+        new ImageIdentifier("0c.gif", ais => {
+            Ocntdn[0] = Loadimage(ais);
         }),
-        new ImageIdentifier("damage.gif", (ais) => {
-            odmg = loadimage(ais);
+        new ImageIdentifier("damage.gif", ais => {
+            Odmg = Loadimage(ais);
         }),
-        new ImageIdentifier("power.gif", (ais) => {
-            opwr = loadimage(ais);
+        new ImageIdentifier("power.gif", ais => {
+            Opwr = Loadimage(ais);
         }),
-        new ImageIdentifier("position.gif", (ais) => {
-            opos = loadimage(ais);
+        new ImageIdentifier("position.gif", ais => {
+            Opos = Loadimage(ais);
         }),
-        new ImageIdentifier("speed.gif", (ais) => {
-            osped = loadimage(ais);
+        new ImageIdentifier("speed.gif", ais => {
+            Osped = Loadimage(ais);
         }),
-        new ImageIdentifier("wasted.gif", (ais) => {
-            owas = loadimage(ais);
+        new ImageIdentifier("wasted.gif", ais => {
+            Owas = Loadimage(ais);
         }),
-        new ImageIdentifier("start1.gif", (ais) => {
-            ostar[0] = loadimage(ais);
+        new ImageIdentifier("start1.gif", ais => {
+            Ostar[0] = Loadimage(ais);
         }),
-        new ImageIdentifier("start2.gif", (ais) => {
-            ostar[1] = loadimage(ais);
-            star[2] = pressed(ostar[1]);
+        new ImageIdentifier("start2.gif", ais => {
+            Ostar[1] = Loadimage(ais);
+            Star[2] = Pressed(Ostar[1]);
         }),
-        new ImageIdentifier("congrad.gif", (ais) => {
-            congrd = loadimage(ais);
+        new ImageIdentifier("congrad.gif", ais => {
+            Congrd = Loadimage(ais);
         }),
-        new ImageIdentifier("statb.gif", (ais) => {
-            statb = loadimage(ais);
+        new ImageIdentifier("statb.gif", ais => {
+            Statb = Loadimage(ais);
         }),
-        new ImageIdentifier("statbo.gif", (ais) => {
-            statbo = loadimage(ais);
+        new ImageIdentifier("statbo.gif", ais => {
+            Statbo = Loadimage(ais);
         }),
-        new ImageIdentifier("madness.gif", (ais) => {
-            mdness = loadude(ais);
+        new ImageIdentifier("madness.gif", ais => {
+            Mdness = Loadude(ais);
         }),
 //            new ImageIdentifier("onfmm.gif", (ais) => {
 //                onfmm = loadude(ais);
 //            }),
-        new ImageIdentifier("fixhoop.png", (ais) => {
-            fixhoop = loadimage(ais);
+        new ImageIdentifier("fixhoop.png", ais => {
+            Fixhoop = Loadimage(ais);
         }),
-        new ImageIdentifier("arrow.gif", (ais) => {
-            sarrow = loadimage(ais);
+        new ImageIdentifier("arrow.gif", ais => {
+            Sarrow = Loadimage(ais);
         }),
-        new ImageIdentifier("stunts.png", (ais) => {
-            stunts = loadimage(ais);
+        new ImageIdentifier("stunts.png", ais => {
+            Stunts = Loadimage(ais);
         }),
-        new ImageIdentifier("racing.gif", (ais) => {
-            racing = loadimage(ais);
+        new ImageIdentifier("racing.gif", ais => {
+            Racing = Loadimage(ais);
         }),
-        new ImageIdentifier("wasting.gif", (ais) => {
-            wasting = loadimage(ais);
+        new ImageIdentifier("wasting.gif", ais => {
+            Wasting = Loadimage(ais);
         }),
-        new ImageIdentifier("plus.gif", (ais) => {
-            plus = loadimage(ais);
+        new ImageIdentifier("plus.gif", ais => {
+            Plus = Loadimage(ais);
         }),
-        new ImageIdentifier("space.gif", (ais) => {
-            space = loadimage(ais);
+        new ImageIdentifier("space.gif", ais => {
+            Space = Loadimage(ais);
         }),
-        new ImageIdentifier("arrows.gif", (ais) => {
-            arrows = loadimage(ais);
+        new ImageIdentifier("arrows.gif", ais => {
+            Arrows = Loadimage(ais);
         }),
-        new ImageIdentifier("chil.gif", (ais) => {
-            chil = loadimage(ais);
+        new ImageIdentifier("chil.gif", ais => {
+            Chil = Loadimage(ais);
         }),
-        new ImageIdentifier("ory.gif", (ais) => {
-            ory = loadimage(ais);
+        new ImageIdentifier("ory.gif", ais => {
+            Ory = Loadimage(ais);
         }),
-        new ImageIdentifier("kz.gif", (ais) => {
-            kz = loadimage(ais);
+        new ImageIdentifier("kz.gif", ais => {
+            Kz = Loadimage(ais);
         }),
-        new ImageIdentifier("kx.gif", (ais) => {
-            kx = loadimage(ais);
+        new ImageIdentifier("kx.gif", ais => {
+            Kx = Loadimage(ais);
         }),
-        new ImageIdentifier("kv.gif", (ais) => {
-            kv = loadimage(ais);
+        new ImageIdentifier("kv.gif", ais => {
+            Kv = Loadimage(ais);
         }),
-        new ImageIdentifier("km.gif", (ais) => {
-            km = loadimage(ais);
+        new ImageIdentifier("km.gif", ais => {
+            Km = Loadimage(ais);
         }),
-        new ImageIdentifier("kn.gif", (ais) => {
-            kn = loadimage(ais);
+        new ImageIdentifier("kn.gif", ais => {
+            Kn = Loadimage(ais);
         }),
-        new ImageIdentifier("ks.gif", (ais) => {
-            ks = loadimage(ais);
+        new ImageIdentifier("ks.gif", ais => {
+            Ks = Loadimage(ais);
         }),
-        new ImageIdentifier("kenter.gif", (ais) => {
-            kenter = loadimage(ais);
+        new ImageIdentifier("kenter.gif", ais => {
+            Kenter = Loadimage(ais);
         }),
-        new ImageIdentifier("nfm.gif", (ais) => {
-            nfm = loadimage(ais);
+        new ImageIdentifier("nfm.gif", ais => {
+            Nfm = Loadimage(ais);
         }),
-        new ImageIdentifier("options.png", (ais) => {
-            opti = loadimage(ais);
+        new ImageIdentifier("options.png", ais => {
+            Opti = Loadimage(ais);
         }),
-        new ImageIdentifier("opback.png", (ais) => {
-            opback = loadimage(ais);
+        new ImageIdentifier("opback.png", ais => {
+            Opback = Loadimage(ais);
         }),
-        new ImageIdentifier("logocars.png", (ais) => {
-            logocars = loadimage(ais);
+        new ImageIdentifier("logocars.png", ais => {
+            Logocars = Loadimage(ais);
         }),
-        new ImageIdentifier("logomad.png", (ais) => {
-            logomadnes = loadimage(ais);
+        new ImageIdentifier("logomad.png", ais => {
+            Logomadnes = Loadimage(ais);
         }),
-        new ImageIdentifier("logomadbg.jpg", (ais) => {
-            logomadbg = loadimage(ais);
+        new ImageIdentifier("logomadbg.jpg", ais => {
+            Logomadbg = Loadimage(ais);
         }),
-        new ImageIdentifier("byrd.png", (ais) => {
-            byrd = loadimage(ais);
+        new ImageIdentifier("byrd.png", ais => {
+            Byrd = Loadimage(ais);
         }),
-        new ImageIdentifier("bggo.jpg", (ais) => {
-            bggo = loadimage(ais);
+        new ImageIdentifier("bggo.jpg", ais => {
+            Bggo = Loadimage(ais);
         }),
-        new ImageIdentifier("nfmcoms.png", (ais) => {
-            nfmcoms = loadimage(ais);
+        new ImageIdentifier("nfmcoms.png", ais => {
+            Nfmcoms = Loadimage(ais);
         }),
-        new ImageIdentifier("nfmcom.gif", (ais) => {
-            nfmcom = loadBimage(ais, 0);
+        new ImageIdentifier("nfmcom.gif", ais => {
+            Nfmcom = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("brit.gif", (ais) => {
-            brt = loadimage(ais);
+        new ImageIdentifier("brit.gif", ais => {
+            Brt = Loadimage(ais);
         }),
-        new ImageIdentifier("arn.gif", (ais) => {
-            arn = loadimage(ais);
+        new ImageIdentifier("arn.gif", ais => {
+            Arn = Loadimage(ais);
         }),
-        new ImageIdentifier("mload.gif", (ais) => {
-            mload = loadimage(ais);
+        new ImageIdentifier("mload.gif", ais => {
+            Mload = Loadimage(ais);
         }),
-        new ImageIdentifier("login.gif", (ais) => {
-            login = loadBimage(ais, 0);
+        new ImageIdentifier("login.gif", ais => {
+            Login = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("play.gif", (ais) => {
-            play = loadBimage(ais, 0);
+        new ImageIdentifier("play.gif", ais => {
+            Play = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("cancel.gif", (ais) => {
-            cancel = loadBimage(ais, 0);
+        new ImageIdentifier("cancel.gif", ais => {
+            Cancel = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("register.gif", (ais) => {
-            register = loadBimage(ais, 0);
+        new ImageIdentifier("register.gif", ais => {
+            Register = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("upgrade.gif", (ais) => {
-            upgrade = loadimage(ais);
+        new ImageIdentifier("upgrade.gif", ais => {
+            Upgrade = Loadimage(ais);
         }),
-        new ImageIdentifier("sdets.gif", (ais) => {
-            sdets = loadBimage(ais, 0);
+        new ImageIdentifier("sdets.gif", ais => {
+            Sdets = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("bob.gif", (ais) => {
-            bob = loadBimage(ais, 1);
+        new ImageIdentifier("bob.gif", ais => {
+            Bob = LoadBimage(ais, 1);
         }),
-        new ImageIdentifier("bot.gif", (ais) => {
-            bot = loadBimage(ais, 1);
+        new ImageIdentifier("bot.gif", ais => {
+            Bot = LoadBimage(ais, 1);
         }),
-        new ImageIdentifier("bol.gif", (ais) => {
-            bol = loadBimage(ais, 0);
+        new ImageIdentifier("bol.gif", ais => {
+            Bol = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("bolp.gif", (ais) => {
-            bolp = loadBimage(ais, 0);
+        new ImageIdentifier("bolp.gif", ais => {
+            Bolp = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("bor.gif", (ais) => {
-            bor = loadBimage(ais, 0);
+        new ImageIdentifier("bor.gif", ais => {
+            Bor = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("borp.gif", (ais) => {
-            borp = loadBimage(ais, 0);
+        new ImageIdentifier("borp.gif", ais => {
+            Borp = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("logout.gif", (ais) => {
-            logout = loadBimage(ais, 0);
+        new ImageIdentifier("logout.gif", ais => {
+            Logout = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("change.gif", (ais) => {
-            change = loadBimage(ais, 0);
+        new ImageIdentifier("change.gif", ais => {
+            Change = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("pln.gif", (ais) => {
-            pln = loadBimage(ais, 0);
+        new ImageIdentifier("pln.gif", ais => {
+            Pln = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("bols.gif", (ais) => {
-            bols = loadBimage(ais, 0);
+        new ImageIdentifier("bols.gif", ais => {
+            Bols = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("bolps.gif", (ais) => {
-            bolps = loadBimage(ais, 0);
+        new ImageIdentifier("bolps.gif", ais => {
+            Bolps = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("bors.gif", (ais) => {
-            bors = loadBimage(ais, 0);
+        new ImageIdentifier("bors.gif", ais => {
+            Bors = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("borps.gif", (ais) => {
-            borps = loadBimage(ais, 0);
+        new ImageIdentifier("borps.gif", ais => {
+            Borps = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("games.gif", (ais) => {
-            games = loadBimage(ais, 0);
+        new ImageIdentifier("games.gif", ais => {
+            Games = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("exit.gif", (ais) => {
-            exit = loadBimage(ais, 0);
+        new ImageIdentifier("exit.gif", ais => {
+            Exit = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("roomp.gif", (ais) => {
-            roomp = loadBimage(ais, 0);
+        new ImageIdentifier("roomp.gif", ais => {
+            Roomp = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("ready.gif", (ais) => {
-            redy = loadBimage(ais, 0);
+        new ImageIdentifier("ready.gif", ais => {
+            Redy = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("notreg.gif", (ais) => {
-            ntrg = loadBimage(ais, 0);
+        new ImageIdentifier("notreg.gif", ais => {
+            Ntrg = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("cgame.gif", (ais) => {
-            cgame = loadBimage(ais, 0);
+        new ImageIdentifier("cgame.gif", ais => {
+            Cgame = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("ccar.gif", (ais) => {
-            ccar = loadBimage(ais, 0);
+        new ImageIdentifier("ccar.gif", ais => {
+            Ccar = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("lanm.gif", (ais) => {
-            lanm = loadBimage(ais, 0);
+        new ImageIdentifier("lanm.gif", ais => {
+            Lanm = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("asu.gif", (ais) => {
-            asu = loadimage(ais);
+        new ImageIdentifier("asu.gif", ais => {
+            Asu = Loadimage(ais);
         }),
-        new ImageIdentifier("asd.gif", (ais) => {
-            asd = loadimage(ais);
+        new ImageIdentifier("asd.gif", ais => {
+            Asd = Loadimage(ais);
         }),
-        new ImageIdentifier("pls.gif", (ais) => {
-            pls = loadBimage(ais, 0);
+        new ImageIdentifier("pls.gif", ais => {
+            Pls = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("sts.gif", (ais) => {
-            sts = loadBimage(ais, 0);
+        new ImageIdentifier("sts.gif", ais => {
+            Sts = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("gmc.gif", (ais) => {
-            gmc = loadBimage(ais, 0);
+        new ImageIdentifier("gmc.gif", ais => {
+            Gmc = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("stg.gif", (ais) => {
-            stg = loadBimage(ais, 0);
+        new ImageIdentifier("stg.gif", ais => {
+            Stg = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("crd.gif", (ais) => {
-            crd = loadBimage(ais, 0);
+        new ImageIdentifier("crd.gif", ais => {
+            Crd = LoadBimage(ais, 0);
         }),
-        new ImageIdentifier("bcl.gif", (ais) => {
-            bcl[0] = loadimage(ais);
+        new ImageIdentifier("bcl.gif", ais => {
+            Bcl[0] = Loadimage(ais);
         }),
-        new ImageIdentifier("bcr.gif", (ais) => {
-            bcr[0] = loadimage(ais);
+        new ImageIdentifier("bcr.gif", ais => {
+            Bcr[0] = Loadimage(ais);
         }),
-        new ImageIdentifier("bc.gif", (ais) => {
-            bc[0] = loadimage(ais);
+        new ImageIdentifier("bc.gif", ais => {
+            Bc[0] = Loadimage(ais);
         }),
-        new ImageIdentifier("pbcl.gif", (ais) => {
-            bcl[1] = loadimage(ais);
+        new ImageIdentifier("pbcl.gif", ais => {
+            Bcl[1] = Loadimage(ais);
         }),
-        new ImageIdentifier("pbcr.gif", (ais) => {
-            bcr[1] = loadimage(ais);
+        new ImageIdentifier("pbcr.gif", ais => {
+            Bcr[1] = Loadimage(ais);
         }),
-        new ImageIdentifier("pbc.gif", (ais) => {
-            bc[1] = loadimage(ais);
+        new ImageIdentifier("pbc.gif", ais => {
+            Bc[1] = Loadimage(ais);
         }),
-        new ImageIdentifier("yac.gif", (ais) => {
-            yac = loadimage(ais);
+        new ImageIdentifier("yac.gif", ais => {
+            Yac = Loadimage(ais);
         }),
-        new ImageIdentifier("ycmc.gif", (ais) => {
-            ycmc = loadimage(ais);
-        }),
+        new ImageIdentifier("ycmc.gif", ais => {
+            Ycmc = Loadimage(ais);
+        })
     };
     
     }

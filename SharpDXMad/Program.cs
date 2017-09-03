@@ -41,6 +41,7 @@ namespace MadGame
             G.D2D = RenderTarget2D;
             G.Factory = Factory2D;
             G.FactoryDW = FactoryDWrite;
+            RenderTarget2D.AntialiasMode = D2D.AntialiasMode.Aliased;
 //            F51.run();
         }
 
@@ -68,10 +69,10 @@ namespace MadGame
             
             if (GameSparker == null)
             {
-                GameSparker = GameSparker.create();
+                GameSparker = GameSparker.Create();
             }
             
-            GameSparker.gameTick();
+            GameSparker.GameTick();
 
             var delay = FrameDelay - (int)Stopwatch.ElapsedMilliseconds;
             if (delay > 0)
@@ -96,23 +97,23 @@ namespace MadGame
         
         private void MouseUp(object sender, MouseEventArgs e)
         {
-            GameSparker.mouseReleased(e.X, e.Y);
+            GameSparker.MouseReleased(e.X, e.Y);
         }
 
         private void MouseDown(object sender, MouseEventArgs e)
         {
-            GameSparker.mousePressed(e.X, e.Y);
+            GameSparker.MousePressed(e.X, e.Y);
         }
 
         private void HandleKeyPress(KeyEventArgs args, bool isDown)
         {
             if (isDown)
             {
-                GameSparker.keyPressed(args.KeyCode);
+                GameSparker.KeyPressed(args.KeyCode);
             }
             else
             {
-                GameSparker.keyReleased(args.KeyCode);
+                GameSparker.KeyReleased(args.KeyCode);
             }
         }
 

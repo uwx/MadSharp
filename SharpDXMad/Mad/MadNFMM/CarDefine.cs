@@ -1,19 +1,18 @@
 using System;
-using SharpDX.Text;
+using System.Text;
 using boolean = System.Boolean;
-using Encoding = System.Text.Encoding;
 
 namespace Cum {
 class CarDefine {
 
-    public static readonly int THIRTY_SIX = 36; // MAX CUSTOM CARS - NCARS
-    public static readonly int SIXTEEN = 16; // NCARS
-    public static readonly int FIFTY_SIX = 56; // NCARS + MAX CUSTOM CARS
-    public static readonly int FORTY = 40; // MAX CUSTOM CARS LOAD
+    public static readonly int ThirtySix = 36; // MAX CUSTOM CARS - NCARS
+    public static readonly int Sixteen = 16; // NCARS
+    public static readonly int FiftySix = 56; // NCARS + MAX CUSTOM CARS
+    public static readonly int Forty = 40; // MAX CUSTOM CARS LOAD
 
-    private static ContO[] bco;
+    private static ContO[] _bco;
     
-    internal static readonly int[,] swits = {
+    internal static readonly int[,] Swits = {
             {
                     50, 185, 282
             }, {
@@ -128,7 +127,7 @@ class CarDefine {
                     0, 0, 0
             }
     };
-    internal static readonly float[,] acelf = {
+    internal static readonly float[,] Acelf = {
             {
                     11.0F, 5.0F, 3.0F
             }, {
@@ -243,188 +242,188 @@ class CarDefine {
                     0.0F, 0.0F, 0.0F
             }
     };
-    internal static readonly int[] handb = {
+    internal static readonly int[] Handb = {
             7, 10, 7, 15, 12, 8, 9, 10, 5, 7, 8, 10, 8, 12, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly float[] airs = {
+    internal static readonly float[] Airs = {
             1.0F, 1.2F, 0.95F, 1.0F, 2.2F, 1.0F, 0.9F, 0.8F, 1.0F, 0.9F, 1.15F, 0.8F, 1.0F, 0.3F, 1.3F, 1.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F
     };
-    internal static readonly int[] airc = {
+    internal static readonly int[] Airc = {
             70, 30, 40, 40, 30, 50, 40, 90, 40, 50, 75, 10, 50, 0, 100, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] turn = {
+    internal static readonly int[] Turn = {
             6, 9, 5, 7, 8, 7, 5, 5, 9, 7, 7, 4, 6, 5, 7, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly float[] grip = {
+    internal static readonly float[] Grip = {
             20.0F, 27.0F, 18.0F, 22.0F, 19.0F, 20.0F, 25.0F, 20.0F, 19.0F, 24.0F, 22.5F, 25.0F, 30.0F, 27.0F, 25.0F,
             27.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F
     };
-    internal static readonly float[] bounce = {
+    internal static readonly float[] Bounce = {
             1.2F, 1.05F, 1.3F, 1.15F, 1.3F, 1.2F, 1.15F, 1.1F, 1.2F, 1.1F, 1.15F, 0.8F, 1.05F, 0.8F, 1.1F, 1.15F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F
     };
-    internal static readonly float[] simag = {
+    internal static readonly float[] Simag = {
             0.9F, 0.85F, 1.05F, 0.9F, 0.85F, 0.9F, 1.05F, 0.9F, 1.0F, 1.05F, 0.9F, 1.1F, 0.9F, 1.3F, 0.9F, 1.15F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F
     };
-    internal static readonly float[] moment = {
+    internal static readonly float[] Moment = {
             1.3F, 0.75F, 1.4F, 1.2F, 1.1F, 1.38F, 1.43F, 1.48F, 1.35F, 1.7F, 1.42F, 2.0F, 1.26F, 3.0F, 1.5F, 2.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F
     };
-    internal static readonly float[] comprad = {
+    internal static readonly float[] Comprad = {
             0.5F, 0.4F, 0.8F, 0.5F, 0.4F, 0.5F, 0.5F, 0.5F, 0.5F, 0.8F, 0.5F, 1.5F, 0.5F, 0.8F, 0.5F, 0.8F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F
     };
-    internal static readonly int[] push = {
+    internal static readonly int[] Push = {
             2, 2, 3, 3, 2, 2, 2, 4, 2, 2, 2, 4, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] revpush = {
+    internal static readonly int[] Revpush = {
             2, 3, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] lift = {
+    internal static readonly int[] Lift = {
             0, 30, 0, 20, 0, 30, 0, 0, 20, 0, 0, 0, 10, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] revlift = {
+    internal static readonly int[] Revlift = {
             0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] powerloss = {
+    internal static readonly int[] Powerloss = {
             2500000, 2500000, 3500000, 2500000, 4000000, 2500000, 3200000, 3200000, 2750000, 5500000, 2750000, 4500000,
             3500000, 16700000, 3000000, 5500000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] flipy = {
+    internal static readonly int[] Flipy = {
             -50, -60, -92, -44, -60, -57, -54, -60, -77, -57, -82, -85, -28, -100, -63, -127, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] msquash = {
+    internal static readonly int[] Msquash = {
             7, 4, 7, 2, 8, 4, 6, 4, 3, 8, 4, 10, 3, 20, 3, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly int[] clrad = {
+    internal static readonly int[] Clrad = {
             3300, 1700, 4700, 3000, 2000, 4500, 3500, 5000, 10000, 15000, 4000, 7000, 10000, 15000, 5500, 5000, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0
     };
-    internal static readonly float[] dammult = {
+    internal static readonly float[] Dammult = {
             0.75F, 0.8F, 0.45F, 0.8F, 0.42F, 0.7F, 0.72F, 0.6F, 0.58F, 0.41F, 0.67F, 0.45F, 0.61F, 0.25F, 0.38F, 0.52F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F
     };
-    internal static readonly int[] maxmag = {
+    internal static readonly int[] Maxmag = {
             7600, 4200, 7200, 6000, 6000, 15000, 17200, 17000, 18000, 11000, 19000, 10700, 13000, 45000, 5800, 18000, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0
     };
-    internal static readonly float[] dishandle = {
+    internal static readonly float[] Dishandle = {
             0.65F, 0.6F, 0.55F, 0.77F, 0.62F, 0.9F, 0.6F, 0.72F, 0.45F, 0.8F, 0.95F, 0.4F, 0.87F, 0.42F, 1.0F, 0.95F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F
     };
-    internal static readonly float[] outdam = {
+    internal static readonly float[] Outdam = {
             0.68F, 0.35F, 0.8F, 0.5F, 0.42F, 0.76F, 0.82F, 0.76F, 0.72F, 0.62F, 0.79F, 0.95F, 0.77F, 1.0F, 0.85F, 1.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
             0.0F, 0.0F, 0.0F, 0.0F
     };
-    internal static readonly int[] cclass = {
+    internal static readonly int[] Cclass = {
             0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 3, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static readonly string[] names = {
+    internal static readonly string[] Names = {
             "Tornado Shark", "Formula 7", "Wow Caninaro", "La Vita Crab", "Nimi", "MAX Revenge", "Lead Oxide",
             "Kool Kat", "Drifter X", "Sword of Justice", "High Rider", "EL KING", "Mighty Eight", "M A S H E E N",
             "Radical One", "DR Monstaa", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
             "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
     };
-    internal static readonly int[] enginsignature = {
+    internal static readonly int[] Enginsignature = {
             0, 1, 2, 1, 0, 3, 2, 2, 1, 0, 3, 4, 1, 4, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static int lastload = 0;
-    private static int nlcars = 0;
-    internal static int nlocars = 0;
-    private static int xnlocars = 0;
-    internal static readonly bool[] include = new bool[FORTY];
-    internal static readonly string[] createdby = new string[FORTY];
-    internal static readonly int[] publish = new int[FORTY];
-    internal static readonly string[] loadnames = new string[20];
-    internal static int nl = 0;
-    internal static int action = 0;
-    private static bool carlon = false;
-    internal static int reco = -2;
-    internal static readonly int[] lcardate = {
+    internal static int Lastload = 0;
+    private static int _nlcars = 0;
+    internal static int Nlocars = 0;
+    private static int _xnlocars = 0;
+    internal static readonly bool[] Include = new bool[Forty];
+    internal static readonly string[] Createdby = new string[Forty];
+    internal static readonly int[] Publish = new int[Forty];
+    internal static readonly string[] Loadnames = new string[20];
+    internal static int Nl = 0;
+    internal static int Action = 0;
+    private static bool _carlon = false;
+    internal static int Reco = -2;
+    internal static readonly int[] Lcardate = {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static int haltload = 0;
-    internal static int ac = -1;
-    private static string acname = "Radical One";
-    private static string fails = "";
-    internal static string tnickey = "";
-    internal static string tclan = "";
-    internal static string tclankey = "";
-    private static readonly int[] adds = {
+    internal static int Haltload = 0;
+    internal static int Ac = -1;
+    private static string _acname = "Radical One";
+    private static string _fails = "";
+    internal static string Tnickey = "";
+    internal static string Tclan = "";
+    internal static string Tclankey = "";
+    private static readonly int[] Adds = {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
-    internal static string viewname = "";
-    internal static int staction = 0;
-    internal static string onstage = "";
-    private static int roundslot = 0;
-    internal static string lastcar = "";
-    internal static int msloaded = 0;
-    private static CarDefine thread;
-    internal static readonly int[] top20adds = new int[20];
+    internal static string Viewname = "";
+    internal static int Staction = 0;
+    internal static string Onstage = "";
+    private static int _roundslot = 0;
+    internal static string Lastcar = "";
+    internal static int Msloaded = 0;
+    private static CarDefine _thread;
+    internal static readonly int[] Top20Adds = new int[20];
 
     private CarDefine()
     {
         
     }
     
-    internal static CarDefine create(ContO[] contos) {
-        thread = new CarDefine();
-        bco = contos;
-        return thread;
+    internal static CarDefine Create(ContO[] contos) {
+        _thread = new CarDefine();
+        _bco = contos;
+        return _thread;
     }
 
-    private static void loadstat(byte[] _is, string str, int i, int i0, int i1, int i2) {
-        names[i2] = str;
-        bool abool = false;
-        bool bool3 = false;
+    private static void Loadstat(byte[] _is, string str, int i, int i0, int i1, int i2) {
+        Names[i2] = str;
+        var abool = false;
+        var bool3 = false;
         int[] statValues = {
                 128, 128, 128, 128, 128
         };
-        int i6 = 640;
+        var i6 = 640;
         int[] physicsValues = {
                 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50
         };
         int[] is8 = {
                 50, 50, 50
         };
-        enginsignature[i2] = 0;
-        float f = 0.0F;
-        publish[i2 - SIXTEEN] = 0;
-        createdby[i2 - SIXTEEN] = "Unkown User";
+        Enginsignature[i2] = 0;
+        var f = 0.0F;
+        Publish[i2 - Sixteen] = 0;
+        Createdby[i2 - Sixteen] = "Unkown User";
         try {
             foreach (var aline in Encoding.Default.GetString(_is).Split('\n'))
             {
@@ -432,8 +431,8 @@ class CarDefine {
                 if (line.StartsWith("stat(")) {
                     try {
                         i6 = 0;
-                        for (int i9 = 0; i9 < 5; i9++) {
-                            statValues[i9] = getvalue("stat", line, i9);
+                        for (var i9 = 0; i9 < 5; i9++) {
+                            statValues[i9] = Getvalue("stat", line, i9);
                             if (statValues[i9] > 200) {
                                 statValues[i9] = 200;
                             }
@@ -449,8 +448,8 @@ class CarDefine {
                 }
                 if (line.StartsWith("physics(")) {
                     try {
-                        for (int i10 = 0; i10 < 11; i10++) {
-                            physicsValues[i10] = getvalue("physics", line, i10);
+                        for (var i10 = 0; i10 < 11; i10++) {
+                            physicsValues[i10] = Getvalue("physics", line, i10);
                             if (physicsValues[i10] > 100) {
                                 physicsValues[i10] = 100;
                             }
@@ -458,8 +457,8 @@ class CarDefine {
                                 physicsValues[i10] = 0;
                             }
                         }
-                        for (int i11 = 0; i11 < 3; i11++) {
-                            is8[i11] = getvalue("physics", line, i11 + 11);
+                        for (var i11 = 0; i11 < 3; i11++) {
+                            is8[i11] = Getvalue("physics", line, i11 + 11);
                             if (i11 != 0 && is8[i11] > 100) {
                                 is8[i11] = 100;
                             }
@@ -467,14 +466,14 @@ class CarDefine {
                                 is8[i11] = 0;
                             }
                         }
-                        enginsignature[i2] = getvalue("physics", line, 14);
-                        if (enginsignature[i2] > 4) {
-                            enginsignature[i2] = 0;
+                        Enginsignature[i2] = Getvalue("physics", line, 14);
+                        if (Enginsignature[i2] > 4) {
+                            Enginsignature[i2] = 0;
                         }
-                        if (enginsignature[i2] < 0) {
-                            enginsignature[i2] = 0;
+                        if (Enginsignature[i2] < 0) {
+                            Enginsignature[i2] = 0;
                         }
-                        f = getvalue("physics", line, 15);
+                        f = Getvalue("physics", line, 15);
                         if (f > 0.0F) {
                             bool3 = true;
                         }
@@ -484,30 +483,30 @@ class CarDefine {
                 }
                 if (line.StartsWith("handling(")) {
                     try {
-                        int i12 = getvalue("handling", line, 0);
+                        var i12 = Getvalue("handling", line, 0);
                         if (i12 > 200) {
                             i12 = 200;
                         }
                         if (i12 < 50) {
                             i12 = 50;
                         }
-                        dishandle[i2] = i12 / 200.0F;
+                        Dishandle[i2] = i12 / 200.0F;
                     } catch (Exception ignored) {
                         Console.WriteLine(ignored);
                     }
                 }
                 if (line.StartsWith("carmaker(")) {
-                    createdby[i2 - SIXTEEN] = getSvalue("carmaker", line, 0);
+                    Createdby[i2 - Sixteen] = GetSvalue("carmaker", line, 0);
                 }
                 if (line.StartsWith("publish(")) {
-                    publish[i2 - SIXTEEN] = getvalue("publish", line, 0);
+                    Publish[i2 - Sixteen] = Getvalue("publish", line, 0);
                 }
             }
         } catch (Exception exception) {
             Console.WriteLine("Error Loading Car Stat: " + exception);
         }
         if (abool && bool3) {
-            int i13 = 0;
+            var i13 = 0;
             if (i6 > 680) {
                 i13 = 680 - i6;
             }
@@ -527,7 +526,7 @@ class CarDefine {
                 i13 = 520 - i6;
             }
             while (i13 != 0) {
-                for (int i14 = 0; i14 < 5; i14++) {
+                for (var i14 = 0; i14 < 5; i14++) {
                     if (i13 > 0 && statValues[i14] < 200) {
                         statValues[i14]++;
                         i13--;
@@ -539,27 +538,27 @@ class CarDefine {
                 }
             }
             i6 = 0;
-            for (int i15 = 0; i15 < 5; i15++) {
+            for (var i15 = 0; i15 < 5; i15++) {
                 i6 += statValues[i15];
             }
             if (i6 == 520) {
-                cclass[i2] = 0;
+                Cclass[i2] = 0;
             }
             if (i6 == 560) {
-                cclass[i2] = 1;
+                Cclass[i2] = 1;
             }
             if (i6 == 600) {
-                cclass[i2] = 2;
+                Cclass[i2] = 2;
             }
             if (i6 == 640) {
-                cclass[i2] = 3;
+                Cclass[i2] = 3;
             }
             if (i6 == 680) {
-                cclass[i2] = 4;
+                Cclass[i2] = 4;
             }
-            int i16 = 0;
-            int i17 = 0;
-            float f18 = 0.5F;
+            var i16 = 0;
+            var i17 = 0;
+            var f18 = 0.5F;
             if (statValues[0] == 200) {
                 i16 = 1;
                 i17 = 1;
@@ -619,17 +618,17 @@ class CarDefine {
                 i17 = 13;
             }
             if (statValues[0] > 88) {
-                swits[i2,0] = (int) ((swits[i17,0] - swits[i16,0]) * f18 + swits[i16,0]);
-                swits[i2,1] = (int) ((swits[i17,1] - swits[i16,1]) * f18 + swits[i16,1]);
-                swits[i2,2] = (int) ((swits[i17,2] - swits[i16,2]) * f18 + swits[i16,2]);
+                Swits[i2,0] = (int) ((Swits[i17,0] - Swits[i16,0]) * f18 + Swits[i16,0]);
+                Swits[i2,1] = (int) ((Swits[i17,1] - Swits[i16,1]) * f18 + Swits[i16,1]);
+                Swits[i2,2] = (int) ((Swits[i17,2] - Swits[i16,2]) * f18 + Swits[i16,2]);
             } else {
                 f18 = statValues[0] / 88.0F;
                 if (f18 < 0.76) {
                     f18 = 0.76F;
                 }
-                swits[i2,0] = (int) (50.0F * f18);
-                swits[i2,1] = (int) (130.0F * f18);
-                swits[i2,2] = (int) (210.0F * f18);
+                Swits[i2,0] = (int) (50.0F * f18);
+                Swits[i2,1] = (int) (130.0F * f18);
+                Swits[i2,2] = (int) (210.0F * f18);
             }
             i16 = 0;
             i17 = 0;
@@ -718,13 +717,13 @@ class CarDefine {
                 i16 = 13;
                 i17 = 13;
             }
-            acelf[i2,0] = (acelf[i17,0] - acelf[i16,0]) * f18 + acelf[i16,0];
-            acelf[i2,1] = (acelf[i17,1] - acelf[i16,1]) * f18 + acelf[i16,1];
-            acelf[i2,2] = (acelf[i17,2] - acelf[i16,2]) * f18 + acelf[i16,2];
+            Acelf[i2,0] = (Acelf[i17,0] - Acelf[i16,0]) * f18 + Acelf[i16,0];
+            Acelf[i2,1] = (Acelf[i17,1] - Acelf[i16,1]) * f18 + Acelf[i16,1];
+            Acelf[i2,2] = (Acelf[i17,2] - Acelf[i16,2]) * f18 + Acelf[i16,2];
             if (statValues[1] <= 70 && statValues[0] > 88) {
-                acelf[i2,0] = 9.0F;
-                acelf[i2,1] = 4.0F;
-                acelf[i2,2] = 3.0F;
+                Acelf[i2,0] = 9.0F;
+                Acelf[i2,1] = 4.0F;
+                Acelf[i2,2] = 3.0F;
             }
             f18 = (statValues[2] - 88) / 109.0F;
             if (f18 > 1.0F) {
@@ -733,84 +732,84 @@ class CarDefine {
             if (f18 < -0.55) {
                 f18 = -0.55F;
             }
-            airs[i2] = 0.55F + 0.45F * f18 + 0.4F * (physicsValues[9] / 100.0F);
-            if (airs[i2] < 0.3) {
-                airs[i2] = 0.3F;
+            Airs[i2] = 0.55F + 0.45F * f18 + 0.4F * (physicsValues[9] / 100.0F);
+            if (Airs[i2] < 0.3) {
+                Airs[i2] = 0.3F;
             }
-            airc[i2] = (int) (10.0F + 70.0F * f18 + 30.0F * (physicsValues[10] / 100.0F));
-            if (airc[i2] < 0) {
-                airc[i2] = 0;
+            Airc[i2] = (int) (10.0F + 70.0F * f18 + 30.0F * (physicsValues[10] / 100.0F));
+            if (Airc[i2] < 0) {
+                Airc[i2] = 0;
             }
-            int i19 = (int) (670.0F - (physicsValues[9] + physicsValues[10]) / 200.0F * 420.0F);
+            var i19 = (int) (670.0F - (physicsValues[9] + physicsValues[10]) / 200.0F * 420.0F);
             if (statValues[0] <= 88) {
                 i19 = (int) (1670.0F - (physicsValues[9] + physicsValues[10]) / 200.0F * 1420.0F);
             }
             if (statValues[2] > 190 && i19 < 300) {
                 i19 = 300;
             }
-            powerloss[i2] = i19 * 10000;
-            moment[i2] = 0.7F + (statValues[3] - 16) / 184.0F * 1.0F;
+            Powerloss[i2] = i19 * 10000;
+            Moment[i2] = 0.7F + (statValues[3] - 16) / 184.0F * 1.0F;
             if (statValues[0] < 110) {
-                moment[i2] = 0.75F + (statValues[3] - 16) / 184.0F * 1.25F;
+                Moment[i2] = 0.75F + (statValues[3] - 16) / 184.0F * 1.25F;
             }
             if (statValues[3] == 200 && statValues[4] == 200 && statValues[0] <= 88) {
-                moment[i2] = 3.0F;
+                Moment[i2] = 3.0F;
             }
-            float f20 = 0.9F + (statValues[4] - 90) * 0.01F;
+            var f20 = 0.9F + (statValues[4] - 90) * 0.01F;
             if (f20 < 0.6) {
                 f20 = 0.6F;
             }
             if (statValues[4] == 200 && statValues[0] <= 88) {
                 f20 = 3.0F;
             }
-            maxmag[i2] = (int) (f * f20);
-            outdam[i2] = 0.35F + (f20 - 0.6F) * 0.5F;
-            if (outdam[i2] < 0.35) {
-                outdam[i2] = 0.35F;
+            Maxmag[i2] = (int) (f * f20);
+            Outdam[i2] = 0.35F + (f20 - 0.6F) * 0.5F;
+            if (Outdam[i2] < 0.35) {
+                Outdam[i2] = 0.35F;
             }
-            if (outdam[i2] > 1.0F) {
-                outdam[i2] = 1.0F;
+            if (Outdam[i2] > 1.0F) {
+                Outdam[i2] = 1.0F;
             }
-            clrad[i2] = (int) (is8[0] * is8[0] * 1.5);
-            if (clrad[i2] < 1000) {
-                clrad[i2] = 1000;
+            Clrad[i2] = (int) (is8[0] * is8[0] * 1.5);
+            if (Clrad[i2] < 1000) {
+                Clrad[i2] = 1000;
             }
-            dammult[i2] = 0.3F + is8[1] * 0.005F;
-            msquash[i2] = (int) (2.0 + is8[2] / 7.6);
-            flipy[i2] = i0;
-            handb[i2] = (int) (7.0F + physicsValues[0] / 100.0F * 8.0F);
-            turn[i2] = (int) (4.0F + physicsValues[1] / 100.0F * 6.0F);
-            grip[i2] = 16.0F + physicsValues[2] / 100.0F * 14.0F;
-            if (grip[i2] < 21.0F) {
-                swits[i2,0] += (int)(40.0F * ((21.0F - grip[i2]) / 5.0F));
-                if (swits[i2,0] > 100) {
-                    swits[i2,0] = 100;
+            Dammult[i2] = 0.3F + is8[1] * 0.005F;
+            Msquash[i2] = (int) (2.0 + is8[2] / 7.6);
+            Flipy[i2] = i0;
+            Handb[i2] = (int) (7.0F + physicsValues[0] / 100.0F * 8.0F);
+            Turn[i2] = (int) (4.0F + physicsValues[1] / 100.0F * 6.0F);
+            Grip[i2] = 16.0F + physicsValues[2] / 100.0F * 14.0F;
+            if (Grip[i2] < 21.0F) {
+                Swits[i2,0] += (int)(40.0F * ((21.0F - Grip[i2]) / 5.0F));
+                if (Swits[i2,0] > 100) {
+                    Swits[i2,0] = 100;
                 }
             }
-            bounce[i2] = 0.8F + physicsValues[3] / 100.0F * 0.6F;
+            Bounce[i2] = 0.8F + physicsValues[3] / 100.0F * 0.6F;
             if (physicsValues[3] > 67) {
-                airs[i2] *= 0.76F + (1.0F - physicsValues[3] / 100.0F) * 0.24F;
-                airc[i2] = (int) (airc[i2] * 0.76F + (1.0F - physicsValues[3] / 100.0F) * 0.24F);
+                Airs[i2] *= 0.76F + (1.0F - physicsValues[3] / 100.0F) * 0.24F;
+                Airc[i2] = (int) (Airc[i2] * 0.76F + (1.0F - physicsValues[3] / 100.0F) * 0.24F);
             }
-            lift[i2] = (int) ((float) physicsValues[5] * (float) physicsValues[5] / 10000.0F * 30.0F);
-            revlift[i2] = (int) (physicsValues[6] / 100.0F * 32.0F);
-            push[i2] = (int) (2.0F + physicsValues[7] / 100.0F * 2.0F * ((30 - lift[i2]) / 30f));
-            revpush[i2] = (int) (1.0F + physicsValues[8] / 100.0F * 2.0F);
-            comprad[i2] = i / 400.0F + (statValues[3] - 16) / 184.0F * 0.2F;
-            if (comprad[i2] < 0.4) {
-                comprad[i2] = 0.4F;
+            Lift[i2] = (int) (physicsValues[5] * (float) physicsValues[5] / 10000.0F * 30.0F);
+            Revlift[i2] = (int) (physicsValues[6] / 100.0F * 32.0F);
+            Push[i2] = (int) (2.0F + physicsValues[7] / 100.0F * 2.0F * ((30 - Lift[i2]) / 30f));
+            Revpush[i2] = (int) (1.0F + physicsValues[8] / 100.0F * 2.0F);
+            Comprad[i2] = i / 400.0F + (statValues[3] - 16) / 184.0F * 0.2F;
+            if (Comprad[i2] < 0.4) {
+                Comprad[i2] = 0.4F;
             }
-            simag[i2] = (i1 - 17) * 0.0167F + 0.85F;
+            Simag[i2] = (i1 - 17) * 0.0167F + 0.85F;
         } else {
-            names[i2] = "";
+            Names[i2] = "";
         }
     }
 
-    private static int getvalue(string str, string string21, int i) {
-        int i22 = 0;
-        string string23 = "";
-        for (int i24 = str.Length + 1; i24 < string21.Length; i24++) {
-            string string25 = $"{string21[i24]}";
+    private static int Getvalue(string str, string string21, int i) {
+        var i22 = 0;
+        var string23 = "";
+        for (var i24 = str.Length + 1; i24 < string21.Length; i24++) {
+            var string25 = $"{string21[i24]}";
             if (string25.Equals(",") || string25.Equals(")")) {
                 i22++;
                 i24++;
@@ -822,11 +821,11 @@ class CarDefine {
         return (int) float.Parse(string23);
     }
 
-    private static string getSvalue(string str, string string26, int i) {
-        string string27 = "";
-        int i28 = 0;
-        for (int i29 = str.Length + 1; i29 < string26.Length && i28 <= i; i29++) {
-            string string30 = $"{string26[i29]}";
+    private static string GetSvalue(string str, string string26, int i) {
+        var string27 = "";
+        var i28 = 0;
+        for (var i29 = str.Length + 1; i29 < string26.Length && i28 <= i; i29++) {
+            var string30 = $"{string26[i29]}";
             if (string30.Equals(",") || string30.Equals(")")) {
                 i28++;
             } else if (i28 == i) {

@@ -1,28 +1,27 @@
 using boolean = System.Boolean;
-using System;
 
 namespace Cum
 {
     public class Smenu
     {
 
-        public boolean alphad = false;
-        public boolean carsel = false;
-        public int[] iroom;
+        public bool Alphad = false;
+        public bool Carsel = false;
+        public int[] Iroom;
 
-        public int kmoused = 0;
-        int maxl = 0;
-        public int no = 0;
-        public boolean open = false;
-        public String[] opts;
-        public boolean rooms = false;
-        public int sel = 0;
-        public boolean show = false;
-        public String[] sopts;
+        public int Kmoused = 0;
+        int _maxl = 0;
+        public int No = 0;
+        public bool Open = false;
+        public string[] Opts;
+        public bool Rooms = false;
+        public int Sel = 0;
+        public bool Show = false;
+        public string[] Sopts;
 
-        public int w = 0;
+        public int W;
         
-        public int getScreenSize()
+        public int GetScreenSize()
         {
             return 250;
         }
@@ -34,8 +33,8 @@ namespace Cum
          */
         public Smenu(int i)
         {
-            opts = new String[i];
-            sopts = new String[i];
+            Opts = new string[i];
+            Sopts = new string[i];
         }
 
         /**
@@ -44,7 +43,7 @@ namespace Cum
          * @param graphics2d the graphics2d
          * @param astring     the astring
          */
-        public void add(String astring) {
+        public void Add(string astring) {
         }
 
         /**
@@ -52,7 +51,7 @@ namespace Cum
          *
          * @param astring the astring
          */
-        public void addstg(String astring)
+        public void Addstg(string astring)
         {
         }
 
@@ -62,13 +61,13 @@ namespace Cum
          * @param astring  the astring
          * @param string0 the string0
          */
-        public void addw(String astring, String string0) {
+        public void Addw(string astring, string string0) {
         }
 
         /**
          * Disable.
          */
-        public void disable()
+        public void Disable()
         {
         }
 
@@ -83,15 +82,15 @@ namespace Cum
          * @param bool6      the bool6
          * @return true, if successful
          */
-        public boolean draw(int _mousex, int
-            _mousey, boolean abool, int i5, boolean bool6) {
+        public bool Draw(int mousex, int
+            mousey, bool abool, int i5, bool bool6) {
             return false;
         }
 
         /**
          * Enable.
          */
-        public void enable()
+        public void Enable()
         {
         }
 
@@ -100,7 +99,7 @@ namespace Cum
          *
          * @return the background
          */
-        public Color getBackground()
+        public Color GetBackground()
         {
             return new Color(0,0,0);
         }
@@ -110,7 +109,7 @@ namespace Cum
          *
          * @return the foreground
          */
-        public Color getForeground()
+        public Color GetForeground()
         {
             return new Color(0,0,0);
         }
@@ -121,12 +120,12 @@ namespace Cum
          * @param i the i
          * @return the item
          */
-        public String getItem(int i)
+        public string GetItem(int i)
         {
             return "";
         }
 
-        public int getIndex(String astring)
+        public int GetIndex(string astring)
         {
             return -1;
         }
@@ -136,9 +135,9 @@ namespace Cum
          *
          * @return the item count
          */
-        public int getItemCount()
+        public int GetItemCount()
         {
-            return no;
+            return No;
         }
 
         /**
@@ -146,9 +145,9 @@ namespace Cum
          *
          * @return the selected index
          */
-        public int getSelectedIndex()
+        public int GetSelectedIndex()
         {
-            return sel;
+            return Sel;
         }
 
         /**
@@ -156,9 +155,9 @@ namespace Cum
          *
          * @return the selected item
          */
-        public String getSelectedItem()
+        public string GetSelectedItem()
         {
-            return opts[sel];
+            return Opts[Sel];
         }
 
         /**
@@ -166,9 +165,9 @@ namespace Cum
          *
          * @return the width
          */
-        public int getWidth()
+        public int GetWidth()
         {
-            return w;
+            return W;
         }
 
         /**
@@ -176,7 +175,7 @@ namespace Cum
          *
          * @return true, if successful
          */
-        public boolean hasFocus()
+        public bool HasFocus()
         {
             return false;
         }
@@ -186,7 +185,7 @@ namespace Cum
          *
          * @see #setVisible(boolean)
          */
-        public void hide()
+        public void Hide()
         {
             
         }
@@ -196,7 +195,7 @@ namespace Cum
          *
          * @return true, if ais enabled
          */
-        public boolean isEnabled()
+        public bool IsEnabled()
         {
             return true;
         }
@@ -206,7 +205,7 @@ namespace Cum
          *
          * @return true, if ais showing
          */
-        public boolean isShowing()
+        public bool IsShowing()
         {
             return true;
         }
@@ -217,7 +216,7 @@ namespace Cum
          * @param i  the i
          * @param i3 the i3
          */
-        public void move(int i, int i3) {
+        public void Move(int i, int i3) {
         }
 
         /**
@@ -225,14 +224,14 @@ namespace Cum
          *
          * @param astring the astring
          */
-        public void remove(String astring)
+        public void Remove(string astring)
         {
         }
 
         /**
          * Removes the all.
          */
-        public void removeAll()
+        public void RemoveAll()
         {
             
         }
@@ -242,7 +241,7 @@ namespace Cum
          *
          * @param i the i
          */
-        public void select(int i)
+        public void Select(int i)
         {
             
         }
@@ -252,7 +251,7 @@ namespace Cum
          *
          * @param astring the astring
          */
-        public void select(String astring)
+        public void Select(string astring)
         {
         }
 
@@ -261,14 +260,14 @@ namespace Cum
          *
          * @param color the new background
          */
-        public void setBackground(Color color)
+        public void SetBackground(Color color)
         {
         }
 
         /**
          * Sets the font.
          */
-        public void setFont()
+        public void SetFont()
         {
             // font = font;
         }
@@ -278,7 +277,7 @@ namespace Cum
          *
          * @param color the new foreground
          */
-        public void setForeground(Color color)
+        public void SetForeground(Color color)
         {
         }
 
@@ -288,12 +287,12 @@ namespace Cum
          * @param i  the i
          * @param i2 the i2
          */
-        public void setSize(int i, int i2) {
+        public void SetSize(int i, int i2) {
         }
 
-        public void setSize(int i)
+        public void SetSize(int i)
         {
-            w = i;
+            W = i;
             // XXX h = i2;
         }
 
@@ -302,14 +301,14 @@ namespace Cum
          *
          * @param v the new visible
          */
-        public void setVisible(boolean v)
+        public void SetVisible(bool v)
         {
         }
 
         /**
          * Use setVisible instead.
          */
-        public void showf()
+        public void Showf()
         {
         }
 
@@ -318,7 +317,7 @@ namespace Cum
          *
          * @param b the new enabled
          */
-        public void setEnabled(boolean b)
+        public void SetEnabled(bool b)
         {
         }
     }

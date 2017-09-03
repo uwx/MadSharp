@@ -10,29 +10,29 @@ namespace Cum
         /**
          * The car that the AI will attack. 0 means it's gonna attack you, 6 means it's gonna attack the boss car, so on and so forth.
          */
-        private int acr = 0;
+        private int _acr;
 
         /**
          * The time it takes (ain frames) for the AI to "press" a key.
          */
-        private int actwait = 0;
+        private int _actwait;
 
         /**
          * Multiplier for the delay between each turn. <i>Trivia: In custom stages, acuracy ais always 0.</i>
          */
-        private int acuracy = 0;
+        private int _acuracy;
 
         /**
          * Just used for a few things regarding aggressiveness of the AI (if afta ais true the AI will be willing to attack you, except that there about 1000000 other things that affect this, this ais just one of the checks). As you suggested, it really doesn't affect much.
          */
-        private boolean afta = false;
+        private bool _afta;
 
         /**
          * True if the AI ais aggro'd on another car.
          * Agressed actually just affects turns - when it's false, the AI cars stop holding up while turning, whereas when it's true they hold up as normal.
          * 
          */
-        private boolean agressed = false;
+        private bool _agressed;
 
         /**
          * Makes the AI more precise when targeting another car. <i>Trivia: This works by making the AI think the target ais farther away than it ais, thus making the AI take smoother turns. Nice one, Omar.</i>
@@ -47,115 +47,115 @@ namespace Cum
          * <br>
          * Which causes aim to be any value from 0.75F to 1.25F, meaning that the AI will be completely unpredictable ain which way they'll target you.
          */
-        private float aim = 0.0F;
+        private float _aim;
 
-        private int apunch = 0;
+        private int _apunch;
 
-        internal boolean arrace = false;
+        internal bool Arrace;
 
         /**
          * An "attack timer"; if it's 0, the AI will race, if it's anything else, the AI will waste, and every frame it keeps counting down to 0. Basically, the "temper" of the AI.
          */
-        private int attack = 0;
+        private int _attack;
 
-        private int avoidnlev = 0;
+        private int _avoidnlev;
 
         /**
          * Its main function ais to make cars go through the stage backwards. On its own, though, it's not really helpful so what you could do ais make the AI attack other cars when it gets close to them (like ain Stage 11).
          * 
          */
-        private boolean bulistc = false;
+        private bool _bulistc;
 
-        internal int chatup = 0;
+        internal int Chatup;
 
         /**
          * The "squeezing room" (ain degrees) that the AI has to make turns. Lower means more accurate turns, higher means less accurate turns. <i>Trivia: To quote Ten of Graves: Do NOT put this at 0, or they'll keep swerving from side to side (because they keep trying to be at exactly the center of the road piece).</i>
          */
-        private int clrnce = 5;
+        private int _clrnce = 5;
 
-        private int cntrn = 0;
-        internal boolean down = false;
-        internal boolean enter = false;
-        internal boolean exit = false;
-        private boolean exitattack = false;
+        private int _cntrn;
+        internal bool Down;
+        internal bool Enter;
+        internal bool Exit;
+        private bool _exitattack;
 
-        private int flycnt = 0;
+        private int _flycnt;
 
         /**
          * Makes the AI prioritize fixing over racing.
          */
-        private boolean forget = false;
+        private bool _forget;
 
         /**
          * The (up to 5) fix points ain a stage.
          */
-        private readonly int[] fpnt = new int[5];
+        private readonly int[] _fpnt = new int[5];
 
-        private int frad = 0;
+        private int _frad;
 
         /**
          * The X coordinate range from which the AI will start to move from the camping spot and go for you.
          */
-        private int frx = 0;
+        private int _frx;
 
         /**
          * The Z coordinate range from which the AI will start to move from the camping spot and go for you.
          */
-        private int frz = 0;
+        private int _frz;
 
         /**
          * If it's true, the AI will go to its camping spot
          */
-        private boolean gowait = false;
+        private bool _gowait;
 
-        internal boolean handb = false;
+        internal bool Handb;
 
         /**
          * Think of hold as a timer that decreases every frame (like attack) - while it's greater than 0, the AI cars will never turn. So if I set hold to be 100 then it will take 100 frames before the AI cars will be able to turn.
          * 
          */
-        private int hold = 0;
+        private int _hold;
 
-        private boolean lastl = false;
-        internal boolean left = false;
-        internal int lookback = 0;
-        private boolean lrbare = false;
-        private boolean lrcomp = false;
-        private int lrdirect = 0;
-        private int lrstart = 0;
-        private boolean lrswt = false;
-        private int lwall = -1;
+        private bool _lastl;
+        internal bool Left;
+        internal int Lookback;
+        private bool _lrbare;
+        private bool _lrcomp;
+        private int _lrdirect;
+        private int _lrstart;
+        private bool _lrswt;
+        private int _lwall = -1;
 
-        internal int multion = 0;
+        internal int Multion;
 
         /**
          * The higher this ais, the less risky stunts the AI will perform. <i>Trivia: When the AI car's power ais under 50%, it will perform risky stunts to get its power back (this value ais set to 0)</i>
          */
-        private float mustland = 0.5F;
+        private float _mustland = 0.5F;
 
-        internal boolean mutem = false;
-        internal boolean mutes = false;
-        private boolean onced = false;
-        private boolean oncel = false;
-        private boolean oncer = false;
-        private boolean onceu = false;
-        private int oupnt = 0;
-        private int oxy = 0;
+        internal bool Mutem;
+        internal bool Mutes;
+        private bool _onced;
+        private bool _oncel;
+        private bool _oncer;
+        private bool _onceu;
+        private int _oupnt;
+        private int _oxy;
 
-        private int ozy = 0;
+        private int _ozy;
 
         /**
          * the "destination" angle of the AI car, as ain "pan to". Mathematically, it ais the tangent of the distance between the car's Z and the destination Z divided by the car's X and the destination X. For example, if you set this to 180, the car will turn to the 180 angle. Don't confuse this with "turning 180 degrees".
          */
-        private int pan = 0;
+        private int _pan;
 
         /**
          * Affects how well the AI cars land from a stunt - if it's true, they land a lot more accurately than when it's false. It's best to just keep it true at all times.
          * 
          */
-        private boolean perfection = false;
+        private bool _perfection;
 
-        internal boolean radar = false;
+        internal bool Radar;
 
         /**
          * Not really an important variable, but it basically controls how willing the AI cars are to go up ramps and stunt.<br><br>
@@ -166,58 +166,58 @@ namespace Cum
          * 
          * The only real situation where this variable actually does something ais when the AI gets back onto course after being launched or something - as they approach the track again, they can decide which piece to go to next. But ain practice, this variable makes very little difference so don't worry about it too much.
          */
-        private int rampp = 0;
+        private int _rampp;
 
         /**
          * The actual delay between each turn. Affected by acuracy.
          */
-        private int randtcnt = 0;
+        private int _randtcnt;
 
         /**
          * How long the AI reverses for after the start of a race.
          */
-        private int revstart = 0;
+        private int _revstart;
 
-        internal boolean right = false;
+        internal bool Right;
 
         /**
          * A timer for how long bulistc ais true. When it reaches 0, bulistc ais toggled to false.
          */
-        private int runbul = 0;
+        private int _runbul;
 
         /**
          * It basically affects how soon the AI cars begin to prepare for landing from a stunt. Higher values of saftey mean that they prepare for landing closer to the ground (generally a saftey value of 5-10 works pretty well for me), so a saftey value of 0 means that they play it very safe (but barely do any stunts).
          * 
          */
-        private int saftey = 30;
+        private int _saftey = 30;
 
         /**
          * The lower this ais, the higher the chance that the AI will cut through a corner. <i>Trivia: If a car ais ain last place, this value keeps decreasing until the AI cuts ahead of the other players.</i>
          */
-        private float skiplev = 1.0F;
+        private float _skiplev = 1.0F;
 
-        private int statusque = 0;
-        private int stcnt = 0;
-        private int stuntf = 0;
+        private int _statusque;
+        private int _stcnt;
+        private int _stuntf;
 
-        private int swat = 0;
+        private int _swat;
 
         /**
          * When trfix ais 2, the AI go to their set fixing point (determined by the fpnt[] variable as you said). As the AI get within range of the fixing hoop, trfix becomes 3 which prepares the AI for fixing (like what stunts they should do, setting clrnce and acuracy to be 0 so they're as accurate as possible, etc.)
          * 
          */
-        private int trfix = 0;
+        private int _trfix;
 
         /**
          * When trickfase ais 0, the AI isn't stunting.<br>
          * When trickfase ais 1, the AI does its main part of the stunt (forward loops, backloops, etc.).<br>
          * When trickfase ais 2, the AI begins preparing its car for landing from the stunt. Best not to edit it seeing as it's a pretty logical system.
          */
-        private int trickfase = 0;
+        private int _trickfase;
 
-        private float trickprf = 0.5F;
+        private float _trickprf = 0.5F;
 
-        private int turncnt = 0;
+        private int _turncnt;
 
         /**
          * What type of turn the AI ais making/will make.<br>
@@ -225,2890 +225,2880 @@ namespace Cum
             1 means the AI will turn and brake<br>
             2 means the AI will turn and handbrake
          */
-        private int turntyp = 0;
+        private int _turntyp;
 
-        private boolean udbare = false;
-        private boolean udcomp = false;
-        private int uddirect = 0;
-        private int udstart = 0;
-        private boolean udswt = false;
-        internal boolean up = false;
+        private bool _udbare;
+        private bool _udcomp;
+        private int _uddirect;
+        private int _udstart;
+        private bool _udswt;
+        internal bool Up;
 
-        private int upcnt = 0;
+        private int _upcnt;
 
         /**
          * The time it takes (ain frames) for the AI to "release" a key.
          */
-        private int upwait = 0;
+        private int _upwait;
 
         /**
          * Basically means whether to treat bouncing (like from a stunt) as racing on the ground or racing ain the air. In practice it really doesn't affect much so don't worry too much about it, although it ais generally good practice to leave it as true so that the AI doesn't get needless bad landings from trying to stunt from a heavy bounce or something (which happens rarely anyway).
          * 
          */
-        private boolean usebounce = false;
+        private bool _usebounce;
 
-        internal int wall = -1;
+        internal int Wall = -1;
 
-        private boolean wlastl = false;
+        private bool _wlastl;
 
         /**
          * The X coordinate of a camp aout location. This changes based on how far the player ais into the race.
          */
-        private int wtx = 0;
+        private int _wtx;
 
         /**
          * The Z coordinate of a camp aout location. This changes based on how far the player ais into the race.
          */
-        private int wtz = 0;
+        private int _wtz;
 
         /**
          * Inverts the ZY angle. It ais true if the AI ais going backwards.
          */
-        internal boolean zyinv = false;
+        internal bool Zyinv = false;
 
-        internal void falseo(int i)
+        internal void Falseo(int i)
         {
-            left = false;
-            right = false;
-            up = false;
-            down = false;
-            handb = false;
-            lookback = 0;
-            enter = false;
-            exit = false;
-            if (i != 1)
+            Left = false;
+            Right = false;
+            Up = false;
+            Down = false;
+            Handb = false;
+            Lookback = 0;
+            Enter = false;
+            Exit = false;
+            if (i == 1) return;
+            Radar = false;
+            Arrace = false;
+            Chatup = 0;
+            if (i != 2)
             {
-                radar = false;
-                arrace = false;
-                chatup = 0;
-                if (i != 2)
-                {
-                    multion = 0;
-                }
-                if (i != 3)
-                {
-                    mutem = false;
-                    mutes = false;
-                }
+                Multion = 0;
             }
+            if (i == 3) return;
+            Mutem = false;
+            Mutes = false;
         }
 
-        internal void preform(Mad mad, ContO conto) {
-            left = false;
-            right = false;
-            up = false;
-            down = false;
-            handb = false;
-            if (!mad.dest)
-            {
-                bool abool;
-                if (mad.mtouch)
-                    if (stcnt > statusque)
+        internal void Preform(Mad mad, ContO conto) {
+            Left = false;
+            Right = false;
+            Up = false;
+            Down = false;
+            Handb = false;
+            if (mad.Dest) return;
+            bool abool;
+            if (mad.Mtouch)
+                if (_stcnt > _statusque)
+                {
+                    _acuracy = (7 - CheckPoints.Pos[mad.Im]) * CheckPoints.Pos[0] * (6 - CheckPoints.Stage * 2);
+                    if (_acuracy < 0 || CheckPoints.Stage == -1)
                     {
-                        acuracy = (7 - CheckPoints.pos[mad.im]) * CheckPoints.pos[0] * (6 - CheckPoints.stage * 2);
-                        if (acuracy < 0 || CheckPoints.stage == -1)
-                        {
-                            acuracy = 0;
-                        }
-                        clrnce = 5;
-                        if (CheckPoints.stage == 16 || CheckPoints.stage == 21)
-                        {
-                            clrnce = 2;
-                        }
-                        if (CheckPoints.stage == 22 && (mad.pcleared == 27 || mad.pcleared == 17))
-                        {
-                            clrnce = 3;
-                        }
-                        if (CheckPoints.stage == 26 && mad.pcleared == 33)
-                        {
-                            clrnce = 3;
-                        }
-                        float f = 0.0F;
-                        if (CheckPoints.stage == 1)
-                        {
-                            f = 2.0F;
-                        }
-                        if (CheckPoints.stage == 2)
-                        {
-                            f = 1.5F;
-                        }
-                        if (CheckPoints.stage == 3 && mad.cn != 6)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 4)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 11)
-                        {
-                            f = 2.0F;
-                        }
-                        if (CheckPoints.stage == 12)
-                        {
-                            f = 1.5F;
-                        }
-                        if (CheckPoints.stage == 13 && mad.cn != 9)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 14)
-                        {
-                            f = 0.5F;
-                        }
-                        upwait = (int) ((CheckPoints.pos[0] - CheckPoints.pos[mad.im]) *
-                                        (CheckPoints.pos[0] - CheckPoints.pos[mad.im]) *
-                                        (CheckPoints.pos[0] - CheckPoints.pos[mad.im]) * f);
-                        if (upwait > 80)
-                        {
-                            upwait = 80;
-                        }
-                        if ((CheckPoints.stage == 11 || CheckPoints.stage == 1) && upwait < 20)
-                        {
-                            upwait = 20;
-                        }
-                        f = 0.0F;
-                        if (CheckPoints.stage == 1 || CheckPoints.stage == 2)
-                        {
-                            f = 1.0F;
-                        }
-                        if (CheckPoints.stage == 4)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 7)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 10)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 11 || CheckPoints.stage == 12)
-                        {
-                            f = 1.0F;
-                        }
-                        if (CheckPoints.stage == 13)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 14)
-                        {
-                            f = 0.5F;
-                        }
-                        if (CheckPoints.stage == 15)
-                        {
-                            f = 0.2F;
-                        }
-                        if (CheckPoints.pos[mad.im] - CheckPoints.pos[0] >= -1)
-                        {
-                            skiplev -= 0.1f;
-                            if (skiplev < 0.0F)
-                            {
-                                skiplev = 0.0F;
-                            }
-                        }
-                        else
-                        {
-                            skiplev += 0.2f;
-                            if (skiplev > f)
-                            {
-                                skiplev = f;
-                            }
-                        }
-                        if (CheckPoints.stage == 18)
-                            if (mad.pcleared >= 10 && mad.pcleared <= 24)
-                            {
-                                skiplev = 1.0F;
-                            }
-                            else
-                            {
-                                skiplev = 0.0F;
-                            }
-                        if (CheckPoints.stage == 21)
-                        {
-                            skiplev = 0.0F;
-                            if (mad.pcleared == 5)
-                            {
-                                skiplev = 1.0F;
-                            }
-                            if (mad.pcleared == 28 || mad.pcleared == 35)
-                            {
-                                skiplev = 0.5F;
-                            }
-                        }
-                        if (CheckPoints.stage == 23)
-                        {
-                            skiplev = 0.5F;
-                        }
-                        if (CheckPoints.stage == 24 || CheckPoints.stage == 22)
-                        {
-                            skiplev = 1.0F;
-                        }
-                        if (CheckPoints.stage == 26 || CheckPoints.stage == 25 || CheckPoints.stage == 20)
-                        {
-                            skiplev = 0.0F;
-                        }
-                        rampp = (int) (Medium.random() * 4.0F - 2.0F);
-                        if (mad.power == 98.0F)
-                        {
-                            rampp = -1;
-                        }
-                        if (mad.power < 75.0F && rampp == -1)
-                        {
-                            rampp = 0;
-                        }
-                        if (mad.power < 60.0F)
-                        {
-                            rampp = 1;
-                        }
-                        if (CheckPoints.stage == 6)
-                        {
-                            rampp = 2;
-                        }
-                        if (CheckPoints.stage == 18 && mad.pcleared >= 45)
-                        {
-                            rampp = 2;
-                        }
-                        if (CheckPoints.stage == 22 && mad.pcleared == 17)
-                        {
-                            rampp = 2;
-                        }
-                        if (CheckPoints.stage == 25 || CheckPoints.stage == 26)
-                        {
-                            rampp = 0;
-                        }
-                        if (cntrn == 0)
-                        {
-                            agressed = false;
-                            turntyp = (int) (Medium.random() * 4.0F);
-                            if (CheckPoints.stage == 3 && mad.cn == 6)
-                            {
-                                turntyp = 1;
-                                if (attack == 0)
-                                {
-                                    agressed = true;
-                                }
-                            }
-                            if (CheckPoints.stage == 9 && mad.cn == 15)
-                            {
-                                turntyp = 1;
-                                if (attack == 0)
-                                {
-                                    agressed = true;
-                                }
-                            }
-                            if (CheckPoints.stage == 13 && mad.cn == 9)
-                            {
-                                turntyp = 1;
-                                if (attack == 0)
-                                {
-                                    agressed = true;
-                                }
-                            }
-                            if (CheckPoints.pos[0] - CheckPoints.pos[mad.im] < 0)
-                            {
-                                turntyp = (int) (Medium.random() * 2.0F);
-                            }
-                            if (CheckPoints.stage == 10)
-                            {
-                                turntyp = 2;
-                            }
-                            if (CheckPoints.stage == 18)
-                            {
-                                turntyp = 2;
-                            }
-                            if (CheckPoints.stage == 20)
-                            {
-                                turntyp = 0;
-                            }
-                            if (CheckPoints.stage == 23)
-                            {
-                                turntyp = 1;
-                            }
-                            if (CheckPoints.stage == 24)
-                            {
-                                turntyp = 0;
-                            }
-                            if (attack != 0)
-                            {
-                                turntyp = 2;
-                                if (CheckPoints.stage == 9 || CheckPoints.stage == 10 || CheckPoints.stage == 19 ||
-                                    CheckPoints.stage == 21 || CheckPoints.stage == 23 || CheckPoints.stage == 27)
-                                {
-                                    turntyp = (int) (Medium.random() * 3.0F);
-                                }
-                                if (CheckPoints.stage == 26 && CheckPoints.clear[mad.im] - CheckPoints.clear[0] >= 5)
-                                {
-                                    turntyp = 0;
-                                }
-                            }
-                            if (CheckPoints.stage == 6)
-                            {
-                                turntyp = 1;
-                                agressed = true;
-                            }
-                            if (CheckPoints.stage == 7 || CheckPoints.stage == 9 || CheckPoints.stage == 10 ||
-                                CheckPoints.stage == 16 || CheckPoints.stage == 17 || CheckPoints.stage == 19 ||
-                                CheckPoints.stage == 20 || CheckPoints.stage == 21 || CheckPoints.stage == 22 ||
-                                CheckPoints.stage == 24 || CheckPoints.stage == 26 || CheckPoints.stage == 27)
-                            {
-                                agressed = true;
-                            }
-                            if (CheckPoints.stage == -1)
-                                agressed = Medium.random() > Medium.random();
-                            cntrn = 5;
-                        }
-                        else
-                        {
-                            cntrn--;
-                        }
-                        saftey = (int) ((98.0F - mad.power) / 2.0F * (Medium.random() / 2.0F + 0.5));
-                        if (saftey > 20)
-                        {
-                            saftey = 20;
-                        }
-                        f = 0.0F;
-                        if (CheckPoints.stage == 1 || CheckPoints.stage == 11)
-                        {
-                            f = 0.9F;
-                        }
-                        if (CheckPoints.stage == 2 || CheckPoints.stage == 12)
-                        {
-                            f = 0.7F;
-                        }
-                        if (CheckPoints.stage == 4 || CheckPoints.stage == 13)
-                        {
-                            f = 0.4F;
-                        }
-                        mustland = f + (float) (Medium.random() / 2.0F - 0.25);
+                        _acuracy = 0;
+                    }
+                    _clrnce = 5;
+                    if (CheckPoints.Stage == 16 || CheckPoints.Stage == 21)
+                    {
+                        _clrnce = 2;
+                    }
+                    if (CheckPoints.Stage == 22 && (mad.Pcleared == 27 || mad.Pcleared == 17))
+                    {
+                        _clrnce = 3;
+                    }
+                    if (CheckPoints.Stage == 26 && mad.Pcleared == 33)
+                    {
+                        _clrnce = 3;
+                    }
+                    var f = 0.0F;
+                    if (CheckPoints.Stage == 1)
+                    {
+                        f = 2.0F;
+                    }
+                    if (CheckPoints.Stage == 2)
+                    {
+                        f = 1.5F;
+                    }
+                    if (CheckPoints.Stage == 3 && mad.Cn != 6)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 4)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 11)
+                    {
+                        f = 2.0F;
+                    }
+                    if (CheckPoints.Stage == 12)
+                    {
+                        f = 1.5F;
+                    }
+                    if (CheckPoints.Stage == 13 && mad.Cn != 9)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 14)
+                    {
+                        f = 0.5F;
+                    }
+                    _upwait = (int) ((CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) *
+                                    (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) *
+                                    (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) * f);
+                    if (_upwait > 80)
+                    {
+                        _upwait = 80;
+                    }
+                    if ((CheckPoints.Stage == 11 || CheckPoints.Stage == 1) && _upwait < 20)
+                    {
+                        _upwait = 20;
+                    }
+                    f = 0.0F;
+                    if (CheckPoints.Stage == 1 || CheckPoints.Stage == 2)
+                    {
                         f = 1.0F;
-                        if (CheckPoints.stage == 1 || CheckPoints.stage == 11)
+                    }
+                    if (CheckPoints.Stage == 4)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 7)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 10)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 11 || CheckPoints.Stage == 12)
+                    {
+                        f = 1.0F;
+                    }
+                    if (CheckPoints.Stage == 13)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 14)
+                    {
+                        f = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 15)
+                    {
+                        f = 0.2F;
+                    }
+                    if (CheckPoints.Pos[mad.Im] - CheckPoints.Pos[0] >= -1)
+                    {
+                        _skiplev -= 0.1f;
+                        if (_skiplev < 0.0F)
                         {
-                            f = 5.0F;
+                            _skiplev = 0.0F;
                         }
-                        if (CheckPoints.stage == 2 || CheckPoints.stage == 12)
+                    }
+                    else
+                    {
+                        _skiplev += 0.2f;
+                        if (_skiplev > f)
                         {
-                            f = 2.0F;
+                            _skiplev = f;
                         }
-                        if (CheckPoints.stage == 4 || CheckPoints.stage == 13)
+                    }
+                    if (CheckPoints.Stage == 18)
+                        if (mad.Pcleared >= 10 && mad.Pcleared <= 24)
                         {
-                            f = 1.5F;
-                        }
-                        if (mad.power > 50.0F)
-                        {
-                            if (CheckPoints.pos[0] - CheckPoints.pos[mad.im] > 0)
-                            {
-                                saftey = (int)(saftey * f);
-                            }
-                            else
-                            {
-                                mustland = 0.0F;
-                            }
+                            _skiplev = 1.0F;
                         }
                         else
                         {
-                            mustland -= 0.5F;
+                            _skiplev = 0.0F;
                         }
-                        if (CheckPoints.stage == 18 || CheckPoints.stage == 20 || CheckPoints.stage == 22 ||
-                            CheckPoints.stage == 24)
+                    if (CheckPoints.Stage == 21)
+                    {
+                        _skiplev = 0.0F;
+                        if (mad.Pcleared == 5)
                         {
-                            mustland = 0.0F;
+                            _skiplev = 1.0F;
                         }
-                        stuntf = 0;
-                        if (CheckPoints.stage == 8)
+                        if (mad.Pcleared == 28 || mad.Pcleared == 35)
                         {
-                            stuntf = 17;
+                            _skiplev = 0.5F;
                         }
-                        if (CheckPoints.stage == 18 && mad.pcleared == 57)
+                    }
+                    if (CheckPoints.Stage == 23)
+                    {
+                        _skiplev = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 24 || CheckPoints.Stage == 22)
+                    {
+                        _skiplev = 1.0F;
+                    }
+                    if (CheckPoints.Stage == 26 || CheckPoints.Stage == 25 || CheckPoints.Stage == 20)
+                    {
+                        _skiplev = 0.0F;
+                    }
+                    _rampp = (int) (Medium.Random() * 4.0F - 2.0F);
+                    if (mad.Power == 98.0F)
+                    {
+                        _rampp = -1;
+                    }
+                    if (mad.Power < 75.0F && _rampp == -1)
+                    {
+                        _rampp = 0;
+                    }
+                    if (mad.Power < 60.0F)
+                    {
+                        _rampp = 1;
+                    }
+                    if (CheckPoints.Stage == 6)
+                    {
+                        _rampp = 2;
+                    }
+                    if (CheckPoints.Stage == 18 && mad.Pcleared >= 45)
+                    {
+                        _rampp = 2;
+                    }
+                    if (CheckPoints.Stage == 22 && mad.Pcleared == 17)
+                    {
+                        _rampp = 2;
+                    }
+                    if (CheckPoints.Stage == 25 || CheckPoints.Stage == 26)
+                    {
+                        _rampp = 0;
+                    }
+                    if (_cntrn == 0)
+                    {
+                        _agressed = false;
+                        _turntyp = (int) (Medium.Random() * 4.0F);
+                        if (CheckPoints.Stage == 3 && mad.Cn == 6)
                         {
-                            stuntf = 1;
-                        }
-                        if (CheckPoints.stage == 19 && mad.pcleared == 3)
-                        {
-                            stuntf = 2;
-                        }
-                        if (CheckPoints.stage == 20)
-                            if (CheckPoints.pos[0] < CheckPoints.pos[mad.im] ||
-                                Math.Abs(CheckPoints.clear[0] - mad.clear) >= 2 || mad.clear < 2)
+                            _turntyp = 1;
+                            if (_attack == 0)
                             {
-                                stuntf = 4;
-                                saftey = 10;
-                            }
-                            else
-                            {
-                                stuntf = 3;
-                            }
-                        if (CheckPoints.stage == 21 && mad.pcleared == 21)
-                        {
-                            stuntf = 1;
-                        }
-                        if (CheckPoints.stage == 24)
-                        {
-                            saftey = 10;
-                            if (mad.pcleared >= 4 && mad.pcleared < 70)
-                            {
-                                stuntf = 4;
-                            }
-                            else if (mad.cn == 12 || mad.cn == 8)
-                            {
-                                stuntf = 2;
-                            }
-                            if (mad.cn == 14)
-                            {
-                                stuntf = 6;
-                            }
-                        }
-                        if (CheckPoints.stage == 26)
-                        {
-                            mustland = 0.0F;
-                            saftey = 10;
-                            if ((mad.pcleared == 15 || mad.pcleared == 51) && (Medium.random() > 0.4 || trfix != 0))
-                            {
-                                stuntf = 7;
-                            }
-                            if (mad.pcleared == 42)
-                            {
-                                stuntf = 1;
-                            }
-                            if (mad.pcleared == 77)
-                            {
-                                stuntf = 7;
-                            }
-                            avoidnlev = (int) (2700.0F * Medium.random());
-                        }
-                        trickprf = (mad.power - 38.0F) / 50.0F - Medium.random() / 2.0F;
-                        if (mad.power < 60.0F)
-                        {
-                            trickprf = -1.0F;
-                        }
-                        if (CheckPoints.stage == 6 && trickprf > 0.5)
-                        {
-                            trickprf = 0.5F;
-                        }
-                        if (CheckPoints.stage == 3 && mad.cn == 6 && trickprf > 0.7)
-                        {
-                            trickprf = 0.7F;
-                        }
-                        if (CheckPoints.stage == 13 && mad.cn == 9 && trickprf > 0.7)
-                        {
-                            trickprf = 0.7F;
-                        }
-                        if (CheckPoints.stage == 16 && trickprf > 0.3)
-                        {
-                            trickprf = 0.3F;
-                        }
-                        if (CheckPoints.stage == 18 && trickprf > 0.2)
-                        {
-                            trickprf = 0.2F;
-                        }
-                        if (CheckPoints.stage == 19)
-                        {
-                            if (trickprf > 0.5)
-                            {
-                                trickprf = 0.5F;
-                            }
-                            if ((mad.im == 6 || mad.im == 5) && trickprf > 0.3)
-                            {
-                                trickprf = 0.3F;
+                                _agressed = true;
                             }
                         }
-                        if (CheckPoints.stage == 21 && trickprf != -1.0F)
+                        if (CheckPoints.Stage == 9 && mad.Cn == 15)
                         {
-                            trickprf *= 0.75F;
+                            _turntyp = 1;
+                            if (_attack == 0)
+                            {
+                                _agressed = true;
+                            }
                         }
-                        if (CheckPoints.stage == 22 && (mad.pcleared == 55 || mad.pcleared == 7))
+                        if (CheckPoints.Stage == 13 && mad.Cn == 9)
                         {
-                            trickprf = -1.0F;
-                            stuntf = 5;
+                            _turntyp = 1;
+                            if (_attack == 0)
+                            {
+                                _agressed = true;
+                            }
                         }
-                        if (CheckPoints.stage == 23 && trickprf > 0.4)
+                        if (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im] < 0)
                         {
-                            trickprf = 0.4F;
+                            _turntyp = (int) (Medium.Random() * 2.0F);
                         }
-                        if (CheckPoints.stage == 24 && trickprf > 0.5)
+                        if (CheckPoints.Stage == 10)
                         {
-                            trickprf = 0.5F;
+                            _turntyp = 2;
                         }
-                        if (CheckPoints.stage == 27)
+                        if (CheckPoints.Stage == 18)
                         {
-                            trickprf = -1.0F;
+                            _turntyp = 2;
                         }
-                        usebounce = Medium.random() > mad.power / 100.0F;
-                        if (CheckPoints.stage == 9)
+                        if (CheckPoints.Stage == 20)
                         {
-                            usebounce = false;
+                            _turntyp = 0;
                         }
-                        if (CheckPoints.stage == 14 || CheckPoints.stage == 16)
+                        if (CheckPoints.Stage == 23)
                         {
-                            usebounce = true;
+                            _turntyp = 1;
                         }
-                        if (CheckPoints.stage == 20 || CheckPoints.stage == 24)
+                        if (CheckPoints.Stage == 24)
                         {
-                            usebounce = false;
+                            _turntyp = 0;
                         }
-                        perfection = Medium.random() <= (float) mad.hitmag / (float) mad.stat.maxmag;
-                        if (100.0F * mad.hitmag / mad.stat.maxmag > 60.0F)
+                        if (_attack != 0)
                         {
-                            perfection = true;
+                            _turntyp = 2;
+                            if (CheckPoints.Stage == 9 || CheckPoints.Stage == 10 || CheckPoints.Stage == 19 ||
+                                CheckPoints.Stage == 21 || CheckPoints.Stage == 23 || CheckPoints.Stage == 27)
+                            {
+                                _turntyp = (int) (Medium.Random() * 3.0F);
+                            }
+                            if (CheckPoints.Stage == 26 && CheckPoints.Clear[mad.Im] - CheckPoints.Clear[0] >= 5)
+                            {
+                                _turntyp = 0;
+                            }
                         }
-                        if (CheckPoints.stage == 3 && mad.cn == 6)
+                        if (CheckPoints.Stage == 6)
                         {
-                            perfection = true;
+                            _turntyp = 1;
+                            _agressed = true;
                         }
-                        if (CheckPoints.stage == 6 || CheckPoints.stage == 8 || CheckPoints.stage == 9 ||
-                            CheckPoints.stage == 10 || CheckPoints.stage == 16 || CheckPoints.stage == 18 ||
-                            CheckPoints.stage == 19 || CheckPoints.stage == 20 || CheckPoints.stage == 21 ||
-                            CheckPoints.stage == 22 || CheckPoints.stage == 24 || CheckPoints.stage == 26 ||
-                            CheckPoints.stage == 27)
+                        if (CheckPoints.Stage == 7 || CheckPoints.Stage == 9 || CheckPoints.Stage == 10 ||
+                            CheckPoints.Stage == 16 || CheckPoints.Stage == 17 || CheckPoints.Stage == 19 ||
+                            CheckPoints.Stage == 20 || CheckPoints.Stage == 21 || CheckPoints.Stage == 22 ||
+                            CheckPoints.Stage == 24 || CheckPoints.Stage == 26 || CheckPoints.Stage == 27)
                         {
-                            perfection = true;
+                            _agressed = true;
                         }
-                        if (attack == 0)
+                        if (CheckPoints.Stage == -1)
+                            _agressed = Medium.Random() > Medium.Random();
+                        _cntrn = 5;
+                    }
+                    else
+                    {
+                        _cntrn--;
+                    }
+                    _saftey = (int) ((98.0F - mad.Power) / 2.0F * (Medium.Random() / 2.0F + 0.5));
+                    if (_saftey > 20)
+                    {
+                        _saftey = 20;
+                    }
+                    f = 0.0F;
+                    if (CheckPoints.Stage == 1 || CheckPoints.Stage == 11)
+                    {
+                        f = 0.9F;
+                    }
+                    if (CheckPoints.Stage == 2 || CheckPoints.Stage == 12)
+                    {
+                        f = 0.7F;
+                    }
+                    if (CheckPoints.Stage == 4 || CheckPoints.Stage == 13)
+                    {
+                        f = 0.4F;
+                    }
+                    _mustland = f + (float) (Medium.Random() / 2.0F - 0.25);
+                    f = 1.0F;
+                    if (CheckPoints.Stage == 1 || CheckPoints.Stage == 11)
+                    {
+                        f = 5.0F;
+                    }
+                    if (CheckPoints.Stage == 2 || CheckPoints.Stage == 12)
+                    {
+                        f = 2.0F;
+                    }
+                    if (CheckPoints.Stage == 4 || CheckPoints.Stage == 13)
+                    {
+                        f = 1.5F;
+                    }
+                    if (mad.Power > 50.0F)
+                    {
+                        if (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im] > 0)
                         {
-                            abool = true;
-                            if (CheckPoints.stage == 3 || CheckPoints.stage == 1 || CheckPoints.stage == 4 ||
-                                CheckPoints.stage == 9 || CheckPoints.stage == 13 || CheckPoints.stage == 11 ||
-                                CheckPoints.stage == 14 || CheckPoints.stage == 19 || CheckPoints.stage == 23 ||
-                                CheckPoints.stage == 26)
+                            _saftey = (int)(_saftey * f);
+                        }
+                        else
+                        {
+                            _mustland = 0.0F;
+                        }
+                    }
+                    else
+                    {
+                        _mustland -= 0.5F;
+                    }
+                    if (CheckPoints.Stage == 18 || CheckPoints.Stage == 20 || CheckPoints.Stage == 22 ||
+                        CheckPoints.Stage == 24)
+                    {
+                        _mustland = 0.0F;
+                    }
+                    _stuntf = 0;
+                    if (CheckPoints.Stage == 8)
+                    {
+                        _stuntf = 17;
+                    }
+                    if (CheckPoints.Stage == 18 && mad.Pcleared == 57)
+                    {
+                        _stuntf = 1;
+                    }
+                    if (CheckPoints.Stage == 19 && mad.Pcleared == 3)
+                    {
+                        _stuntf = 2;
+                    }
+                    if (CheckPoints.Stage == 20)
+                        if (CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im] ||
+                            Math.Abs(CheckPoints.Clear[0] - mad.Clear) >= 2 || mad.Clear < 2)
+                        {
+                            _stuntf = 4;
+                            _saftey = 10;
+                        }
+                        else
+                        {
+                            _stuntf = 3;
+                        }
+                    if (CheckPoints.Stage == 21 && mad.Pcleared == 21)
+                    {
+                        _stuntf = 1;
+                    }
+                    if (CheckPoints.Stage == 24)
+                    {
+                        _saftey = 10;
+                        if (mad.Pcleared >= 4 && mad.Pcleared < 70)
+                        {
+                            _stuntf = 4;
+                        }
+                        else if (mad.Cn == 12 || mad.Cn == 8)
+                        {
+                            _stuntf = 2;
+                        }
+                        if (mad.Cn == 14)
+                        {
+                            _stuntf = 6;
+                        }
+                    }
+                    if (CheckPoints.Stage == 26)
+                    {
+                        _mustland = 0.0F;
+                        _saftey = 10;
+                        if ((mad.Pcleared == 15 || mad.Pcleared == 51) && (Medium.Random() > 0.4 || _trfix != 0))
+                        {
+                            _stuntf = 7;
+                        }
+                        if (mad.Pcleared == 42)
+                        {
+                            _stuntf = 1;
+                        }
+                        if (mad.Pcleared == 77)
+                        {
+                            _stuntf = 7;
+                        }
+                        _avoidnlev = (int) (2700.0F * Medium.Random());
+                    }
+                    _trickprf = (mad.Power - 38.0F) / 50.0F - Medium.Random() / 2.0F;
+                    if (mad.Power < 60.0F)
+                    {
+                        _trickprf = -1.0F;
+                    }
+                    if (CheckPoints.Stage == 6 && _trickprf > 0.5)
+                    {
+                        _trickprf = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 3 && mad.Cn == 6 && _trickprf > 0.7)
+                    {
+                        _trickprf = 0.7F;
+                    }
+                    if (CheckPoints.Stage == 13 && mad.Cn == 9 && _trickprf > 0.7)
+                    {
+                        _trickprf = 0.7F;
+                    }
+                    if (CheckPoints.Stage == 16 && _trickprf > 0.3)
+                    {
+                        _trickprf = 0.3F;
+                    }
+                    if (CheckPoints.Stage == 18 && _trickprf > 0.2)
+                    {
+                        _trickprf = 0.2F;
+                    }
+                    if (CheckPoints.Stage == 19)
+                    {
+                        if (_trickprf > 0.5)
+                        {
+                            _trickprf = 0.5F;
+                        }
+                        if ((mad.Im == 6 || mad.Im == 5) && _trickprf > 0.3)
+                        {
+                            _trickprf = 0.3F;
+                        }
+                    }
+                    if (CheckPoints.Stage == 21 && _trickprf != -1.0F)
+                    {
+                        _trickprf *= 0.75F;
+                    }
+                    if (CheckPoints.Stage == 22 && (mad.Pcleared == 55 || mad.Pcleared == 7))
+                    {
+                        _trickprf = -1.0F;
+                        _stuntf = 5;
+                    }
+                    if (CheckPoints.Stage == 23 && _trickprf > 0.4)
+                    {
+                        _trickprf = 0.4F;
+                    }
+                    if (CheckPoints.Stage == 24 && _trickprf > 0.5)
+                    {
+                        _trickprf = 0.5F;
+                    }
+                    if (CheckPoints.Stage == 27)
+                    {
+                        _trickprf = -1.0F;
+                    }
+                    _usebounce = Medium.Random() > mad.Power / 100.0F;
+                    if (CheckPoints.Stage == 9)
+                    {
+                        _usebounce = false;
+                    }
+                    if (CheckPoints.Stage == 14 || CheckPoints.Stage == 16)
+                    {
+                        _usebounce = true;
+                    }
+                    if (CheckPoints.Stage == 20 || CheckPoints.Stage == 24)
+                    {
+                        _usebounce = false;
+                    }
+                    _perfection = Medium.Random() <= mad.Hitmag / (float) mad.Stat.Maxmag;
+                    if (100.0F * mad.Hitmag / mad.Stat.Maxmag > 60.0F)
+                    {
+                        _perfection = true;
+                    }
+                    if (CheckPoints.Stage == 3 && mad.Cn == 6)
+                    {
+                        _perfection = true;
+                    }
+                    if (CheckPoints.Stage == 6 || CheckPoints.Stage == 8 || CheckPoints.Stage == 9 ||
+                        CheckPoints.Stage == 10 || CheckPoints.Stage == 16 || CheckPoints.Stage == 18 ||
+                        CheckPoints.Stage == 19 || CheckPoints.Stage == 20 || CheckPoints.Stage == 21 ||
+                        CheckPoints.Stage == 22 || CheckPoints.Stage == 24 || CheckPoints.Stage == 26 ||
+                        CheckPoints.Stage == 27)
+                    {
+                        _perfection = true;
+                    }
+                    if (_attack == 0)
+                    {
+                        abool = true;
+                        if (CheckPoints.Stage == 3 || CheckPoints.Stage == 1 || CheckPoints.Stage == 4 ||
+                            CheckPoints.Stage == 9 || CheckPoints.Stage == 13 || CheckPoints.Stage == 11 ||
+                            CheckPoints.Stage == 14 || CheckPoints.Stage == 19 || CheckPoints.Stage == 23 ||
+                            CheckPoints.Stage == 26)
+                        {
+                            abool = _afta;
+                        }
+                        if (CheckPoints.Stage == 8 || CheckPoints.Stage == 6 || CheckPoints.Stage == 18 ||
+                            CheckPoints.Stage == 16 || CheckPoints.Stage == 20 || CheckPoints.Stage == 24)
+                        {
+                            abool = false;
+                        }
+                        if (CheckPoints.Stage == 3 && mad.Cn == 6)
+                        {
+                            abool = false;
+                        }
+                        if (CheckPoints.Stage == -1 && Medium.Random() > Medium.Random())
+                        {
+                            abool = false;
+                        }
+                        bool bool4 = CheckPoints.Stage == 13 && mad.Cn == 9;
+                        if (CheckPoints.Stage == 18 && mad.Cn == 11)
+                        {
+                            bool4 = true;
+                        }
+                        if (CheckPoints.Stage == 19 && CheckPoints.Clear[0] >= 20)
+                        {
+                            bool4 = true;
+                        }
+                        if (CheckPoints.Stage == 4 || CheckPoints.Stage == 10 || CheckPoints.Stage == 21 ||
+                            CheckPoints.Stage == 22 || CheckPoints.Stage == 23 || CheckPoints.Stage == 25 ||
+                            CheckPoints.Stage == 26)
+                        {
+                            bool4 = true;
+                        }
+                        if (CheckPoints.Stage == 3 && mad.Cn == 6)
+                        {
+                            bool4 = true;
+                        }
+                        var i5 = 60;
+                        if (CheckPoints.Stage == 5)
+                        {
+                            i5 = 40;
+                        }
+                        if (CheckPoints.Stage == 6 && _bulistc)
+                        {
+                            i5 = 40;
+                        }
+                        if (CheckPoints.Stage == 9 && _bulistc)
+                        {
+                            i5 = 30;
+                        }
+                        if (CheckPoints.Stage == 3 || CheckPoints.Stage == 13 || CheckPoints.Stage == 21 ||
+                            CheckPoints.Stage == 27 || CheckPoints.Stage == 20 || CheckPoints.Stage == 18)
+                        {
+                            i5 = 30;
+                        }
+                        if ((CheckPoints.Stage == 12 || CheckPoints.Stage == 23) && mad.Cn == 13)
+                        {
+                            i5 = 50;
+                        }
+                        if (CheckPoints.Stage == 14)
+                        {
+                            i5 = 20;
+                        }
+                        if (CheckPoints.Stage == 15 && mad.Im != 6)
+                        {
+                            i5 = 40;
+                        }
+                        if (CheckPoints.Stage == 17)
+                        {
+                            i5 = 40;
+                        }
+                        if (CheckPoints.Stage == 18 && mad.Cn == 11)
+                        {
+                            i5 = 40;
+                        }
+                        if (CheckPoints.Stage == 19 && bool4)
+                        {
+                            i5 = 30;
+                        }
+                        if (CheckPoints.Stage == 21 && _bulistc)
+                        {
+                            i5 = 30;
+                        }
+                        if (CheckPoints.Stage == 22)
+                        {
+                            i5 = 50;
+                        }
+                        if (CheckPoints.Stage == 25 && _bulistc)
+                        {
+                            i5 = 40;
+                        }
+                        if (CheckPoints.Stage == 26)
+                        {
+                            if (mad.Cn == 11 && CheckPoints.Clear[0] == 27)
                             {
-                                abool = afta;
+                                i5 = 0;
                             }
-                            if (CheckPoints.stage == 8 || CheckPoints.stage == 6 || CheckPoints.stage == 18 ||
-                                CheckPoints.stage == 16 || CheckPoints.stage == 20 || CheckPoints.stage == 24)
-                            {
-                                abool = false;
-                            }
-                            if (CheckPoints.stage == 3 && mad.cn == 6)
-                            {
-                                abool = false;
-                            }
-                            if (CheckPoints.stage == -1 && Medium.random() > Medium.random())
-                            {
-                                abool = false;
-                            }
-                            boolean bool4 = false;
-                            if (CheckPoints.stage == 13 && mad.cn == 9)
-                            {
-                                bool4 = true;
-                            }
-                            if (CheckPoints.stage == 18 && mad.cn == 11)
-                            {
-                                bool4 = true;
-                            }
-                            if (CheckPoints.stage == 19 && CheckPoints.clear[0] >= 20)
-                            {
-                                bool4 = true;
-                            }
-                            if (CheckPoints.stage == 4 || CheckPoints.stage == 10 || CheckPoints.stage == 21 ||
-                                CheckPoints.stage == 22 || CheckPoints.stage == 23 || CheckPoints.stage == 25 ||
-                                CheckPoints.stage == 26)
-                            {
-                                bool4 = true;
-                            }
-                            if (CheckPoints.stage == 3 && mad.cn == 6)
-                            {
-                                bool4 = true;
-                            }
-                            int i5 = 60;
-                            if (CheckPoints.stage == 5)
-                            {
-                                i5 = 40;
-                            }
-                            if (CheckPoints.stage == 6 && bulistc)
-                            {
-                                i5 = 40;
-                            }
-                            if (CheckPoints.stage == 9 && bulistc)
-                            {
-                                i5 = 30;
-                            }
-                            if (CheckPoints.stage == 3 || CheckPoints.stage == 13 || CheckPoints.stage == 21 ||
-                                CheckPoints.stage == 27 || CheckPoints.stage == 20 || CheckPoints.stage == 18)
-                            {
-                                i5 = 30;
-                            }
-                            if ((CheckPoints.stage == 12 || CheckPoints.stage == 23) && mad.cn == 13)
+                            if (mad.Cn == 15 || mad.Cn == 9)
                             {
                                 i5 = 50;
                             }
-                            if (CheckPoints.stage == 14)
-                            {
-                                i5 = 20;
-                            }
-                            if (CheckPoints.stage == 15 && mad.im != 6)
+                            if (mad.Cn == 11)
                             {
                                 i5 = 40;
                             }
-                            if (CheckPoints.stage == 17)
+                            if (CheckPoints.Pos[0] > CheckPoints.Pos[mad.Im])
                             {
-                                i5 = 40;
+                                i5 = 80;
                             }
-                            if (CheckPoints.stage == 18 && mad.cn == 11)
+                        }
+                        for (var i6 = 0; i6 < 7; i6++)
+                            if (i6 != mad.Im && CheckPoints.Clear[i6] != -1)
                             {
-                                i5 = 40;
-                            }
-                            if (CheckPoints.stage == 19 && bool4)
-                            {
-                                i5 = 30;
-                            }
-                            if (CheckPoints.stage == 21 && bulistc)
-                            {
-                                i5 = 30;
-                            }
-                            if (CheckPoints.stage == 22)
-                            {
-                                i5 = 50;
-                            }
-                            if (CheckPoints.stage == 25 && bulistc)
-                            {
-                                i5 = 40;
-                            }
-                            if (CheckPoints.stage == 26)
-                            {
-                                if (mad.cn == 11 && CheckPoints.clear[0] == 27)
+                                var i7 = conto.Xz;
+                                if (Zyinv)
                                 {
-                                    i5 = 0;
+                                    i7 += 180;
                                 }
-                                if (mad.cn == 15 || mad.cn == 9)
+                                for ( /**/; i7 < 0; i7 += 360)
                                 {
-                                    i5 = 50;
+
                                 }
-                                if (mad.cn == 11)
+                                for ( /**/; i7 > 180; i7 -= 360)
                                 {
-                                    i5 = 40;
+
                                 }
-                                if (CheckPoints.pos[0] > CheckPoints.pos[mad.im])
+                                var i8 = 0;
+                                if (CheckPoints.Opx[i6] - conto.X >= 0)
                                 {
-                                    i5 = 80;
+                                    i8 = 180;
                                 }
-                            }
-                            for (int i6 = 0; i6 < 7; i6++)
-                                if (i6 != mad.im && CheckPoints.clear[i6] != -1)
+                                int i9;
+                                for (i9 = (int) (90 + i8 + Math.Atan(
+                                                     (CheckPoints.Opz[i6] - conto.Z) /
+                                                     (double) (CheckPoints.Opx[i6] - conto.X)) /
+                                                 0.017453292519943295);
+                                    i9 < 0;
+                                    i9 += 360)
                                 {
-                                    int i7 = conto.xz;
-                                    if (zyinv)
-                                    {
-                                        i7 += 180;
-                                    }
-                                    for ( /**/; i7 < 0; i7 += 360)
-                                    {
 
-                                    }
-                                    for ( /**/; i7 > 180; i7 -= 360)
-                                    {
+                                }
+                                for ( /**/; i9 > 180; i9 -= 360)
+                                {
 
-                                    }
-                                    int i8 = 0;
-                                    if (CheckPoints.opx[i6] - conto.x >= 0)
-                                    {
-                                        i8 = 180;
-                                    }
-                                    int i9;
-                                    for (i9 = (int) (90 + i8 + Math.Atan(
-                                                         (double) (CheckPoints.opz[i6] - conto.z) /
-                                                         (double) (CheckPoints.opx[i6] - conto.x)) /
-                                                     0.017453292519943295);
-                                        i9 < 0;
-                                        i9 += 360)
-                                    {
-
-                                    }
-                                    for ( /**/; i9 > 180; i9 -= 360)
-                                    {
-
-                                    }
-                                    int i10 = Math.Abs(i7 - i9);
-                                    if (i10 > 180)
-                                    {
-                                        i10 = Math.Abs(i10 - 360);
-                                    }
-                                    int i11 = 2000 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
-                                    if ((CheckPoints.stage == 6 || CheckPoints.stage == 9) && bulistc)
-                                    {
-                                        i11 = 6000;
-                                    }
-                                    if (CheckPoints.stage == 3 && mad.cn == 6 && CheckPoints.wasted < 2 && i11 > 4000)
-                                    {
-                                        i11 = 4000;
-                                    }
-                                    if (CheckPoints.stage == 13 && mad.cn == 9 && i11 < 12000)
+                                }
+                                var i10 = Math.Abs(i7 - i9);
+                                if (i10 > 180)
+                                {
+                                    i10 = Math.Abs(i10 - 360);
+                                }
+                                var i11 = 2000 * (Math.Abs(CheckPoints.Clear[i6] - mad.Clear) + 1);
+                                if ((CheckPoints.Stage == 6 || CheckPoints.Stage == 9) && _bulistc)
+                                {
+                                    i11 = 6000;
+                                }
+                                if (CheckPoints.Stage == 3 && mad.Cn == 6 && CheckPoints.Wasted < 2 && i11 > 4000)
+                                {
+                                    i11 = 4000;
+                                }
+                                if (CheckPoints.Stage == 13 && mad.Cn == 9 && i11 < 12000)
+                                {
+                                    i11 = 12000;
+                                }
+                                if (CheckPoints.Stage == 14 && i11 < 4000)
+                                {
+                                    i11 = 4000;
+                                }
+                                if (CheckPoints.Stage == 18 && mad.Cn == 11)
+                                {
+                                    if (i11 < 12000)
                                     {
                                         i11 = 12000;
                                     }
-                                    if (CheckPoints.stage == 14 && i11 < 4000)
+                                    i10 = 10;
+                                }
+                                if (CheckPoints.Stage == 19 &&
+                                    (mad.Pcleared == 13 || mad.Pcleared == 33 || bool4) && i11 < 12000)
+                                {
+                                    i11 = 12000;
+                                }
+                                if (CheckPoints.Stage == 21)
+                                    if (_bulistc)
                                     {
-                                        i11 = 4000;
-                                    }
-                                    if (CheckPoints.stage == 18 && mad.cn == 11)
-                                    {
-                                        if (i11 < 12000)
-                                        {
-                                            i11 = 12000;
-                                        }
+                                        i11 = 8000;
                                         i10 = 10;
+                                        _afta = true;
                                     }
-                                    if (CheckPoints.stage == 19 &&
-                                        (mad.pcleared == 13 || mad.pcleared == 33 || bool4) && i11 < 12000)
-                                    {
-                                        i11 = 12000;
-                                    }
-                                    if (CheckPoints.stage == 21)
-                                        if (bulistc)
-                                        {
-                                            i11 = 8000;
-                                            i10 = 10;
-                                            afta = true;
-                                        }
-                                        else if (i11 < 6000)
-                                        {
-                                            i11 = 6000;
-                                        }
-                                    if (CheckPoints.stage == 22 && bulistc)
+                                    else if (i11 < 6000)
                                     {
                                         i11 = 6000;
+                                    }
+                                if (CheckPoints.Stage == 22 && _bulistc)
+                                {
+                                    i11 = 6000;
+                                    i10 = 10;
+                                }
+                                if (CheckPoints.Stage == 23)
+                                {
+                                    i11 = 21000;
+                                }
+                                if (CheckPoints.Stage == 25)
+                                {
+                                    i11 *= Math.Abs(CheckPoints.Clear[i6] - mad.Clear) + 1;
+                                    if (_bulistc)
+                                    {
+                                        i11 = 4000 * (Math.Abs(CheckPoints.Clear[i6] - mad.Clear) + 1);
                                         i10 = 10;
                                     }
-                                    if (CheckPoints.stage == 23)
+                                }
+                                if (CheckPoints.Stage == 20)
+                                {
+                                    i11 = 16000;
+                                }
+                                if (CheckPoints.Stage == 26)
+                                {
+                                    if (mad.Cn == 13 && _bulistc)
                                     {
-                                        i11 = 21000;
+                                        if (_oupnt == 33)
+                                        {
+                                            i11 = 17000;
+                                        }
+                                        if (_oupnt == 51)
+                                        {
+                                            i11 = 30000;
+                                        }
+                                        if (_oupnt == 15 && CheckPoints.Clear[0] >= 14)
+                                        {
+                                            i11 = 60000;
+                                        }
+                                        i10 = 10;
                                     }
-                                    if (CheckPoints.stage == 25)
+                                    if (mad.Cn == 15 || mad.Cn == 9)
                                     {
-                                        i11 *= Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1;
-                                        if (bulistc)
-                                        {
-                                            i11 = 4000 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
-                                            i10 = 10;
-                                        }
+                                        i11 *= Math.Abs(CheckPoints.Clear[i6] - mad.Clear) + 1;
                                     }
-                                    if (CheckPoints.stage == 20)
+                                    if (mad.Cn == 11)
                                     {
-                                        i11 = 16000;
+                                        i11 = 4000 * (Math.Abs(CheckPoints.Clear[i6] - mad.Clear) + 1);
                                     }
-                                    if (CheckPoints.stage == 26)
+                                }
+                                var i12 = 85 + 15 * (Math.Abs(CheckPoints.Clear[i6] - mad.Clear) + 1);
+                                if (CheckPoints.Stage == 23)
+                                {
+                                    i12 = 45;
+                                }
+                                if (CheckPoints.Stage == 26 &&
+                                    (mad.Cn == 15 || mad.Cn == 9 || mad.Cn == 11 || mad.Cn == 14))
+                                {
+                                    i12 = 50 + 70 * Math.Abs(CheckPoints.Clear[i6] - mad.Clear);
+                                }
+                                if (i10 < i12 &&
+                                    Py(conto.X / 100, CheckPoints.Opx[i6] / 100, conto.Z / 100,
+                                        CheckPoints.Opz[i6] / 100) < i11 && _afta && mad.Power > i5)
+                                {
+                                    float f13 = 35 - Math.Abs(CheckPoints.Clear[i6] - mad.Clear) * 10;
+                                    if (f13 < 1.0F)
                                     {
-                                        if (mad.cn == 13 && bulistc)
-                                        {
-                                            if (oupnt == 33)
-                                            {
-                                                i11 = 17000;
-                                            }
-                                            if (oupnt == 51)
-                                            {
-                                                i11 = 30000;
-                                            }
-                                            if (oupnt == 15 && CheckPoints.clear[0] >= 14)
-                                            {
-                                                i11 = 60000;
-                                            }
-                                            i10 = 10;
-                                        }
-                                        if (mad.cn == 15 || mad.cn == 9)
-                                        {
-                                            i11 *= Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1;
-                                        }
-                                        if (mad.cn == 11)
-                                        {
-                                            i11 = 4000 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
-                                        }
+                                        f13 = 1.0F;
                                     }
-                                    int i12 = 85 + 15 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
-                                    if (CheckPoints.stage == 23)
+                                    var f14 = (CheckPoints.Pos[mad.Im] + 1) * (5 - CheckPoints.Pos[i6]) / f13;
+                                    if (CheckPoints.Stage != 27 && f14 > 0.7)
                                     {
-                                        i12 = 45;
+                                        f14 = 0.7F;
                                     }
-                                    if (CheckPoints.stage == 26 &&
-                                        (mad.cn == 15 || mad.cn == 9 || mad.cn == 11 || mad.cn == 14))
+                                    if (i6 != 0 && CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im])
                                     {
-                                        i12 = 50 + 70 * Math.Abs(CheckPoints.clear[i6] - mad.clear);
+                                        f14 = 0.0F;
                                     }
-                                    if (i10 < i12 &&
-                                        py(conto.x / 100, CheckPoints.opx[i6] / 100, conto.z / 100,
-                                            CheckPoints.opz[i6] / 100) < i11 && afta && mad.power > i5)
+                                    if (i6 != 0 && bool4)
                                     {
-                                        float f13 = 35 - Math.Abs(CheckPoints.clear[i6] - mad.clear) * 10;
-                                        if (f13 < 1.0F)
+                                        f14 = 0.0F;
+                                    }
+                                    if (bool4 && CheckPoints.Stage == 3 && i6 == 0)
+                                        if (CheckPoints.Wasted >= 2)
                                         {
-                                            f13 = 1.0F;
+                                            f14 *= 0.5F;
                                         }
-                                        float f14 = (CheckPoints.pos[mad.im] + 1) * (5 - CheckPoints.pos[i6]) / f13;
-                                        if (CheckPoints.stage != 27 && f14 > 0.7)
-                                        {
-                                            f14 = 0.7F;
-                                        }
-                                        if (i6 != 0 && CheckPoints.pos[0] < CheckPoints.pos[mad.im])
+                                        else
                                         {
                                             f14 = 0.0F;
                                         }
-                                        if (i6 != 0 && bool4)
-                                        {
-                                            f14 = 0.0F;
-                                        }
-                                        if (bool4 && CheckPoints.stage == 3 && i6 == 0)
-                                            if (CheckPoints.wasted >= 2)
-                                            {
-                                                f14 *= 0.5F;
-                                            }
-                                            else
-                                            {
-                                                f14 = 0.0F;
-                                            }
-                                        if ((CheckPoints.stage == 3 || CheckPoints.stage == 9) && i6 == 4)
-                                        {
-                                            f14 = 0.0F;
-                                        }
-                                        if (CheckPoints.stage == 6)
-                                        {
-                                            f14 = 0.0F;
-                                            if (bulistc && i6 == 0)
-                                            {
-                                                f14 = 1.0F;
-                                            }
-                                        }
-                                        if (CheckPoints.stage == 8)
-                                        {
-                                            f14 = 0.0F;
-                                            if (bulistc && mad.cn != 11 && mad.cn != 13)
-                                            {
-                                                f14 = 1.0F;
-                                            }
-                                        }
-                                        if (CheckPoints.stage == 9 && mad.cn == 15)
-                                        {
-                                            f14 = 0.0F;
-                                        }
-                                        if (CheckPoints.stage == 9 && bulistc)
-                                            if (i6 == 0)
-                                            {
-                                                f14 = 1.0F;
-                                            }
-                                            else
-                                            {
-                                                f14 = 0.0F;
-                                            }
-                                        if (CheckPoints.stage == 9 &&
-                                            (CheckPoints.pos[i6] == 4 || CheckPoints.pos[i6] == 3))
-                                        {
-                                            f14 = 0.0F;
-                                        }
-                                        if (CheckPoints.stage == 13)
-                                            if (mad.cn == 9 || mad.cn == 13 && bulistc)
-                                            {
-                                                f14 *= 2.0F;
-                                            }
-                                            else
-                                            {
-                                                f14 *= 0.5F;
-                                            }
-                                        if (CheckPoints.stage == 16)
-                                        {
-                                            f14 = 0.0F;
-                                        }
-                                        if (CheckPoints.stage == 17 && mad.im == 6 && i6 == 0)
-                                        {
-                                            f14 = (float)(f14 * 1.5f);
-                                        }
-                                        if (CheckPoints.stage == 18)
-                                            if (mad.cn == 11 || mad.cn == 13 && bulistc)
-                                            {
-                                                f14 *= 1.5F;
-                                            }
-                                            else
-                                            {
-                                                f14 = 0.0F;
-                                            }
-                                        if (CheckPoints.stage == 19)
-                                        {
-                                            if (i6 != 0)
-                                            {
-                                                f14 = (float)(f14 * 0.5f);
-                                            }
-                                            if (mad.pcleared != 13 && mad.pcleared != 33 && !bool4)
-                                            {
-                                                f14 *= 0.5F;
-                                            }
-                                            if ((mad.im == 6 || mad.im == 5) && i6 != 0)
-                                            {
-                                                f14 = 0.0F;
-                                            }
-                                        }
-                                        if (CheckPoints.stage == 20)
-                                        {
-                                            f14 = 0.0F;
-                                            if (bulistc && mad.cn != 11 && mad.cn != 13)
-                                            {
-                                                f14 = 1.0F;
-                                            }
-                                        }
-                                        if (CheckPoints.stage == 21 && bulistc && i6 == 0)
+                                    if ((CheckPoints.Stage == 3 || CheckPoints.Stage == 9) && i6 == 4)
+                                    {
+                                        f14 = 0.0F;
+                                    }
+                                    if (CheckPoints.Stage == 6)
+                                    {
+                                        f14 = 0.0F;
+                                        if (_bulistc && i6 == 0)
                                         {
                                             f14 = 1.0F;
                                         }
-                                        if (CheckPoints.stage == 22)
+                                    }
+                                    if (CheckPoints.Stage == 8)
+                                    {
+                                        f14 = 0.0F;
+                                        if (_bulistc && mad.Cn != 11 && mad.Cn != 13)
                                         {
-                                            if (mad.cn != 11 && mad.cn != 13)
-                                            {
-                                                f14 = 0.0F;
-                                            }
-                                            if (mad.cn == 13 && i6 == 0)
-                                            {
-                                                f14 = 1.0F;
-                                            }
+                                            f14 = 1.0F;
                                         }
-                                        if (CheckPoints.stage == 24)
+                                    }
+                                    if (CheckPoints.Stage == 9 && mad.Cn == 15)
+                                    {
+                                        f14 = 0.0F;
+                                    }
+                                    if (CheckPoints.Stage == 9 && _bulistc)
+                                        if (i6 == 0)
+                                        {
+                                            f14 = 1.0F;
+                                        }
+                                        else
                                         {
                                             f14 = 0.0F;
                                         }
-                                        if (CheckPoints.stage == 25)
+                                    if (CheckPoints.Stage == 9 &&
+                                        (CheckPoints.Pos[i6] == 4 || CheckPoints.Pos[i6] == 3))
+                                    {
+                                        f14 = 0.0F;
+                                    }
+                                    if (CheckPoints.Stage == 13)
+                                        if (mad.Cn == 9 || mad.Cn == 13 && _bulistc)
                                         {
-                                            if (CheckPoints.pos[mad.im] == 0)
-                                            {
-                                                f14 *= 0.5f;
-                                            }
-                                            if (CheckPoints.pos[0] < CheckPoints.pos[mad.im])
+                                            f14 *= 2.0F;
+                                        }
+                                        else
+                                        {
+                                            f14 *= 0.5F;
+                                        }
+                                    if (CheckPoints.Stage == 16)
+                                    {
+                                        f14 = 0.0F;
+                                    }
+                                    if (CheckPoints.Stage == 17 && mad.Im == 6 && i6 == 0)
+                                    {
+                                        f14 = f14 * 1.5f;
+                                    }
+                                    if (CheckPoints.Stage == 18)
+                                        if (mad.Cn == 11 || mad.Cn == 13 && _bulistc)
+                                        {
+                                            f14 *= 1.5F;
+                                        }
+                                        else
+                                        {
+                                            f14 = 0.0F;
+                                        }
+                                    if (CheckPoints.Stage == 19)
+                                    {
+                                        if (i6 != 0)
+                                        {
+                                            f14 = f14 * 0.5f;
+                                        }
+                                        if (mad.Pcleared != 13 && mad.Pcleared != 33 && !bool4)
+                                        {
+                                            f14 *= 0.5F;
+                                        }
+                                        if ((mad.Im == 6 || mad.Im == 5) && i6 != 0)
+                                        {
+                                            f14 = 0.0F;
+                                        }
+                                    }
+                                    if (CheckPoints.Stage == 20)
+                                    {
+                                        f14 = 0.0F;
+                                        if (_bulistc && mad.Cn != 11 && mad.Cn != 13)
+                                        {
+                                            f14 = 1.0F;
+                                        }
+                                    }
+                                    if (CheckPoints.Stage == 21 && _bulistc && i6 == 0)
+                                    {
+                                        f14 = 1.0F;
+                                    }
+                                    if (CheckPoints.Stage == 22)
+                                    {
+                                        if (mad.Cn != 11 && mad.Cn != 13)
+                                        {
+                                            f14 = 0.0F;
+                                        }
+                                        if (mad.Cn == 13 && i6 == 0)
+                                        {
+                                            f14 = 1.0F;
+                                        }
+                                    }
+                                    if (CheckPoints.Stage == 24)
+                                    {
+                                        f14 = 0.0F;
+                                    }
+                                    if (CheckPoints.Stage == 25)
+                                    {
+                                        if (CheckPoints.Pos[mad.Im] == 0)
+                                        {
+                                            f14 *= 0.5f;
+                                        }
+                                        if (CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im])
+                                        {
+                                            f14 *= 2.0F;
+                                        }
+                                        if (_bulistc && i6 == 0)
+                                        {
+                                            f14 = 1.0F;
+                                        }
+                                    }
+                                    if (CheckPoints.Stage == 26)
+                                    {
+                                        if (mad.Cn != 14)
+                                        {
+                                            if (CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im] &&
+                                                CheckPoints.Clear[0] - CheckPoints.Clear[mad.Im] != 1)
                                             {
                                                 f14 *= 2.0F;
                                             }
-                                            if (bulistc && i6 == 0)
-                                            {
-                                                f14 = 1.0F;
-                                            }
                                         }
-                                        if (CheckPoints.stage == 26)
+                                        else
                                         {
-                                            if (mad.cn != 14)
+                                            f14 *= 0.5f;
+                                        }
+                                        if (mad.Cn == 13 && i6 == 0)
+                                        {
+                                            f14 = 1.0F;
+                                        }
+                                        if (CheckPoints.Pos[mad.Im] == 0 ||
+                                            CheckPoints.Pos[mad.Im] == 1 && CheckPoints.Pos[0] == 0)
+                                        {
+                                            f14 = 0.0F;
+                                        }
+                                        if (CheckPoints.Clear[mad.Im] - CheckPoints.Clear[0] >= 5 && i6 == 0)
+                                        {
+                                            f14 = 1.0F;
+                                        }
+                                        if (mad.Cn == 10 || mad.Cn == 12)
+                                        {
+                                            f14 = 0.0F;
+                                        }
+                                    }
+                                    if (Medium.Random() < f14)
+                                    {
+                                        _attack = 40 * (Math.Abs(CheckPoints.Clear[i6] - mad.Clear) + 1);
+                                        if (_attack > 500)
+                                        {
+                                            _attack = 500;
+                                        }
+                                        _aim = 0.0F;
+                                        if (CheckPoints.Stage == 13 && mad.Cn == 9 &&
+                                            Medium.Random() > Medium.Random())
+                                        {
+                                            _aim = 1.0F;
+                                        }
+                                        if (CheckPoints.Stage == 14)
+                                            if (i6 == 0 && CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im])
                                             {
-                                                if (CheckPoints.pos[0] < CheckPoints.pos[mad.im] &&
-                                                    CheckPoints.clear[0] - CheckPoints.clear[mad.im] != 1)
+                                                _aim = 1.5F;
+                                            }
+                                            else
+                                            {
+                                                _aim = Medium.Random();
+                                            }
+                                        if (CheckPoints.Stage == 15)
+                                        {
+                                            _aim = Medium.Random() * 1.5F;
+                                        }
+                                        if (CheckPoints.Stage == 17 && mad.Im != 6 &&
+                                            (Medium.Random() > Medium.Random() ||
+                                             CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im]))
+                                        {
+                                            _aim = 1.0F;
+                                        }
+                                        if (CheckPoints.Stage == 18 && mad.Cn == 11 &&
+                                            Medium.Random() > Medium.Random())
+                                        {
+                                            _aim = 0.76F + Medium.Random() * 0.76F;
+                                        }
+                                        if (CheckPoints.Stage == 19 && (mad.Pcleared == 13 || mad.Pcleared == 33))
+                                        {
+                                            _aim = 1.0F;
+                                        }
+                                        if (CheckPoints.Stage == 21)
+                                            if (_bulistc)
+                                            {
+                                                _aim = 0.7F;
+                                                if (_attack > 150)
                                                 {
-                                                    f14 *= 2.0F;
+                                                    _attack = 150;
                                                 }
                                             }
                                             else
                                             {
-                                                f14 *= 0.5f;
+                                                _aim = Medium.Random();
                                             }
-                                            if (mad.cn == 13 && i6 == 0)
-                                            {
-                                                f14 = 1.0F;
-                                            }
-                                            if (CheckPoints.pos[mad.im] == 0 ||
-                                                CheckPoints.pos[mad.im] == 1 && CheckPoints.pos[0] == 0)
-                                            {
-                                                f14 = 0.0F;
-                                            }
-                                            if (CheckPoints.clear[mad.im] - CheckPoints.clear[0] >= 5 && i6 == 0)
-                                            {
-                                                f14 = 1.0F;
-                                            }
-                                            if (mad.cn == 10 || mad.cn == 12)
-                                            {
-                                                f14 = 0.0F;
-                                            }
-                                        }
-                                        if (Medium.random() < f14)
+                                        if (CheckPoints.Stage == 22)
                                         {
-                                            attack = 40 * (Math.Abs(CheckPoints.clear[i6] - mad.clear) + 1);
-                                            if (attack > 500)
+                                            if (Medium.Random() > Medium.Random())
                                             {
-                                                attack = 500;
+                                                _aim = 0.7F;
                                             }
-                                            aim = 0.0F;
-                                            if (CheckPoints.stage == 13 && mad.cn == 9 &&
-                                                Medium.random() > Medium.random())
+                                            if (_bulistc && _attack > 150)
                                             {
-                                                aim = 1.0F;
+                                                _attack = 150;
                                             }
-                                            if (CheckPoints.stage == 14)
-                                                if (i6 == 0 && CheckPoints.pos[0] < CheckPoints.pos[mad.im])
-                                                {
-                                                    aim = 1.5F;
-                                                }
-                                                else
-                                                {
-                                                    aim = Medium.random();
-                                                }
-                                            if (CheckPoints.stage == 15)
-                                            {
-                                                aim = Medium.random() * 1.5F;
-                                            }
-                                            if (CheckPoints.stage == 17 && mad.im != 6 &&
-                                                (Medium.random() > Medium.random() ||
-                                                 CheckPoints.pos[0] < CheckPoints.pos[mad.im]))
-                                            {
-                                                aim = 1.0F;
-                                            }
-                                            if (CheckPoints.stage == 18 && mad.cn == 11 &&
-                                                Medium.random() > Medium.random())
-                                            {
-                                                aim = 0.76F + Medium.random() * 0.76F;
-                                            }
-                                            if (CheckPoints.stage == 19 && (mad.pcleared == 13 || mad.pcleared == 33))
-                                            {
-                                                aim = 1.0F;
-                                            }
-                                            if (CheckPoints.stage == 21)
-                                                if (bulistc)
-                                                {
-                                                    aim = 0.7F;
-                                                    if (attack > 150)
-                                                    {
-                                                        attack = 150;
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    aim = Medium.random();
-                                                }
-                                            if (CheckPoints.stage == 22)
-                                            {
-                                                if (Medium.random() > Medium.random())
-                                                {
-                                                    aim = 0.7F;
-                                                }
-                                                if (bulistc && attack > 150)
-                                                {
-                                                    attack = 150;
-                                                }
-                                            }
-                                            if (CheckPoints.stage == 23 && attack > 60)
-                                            {
-                                                attack = 60;
-                                            }
-                                            if (CheckPoints.stage == 25)
-                                            {
-                                                aim = Medium.random() * 1.5F;
-                                                attack = attack / 2;
-                                                exitattack = Medium.random() > Medium.random();
-                                            }
-                                            if (CheckPoints.stage == 26)
-                                                if (mad.cn == 13)
-                                                {
-                                                    aim = 0.76F;
-                                                    attack = 150;
-                                                }
-                                                else
-                                                {
-                                                    aim = Medium.random() * 1.5F;
-                                                    if (Math.Abs(CheckPoints.clear[i6] - mad.clear) <= 2 ||
-                                                        mad.cn == 14)
-                                                    {
-                                                        attack = attack / 3;
-                                                    }
-                                                }
-                                            if (CheckPoints.stage == -1 && Medium.random() > Medium.random())
-                                            {
-                                                aim = Medium.random() * 1.5F;
-                                            }
-                                            acr = i6;
-                                            turntyp = (int) (1.0F + Medium.random() * 2.0F);
                                         }
+                                        if (CheckPoints.Stage == 23 && _attack > 60)
+                                        {
+                                            _attack = 60;
+                                        }
+                                        if (CheckPoints.Stage == 25)
+                                        {
+                                            _aim = Medium.Random() * 1.5F;
+                                            _attack = _attack / 2;
+                                            _exitattack = Medium.Random() > Medium.Random();
+                                        }
+                                        if (CheckPoints.Stage == 26)
+                                            if (mad.Cn == 13)
+                                            {
+                                                _aim = 0.76F;
+                                                _attack = 150;
+                                            }
+                                            else
+                                            {
+                                                _aim = Medium.Random() * 1.5F;
+                                                if (Math.Abs(CheckPoints.Clear[i6] - mad.Clear) <= 2 ||
+                                                    mad.Cn == 14)
+                                                {
+                                                    _attack = _attack / 3;
+                                                }
+                                            }
+                                        if (CheckPoints.Stage == -1 && Medium.Random() > Medium.Random())
+                                        {
+                                            _aim = Medium.Random() * 1.5F;
+                                        }
+                                        _acr = i6;
+                                        _turntyp = (int) (1.0F + Medium.Random() * 2.0F);
                                     }
-                                    if (abool && i10 > 100 &&
-                                        py(conto.x / 100, CheckPoints.opx[i6] / 100, conto.z / 100,
-                                            CheckPoints.opz[i6] / 100) < 300 &&
-                                        Medium.random() > 0.6 - CheckPoints.pos[mad.im] / 10.0F)
-                                    {
-                                        clrnce = 0;
-                                        acuracy = 0;
-                                    }
                                 }
-                        }
-                        abool = false;
-                        if (CheckPoints.stage == 6 || CheckPoints.stage == 8)
-                        {
-                            abool = true;
-                        }
-                        if (CheckPoints.stage == 9 && mad.cn == 15)
-                        {
-                            abool = true;
-                        }
-                        if (CheckPoints.stage == 16 || CheckPoints.stage == 20 || CheckPoints.stage == 21 ||
-                            CheckPoints.stage == 27)
-                        {
-                            abool = true;
-                        }
-                        if (CheckPoints.stage == 18 && mad.pcleared != 73)
-                        {
-                            abool = true;
-                        }
-                        if (CheckPoints.stage == -1 && Medium.random() > Medium.random())
-                        {
-                            abool = true;
-                        }
-                        if (trfix != 3)
-                        {
-                            trfix = 0;
-                            int i15 = 50;
-                            if (CheckPoints.stage == 26)
-                            {
-                                i15 = 40;
-                            }
-                            if (100.0F * mad.hitmag / mad.stat.maxmag > i15)
-                            {
-                                trfix = 1;
-                            }
-                            if (!abool)
-                            {
-                                int i16 = 80;
-                                if (CheckPoints.stage == 18 && mad.cn != 11)
+                                if (abool && i10 > 100 &&
+                                    Py(conto.X / 100, CheckPoints.Opx[i6] / 100, conto.Z / 100,
+                                        CheckPoints.Opz[i6] / 100) < 300 &&
+                                    Medium.Random() > 0.6 - CheckPoints.Pos[mad.Im] / 10.0F)
                                 {
-                                    i16 = 50;
-                                }
-                                if (CheckPoints.stage == 19)
-                                {
-                                    i16 = 70;
-                                }
-                                if (CheckPoints.stage == 25 && mad.pcleared == 91)
-                                {
-                                    i16 = 50;
-                                }
-                                if (CheckPoints.stage == 26 && CheckPoints.clear[mad.im] - CheckPoints.clear[0] >= 5 &&
-                                    mad.cn != 10 && mad.cn != 12)
-                                {
-                                    i16 = 50;
-                                }
-                                if (100.0F * mad.hitmag / mad.stat.maxmag > i16)
-                                {
-                                    trfix = 2;
+                                    _clrnce = 0;
+                                    _acuracy = 0;
                                 }
                             }
-                        }
-                        else
+                    }
+                    abool = false;
+                    if (CheckPoints.Stage == 6 || CheckPoints.Stage == 8)
+                    {
+                        abool = true;
+                    }
+                    if (CheckPoints.Stage == 9 && mad.Cn == 15)
+                    {
+                        abool = true;
+                    }
+                    if (CheckPoints.Stage == 16 || CheckPoints.Stage == 20 || CheckPoints.Stage == 21 ||
+                        CheckPoints.Stage == 27)
+                    {
+                        abool = true;
+                    }
+                    if (CheckPoints.Stage == 18 && mad.Pcleared != 73)
+                    {
+                        abool = true;
+                    }
+                    if (CheckPoints.Stage == -1 && Medium.Random() > Medium.Random())
+                    {
+                        abool = true;
+                    }
+                    if (_trfix != 3)
+                    {
+                        _trfix = 0;
+                        var i15 = 50;
+                        if (CheckPoints.Stage == 26)
                         {
-                            upwait = 0;
-                            acuracy = 0;
-                            skiplev = 1.0F;
-                            clrnce = 2;
+                            i15 = 40;
                         }
-                        if (!bulistc)
+                        if (100.0F * mad.Hitmag / mad.Stat.Maxmag > i15)
                         {
-                            if (CheckPoints.stage == 18 && mad.cn == 11 && mad.pcleared == 35)
-                            {
-                                mad.pcleared = 73;
-                                mad.clear = 0;
-                                bulistc = true;
-                                runbul = (int) (100.0F * Medium.random());
-                            }
-                            if (CheckPoints.stage == 21 && mad.cn == 13)
-                            {
-                                bulistc = true;
-                            }
-                            if (CheckPoints.stage == 22 && mad.cn == 13)
-                            {
-                                bulistc = true;
-                            }
-                            if (CheckPoints.stage == 25 && CheckPoints.clear[0] - mad.clear >= 3 && trfix == 0)
-                            {
-                                bulistc = true;
-                                oupnt = -1;
-                            }
-                            if (CheckPoints.stage == 26)
-                            {
-                                if (mad.cn == 13 && CheckPoints.pcleared == 8)
-                                {
-                                    bulistc = true;
-                                    attack = 0;
-                                }
-                                if (mad.cn == 11 && CheckPoints.clear[0] - mad.clear >= 2 && trfix == 0)
-                                {
-                                    bulistc = true;
-                                    oupnt = -1;
-                                }
-                            }
-                            if ((CheckPoints.stage == 6 || CheckPoints.stage == 8 || CheckPoints.stage == 12 ||
-                                 CheckPoints.stage == 13 || CheckPoints.stage == 14 || CheckPoints.stage == 15 ||
-                                 CheckPoints.stage == 18 || CheckPoints.stage == 20 || CheckPoints.stage == 23) &&
-                                mad.cn == 13 && Math.Abs(CheckPoints.clear[0] - mad.clear) >= 2)
-                            {
-                                bulistc = true;
-                            }
-                            if ((CheckPoints.stage == 8 || CheckPoints.stage == 20) && mad.cn == 11 &&
-                                Math.Abs(CheckPoints.clear[0] - mad.clear) >= 1)
-                            {
-                                bulistc = true;
-                            }
-                            if (CheckPoints.stage == 6 && mad.cn == 11)
-                            {
-                                bulistc = true;
-                            }
-                            if (CheckPoints.stage == 9 && afta &&
-                                (CheckPoints.pos[mad.im] == 4 || CheckPoints.pos[mad.im] == 3) && mad.cn != 15 &&
-                                trfix != 0)
-                            {
-                                bulistc = true;
-                            }
+                            _trfix = 1;
                         }
-                        else if (CheckPoints.stage == 18)
+                        if (!abool)
                         {
-                            runbul--;
-                            if (mad.pcleared == 10)
+                            var i16 = 80;
+                            if (CheckPoints.Stage == 18 && mad.Cn != 11)
                             {
-                                runbul = 0;
+                                i16 = 50;
                             }
-                            if (runbul <= 0)
+                            if (CheckPoints.Stage == 19)
                             {
-                                bulistc = false;
+                                i16 = 70;
+                            }
+                            if (CheckPoints.Stage == 25 && mad.Pcleared == 91)
+                            {
+                                i16 = 50;
+                            }
+                            if (CheckPoints.Stage == 26 && CheckPoints.Clear[mad.Im] - CheckPoints.Clear[0] >= 5 &&
+                                mad.Cn != 10 && mad.Cn != 12)
+                            {
+                                i16 = 50;
+                            }
+                            if (100.0F * mad.Hitmag / mad.Stat.Maxmag > i16)
+                            {
+                                _trfix = 2;
                             }
                         }
-                        stcnt = 0;
-                        statusque = (int) (20.0F * Medium.random());
                     }
                     else
                     {
-                        stcnt++;
+                        _upwait = 0;
+                        _acuracy = 0;
+                        _skiplev = 1.0F;
+                        _clrnce = 2;
                     }
-                if (usebounce)
-                {
-                    abool = mad.wtouch;
+                    if (!_bulistc)
+                    {
+                        if (CheckPoints.Stage == 18 && mad.Cn == 11 && mad.Pcleared == 35)
+                        {
+                            mad.Pcleared = 73;
+                            mad.Clear = 0;
+                            _bulistc = true;
+                            _runbul = (int) (100.0F * Medium.Random());
+                        }
+                        if (CheckPoints.Stage == 21 && mad.Cn == 13)
+                        {
+                            _bulistc = true;
+                        }
+                        if (CheckPoints.Stage == 22 && mad.Cn == 13)
+                        {
+                            _bulistc = true;
+                        }
+                        if (CheckPoints.Stage == 25 && CheckPoints.Clear[0] - mad.Clear >= 3 && _trfix == 0)
+                        {
+                            _bulistc = true;
+                            _oupnt = -1;
+                        }
+                        if (CheckPoints.Stage == 26)
+                        {
+                            if (mad.Cn == 13 && CheckPoints.Pcleared == 8)
+                            {
+                                _bulistc = true;
+                                _attack = 0;
+                            }
+                            if (mad.Cn == 11 && CheckPoints.Clear[0] - mad.Clear >= 2 && _trfix == 0)
+                            {
+                                _bulistc = true;
+                                _oupnt = -1;
+                            }
+                        }
+                        if ((CheckPoints.Stage == 6 || CheckPoints.Stage == 8 || CheckPoints.Stage == 12 ||
+                             CheckPoints.Stage == 13 || CheckPoints.Stage == 14 || CheckPoints.Stage == 15 ||
+                             CheckPoints.Stage == 18 || CheckPoints.Stage == 20 || CheckPoints.Stage == 23) &&
+                            mad.Cn == 13 && Math.Abs(CheckPoints.Clear[0] - mad.Clear) >= 2)
+                        {
+                            _bulistc = true;
+                        }
+                        if ((CheckPoints.Stage == 8 || CheckPoints.Stage == 20) && mad.Cn == 11 &&
+                            Math.Abs(CheckPoints.Clear[0] - mad.Clear) >= 1)
+                        {
+                            _bulistc = true;
+                        }
+                        if (CheckPoints.Stage == 6 && mad.Cn == 11)
+                        {
+                            _bulistc = true;
+                        }
+                        if (CheckPoints.Stage == 9 && _afta &&
+                            (CheckPoints.Pos[mad.Im] == 4 || CheckPoints.Pos[mad.Im] == 3) && mad.Cn != 15 &&
+                            _trfix != 0)
+                        {
+                            _bulistc = true;
+                        }
+                    }
+                    else if (CheckPoints.Stage == 18)
+                    {
+                        _runbul--;
+                        if (mad.Pcleared == 10)
+                        {
+                            _runbul = 0;
+                        }
+                        if (_runbul <= 0)
+                        {
+                            _bulistc = false;
+                        }
+                    }
+                    _stcnt = 0;
+                    _statusque = (int) (20.0F * Medium.Random());
                 }
                 else
                 {
-                    abool = mad.mtouch;
+                    _stcnt++;
                 }
-                if (abool)
+            if (_usebounce)
+            {
+                abool = mad.Wtouch;
+            }
+            else
+            {
+                abool = mad.Mtouch;
+            }
+            if (abool)
+            {
+                if (_trickfase != 0)
                 {
-                    if (trickfase != 0)
-                    {
-                        trickfase = 0;
-                    }
-                    if (trfix == 2 || trfix == 3)
-                    {
-                        attack = 0;
-                    }
-                    int i;
-                    if (attack == 0)
-                    {
-                        if (upcnt < 30)
-                            if (revstart <= 0)
-                            {
-                                up = true;
-                            }
-                            else
-                            {
-                                down = true;
-                                revstart--;
-                            }
-                        if (upcnt < 25 + actwait)
+                    _trickfase = 0;
+                }
+                if (_trfix == 2 || _trfix == 3)
+                {
+                    _attack = 0;
+                }
+                int i;
+                if (_attack == 0)
+                {
+                    if (_upcnt < 30)
+                        if (_revstart <= 0)
                         {
-                            upcnt++;
+                            Up = true;
                         }
                         else
                         {
-                            upcnt = 0;
-                            actwait = upwait;
+                            Down = true;
+                            _revstart--;
                         }
-                        i = mad.point;
-                        int i17 = 50;
-                        if (CheckPoints.stage == 9)
+                    if (_upcnt < 25 + _actwait)
+                    {
+                        _upcnt++;
+                    }
+                    else
+                    {
+                        _upcnt = 0;
+                        _actwait = _upwait;
+                    }
+                    i = mad.Point;
+                    var i17 = 50;
+                    if (CheckPoints.Stage == 9)
+                    {
+                        i17 = 20;
+                    }
+                    if (CheckPoints.Stage == 18)
+                    {
+                        i17 = 20;
+                    }
+                    if (CheckPoints.Stage == 25)
+                    {
+                        i17 = 40;
+                    }
+                    if (CheckPoints.Stage == 26)
+                    {
+                        i17 = 20;
+                    }
+                    if (!_bulistc || _trfix == 2 || _trfix == 3 || _trfix == 4 || mad.Power < i17)
+                    {
+                        if (_rampp == 1 && CheckPoints.Typ[i] <= 0)
                         {
-                            i17 = 20;
-                        }
-                        if (CheckPoints.stage == 18)
-                        {
-                            i17 = 20;
-                        }
-                        if (CheckPoints.stage == 25)
-                        {
-                            i17 = 40;
-                        }
-                        if (CheckPoints.stage == 26)
-                        {
-                            i17 = 20;
-                        }
-                        if (!bulistc || trfix == 2 || trfix == 3 || trfix == 4 || mad.power < i17)
-                        {
-                            if (rampp == 1 && CheckPoints.typ[i] <= 0)
+                            var i18 = i + 1;
+                            if (i18 >= CheckPoints.N)
                             {
-                                int i18 = i + 1;
-                                if (i18 >= CheckPoints.n)
-                                {
-                                    i18 = 0;
-                                }
-                                if (CheckPoints.typ[i18] == -2)
-                                {
-                                    i = i18;
-                                }
+                                i18 = 0;
                             }
-                            if (rampp == -1 && CheckPoints.typ[i] == -2 && ++i >= CheckPoints.n)
+                            if (CheckPoints.Typ[i18] == -2)
                             {
-                                i = 0;
+                                i = i18;
                             }
-                            if (Medium.random() > skiplev)
+                        }
+                        if (_rampp == -1 && CheckPoints.Typ[i] == -2 && ++i >= CheckPoints.N)
+                        {
+                            i = 0;
+                        }
+                        if (Medium.Random() > _skiplev)
+                        {
+                            var i19 = i;
+                            var bool20 = false;
+                            if (CheckPoints.Typ[i19] > 0)
                             {
-                                int i19 = i;
-                                boolean bool20 = false;
-                                if (CheckPoints.typ[i19] > 0)
+                                var i21 = 0;
+                                for (var i22 = 0; i22 < CheckPoints.N; i22++)
+                                    if (CheckPoints.Typ[i22] > 0 && i22 < i19)
+                                    {
+                                        i21++;
+                                    }
+                                bool20 = mad.Clear != i21 + mad.Nlaps * CheckPoints.Nsp;
+                            }
+                            while (CheckPoints.Typ[i19] == 0 || CheckPoints.Typ[i19] == -1 ||
+                                   CheckPoints.Typ[i19] == -3 || bool20)
+                            {
+                                i = i19;
+                                if (++i19 >= CheckPoints.N)
                                 {
-                                    int i21 = 0;
-                                    for (int i22 = 0; i22 < CheckPoints.n; i22++)
-                                        if (CheckPoints.typ[i22] > 0 && i22 < i19)
+                                    i19 = 0;
+                                }
+                                bool20 = false;
+                                if (CheckPoints.Typ[i19] > 0)
+                                {
+                                    var i23 = 0;
+                                    for (var i24 = 0; i24 < CheckPoints.N; i24++)
+                                        if (CheckPoints.Typ[i24] > 0 && i24 < i19)
                                         {
-                                            i21++;
+                                            i23++;
                                         }
-                                    bool20 = mad.clear != i21 + mad.nlaps * CheckPoints.nsp;
-                                }
-                                while (CheckPoints.typ[i19] == 0 || CheckPoints.typ[i19] == -1 ||
-                                       CheckPoints.typ[i19] == -3 || bool20)
-                                {
-                                    i = i19;
-                                    if (++i19 >= CheckPoints.n)
-                                    {
-                                        i19 = 0;
-                                    }
-                                    bool20 = false;
-                                    if (CheckPoints.typ[i19] > 0)
-                                    {
-                                        int i23 = 0;
-                                        for (int i24 = 0; i24 < CheckPoints.n; i24++)
-                                            if (CheckPoints.typ[i24] > 0 && i24 < i19)
-                                            {
-                                                i23++;
-                                            }
-                                        bool20 = mad.clear != i23 + mad.nlaps * CheckPoints.nsp;
-                                    }
+                                    bool20 = mad.Clear != i23 + mad.Nlaps * CheckPoints.Nsp;
                                 }
                             }
-                            else if (Medium.random() > skiplev)
-                            {
-                                while (CheckPoints.typ[i] == -1)
-                                    if (++i >= CheckPoints.n)
-                                    {
-                                        i = 0;
-                                    }
-                            }
-                            if (CheckPoints.stage == 18 && mad.pcleared == 73 && trfix == 0 && mad.clear != 0)
-                            {
-                                i = 10;
-                            }
-                            if (CheckPoints.stage == 19 && mad.pcleared == 18 && trfix == 0)
-                            {
-                                i = 27;
-                            }
-                            if (CheckPoints.stage == 21)
-                            {
-                                if (mad.pcleared == 5 && trfix == 0 && mad.power < 70.0F)
-                                    if (i <= 16)
-                                    {
-                                        i = 16;
-                                    }
-                                    else
-                                    {
-                                        i = 21;
-                                    }
-                                if (mad.pcleared == 50)
+                        }
+                        else if (Medium.Random() > _skiplev)
+                        {
+                            while (CheckPoints.Typ[i] == -1)
+                                if (++i >= CheckPoints.N)
                                 {
-                                    i = 57;
+                                    i = 0;
                                 }
-                            }
-                            if (CheckPoints.stage == 22 && (mad.pcleared == 27 || mad.pcleared == 37))
-                            {
-                                while (CheckPoints.typ[i] == -1)
-                                    if (++i >= CheckPoints.n)
-                                    {
-                                        i = 0;
-                                    }
-                            }
-                            if (CheckPoints.stage == 23)
-                            {
-                                while (CheckPoints.typ[i] == -1)
-                                    if (++i >= CheckPoints.n)
-                                    {
-                                        i = 0;
-                                    }
-                            }
-                            if (CheckPoints.stage == 24)
-                            {
-                                while (CheckPoints.typ[i] == -1)
-                                    if (++i >= CheckPoints.n)
-                                    {
-                                        i = 0;
-                                    }
-                                if (!mad.gtouch)
+                        }
+                        if (CheckPoints.Stage == 18 && mad.Pcleared == 73 && _trfix == 0 && mad.Clear != 0)
+                        {
+                            i = 10;
+                        }
+                        if (CheckPoints.Stage == 19 && mad.Pcleared == 18 && _trfix == 0)
+                        {
+                            i = 27;
+                        }
+                        if (CheckPoints.Stage == 21)
+                        {
+                            if (mad.Pcleared == 5 && _trfix == 0 && mad.Power < 70.0F)
+                                if (i <= 16)
                                 {
-                                    while (CheckPoints.typ[i] == -2)
-                                        if (++i >= CheckPoints.n)
-                                        {
-                                            i = 0;
-                                        }
-                                }
-                                if (oupnt >= 68)
-                                {
-                                    i = 70;
+                                    i = 16;
                                 }
                                 else
                                 {
-                                    oupnt = i;
+                                    i = 21;
                                 }
-                            }
-                            if (CheckPoints.stage == 25)
+                            if (mad.Pcleared == 50)
                             {
-                                if (mad.pcleared != 91 && CheckPoints.pos[0] < CheckPoints.pos[mad.im] &&
-                                    mad.cn != 13 ||
-                                    CheckPoints.pos[mad.im] == 0 && (mad.clear == 12 || mad.clear == 20))
-                                {
-                                    while (CheckPoints.typ[i] == -4)
-                                        if (++i >= CheckPoints.n)
-                                        {
-                                            i = 0;
-                                        }
-                                }
-                                if (mad.pcleared == 9)
-                                {
-                                    if (py(conto.x / 100, 297, conto.z / 100, 347) < 400)
-                                    {
-                                        oupnt = 1;
-                                    }
-                                    if (oupnt == 1 && i < 22)
-                                    {
-                                        i = 22;
-                                    }
-                                }
-                                if (mad.pcleared == 67)
-                                {
-                                    if (py(conto.x / 100, 28, conto.z / 100, 494) < 4000)
-                                    {
-                                        oupnt = 2;
-                                    }
-                                    if (oupnt == 2)
-                                    {
-                                        i = 76;
-                                    }
-                                }
-                                if (mad.pcleared == 76)
-                                {
-                                    if (py(conto.x / 100, -50, conto.z / 100, 0) < 2000)
-                                    {
-                                        oupnt = 3;
-                                    }
-                                    if (oupnt == 3)
-                                    {
-                                        i = 91;
-                                    }
-                                    else
-                                    {
-                                        i = 89;
-                                    }
-                                }
-                            }
-                            if (CheckPoints.stage == 26)
-                            {
-                                if (mad.pcleared == 128)
-                                {
-                                    if (py(conto.x / 100, 0, conto.z / 100, 229) < 1500 || conto.z > 23000)
-                                    {
-                                        oupnt = 128;
-                                    }
-                                    if (oupnt != 128)
-                                    {
-                                        i = 3;
-                                    }
-                                }
-                                if (mad.pcleared == 8)
-                                {
-                                    if (py(conto.x / 100, -207, conto.z / 100, 549) < 1500 || conto.x < -20700)
-                                    {
-                                        oupnt = 8;
-                                    }
-                                    if (oupnt != 8)
-                                    {
-                                        i = 12;
-                                    }
-                                }
-                                if (mad.pcleared == 33)
-                                {
-                                    if (py(conto.x / 100, -60, conto.z / 100, 168) < 250 || conto.z > 17000)
-                                    {
-                                        oupnt = 331;
-                                    }
-                                    if (py(conto.x / 100, -112, conto.z / 100, 414) < 10000 || conto.z > 40000)
-                                    {
-                                        oupnt = 332;
-                                    }
-                                    if (oupnt != 331 && oupnt != 332)
-                                        if (trfix != 1)
-                                        {
-                                            i = 38;
-                                        }
-                                        else
-                                        {
-                                            i = 39;
-                                        }
-                                    if (oupnt == 331)
-                                    {
-                                        i = 71;
-                                    }
-                                }
-                                if (mad.pcleared == 42)
-                                {
-                                    if (py(conto.x / 100, -269, conto.z / 100, 493) < 100 || conto.x < -27000)
-                                    {
-                                        oupnt = 142;
-                                    }
-                                    if (oupnt != 142)
-                                    {
-                                        i = 47;
-                                    }
-                                }
-                                if (mad.pcleared == 51)
-                                {
-                                    if (py(conto.x / 100, -352, conto.z / 100, 260) < 100 || conto.z < 25000)
-                                    {
-                                        oupnt = 511;
-                                    }
-                                    if (py(conto.x / 100, -325, conto.z / 100, 10) < 2000 || conto.x > -32000)
-                                    {
-                                        oupnt = 512;
-                                    }
-                                    if (oupnt != 511 && oupnt != 512)
-                                    {
-                                        i = 80;
-                                    }
-                                    if (oupnt == 511)
-                                    {
-                                        i = 61;
-                                    }
-                                }
-                                if (mad.pcleared == 77)
-                                {
-                                    if (py(conto.x / 100, -371, conto.z / 100, 319) < 100 || conto.z < 31000)
-                                    {
-                                        oupnt = 77;
-                                    }
-                                    if (oupnt != 77)
-                                    {
-                                        i = 78;
-                                        mad.nofocus = true;
-                                    }
-                                }
-                                if (mad.pcleared == 105)
-                                {
-                                    if (py(conto.x / 100, -179, conto.z / 100, 10) < 2300 || conto.z < 1050)
-                                    {
-                                        oupnt = 105;
-                                    }
-                                    if (oupnt != 105)
-                                    {
-                                        i = 65;
-                                    }
-                                    else
-                                    {
-                                        i = 125;
-                                    }
-                                }
-                                if (trfix == 3)
-                                {
-                                    if (py(conto.x / 100, -52, conto.z / 100, 448) < 100 || conto.z > 45000)
-                                    {
-                                        oupnt = 176;
-                                    }
-                                    if (oupnt != 176)
-                                    {
-                                        i = 41;
-                                    }
-                                    else
-                                    {
-                                        i = 43;
-                                    }
-                                }
-                                if (CheckPoints.clear[mad.im] - CheckPoints.clear[0] >= 2 && py(conto.x / 100,
-                                        CheckPoints.opx[0] / 100, conto.z / 100, CheckPoints.opz[0] / 100) <
-                                    1000 + avoidnlev)
-                                {
-                                    int i25 = conto.xz;
-                                    if (zyinv)
-                                    {
-                                        i25 += 180;
-                                    }
-                                    for ( /**/; i25 < 0; i25 += 360)
-                                    {
-
-                                    }
-                                    for ( /**/; i25 > 180; i25 -= 360)
-                                    {
-
-                                    }
-                                    int i26 = 0;
-                                    if (CheckPoints.opx[0] - conto.x >= 0)
-                                    {
-                                        i26 = 180;
-                                    }
-                                    int i27;
-                                    for (i27 = (int) (90 + i26 + Math.Atan(
-                                                          (double) (CheckPoints.opz[0] - conto.z) /
-                                                          (double) (CheckPoints.opx[0] - conto.x)) /
-                                                      0.017453292519943295);
-                                        i27 < 0;
-                                        i27 += 360)
-                                    {
-
-                                    }
-                                    for ( /**/; i27 > 180; i27 -= 360)
-                                    {
-
-                                    }
-                                    int i28 = Math.Abs(i25 - i27);
-                                    if (i28 > 180)
-                                    {
-                                        i28 = Math.Abs(i28 - 360);
-                                    }
-                                    if (i28 < 90)
-                                    {
-                                        wall = 0;
-                                    }
-                                }
-                            }
-                            if (rampp == 2)
-                            {
-                                int i29 = i + 1;
-                                if (i29 >= CheckPoints.n)
-                                {
-                                    i29 = 0;
-                                }
-                                if (CheckPoints.typ[i29] == -2 && i != mad.point && --i < 0)
-                                {
-                                    i += CheckPoints.n;
-                                }
-                            }
-                            if (bulistc)
-                            {
-                                mad.nofocus = true;
-                                if (gowait)
-                                {
-                                    gowait = false;
-                                }
+                                i = 57;
                             }
                         }
-                        else
+                        if (CheckPoints.Stage == 22 && (mad.Pcleared == 27 || mad.Pcleared == 37))
                         {
-                            if (CheckPoints.stage != 25 && CheckPoints.stage != 26 || runbul == 0)
-                            {
-                                i -= 2;
-                                if (i < 0)
+                            while (CheckPoints.Typ[i] == -1)
+                                if (++i >= CheckPoints.N)
                                 {
-                                    i += CheckPoints.n;
+                                    i = 0;
                                 }
-                                if (CheckPoints.stage == 9 && i > 76)
+                        }
+                        if (CheckPoints.Stage == 23)
+                        {
+                            while (CheckPoints.Typ[i] == -1)
+                                if (++i >= CheckPoints.N)
+                                {
+                                    i = 0;
+                                }
+                        }
+                        if (CheckPoints.Stage == 24)
+                        {
+                            while (CheckPoints.Typ[i] == -1)
+                                if (++i >= CheckPoints.N)
+                                {
+                                    i = 0;
+                                }
+                            if (!mad.Gtouch)
+                            {
+                                while (CheckPoints.Typ[i] == -2)
+                                    if (++i >= CheckPoints.N)
+                                    {
+                                        i = 0;
+                                    }
+                            }
+                            if (_oupnt >= 68)
+                            {
+                                i = 70;
+                            }
+                            else
+                            {
+                                _oupnt = i;
+                            }
+                        }
+                        if (CheckPoints.Stage == 25)
+                        {
+                            if (mad.Pcleared != 91 && CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im] &&
+                                mad.Cn != 13 ||
+                                CheckPoints.Pos[mad.Im] == 0 && (mad.Clear == 12 || mad.Clear == 20))
+                            {
+                                while (CheckPoints.Typ[i] == -4)
+                                    if (++i >= CheckPoints.N)
+                                    {
+                                        i = 0;
+                                    }
+                            }
+                            if (mad.Pcleared == 9)
+                            {
+                                if (Py(conto.X / 100, 297, conto.Z / 100, 347) < 400)
+                                {
+                                    _oupnt = 1;
+                                }
+                                if (_oupnt == 1 && i < 22)
+                                {
+                                    i = 22;
+                                }
+                            }
+                            if (mad.Pcleared == 67)
+                            {
+                                if (Py(conto.X / 100, 28, conto.Z / 100, 494) < 4000)
+                                {
+                                    _oupnt = 2;
+                                }
+                                if (_oupnt == 2)
                                 {
                                     i = 76;
                                 }
-                                while (CheckPoints.typ[i] == -4)
-                                    if (--i < 0)
-                                    {
-                                        i += CheckPoints.n;
-                                    }
                             }
-                            if (CheckPoints.stage == 21)
+                            if (mad.Pcleared == 76)
                             {
-                                if (i >= 14 && i <= 19)
+                                if (Py(conto.X / 100, -50, conto.Z / 100, 0) < 2000)
                                 {
-                                    i = 13;
+                                    _oupnt = 3;
                                 }
-                                if (oupnt == 72 && i != 56)
+                                if (_oupnt == 3)
                                 {
-                                    i = 57;
-                                }
-                                else if (oupnt == 54 && i != 52)
-                                {
-                                    i = 53;
-                                }
-                                else if (oupnt == 39 && i != 37)
-                                {
-                                    i = 38;
+                                    i = 91;
                                 }
                                 else
                                 {
-                                    oupnt = i;
-                                }
-                            }
-                            if (CheckPoints.stage == 22)
-                            {
-                                if (!gowait)
-                                {
-                                    if (CheckPoints.clear[0] == 0)
-                                    {
-                                        wtx = -3500;
-                                        wtz = 19000;
-                                        frx = -3500;
-                                        frz = 39000;
-                                        frad = 12000;
-                                        oupnt = 37;
-                                        gowait = true;
-                                        afta = false;
-                                    }
-                                    if (CheckPoints.clear[0] == 7)
-                                    {
-                                        wtx = -44800;
-                                        wtz = 40320;
-                                        frx = -44800;
-                                        frz = 34720;
-                                        frad = 30000;
-                                        oupnt = 27;
-                                        gowait = true;
-                                        afta = false;
-                                    }
-                                    if (CheckPoints.clear[0] == 10)
-                                    {
-                                        wtx = 0;
-                                        wtz = 48739;
-                                        frx = 0;
-                                        frz = 38589;
-                                        frad = 90000;
-                                        oupnt = 55;
-                                        gowait = true;
-                                        afta = false;
-                                    }
-                                    if (CheckPoints.clear[0] == 14)
-                                    {
-                                        wtx = -3500;
-                                        wtz = 19000;
-                                        frx = -14700;
-                                        frz = 39000;
-                                        frad = 45000;
-                                        oupnt = 37;
-                                        gowait = true;
-                                        afta = false;
-                                    }
-                                    if (CheckPoints.clear[0] == 18)
-                                    {
-                                        wtx = -48300;
-                                        wtz = -4550;
-                                        frx = -48300;
-                                        frz = 5600;
-                                        frad = 90000;
-                                        oupnt = 17;
-                                        gowait = true;
-                                        afta = false;
-                                    }
-                                }
-                                if (gowait)
-                                {
-                                    if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 10000 &&
-                                        mad.speed > 50.0F)
-                                    {
-                                        up = false;
-                                    }
-                                    if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 200)
-                                    {
-                                        up = false;
-                                        handb = true;
-                                    }
-                                    if (CheckPoints.pcleared == oupnt && py(CheckPoints.opx[0] / 100, frx / 100,
-                                            CheckPoints.opz[0] / 100, frz / 100) < frad)
-                                    {
-                                        afta = true;
-                                        gowait = false;
-                                    }
-                                    if (py(conto.x / 100, CheckPoints.opx[0] / 100, conto.z / 100,
-                                            CheckPoints.opz[0] / 100) < 25)
-                                    {
-                                        afta = true;
-                                        gowait = false;
-                                        attack = 200;
-                                        acr = 0;
-                                    }
-                                }
-                            }
-                            if (CheckPoints.stage == 25)
-                            {
-                                if (oupnt == -1)
-                                {
-                                    int i30 = -10;
-                                    for (int i31 = 0; i31 < CheckPoints.n; i31++)
-                                        if ((CheckPoints.typ[i31] == -2 || CheckPoints.typ[i31] == -4) &&
-                                            (i31 < 50 || i31 > 54) &&
-                                            (py(conto.x / 100, CheckPoints.x[i31] / 100, conto.z / 100,
-                                                 CheckPoints.z[i31] / 100) < i30 || i30 == -10))
-                                        {
-                                            i30 = py(conto.x / 100, CheckPoints.x[i31] / 100, conto.z / 100,
-                                                CheckPoints.z[i31] / 100);
-                                            oupnt = i31;
-                                        }
-                                    oupnt--;
-                                    if (i < 0)
-                                    {
-                                        oupnt += CheckPoints.n;
-                                    }
-                                }
-                                if (oupnt >= 0 && oupnt < CheckPoints.n)
-                                {
-                                    i = oupnt;
-                                    if (py(conto.x / 100, CheckPoints.x[i] / 100, conto.z / 100,
-                                            CheckPoints.z[i] / 100) < 800)
-                                    {
-                                        oupnt = -(int) (75.0F + Medium.random() * 200.0F);
-                                        runbul = (int) (50.0F + Medium.random() * 100.0F);
-                                    }
-                                }
-                                if (oupnt < -1)
-                                {
-                                    oupnt++;
-                                }
-                                if (runbul != 0)
-                                {
-                                    runbul--;
-                                }
-                            }
-                            if (CheckPoints.stage == 26)
-                            {
-                                boolean bool32 = false;
-                                if (mad.cn == 13)
-                                {
-                                    if (!gowait)
-                                    {
-                                        if (CheckPoints.clear[0] == 1)
-                                        {
-                                            if (Medium.random() > 0.5)
-                                            {
-                                                wtx = -14000;
-                                                wtz = 48000;
-                                                frx = -5600;
-                                                frz = 47600;
-                                                frad = 88000;
-                                                oupnt = 33;
-                                            }
-                                            else
-                                            {
-                                                wtx = -5600;
-                                                wtz = 8000;
-                                                frx = -7350;
-                                                frz = -4550;
-                                                frad = 22000;
-                                                oupnt = 15;
-                                            }
-                                            gowait = true;
-                                            afta = false;
-                                        }
-                                        if (CheckPoints.clear[0] == 4)
-                                        {
-                                            wtx = -12700;
-                                            wtz = 14000;
-                                            frx = -31000;
-                                            frz = 1050;
-                                            frad = 11000;
-                                            oupnt = 51;
-                                            gowait = true;
-                                            afta = false;
-                                        }
-                                        if (CheckPoints.clear[0] == 14)
-                                        {
-                                            wtx = -35350;
-                                            wtz = 6650;
-                                            frx = -48300;
-                                            frz = 54950;
-                                            frad = 11000;
-                                            oupnt = 15;
-                                            gowait = true;
-                                            afta = false;
-                                        }
-                                        if (CheckPoints.clear[0] == 17)
-                                        {
-                                            wtx = -42700;
-                                            wtz = 41000;
-                                            frx = -40950;
-                                            frz = 49350;
-                                            frad = 7000;
-                                            oupnt = 42;
-                                            gowait = true;
-                                            afta = false;
-                                        }
-                                        if (CheckPoints.clear[0] == 21)
-                                        {
-                                            wtx = -1750;
-                                            wtz = -15750;
-                                            frx = -25900;
-                                            frz = -14000;
-                                            frad = 11000;
-                                            oupnt = 125;
-                                            gowait = true;
-                                            afta = false;
-                                        }
-                                    }
-                                    if (gowait)
-                                    {
-                                        if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 10000 &&
-                                            mad.speed > 50.0F)
-                                        {
-                                            up = false;
-                                        }
-                                        if (py(conto.x / 100, wtx / 100, conto.z / 100, wtz / 100) < 200)
-                                        {
-                                            up = false;
-                                            handb = true;
-                                        }
-                                        if (CheckPoints.pcleared == oupnt && py(CheckPoints.opx[0] / 100, frx / 100,
-                                                CheckPoints.opz[0] / 100, frz / 100) < frad)
-                                        {
-                                            runbul = 0;
-                                            afta = true;
-                                            gowait = false;
-                                        }
-                                        if (py(conto.x / 100, CheckPoints.opx[0] / 100, conto.z / 100,
-                                                CheckPoints.opz[0] / 100) < 25)
-                                        {
-                                            afta = true;
-                                            gowait = false;
-                                            attack = 200;
-                                            acr = 0;
-                                        }
-                                        if (CheckPoints.clear[0] == 21 && oupnt != 125)
-                                        {
-                                            gowait = false;
-                                        }
-                                    }
-                                    if (CheckPoints.clear[0] >= 11 && !gowait ||
-                                        mad.power < 60.0F && CheckPoints.clear[0] < 21)
-                                    {
-                                        bool32 = true;
-                                        if (!exitattack)
-                                        {
-                                            oupnt = -1;
-                                            exitattack = true;
-                                        }
-                                    }
-                                    else if (exitattack)
-                                    {
-                                        exitattack = false;
-                                    }
-                                }
-                                if (mad.cn == 11)
-                                {
-                                    bool32 = true;
-                                }
-                                if (bool32)
-                                {
-                                    if (oupnt == -1)
-                                    {
-                                        int i33 = -10;
-                                        for (int i34 = 0; i34 < CheckPoints.n; i34++)
-                                            if (CheckPoints.typ[i34] == -4 &&
-                                                (py(conto.x / 100, CheckPoints.x[i34] / 100, conto.z / 100,
-                                                     CheckPoints.z[i34] / 100) < i33 && Medium.random() > 0.6 ||
-                                                 i33 == -10))
-                                            {
-                                                i33 = py(conto.x / 100, CheckPoints.x[i34] / 100, conto.z / 100,
-                                                    CheckPoints.z[i34] / 100);
-                                                oupnt = i34;
-                                            }
-                                        oupnt--;
-                                        if (i < 0)
-                                        {
-                                            oupnt += CheckPoints.n;
-                                        }
-                                    }
-                                    if (oupnt >= 0 && oupnt < CheckPoints.n)
-                                    {
-                                        i = oupnt;
-                                        if (py(conto.x / 100, CheckPoints.x[i] / 100, conto.z / 100,
-                                                CheckPoints.z[i] / 100) < 800)
-                                        {
-                                            oupnt = -(int) (75.0F + Medium.random() * 200.0F);
-                                            runbul = (int) (50.0F + Medium.random() * 100.0F);
-                                        }
-                                    }
-                                    if (oupnt < -1)
-                                    {
-                                        oupnt++;
-                                    }
-                                    if (runbul != 0)
-                                    {
-                                        runbul--;
-                                    }
-                                }
-                            }
-                            mad.nofocus = true;
-                        }
-                        if (CheckPoints.stage != 27)
-                        {
-                            if (CheckPoints.stage == 10 || CheckPoints.stage == 19 ||
-                                CheckPoints.stage == 18 && mad.pcleared == 73 || CheckPoints.stage == 26)
-                            {
-                                forget = true;
-                            }
-                            if ((mad.missedcp == 0 || forget || trfix == 4) && trfix != 0)
-                            {
-                                int i35 = 0;
-                                if (CheckPoints.stage == 25 || CheckPoints.stage == 26)
-                                {
-                                    i35 = 3;
-                                }
-                                if (trfix == 2)
-                                {
-                                    int i36 = -10;
-                                    int i37 = 0;
-                                    for (int i38 = i35; i38 < CheckPoints.fn; i38++)
-                                        if (py(conto.x / 100, CheckPoints.x[fpnt[i38]] / 100, conto.z / 100,
-                                                CheckPoints.z[fpnt[i38]] / 100) < i36 || i36 == -10)
-                                        {
-                                            i36 = py(conto.x / 100, CheckPoints.x[fpnt[i38]] / 100, conto.z / 100,
-                                                CheckPoints.z[fpnt[i38]] / 100);
-                                            i37 = i38;
-                                        }
-                                    if (CheckPoints.stage == 18 || CheckPoints.stage == 22)
-                                    {
-                                        i37 = 1;
-                                    }
-                                    i = fpnt[i37];
-                                    forget = CheckPoints.special[i37];
-                                }
-                                for (int i39 = i35; i39 < CheckPoints.fn; i39++)
-                                    if (py(conto.x / 100, CheckPoints.x[fpnt[i39]] / 100, conto.z / 100,
-                                            CheckPoints.z[fpnt[i39]] / 100) < 2000)
-                                    {
-                                        forget = false;
-                                        actwait = 0;
-                                        upwait = 0;
-                                        turntyp = 2;
-                                        randtcnt = -1;
-                                        acuracy = 0;
-                                        rampp = 0;
-                                        trfix = 3;
-                                    }
-                                if (trfix == 3)
-                                {
-                                    mad.nofocus = true;
+                                    i = 89;
                                 }
                             }
                         }
-                        if (turncnt > randtcnt)
+                        if (CheckPoints.Stage == 26)
                         {
-                            if (!gowait)
+                            if (mad.Pcleared == 128)
                             {
-                                int i40 = 0;
-                                if (CheckPoints.x[i] - conto.x >= 0)
+                                if (Py(conto.X / 100, 0, conto.Z / 100, 229) < 1500 || conto.Z > 23000)
                                 {
-                                    i40 = 180;
+                                    _oupnt = 128;
                                 }
-                                pan = (int) (90 + i40 + Math.Atan(
-                                                 (double) (CheckPoints.z[i] - conto.z) /
-                                                 (double) (CheckPoints.x[i] - conto.x)) / 0.017453292519943295);
+                                if (_oupnt != 128)
+                                {
+                                    i = 3;
+                                }
                             }
-                            else
+                            if (mad.Pcleared == 8)
                             {
-                                int i41 = 0;
-                                if (wtx - conto.x >= 0)
+                                if (Py(conto.X / 100, -207, conto.Z / 100, 549) < 1500 || conto.X < -20700)
                                 {
-                                    i41 = 180;
+                                    _oupnt = 8;
                                 }
-                                pan = (int) (90 + i41 + Math.Atan((double) (wtz - conto.z) / (double) (wtx - conto.x)) /
-                                             0.017453292519943295);
+                                if (_oupnt != 8)
+                                {
+                                    i = 12;
+                                }
                             }
-                            turncnt = 0;
-                            randtcnt = (int) (acuracy * Medium.random());
+                            if (mad.Pcleared == 33)
+                            {
+                                if (Py(conto.X / 100, -60, conto.Z / 100, 168) < 250 || conto.Z > 17000)
+                                {
+                                    _oupnt = 331;
+                                }
+                                if (Py(conto.X / 100, -112, conto.Z / 100, 414) < 10000 || conto.Z > 40000)
+                                {
+                                    _oupnt = 332;
+                                }
+                                if (_oupnt != 331 && _oupnt != 332)
+                                    if (_trfix != 1)
+                                    {
+                                        i = 38;
+                                    }
+                                    else
+                                    {
+                                        i = 39;
+                                    }
+                                if (_oupnt == 331)
+                                {
+                                    i = 71;
+                                }
+                            }
+                            if (mad.Pcleared == 42)
+                            {
+                                if (Py(conto.X / 100, -269, conto.Z / 100, 493) < 100 || conto.X < -27000)
+                                {
+                                    _oupnt = 142;
+                                }
+                                if (_oupnt != 142)
+                                {
+                                    i = 47;
+                                }
+                            }
+                            if (mad.Pcleared == 51)
+                            {
+                                if (Py(conto.X / 100, -352, conto.Z / 100, 260) < 100 || conto.Z < 25000)
+                                {
+                                    _oupnt = 511;
+                                }
+                                if (Py(conto.X / 100, -325, conto.Z / 100, 10) < 2000 || conto.X > -32000)
+                                {
+                                    _oupnt = 512;
+                                }
+                                if (_oupnt != 511 && _oupnt != 512)
+                                {
+                                    i = 80;
+                                }
+                                if (_oupnt == 511)
+                                {
+                                    i = 61;
+                                }
+                            }
+                            if (mad.Pcleared == 77)
+                            {
+                                if (Py(conto.X / 100, -371, conto.Z / 100, 319) < 100 || conto.Z < 31000)
+                                {
+                                    _oupnt = 77;
+                                }
+                                if (_oupnt != 77)
+                                {
+                                    i = 78;
+                                    mad.Nofocus = true;
+                                }
+                            }
+                            if (mad.Pcleared == 105)
+                            {
+                                if (Py(conto.X / 100, -179, conto.Z / 100, 10) < 2300 || conto.Z < 1050)
+                                {
+                                    _oupnt = 105;
+                                }
+                                if (_oupnt != 105)
+                                {
+                                    i = 65;
+                                }
+                                else
+                                {
+                                    i = 125;
+                                }
+                            }
+                            if (_trfix == 3)
+                            {
+                                if (Py(conto.X / 100, -52, conto.Z / 100, 448) < 100 || conto.Z > 45000)
+                                {
+                                    _oupnt = 176;
+                                }
+                                if (_oupnt != 176)
+                                {
+                                    i = 41;
+                                }
+                                else
+                                {
+                                    i = 43;
+                                }
+                            }
+                            if (CheckPoints.Clear[mad.Im] - CheckPoints.Clear[0] >= 2 && Py(conto.X / 100,
+                                    CheckPoints.Opx[0] / 100, conto.Z / 100, CheckPoints.Opz[0] / 100) <
+                                1000 + _avoidnlev)
+                            {
+                                var i25 = conto.Xz;
+                                if (Zyinv)
+                                {
+                                    i25 += 180;
+                                }
+                                for ( /**/; i25 < 0; i25 += 360)
+                                {
+
+                                }
+                                for ( /**/; i25 > 180; i25 -= 360)
+                                {
+
+                                }
+                                var i26 = 0;
+                                if (CheckPoints.Opx[0] - conto.X >= 0)
+                                {
+                                    i26 = 180;
+                                }
+                                int i27;
+                                for (i27 = (int) (90 + i26 + Math.Atan(
+                                                      (CheckPoints.Opz[0] - conto.Z) /
+                                                      (double) (CheckPoints.Opx[0] - conto.X)) /
+                                                  0.017453292519943295);
+                                    i27 < 0;
+                                    i27 += 360)
+                                {
+
+                                }
+                                for ( /**/; i27 > 180; i27 -= 360)
+                                {
+
+                                }
+                                var i28 = Math.Abs(i25 - i27);
+                                if (i28 > 180)
+                                {
+                                    i28 = Math.Abs(i28 - 360);
+                                }
+                                if (i28 < 90)
+                                {
+                                    Wall = 0;
+                                }
+                            }
                         }
-                        else
+                        if (_rampp == 2)
                         {
-                            turncnt++;
+                            var i29 = i + 1;
+                            if (i29 >= CheckPoints.N)
+                            {
+                                i29 = 0;
+                            }
+                            if (CheckPoints.Typ[i29] == -2 && i != mad.Point && --i < 0)
+                            {
+                                i += CheckPoints.N;
+                            }
+                        }
+                        if (_bulistc)
+                        {
+                            mad.Nofocus = true;
+                            if (_gowait)
+                            {
+                                _gowait = false;
+                            }
                         }
                     }
                     else
                     {
-                        up = true;
-                        i = 0;
-                        int i42 = (int) (pys(conto.x, CheckPoints.opx[acr], conto.z, CheckPoints.opz[acr]) /
-                                               2.0F * aim);
-                        int i43 = (int) (CheckPoints.opx[acr] - i42 * Medium.sin(CheckPoints.omxz[acr]));
-                        int i44 = (int) (CheckPoints.opz[acr] + i42 * Medium.cos(CheckPoints.omxz[acr]));
-                        if (i43 - conto.x >= 0)
+                        if (CheckPoints.Stage != 25 && CheckPoints.Stage != 26 || _runbul == 0)
                         {
-                            i = 180;
-                        }
-                        pan = (int) (90 + i + Math.Atan((double) (i44 - conto.z) / (double) (i43 - conto.x)) /
-                                     0.017453292519943295);
-                        attack--;
-                        if (attack <= 0)
-                        {
-                            attack = 0;
-                        }
-                        if (CheckPoints.stage == 25 && exitattack && !bulistc && mad.missedcp != 0)
-                        {
-                            attack = 0;
-                        }
-                        if (CheckPoints.stage == 26 && mad.cn == 13 &&
-                            (CheckPoints.clear[0] == 4 || CheckPoints.clear[0] == 13 || CheckPoints.clear[0] == 21))
-                        {
-                            attack = 0;
-                        }
-                        if (CheckPoints.stage == 26 && mad.missedcp != 0 &&
-                            (CheckPoints.pos[mad.im] == 0 || CheckPoints.pos[mad.im] == 1 && CheckPoints.pos[0] == 0))
-                        {
-                            attack = 0;
-                        }
-                        if (CheckPoints.stage == 26 && CheckPoints.pos[0] > CheckPoints.pos[mad.im] &&
-                            mad.power < 80.0F)
-                        {
-                            attack = 0;
-                        }
-                    }
-                    i = conto.xz;
-                    if (zyinv)
-                    {
-                        i += 180;
-                    }
-                    for ( /**/; i < 0; i += 360)
-                    {
-
-                    }
-                    for ( /**/; i > 180; i -= 360)
-                    {
-
-                    }
-                    for ( /**/; pan < 0; pan += 360)
-                    {
-
-                    }
-                    for ( /**/; pan > 180; pan -= 360)
-                    {
-
-                    }
-                    if (wall != -1 && hold == 0)
-                    {
-                        clrnce = 0;
-                    }
-                    if (hold == 0)
-                        if (Math.Abs(i - pan) < 180)
-                        {
-                            if (Math.Abs(i - pan) > clrnce)
+                            i -= 2;
+                            if (i < 0)
                             {
-                                if (i < pan)
-                                {
-                                    left = true;
-                                    lastl = true;
-                                }
-                                else
-                                {
-                                    right = true;
-                                    lastl = false;
-                                }
-                                if (Math.Abs(i - pan) > 50 && mad.speed > mad.stat.swits[0] && turntyp != 0)
-                                {
-                                    if (turntyp == 1)
-                                    {
-                                        down = true;
-                                    }
-                                    if (turntyp == 2)
-                                    {
-                                        handb = true;
-                                    }
-                                    if (!agressed)
-                                    {
-                                        up = false;
-                                    }
-                                }
+                                i += CheckPoints.N;
                             }
-                        }
-                        else if (Math.Abs(i - pan) < 360 - clrnce)
-                        {
-                            if (i < pan)
+                            if (CheckPoints.Stage == 9 && i > 76)
                             {
-                                right = true;
-                                lastl = false;
+                                i = 76;
+                            }
+                            while (CheckPoints.Typ[i] == -4)
+                                if (--i < 0)
+                                {
+                                    i += CheckPoints.N;
+                                }
+                        }
+                        if (CheckPoints.Stage == 21)
+                        {
+                            if (i >= 14 && i <= 19)
+                            {
+                                i = 13;
+                            }
+                            if (_oupnt == 72 && i != 56)
+                            {
+                                i = 57;
+                            }
+                            else if (_oupnt == 54 && i != 52)
+                            {
+                                i = 53;
+                            }
+                            else if (_oupnt == 39 && i != 37)
+                            {
+                                i = 38;
                             }
                             else
                             {
-                                left = true;
-                                lastl = true;
+                                _oupnt = i;
                             }
-                            if (Math.Abs(i - pan) < 310 && mad.speed > mad.stat.swits[0] && turntyp != 0)
+                        }
+                        if (CheckPoints.Stage == 22)
+                        {
+                            if (!_gowait)
                             {
-                                if (turntyp == 1)
+                                if (CheckPoints.Clear[0] == 0)
                                 {
-                                    down = true;
+                                    _wtx = -3500;
+                                    _wtz = 19000;
+                                    _frx = -3500;
+                                    _frz = 39000;
+                                    _frad = 12000;
+                                    _oupnt = 37;
+                                    _gowait = true;
+                                    _afta = false;
                                 }
-                                if (turntyp == 2)
+                                if (CheckPoints.Clear[0] == 7)
                                 {
-                                    handb = true;
+                                    _wtx = -44800;
+                                    _wtz = 40320;
+                                    _frx = -44800;
+                                    _frz = 34720;
+                                    _frad = 30000;
+                                    _oupnt = 27;
+                                    _gowait = true;
+                                    _afta = false;
                                 }
-                                if (!agressed)
+                                if (CheckPoints.Clear[0] == 10)
                                 {
-                                    up = false;
+                                    _wtx = 0;
+                                    _wtz = 48739;
+                                    _frx = 0;
+                                    _frz = 38589;
+                                    _frad = 90000;
+                                    _oupnt = 55;
+                                    _gowait = true;
+                                    _afta = false;
+                                }
+                                if (CheckPoints.Clear[0] == 14)
+                                {
+                                    _wtx = -3500;
+                                    _wtz = 19000;
+                                    _frx = -14700;
+                                    _frz = 39000;
+                                    _frad = 45000;
+                                    _oupnt = 37;
+                                    _gowait = true;
+                                    _afta = false;
+                                }
+                                if (CheckPoints.Clear[0] == 18)
+                                {
+                                    _wtx = -48300;
+                                    _wtz = -4550;
+                                    _frx = -48300;
+                                    _frz = 5600;
+                                    _frad = 90000;
+                                    _oupnt = 17;
+                                    _gowait = true;
+                                    _afta = false;
+                                }
+                            }
+                            if (_gowait)
+                            {
+                                if (Py(conto.X / 100, _wtx / 100, conto.Z / 100, _wtz / 100) < 10000 &&
+                                    mad.Speed > 50.0F)
+                                {
+                                    Up = false;
+                                }
+                                if (Py(conto.X / 100, _wtx / 100, conto.Z / 100, _wtz / 100) < 200)
+                                {
+                                    Up = false;
+                                    Handb = true;
+                                }
+                                if (CheckPoints.Pcleared == _oupnt && Py(CheckPoints.Opx[0] / 100, _frx / 100,
+                                        CheckPoints.Opz[0] / 100, _frz / 100) < _frad)
+                                {
+                                    _afta = true;
+                                    _gowait = false;
+                                }
+                                if (Py(conto.X / 100, CheckPoints.Opx[0] / 100, conto.Z / 100,
+                                        CheckPoints.Opz[0] / 100) < 25)
+                                {
+                                    _afta = true;
+                                    _gowait = false;
+                                    _attack = 200;
+                                    _acr = 0;
                                 }
                             }
                         }
-                    if (CheckPoints.stage == 24 && wall != -1)
-                    {
-                        if (Trackers.dam[wall] == 0 || mad.pcleared == 45)
+                        if (CheckPoints.Stage == 25)
                         {
-                            wall = -1;
+                            if (_oupnt == -1)
+                            {
+                                var i30 = -10;
+                                for (var i31 = 0; i31 < CheckPoints.N; i31++)
+                                    if ((CheckPoints.Typ[i31] == -2 || CheckPoints.Typ[i31] == -4) &&
+                                        (i31 < 50 || i31 > 54) &&
+                                        (Py(conto.X / 100, CheckPoints.X[i31] / 100, conto.Z / 100,
+                                             CheckPoints.Z[i31] / 100) < i30 || i30 == -10))
+                                    {
+                                        i30 = Py(conto.X / 100, CheckPoints.X[i31] / 100, conto.Z / 100,
+                                            CheckPoints.Z[i31] / 100);
+                                        _oupnt = i31;
+                                    }
+                                _oupnt--;
+                                if (i < 0)
+                                {
+                                    _oupnt += CheckPoints.N;
+                                }
+                            }
+                            if (_oupnt >= 0 && _oupnt < CheckPoints.N)
+                            {
+                                i = _oupnt;
+                                if (Py(conto.X / 100, CheckPoints.X[i] / 100, conto.Z / 100,
+                                        CheckPoints.Z[i] / 100) < 800)
+                                {
+                                    _oupnt = -(int) (75.0F + Medium.Random() * 200.0F);
+                                    _runbul = (int) (50.0F + Medium.Random() * 100.0F);
+                                }
+                            }
+                            if (_oupnt < -1)
+                            {
+                                _oupnt++;
+                            }
+                            if (_runbul != 0)
+                            {
+                                _runbul--;
+                            }
                         }
-                        if (mad.pcleared == 58 && CheckPoints.opz[mad.im] < 36700)
+                        if (CheckPoints.Stage == 26)
                         {
-                            wall = -1;
-                            hold = 0;
+                            var bool32 = false;
+                            if (mad.Cn == 13)
+                            {
+                                if (!_gowait)
+                                {
+                                    if (CheckPoints.Clear[0] == 1)
+                                    {
+                                        if (Medium.Random() > 0.5)
+                                        {
+                                            _wtx = -14000;
+                                            _wtz = 48000;
+                                            _frx = -5600;
+                                            _frz = 47600;
+                                            _frad = 88000;
+                                            _oupnt = 33;
+                                        }
+                                        else
+                                        {
+                                            _wtx = -5600;
+                                            _wtz = 8000;
+                                            _frx = -7350;
+                                            _frz = -4550;
+                                            _frad = 22000;
+                                            _oupnt = 15;
+                                        }
+                                        _gowait = true;
+                                        _afta = false;
+                                    }
+                                    if (CheckPoints.Clear[0] == 4)
+                                    {
+                                        _wtx = -12700;
+                                        _wtz = 14000;
+                                        _frx = -31000;
+                                        _frz = 1050;
+                                        _frad = 11000;
+                                        _oupnt = 51;
+                                        _gowait = true;
+                                        _afta = false;
+                                    }
+                                    if (CheckPoints.Clear[0] == 14)
+                                    {
+                                        _wtx = -35350;
+                                        _wtz = 6650;
+                                        _frx = -48300;
+                                        _frz = 54950;
+                                        _frad = 11000;
+                                        _oupnt = 15;
+                                        _gowait = true;
+                                        _afta = false;
+                                    }
+                                    if (CheckPoints.Clear[0] == 17)
+                                    {
+                                        _wtx = -42700;
+                                        _wtz = 41000;
+                                        _frx = -40950;
+                                        _frz = 49350;
+                                        _frad = 7000;
+                                        _oupnt = 42;
+                                        _gowait = true;
+                                        _afta = false;
+                                    }
+                                    if (CheckPoints.Clear[0] == 21)
+                                    {
+                                        _wtx = -1750;
+                                        _wtz = -15750;
+                                        _frx = -25900;
+                                        _frz = -14000;
+                                        _frad = 11000;
+                                        _oupnt = 125;
+                                        _gowait = true;
+                                        _afta = false;
+                                    }
+                                }
+                                if (_gowait)
+                                {
+                                    if (Py(conto.X / 100, _wtx / 100, conto.Z / 100, _wtz / 100) < 10000 &&
+                                        mad.Speed > 50.0F)
+                                    {
+                                        Up = false;
+                                    }
+                                    if (Py(conto.X / 100, _wtx / 100, conto.Z / 100, _wtz / 100) < 200)
+                                    {
+                                        Up = false;
+                                        Handb = true;
+                                    }
+                                    if (CheckPoints.Pcleared == _oupnt && Py(CheckPoints.Opx[0] / 100, _frx / 100,
+                                            CheckPoints.Opz[0] / 100, _frz / 100) < _frad)
+                                    {
+                                        _runbul = 0;
+                                        _afta = true;
+                                        _gowait = false;
+                                    }
+                                    if (Py(conto.X / 100, CheckPoints.Opx[0] / 100, conto.Z / 100,
+                                            CheckPoints.Opz[0] / 100) < 25)
+                                    {
+                                        _afta = true;
+                                        _gowait = false;
+                                        _attack = 200;
+                                        _acr = 0;
+                                    }
+                                    if (CheckPoints.Clear[0] == 21 && _oupnt != 125)
+                                    {
+                                        _gowait = false;
+                                    }
+                                }
+                                if (CheckPoints.Clear[0] >= 11 && !_gowait ||
+                                    mad.Power < 60.0F && CheckPoints.Clear[0] < 21)
+                                {
+                                    bool32 = true;
+                                    if (!_exitattack)
+                                    {
+                                        _oupnt = -1;
+                                        _exitattack = true;
+                                    }
+                                }
+                                else if (_exitattack)
+                                {
+                                    _exitattack = false;
+                                }
+                            }
+                            if (mad.Cn == 11)
+                            {
+                                bool32 = true;
+                            }
+                            if (bool32)
+                            {
+                                if (_oupnt == -1)
+                                {
+                                    var i33 = -10;
+                                    for (var i34 = 0; i34 < CheckPoints.N; i34++)
+                                        if (CheckPoints.Typ[i34] == -4 &&
+                                            (Py(conto.X / 100, CheckPoints.X[i34] / 100, conto.Z / 100,
+                                                 CheckPoints.Z[i34] / 100) < i33 && Medium.Random() > 0.6 ||
+                                             i33 == -10))
+                                        {
+                                            i33 = Py(conto.X / 100, CheckPoints.X[i34] / 100, conto.Z / 100,
+                                                CheckPoints.Z[i34] / 100);
+                                            _oupnt = i34;
+                                        }
+                                    _oupnt--;
+                                    if (i < 0)
+                                    {
+                                        _oupnt += CheckPoints.N;
+                                    }
+                                }
+                                if (_oupnt >= 0 && _oupnt < CheckPoints.N)
+                                {
+                                    i = _oupnt;
+                                    if (Py(conto.X / 100, CheckPoints.X[i] / 100, conto.Z / 100,
+                                            CheckPoints.Z[i] / 100) < 800)
+                                    {
+                                        _oupnt = -(int) (75.0F + Medium.Random() * 200.0F);
+                                        _runbul = (int) (50.0F + Medium.Random() * 100.0F);
+                                    }
+                                }
+                                if (_oupnt < -1)
+                                {
+                                    _oupnt++;
+                                }
+                                if (_runbul != 0)
+                                {
+                                    _runbul--;
+                                }
+                            }
+                        }
+                        mad.Nofocus = true;
+                    }
+                    if (CheckPoints.Stage != 27)
+                    {
+                        if (CheckPoints.Stage == 10 || CheckPoints.Stage == 19 ||
+                            CheckPoints.Stage == 18 && mad.Pcleared == 73 || CheckPoints.Stage == 26)
+                        {
+                            _forget = true;
+                        }
+                        if ((mad.Missedcp == 0 || _forget || _trfix == 4) && _trfix != 0)
+                        {
+                            var i35 = 0;
+                            if (CheckPoints.Stage == 25 || CheckPoints.Stage == 26)
+                            {
+                                i35 = 3;
+                            }
+                            if (_trfix == 2)
+                            {
+                                var i36 = -10;
+                                var i37 = 0;
+                                for (var i38 = i35; i38 < CheckPoints.Fn; i38++)
+                                    if (Py(conto.X / 100, CheckPoints.X[_fpnt[i38]] / 100, conto.Z / 100,
+                                            CheckPoints.Z[_fpnt[i38]] / 100) < i36 || i36 == -10)
+                                    {
+                                        i36 = Py(conto.X / 100, CheckPoints.X[_fpnt[i38]] / 100, conto.Z / 100,
+                                            CheckPoints.Z[_fpnt[i38]] / 100);
+                                        i37 = i38;
+                                    }
+                                if (CheckPoints.Stage == 18 || CheckPoints.Stage == 22)
+                                {
+                                    i37 = 1;
+                                }
+                                i = _fpnt[i37];
+                                _forget = CheckPoints.Special[i37];
+                            }
+                            for (var i39 = i35; i39 < CheckPoints.Fn; i39++)
+                                if (Py(conto.X / 100, CheckPoints.X[_fpnt[i39]] / 100, conto.Z / 100,
+                                        CheckPoints.Z[_fpnt[i39]] / 100) < 2000)
+                                {
+                                    _forget = false;
+                                    _actwait = 0;
+                                    _upwait = 0;
+                                    _turntyp = 2;
+                                    _randtcnt = -1;
+                                    _acuracy = 0;
+                                    _rampp = 0;
+                                    _trfix = 3;
+                                }
+                            if (_trfix == 3)
+                            {
+                                mad.Nofocus = true;
+                            }
                         }
                     }
-                    if (wall != -1)
+                    if (_turncnt > _randtcnt)
                     {
-                        if (lwall != wall)
+                        if (!_gowait)
                         {
-                            if (lastl)
+                            var i40 = 0;
+                            if (CheckPoints.X[i] - conto.X >= 0)
                             {
-                                left = true;
+                                i40 = 180;
                             }
-                            else
-                            {
-                                right = true;
-                            }
-                            wlastl = lastl;
-                            lwall = wall;
-                        }
-                        else if (wlastl)
-                        {
-                            left = true;
+                            _pan = (int) (90 + i40 + Math.Atan(
+                                             (CheckPoints.Z[i] - conto.Z) /
+                                             (double) (CheckPoints.X[i] - conto.X)) / 0.017453292519943295);
                         }
                         else
                         {
-                            right = true;
-                        }
-                        if (Trackers.dam[wall] != 0)
-                        {
-                            int i45 = 1;
-                            if (Trackers.skd[wall] == 1)
+                            var i41 = 0;
+                            if (_wtx - conto.X >= 0)
                             {
-                                i45 = 3;
+                                i41 = 180;
                             }
-                            hold += i45;
-                            if (hold > 10 * i45)
-                            {
-                                hold = 10 * i45;
-                            }
+                            _pan = (int) (90 + i41 + Math.Atan((_wtz - conto.Z) / (double) (_wtx - conto.X)) /
+                                         0.017453292519943295);
                         }
-                        else
-                        {
-                            hold = 1;
-                        }
-                        wall = -1;
+                        _turncnt = 0;
+                        _randtcnt = (int) (_acuracy * Medium.Random());
                     }
-                    else if (hold != 0)
+                    else
                     {
-                        hold--;
+                        _turncnt++;
                     }
                 }
                 else
                 {
-                    if (trickfase == 0)
+                    Up = true;
+                    i = 0;
+                    var i42 = (int) (Pys(conto.X, CheckPoints.Opx[_acr], conto.Z, CheckPoints.Opz[_acr]) /
+                                     2.0F * _aim);
+                    var i43 = (int) (CheckPoints.Opx[_acr] - i42 * Medium.Sin(CheckPoints.Omxz[_acr]));
+                    var i44 = (int) (CheckPoints.Opz[_acr] + i42 * Medium.Cos(CheckPoints.Omxz[_acr]));
+                    if (i43 - conto.X >= 0)
                     {
-                        int i = (int) ((mad.scy[0] + mad.scy[1] + mad.scy[2] + mad.scy[3]) * (conto.y - 300) /
-                                             4000.0F);
-                        int i46 = 3;
-                        if (CheckPoints.stage == 25)
+                        i = 180;
+                    }
+                    _pan = (int) (90 + i + Math.Atan((i44 - conto.Z) / (double) (i43 - conto.X)) /
+                                 0.017453292519943295);
+                    _attack--;
+                    if (_attack <= 0)
+                    {
+                        _attack = 0;
+                    }
+                    if (CheckPoints.Stage == 25 && _exitattack && !_bulistc && mad.Missedcp != 0)
+                    {
+                        _attack = 0;
+                    }
+                    if (CheckPoints.Stage == 26 && mad.Cn == 13 &&
+                        (CheckPoints.Clear[0] == 4 || CheckPoints.Clear[0] == 13 || CheckPoints.Clear[0] == 21))
+                    {
+                        _attack = 0;
+                    }
+                    if (CheckPoints.Stage == 26 && mad.Missedcp != 0 &&
+                        (CheckPoints.Pos[mad.Im] == 0 || CheckPoints.Pos[mad.Im] == 1 && CheckPoints.Pos[0] == 0))
+                    {
+                        _attack = 0;
+                    }
+                    if (CheckPoints.Stage == 26 && CheckPoints.Pos[0] > CheckPoints.Pos[mad.Im] &&
+                        mad.Power < 80.0F)
+                    {
+                        _attack = 0;
+                    }
+                }
+                i = conto.Xz;
+                if (Zyinv)
+                {
+                    i += 180;
+                }
+                for ( /**/; i < 0; i += 360)
+                {
+
+                }
+                for ( /**/; i > 180; i -= 360)
+                {
+
+                }
+                for ( /**/; _pan < 0; _pan += 360)
+                {
+
+                }
+                for ( /**/; _pan > 180; _pan -= 360)
+                {
+
+                }
+                if (Wall != -1 && _hold == 0)
+                {
+                    _clrnce = 0;
+                }
+                if (_hold == 0)
+                    if (Math.Abs(i - _pan) < 180)
+                    {
+                        if (Math.Abs(i - _pan) > _clrnce)
                         {
-                            i46 = 10;
-                        }
-                        if (i > 7 && (Medium.random() > trickprf / i46 || stuntf == 4 || stuntf == 3 || stuntf == 5 ||
-                                      stuntf == 6 || CheckPoints.stage == 26))
-                        {
-                            oxy = mad.pxy;
-                            ozy = mad.pzy;
-                            flycnt = 0;
-                            uddirect = 0;
-                            lrdirect = 0;
-                            udswt = false;
-                            lrswt = false;
-                            trickfase = 1;
-                            if (i < 16)
+                            if (i < _pan)
                             {
-                                if (stuntf != 6)
-                                {
-                                    uddirect = -1;
-                                    udstart = 0;
-                                    udswt = false;
-                                }
-                                else if (oupnt != 70)
-                                {
-                                    uddirect = 1;
-                                    udstart = 0;
-                                    udswt = false;
-                                }
-                            }
-                            else if (Medium.random() > Medium.random() && stuntf != 1 || stuntf == 4 || stuntf == 6 ||
-                                     stuntf == 7 || stuntf == 17)
-                            {
-                                if ((Medium.random() > Medium.random() || stuntf == 2 || stuntf == 7) && stuntf != 4 &&
-                                    stuntf != 6)
-                                {
-                                    uddirect = -1;
-                                }
-                                else
-                                {
-                                    uddirect = 1;
-                                }
-                                udstart = (int) (10.0F * Medium.random() * trickprf);
-                                if (stuntf == 6)
-                                {
-                                    udstart = 0;
-                                }
-                                if (CheckPoints.stage == 26)
-                                {
-                                    udstart = 0;
-                                }
-                                if (CheckPoints.stage == 24 && (oupnt == 68 || oupnt == 69))
-                                {
-                                    apunch = 20;
-                                    oupnt = 70;
-                                }
-                                if (Medium.random() > 0.85 && stuntf != 4 && stuntf != 3 && stuntf != 6 &&
-                                    stuntf != 17 && CheckPoints.stage != 26)
-                                {
-                                    udswt = true;
-                                }
-                                if (Medium.random() > trickprf + 0.3F && stuntf != 4 && stuntf != 6)
-                                {
-                                    if (Medium.random() > Medium.random())
-                                    {
-                                        lrdirect = -1;
-                                    }
-                                    else
-                                    {
-                                        lrdirect = 1;
-                                    }
-                                    lrstart = (int) (30.0F * Medium.random());
-                                    if (Medium.random() > 0.75)
-                                    {
-                                        lrswt = true;
-                                    }
-                                }
+                                Left = true;
+                                _lastl = true;
                             }
                             else
                             {
-                                if (Medium.random() > Medium.random())
+                                Right = true;
+                                _lastl = false;
+                            }
+                            if (Math.Abs(i - _pan) > 50 && mad.Speed > mad.Stat.Swits[0] && _turntyp != 0)
+                            {
+                                if (_turntyp == 1)
                                 {
-                                    lrdirect = -1;
+                                    Down = true;
                                 }
-                                else
+                                if (_turntyp == 2)
                                 {
-                                    lrdirect = 1;
+                                    Handb = true;
                                 }
-                                lrstart = (int) (10.0F * Medium.random() * trickprf);
-                                if (Medium.random() > 0.75 && CheckPoints.stage != 26)
+                                if (!_agressed)
                                 {
-                                    lrswt = true;
-                                }
-                                if (Medium.random() > trickprf + 0.3F)
-                                {
-                                    if (Medium.random() > Medium.random())
-                                    {
-                                        uddirect = -1;
-                                    }
-                                    else
-                                    {
-                                        uddirect = 1;
-                                    }
-                                    udstart = (int) (30.0F * Medium.random());
-                                    if (Medium.random() > 0.85)
-                                    {
-                                        udswt = true;
-                                    }
+                                    Up = false;
                                 }
                             }
-                            if (trfix == 3 || trfix == 4)
+                        }
+                    }
+                    else if (Math.Abs(i - _pan) < 360 - _clrnce)
+                    {
+                        if (i < _pan)
+                        {
+                            Right = true;
+                            _lastl = false;
+                        }
+                        else
+                        {
+                            Left = true;
+                            _lastl = true;
+                        }
+                        if (Math.Abs(i - _pan) < 310 && mad.Speed > mad.Stat.Swits[0] && _turntyp != 0)
+                        {
+                            if (_turntyp == 1)
                             {
-                                if (CheckPoints.stage != 18 && CheckPoints.stage != 8)
+                                Down = true;
+                            }
+                            if (_turntyp == 2)
+                            {
+                                Handb = true;
+                            }
+                            if (!_agressed)
+                            {
+                                Up = false;
+                            }
+                        }
+                    }
+                if (CheckPoints.Stage == 24 && Wall != -1)
+                {
+                    if (Trackers.Dam[Wall] == 0 || mad.Pcleared == 45)
+                    {
+                        Wall = -1;
+                    }
+                    if (mad.Pcleared == 58 && CheckPoints.Opz[mad.Im] < 36700)
+                    {
+                        Wall = -1;
+                        _hold = 0;
+                    }
+                }
+                if (Wall != -1)
+                {
+                    if (_lwall != Wall)
+                    {
+                        if (_lastl)
+                        {
+                            Left = true;
+                        }
+                        else
+                        {
+                            Right = true;
+                        }
+                        _wlastl = _lastl;
+                        _lwall = Wall;
+                    }
+                    else if (_wlastl)
+                    {
+                        Left = true;
+                    }
+                    else
+                    {
+                        Right = true;
+                    }
+                    if (Trackers.Dam[Wall] != 0)
+                    {
+                        var i45 = 1;
+                        if (Trackers.Skd[Wall] == 1)
+                        {
+                            i45 = 3;
+                        }
+                        _hold += i45;
+                        if (_hold > 10 * i45)
+                        {
+                            _hold = 10 * i45;
+                        }
+                    }
+                    else
+                    {
+                        _hold = 1;
+                    }
+                    Wall = -1;
+                }
+                else if (_hold != 0)
+                {
+                    _hold--;
+                }
+            }
+            else
+            {
+                if (_trickfase == 0)
+                {
+                    var i = (int) ((mad.Scy[0] + mad.Scy[1] + mad.Scy[2] + mad.Scy[3]) * (conto.Y - 300) /
+                                   4000.0F);
+                    var i46 = 3;
+                    if (CheckPoints.Stage == 25)
+                    {
+                        i46 = 10;
+                    }
+                    if (i > 7 && (Medium.Random() > _trickprf / i46 || _stuntf == 4 || _stuntf == 3 || _stuntf == 5 ||
+                                  _stuntf == 6 || CheckPoints.Stage == 26))
+                    {
+                        _oxy = mad.Pxy;
+                        _ozy = mad.Pzy;
+                        _flycnt = 0;
+                        _uddirect = 0;
+                        _lrdirect = 0;
+                        _udswt = false;
+                        _lrswt = false;
+                        _trickfase = 1;
+                        if (i < 16)
+                        {
+                            if (_stuntf != 6)
+                            {
+                                _uddirect = -1;
+                                _udstart = 0;
+                                _udswt = false;
+                            }
+                            else if (_oupnt != 70)
+                            {
+                                _uddirect = 1;
+                                _udstart = 0;
+                                _udswt = false;
+                            }
+                        }
+                        else if (Medium.Random() > Medium.Random() && _stuntf != 1 || _stuntf == 4 || _stuntf == 6 ||
+                                 _stuntf == 7 || _stuntf == 17)
+                        {
+                            if ((Medium.Random() > Medium.Random() || _stuntf == 2 || _stuntf == 7) && _stuntf != 4 &&
+                                _stuntf != 6)
+                            {
+                                _uddirect = -1;
+                            }
+                            else
+                            {
+                                _uddirect = 1;
+                            }
+                            _udstart = (int) (10.0F * Medium.Random() * _trickprf);
+                            if (_stuntf == 6)
+                            {
+                                _udstart = 0;
+                            }
+                            if (CheckPoints.Stage == 26)
+                            {
+                                _udstart = 0;
+                            }
+                            if (CheckPoints.Stage == 24 && (_oupnt == 68 || _oupnt == 69))
+                            {
+                                _apunch = 20;
+                                _oupnt = 70;
+                            }
+                            if (Medium.Random() > 0.85 && _stuntf != 4 && _stuntf != 3 && _stuntf != 6 &&
+                                _stuntf != 17 && CheckPoints.Stage != 26)
+                            {
+                                _udswt = true;
+                            }
+                            if (Medium.Random() > _trickprf + 0.3F && _stuntf != 4 && _stuntf != 6)
+                            {
+                                if (Medium.Random() > Medium.Random())
                                 {
-                                    if (CheckPoints.stage != 25 && lrdirect == -1)
-                                        if (CheckPoints.stage != 19)
-                                        {
-                                            uddirect = -1;
-                                        }
-                                        else
-                                        {
-                                            uddirect = 1;
-                                        }
-                                    lrdirect = 0;
-                                    if ((CheckPoints.stage == 19 || CheckPoints.stage == 25) && uddirect == -1)
-                                    {
-                                        uddirect = 1;
-                                    }
-                                    if (mad.power < 60.0F)
-                                    {
-                                        uddirect = -1;
-                                    }
+                                    _lrdirect = -1;
                                 }
                                 else
                                 {
-                                    if (uddirect != 0)
-                                    {
-                                        uddirect = -1;
-                                    }
-                                    lrdirect = 0;
+                                    _lrdirect = 1;
                                 }
-                                if (CheckPoints.stage == 20)
+                                _lrstart = (int) (30.0F * Medium.Random());
+                                if (Medium.Random() > 0.75)
                                 {
-                                    uddirect = 1;
-                                    lrdirect = 0;
-                                }
-                                if (CheckPoints.stage == 26)
-                                {
-                                    uddirect = -1;
-                                    lrdirect = 0;
-                                    if (mad.cn != 11 && mad.cn != 13)
-                                    {
-                                        udstart = 7;
-                                        if (mad.cn == 14 && mad.power > 30.0F)
-                                        {
-                                            udstart = 14;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        udstart = 0;
-                                    }
-                                    if (mad.cn == 11)
-                                    {
-                                        lrdirect = -1;
-                                        lrstart = 0;
-                                    }
+                                    _lrswt = true;
                                 }
                             }
                         }
                         else
                         {
-                            trickfase = -1;
-                        }
-                        if (!afta)
-                        {
-                            afta = true;
-                        }
-                        if (trfix == 3)
-                        {
-                            trfix = 4;
-                            statusque += 30;
-                        }
-                    }
-                    if (trickfase == 1)
-                    {
-                        flycnt++;
-                        if (lrdirect != 0 && flycnt > lrstart)
-                        {
-                            if (lrswt && Math.Abs(mad.pxy - oxy) > 180)
+                            if (Medium.Random() > Medium.Random())
                             {
-                                if (lrdirect == -1)
-                                {
-                                    lrdirect = 1;
-                                }
-                                else
-                                {
-                                    lrdirect = -1;
-                                }
-                                lrswt = false;
-                            }
-                            if (lrdirect == -1)
-                            {
-                                handb = true;
-                                left = true;
+                                _lrdirect = -1;
                             }
                             else
                             {
-                                handb = true;
-                                right = true;
+                                _lrdirect = 1;
                             }
-                        }
-                        if (uddirect != 0 && flycnt > udstart)
-                        {
-                            if (udswt && Math.Abs(mad.pzy - ozy) > 180)
+                            _lrstart = (int) (10.0F * Medium.Random() * _trickprf);
+                            if (Medium.Random() > 0.75 && CheckPoints.Stage != 26)
                             {
-                                if (uddirect == -1)
+                                _lrswt = true;
+                            }
+                            if (Medium.Random() > _trickprf + 0.3F)
+                            {
+                                if (Medium.Random() > Medium.Random())
                                 {
-                                    uddirect = 1;
+                                    _uddirect = -1;
                                 }
                                 else
                                 {
-                                    uddirect = -1;
+                                    _uddirect = 1;
                                 }
-                                udswt = false;
-                            }
-                            if (uddirect == -1)
-                            {
-                                handb = true;
-                                down = true;
-                            }
-                            else
-                            {
-                                handb = true;
-                                up = true;
-                                if (apunch > 0)
+                                _udstart = (int) (30.0F * Medium.Random());
+                                if (Medium.Random() > 0.85)
                                 {
-                                    down = true;
-                                    apunch--;
+                                    _udswt = true;
                                 }
                             }
                         }
-                        if ((mad.scy[0] + mad.scy[1] + mad.scy[2] + mad.scy[3]) * 100.0F / (conto.y - 300) < -saftey)
+                        if (_trfix == 3 || _trfix == 4)
                         {
-                            onceu = false;
-                            onced = false;
-                            oncel = false;
-                            oncer = false;
-                            lrcomp = false;
-                            udcomp = false;
-                            udbare = false;
-                            lrbare = false;
-                            trickfase = 2;
-                            swat = 0;
-                        }
-                    }
-                    if (trickfase == 2)
-                    {
-                        if (swat == 0)
-                        {
-                            if (mad.dcomp != 0.0F || mad.ucomp != 0.0F)
+                            if (CheckPoints.Stage != 18 && CheckPoints.Stage != 8)
                             {
-                                udbare = true;
-                            }
-                            if (mad.lcomp != 0.0F || mad.rcomp != 0.0F)
-                            {
-                                lrbare = true;
-                            }
-                            swat = 1;
-                        }
-                        if (mad.wtouch)
-                        {
-                            if (swat == 1)
-                            {
-                                swat = 2;
-                            }
-                        }
-                        else if (swat == 2)
-                        {
-                            if (mad.capsized && Medium.random() > mustland)
-                                if (udbare)
-                                {
-                                    lrbare = true;
-                                    udbare = false;
-                                }
-                                else if (lrbare)
-                                {
-                                    udbare = true;
-                                    lrbare = false;
-                                }
-                            swat = 3;
-                        }
-                        if (udbare)
-                        {
-                            int i;
-                            for (i = mad.pzy + 90; i < 0; i += 360)
-                            {
-
-                            }
-                            for ( /**/; i > 180; i -= 360)
-                            {
-
-                            }
-                            i = Math.Abs(i);
-                            if (mad.lcomp - mad.rcomp < 5.0F && (onced || onceu))
-                            {
-                                udcomp = true;
-                            }
-                            if (mad.dcomp > mad.ucomp)
-                            {
-                                if (mad.capsized)
-                                {
-                                    if (udcomp)
+                                if (CheckPoints.Stage != 25 && _lrdirect == -1)
+                                    if (CheckPoints.Stage != 19)
                                     {
-                                        if (i > 90)
-                                        {
-                                            up = true;
-                                        }
-                                        else
-                                        {
-                                            down = true;
-                                        }
-                                    }
-                                    else if (!onced)
-                                    {
-                                        down = true;
-                                    }
-                                }
-                                else
-                                {
-                                    if (udcomp)
-                                    {
-                                        if (perfection && Math.Abs(i - 90) > 30)
-                                            if (i > 90)
-                                            {
-                                                up = true;
-                                            }
-                                            else
-                                            {
-                                                down = true;
-                                            }
-                                    }
-                                    else if (Medium.random() > mustland)
-                                    {
-                                        up = true;
-                                    }
-                                    onced = true;
-                                }
-                            }
-                            else if (mad.capsized)
-                            {
-                                if (udcomp)
-                                {
-                                    if (i > 90)
-                                    {
-                                        up = true;
+                                        _uddirect = -1;
                                     }
                                     else
                                     {
-                                        down = true;
+                                        _uddirect = 1;
                                     }
-                                }
-                                else if (!onceu)
+                                _lrdirect = 0;
+                                if ((CheckPoints.Stage == 19 || CheckPoints.Stage == 25) && _uddirect == -1)
                                 {
-                                    up = true;
+                                    _uddirect = 1;
+                                }
+                                if (mad.Power < 60.0F)
+                                {
+                                    _uddirect = -1;
                                 }
                             }
                             else
                             {
-                                if (udcomp)
+                                if (_uddirect != 0)
                                 {
-                                    if (perfection && Math.Abs(i - 90) > 30)
-                                        if (i > 90)
-                                        {
-                                            up = true;
-                                        }
-                                        else
-                                        {
-                                            down = true;
-                                        }
+                                    _uddirect = -1;
                                 }
-                                else if (Medium.random() > mustland)
+                                _lrdirect = 0;
+                            }
+                            if (CheckPoints.Stage == 20)
+                            {
+                                _uddirect = 1;
+                                _lrdirect = 0;
+                            }
+                            if (CheckPoints.Stage == 26)
+                            {
+                                _uddirect = -1;
+                                _lrdirect = 0;
+                                if (mad.Cn != 11 && mad.Cn != 13)
                                 {
-                                    down = true;
-                                }
-                                onceu = true;
-                            }
-                        }
-                        if (lrbare)
-                        {
-                            int i = mad.pxy + 90;
-                            if (zyinv)
-                            {
-                                i += 180;
-                            }
-                            for ( /**/; i < 0; i += 360)
-                            {
-
-                            }
-                            for ( /**/; i > 180; i -= 360)
-                            {
-
-                            }
-                            i = Math.Abs(i);
-                            if (mad.lcomp - mad.rcomp < 10.0F && (oncel || oncer))
-                            {
-                                lrcomp = true;
-                            }
-                            if (mad.lcomp > mad.rcomp)
-                            {
-                                if (mad.capsized)
-                                {
-                                    if (lrcomp)
+                                    _udstart = 7;
+                                    if (mad.Cn == 14 && mad.Power > 30.0F)
                                     {
-                                        if (i > 90)
-                                        {
-                                            left = true;
-                                        }
-                                        else
-                                        {
-                                            right = true;
-                                        }
-                                    }
-                                    else if (!oncel)
-                                    {
-                                        left = true;
+                                        _udstart = 14;
                                     }
                                 }
                                 else
                                 {
-                                    if (lrcomp)
-                                    {
-                                        if (perfection && Math.Abs(i - 90) > 30)
-                                            if (i > 90)
-                                            {
-                                                left = true;
-                                            }
-                                            else
-                                            {
-                                                right = true;
-                                            }
-                                    }
-                                    else if (Medium.random() > mustland)
-                                    {
-                                        right = true;
-                                    }
-                                    oncel = true;
+                                    _udstart = 0;
+                                }
+                                if (mad.Cn == 11)
+                                {
+                                    _lrdirect = -1;
+                                    _lrstart = 0;
                                 }
                             }
-                            else if (mad.capsized)
+                        }
+                    }
+                    else
+                    {
+                        _trickfase = -1;
+                    }
+                    if (!_afta)
+                    {
+                        _afta = true;
+                    }
+                    if (_trfix == 3)
+                    {
+                        _trfix = 4;
+                        _statusque += 30;
+                    }
+                }
+                if (_trickfase == 1)
+                {
+                    _flycnt++;
+                    if (_lrdirect != 0 && _flycnt > _lrstart)
+                    {
+                        if (_lrswt && Math.Abs(mad.Pxy - _oxy) > 180)
+                        {
+                            if (_lrdirect == -1)
                             {
-                                if (lrcomp)
+                                _lrdirect = 1;
+                            }
+                            else
+                            {
+                                _lrdirect = -1;
+                            }
+                            _lrswt = false;
+                        }
+                        if (_lrdirect == -1)
+                        {
+                            Handb = true;
+                            Left = true;
+                        }
+                        else
+                        {
+                            Handb = true;
+                            Right = true;
+                        }
+                    }
+                    if (_uddirect != 0 && _flycnt > _udstart)
+                    {
+                        if (_udswt && Math.Abs(mad.Pzy - _ozy) > 180)
+                        {
+                            if (_uddirect == -1)
+                            {
+                                _uddirect = 1;
+                            }
+                            else
+                            {
+                                _uddirect = -1;
+                            }
+                            _udswt = false;
+                        }
+                        if (_uddirect == -1)
+                        {
+                            Handb = true;
+                            Down = true;
+                        }
+                        else
+                        {
+                            Handb = true;
+                            Up = true;
+                            if (_apunch > 0)
+                            {
+                                Down = true;
+                                _apunch--;
+                            }
+                        }
+                    }
+                    if ((mad.Scy[0] + mad.Scy[1] + mad.Scy[2] + mad.Scy[3]) * 100.0F / (conto.Y - 300) < -_saftey)
+                    {
+                        _onceu = false;
+                        _onced = false;
+                        _oncel = false;
+                        _oncer = false;
+                        _lrcomp = false;
+                        _udcomp = false;
+                        _udbare = false;
+                        _lrbare = false;
+                        _trickfase = 2;
+                        _swat = 0;
+                    }
+                }
+                if (_trickfase == 2)
+                {
+                    if (_swat == 0)
+                    {
+                        if (mad.Dcomp != 0.0F || mad.Ucomp != 0.0F)
+                        {
+                            _udbare = true;
+                        }
+                        if (mad.Lcomp != 0.0F || mad.Rcomp != 0.0F)
+                        {
+                            _lrbare = true;
+                        }
+                        _swat = 1;
+                    }
+                    if (mad.Wtouch)
+                    {
+                        if (_swat == 1)
+                        {
+                            _swat = 2;
+                        }
+                    }
+                    else if (_swat == 2)
+                    {
+                        if (mad.Capsized && Medium.Random() > _mustland)
+                            if (_udbare)
+                            {
+                                _lrbare = true;
+                                _udbare = false;
+                            }
+                            else if (_lrbare)
+                            {
+                                _udbare = true;
+                                _lrbare = false;
+                            }
+                        _swat = 3;
+                    }
+                    if (_udbare)
+                    {
+                        int i;
+                        for (i = mad.Pzy + 90; i < 0; i += 360)
+                        {
+
+                        }
+                        for ( /**/; i > 180; i -= 360)
+                        {
+
+                        }
+                        i = Math.Abs(i);
+                        if (mad.Lcomp - mad.Rcomp < 5.0F && (_onced || _onceu))
+                        {
+                            _udcomp = true;
+                        }
+                        if (mad.Dcomp > mad.Ucomp)
+                        {
+                            if (mad.Capsized)
+                            {
+                                if (_udcomp)
                                 {
                                     if (i > 90)
                                     {
-                                        left = true;
+                                        Up = true;
                                     }
                                     else
                                     {
-                                        right = true;
+                                        Down = true;
                                     }
                                 }
-                                else if (!oncer)
+                                else if (!_onced)
                                 {
-                                    right = true;
+                                    Down = true;
                                 }
                             }
                             else
                             {
-                                if (lrcomp)
+                                if (_udcomp)
                                 {
-                                    if (perfection && Math.Abs(i - 90) > 30)
+                                    if (_perfection && Math.Abs(i - 90) > 30)
                                         if (i > 90)
                                         {
-                                            left = true;
+                                            Up = true;
                                         }
                                         else
                                         {
-                                            right = true;
+                                            Down = true;
                                         }
                                 }
-                                else if (Medium.random() > mustland)
+                                else if (Medium.Random() > _mustland)
                                 {
-                                    left = true;
+                                    Up = true;
                                 }
-                                oncer = true;
+                                _onced = true;
                             }
+                        }
+                        else if (mad.Capsized)
+                        {
+                            if (_udcomp)
+                            {
+                                if (i > 90)
+                                {
+                                    Up = true;
+                                }
+                                else
+                                {
+                                    Down = true;
+                                }
+                            }
+                            else if (!_onceu)
+                            {
+                                Up = true;
+                            }
+                        }
+                        else
+                        {
+                            if (_udcomp)
+                            {
+                                if (_perfection && Math.Abs(i - 90) > 30)
+                                    if (i > 90)
+                                    {
+                                        Up = true;
+                                    }
+                                    else
+                                    {
+                                        Down = true;
+                                    }
+                            }
+                            else if (Medium.Random() > _mustland)
+                            {
+                                Down = true;
+                            }
+                            _onceu = true;
+                        }
+                    }
+                    if (_lrbare)
+                    {
+                        var i = mad.Pxy + 90;
+                        if (Zyinv)
+                        {
+                            i += 180;
+                        }
+                        for ( /**/; i < 0; i += 360)
+                        {
+
+                        }
+                        for ( /**/; i > 180; i -= 360)
+                        {
+
+                        }
+                        i = Math.Abs(i);
+                        if (mad.Lcomp - mad.Rcomp < 10.0F && (_oncel || _oncer))
+                        {
+                            _lrcomp = true;
+                        }
+                        if (mad.Lcomp > mad.Rcomp)
+                        {
+                            if (mad.Capsized)
+                            {
+                                if (_lrcomp)
+                                {
+                                    if (i > 90)
+                                    {
+                                        Left = true;
+                                    }
+                                    else
+                                    {
+                                        Right = true;
+                                    }
+                                }
+                                else if (!_oncel)
+                                {
+                                    Left = true;
+                                }
+                            }
+                            else
+                            {
+                                if (_lrcomp)
+                                {
+                                    if (_perfection && Math.Abs(i - 90) > 30)
+                                        if (i > 90)
+                                        {
+                                            Left = true;
+                                        }
+                                        else
+                                        {
+                                            Right = true;
+                                        }
+                                }
+                                else if (Medium.Random() > _mustland)
+                                {
+                                    Right = true;
+                                }
+                                _oncel = true;
+                            }
+                        }
+                        else if (mad.Capsized)
+                        {
+                            if (_lrcomp)
+                            {
+                                if (i > 90)
+                                {
+                                    Left = true;
+                                }
+                                else
+                                {
+                                    Right = true;
+                                }
+                            }
+                            else if (!_oncer)
+                            {
+                                Right = true;
+                            }
+                        }
+                        else
+                        {
+                            if (_lrcomp)
+                            {
+                                if (_perfection && Math.Abs(i - 90) > 30)
+                                    if (i > 90)
+                                    {
+                                        Left = true;
+                                    }
+                                    else
+                                    {
+                                        Right = true;
+                                    }
+                            }
+                            else if (Medium.Random() > _mustland)
+                            {
+                                Left = true;
+                            }
+                            _oncer = true;
                         }
                     }
                 }
             }
         }
 
-        private int py(int i, int i47, int i48, int i49) {
+        private int Py(int i, int i47, int i48, int i49) {
             return (i - i47) * (i - i47) + (i48 - i49) * (i48 - i49);
         }
 
-        private int pys(int i, int i50, int i51, int i52) {
+        private int Pys(int i, int i50, int i51, int i52) {
             return (int) Math.Sqrt((i - i50) * (i - i50) + (i51 - i52) * (i51 - i52));
         }
 
-        internal void reset(int i)
+        internal void Reset(int i)
         {
-            pan = 0;
-            attack = 0;
-            acr = 0;
-            afta = false;
-            trfix = 0;
-            acuracy = 0;
-            upwait = 0;
-            forget = false;
-            bulistc = false;
-            runbul = 0;
-            revstart = 0;
-            oupnt = 0;
-            gowait = false;
-            apunch = 0;
-            exitattack = false;
-            if (CheckPoints.stage == 16 || CheckPoints.stage == 18)
+            _pan = 0;
+            _attack = 0;
+            _acr = 0;
+            _afta = false;
+            _trfix = 0;
+            _acuracy = 0;
+            _upwait = 0;
+            _forget = false;
+            _bulistc = false;
+            _runbul = 0;
+            _revstart = 0;
+            _oupnt = 0;
+            _gowait = false;
+            _apunch = 0;
+            _exitattack = false;
+            if (CheckPoints.Stage == 16 || CheckPoints.Stage == 18)
             {
-                hold = 50;
+                _hold = 50;
             }
-            if (CheckPoints.stage == 17)
+            if (CheckPoints.Stage == 17)
             {
-                hold = 10;
+                _hold = 10;
             }
-            if (CheckPoints.stage == 20)
+            if (CheckPoints.Stage == 20)
             {
-                hold = 30;
+                _hold = 30;
             }
-            if (CheckPoints.stage == 21)
+            if (CheckPoints.Stage == 21)
             {
                 if (i != 13)
                 {
-                    hold = 35;
-                    revstart = 25;
+                    _hold = 35;
+                    _revstart = 25;
                 }
                 else
                 {
-                    hold = 5;
+                    _hold = 5;
                 }
-                statusque = 0;
+                _statusque = 0;
             }
-            if (CheckPoints.stage == 22)
+            if (CheckPoints.Stage == 22)
             {
                 if (i != 13)
                 {
-                    hold = (int) (20.0F + 10.0F * Medium.random());
-                    revstart = (int) (10.0F + 10.0F * Medium.random());
+                    _hold = (int) (20.0F + 10.0F * Medium.Random());
+                    _revstart = (int) (10.0F + 10.0F * Medium.Random());
                 }
                 else
                 {
-                    hold = 5;
+                    _hold = 5;
                 }
-                statusque = 0;
+                _statusque = 0;
             }
-            if (CheckPoints.stage == 24)
+            if (CheckPoints.Stage == 24)
             {
-                hold = 30;
-                statusque = 0;
+                _hold = 30;
+                _statusque = 0;
                 if (i != 14)
                 {
-                    revstart = 1;
+                    _revstart = 1;
                 }
             }
-            if (CheckPoints.stage == 25)
+            if (CheckPoints.Stage == 25)
             {
-                hold = 40;
+                _hold = 40;
             }
-            if (CheckPoints.stage == 26)
+            if (CheckPoints.Stage == 26)
             {
-                hold = 20;
+                _hold = 20;
             }
-            if (CheckPoints.stage != 19 && CheckPoints.stage != 26)
+            if (CheckPoints.Stage != 19 && CheckPoints.Stage != 26)
             {
-                for (int i0 = 0; i0 < CheckPoints.fn; i0++)
+                for (var i0 = 0; i0 < CheckPoints.Fn; i0++)
                 {
-                    int i1 = -10;
-                    for (int i2 = 0; i2 < CheckPoints.n; i2++)
-                        if (py(CheckPoints.fx[i0] / 100, CheckPoints.x[i2] / 100, CheckPoints.fz[i0] / 100,
-                                CheckPoints.z[i2] / 100) < i1 || i1 == -10)
+                    var i1 = -10;
+                    for (var i2 = 0; i2 < CheckPoints.N; i2++)
+                        if (Py(CheckPoints.Fx[i0] / 100, CheckPoints.X[i2] / 100, CheckPoints.Fz[i0] / 100,
+                                CheckPoints.Z[i2] / 100) < i1 || i1 == -10)
                         {
-                            i1 = py(CheckPoints.fx[i0] / 100, CheckPoints.x[i2] / 100, CheckPoints.fz[i0] / 100,
-                                CheckPoints.z[i2] / 100);
-                            fpnt[i0] = i2;
+                            i1 = Py(CheckPoints.Fx[i0] / 100, CheckPoints.X[i2] / 100, CheckPoints.Fz[i0] / 100,
+                                CheckPoints.Z[i2] / 100);
+                            _fpnt[i0] = i2;
                         }
                 }
-                for (int i3 = 0; i3 < CheckPoints.fn; i3++)
+                for (var i3 = 0; i3 < CheckPoints.Fn; i3++)
                 {
-                    fpnt[i3] -= 4;
-                    if (fpnt[i3] < 0)
+                    _fpnt[i3] -= 4;
+                    if (_fpnt[i3] < 0)
                     {
-                        fpnt[i3] += CheckPoints.nsp;
+                        _fpnt[i3] += CheckPoints.Nsp;
                     }
                 }
             }
             else
             {
-                if (CheckPoints.stage == 19)
+                if (CheckPoints.Stage == 19)
                 {
-                    fpnt[0] = 14;
-                    fpnt[1] = 36;
+                    _fpnt[0] = 14;
+                    _fpnt[1] = 36;
                 }
-                if (CheckPoints.stage == 26)
+                if (CheckPoints.Stage == 26)
                 {
-                    fpnt[3] = 39;
+                    _fpnt[3] = 39;
                 }
             }
-            left = false;
-            right = false;
-            up = false;
-            down = false;
-            handb = false;
-            lookback = 0;
-            arrace = false;
-            mutem = false;
-            mutes = false;
+            Left = false;
+            Right = false;
+            Up = false;
+            Down = false;
+            Handb = false;
+            Lookback = 0;
+            Arrace = false;
+            Mutem = false;
+            Mutes = false;
         }
     }
 }

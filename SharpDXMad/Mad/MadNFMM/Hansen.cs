@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Windows.Forms;
 using MadGame;
 using MiscUtil;
 using SharpDX;
@@ -11,7 +11,6 @@ using SharpDX.DXGI;
 using SharpDX.WIC;
 using SharpDXMad;
 using Bitmap = SharpDX.Direct2D1.Bitmap;
-using Factory = SharpDX.DirectWrite.Factory;
 using TextRenderer = System.Windows.Forms.TextRenderer;
 
 namespace Cum
@@ -21,7 +20,7 @@ namespace Cum
         public int Id;
         public int Dist;
 
-        public DistHolder(int dist, int id)
+        public DistHolder(int id, int dist)
         {
             Dist = dist;
             Id = id;
@@ -32,10 +31,10 @@ namespace Cum
     {
         public static void SetCookie(string[] lines)
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
         }
     }
-    public class HansenSystem
+    public static class HansenSystem
     {
         public static void ArrayCopy(int[] src, int srcPos, int[] dest, int destPos, int length)
         {
@@ -53,16 +52,31 @@ namespace Cum
 
         public static void Exit(int i)
         {
-            if (System.Windows.Forms.Application.MessageLoop) 
+            if (Application.MessageLoop) 
             {
                 // WinForms app
-                System.Windows.Forms.Application.Exit();
+                Application.Exit();
             }
             else
             {
                 // Console app
                 Environment.Exit(1);
             }
+        }
+
+        public static float Cap(this float f)
+        {
+            return float.IsNaN(f) ? 0 : f;
+        }
+
+        public static double Cap(this double f)
+        {
+            return double.IsNaN(f) ? 0 : f;
+        }
+        
+        public static float CapF(this double f)
+        {
+            return (float) (double.IsNaN(f) ? 0 : f);
         }
     }
     public class HansenRandom
@@ -82,7 +96,7 @@ namespace Cum
             _rand = new System.Random((int)l);
         }
 
-        public double nextDouble()
+        public double NextDouble()
         {
             return _rand.NextDouble();
         }
@@ -97,7 +111,7 @@ namespace Cum
             _time = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
         }
 
-        public long getTime()
+        public long GetTime()
         {
             return _time;
         }
@@ -105,7 +119,7 @@ namespace Cum
 
     internal class FileUtil
     {
-        public static void loadFiles(string folder, string[] fileNames, Action<byte[], int> p3)
+        public static void LoadFiles(string folder, string[] fileNames, Action<byte[], int> p3)
         {
             fileNames = fileNames.CloneArray();
             foreach (var file in Directory.GetFiles(folder))
@@ -128,7 +142,7 @@ namespace Cum
             _font = new System.Drawing.Font(font.FontName, font.Size);
         }
 
-        public int stringWidth(string astring)
+        public int StringWidth(string astring)
         {
             return TextRenderer.MeasureText(astring, _font).Width;
         }
@@ -162,57 +176,57 @@ namespace Cum
 
     public struct Color
     {
-        public int _r, _g, _b, _a;
+        public int R, G, B, A;
         
         public Color(int r, int g, int b, int a)
         {
-            _r = r;
-            _g = g;
-            _b = b;
-            _a = a;
+            R = r;
+            G = g;
+            B = b;
+            A = a;
         }
         public Color(int r, int g, int b)
         {
-            _r = r;
-            _g = g;
-            _b = b;
-            _a = 255;
+            R = r;
+            G = g;
+            B = b;
+            A = 255;
         }
 
         public Color(int packed)//TODO uint
         {
             // TODO order?
-            _b = (byte)(packed);
-            _g = (byte)(packed >> 8);
-            _r = (byte)(packed >> 16);
-            _a = (byte)(packed >> 24);
+            B = (byte)(packed);
+            G = (byte)(packed >> 8);
+            R = (byte)(packed >> 16);
+            A = (byte)(packed >> 24);
         }
         
         public Color(uint packed)
         {
             // TODO order?
-            _b = (byte)(packed);
-            _g = (byte)(packed >> 8);
-            _r = (byte)(packed >> 16);
-            _a = (byte)(packed >> 24);
+            B = (byte)(packed);
+            G = (byte)(packed >> 8);
+            R = (byte)(packed >> 16);
+            A = (byte)(packed >> 24);
         }
 
-        public static Color getHSBColor(float p0, float p1, float p2)
+        public static Color GetHSBColor(float p0, float p1, float p2)
         {
             return new Color(Colors.HSBtoRGB(p0, p1, p2));
         }
 
-        public int getRed()
+        public int GetRed()
         {
-            return _r;
+            return R;
         }
-        public int getGreen()
+        public int GetGreen()
         {
-            return _g;
+            return G;
         }
-        public int getBlue()
+        public int GetBlue()
         {
-            return _b;
+            return B;
         }
 
         public static void RGBtoHSB(int i, int i1, int i2, float[] fs)
@@ -220,17 +234,17 @@ namespace Cum
             Colors.RGBtoHSB(i, i1, i2, fs);
         }
 
-        public Color darker()
+        public Color Darker()
         {
             throw new NotImplementedException();
         }
 
-        public Color brighter()
+        public Color Brighter()
         {
             throw new NotImplementedException();
         }
 
-        public int getRGB()
+        public int GetRGB()
         {
             throw new NotImplementedException();
         }
@@ -243,17 +257,22 @@ namespace Cum
 //            throw new NotImplementedException();
         }
 
-        public void setPaused(bool p0)
+        public RadicalMusic()
         {
 //            throw new NotImplementedException();
         }
 
-        public void unload()
+        public void SetPaused(bool p0)
         {
 //            throw new NotImplementedException();
         }
 
-        public void play()
+        public void Unload()
+        {
+//            throw new NotImplementedException();
+        }
+
+        public void Play()
         {
 //            throw new NotImplementedException();
         }
@@ -272,7 +291,7 @@ namespace Cum
         
         public static T[] Slice<T>(this T[,] arr2, int i)
         {
-            var len = arr2.GetLength(0);
+            var len = arr2.GetLength(1);
             var arr = new T[len];
             for (var j = 0; j < len; j++)
             {
@@ -305,12 +324,12 @@ namespace Cum
             return arr;
         }
 
-        public static void sort<T>(T[] arr)
+        public static void Sort<T>(T[] arr)
         {//TODO
             Array.Sort(arr);
         }
 
-        public static void sort<T>(T[] arr, int from, int to)
+        public static void Sort<T>(T[] arr, int from, int to)
         {
             Array.Sort(arr, from, to);
         }
@@ -320,20 +339,20 @@ namespace Cum
             var n = list.Count;  
             while (n > 1) {  
                 n--;  
-                int k = Rng.Next(n + 1);  
-                T value = list[k];  
+                var k = Rng.Next(n + 1);  
+                var value = list[k];  
                 list[k] = list[n];  
                 list[n] = value;  
             }
             return list;
         }
 
-        public static void sort<T>(T[] arr, Comparer<T> comparator)
+        public static void Sort<T>(T[] arr, Comparer<T> comparator)
         {
             Array.Sort(arr, comparator);
         }
         
-        public static void sort<T>(T[,] arr, Comparer<T[]> comparator)
+        public static void Sort<T>(T[,] arr, Comparer<T[]> comparator)
         {
             Array.Sort(arr, comparator);
         }
@@ -373,11 +392,11 @@ namespace Cum
 
     public static class StringShim
     {
-        public static int length(this string self)
+        public static int Length(this string self)
         {
             return self.Length;
         }
-        public static char charAt(this string self, int at)
+        public static char CharAt(this string self, int at)
         {
             return self[at];
         }
@@ -393,9 +412,9 @@ namespace Cum
         }
     }
 
-    internal static class ImageIO
+    internal static class ImageIo
     {
-        public static Image read(File file)
+        public static Image Read(File file)
         {
             return new Image(G.D2D, Images.LoadFromFile(G.D2D, file.Path));
         }
@@ -413,7 +432,7 @@ namespace Cum
                 }*/
         }
 
-        public static Image read(byte[] file)
+        public static Image Read(byte[] file)
         {
             return new Image(G.D2D, Images.LoadFromFile(G.D2D, file));
         }
@@ -441,7 +460,7 @@ namespace Cum
             Path = $@"{parent.Path}\{child}";
         }
 
-        public File parent => new File(_getParent());
+        public File Parent => new File(_getParent());
         public string file => System.IO.Path.GetFileNameWithoutExtension(Path);
 
         private string _getParent() => System.IO.Path.GetDirectoryName(Path);
@@ -532,12 +551,12 @@ namespace Cum
             _height = (int) Size.Height;
         }
 
-        public int getHeight(object o)
+        public int GetHeight(object o)
         {
             return _height;
         }
 
-        public int getWidth(object o)
+        public int GetWidth(object o)
         {
             return _width;
         }
@@ -545,35 +564,35 @@ namespace Cum
 
     internal class SoundClip
     {
-        public static ContO source;
-        public static ContO player;
+        public static ContO Source;
+        public static ContO Player;
 
         public SoundClip(string s)
         {
 //            throw new NotImplementedException();
         }
 
-        public void play()
+        public void Play()
         {
 //            throw new NotImplementedException();
         }
 
-        public void checkopen()
+        public void Checkopen()
         {
 //            throw new NotImplementedException();
         }
 
-        public void loop()
+        public void Loop()
         {
 //            throw new NotImplementedException();
         }
 
-        public void stop()
+        public void Stop()
         {
 //            throw new NotImplementedException();
         }
 
-        public static void stopAll()
+        public static void StopAll()
         {
 //            throw new NotImplementedException();
         }
@@ -581,9 +600,10 @@ namespace Cum
 
     internal class TrackZipLoader
     {
-        public static RadicalMusic loadLegacy(int i, string astring, int i52)
+        public static RadicalMusic LoadLegacy(int i, string astring, int i52)
         {
-            throw new NotImplementedException();
+//            throw new NotImplementedException();
+            return new RadicalMusic();
         }
     }
 }

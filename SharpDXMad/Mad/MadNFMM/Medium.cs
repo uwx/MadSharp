@@ -5,474 +5,474 @@ using boolean = System.Boolean;
 namespace Cum {
 public class Medium {
     //private Medium() {}
-    internal static int adv = 500;
-    private static long atrx = 0L;
-    private static long atrz = 0L;
-    private static int bcxz = 0;
-    private static boolean[] bst = null;
-    internal static boolean bt = false;
-    internal static readonly int[] cfade = {
+    internal static int Adv = 500;
+    private static long _atrx;
+    private static long _atrz;
+    private static int _bcxz;
+    private static bool[] _bst;
+    internal static bool Bt = false;
+    internal static readonly int[] Cfade = {
             255, 220, 220
     };
-    private static int[] cgpx = null;
-    private static int[] cgpz = null;
-    internal static readonly int[] cgrnd = {
+    private static int[] _cgpx;
+    private static int[] _cgpz;
+    internal static readonly int[] Cgrnd = {
             205, 200, 200
     };
-    internal static int checkpoint = -1;
-    private static int[,,] clax = null;
-    private static int[,,] clay = null;
-    private static int[,,] claz = null;
-    private static int[,,,] clc = null;
-    private static readonly int[] cldd = {
+    internal static int Checkpoint = -1;
+    private static int[,,] _clax;
+    private static int[,,] _clay;
+    private static int[,,] _claz;
+    private static int[,,,] _clc;
+    private static readonly int[] Cldd = {
             210, 210, 210, 1, -1000
     };
-    private static readonly int[] clds = {
+    private static readonly int[] Clds = {
             210, 210, 210
     };
-    private static int[] clx = null;
-    private static int[] clz = null;
-    private static int[] cmx = null;
-    private static int cntrn = 0;
-    internal static boolean cpflik = false;
-    internal static readonly int[] cpol = {
+    private static int[] _clx;
+    private static int[] _clz;
+    private static int[] _cmx;
+    private static int _cntrn;
+    internal static bool Cpflik;
+    internal static readonly int[] Cpol = {
             215, 210, 210
     };
-    internal static readonly int[] crgrnd = {
+    internal static readonly int[] Crgrnd = {
             205, 200, 200
     };
-    internal static boolean crs = false;
-    internal static readonly int[] csky = {
+    internal static bool Crs = false;
+    internal static readonly int[] Csky = {
             170, 220, 255
     };
-    public static int cx = 400;
-    internal static int cy = 225;
-    internal static int cz = 50;
-    internal static boolean darksky = false;
-    private static readonly boolean[] diup = {
+    public static int Cx = 400;
+    internal static int Cy = 225;
+    internal static int Cz = 50;
+    internal static bool Darksky;
+    private static readonly bool[] Diup = {
             false, false, false
     };
-    internal static float elecr = 0.0F;
-    internal static readonly int[] fade = {
+    internal static float Elecr;
+    internal static readonly int[] Fade = {
             3000, 4500, 6000, 7500, 9000, 10500, 12000, 13500, 15000, 16500, 18000, 19500, 21000, 22500, 24000, 25500
     };
-    internal static int fallen = 0;
-    private static float fo = 1.0F;
-    internal static int focusPoint = 400;
-    internal static int fogd = 7;
-    private static int fvect = 200;
-    private static float gofo = (float) (0.33000001311302185 + HansenRandom.Double() * 1.34);
-    internal static int ground = 250;
-    internal static int h = 450;
-    internal static int hit = 45000;
-    internal static int ih = 0;
-    internal static int iw = 0;
-    internal static boolean lastcheck = false;
-    internal static int lastmaf = 0;
-    internal static int lightn = -1;
-    internal static boolean lightson = false;
-    private static int lilo = 217;
-    internal static boolean loadnew = false;
-    internal static boolean lton = false;
-    internal static int mgen = (int) (HansenRandom.Double() * 100000.0);
-    private static int[] mrd = null;
-    private static int[][][] mtc = null;
-    private static int[][] mtx = null;
-    private static int[][] mty = null;
-    private static int[][] mtz = null;
-    internal static int ncl = 0;
-    private static int nmt = 0;
-    private static int[] nmv = null;
-    private static int noc = 0;
-    internal static boolean nochekflk = false;
-    internal static int noelec = 0;
-    internal static int nrnd = 0;
-    internal static int nrw = 0;
-    internal static int nsp = 0;
-    private static int nst = 0;
-    private static int[,] ogpx = null;
-    private static int[,] ogpz = null;
-    private static readonly int[] ogrnd = {
+    internal static int Fallen;
+    private static float _fo = 1.0F;
+    internal static int FocusPoint = 400;
+    internal static int Fogd = 7;
+    private static int _fvect = 200;
+    private static float _gofo = (float) (0.33000001311302185 + HansenRandom.Double() * 1.34);
+    internal static int Ground = 250;
+    internal static int H = 450;
+    internal static int Hit = 45000;
+    internal static int Ih = 0;
+    internal static int Iw = 0;
+    internal static bool Lastcheck = false;
+    internal static int Lastmaf = 0;
+    internal static int Lightn = -1;
+    internal static bool Lightson = false;
+    private static int _lilo = 217;
+    internal static bool Loadnew = false;
+    internal static bool Lton = false;
+    internal static int Mgen = (int) (HansenRandom.Double() * 100000.0);
+    private static int[] _mrd;
+    private static int[][][] _mtc;
+    private static int[][] _mtx;
+    private static int[][] _mty;
+    private static int[][] _mtz;
+    internal static int Ncl;
+    private static int _nmt;
+    private static int[] _nmv;
+    private static int _noc;
+    internal static bool Nochekflk = false;
+    internal static int Noelec;
+    internal static int Nrnd;
+    internal static int Nrw;
+    internal static int Nsp;
+    private static int _nst;
+    private static int[,] _ogpx;
+    private static int[,] _ogpz;
+    private static readonly int[] Ogrnd = {
             205, 200, 200
     };
-    private static readonly int[] osky = {
+    private static readonly int[] Osky = {
             170, 220, 255
     };
-    private static float[] pcv = null;
-    private static int[] pmx = null;
-    internal static int ptcnt = -10;
-    internal static int ptr = 0;
-    private static float[,] pvr = null;
-    private static readonly int[] rand = {
+    private static float[] _pcv;
+    private static int[] _pmx;
+    internal static int Ptcnt = -10;
+    internal static int Ptr;
+    private static float[,] _pvr;
+    private static readonly int[] Rand = {
             0, 0, 0
     };
-    internal static int rescnt = 5;
-    internal static int resdown = 0;
-    private static int sgpx = 0;
-    private static int sgpz = 0;
-    private static readonly int skyline = -300;
-    internal static readonly int[] snap = {
+    internal static int Rescnt = 5;
+    internal static int Resdown;
+    private static int _sgpx;
+    private static int _sgpz;
+    private static readonly int Skyline = -300;
+    internal static readonly int[] Snap = {
             0, 0, 0
     };
-    internal static readonly int[] sprad = new int[7];
-    internal static readonly int[] spx = new int[7];
-    internal static readonly int[] spz = new int[7];
-    private static int[,,] stc = null;
-    private static int[] stx = null;
-    private static int[] stz = null;
-    private static readonly float[] tcos = new float[360];
-    private static boolean td = false;
-    private static readonly int[] texture = {
+    internal static readonly int[] Sprad = new int[7];
+    internal static readonly int[] Spx = new int[7];
+    internal static readonly int[] Spz = new int[7];
+    private static int[,,] _stc;
+    private static int[] _stx;
+    private static int[] _stz;
+    private static readonly float[] Tcos = new float[360];
+    private static bool _td;
+    private static readonly int[] Texture = {
             0, 0, 0, 50
     };
-    internal static int trk = 0;
-    private static int trn = 0;
-    internal static long trx = 0L;
-    internal static long trz = 0L;
-    private static readonly float[] tsin = new float[360];
-    private static int[] twn = null;
-    internal static boolean vert = false;
-    internal static int vxz = 180;
-    internal static int w = 800;
-    internal static int x = 0;
-    internal static int xz = 0;
-    internal static int y = 0;
-    internal static int z = 0;
-    internal static int zy = 0;
+    internal static int Trk = 0;
+    private static int _trn;
+    internal static long Trx;
+    internal static long Trz;
+    private static readonly float[] Tsin = new float[360];
+    private static int[] _twn;
+    internal static bool Vert;
+    internal static int Vxz = 180;
+    internal static int W = 800;
+    internal static int X;
+    internal static int Xz;
+    internal static int Y;
+    internal static int Z;
+    internal static int Zy;
 
     static Medium() {
-        for (int i = 0; i < 360; i++) {
-            tcos[i] = (float) Math.Cos(i * 0.017453292519943295);
+        for (var i = 0; i < 360; i++) {
+            Tcos[i] = (float) Math.Cos(i * 0.017453292519943295);
         }
-        for (int i = 0; i < 360; i++) {
-            tsin[i] = (float) Math.Sin(i * 0.017453292519943295);
-        }
-    }
-
-    internal static void addsp(int i, int i245, int i246) {
-        if (nsp != 7) {
-            spx[nsp] = i;
-            spz[nsp] = i245;
-            sprad[nsp] = i246;
-            nsp++;
+        for (var i = 0; i < 360; i++) {
+            Tsin[i] = (float) Math.Sin(i * 0.017453292519943295);
         }
     }
 
-    internal static void adjstfade(float f, float f271, int i, GameSparker gamesparker) {
-        if (resdown != 2)
+    internal static void Addsp(int i, int i245, int i246) {
+        if (Nsp != 7) {
+            Spx[Nsp] = i;
+            Spz[Nsp] = i245;
+            Sprad[Nsp] = i246;
+            Nsp++;
+        }
+    }
+
+    internal static void Adjstfade(float f, float f271, int i, GameSparker gamesparker) {
+        if (Resdown != 2)
             if (f == 5.0F) {
-                if (resdown == 0 && rescnt == 0) {
-                    fade[0] = 3000;
-                    fadfrom(fade[0]);
-                    resdown = 1;
-                    rescnt = 10;
+                if (Resdown == 0 && Rescnt == 0) {
+                    Fade[0] = 3000;
+                    Fadfrom(Fade[0]);
+                    Resdown = 1;
+                    Rescnt = 10;
                 }
-                if (resdown == 1 && rescnt == 0) {
-                    resdown = 2;
+                if (Resdown == 1 && Rescnt == 0) {
+                    Resdown = 2;
                 }
-                if ((i == 0 || resdown == 0) && f271 <= -20.0F) {
-                    rescnt--;
+                if ((i == 0 || Resdown == 0) && f271 <= -20.0F) {
+                    Rescnt--;
                 }
-            } else if (resdown == 0) {
-                rescnt = 5;
+            } else if (Resdown == 0) {
+                Rescnt = 5;
             } else {
-                rescnt = 10;
+                Rescnt = 10;
             }
     }
 
-    internal static void around(ContO conto, boolean abool) {
+    internal static void Around(ContO conto, bool abool) {
         if (!abool) {
-            if (!vert) {
-                adv += 2;
+            if (!Vert) {
+                Adv += 2;
             } else {
-                adv -= 2;
+                Adv -= 2;
             }
-            if (adv > 900) {
-                vert = true;
+            if (Adv > 900) {
+                Vert = true;
             }
-            if (adv < -500) {
-                vert = false;
+            if (Adv < -500) {
+                Vert = false;
             }
         } else {
-            adv -= 14;
-            if (adv < 617) {
-                adv = 617;
+            Adv -= 14;
+            if (Adv < 617) {
+                Adv = 617;
             }
         }
-        int i = 500 + adv;
+        var i = 500 + Adv;
         if (abool && i < 1300) {
             i = 1300;
         }
         if (i < 1000) {
             i = 1000;
         }
-        y = conto.y - adv;
-        if (y > 10) {
-            vert = false;
+        Y = conto.Y - Adv;
+        if (Y > 10) {
+            Vert = false;
         }
-        x = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
-        z = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
+        X = conto.X + (int) ((conto.X - i - conto.X) * Cos(Vxz));
+        Z = conto.Z + (int) ((conto.X - i - conto.X) * Sin(Vxz));
         if (!abool) {
-            vxz += 2;
+            Vxz += 2;
         } else {
-            vxz += 4;
+            Vxz += 4;
         }
-        int i4 = 0;
-        int i5 = y;
+        var i4 = 0;
+        var i5 = Y;
         if (i5 > 0) {
             i5 = 0;
         }
-        if (conto.y - i5 - cy < 0) {
+        if (conto.Y - i5 - Cy < 0) {
             i4 = -180;
         }
-        int i6 = (int) Math.Sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
-        int i7 = (int) (90 + i4 - Math.Atan((double) i6 / (double) (conto.y - i5 - cy)) / 0.017453292519943295);
-        xz = -vxz + 90;
+        var i6 = (int) Math.Sqrt((conto.Z - Z + Cz) * (conto.Z - Z + Cz) + (conto.X - X - Cx) * (conto.X - X - Cx));
+        var i7 = (int) (90 + i4 - Math.Atan(i6 / (double) (conto.Y - i5 - Cy)) / 0.017453292519943295);
+        Xz = -Vxz + 90;
         if (abool) {
             i7 -= 15;
         }
-        zy += (i7 - zy) / 10;
+        Zy += (i7 - Zy) / 10;
     }
 
-    internal static void aroundtrack() {
-        y = -hit;
-        x = cx + (int) trx + (int) (17000.0F * cos(vxz));
-        z = (int) trz + (int) (17000.0F * sin(vxz));
-        if (hit > 5000) {
-            if (hit == 45000) {
-                fo = 1.0F;
-                zy = 67;
-                atrx = (CheckPoints.x[0] - trx) / 116L;
-                atrz = (CheckPoints.z[0] - trz) / 116L;
-                focusPoint = 400;
+    internal static void Aroundtrack() {
+        Y = -Hit;
+        X = Cx + (int) Trx + (int) (17000.0F * Cos(Vxz));
+        Z = (int) Trz + (int) (17000.0F * Sin(Vxz));
+        if (Hit > 5000) {
+            if (Hit == 45000) {
+                _fo = 1.0F;
+                Zy = 67;
+                _atrx = (CheckPoints.X[0] - Trx) / 116L;
+                _atrz = (CheckPoints.Z[0] - Trz) / 116L;
+                FocusPoint = 400;
             }
-            if (hit == 20000) {
-                fallen = 500;
-                fo = 1.0F;
-                zy = 67;
-                atrx = (CheckPoints.x[0] - trx) / 116L;
-                atrz = (CheckPoints.z[0] - trz) / 116L;
-                focusPoint = 400;
+            if (Hit == 20000) {
+                Fallen = 500;
+                _fo = 1.0F;
+                Zy = 67;
+                _atrx = (CheckPoints.X[0] - Trx) / 116L;
+                _atrz = (CheckPoints.Z[0] - Trz) / 116L;
+                FocusPoint = 400;
             }
-            hit -= fallen;
-            fallen += 7;
-            trx += atrx;
-            trz += atrz;
-            if (hit < 17600) {
-                zy -= 2;
+            Hit -= Fallen;
+            Fallen += 7;
+            Trx += _atrx;
+            Trz += _atrz;
+            if (Hit < 17600) {
+                Zy -= 2;
             }
-            if (fallen > 500) {
-                fallen = 500;
+            if (Fallen > 500) {
+                Fallen = 500;
             }
-            if (hit <= 5000) {
-                hit = 5000;
-                fallen = 0;
+            if (Hit <= 5000) {
+                Hit = 5000;
+                Fallen = 0;
             }
-            vxz += 3;
+            Vxz += 3;
         } else {
-            focusPoint = (int) (400.0F * fo);
-            if (Math.Abs(fo - gofo) > 0.005) {
-                if (fo < gofo) {
-                    fo += 0.005F;
+            FocusPoint = (int) (400.0F * _fo);
+            if (Math.Abs(_fo - _gofo) > 0.005) {
+                if (_fo < _gofo) {
+                    _fo += 0.005F;
                 } else {
-                    fo -= 0.005F;
+                    _fo -= 0.005F;
                 }
             } else {
-                gofo = (float) (0.3499999940395355 + HansenRandom.Double() * 1.3);
+                _gofo = (float) (0.3499999940395355 + HansenRandom.Double() * 1.3);
             }
-            vxz++;
-            trx -= (trx - CheckPoints.x[ptr]) / 10L;
-            trz -= (trz - CheckPoints.z[ptr]) / 10L;
-            if (ptcnt == 7) {
-                ptr++;
-                if (ptr == CheckPoints.n) {
-                    ptr = 0;
-                    nrnd++;
+            Vxz++;
+            Trx -= (Trx - CheckPoints.X[Ptr]) / 10L;
+            Trz -= (Trz - CheckPoints.Z[Ptr]) / 10L;
+            if (Ptcnt == 7) {
+                Ptr++;
+                if (Ptr == CheckPoints.N) {
+                    Ptr = 0;
+                    Nrnd++;
                 }
-                ptcnt = 0;
+                Ptcnt = 0;
             } else {
-                ptcnt++;
+                Ptcnt++;
             }
         }
-        if (vxz > 360) {
-            vxz -= 360;
+        if (Vxz > 360) {
+            Vxz -= 360;
         }
-        xz = -vxz - 90;
-        if (-y - cy < 0) {
+        Xz = -Vxz - 90;
+        if (-Y - Cy < 0) {
         }
-        Math.Sqrt((trz - z + cz) * (trz - z + cz) + (trx - x - cx) * (trx - x - cx));
-        cpflik = !cpflik;
+        Math.Sqrt((Trz - Z + Cz) * (Trz - Z + Cz) + (Trx - X - Cx) * (Trx - X - Cx));
+        Cpflik = !Cpflik;
     }
 
-    internal static float cos(int i) {
+    internal static float Cos(int i) {
         for (/**/; i >= 360; i -= 360) {
 
         }
         for (/**/; i < 0; i += 360) {
 
         }
-        return tcos[i];
+        return Tcos[i];
     }
 
-    internal static void d() {
-        nsp = 0;
-        if (zy > 90) {
-            zy = 90;
+    internal static void D() {
+        Nsp = 0;
+        if (Zy > 90) {
+            Zy = 90;
         }
-        if (zy < -90) {
-            zy = -90;
+        if (Zy < -90) {
+            Zy = -90;
         }
-        if (xz > 360) {
-            xz -= 360;
+        if (Xz > 360) {
+            Xz -= 360;
         }
-        if (xz < 0) {
-            xz += 360;
+        if (Xz < 0) {
+            Xz += 360;
         }
-        if (y > 0) {
-            y = 0;
+        if (Y > 0) {
+            Y = 0;
         }
-        ground = 250 - y;
-        int[] ais = new int[4];
-        int[] is223 = new int[4];
-        int i = cgrnd[0];
-        int i224 = cgrnd[1];
-        int i225 = cgrnd[2];
-        int i226 = crgrnd[0];
-        int i227 = crgrnd[1];
-        int i228 = crgrnd[2];
-        int i229 = h;
-        for (int i230 = 0; i230 < 16; i230++) {
-            int i231 = fade[i230];
-            int i232 = ground;
-            if (zy != 0) {
-                i232 = cy + (int) ((ground - cy) * cos(zy) - (fade[i230] - cz) * sin(zy));
-                i231 = cz + (int) ((ground - cy) * sin(zy) + (fade[i230] - cz) * cos(zy));
+        Ground = 250 - Y;
+        var ais = new int[4];
+        var is223 = new int[4];
+        var i = Cgrnd[0];
+        var i224 = Cgrnd[1];
+        var i225 = Cgrnd[2];
+        var i226 = Crgrnd[0];
+        var i227 = Crgrnd[1];
+        var i228 = Crgrnd[2];
+        var i229 = H;
+        for (var i230 = 0; i230 < 16; i230++) {
+            var i231 = Fade[i230];
+            var i232 = Ground;
+            if (Zy != 0) {
+                i232 = Cy + (int) ((Ground - Cy) * Cos(Zy) - (Fade[i230] - Cz) * Sin(Zy));
+                i231 = Cz + (int) ((Ground - Cy) * Sin(Zy) + (Fade[i230] - Cz) * Cos(Zy));
             }
-            ais[0] = iw;
-            is223[0] = ys(i232, i231);
-            if (is223[0] < ih) {
-                is223[0] = ih;
+            ais[0] = Iw;
+            is223[0] = Ys(i232, i231);
+            if (is223[0] < Ih) {
+                is223[0] = Ih;
             }
-            if (is223[0] > h) {
-                is223[0] = h;
+            if (is223[0] > H) {
+                is223[0] = H;
             }
-            ais[1] = iw;
+            ais[1] = Iw;
             is223[1] = i229;
-            ais[2] = w;
+            ais[2] = W;
             is223[2] = i229;
-            ais[3] = w;
+            ais[3] = W;
             is223[3] = is223[0];
             i229 = is223[0];
             if (i230 > 0) {
-                i226 = (i226 * 7 + cfade[0]) / 8;
-                i227 = (i227 * 7 + cfade[1]) / 8;
-                i228 = (i228 * 7 + cfade[2]) / 8;
+                i226 = (i226 * 7 + Cfade[0]) / 8;
+                i227 = (i227 * 7 + Cfade[1]) / 8;
+                i228 = (i228 * 7 + Cfade[2]) / 8;
                 if (i230 < 3) {
-                    i = (i * 7 + cfade[0]) / 8;
-                    i224 = (i224 * 7 + cfade[1]) / 8;
-                    i225 = (i225 * 7 + cfade[2]) / 8;
+                    i = (i * 7 + Cfade[0]) / 8;
+                    i224 = (i224 * 7 + Cfade[1]) / 8;
+                    i225 = (i225 * 7 + Cfade[2]) / 8;
                 } else {
                     i = i226;
                     i224 = i227;
                     i225 = i228;
                 }
             }
-            if (is223[0] < h && is223[1] > ih) {
+            if (is223[0] < H && is223[1] > Ih) {
                 G.SetColor(new Color(i, i224, i225));
                 G.FillPolygon(ais, is223, 4);
             }
         }
-        if (lightn != -1 && lton) {
-            if (lightn < 16) {
-                if (lilo > lightn + 217) {
-                    lilo -= 3;
+        if (Lightn != -1 && Lton) {
+            if (Lightn < 16) {
+                if (_lilo > Lightn + 217) {
+                    _lilo -= 3;
                 } else {
-                    lightn = (int) (16.0F + 16.0F * random());
+                    Lightn = (int) (16.0F + 16.0F * Random());
                 }
-            } else if (lilo < lightn + 217) {
-                lilo += 7;
+            } else if (_lilo < Lightn + 217) {
+                _lilo += 7;
             } else {
-                lightn = (int) (16.0F * random());
+                Lightn = (int) (16.0F * Random());
             }
-            csky[0] = (int) (lilo + lilo * (snap[0] / 100.0F));
-            if (csky[0] > 255) {
-                csky[0] = 255;
+            Csky[0] = (int) (_lilo + _lilo * (Snap[0] / 100.0F));
+            if (Csky[0] > 255) {
+                Csky[0] = 255;
             }
-            if (csky[0] < 0) {
-                csky[0] = 0;
+            if (Csky[0] < 0) {
+                Csky[0] = 0;
             }
-            csky[1] = (int) (lilo + lilo * (snap[1] / 100.0F));
-            if (csky[1] > 255) {
-                csky[1] = 255;
+            Csky[1] = (int) (_lilo + _lilo * (Snap[1] / 100.0F));
+            if (Csky[1] > 255) {
+                Csky[1] = 255;
             }
-            if (csky[1] < 0) {
-                csky[1] = 0;
+            if (Csky[1] < 0) {
+                Csky[1] = 0;
             }
-            csky[2] = (int) (lilo + lilo * (snap[2] / 100.0F));
-            if (csky[2] > 255) {
-                csky[2] = 255;
+            Csky[2] = (int) (_lilo + _lilo * (Snap[2] / 100.0F));
+            if (Csky[2] > 255) {
+                Csky[2] = 255;
             }
-            if (csky[2] < 0) {
-                csky[2] = 0;
+            if (Csky[2] < 0) {
+                Csky[2] = 0;
             }
         }
-        i = csky[0];
-        i224 = csky[1];
-        i225 = csky[2];
-        int i233 = i;
-        int i234 = i224;
-        int i235 = i225;
-        int i236 = cy + (int) ((skyline - 700 - cy) * cos(zy) - (7000 - cz) * sin(zy));
-        int i237 = cz + (int) ((skyline - 700 - cy) * sin(zy) + (7000 - cz) * cos(zy));
-        i236 = ys(i236, i237);
-        int i238 = ih;
-        for (int i239 = 0; i239 < 16; i239++) {
-            int i240 = fade[i239];
-            int i241 = skyline;
-            if (zy != 0) {
-                i241 = cy + (int) ((skyline - cy) * cos(zy) - (fade[i239] - cz) * sin(zy));
-                i240 = cz + (int) ((skyline - cy) * sin(zy) + (fade[i239] - cz) * cos(zy));
+        i = Csky[0];
+        i224 = Csky[1];
+        i225 = Csky[2];
+        var i233 = i;
+        var i234 = i224;
+        var i235 = i225;
+        var i236 = Cy + (int) ((Skyline - 700 - Cy) * Cos(Zy) - (7000 - Cz) * Sin(Zy));
+        var i237 = Cz + (int) ((Skyline - 700 - Cy) * Sin(Zy) + (7000 - Cz) * Cos(Zy));
+        i236 = Ys(i236, i237);
+        var i238 = Ih;
+        for (var i239 = 0; i239 < 16; i239++) {
+            var i240 = Fade[i239];
+            var i241 = Skyline;
+            if (Zy != 0) {
+                i241 = Cy + (int) ((Skyline - Cy) * Cos(Zy) - (Fade[i239] - Cz) * Sin(Zy));
+                i240 = Cz + (int) ((Skyline - Cy) * Sin(Zy) + (Fade[i239] - Cz) * Cos(Zy));
             }
-            ais[0] = iw;
-            is223[0] = ys(i241, i240);
-            if (is223[0] > h) {
-                is223[0] = h;
+            ais[0] = Iw;
+            is223[0] = Ys(i241, i240);
+            if (is223[0] > H) {
+                is223[0] = H;
             }
-            if (is223[0] < ih) {
-                is223[0] = ih;
+            if (is223[0] < Ih) {
+                is223[0] = Ih;
             }
-            ais[1] = iw;
+            ais[1] = Iw;
             is223[1] = i238;
-            ais[2] = w;
+            ais[2] = W;
             is223[2] = i238;
-            ais[3] = w;
+            ais[3] = W;
             is223[3] = is223[0];
             i238 = is223[0];
             if (i239 > 0) {
-                i = (i * 7 + cfade[0]) / 8;
-                i224 = (i224 * 7 + cfade[1]) / 8;
-                i225 = (i225 * 7 + cfade[2]) / 8;
+                i = (i * 7 + Cfade[0]) / 8;
+                i224 = (i224 * 7 + Cfade[1]) / 8;
+                i225 = (i225 * 7 + Cfade[2]) / 8;
             }
             if (is223[1] < i236) {
                 i233 = i;
                 i234 = i224;
                 i235 = i225;
             }
-            if (is223[0] > ih && is223[1] < h) {
+            if (is223[0] > Ih && is223[1] < H) {
                 G.SetColor(new Color(i, i224, i225));
                 G.FillPolygon(ais, is223, 4);
             }
         }
-        ais[0] = iw;
+        ais[0] = Iw;
         is223[0] = i238;
-        ais[1] = iw;
+        ais[1] = Iw;
         is223[1] = i229;
-        ais[2] = w;
+        ais[2] = W;
         is223[2] = i229;
-        ais[3] = w;
+        ais[3] = W;
         is223[3] = i238;
-        if (is223[0] < h && is223[1] > ih) {
-            float f = (Math.Abs(y) - 250.0F) / (fade[0] * 2);
+        if (is223[0] < H && is223[1] > Ih) {
+            var f = (Math.Abs(Y) - 250.0F) / (Fade[0] * 2);
             if (f < 0.0F) {
                 f = 0.0F;
             }
@@ -485,94 +485,94 @@ public class Medium {
             G.SetColor(new Color(i, i224, i225));
             G.FillPolygon(ais, is223, 4);
         }
-        if (resdown != 2) {
-            for (int i242 = 1; i242 < 20; i242++) {
-                int i243 = 7000;
-                int i244 = skyline - 700 - i242 * 70;
-                if (zy != 0 && i242 != 19) {
-                    i244 = cy + (int) ((skyline - 700 - i242 * 70 - cy) * cos(zy) - (7000 - cz) * sin(zy));
-                    i243 = cz + (int) ((skyline - 700 - i242 * 70 - cy) * sin(zy) + (7000 - cz) * cos(zy));
+        if (Resdown != 2) {
+            for (var i242 = 1; i242 < 20; i242++) {
+                var i243 = 7000;
+                var i244 = Skyline - 700 - i242 * 70;
+                if (Zy != 0 && i242 != 19) {
+                    i244 = Cy + (int) ((Skyline - 700 - i242 * 70 - Cy) * Cos(Zy) - (7000 - Cz) * Sin(Zy));
+                    i243 = Cz + (int) ((Skyline - 700 - i242 * 70 - Cy) * Sin(Zy) + (7000 - Cz) * Cos(Zy));
                 }
-                ais[0] = iw;
+                ais[0] = Iw;
                 if (i242 != 19) {
-                    is223[0] = ys(i244, i243);
-                    if (is223[0] > h) {
-                        is223[0] = h;
+                    is223[0] = Ys(i244, i243);
+                    if (is223[0] > H) {
+                        is223[0] = H;
                     }
-                    if (is223[0] < ih) {
-                        is223[0] = ih;
+                    if (is223[0] < Ih) {
+                        is223[0] = Ih;
                     }
                 } else {
-                    is223[0] = ih;
+                    is223[0] = Ih;
                 }
-                ais[1] = iw;
+                ais[1] = Iw;
                 is223[1] = i236;
-                ais[2] = w;
+                ais[2] = W;
                 is223[2] = i236;
-                ais[3] = w;
+                ais[3] = W;
                 is223[3] = is223[0];
                 i236 = is223[0];
                 i233 = (int) (i233 * 0.991);
                 i234 = (int) (i234 * 0.991);
                 i235 = (int) (i235 * 0.998);
-                if (is223[1] > ih && is223[0] < h) {
+                if (is223[1] > Ih && is223[0] < H) {
                     G.SetColor(new Color(i233, i234, i235));
                     G.FillPolygon(ais, is223, 4);
                 }
             }
-            if (lightson) {
-                drawstars();
+            if (Lightson) {
+                Drawstars();
             }
-            drawmountains();
-            drawclouds();
+            Drawmountains();
+            Drawclouds();
         }
-        groundpolys();
-        if (noelec != 0) {
-            noelec--;
+        Groundpolys();
+        if (Noelec != 0) {
+            Noelec--;
         }
-        if (cpflik) {
-            cpflik = false;
+        if (Cpflik) {
+            Cpflik = false;
         } else {
-            cpflik = true;
-            elecr = random() * 15.0F - 6.0F;
+            Cpflik = true;
+            Elecr = Random() * 15.0F - 6.0F;
         }
     }
 
-    private static void drawclouds() {
-        for (int i = 0; i < noc; i++) {
-            int i104 = cx + (int) ((clx[i] - x / 20 - cx) * cos(xz) - (clz[i] - z / 20 - cz) * sin(xz));
-            int i105 = cz + (int) ((clx[i] - x / 20 - cx) * sin(xz) + (clz[i] - z / 20 - cz) * cos(xz));
-            int i106 = cz + (int) ((cldd[4] - y / 20 - cy) * sin(zy) + (i105 - cz) * cos(zy));
-            int i107 = xs(i104 + cmx[i], i106);
-            int i108 = xs(i104 - cmx[i], i106);
-            if (i107 > 0 && i108 < w && i106 > -cmx[i] && i107 - i108 > 20) {
-                int[][] ais = ArrayExt.New<int>(3,12);
-                int[][] is109 = ArrayExt.New<int>(3,12);
-                int[][] is110 = ArrayExt.New<int>(3,12);
-                int[] is111 = new int[12];
-                int[] is112 = new int[12];
-                boolean bool116;
-                for (int i120 = 0; i120 < 3; i120++) {
-                    for (int i121 = 0; i121 < 12; i121++) {
-                        ais[i120][i121] = clax[i,i120,i121] + clx[i] - x / 20;
-                        is110[i120][i121] = claz[i,i120,i121] + clz[i] - z / 20;
-                        is109[i120][i121] = clay[i,i120,i121] + cldd[4] - y / 20;
+    private static void Drawclouds() {
+        for (var i = 0; i < _noc; i++) {
+            var i104 = Cx + (int) ((_clx[i] - X / 20 - Cx) * Cos(Xz) - (_clz[i] - Z / 20 - Cz) * Sin(Xz));
+            var i105 = Cz + (int) ((_clx[i] - X / 20 - Cx) * Sin(Xz) + (_clz[i] - Z / 20 - Cz) * Cos(Xz));
+            var i106 = Cz + (int) ((Cldd[4] - Y / 20 - Cy) * Sin(Zy) + (i105 - Cz) * Cos(Zy));
+            var i107 = Xs(i104 + _cmx[i], i106);
+            var i108 = Xs(i104 - _cmx[i], i106);
+            if (i107 > 0 && i108 < W && i106 > -_cmx[i] && i107 - i108 > 20) {
+                var ais = ArrayExt.New<int>(3,12);
+                var is109 = ArrayExt.New<int>(3,12);
+                var is110 = ArrayExt.New<int>(3,12);
+                var is111 = new int[12];
+                var is112 = new int[12];
+                bool bool116;
+                for (var i120 = 0; i120 < 3; i120++) {
+                    for (var i121 = 0; i121 < 12; i121++) {
+                        ais[i120][i121] = _clax[i,i120,i121] + _clx[i] - X / 20;
+                        is110[i120][i121] = _claz[i,i120,i121] + _clz[i] - Z / 20;
+                        is109[i120][i121] = _clay[i,i120,i121] + Cldd[4] - Y / 20;
                     }
-                    rot(ais[i120], is110[i120], cx, cz, xz, 12);
-                    rot(is109[i120], is110[i120], cy, cz, zy, 12);
+                    Rot(ais[i120], is110[i120], Cx, Cz, Xz, 12);
+                    Rot(is109[i120], is110[i120], Cy, Cz, Zy, 12);
                 }
-                for (int i122 = 0; i122 < 12; i122 += 2) {
-                    int i123 = 0;
-                    int i124 = 0;
-                    int i125 = 0;
-                    int i126 = 0;
+                for (var i122 = 0; i122 < 12; i122 += 2) {
+                    var i123 = 0;
+                    var i124 = 0;
+                    var i125 = 0;
+                    var i126 = 0;
                     bool116 = true;
-                    int i127 = 0;
-                    int i128 = 0;
-                    int i129 = 0;
-                    for (int i130 = 0; i130 < 6; i130++) {
-                        int i131 = 0;
-                        int i132 = 1;
+                    var i127 = 0;
+                    var i128 = 0;
+                    var i129 = 0;
+                    for (var i130 = 0; i130 < 6; i130++) {
+                        var i131 = 0;
+                        var i132 = 1;
                         if (i130 == 0) {
                             i131 = i122;
                         }
@@ -606,21 +606,21 @@ public class Medium {
                             i131 = i122;
                             i132 = 2;
                         }
-                        is111[i130] = xs(ais[i132][i131], is110[i132][i131]);
-                        is112[i130] = ys(is109[i132][i131], is110[i132][i131]);
+                        is111[i130] = Xs(ais[i132][i131], is110[i132][i131]);
+                        is112[i130] = Ys(is109[i132][i131], is110[i132][i131]);
                         i128 += ais[i132][i131];
                         i127 += is109[i132][i131];
                         i129 += is110[i132][i131];
                         if (is112[i130] < 0 || is110[0][i130] < 10) {
                             i123++;
                         }
-                        if (is112[i130] > h || is110[0][i130] < 10) {
+                        if (is112[i130] > H || is110[0][i130] < 10) {
                             i124++;
                         }
                         if (is111[i130] < 0 || is110[0][i130] < 10) {
                             i125++;
                         }
-                        if (is111[i130] > w || is110[0][i130] < 10) {
+                        if (is111[i130] > W || is110[0][i130] < 10) {
                             i126++;
                         }
                     }
@@ -631,34 +631,34 @@ public class Medium {
                         i128 /= 6;
                         i127 /= 6;
                         i129 /= 6;
-                        int i133 = (int) Math.Sqrt((cy - i127) * (cy - i127) + (cx - i128) * (cx - i128) + i129 * i129);
-                        if (i133 < fade[7]) {
-                            int i134 = clc[i,1,i122 / 2,0];
-                            int i135 = clc[i,1,i122 / 2,1];
-                            int i136 = clc[i,1,i122 / 2,2];
-                            for (int i137 = 0; i137 < 16; i137++)
-                                if (i133 > fade[i137]) {
-                                    i134 = (i134 * fogd + cfade[0]) / (fogd + 1);
-                                    i135 = (i135 * fogd + cfade[1]) / (fogd + 1);
-                                    i136 = (i136 * fogd + cfade[2]) / (fogd + 1);
+                        var i133 = (int) Math.Sqrt((Cy - i127) * (Cy - i127) + (Cx - i128) * (Cx - i128) + i129 * i129);
+                        if (i133 < Fade[7]) {
+                            var i134 = _clc[i,1,i122 / 2,0];
+                            var i135 = _clc[i,1,i122 / 2,1];
+                            var i136 = _clc[i,1,i122 / 2,2];
+                            for (var i137 = 0; i137 < 16; i137++)
+                                if (i133 > Fade[i137]) {
+                                    i134 = (i134 * Fogd + Cfade[0]) / (Fogd + 1);
+                                    i135 = (i135 * Fogd + Cfade[1]) / (Fogd + 1);
+                                    i136 = (i136 * Fogd + Cfade[2]) / (Fogd + 1);
                                 }
                             G.SetColor(new Color(i134, i135, i136));
                             G.FillPolygon(is111, is112, 6);
                         }
                     }
                 }
-                for (int i138 = 0; i138 < 12; i138 += 2) {
-                    int i139 = 0;
-                    int i140 = 0;
-                    int i141 = 0;
-                    int i142 = 0;
+                for (var i138 = 0; i138 < 12; i138 += 2) {
+                    var i139 = 0;
+                    var i140 = 0;
+                    var i141 = 0;
+                    var i142 = 0;
                     bool116 = true;
-                    int i143 = 0;
-                    int i144 = 0;
-                    int i145 = 0;
-                    for (int i146 = 0; i146 < 6; i146++) {
-                        int i147 = 0;
-                        int i148 = 0;
+                    var i143 = 0;
+                    var i144 = 0;
+                    var i145 = 0;
+                    for (var i146 = 0; i146 < 6; i146++) {
+                        var i147 = 0;
+                        var i148 = 0;
                         if (i146 == 0) {
                             i147 = i138;
                         }
@@ -692,21 +692,21 @@ public class Medium {
                             i147 = i138;
                             i148 = 1;
                         }
-                        is111[i146] = xs(ais[i148][i147], is110[i148][i147]);
-                        is112[i146] = ys(is109[i148][i147], is110[i148][i147]);
+                        is111[i146] = Xs(ais[i148][i147], is110[i148][i147]);
+                        is112[i146] = Ys(is109[i148][i147], is110[i148][i147]);
                         i144 += ais[i148][i147];
                         i143 += is109[i148][i147];
                         i145 += is110[i148][i147];
                         if (is112[i146] < 0 || is110[0][i146] < 10) {
                             i139++;
                         }
-                        if (is112[i146] > h || is110[0][i146] < 10) {
+                        if (is112[i146] > H || is110[0][i146] < 10) {
                             i140++;
                         }
                         if (is111[i146] < 0 || is110[0][i146] < 10) {
                             i141++;
                         }
-                        if (is111[i146] > w || is110[0][i146] < 10) {
+                        if (is111[i146] > W || is110[0][i146] < 10) {
                             i142++;
                         }
                     }
@@ -717,46 +717,46 @@ public class Medium {
                         i144 /= 6;
                         i143 /= 6;
                         i145 /= 6;
-                        int i149 = (int) Math.Sqrt((cy - i143) * (cy - i143) + (cx - i144) * (cx - i144) + i145 * i145);
-                        if (i149 < fade[7]) {
-                            int i150 = clc[i,0,i138 / 2,0];
-                            int i151 = clc[i,0,i138 / 2,1];
-                            int i152 = clc[i,0,i138 / 2,2];
-                            for (int i153 = 0; i153 < 16; i153++)
-                                if (i149 > fade[i153]) {
-                                    i150 = (i150 * fogd + cfade[0]) / (fogd + 1);
-                                    i151 = (i151 * fogd + cfade[1]) / (fogd + 1);
-                                    i152 = (i152 * fogd + cfade[2]) / (fogd + 1);
+                        var i149 = (int) Math.Sqrt((Cy - i143) * (Cy - i143) + (Cx - i144) * (Cx - i144) + i145 * i145);
+                        if (i149 < Fade[7]) {
+                            var i150 = _clc[i,0,i138 / 2,0];
+                            var i151 = _clc[i,0,i138 / 2,1];
+                            var i152 = _clc[i,0,i138 / 2,2];
+                            for (var i153 = 0; i153 < 16; i153++)
+                                if (i149 > Fade[i153]) {
+                                    i150 = (i150 * Fogd + Cfade[0]) / (Fogd + 1);
+                                    i151 = (i151 * Fogd + Cfade[1]) / (Fogd + 1);
+                                    i152 = (i152 * Fogd + Cfade[2]) / (Fogd + 1);
                                 }
                             G.SetColor(new Color(i150, i151, i152));
                             G.FillPolygon(is111, is112, 6);
                         }
                     }
                 }
-                int i154 = 0;
-                int i155 = 0;
-                int i156 = 0;
-                int i157 = 0;
+                var i154 = 0;
+                var i155 = 0;
+                var i156 = 0;
+                var i157 = 0;
                 bool116 = true;
-                int i158 = 0;
-                int i159 = 0;
-                int i160 = 0;
-                for (int i161 = 0; i161 < 12; i161++) {
-                    is111[i161] = xs(ais[0][i161], is110[0][i161]);
-                    is112[i161] = ys(is109[0][i161], is110[0][i161]);
+                var i158 = 0;
+                var i159 = 0;
+                var i160 = 0;
+                for (var i161 = 0; i161 < 12; i161++) {
+                    is111[i161] = Xs(ais[0][i161], is110[0][i161]);
+                    is112[i161] = Ys(is109[0][i161], is110[0][i161]);
                     i159 += ais[0][i161];
                     i158 += is109[0][i161];
                     i160 += is110[0][i161];
                     if (is112[i161] < 0 || is110[0][i161] < 10) {
                         i154++;
                     }
-                    if (is112[i161] > h || is110[0][i161] < 10) {
+                    if (is112[i161] > H || is110[0][i161] < 10) {
                         i155++;
                     }
                     if (is111[i161] < 0 || is110[0][i161] < 10) {
                         i156++;
                     }
-                    if (is111[i161] > w || is110[0][i161] < 10) {
+                    if (is111[i161] > W || is110[0][i161] < 10) {
                         i157++;
                     }
                 }
@@ -767,16 +767,16 @@ public class Medium {
                     i159 /= 12;
                     i158 /= 12;
                     i160 /= 12;
-                    int i162 = (int) Math.Sqrt((cy - i158) * (cy - i158) + (cx - i159) * (cx - i159) + i160 * i160);
-                    if (i162 < fade[7]) {
-                        int i163 = clds[0];
-                        int i164 = clds[1];
-                        int i165 = clds[2];
-                        for (int i166 = 0; i166 < 16; i166++)
-                            if (i162 > fade[i166]) {
-                                i163 = (i163 * fogd + cfade[0]) / (fogd + 1);
-                                i164 = (i164 * fogd + cfade[1]) / (fogd + 1);
-                                i165 = (i165 * fogd + cfade[2]) / (fogd + 1);
+                    var i162 = (int) Math.Sqrt((Cy - i158) * (Cy - i158) + (Cx - i159) * (Cx - i159) + i160 * i160);
+                    if (i162 < Fade[7]) {
+                        var i163 = Clds[0];
+                        var i164 = Clds[1];
+                        var i165 = Clds[2];
+                        for (var i166 = 0; i166 < 16; i166++)
+                            if (i162 > Fade[i166]) {
+                                i163 = (i163 * Fogd + Cfade[0]) / (Fogd + 1);
+                                i164 = (i164 * Fogd + Cfade[1]) / (Fogd + 1);
+                                i165 = (i165 * Fogd + Cfade[2]) / (Fogd + 1);
                             }
                         G.SetColor(new Color(i163, i164, i165));
                         G.FillPolygon(is111, is112, 12);
@@ -786,56 +786,56 @@ public class Medium {
         }
     }
 
-    private static void drawmountains() {
-        for (int i = 0; i < nmt; i++) {
-            int i185 = mrd[i];
-            int i186 = cx + (int) ((mtx[i185][0] - x / 30 - cx) * cos(xz) - (mtz[i185][0] - z / 30 - cz) * sin(xz));
-            int i187 = cz + (int) ((mtx[i185][0] - x / 30 - cx) * sin(xz) + (mtz[i185][0] - z / 30 - cz) * cos(xz));
-            int i188 = cz + (int) ((mty[i185][0] - y / 30 - cy) * sin(zy) + (i187 - cz) * cos(zy));
-            int i189 = cx + (int) ((mtx[i185][nmv[i185] - 1] - x / 30 - cx) * cos(xz) - (mtz[i185][nmv[i185] - 1] - z / 30 - cz) * sin(xz));
-            int i190 = cz + (int) ((mtx[i185][nmv[i185] - 1] - x / 30 - cx) * sin(xz) + (mtz[i185][nmv[i185] - 1] - z / 30 - cz) * cos(xz));
-            int i191 = cz + (int) ((mty[i185][nmv[i185] - 1] - y / 30 - cy) * sin(zy) + (i190 - cz) * cos(zy));
-            if (xs(i189, i191) > 0 && xs(i186, i188) < w) {
-                int[] ais = new int[nmv[i185] * 2];
-                int[] is192 = new int[nmv[i185] * 2];
-                int[] is193 = new int[nmv[i185] * 2];
-                for (int i194 = 0; i194 < nmv[i185] * 2; i194++) {
-                    ais[i194] = mtx[i185][i194] - x / 30;
-                    is192[i194] = mty[i185][i194] - y / 30;
-                    is193[i194] = mtz[i185][i194] - z / 30;
+    private static void Drawmountains() {
+        for (var i = 0; i < _nmt; i++) {
+            var i185 = _mrd[i];
+            var i186 = Cx + (int) ((_mtx[i185][0] - X / 30 - Cx) * Cos(Xz) - (_mtz[i185][0] - Z / 30 - Cz) * Sin(Xz));
+            var i187 = Cz + (int) ((_mtx[i185][0] - X / 30 - Cx) * Sin(Xz) + (_mtz[i185][0] - Z / 30 - Cz) * Cos(Xz));
+            var i188 = Cz + (int) ((_mty[i185][0] - Y / 30 - Cy) * Sin(Zy) + (i187 - Cz) * Cos(Zy));
+            var i189 = Cx + (int) ((_mtx[i185][_nmv[i185] - 1] - X / 30 - Cx) * Cos(Xz) - (_mtz[i185][_nmv[i185] - 1] - Z / 30 - Cz) * Sin(Xz));
+            var i190 = Cz + (int) ((_mtx[i185][_nmv[i185] - 1] - X / 30 - Cx) * Sin(Xz) + (_mtz[i185][_nmv[i185] - 1] - Z / 30 - Cz) * Cos(Xz));
+            var i191 = Cz + (int) ((_mty[i185][_nmv[i185] - 1] - Y / 30 - Cy) * Sin(Zy) + (i190 - Cz) * Cos(Zy));
+            if (Xs(i189, i191) > 0 && Xs(i186, i188) < W) {
+                var ais = new int[_nmv[i185] * 2];
+                var is192 = new int[_nmv[i185] * 2];
+                var is193 = new int[_nmv[i185] * 2];
+                for (var i194 = 0; i194 < _nmv[i185] * 2; i194++) {
+                    ais[i194] = _mtx[i185][i194] - X / 30;
+                    is192[i194] = _mty[i185][i194] - Y / 30;
+                    is193[i194] = _mtz[i185][i194] - Z / 30;
                 }
-                int i195 = (int) Math.Sqrt(ais[nmv[i185] / 4] * ais[nmv[i185] / 4] + is193[nmv[i185] / 4] * is193[nmv[i185] / 4]);
-                rot(ais, is193, cx, cz, xz, nmv[i185] * 2);
-                rot(is192, is193, cy, cz, zy, nmv[i185] * 2);
-                int[] is196 = new int[4];
-                int[] is197 = new int[4];
-                boolean bool201;
-                for (int i202 = 0; i202 < nmv[i185] - 1; i202++) {
-                    int i203 = 0;
-                    int i204 = 0;
-                    int i205 = 0;
-                    int i206 = 0;
+                var i195 = (int) Math.Sqrt(ais[_nmv[i185] / 4] * ais[_nmv[i185] / 4] + is193[_nmv[i185] / 4] * is193[_nmv[i185] / 4]);
+                Rot(ais, is193, Cx, Cz, Xz, _nmv[i185] * 2);
+                Rot(is192, is193, Cy, Cz, Zy, _nmv[i185] * 2);
+                var is196 = new int[4];
+                var is197 = new int[4];
+                bool bool201;
+                for (var i202 = 0; i202 < _nmv[i185] - 1; i202++) {
+                    var i203 = 0;
+                    var i204 = 0;
+                    var i205 = 0;
+                    var i206 = 0;
                     bool201 = true;
-                    for (int i207 = 0; i207 < 4; i207++) {
-                        int i208 = i207 + i202;
+                    for (var i207 = 0; i207 < 4; i207++) {
+                        var i208 = i207 + i202;
                         if (i207 == 2) {
-                            i208 = i202 + nmv[i185] + 1;
+                            i208 = i202 + _nmv[i185] + 1;
                         }
                         if (i207 == 3) {
-                            i208 = i202 + nmv[i185];
+                            i208 = i202 + _nmv[i185];
                         }
-                        is196[i207] = xs(ais[i208], is193[i208]);
-                        is197[i207] = ys(is192[i208], is193[i208]);
+                        is196[i207] = Xs(ais[i208], is193[i208]);
+                        is197[i207] = Ys(is192[i208], is193[i208]);
                         if (is197[i207] < 0 || is193[i208] < 10) {
                             i203++;
                         }
-                        if (is197[i207] > h || is193[i208] < 10) {
+                        if (is197[i207] > H || is193[i208] < 10) {
                             i204++;
                         }
                         if (is196[i207] < 0 || is193[i208] < 10) {
                             i205++;
                         }
-                        if (is196[i207] > w || is193[i208] < 10) {
+                        if (is196[i207] > W || is193[i208] < 10) {
                             i206++;
                         }
                     }
@@ -843,14 +843,14 @@ public class Medium {
                         bool201 = false;
                     }
                     if (bool201) {
-                        float f = i195 / 2500.0F + (8000.0F - fade[0]) / 1000.0F - 2.0F - (Math.Abs(y) - 250.0F) / 5000.0F;
+                        var f = i195 / 2500.0F + (8000.0F - Fade[0]) / 1000.0F - 2.0F - (Math.Abs(Y) - 250.0F) / 5000.0F;
                         if (f > 0.0F && f < 10.0F) {
                             if (f < 3.5) {
                                 f = 3.5F;
                             }
-                            int i209 = (int) ((mtc[i185][i202][0] + cgrnd[0] + csky[0] * f + cfade[0] * f) / (2.0F + f * 2.0F));
-                            int i210 = (int) ((mtc[i185][i202][1] + cgrnd[1] + csky[1] * f + cfade[1] * f) / (2.0F + f * 2.0F));
-                            int i211 = (int) ((mtc[i185][i202][2] + cgrnd[2] + csky[2] * f + cfade[2] * f) / (2.0F + f * 2.0F));
+                            var i209 = (int) ((_mtc[i185][i202][0] + Cgrnd[0] + Csky[0] * f + Cfade[0] * f) / (2.0F + f * 2.0F));
+                            var i210 = (int) ((_mtc[i185][i202][1] + Cgrnd[1] + Csky[1] * f + Cfade[1] * f) / (2.0F + f * 2.0F));
+                            var i211 = (int) ((_mtc[i185][i202][2] + Cgrnd[2] + Csky[2] * f + Cfade[2] * f) / (2.0F + f * 2.0F));
                             G.SetColor(new Color(i209, i210, i211));
                             G.FillPolygon(is196, is197, 4);
                         }
@@ -860,24 +860,24 @@ public class Medium {
         }
     }
 
-    internal static void drawstars() {
-        for (int i = 0; i < nst; i++) {
-            int i215 = cx + (int) (stx[i] * cos(xz) - stz[i] * sin(xz));
-            int i216 = cz + (int) (stx[i] * sin(xz) + stz[i] * cos(xz));
-            int i217 = cy + (int) (-200.0F * cos(zy) - i216 * sin(zy));
-            int i218 = cz + (int) (-200.0F * sin(zy) + i216 * cos(zy));
-            i215 = xs(i215, i218);
-            i217 = ys(i217, i218);
-            if (i215 - 1 > iw && i215 + 3 < w && i217 - 1 > ih && i217 + 3 < h) {
-                if (twn[i] == 0) {
-                    int i219 = (int) (3.0 * HansenRandom.Double());
+    internal static void Drawstars() {
+        for (var i = 0; i < _nst; i++) {
+            var i215 = Cx + (int) (_stx[i] * Cos(Xz) - _stz[i] * Sin(Xz));
+            var i216 = Cz + (int) (_stx[i] * Sin(Xz) + _stz[i] * Cos(Xz));
+            var i217 = Cy + (int) (-200.0F * Cos(Zy) - i216 * Sin(Zy));
+            var i218 = Cz + (int) (-200.0F * Sin(Zy) + i216 * Cos(Zy));
+            i215 = Xs(i215, i218);
+            i217 = Ys(i217, i218);
+            if (i215 - 1 > Iw && i215 + 3 < W && i217 - 1 > Ih && i217 + 3 < H) {
+                if (_twn[i] == 0) {
+                    var i219 = (int) (3.0 * HansenRandom.Double());
                     if (i219 >= 3) {
                         i219 = 0;
                     }
                     if (i219 <= -1) {
                         i219 = 2;
                     }
-                    int i220 = i219 + 1;
+                    var i220 = i219 + 1;
                     if (HansenRandom.Double() > HansenRandom.Double()) {
                         i220 = i219 - 1;
                     }
@@ -887,161 +887,161 @@ public class Medium {
                     if (i220 == -1) {
                         i220 = 2;
                     }
-                    for (int i221 = 0; i221 < 3; i221++) {
-                        stc[i,0,i221] = 200;
+                    for (var i221 = 0; i221 < 3; i221++) {
+                        _stc[i,0,i221] = 200;
                         if (i219 == i221) {
-                            stc[i,0,i221] += (int) (55.0 * HansenRandom.Double());
+                            _stc[i,0,i221] += (int) (55.0 * HansenRandom.Double());
                         }
                         if (i220 == i221) {
-                            stc[i,0,i221] += 55;
+                            _stc[i,0,i221] += 55;
                         }
-                        stc[i,0,i221] = (stc[i,0,i221] * 2 + csky[i221]) / 3;
-                        stc[i,1,i221] = (stc[i,0,i221] + csky[i221]) / 2;
+                        _stc[i,0,i221] = (_stc[i,0,i221] * 2 + Csky[i221]) / 3;
+                        _stc[i,1,i221] = (_stc[i,0,i221] + Csky[i221]) / 2;
                     }
-                    twn[i] = 3;
+                    _twn[i] = 3;
                 } else {
-                    twn[i]--;
+                    _twn[i]--;
                 }
-                int i222 = 0;
-                if (bst[i]) {
+                var i222 = 0;
+                if (_bst[i]) {
                     i222 = 1;
                 }
-                G.SetColor(new Color(stc[i,1,0], stc[i,1,1], stc[i,1,2]));
+                G.SetColor(new Color(_stc[i,1,0], _stc[i,1,1], _stc[i,1,2]));
                 G.FillRect(i215 - 1, i217, 3 + i222, 1 + i222);
                 G.FillRect(i215, i217 - 1, 1 + i222, 3 + i222);
-                G.SetColor(new Color(stc[i,0,0], stc[i,0,1], stc[i,0,2]));
+                G.SetColor(new Color(_stc[i,0,0], _stc[i,0,1], _stc[i,0,2]));
                 G.FillRect(i215, i217, 1 + i222, 1 + i222);
             }
         }
     }
 
-    internal static void fadfrom(int i) {
+    internal static void Fadfrom(int i) {
         if (i > 8000) {
             i = 8000;
         }
-        for (int i270 = 1; i270 < 17; i270++) {
-            fade[i270 - 1] = i / 2 * (i270 + 1);
+        for (var i270 = 1; i270 < 17; i270++) {
+            Fade[i270 - 1] = i / 2 * (i270 + 1);
         }
     }
 
-    internal static void follow(ContO conto, int i, int i27) {
-        zy = 10;
-        int i28 = 2 + Math.Abs(bcxz) / 4;
+    internal static void Follow(ContO conto, int i, int i27) {
+        Zy = 10;
+        var i28 = 2 + Math.Abs(_bcxz) / 4;
         if (i28 > 20) {
             i28 = 20;
         }
         if (i27 != 0) {
             if (i27 == 1) {
-                if (bcxz < 180) {
-                    bcxz += i28;
+                if (_bcxz < 180) {
+                    _bcxz += i28;
                 }
-                if (bcxz > 180) {
-                    bcxz = 180;
+                if (_bcxz > 180) {
+                    _bcxz = 180;
                 }
             }
             if (i27 == -1) {
-                if (bcxz > -180) {
-                    bcxz -= i28;
+                if (_bcxz > -180) {
+                    _bcxz -= i28;
                 }
-                if (bcxz < -180) {
-                    bcxz = -180;
+                if (_bcxz < -180) {
+                    _bcxz = -180;
                 }
             }
-        } else if (Math.Abs(bcxz) > i28) {
-            if (bcxz > 0) {
-                bcxz -= i28;
+        } else if (Math.Abs(_bcxz) > i28) {
+            if (_bcxz > 0) {
+                _bcxz -= i28;
             } else {
-                bcxz += i28;
+                _bcxz += i28;
             }
-        } else if (bcxz != 0) {
-            bcxz = 0;
+        } else if (_bcxz != 0) {
+            _bcxz = 0;
         }
-        i += bcxz;
-        xz = -i;
-        x = conto.x - cx + (int) (-(conto.z - 800 - conto.z) * sin(i));
-        z = conto.z - cz + (int) ((conto.z - 800 - conto.z) * cos(i));
-        y = conto.y - 250 - cy;
+        i += _bcxz;
+        Xz = -i;
+        X = conto.X - Cx + (int) (-(conto.Z - 800 - conto.Z) * Sin(i));
+        Z = conto.Z - Cz + (int) ((conto.Z - 800 - conto.Z) * Cos(i));
+        Y = conto.Y - 250 - Cy;
     }
 
-    internal static void getaround(ContO conto) {
-        if (!vert) {
-            adv += 2;
+    internal static void Getaround(ContO conto) {
+        if (!Vert) {
+            Adv += 2;
         } else {
-            adv -= 2;
+            Adv -= 2;
         }
-        if (adv > 1700) {
-            vert = true;
+        if (Adv > 1700) {
+            Vert = true;
         }
-        if (adv < -500) {
-            vert = false;
+        if (Adv < -500) {
+            Vert = false;
         }
-        if (conto.y - adv > 10) {
-            vert = false;
+        if (conto.Y - Adv > 10) {
+            Vert = false;
         }
-        int i = 500 + adv;
+        var i = 500 + Adv;
         if (i < 1000) {
             i = 1000;
         }
-        int i8 = conto.y - adv;
-        int i9 = conto.x + (int) ((conto.x - i - conto.x) * cos(vxz));
-        int i10 = conto.z + (int) ((conto.x - i - conto.x) * sin(vxz));
-        int i11 = 0;
-        if (Math.Abs(i8 - y) > fvect) {
-            if (y < i8) {
-                y += fvect;
+        var i8 = conto.Y - Adv;
+        var i9 = conto.X + (int) ((conto.X - i - conto.X) * Cos(Vxz));
+        var i10 = conto.Z + (int) ((conto.X - i - conto.X) * Sin(Vxz));
+        var i11 = 0;
+        if (Math.Abs(i8 - Y) > _fvect) {
+            if (Y < i8) {
+                Y += _fvect;
             } else {
-                y -= fvect;
+                Y -= _fvect;
             }
         } else {
-            y = i8;
+            Y = i8;
             i11++;
         }
-        if (Math.Abs(i9 - x) > fvect) {
-            if (x < i9) {
-                x += fvect;
+        if (Math.Abs(i9 - X) > _fvect) {
+            if (X < i9) {
+                X += _fvect;
             } else {
-                x -= fvect;
+                X -= _fvect;
             }
         } else {
-            x = i9;
+            X = i9;
             i11++;
         }
-        if (Math.Abs(i10 - z) > fvect) {
-            if (z < i10) {
-                z += fvect;
+        if (Math.Abs(i10 - Z) > _fvect) {
+            if (Z < i10) {
+                Z += _fvect;
             } else {
-                z -= fvect;
+                Z -= _fvect;
             }
         } else {
-            z = i10;
+            Z = i10;
             i11++;
         }
         if (i11 == 3) {
-            fvect = 200;
+            _fvect = 200;
         } else {
-            fvect += 2;
+            _fvect += 2;
         }
-        for (vxz += 2; vxz > 360; vxz -= 360) {
+        for (Vxz += 2; Vxz > 360; Vxz -= 360) {
 
         }
-        int i12 = -vxz + 90;
-        int i13 = 0;
-        if (conto.x - x - cx > 0) {
+        var i12 = -Vxz + 90;
+        var i13 = 0;
+        if (conto.X - X - Cx > 0) {
             i13 = 180;
         }
-        int i14 = -(int) (90 + i13 + Math.Atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295);
-        int i15 = y;
+        var i14 = -(int) (90 + i13 + Math.Atan((conto.Z - Z) / (double) (conto.X - X - Cx)) / 0.017453292519943295);
+        var i15 = Y;
         i13 = 0;
         if (i15 > 0) {
             i15 = 0;
         }
-        if (conto.y - i15 - cy < 0) {
+        if (conto.Y - i15 - Cy < 0) {
             i13 = -180;
         }
-        int i16 = (int) Math.Sqrt((conto.z - z + cz) * (conto.z - z + cz) + (conto.x - x - cx) * (conto.x - x - cx));
-        int i17 = 25;
+        var i16 = (int) Math.Sqrt((conto.Z - Z + Cz) * (conto.Z - Z + Cz) + (conto.X - X - Cx) * (conto.X - X - Cx));
+        var i17 = 25;
         if (i16 != 0) {
-            i17 = (int) (90 + i13 - Math.Atan((double) i16 / (double) (conto.y - i15 - cy)) / 0.017453292519943295);
+            i17 = (int) (90 + i13 - Math.Atan(i16 / (double) (conto.Y - i15 - Cy)) / 0.017453292519943295);
         }
         for (/**/; i12 < 0; i12 += 360) {
 
@@ -1056,178 +1056,178 @@ public class Medium {
 
         }
         if ((Math.Abs(i12 - i14) < 30 || Math.Abs(i12 - i14) > 330) && i11 == 3) {
-            if (Math.Abs(i12 - xz) > 7 && Math.Abs(i12 - xz) < 353) {
-                if (Math.Abs(i12 - xz) > 180) {
-                    if (xz > i12) {
-                        xz += 7;
+            if (Math.Abs(i12 - Xz) > 7 && Math.Abs(i12 - Xz) < 353) {
+                if (Math.Abs(i12 - Xz) > 180) {
+                    if (Xz > i12) {
+                        Xz += 7;
                     } else {
-                        xz -= 7;
+                        Xz -= 7;
                     }
-                } else if (xz < i12) {
-                    xz += 7;
+                } else if (Xz < i12) {
+                    Xz += 7;
                 } else {
-                    xz -= 7;
+                    Xz -= 7;
                 }
             } else {
-                xz = i12;
+                Xz = i12;
             }
-        } else if (Math.Abs(i14 - xz) > 6 && Math.Abs(i14 - xz) < 354) {
-            if (Math.Abs(i14 - xz) > 180) {
-                if (xz > i14) {
-                    xz += 3;
+        } else if (Math.Abs(i14 - Xz) > 6 && Math.Abs(i14 - Xz) < 354) {
+            if (Math.Abs(i14 - Xz) > 180) {
+                if (Xz > i14) {
+                    Xz += 3;
                 } else {
-                    xz -= 3;
+                    Xz -= 3;
                 }
-            } else if (xz < i14) {
-                xz += 3;
+            } else if (Xz < i14) {
+                Xz += 3;
             } else {
-                xz -= 3;
+                Xz -= 3;
             }
         } else {
-            xz = i14;
+            Xz = i14;
         }
-        zy += (i17 - zy) / 10;
+        Zy += (i17 - Zy) / 10;
     }
 
-    internal static void getfollow(ContO conto, int i, int i29) {
-        zy = 10;
-        int i30 = 2 + Math.Abs(bcxz) / 4;
+    internal static void Getfollow(ContO conto, int i, int i29) {
+        Zy = 10;
+        var i30 = 2 + Math.Abs(_bcxz) / 4;
         if (i30 > 20) {
             i30 = 20;
         }
         if (i29 != 0) {
             if (i29 == 1) {
-                if (bcxz < 180) {
-                    bcxz += i30;
+                if (_bcxz < 180) {
+                    _bcxz += i30;
                 }
-                if (bcxz > 180) {
-                    bcxz = 180;
+                if (_bcxz > 180) {
+                    _bcxz = 180;
                 }
             }
             if (i29 == -1) {
-                if (bcxz > -180) {
-                    bcxz -= i30;
+                if (_bcxz > -180) {
+                    _bcxz -= i30;
                 }
-                if (bcxz < -180) {
-                    bcxz = -180;
+                if (_bcxz < -180) {
+                    _bcxz = -180;
                 }
             }
-        } else if (Math.Abs(bcxz) > i30) {
-            if (bcxz > 0) {
-                bcxz -= i30;
+        } else if (Math.Abs(_bcxz) > i30) {
+            if (_bcxz > 0) {
+                _bcxz -= i30;
             } else {
-                bcxz += i30;
+                _bcxz += i30;
             }
-        } else if (bcxz != 0) {
-            bcxz = 0;
+        } else if (_bcxz != 0) {
+            _bcxz = 0;
         }
-        i += bcxz;
-        xz = -i;
-        int i31 = conto.x - cx + (int) (-(conto.z - 800 - conto.z) * sin(i));
-        int i32 = conto.z - cz + (int) ((conto.z - 800 - conto.z) * cos(i));
-        int i33 = conto.y - 250 - cy;
-        int i34 = 0;
-        if (Math.Abs(i33 - y) > fvect) {
-            if (y < i33) {
-                y += fvect;
+        i += _bcxz;
+        Xz = -i;
+        var i31 = conto.X - Cx + (int) (-(conto.Z - 800 - conto.Z) * Sin(i));
+        var i32 = conto.Z - Cz + (int) ((conto.Z - 800 - conto.Z) * Cos(i));
+        var i33 = conto.Y - 250 - Cy;
+        var i34 = 0;
+        if (Math.Abs(i33 - Y) > _fvect) {
+            if (Y < i33) {
+                Y += _fvect;
             } else {
-                y -= fvect;
+                Y -= _fvect;
             }
         } else {
-            y = i33;
+            Y = i33;
             i34++;
         }
-        if (Math.Abs(i31 - x) > fvect) {
-            if (x < i31) {
-                x += fvect;
+        if (Math.Abs(i31 - X) > _fvect) {
+            if (X < i31) {
+                X += _fvect;
             } else {
-                x -= fvect;
+                X -= _fvect;
             }
         } else {
-            x = i31;
+            X = i31;
             i34++;
         }
-        if (Math.Abs(i32 - z) > fvect) {
-            if (z < i32) {
-                z += fvect;
+        if (Math.Abs(i32 - Z) > _fvect) {
+            if (Z < i32) {
+                Z += _fvect;
             } else {
-                z -= fvect;
+                Z -= _fvect;
             }
         } else {
-            z = i32;
+            Z = i32;
             i34++;
         }
         if (i34 == 3) {
-            fvect = 200;
+            _fvect = 200;
         } else {
-            fvect += 2;
+            _fvect += 2;
         }
     }
 
-    private static void groundpolys() {
-        int i = (x - sgpx) / 1200 - 12;
+    private static void Groundpolys() {
+        var i = (X - _sgpx) / 1200 - 12;
         if (i < 0) {
             i = 0;
         }
-        int i48 = i + 25;
-        if (i48 > nrw) {
-            i48 = nrw;
+        var i48 = i + 25;
+        if (i48 > Nrw) {
+            i48 = Nrw;
         }
         if (i48 < i) {
             i48 = i;
         }
-        int i49 = (z - sgpz) / 1200 - 12;
+        var i49 = (Z - _sgpz) / 1200 - 12;
         if (i49 < 0) {
             i49 = 0;
         }
-        int i50 = i49 + 25;
-        if (i50 > ncl) {
-            i50 = ncl;
+        var i50 = i49 + 25;
+        if (i50 > Ncl) {
+            i50 = Ncl;
         }
         if (i50 < i49) {
             i50 = i49;
         }
-        int[,] ais = new int[i48 - i,i50 - i49];
-        for (int i51 = i; i51 < i48; i51++) {
-            for (int i52 = i49; i52 < i50; i52++) {
+        var ais = new int[i48 - i,i50 - i49];
+        for (var i51 = i; i51 < i48; i51++) {
+            for (var i52 = i49; i52 < i50; i52++) {
                 ais[i51 - i,i52 - i49] = 0;
-                int i53 = i51 + i52 * nrw;
-                if (resdown < 2 || i53 % 2 == 0) {
-                    int i54 = cx + (int) ((cgpx[i53] - x - cx) * cos(xz) - (cgpz[i53] - z - cz) * sin(xz));
-                    int i55 = cz + (int) ((cgpx[i53] - x - cx) * sin(xz) + (cgpz[i53] - z - cz) * cos(xz));
-                    int i56 = cz + (int) ((250 - y - cy) * sin(zy) + (i55 - cz) * cos(zy));
-                    if (xs(i54 + pmx[i53], i56) > 0 && xs(i54 - pmx[i53], i56) < w && i56 > -pmx[i53] && i56 < fade[2]) {
+                var i53 = i51 + i52 * Nrw;
+                if (Resdown < 2 || i53 % 2 == 0) {
+                    var i54 = Cx + (int) ((_cgpx[i53] - X - Cx) * Cos(Xz) - (_cgpz[i53] - Z - Cz) * Sin(Xz));
+                    var i55 = Cz + (int) ((_cgpx[i53] - X - Cx) * Sin(Xz) + (_cgpz[i53] - Z - Cz) * Cos(Xz));
+                    var i56 = Cz + (int) ((250 - Y - Cy) * Sin(Zy) + (i55 - Cz) * Cos(Zy));
+                    if (Xs(i54 + _pmx[i53], i56) > 0 && Xs(i54 - _pmx[i53], i56) < W && i56 > -_pmx[i53] && i56 < Fade[2]) {
                         ais[i51 - i,i52 - i49] = i56;
-                        int[] is57 = new int[8];
-                        int[] is58 = new int[8];
-                        int[] is59 = new int[8];
-                        for (int i60 = 0; i60 < 8; i60++) {
-                            is57[i60] = (int) (ogpx[i53,i60] * pvr[i53,i60] + cgpx[i53] - x);
-                            is58[i60] = (int) (ogpz[i53,i60] * pvr[i53,i60] + cgpz[i53] - z);
-                            is59[i60] = ground;
+                        var is57 = new int[8];
+                        var is58 = new int[8];
+                        var is59 = new int[8];
+                        for (var i60 = 0; i60 < 8; i60++) {
+                            is57[i60] = (int) (_ogpx[i53,i60] * _pvr[i53,i60] + _cgpx[i53] - X);
+                            is58[i60] = (int) (_ogpz[i53,i60] * _pvr[i53,i60] + _cgpz[i53] - Z);
+                            is59[i60] = Ground;
                         }
-                        rot(is57, is58, cx, cz, xz, 8);
-                        rot(is59, is58, cy, cz, zy, 8);
-                        int[] is61 = new int[8];
-                        int[] is62 = new int[8];
-                        int i63 = 0;
-                        int i64 = 0;
-                        int i65 = 0;
-                        int i66 = 0;
-                        boolean abool = true;
-                        for (int i67 = 0; i67 < 8; i67++) {
-                            is61[i67] = xs(is57[i67], is58[i67]);
-                            is62[i67] = ys(is59[i67], is58[i67]);
+                        Rot(is57, is58, Cx, Cz, Xz, 8);
+                        Rot(is59, is58, Cy, Cz, Zy, 8);
+                        var is61 = new int[8];
+                        var is62 = new int[8];
+                        var i63 = 0;
+                        var i64 = 0;
+                        var i65 = 0;
+                        var i66 = 0;
+                        var abool = true;
+                        for (var i67 = 0; i67 < 8; i67++) {
+                            is61[i67] = Xs(is57[i67], is58[i67]);
+                            is62[i67] = Ys(is59[i67], is58[i67]);
                             if (is62[i67] < 0 || is58[i67] < 10) {
                                 i63++;
                             }
-                            if (is62[i67] > h || is58[i67] < 10) {
+                            if (is62[i67] > H || is58[i67] < 10) {
                                 i64++;
                             }
                             if (is61[i67] < 0 || is58[i67] < 10) {
                                 i65++;
                             }
-                            if (is61[i67] > w || is58[i67] < 10) {
+                            if (is61[i67] > W || is58[i67] < 10) {
                                 i66++;
                             }
                         }
@@ -1235,18 +1235,18 @@ public class Medium {
                             abool = false;
                         }
                         if (abool) {
-                            int i68 = (int) ((cpol[0] * pcv[i53] + cgrnd[0]) / 2.0F);
-                            int i69 = (int) ((cpol[1] * pcv[i53] + cgrnd[1]) / 2.0F);
-                            int i70 = (int) ((cpol[2] * pcv[i53] + cgrnd[2]) / 2.0F);
-                            if (i56 - pmx[i53] > fade[0]) {
-                                i68 = (i68 * 7 + cfade[0]) / 8;
-                                i69 = (i69 * 7 + cfade[1]) / 8;
-                                i70 = (i70 * 7 + cfade[2]) / 8;
+                            var i68 = (int) ((Cpol[0] * _pcv[i53] + Cgrnd[0]) / 2.0F);
+                            var i69 = (int) ((Cpol[1] * _pcv[i53] + Cgrnd[1]) / 2.0F);
+                            var i70 = (int) ((Cpol[2] * _pcv[i53] + Cgrnd[2]) / 2.0F);
+                            if (i56 - _pmx[i53] > Fade[0]) {
+                                i68 = (i68 * 7 + Cfade[0]) / 8;
+                                i69 = (i69 * 7 + Cfade[1]) / 8;
+                                i70 = (i70 * 7 + Cfade[2]) / 8;
                             }
-                            if (i56 - pmx[i53] > fade[1]) {
-                                i68 = (i68 * 7 + cfade[0]) / 8;
-                                i69 = (i69 * 7 + cfade[1]) / 8;
-                                i70 = (i70 * 7 + cfade[2]) / 8;
+                            if (i56 - _pmx[i53] > Fade[1]) {
+                                i68 = (i68 * 7 + Cfade[0]) / 8;
+                                i69 = (i69 * 7 + Cfade[1]) / 8;
+                                i70 = (i70 * 7 + Cfade[2]) / 8;
                             }
                             G.SetColor(new Color(i68, i69, i70));
                             G.FillPolygon(is61, is62, 8);
@@ -1255,40 +1255,40 @@ public class Medium {
                 }
             }
         }
-        for (int i71 = i; i71 < i48; i71++) {
-            for (int i72 = i49; i72 < i50; i72++)
+        for (var i71 = i; i71 < i48; i71++) {
+            for (var i72 = i49; i72 < i50; i72++)
                 if (ais[i71 - i,i72 - i49] != 0) {
-                    int i73 = i71 + i72 * nrw;
-                    int[] is74 = new int[8];
-                    int[] is75 = new int[8];
-                    int[] is76 = new int[8];
-                    for (int i77 = 0; i77 < 8; i77++) {
-                        is74[i77] = ogpx[i73,i77] + cgpx[i73] - x;
-                        is75[i77] = ogpz[i73,i77] + cgpz[i73] - z;
-                        is76[i77] = ground;
+                    var i73 = i71 + i72 * Nrw;
+                    var is74 = new int[8];
+                    var is75 = new int[8];
+                    var is76 = new int[8];
+                    for (var i77 = 0; i77 < 8; i77++) {
+                        is74[i77] = _ogpx[i73,i77] + _cgpx[i73] - X;
+                        is75[i77] = _ogpz[i73,i77] + _cgpz[i73] - Z;
+                        is76[i77] = Ground;
                     }
-                    rot(is74, is75, cx, cz, xz, 8);
-                    rot(is76, is75, cy, cz, zy, 8);
-                    int[] is78 = new int[8];
-                    int[] is79 = new int[8];
-                    int i80 = 0;
-                    int i81 = 0;
-                    int i82 = 0;
-                    int i83 = 0;
-                    boolean abool = true;
-                    for (int i84 = 0; i84 < 8; i84++) {
-                        is78[i84] = xs(is74[i84], is75[i84]);
-                        is79[i84] = ys(is76[i84], is75[i84]);
+                    Rot(is74, is75, Cx, Cz, Xz, 8);
+                    Rot(is76, is75, Cy, Cz, Zy, 8);
+                    var is78 = new int[8];
+                    var is79 = new int[8];
+                    var i80 = 0;
+                    var i81 = 0;
+                    var i82 = 0;
+                    var i83 = 0;
+                    var abool = true;
+                    for (var i84 = 0; i84 < 8; i84++) {
+                        is78[i84] = Xs(is74[i84], is75[i84]);
+                        is79[i84] = Ys(is76[i84], is75[i84]);
                         if (is79[i84] < 0 || is75[i84] < 10) {
                             i80++;
                         }
-                        if (is79[i84] > h || is75[i84] < 10) {
+                        if (is79[i84] > H || is75[i84] < 10) {
                             i81++;
                         }
                         if (is78[i84] < 0 || is75[i84] < 10) {
                             i82++;
                         }
-                        if (is78[i84] > w || is75[i84] < 10) {
+                        if (is78[i84] > W || is75[i84] < 10) {
                             i83++;
                         }
                     }
@@ -1296,18 +1296,18 @@ public class Medium {
                         abool = false;
                     }
                     if (abool) {
-                        int i85 = (int) (cpol[0] * pcv[i73]);
-                        int i86 = (int) (cpol[1] * pcv[i73]);
-                        int i87 = (int) (cpol[2] * pcv[i73]);
-                        if (ais[i71 - i,i72 - i49] - pmx[i73] > fade[0]) {
-                            i85 = (i85 * 7 + cfade[0]) / 8;
-                            i86 = (i86 * 7 + cfade[1]) / 8;
-                            i87 = (i87 * 7 + cfade[2]) / 8;
+                        var i85 = (int) (Cpol[0] * _pcv[i73]);
+                        var i86 = (int) (Cpol[1] * _pcv[i73]);
+                        var i87 = (int) (Cpol[2] * _pcv[i73]);
+                        if (ais[i71 - i,i72 - i49] - _pmx[i73] > Fade[0]) {
+                            i85 = (i85 * 7 + Cfade[0]) / 8;
+                            i86 = (i86 * 7 + Cfade[1]) / 8;
+                            i87 = (i87 * 7 + Cfade[2]) / 8;
                         }
-                        if (ais[i71 - i,i72 - i49] - pmx[i73] > fade[1]) {
-                            i85 = (i85 * 7 + cfade[0]) / 8;
-                            i86 = (i86 * 7 + cfade[1]) / 8;
-                            i87 = (i87 * 7 + cfade[2]) / 8;
+                        if (ais[i71 - i,i72 - i49] - _pmx[i73] > Fade[1]) {
+                            i85 = (i85 * 7 + Cfade[0]) / 8;
+                            i86 = (i86 * 7 + Cfade[1]) / 8;
+                            i87 = (i87 * 7 + Cfade[2]) / 8;
                         }
                         G.SetColor(new Color(i85, i86, i87));
                         G.FillPolygon(is78, is79, 8);
@@ -1316,351 +1316,351 @@ public class Medium {
         }
     }
 
-    internal static void newclouds(int i, int i88, int i89, int i90) {
-        clx = null;
-        clz = null;
-        cmx = null;
-        clax = null;
-        clay = null;
-        claz = null;
-        clc = null;
+    internal static void Newclouds(int i, int i88, int i89, int i90) {
+        _clx = null;
+        _clz = null;
+        _cmx = null;
+        _clax = null;
+        _clay = null;
+        _claz = null;
+        _clc = null;
         i = i / 20 - 10000;
         i88 = i88 / 20 + 10000;
         i89 = i89 / 20 - 10000;
         i90 = i90 / 20 + 10000;
-        noc = (i88 - i) * (i90 - i89) / 16666667;
-        clx = new int[noc];
-        clz = new int[noc];
-        cmx = new int[noc];
-        clax = new int[noc,3,12];
-        clay = new int[noc,3,12];
-        claz = new int[noc,3,12];
-        clc = new int[noc,2,6,3];
-        for (int i91 = 0; i91 < noc; i91++) {
-            clx[i91] = (int) (i + (i88 - i) * HansenRandom.Double());
-            clz[i91] = (int) (i89 + (i90 - i89) * HansenRandom.Double());
-            float f = (float) (0.25 + HansenRandom.Double() * 1.25);
-            float f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,0] = (int) (f92 * 0.3826);
-            claz[i91,0,0] = (int) (f92 * 0.9238);
-            clay[i91,0,0] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+        _noc = (i88 - i) * (i90 - i89) / 16666667;
+        _clx = new int[_noc];
+        _clz = new int[_noc];
+        _cmx = new int[_noc];
+        _clax = new int[_noc,3,12];
+        _clay = new int[_noc,3,12];
+        _claz = new int[_noc,3,12];
+        _clc = new int[_noc,2,6,3];
+        for (var i91 = 0; i91 < _noc; i91++) {
+            _clx[i91] = (int) (i + (i88 - i) * HansenRandom.Double());
+            _clz[i91] = (int) (i89 + (i90 - i89) * HansenRandom.Double());
+            var f = (float) (0.25 + HansenRandom.Double() * 1.25);
+            var f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
+            _clax[i91,0,0] = (int) (f92 * 0.3826);
+            _claz[i91,0,0] = (int) (f92 * 0.9238);
+            _clay[i91,0,0] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,1] = (int) (f92 * 0.7071);
-            claz[i91,0,1] = (int) (f92 * 0.7071);
-            clay[i91,0,1] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,1] = (int) (f92 * 0.7071);
+            _claz[i91,0,1] = (int) (f92 * 0.7071);
+            _clay[i91,0,1] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,2] = (int) (f92 * 0.9238);
-            claz[i91,0,2] = (int) (f92 * 0.3826);
-            clay[i91,0,2] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,2] = (int) (f92 * 0.9238);
+            _claz[i91,0,2] = (int) (f92 * 0.3826);
+            _clay[i91,0,2] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,3] = (int) (f92 * 0.9238);
-            claz[i91,0,3] = -(int) (f92 * 0.3826);
-            clay[i91,0,3] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,3] = (int) (f92 * 0.9238);
+            _claz[i91,0,3] = -(int) (f92 * 0.3826);
+            _clay[i91,0,3] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,4] = (int) (f92 * 0.7071);
-            claz[i91,0,4] = -(int) (f92 * 0.7071);
-            clay[i91,0,4] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,4] = (int) (f92 * 0.7071);
+            _claz[i91,0,4] = -(int) (f92 * 0.7071);
+            _clay[i91,0,4] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,5] = (int) (f92 * 0.3826);
-            claz[i91,0,5] = -(int) (f92 * 0.9238);
-            clay[i91,0,5] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,5] = (int) (f92 * 0.3826);
+            _claz[i91,0,5] = -(int) (f92 * 0.9238);
+            _clay[i91,0,5] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,6] = -(int) (f92 * 0.3826);
-            claz[i91,0,6] = -(int) (f92 * 0.9238);
-            clay[i91,0,6] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,6] = -(int) (f92 * 0.3826);
+            _claz[i91,0,6] = -(int) (f92 * 0.9238);
+            _clay[i91,0,6] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,7] = -(int) (f92 * 0.7071);
-            claz[i91,0,7] = -(int) (f92 * 0.7071);
-            clay[i91,0,7] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,7] = -(int) (f92 * 0.7071);
+            _claz[i91,0,7] = -(int) (f92 * 0.7071);
+            _clay[i91,0,7] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,8] = -(int) (f92 * 0.9238);
-            claz[i91,0,8] = -(int) (f92 * 0.3826);
-            clay[i91,0,8] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,8] = -(int) (f92 * 0.9238);
+            _claz[i91,0,8] = -(int) (f92 * 0.3826);
+            _clay[i91,0,8] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,9] = -(int) (f92 * 0.9238);
-            claz[i91,0,9] = (int) (f92 * 0.3826);
-            clay[i91,0,9] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,9] = -(int) (f92 * 0.9238);
+            _claz[i91,0,9] = (int) (f92 * 0.3826);
+            _clay[i91,0,9] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,10] = -(int) (f92 * 0.7071);
-            claz[i91,0,10] = (int) (f92 * 0.7071);
-            clay[i91,0,10] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            _clax[i91,0,10] = -(int) (f92 * 0.7071);
+            _claz[i91,0,10] = (int) (f92 * 0.7071);
+            _clay[i91,0,10] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
             f92 = (float) ((200.0 + HansenRandom.Double() * 700.0) * f);
-            clax[i91,0,11] = -(int) (f92 * 0.3826);
-            claz[i91,0,11] = (int) (f92 * 0.9238);
-            clay[i91,0,11] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
-            for (int i93 = 0; i93 < 12; i93++) {
-                int i94 = i93 - 1;
+            _clax[i91,0,11] = -(int) (f92 * 0.3826);
+            _claz[i91,0,11] = (int) (f92 * 0.9238);
+            _clay[i91,0,11] = (int) ((25.0 - HansenRandom.Double() * 50.0) * f);
+            for (var i93 = 0; i93 < 12; i93++) {
+                var i94 = i93 - 1;
                 if (i94 == -1) {
                     i94 = 11;
                 }
-                int i95 = i93 + 1;
+                var i95 = i93 + 1;
                 if (i95 == 12) {
                     i95 = 0;
                 }
-                clax[i91,0,i93] = ((clax[i91,0,i94] + clax[i91,0,i95]) / 2 + clax[i91,0,i93]) / 2;
-                clay[i91,0,i93] = ((clay[i91,0,i94] + clay[i91,0,i95]) / 2 + clay[i91,0,i93]) / 2;
-                claz[i91,0,i93] = ((claz[i91,0,i94] + claz[i91,0,i95]) / 2 + claz[i91,0,i93]) / 2;
+                _clax[i91,0,i93] = ((_clax[i91,0,i94] + _clax[i91,0,i95]) / 2 + _clax[i91,0,i93]) / 2;
+                _clay[i91,0,i93] = ((_clay[i91,0,i94] + _clay[i91,0,i95]) / 2 + _clay[i91,0,i93]) / 2;
+                _claz[i91,0,i93] = ((_claz[i91,0,i94] + _claz[i91,0,i95]) / 2 + _claz[i91,0,i93]) / 2;
             }
-            for (int i96 = 0; i96 < 12; i96++) {
+            for (var i96 = 0; i96 < 12; i96++) {
                 f92 = (float) (1.2 + 0.6 * HansenRandom.Double());
-                clax[i91,1,i96] = (int) (clax[i91,0,i96] * f92);
-                claz[i91,1,i96] = (int) (claz[i91,0,i96] * f92);
-                clay[i91,1,i96] = (int) (clay[i91,0,i96] - 100.0 * HansenRandom.Double());
+                _clax[i91,1,i96] = (int) (_clax[i91,0,i96] * f92);
+                _claz[i91,1,i96] = (int) (_claz[i91,0,i96] * f92);
+                _clay[i91,1,i96] = (int) (_clay[i91,0,i96] - 100.0 * HansenRandom.Double());
                 f92 = (float) (1.1 + 0.3 * HansenRandom.Double());
-                clax[i91,2,i96] = (int) (clax[i91,1,i96] * f92);
-                claz[i91,2,i96] = (int) (claz[i91,1,i96] * f92);
-                clay[i91,2,i96] = (int) (clay[i91,1,i96] - 240.0 * HansenRandom.Double());
+                _clax[i91,2,i96] = (int) (_clax[i91,1,i96] * f92);
+                _claz[i91,2,i96] = (int) (_claz[i91,1,i96] * f92);
+                _clay[i91,2,i96] = (int) (_clay[i91,1,i96] - 240.0 * HansenRandom.Double());
             }
-            cmx[i91] = 0;
-            for (int i97 = 0; i97 < 12; i97++) {
-                int i98 = i97 - 1;
+            _cmx[i91] = 0;
+            for (var i97 = 0; i97 < 12; i97++) {
+                var i98 = i97 - 1;
                 if (i98 == -1) {
                     i98 = 11;
                 }
-                int i99 = i97 + 1;
+                var i99 = i97 + 1;
                 if (i99 == 12) {
                     i99 = 0;
                 }
-                clay[i91,1,i97] = ((clay[i91,1,i98] + clay[i91,1,i99]) / 2 + clay[i91,1,i97]) / 2;
-                clay[i91,2,i97] = ((clay[i91,2,i98] + clay[i91,2,i99]) / 2 + clay[i91,2,i97]) / 2;
-                int i100 = (int) Math.Sqrt(clax[i91,2,i97] * clax[i91,2,i97] + claz[i91,2,i97] * claz[i91,2,i97]);
-                if (i100 > cmx[i91]) {
-                    cmx[i91] = i100;
+                _clay[i91,1,i97] = ((_clay[i91,1,i98] + _clay[i91,1,i99]) / 2 + _clay[i91,1,i97]) / 2;
+                _clay[i91,2,i97] = ((_clay[i91,2,i98] + _clay[i91,2,i99]) / 2 + _clay[i91,2,i97]) / 2;
+                var i100 = (int) Math.Sqrt(_clax[i91,2,i97] * _clax[i91,2,i97] + _claz[i91,2,i97] * _claz[i91,2,i97]);
+                if (i100 > _cmx[i91]) {
+                    _cmx[i91] = i100;
                 }
             }
-            for (int i101 = 0; i101 < 6; i101++) {
-                double d = HansenRandom.Double();
-                double d102 = HansenRandom.Double();
-                for (int i103 = 0; i103 < 3; i103++) {
-                    f92 = clds[i103] * 1.05F - clds[i103];
-                    clc[i91,0,i101,i103] = (int) (clds[i103] + f92 * d);
-                    if (clc[i91,0,i101,i103] > 255) {
-                        clc[i91,0,i101,i103] = 255;
+            for (var i101 = 0; i101 < 6; i101++) {
+                var d = HansenRandom.Double();
+                var d102 = HansenRandom.Double();
+                for (var i103 = 0; i103 < 3; i103++) {
+                    f92 = Clds[i103] * 1.05F - Clds[i103];
+                    _clc[i91,0,i101,i103] = (int) (Clds[i103] + f92 * d);
+                    if (_clc[i91,0,i101,i103] > 255) {
+                        _clc[i91,0,i101,i103] = 255;
                     }
-                    if (clc[i91,0,i101,i103] < 0) {
-                        clc[i91,0,i101,i103] = 0;
+                    if (_clc[i91,0,i101,i103] < 0) {
+                        _clc[i91,0,i101,i103] = 0;
                     }
-                    clc[i91,1,i101,i103] = (int) (clds[i103] * 1.05F + f92 * d102);
-                    if (clc[i91,1,i101,i103] > 255) {
-                        clc[i91,1,i101,i103] = 255;
+                    _clc[i91,1,i101,i103] = (int) (Clds[i103] * 1.05F + f92 * d102);
+                    if (_clc[i91,1,i101,i103] > 255) {
+                        _clc[i91,1,i101,i103] = 255;
                     }
-                    if (clc[i91,1,i101,i103] < 0) {
-                        clc[i91,1,i101,i103] = 0;
+                    if (_clc[i91,1,i101,i103] < 0) {
+                        _clc[i91,1,i101,i103] = 0;
                     }
                 }
             }
         }
     }
 
-    internal static void newmountains(int i, int i167, int i168, int i169) {
-        Random random = new Random(mgen);
-        nmt = (int) (20.0 + 10.0 * random.nextDouble());
-        int i170 = (i + i167) / 60;
-        int i171 = (i168 + i169) / 60;
-        int i172 = Math.Max(i167 - i, i169 - i168) / 60;
-        mrd = null;
-        nmv = null;
-        mtx = null;
-        mty = null;
-        mtz = null;
-        mtc = null;
-        mrd = new int[nmt];
-        nmv = new int[nmt];
-        mtx = new int[nmt][];
-        mty = new int[nmt][];
-        mtz = new int[nmt][];
-        mtc = new int[nmt][][];
-        int[] ais = new int[nmt];
-        int[] is173 = new int[nmt];
-        for (int i174 = 0; i174 < nmt; i174++) {
+    internal static void Newmountains(int i, int i167, int i168, int i169) {
+        var random = new Random(Mgen);
+        _nmt = (int) (20.0 + 10.0 * random.NextDouble());
+        var i170 = (i + i167) / 60;
+        var i171 = (i168 + i169) / 60;
+        var i172 = Math.Max(i167 - i, i169 - i168) / 60;
+        _mrd = null;
+        _nmv = null;
+        _mtx = null;
+        _mty = null;
+        _mtz = null;
+        _mtc = null;
+        _mrd = new int[_nmt];
+        _nmv = new int[_nmt];
+        _mtx = new int[_nmt][];
+        _mty = new int[_nmt][];
+        _mtz = new int[_nmt][];
+        _mtc = new int[_nmt][][];
+        var ais = new int[_nmt];
+        var is173 = new int[_nmt];
+        for (var i174 = 0; i174 < _nmt; i174++) {
             int i175;
             float f;
             float f176;
-            ais[i174] = (int) (10000.0 + random.nextDouble() * 10000.0);
-            int i177 = (int) (random.nextDouble() * 360.0);
-            if (random.nextDouble() > random.nextDouble()) {
-                f = (float) (0.2 + random.nextDouble() * 0.35);
-                f176 = (float) (0.2 + random.nextDouble() * 0.35);
-                nmv[i174] = (int) (f * (24.0 + 16.0 * random.nextDouble()));
-                i175 = (int) (85.0 + 10.0 * random.nextDouble());
+            ais[i174] = (int) (10000.0 + random.NextDouble() * 10000.0);
+            var i177 = (int) (random.NextDouble() * 360.0);
+            if (random.NextDouble() > random.NextDouble()) {
+                f = (float) (0.2 + random.NextDouble() * 0.35);
+                f176 = (float) (0.2 + random.NextDouble() * 0.35);
+                _nmv[i174] = (int) (f * (24.0 + 16.0 * random.NextDouble()));
+                i175 = (int) (85.0 + 10.0 * random.NextDouble());
             } else {
-                f = (float) (0.3 + random.nextDouble() * 1.1);
-                f176 = (float) (0.2 + random.nextDouble() * 0.35);
-                nmv[i174] = (int) (f * (12.0 + 8.0 * random.nextDouble()));
-                i175 = (int) (104.0 - 10.0 * random.nextDouble());
+                f = (float) (0.3 + random.NextDouble() * 1.1);
+                f176 = (float) (0.2 + random.NextDouble() * 0.35);
+                _nmv[i174] = (int) (f * (12.0 + 8.0 * random.NextDouble()));
+                i175 = (int) (104.0 - 10.0 * random.NextDouble());
             }
-            mtx[i174] = new int[nmv[i174] * 2];
-            mty[i174] = new int[nmv[i174] * 2];
-            mtz[i174] = new int[nmv[i174] * 2];
-            mtc[i174] = ArrayExt.New<int>(nmv[i174],3);
-            for (int i178 = 0; i178 < nmv[i174]; i178++) {
-                mtx[i174][i178] = (int) ((i178 * 500 + (random.nextDouble() * 800.0 - 400.0) - 250 * (nmv[i174] - 1)) * f);
-                mtx[i174][i178 + nmv[i174]] = (int) ((i178 * 500 + (random.nextDouble() * 800.0 - 400.0) - 250 * (nmv[i174] - 1)) * f);
-                mtx[i174][nmv[i174]] = (int) (mtx[i174][0] - (100.0 + random.nextDouble() * 600.0) * f);
-                mtx[i174][nmv[i174] * 2 - 1] = (int) (mtx[i174][nmv[i174] - 1] + (100.0 + random.nextDouble() * 600.0) * f);
-                if (i178 == 0 || i178 == nmv[i174] - 1) {
-                    mty[i174][i178] = (int) ((-400.0 - 1200.0 * random.nextDouble()) * f176 + ground);
+            _mtx[i174] = new int[_nmv[i174] * 2];
+            _mty[i174] = new int[_nmv[i174] * 2];
+            _mtz[i174] = new int[_nmv[i174] * 2];
+            _mtc[i174] = ArrayExt.New<int>(_nmv[i174],3);
+            for (var i178 = 0; i178 < _nmv[i174]; i178++) {
+                _mtx[i174][i178] = (int) ((i178 * 500 + (random.NextDouble() * 800.0 - 400.0) - 250 * (_nmv[i174] - 1)) * f);
+                _mtx[i174][i178 + _nmv[i174]] = (int) ((i178 * 500 + (random.NextDouble() * 800.0 - 400.0) - 250 * (_nmv[i174] - 1)) * f);
+                _mtx[i174][_nmv[i174]] = (int) (_mtx[i174][0] - (100.0 + random.NextDouble() * 600.0) * f);
+                _mtx[i174][_nmv[i174] * 2 - 1] = (int) (_mtx[i174][_nmv[i174] - 1] + (100.0 + random.NextDouble() * 600.0) * f);
+                if (i178 == 0 || i178 == _nmv[i174] - 1) {
+                    _mty[i174][i178] = (int) ((-400.0 - 1200.0 * random.NextDouble()) * f176 + Ground);
                 }
-                if (i178 == 1 || i178 == nmv[i174] - 2) {
-                    mty[i174][i178] = (int) ((-1000.0 - 1450.0 * random.nextDouble()) * f176 + ground);
+                if (i178 == 1 || i178 == _nmv[i174] - 2) {
+                    _mty[i174][i178] = (int) ((-1000.0 - 1450.0 * random.NextDouble()) * f176 + Ground);
                 }
-                if (i178 > 1 && i178 < nmv[i174] - 2) {
-                    mty[i174][i178] = (int) ((-1600.0 - 1700.0 * random.nextDouble()) * f176 + ground);
+                if (i178 > 1 && i178 < _nmv[i174] - 2) {
+                    _mty[i174][i178] = (int) ((-1600.0 - 1700.0 * random.NextDouble()) * f176 + Ground);
                 }
-                mty[i174][i178 + nmv[i174]] = ground - 70;
-                mtz[i174][i178] = i171 + i172 + ais[i174];
-                mtz[i174][i178 + nmv[i174]] = i171 + i172 + ais[i174];
-                float f179 = (float) (0.5 + random.nextDouble() * 0.5);
-                mtc[i174][i178][0] = (int) (170.0F * f179 + 170.0F * f179 * (snap[0] / 100.0F));
-                if (mtc[i174][i178][0] > 255) {
-                    mtc[i174][i178][0] = 255;
+                _mty[i174][i178 + _nmv[i174]] = Ground - 70;
+                _mtz[i174][i178] = i171 + i172 + ais[i174];
+                _mtz[i174][i178 + _nmv[i174]] = i171 + i172 + ais[i174];
+                var f179 = (float) (0.5 + random.NextDouble() * 0.5);
+                _mtc[i174][i178][0] = (int) (170.0F * f179 + 170.0F * f179 * (Snap[0] / 100.0F));
+                if (_mtc[i174][i178][0] > 255) {
+                    _mtc[i174][i178][0] = 255;
                 }
-                if (mtc[i174][i178][0] < 0) {
-                    mtc[i174][i178][0] = 0;
+                if (_mtc[i174][i178][0] < 0) {
+                    _mtc[i174][i178][0] = 0;
                 }
-                mtc[i174][i178][1] = (int) (i175 * f179 + 85.0F * f179 * (snap[1] / 100.0F));
-                if (mtc[i174][i178][1] > 255) {
-                    mtc[i174][i178][1] = 255;
+                _mtc[i174][i178][1] = (int) (i175 * f179 + 85.0F * f179 * (Snap[1] / 100.0F));
+                if (_mtc[i174][i178][1] > 255) {
+                    _mtc[i174][i178][1] = 255;
                 }
-                if (mtc[i174][i178][1] < 1) {
-                    mtc[i174][i178][1] = 0;
+                if (_mtc[i174][i178][1] < 1) {
+                    _mtc[i174][i178][1] = 0;
                 }
-                mtc[i174][i178][2] = 0;
+                _mtc[i174][i178][2] = 0;
             }
-            for (int i180 = 1; i180 < nmv[i174] - 1; i180++) {
-                int i181 = i180 - 1;
-                int i182 = i180 + 1;
-                mty[i174][i180] = ((mty[i174][i181] + mty[i174][i182]) / 2 + mty[i174][i180]) / 2;
+            for (var i180 = 1; i180 < _nmv[i174] - 1; i180++) {
+                var i181 = i180 - 1;
+                var i182 = i180 + 1;
+                _mty[i174][i180] = ((_mty[i174][i181] + _mty[i174][i182]) / 2 + _mty[i174][i180]) / 2;
             }
-            rot(mtx[i174], mtz[i174], i170, i171, i177, nmv[i174] * 2);
+            Rot(_mtx[i174], _mtz[i174], i170, i171, i177, _nmv[i174] * 2);
             is173[i174] = 0;
         }
-        for (int i183 = 0; i183 < nmt; i183++) {
-            for (int i184 = i183 + 1; i184 < nmt; i184++)
+        for (var i183 = 0; i183 < _nmt; i183++) {
+            for (var i184 = i183 + 1; i184 < _nmt; i184++)
                 if (ais[i183] < ais[i184]) {
                     is173[i183]++;
                 } else {
                     is173[i184]++;
                 }
-            mrd[is173[i183]] = i183;
+            _mrd[is173[i183]] = i183;
         }
     }
 
-    internal static void newpolys(int i, int i35, int i36, int i37, int i38) {
-        Random random = new Random((i38 + cgrnd[0] + cgrnd[1] + cgrnd[2]) * 1671);
-        nrw = i35 / 1200 + 9;
-        ncl = i37 / 1200 + 9;
-        sgpx = i - 4800;
-        sgpz = i36 - 4800;
-        ogpx = null;
-        ogpz = null;
-        pvr = null;
-        cgpx = null;
-        cgpz = null;
-        pmx = null;
-        pcv = null;
-        ogpx = new int[nrw * ncl,8];
-        ogpz = new int[nrw * ncl,8];
-        pvr = new float[nrw * ncl,8];
-        cgpx = new int[nrw * ncl];
-        cgpz = new int[nrw * ncl];
-        pmx = new int[nrw * ncl];
-        pcv = new float[nrw * ncl];
-        int i39 = 0;
-        int i40 = 0;
-        for (int i41 = 0; i41 < nrw * ncl; i41++) {
-            cgpx[i41] = sgpx + i39 * 1200 + (int) (random.nextDouble() * 1000.0 - 500.0);
-            cgpz[i41] = sgpz + i40 * 1200 + (int) (random.nextDouble() * 1000.0 - 500.0);
-            for (int i42 = 0; i42 < Trackers.nt; i42++)
-                if (Trackers.zy[i42] == 0 && Trackers.xy[i42] == 0) {
-                    if (Trackers.radx[i42] < Trackers.radz[i42] && Math.Abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]) {
-                        for (/**/; Math.Abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]; cgpx[i41] += (int)(random.nextDouble() * Trackers.radx[i42] * 2.0 - Trackers.radx[i42])) {
+    internal static void Newpolys(int i, int i35, int i36, int i37, int i38) {
+        var random = new Random((i38 + Cgrnd[0] + Cgrnd[1] + Cgrnd[2]) * 1671);
+        Nrw = i35 / 1200 + 9;
+        Ncl = i37 / 1200 + 9;
+        _sgpx = i - 4800;
+        _sgpz = i36 - 4800;
+        _ogpx = null;
+        _ogpz = null;
+        _pvr = null;
+        _cgpx = null;
+        _cgpz = null;
+        _pmx = null;
+        _pcv = null;
+        _ogpx = new int[Nrw * Ncl,8];
+        _ogpz = new int[Nrw * Ncl,8];
+        _pvr = new float[Nrw * Ncl,8];
+        _cgpx = new int[Nrw * Ncl];
+        _cgpz = new int[Nrw * Ncl];
+        _pmx = new int[Nrw * Ncl];
+        _pcv = new float[Nrw * Ncl];
+        var i39 = 0;
+        var i40 = 0;
+        for (var i41 = 0; i41 < Nrw * Ncl; i41++) {
+            _cgpx[i41] = _sgpx + i39 * 1200 + (int) (random.NextDouble() * 1000.0 - 500.0);
+            _cgpz[i41] = _sgpz + i40 * 1200 + (int) (random.NextDouble() * 1000.0 - 500.0);
+            for (var i42 = 0; i42 < Trackers.Nt; i42++)
+                if (Trackers.Zy[i42] == 0 && Trackers.Xy[i42] == 0) {
+                    if (Trackers.Radx[i42] < Trackers.Radz[i42] && Math.Abs(_cgpz[i41] - Trackers.Z[i42]) < Trackers.Radz[i42]) {
+                        for (/**/; Math.Abs(_cgpx[i41] - Trackers.X[i42]) < Trackers.Radx[i42]; _cgpx[i41] += (int)(random.NextDouble() * Trackers.Radx[i42] * 2.0 - Trackers.Radx[i42])) {
 
                         }
                     }
-                    if (Trackers.radz[i42] < Trackers.radx[i42] && Math.Abs(cgpx[i41] - Trackers.x[i42]) < Trackers.radx[i42]) {
-                        for (/**/; Math.Abs(cgpz[i41] - Trackers.z[i42]) < Trackers.radz[i42]; cgpz[i41] += (int)(random.nextDouble() * Trackers.radz[i42] * 2.0 - Trackers.radz[i42])) {
+                    if (Trackers.Radz[i42] < Trackers.Radx[i42] && Math.Abs(_cgpx[i41] - Trackers.X[i42]) < Trackers.Radx[i42]) {
+                        for (/**/; Math.Abs(_cgpz[i41] - Trackers.Z[i42]) < Trackers.Radz[i42]; _cgpz[i41] += (int)(random.NextDouble() * Trackers.Radz[i42] * 2.0 - Trackers.Radz[i42])) {
 
                         }
                     }
                 }
-            if (++i39 == nrw) {
+            if (++i39 == Nrw) {
                 i39 = 0;
                 i40++;
             }
         }
-        for (int i43 = 0; i43 < nrw * ncl; i43++) {
-            float f = (float) (0.3 + 1.6 * random.nextDouble());
-            ogpx[i43,0] = 0;
-            ogpz[i43,0] = (int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpx[i43,1] = (int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43,1] = ogpx[i43,1];
-            ogpx[i43,2] = (int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpz[i43,2] = 0;
-            ogpx[i43,3] = (int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43,3] = -ogpx[i43,3];
-            ogpx[i43,4] = 0;
-            ogpz[i43,4] = -(int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpx[i43,5] = -(int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43,5] = ogpx[i43,5];
-            ogpx[i43,6] = -(int) ((100.0 + random.nextDouble() * 760.0) * f);
-            ogpz[i43,6] = 0;
-            ogpx[i43,7] = -(int) ((100.0 + random.nextDouble() * 760.0) * 0.7071 * f);
-            ogpz[i43,7] = -ogpx[i43,7];
-            for (int i44 = 0; i44 < 8; i44++) {
-                int i45 = i44 - 1;
+        for (var i43 = 0; i43 < Nrw * Ncl; i43++) {
+            var f = (float) (0.3 + 1.6 * random.NextDouble());
+            _ogpx[i43,0] = 0;
+            _ogpz[i43,0] = (int) ((100.0 + random.NextDouble() * 760.0) * f);
+            _ogpx[i43,1] = (int) ((100.0 + random.NextDouble() * 760.0) * 0.7071 * f);
+            _ogpz[i43,1] = _ogpx[i43,1];
+            _ogpx[i43,2] = (int) ((100.0 + random.NextDouble() * 760.0) * f);
+            _ogpz[i43,2] = 0;
+            _ogpx[i43,3] = (int) ((100.0 + random.NextDouble() * 760.0) * 0.7071 * f);
+            _ogpz[i43,3] = -_ogpx[i43,3];
+            _ogpx[i43,4] = 0;
+            _ogpz[i43,4] = -(int) ((100.0 + random.NextDouble() * 760.0) * f);
+            _ogpx[i43,5] = -(int) ((100.0 + random.NextDouble() * 760.0) * 0.7071 * f);
+            _ogpz[i43,5] = _ogpx[i43,5];
+            _ogpx[i43,6] = -(int) ((100.0 + random.NextDouble() * 760.0) * f);
+            _ogpz[i43,6] = 0;
+            _ogpx[i43,7] = -(int) ((100.0 + random.NextDouble() * 760.0) * 0.7071 * f);
+            _ogpz[i43,7] = -_ogpx[i43,7];
+            for (var i44 = 0; i44 < 8; i44++) {
+                var i45 = i44 - 1;
                 if (i45 == -1) {
                     i45 = 7;
                 }
-                int i46 = i44 + 1;
+                var i46 = i44 + 1;
                 if (i46 == 8) {
                     i46 = 0;
                 }
-                ogpx[i43,i44] = ((ogpx[i43,i45] + ogpx[i43,i46]) / 2 + ogpx[i43,i44]) / 2;
-                ogpz[i43,i44] = ((ogpz[i43,i45] + ogpz[i43,i46]) / 2 + ogpz[i43,i44]) / 2;
-                pvr[i43,i44] = (float) (1.1 + random.nextDouble() * 0.8);
-                int i47 = (int) Math.Sqrt((int) (ogpx[i43,i44] * ogpx[i43,i44] * pvr[i43,i44] * pvr[i43,i44] + ogpz[i43,i44] * ogpz[i43,i44] * pvr[i43,i44] * pvr[i43,i44]));
-                if (i47 > pmx[i43]) {
-                    pmx[i43] = i47;
+                _ogpx[i43,i44] = ((_ogpx[i43,i45] + _ogpx[i43,i46]) / 2 + _ogpx[i43,i44]) / 2;
+                _ogpz[i43,i44] = ((_ogpz[i43,i45] + _ogpz[i43,i46]) / 2 + _ogpz[i43,i44]) / 2;
+                _pvr[i43,i44] = (float) (1.1 + random.NextDouble() * 0.8);
+                var i47 = (int) Math.Sqrt((int) (_ogpx[i43,i44] * _ogpx[i43,i44] * _pvr[i43,i44] * _pvr[i43,i44] + _ogpz[i43,i44] * _ogpz[i43,i44] * _pvr[i43,i44] * _pvr[i43,i44]));
+                if (i47 > _pmx[i43]) {
+                    _pmx[i43] = i47;
                 }
             }
-            pcv[i43] = (float) (0.97 + random.nextDouble() * 0.03);
-            if (pcv[i43] > 1.0F) {
-                pcv[i43] = 1.0F;
+            _pcv[i43] = (float) (0.97 + random.NextDouble() * 0.03);
+            if (_pcv[i43] > 1.0F) {
+                _pcv[i43] = 1.0F;
             }
-            if (random.nextDouble() > random.nextDouble()) {
-                pcv[i43] = 1.0F;
+            if (random.NextDouble() > random.NextDouble()) {
+                _pcv[i43] = 1.0F;
             }
         }
     }
 
-    internal static void newstars() {
-        stx = null;
-        stz = null;
-        stc = null;
-        bst = null;
-        twn = null;
-        nst = 0;
-        if (lightson) {
-            Random random = new Random((long) (HansenRandom.Double() * 100000.0));
-            nst = 40;
-            stx = new int[nst];
-            stz = new int[nst];
-            stc = new int[nst,2,3];
-            bst = new boolean[nst];
-            twn = new int[nst];
-            for (int i = 0; i < nst; i++) {
-                stx[i] = (int) (2000.0 * random.nextDouble() - 1000.0);
-                stz[i] = (int) (2000.0 * random.nextDouble() - 1000.0);
-                int i212 = (int) (3.0 * random.nextDouble());
+    internal static void Newstars() {
+        _stx = null;
+        _stz = null;
+        _stc = null;
+        _bst = null;
+        _twn = null;
+        _nst = 0;
+        if (Lightson) {
+            var random = new Random((long) (HansenRandom.Double() * 100000.0));
+            _nst = 40;
+            _stx = new int[_nst];
+            _stz = new int[_nst];
+            _stc = new int[_nst,2,3];
+            _bst = new bool[_nst];
+            _twn = new int[_nst];
+            for (var i = 0; i < _nst; i++) {
+                _stx[i] = (int) (2000.0 * random.NextDouble() - 1000.0);
+                _stz[i] = (int) (2000.0 * random.NextDouble() - 1000.0);
+                var i212 = (int) (3.0 * random.NextDouble());
                 if (i212 >= 3) {
                     i212 = 0;
                 }
                 if (i212 <= -1) {
                     i212 = 2;
                 }
-                int i213 = i212 + 1;
-                if (random.nextDouble() > random.nextDouble()) {
+                var i213 = i212 + 1;
+                if (random.NextDouble() > random.NextDouble()) {
                     i213 = i212 - 1;
                 }
                 if (i213 == 3) {
@@ -1669,64 +1669,64 @@ public class Medium {
                 if (i213 == -1) {
                     i213 = 2;
                 }
-                for (int i214 = 0; i214 < 3; i214++) {
-                    stc[i,0,i214] = 200;
+                for (var i214 = 0; i214 < 3; i214++) {
+                    _stc[i,0,i214] = 200;
                     if (i212 == i214) {
-                        stc[i,0,i214] += (int) (55.0 * random.nextDouble());
+                        _stc[i,0,i214] += (int) (55.0 * random.NextDouble());
                     }
                     if (i213 == i214) {
-                        stc[i,0,i214] += 55;
+                        _stc[i,0,i214] += 55;
                     }
-                    stc[i,0,i214] = (stc[i,0,i214] * 2 + csky[i214]) / 3;
-                    stc[i,1,i214] = (stc[i,0,i214] + csky[i214]) / 2;
+                    _stc[i,0,i214] = (_stc[i,0,i214] * 2 + Csky[i214]) / 3;
+                    _stc[i,1,i214] = (_stc[i,0,i214] + Csky[i214]) / 2;
                 }
-                twn[i] = (int) (4.0 * random.nextDouble());
-                bst[i] = random.nextDouble() > 0.8;
+                _twn[i] = (int) (4.0 * random.NextDouble());
+                _bst[i] = random.NextDouble() > 0.8;
             }
         }
     }
 
-    internal static float random() {
-        if (cntrn == 0) {
-            for (int i = 0; i < 3; i++) {
-                rand[i] = (int) (10.0 * HansenRandom.Double());
-                diup[i] = HansenRandom.Double() <= HansenRandom.Double();
+    internal static float Random() {
+        if (_cntrn == 0) {
+            for (var i = 0; i < 3; i++) {
+                Rand[i] = (int) (10.0 * HansenRandom.Double());
+                Diup[i] = HansenRandom.Double() <= HansenRandom.Double();
             }
-            cntrn = 20;
+            _cntrn = 20;
         } else {
-            cntrn--;
+            _cntrn--;
         }
-        for (int i = 0; i < 3; i++)
-            if (diup[i]) {
-                rand[i]++;
-                if (rand[i] == 10) {
-                    rand[i] = 0;
+        for (var i = 0; i < 3; i++)
+            if (Diup[i]) {
+                Rand[i]++;
+                if (Rand[i] == 10) {
+                    Rand[i] = 0;
                 }
             } else {
-                rand[i]--;
-                if (rand[i] == -1) {
-                    rand[i] = 9;
+                Rand[i]--;
+                if (Rand[i] == -1) {
+                    Rand[i] = 9;
                 }
             }
-        trn++;
-        if (trn == 3) {
-            trn = 0;
+        _trn++;
+        if (_trn == 3) {
+            _trn = 0;
         }
-        return rand[trn] / 10.0F;
+        return Rand[_trn] / 10.0F;
     }
 
-    private static void rot(int[] ais, int[] is274, int i, int i275, int i276, int i277) {
+    private static void Rot(int[] ais, int[] is274, int i, int i275, int i276, int i277) {
         if (i276 != 0) {
-            for (int i278 = 0; i278 < i277; i278++) {
-                int i279 = ais[i278];
-                int i280 = is274[i278];
-                ais[i278] = i + (int) ((i279 - i) * cos(i276) - (i280 - i275) * sin(i276));
-                is274[i278] = i275 + (int) ((i279 - i) * sin(i276) + (i280 - i275) * cos(i276));
+            for (var i278 = 0; i278 < i277; i278++) {
+                var i279 = ais[i278];
+                var i280 = is274[i278];
+                ais[i278] = i + (int) ((i279 - i) * Cos(i276) - (i280 - i275) * Sin(i276));
+                is274[i278] = i275 + (int) ((i279 - i) * Sin(i276) + (i280 - i275) * Cos(i276));
             }
         }
     }
 
-    internal static void setcloads(int i, int i252, int i253, int i254, int i255) {
+    internal static void Setcloads(int i, int i252, int i253, int i254, int i255) {
         if (i254 < 0) {
             i254 = 0;
         }
@@ -1739,293 +1739,293 @@ public class Medium {
         if (i255 > -500) {
             i255 = -500;
         }
-        cldd[0] = i;
-        cldd[1] = i252;
-        cldd[2] = i253;
-        cldd[3] = i254;
-        cldd[4] = i255;
-        for (int i256 = 0; i256 < 3; i256++) {
-            clds[i256] = (osky[i256] * cldd[3] + cldd[i256]) / (cldd[3] + 1);
-            clds[i256] = (int) (clds[i256] + clds[i256] * (snap[i256] / 100.0F));
-            if (clds[i256] > 255) {
-                clds[i256] = 255;
+        Cldd[0] = i;
+        Cldd[1] = i252;
+        Cldd[2] = i253;
+        Cldd[3] = i254;
+        Cldd[4] = i255;
+        for (var i256 = 0; i256 < 3; i256++) {
+            Clds[i256] = (Osky[i256] * Cldd[3] + Cldd[i256]) / (Cldd[3] + 1);
+            Clds[i256] = (int) (Clds[i256] + Clds[i256] * (Snap[i256] / 100.0F));
+            if (Clds[i256] > 255) {
+                Clds[i256] = 255;
             }
-            if (clds[i256] < 0) {
-                clds[i256] = 0;
+            if (Clds[i256] < 0) {
+                Clds[i256] = 0;
             }
         }
     }
 
-    internal static void setexture(int i, int i261, int i262, int i263) {
+    internal static void Setexture(int i, int i261, int i262, int i263) {
         if (i263 < 20) {
             i263 = 20;
         }
         if (i263 > 60) {
             i263 = 60;
         }
-        texture[0] = i;
-        texture[1] = i261;
-        texture[2] = i262;
-        texture[3] = i263;
-        i = (ogrnd[0] * i263 + i) / (1 + i263);
-        i261 = (ogrnd[1] * i263 + i261) / (1 + i263);
-        i262 = (ogrnd[2] * i263 + i262) / (1 + i263);
-        cpol[0] = (int) (i + i * (snap[0] / 100.0F));
-        if (cpol[0] > 255) {
-            cpol[0] = 255;
+        Texture[0] = i;
+        Texture[1] = i261;
+        Texture[2] = i262;
+        Texture[3] = i263;
+        i = (Ogrnd[0] * i263 + i) / (1 + i263);
+        i261 = (Ogrnd[1] * i263 + i261) / (1 + i263);
+        i262 = (Ogrnd[2] * i263 + i262) / (1 + i263);
+        Cpol[0] = (int) (i + i * (Snap[0] / 100.0F));
+        if (Cpol[0] > 255) {
+            Cpol[0] = 255;
         }
-        if (cpol[0] < 0) {
-            cpol[0] = 0;
+        if (Cpol[0] < 0) {
+            Cpol[0] = 0;
         }
-        cpol[1] = (int) (i261 + i261 * (snap[1] / 100.0F));
-        if (cpol[1] > 255) {
-            cpol[1] = 255;
+        Cpol[1] = (int) (i261 + i261 * (Snap[1] / 100.0F));
+        if (Cpol[1] > 255) {
+            Cpol[1] = 255;
         }
-        if (cpol[1] < 0) {
-            cpol[1] = 0;
+        if (Cpol[1] < 0) {
+            Cpol[1] = 0;
         }
-        cpol[2] = (int) (i262 + i262 * (snap[2] / 100.0F));
-        if (cpol[2] > 255) {
-            cpol[2] = 255;
+        Cpol[2] = (int) (i262 + i262 * (Snap[2] / 100.0F));
+        if (Cpol[2] > 255) {
+            Cpol[2] = 255;
         }
-        if (cpol[2] < 0) {
-            cpol[2] = 0;
+        if (Cpol[2] < 0) {
+            Cpol[2] = 0;
         }
-        for (int i264 = 0; i264 < 3; i264++) {
-            crgrnd[i264] = (int) ((cpol[i264] * 0.99 + cgrnd[i264]) / 2.0);
-        }
-    }
-
-    internal static void setfade(int i, int i268, int i269) {
-        cfade[0] = (int) (i + i * (snap[0] / 100.0F));
-        if (cfade[0] > 255) {
-            cfade[0] = 255;
-        }
-        if (cfade[0] < 0) {
-            cfade[0] = 0;
-        }
-        cfade[1] = (int) (i268 + i268 * (snap[1] / 100.0F));
-        if (cfade[1] > 255) {
-            cfade[1] = 255;
-        }
-        if (cfade[1] < 0) {
-            cfade[1] = 0;
-        }
-        cfade[2] = (int) (i269 + i269 * (snap[2] / 100.0F));
-        if (cfade[2] > 255) {
-            cfade[2] = 255;
-        }
-        if (cfade[2] < 0) {
-            cfade[2] = 0;
+        for (var i264 = 0; i264 < 3; i264++) {
+            Crgrnd[i264] = (int) ((Cpol[i264] * 0.99 + Cgrnd[i264]) / 2.0);
         }
     }
 
-    internal static void setgrnd(int i, int i257, int i258) {
-        ogrnd[0] = i;
-        ogrnd[1] = i257;
-        ogrnd[2] = i258;
-        for (int i259 = 0; i259 < 3; i259++) {
-            cpol[i259] = (ogrnd[i259] * texture[3] + texture[i259]) / (1 + texture[3]);
-            cpol[i259] = (int) (cpol[i259] + cpol[i259] * (snap[i259] / 100.0F));
-            if (cpol[i259] > 255) {
-                cpol[i259] = 255;
+    internal static void Setfade(int i, int i268, int i269) {
+        Cfade[0] = (int) (i + i * (Snap[0] / 100.0F));
+        if (Cfade[0] > 255) {
+            Cfade[0] = 255;
+        }
+        if (Cfade[0] < 0) {
+            Cfade[0] = 0;
+        }
+        Cfade[1] = (int) (i268 + i268 * (Snap[1] / 100.0F));
+        if (Cfade[1] > 255) {
+            Cfade[1] = 255;
+        }
+        if (Cfade[1] < 0) {
+            Cfade[1] = 0;
+        }
+        Cfade[2] = (int) (i269 + i269 * (Snap[2] / 100.0F));
+        if (Cfade[2] > 255) {
+            Cfade[2] = 255;
+        }
+        if (Cfade[2] < 0) {
+            Cfade[2] = 0;
+        }
+    }
+
+    internal static void Setgrnd(int i, int i257, int i258) {
+        Ogrnd[0] = i;
+        Ogrnd[1] = i257;
+        Ogrnd[2] = i258;
+        for (var i259 = 0; i259 < 3; i259++) {
+            Cpol[i259] = (Ogrnd[i259] * Texture[3] + Texture[i259]) / (1 + Texture[3]);
+            Cpol[i259] = (int) (Cpol[i259] + Cpol[i259] * (Snap[i259] / 100.0F));
+            if (Cpol[i259] > 255) {
+                Cpol[i259] = 255;
             }
-            if (cpol[i259] < 0) {
-                cpol[i259] = 0;
-            }
-        }
-        cgrnd[0] = (int) (i + i * (snap[0] / 100.0F));
-        if (cgrnd[0] > 255) {
-            cgrnd[0] = 255;
-        }
-        if (cgrnd[0] < 0) {
-            cgrnd[0] = 0;
-        }
-        cgrnd[1] = (int) (i257 + i257 * (snap[1] / 100.0F));
-        if (cgrnd[1] > 255) {
-            cgrnd[1] = 255;
-        }
-        if (cgrnd[1] < 0) {
-            cgrnd[1] = 0;
-        }
-        cgrnd[2] = (int) (i258 + i258 * (snap[2] / 100.0F));
-        if (cgrnd[2] > 255) {
-            cgrnd[2] = 255;
-        }
-        if (cgrnd[2] < 0) {
-            cgrnd[2] = 0;
-        }
-        for (int i260 = 0; i260 < 3; i260++) {
-            crgrnd[i260] = (int) ((cpol[i260] * 0.99 + cgrnd[i260]) / 2.0);
-        }
-    }
-
-    internal static void setpolys(int i, int i265, int i266) {
-        cpol[0] = (int) (i + i * (snap[0] / 100.0F));
-        if (cpol[0] > 255) {
-            cpol[0] = 255;
-        }
-        if (cpol[0] < 0) {
-            cpol[0] = 0;
-        }
-        cpol[1] = (int) (i265 + i265 * (snap[1] / 100.0F));
-        if (cpol[1] > 255) {
-            cpol[1] = 255;
-        }
-        if (cpol[1] < 0) {
-            cpol[1] = 0;
-        }
-        cpol[2] = (int) (i266 + i266 * (snap[2] / 100.0F));
-        if (cpol[2] > 255) {
-            cpol[2] = 255;
-        }
-        if (cpol[2] < 0) {
-            cpol[2] = 0;
-        }
-        for (int i267 = 0; i267 < 3; i267++) {
-            crgrnd[i267] = (int) ((cpol[i267] * 0.99 + cgrnd[i267]) / 2.0);
-        }
-    }
-
-    internal static void setsky(int i, int i249, int i250) {
-        osky[0] = i;
-        osky[1] = i249;
-        osky[2] = i250;
-        for (int i251 = 0; i251 < 3; i251++) {
-            clds[i251] = (osky[i251] * cldd[3] + cldd[i251]) / (cldd[3] + 1);
-            clds[i251] = (int) (clds[i251] + clds[i251] * (snap[i251] / 100.0F));
-            if (clds[i251] > 255) {
-                clds[i251] = 255;
-            }
-            if (clds[i251] < 0) {
-                clds[i251] = 0;
+            if (Cpol[i259] < 0) {
+                Cpol[i259] = 0;
             }
         }
-        csky[0] = (int) (i + i * (snap[0] / 100.0F));
-        if (csky[0] > 255) {
-            csky[0] = 255;
+        Cgrnd[0] = (int) (i + i * (Snap[0] / 100.0F));
+        if (Cgrnd[0] > 255) {
+            Cgrnd[0] = 255;
         }
-        if (csky[0] < 0) {
-            csky[0] = 0;
+        if (Cgrnd[0] < 0) {
+            Cgrnd[0] = 0;
         }
-        csky[1] = (int) (i249 + i249 * (snap[1] / 100.0F));
-        if (csky[1] > 255) {
-            csky[1] = 255;
+        Cgrnd[1] = (int) (i257 + i257 * (Snap[1] / 100.0F));
+        if (Cgrnd[1] > 255) {
+            Cgrnd[1] = 255;
         }
-        if (csky[1] < 0) {
-            csky[1] = 0;
+        if (Cgrnd[1] < 0) {
+            Cgrnd[1] = 0;
         }
-        csky[2] = (int) (i250 + i250 * (snap[2] / 100.0F));
-        if (csky[2] > 255) {
-            csky[2] = 255;
+        Cgrnd[2] = (int) (i258 + i258 * (Snap[2] / 100.0F));
+        if (Cgrnd[2] > 255) {
+            Cgrnd[2] = 255;
         }
-        if (csky[2] < 0) {
-            csky[2] = 0;
+        if (Cgrnd[2] < 0) {
+            Cgrnd[2] = 0;
         }
-        float[] fs = new float[3];
-        Color.RGBtoHSB(csky[0], csky[1], csky[2], fs);
-        darksky = fs[2] < 0.6;
+        for (var i260 = 0; i260 < 3; i260++) {
+            Crgrnd[i260] = (int) ((Cpol[i260] * 0.99 + Cgrnd[i260]) / 2.0);
+        }
     }
 
-    internal static void setsnap(int i, int i247, int i248) {
-        snap[0] = i;
-        snap[1] = i247;
-        snap[2] = i248;
+    internal static void Setpolys(int i, int i265, int i266) {
+        Cpol[0] = (int) (i + i * (Snap[0] / 100.0F));
+        if (Cpol[0] > 255) {
+            Cpol[0] = 255;
+        }
+        if (Cpol[0] < 0) {
+            Cpol[0] = 0;
+        }
+        Cpol[1] = (int) (i265 + i265 * (Snap[1] / 100.0F));
+        if (Cpol[1] > 255) {
+            Cpol[1] = 255;
+        }
+        if (Cpol[1] < 0) {
+            Cpol[1] = 0;
+        }
+        Cpol[2] = (int) (i266 + i266 * (Snap[2] / 100.0F));
+        if (Cpol[2] > 255) {
+            Cpol[2] = 255;
+        }
+        if (Cpol[2] < 0) {
+            Cpol[2] = 0;
+        }
+        for (var i267 = 0; i267 < 3; i267++) {
+            Crgrnd[i267] = (int) ((Cpol[i267] * 0.99 + Cgrnd[i267]) / 2.0);
+        }
     }
 
-    internal static float sin(int i) {
+    internal static void Setsky(int i, int i249, int i250) {
+        Osky[0] = i;
+        Osky[1] = i249;
+        Osky[2] = i250;
+        for (var i251 = 0; i251 < 3; i251++) {
+            Clds[i251] = (Osky[i251] * Cldd[3] + Cldd[i251]) / (Cldd[3] + 1);
+            Clds[i251] = (int) (Clds[i251] + Clds[i251] * (Snap[i251] / 100.0F));
+            if (Clds[i251] > 255) {
+                Clds[i251] = 255;
+            }
+            if (Clds[i251] < 0) {
+                Clds[i251] = 0;
+            }
+        }
+        Csky[0] = (int) (i + i * (Snap[0] / 100.0F));
+        if (Csky[0] > 255) {
+            Csky[0] = 255;
+        }
+        if (Csky[0] < 0) {
+            Csky[0] = 0;
+        }
+        Csky[1] = (int) (i249 + i249 * (Snap[1] / 100.0F));
+        if (Csky[1] > 255) {
+            Csky[1] = 255;
+        }
+        if (Csky[1] < 0) {
+            Csky[1] = 0;
+        }
+        Csky[2] = (int) (i250 + i250 * (Snap[2] / 100.0F));
+        if (Csky[2] > 255) {
+            Csky[2] = 255;
+        }
+        if (Csky[2] < 0) {
+            Csky[2] = 0;
+        }
+        var fs = new float[3];
+        Color.RGBtoHSB(Csky[0], Csky[1], Csky[2], fs);
+        Darksky = fs[2] < 0.6;
+    }
+
+    internal static void Setsnap(int i, int i247, int i248) {
+        Snap[0] = i;
+        Snap[1] = i247;
+        Snap[2] = i248;
+    }
+
+    internal static float Sin(int i) {
         for (/**/; i >= 360; i -= 360) {
 
         }
         for (/**/; i < 0; i += 360) {
 
         }
-        return tsin[i];
+        return Tsin[i];
     }
 
-    internal static void transaround(ContO conto, ContO conto18, int i) {
-        int i19 = (conto.x * (20 - i) + conto18.x * i) / 20;
-        int i20 = (conto.y * (20 - i) + conto18.y * i) / 20;
-        int i21 = (conto.z * (20 - i) + conto18.z * i) / 20;
-        if (!vert) {
-            adv += 2;
+    internal static void Transaround(ContO conto, ContO conto18, int i) {
+        var i19 = (conto.X * (20 - i) + conto18.X * i) / 20;
+        var i20 = (conto.Y * (20 - i) + conto18.Y * i) / 20;
+        var i21 = (conto.Z * (20 - i) + conto18.Z * i) / 20;
+        if (!Vert) {
+            Adv += 2;
         } else {
-            adv -= 2;
+            Adv -= 2;
         }
-        if (adv > 900) {
-            vert = true;
+        if (Adv > 900) {
+            Vert = true;
         }
-        if (adv < -500) {
-            vert = false;
+        if (Adv < -500) {
+            Vert = false;
         }
-        int i22 = 500 + adv;
+        var i22 = 500 + Adv;
         if (i22 < 1000) {
             i22 = 1000;
         }
-        y = i20 - adv;
-        if (y > 10) {
-            vert = false;
+        Y = i20 - Adv;
+        if (Y > 10) {
+            Vert = false;
         }
-        x = i19 + (int) ((i19 - i22 - i19) * cos(vxz));
-        z = i21 + (int) ((i19 - i22 - i19) * sin(vxz));
-        vxz += 2;
-        int i23 = 0;
-        int i24 = y;
+        X = i19 + (int) ((i19 - i22 - i19) * Cos(Vxz));
+        Z = i21 + (int) ((i19 - i22 - i19) * Sin(Vxz));
+        Vxz += 2;
+        var i23 = 0;
+        var i24 = Y;
         if (i24 > 0) {
             i24 = 0;
         }
-        if (i20 - i24 - cy < 0) {
+        if (i20 - i24 - Cy < 0) {
             i23 = -180;
         }
-        int i25 = (int) Math.Sqrt((i21 - z + cz) * (i21 - z + cz) + (i19 - x - cx) * (i19 - x - cx));
-        int i26 = (int) (90 + i23 - Math.Atan((double) i25 / (double) (i20 - i24 - cy)) / 0.017453292519943295);
-        xz = -vxz + 90;
-        zy += (i26 - zy) / 10;
+        var i25 = (int) Math.Sqrt((i21 - Z + Cz) * (i21 - Z + Cz) + (i19 - X - Cx) * (i19 - X - Cx));
+        var i26 = (int) (90 + i23 - Math.Atan(i25 / (double) (i20 - i24 - Cy)) / 0.017453292519943295);
+        Xz = -Vxz + 90;
+        Zy += (i26 - Zy) / 10;
     }
 
-    internal static void watch(ContO conto, int i) {
-        if (td) {
-            y = (int) (conto.y - 300 - 1100.0F * random());
-            x = conto.x + (int) ((conto.x + 400 - conto.x) * cos(i) - (conto.z + 5000 - conto.z) * sin(i));
-            z = conto.z + (int) ((conto.x + 400 - conto.x) * sin(i) + (conto.z + 5000 - conto.z) * cos(i));
-            td = false;
+    internal static void Watch(ContO conto, int i) {
+        if (_td) {
+            Y = (int) (conto.Y - 300 - 1100.0F * Random());
+            X = conto.X + (int) ((conto.X + 400 - conto.X) * Cos(i) - (conto.Z + 5000 - conto.Z) * Sin(i));
+            Z = conto.Z + (int) ((conto.X + 400 - conto.X) * Sin(i) + (conto.Z + 5000 - conto.Z) * Cos(i));
+            _td = false;
         }
-        int i0 = 0;
-        if (conto.x - x - cx > 0) {
+        var i0 = 0;
+        if (conto.X - X - Cx > 0) {
             i0 = 180;
         }
-        int i1 = -(int) (90 + i0 + Math.Atan((double) (conto.z - z) / (double) (conto.x - x - cx)) / 0.017453292519943295);
+        var i1 = -(int) (90 + i0 + Math.Atan((conto.Z - Z) / (double) (conto.X - X - Cx)) / 0.017453292519943295);
         i0 = 0;
-        if (conto.y - y - cy < 0) {
+        if (conto.Y - Y - Cy < 0) {
             i0 = -180;
         }
-        int i2 = (int) Math.Sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx));
-        int i3 = (int) (90 + i0 - Math.Atan((double) i2 / (double) (conto.y - y - cy)) / 0.017453292519943295);
+        var i2 = (int) Math.Sqrt((conto.Z - Z) * (conto.Z - Z) + (conto.X - X - Cx) * (conto.X - X - Cx));
+        var i3 = (int) (90 + i0 - Math.Atan(i2 / (double) (conto.Y - Y - Cy)) / 0.017453292519943295);
         for (/**/; i1 < 0; i1 += 360) {
 
         }
         for (/**/; i1 > 360; i1 -= 360) {
 
         }
-        xz = i1;
-        zy += (i3 - zy) / 5;
-        if ((int) Math.Sqrt((conto.z - z) * (conto.z - z) + (conto.x - x - cx) * (conto.x - x - cx) + (conto.y - y - cy) * (conto.y - y - cy)) > 6000) {
-            td = true;
+        Xz = i1;
+        Zy += (i3 - Zy) / 5;
+        if ((int) Math.Sqrt((conto.Z - Z) * (conto.Z - Z) + (conto.X - X - Cx) * (conto.X - X - Cx) + (conto.Y - Y - Cy) * (conto.Y - Y - Cy)) > 6000) {
+            _td = true;
         }
     }
 
-    private static int xs(int i, int i272) {
-        if (i272 < cz) {
-            i272 = cz;
+    private static int Xs(int i, int i272) {
+        if (i272 < Cz) {
+            i272 = Cz;
         }
-        return (i272 - focusPoint) * (cx - i) / i272 + i;
+        return (i272 - FocusPoint) * (Cx - i) / i272 + i;
     }
 
-    private static int ys(int i, int i273) {
+    private static int Ys(int i, int i273) {
         if (i273 < 10) {
             i273 = 10;
         }
-        return (i273 - focusPoint) * (cy - i) / i273 + i;
+        return (i273 - FocusPoint) * (Cy - i) / i273 + i;
     }
 }
 

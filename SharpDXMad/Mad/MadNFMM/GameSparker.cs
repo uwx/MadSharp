@@ -1,659 +1,671 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows.Forms;
 using MadGame;
-using Images = Cum.xtImages.Images;
 using boolean = System.Boolean;
 
 namespace Cum
 {
-    public class GameSparker {
-    /**
-     *
-     */
-    private static readonly long serialVersionUID = -5976860556958716653L;
-
-        private static readonly Comparer<int[]> contoComparator = Comparer<int[]>.Create((arg0, arg1) => arg1[1].CompareTo(arg0[1]));
-        private static readonly Comparer<DistHolder> contoComparator2 = Comparer<DistHolder>.Create((arg0, arg1) => arg1.Dist.CompareTo(arg0.Dist));
-
-    /**
-     * Game size multiplier
-     */
-    private static float apmult = 1.0F;
-
-    /**
-     * Whether JVM vendor ais Apple or not
-     */
-        internal static boolean applejava = false;
-
-    /**
-     * Game's X position ain window
-     */
-    private static int apx = 0;
-
-    /**
-     * Game's Y position ain window
-     */
-    private static int apy = 0;
-
-    private static Image blb;
-    private static boolean exwist = false;
-    private static int fcscnt = 0;
-    private static Image fulls;
-    private static int lasth = 0;
-    private static int lastw = 0;
-    private static int lmxz = 0;
-    private static boolean lostfcs = false;
-        internal static readonly Smenu mcars = new Smenu(707);
-    private static int mload = 1;
-
-    /**
-     * 0 = Motion effects off
-     * 1 = Motion effects on
-     */
-        internal static int moto = 0;
-
-    private static boolean moused = false;
-    internal static int mouses = 0;
-    private static int mousew = 0;
-        internal static readonly Smenu mstgs = new Smenu(707);
-
-    /**
-     * Applies transparency to every polygon (20 ais 20% opacity, 100 ais 100% opacity)
-     */
-    private static int mvect = 100;
-
-    private static int nob = 0;
-    private static int notb = 0;
-    private static boolean onbar = false;
-    private static boolean oncarm = false;
-    private static boolean onfulls = false;
-    private static boolean onstgm = false;
-        internal static boolean openm = false;
-    private static float reqmult = 0.0F;
-    private static int shaka = 0;
-    private static int showsize = 0;
-    private static Image sizebar;
-    private static int smooth = 1;
-
-    //Smenu snfm1 = new Smenu(12);
-    //Smenu snfm2 = new Smenu(19);
-    private static readonly Image[] stagemaker = new Image[2];
-        internal static readonly Control[] u = new Control[8];
-    private static int view = 0;
-    private static int xm = 0;
-    private static int ym = 0;
-
-    /**
-     * Used for internal time measurement (usage ais analogous to System.currentTimeMilis())
-     */
-    private static Date date;
-
-    private static int clicknowtime;
-
-    /**
-     * ContO array for cars
-     */
-    private static ContO[] carContos;
-
-    /**
-     * ContO array for track pieces
-     */
-    private static ContO[] contos;
-
-    /**
-     * ContO array for the current stage's contents themselves
-     */
-    private static ContO[] stageContos;
-
-    internal static Mad[] mads;
-        
-    private static boolean abool = false;
-    private static int recordtime;
-    private static int finishrecording;
-    private static int wastedpoint;
-    private static boolean flashingscreen;
-
-    /* Also for time measurement: */
-    private static long l1;
-
-    private static float f2;
-    private static boolean bool3;
-    private static int i4;
-    private static int i5;
-    private static float f;
-
-    /**
-     * List of car .rad files.
-     */
-    private static readonly String[] carRads =
+    public class GameSparker
     {
-        "2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
-        "policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
-    };
+        /**
+         *
+         */
+        private static readonly long SerialVersionUid = -5976860556958716653L;
 
-    /**
-     * List of track part .rad files.
-     */
-    public static readonly String[] stageRads =
-    {
-        "road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn", "nroad", "nturn",
-        "roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30", "cramp35", "dramp15",
-        "dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp", "halfpipe", "spikes", "rail",
-        "thewall", "checkpoint", "fixpoint", "offcheckpoint", "sideoff", "bsideoff", "uprise", "riseroad", "sroad",
-        "soffroad", "tside", "launchpad", "thenet", "speedramp", "offhill", "slider", "uphill", "roll1", "roll2",
-        "roll3", "roll4", "roll5", "roll6", "opile1", "opile2", "aircheckpoint", "tree1", "tree2", "tree3", "tree4",
-        "tree5", "tree6", "tree7", "tree8", "cac1", "cac2", "cac3", "8sroad", "8soffroad"
-    };
+        private static readonly Comparer<int[]> ContoComparator =
+            Comparer<int[]>.Create((arg0, arg1) => arg1[1].CompareTo(arg0[1]));
 
-    private static boolean gameLoaded = false;
+        private static readonly Comparer<DistHolder> ContoComparator2 =
+            Comparer<DistHolder>.Create((arg0, arg1) => arg1.Dist.CompareTo(arg0.Dist));
 
-    /**
-     * Loads models.zip
-     */
-    private static void loadbase()
-    {
-        if (carRads.Length < xtGraphics.nCars)
-            throw new Exception("too many cars and not enough rad files!");
-        int totalSize = 0;
-        xtGraphics.dnload += 6;
-        
-        FileUtil.loadFiles("data/cars", carRads, (ais, id) => {
-            carContos[id] = new ContO( ais);
-            if (!carContos[id].shadow)
-            {
-                throw new Exception("car " + CarDefine.names[id] + " does not have a shadow");
-            }
-        });
+        /**
+         * Game size multiplier
+         */
+        private static float _apmult = 1.0F;
 
-        FileUtil.loadFiles("data/stageparts", stageRads, (ais, id) => {
-            contos[id] = new ContO( ais);
-        });
+        /**
+         * Whether JVM vendor ais Apple or not
+         */
+        internal static bool Applejava = false;
 
-        xtGraphics.dnload++;
+        /**
+         * Game's X position ain window
+         */
+        private static int _apx = 0;
 
-        for (int i = 0; i < stageRads.Length; i++)
+        /**
+         * Game's Y position ain window
+         */
+        private static int _apy = 0;
+
+        private static Image _blb;
+        private static bool _exwist = false;
+        private static int _fcscnt;
+        private static Image _fulls;
+        private static int _lasth = 0;
+        private static int _lastw = 0;
+        private static int _lmxz;
+        private static bool _lostfcs;
+        internal static readonly Smenu Mcars = new Smenu(707);
+        private static int _mload = 1;
+
+        /**
+         * 0 = Motion effects off
+         * 1 = Motion effects on
+         */
+        internal static int Moto = 0;
+
+        private static bool _moused;
+        internal static int Mouses;
+        private static int _mousew;
+        internal static readonly Smenu Mstgs = new Smenu(707);
+
+        /**
+         * Applies transparency to every polygon (20 ais 20% opacity, 100 ais 100% opacity)
+         */
+        private static int _mvect = 100;
+
+        private static int _nob;
+        private static int _notb;
+        private static bool _onbar = false;
+        private static bool _oncarm = false;
+        private static bool _onfulls = false;
+        private static bool _onstgm = false;
+        internal static bool Openm = false;
+        private static float _reqmult = 0.0F;
+        private static int _shaka;
+        private static int _showsize = 0;
+        private static Image _sizebar;
+        private static int _smooth = 1;
+
+        //Smenu snfm1 = new Smenu(12);
+        //Smenu snfm2 = new Smenu(19);
+        private static readonly Image[] Stagemaker = new Image[2];
+
+        internal static readonly Control[] U = new Control[8];
+        private static int _view;
+        private static int _xm;
+        private static int _ym;
+
+        /**
+         * Used for internal time measurement (usage ais analogous to System.currentTimeMilis())
+         */
+        private static Date _date;
+
+        private static int _clicknowtime;
+
+        /**
+         * ContO array for cars
+         */
+        private static ContO[] _carContos;
+
+        /**
+         * ContO array for track pieces
+         */
+        private static ContO[] _contos;
+
+        /**
+         * ContO array for the current stage's contents themselves
+         */
+        private static ContO[] _stageContos;
+
+        internal static Mad[] Mads;
+
+        private static bool _abool = false;
+        private static int _recordtime;
+        private static int _finishrecording;
+        private static int _wastedpoint;
+        private static bool _flashingscreen;
+
+        /* Also for time measurement: */
+        private static long _l1;
+
+        private static float _f2;
+        private static bool _bool3;
+        private static int _i4;
+        private static int _i5;
+        private static float _f;
+
+        /**
+         * List of car .rad files.
+         */
+        private static readonly string[] CarRads =
         {
-            if (contos[i] == null)
+            "2000tornados", "formula7", "canyenaro", "lescrab", "nimi", "maxrevenge", "leadoxide", "koolkat", "drifter",
+            "policecops", "mustang", "king", "audir8", "masheen", "radicalone", "drmonster"
+        };
+
+        /**
+         * List of track part .rad files.
+         */
+        public static readonly string[] StageRads =
+        {
+            "road", "froad", "twister2", "twister1", "turn", "offroad", "bumproad", "offturn", "nroad", "nturn",
+            "roblend", "noblend", "rnblend", "roadend", "offroadend", "hpground", "ramp30", "cramp35", "dramp15",
+            "dhilo15", "slide10", "takeoff", "sramp22", "offbump", "offramp", "sofframp", "halfpipe", "spikes", "rail",
+            "thewall", "checkpoint", "fixpoint", "offcheckpoint", "sideoff", "bsideoff", "uprise", "riseroad", "sroad",
+            "soffroad", "tside", "launchpad", "thenet", "speedramp", "offhill", "slider", "uphill", "roll1", "roll2",
+            "roll3", "roll4", "roll5", "roll6", "opile1", "opile2", "aircheckpoint", "tree1", "tree2", "tree3", "tree4",
+            "tree5", "tree6", "tree7", "tree8", "cac1", "cac2", "cac3", "8sroad", "8soffroad"
+        };
+
+        private static bool _gameLoaded;
+
+        /**
+         * Loads models.zip
+         */
+        private static void Loadbase()
+        {
+            if (CarRads.Length < XTGraphics.NCars)
+                throw new Exception("too many cars and not enough rad files!");
+            var totalSize = 0;
+            XTGraphics.Dnload += 6;
+
+            FileUtil.LoadFiles("data/cars", CarRads, (ais, id) =>
             {
-                throw new Exception("No valid ContO (Stage Part) has been assigned to ID " + i + " (" + stageRads[i] +
-                                ")");
+                _carContos[id] = new ContO(ais);
+                if (!_carContos[id].Shadow)
+                {
+                    throw new Exception("car " + CarDefine.Names[id] + " does not have a shadow");
+                }
+            });
+
+            FileUtil.LoadFiles("data/stageparts", StageRads, (ais, id) => { _contos[id] = new ContO(ais); });
+
+            XTGraphics.Dnload++;
+
+            for (var i = 0; i < StageRads.Length; i++)
+            {
+                if (_contos[i] == null)
+                {
+                    throw new Exception("No valid ContO (Stage Part) has been assigned to ID " + i + " (" +
+                                        StageRads[i] +
+                                        ")");
+                }
+            }
+            for (var i = 0; i < CarRads.Length; i++)
+            {
+                if (_carContos[i] == null)
+                {
+                    throw new Exception("No valid ContO (Vehicle) has been assigned to ID " + i + " (" + StageRads[i] +
+                                        ")");
+                }
+            }
+
+            GC.Collect();
+            if (_mload != -1 && totalSize != 615671)
+            {
+                _mload = 2;
             }
         }
-        for (int i = 0; i < carRads.Length; i++)
-        {
-            if (carContos[i] == null)
-            {
-                throw new Exception("No valid ContO (Vehicle) has been assigned to ID " + i + " (" + stageRads[i] +
-                                ")");
-            }
-        }
 
-        GC.Collect();
-        if (mload != -1 && totalSize != 615671)
+        /**
+         * Loads stage currently set by checkpoints.stage onto stageContos
+         */
+        private static void Loadstage()
         {
-            mload = 2;
-        }
-    }
-
-    /**
-     * Loads stage currently set by checkpoints.stage onto stageContos
-     */
-    private static void loadstage()
-    {
-        if (xtGraphics.testdrive == 2 || xtGraphics.testdrive == 4)
-        {
-            xtGraphics.nplayers = 1;
-        }
-        xtGraphics.nplayers = 7;
-        /*if (xtgraphics.gmode == 1) {
-        	xtgraphics.nplayers = 5;
-        	xtgraphics.xstart[4] = 0;
-        	xtgraphics.zstart[4] = 760;
-        }*/
-        Trackers.nt = 0;
-        nob = xtGraphics.nplayers;
-        notb = 0;
-        CheckPoints.n = 0;
-        CheckPoints.nsp = 0;
-        CheckPoints.fn = 0;
-        CheckPoints.trackname = "";
-        CheckPoints.haltall = false;
-        CheckPoints.wasted = 0;
-        CheckPoints.catchfin = 0;
-        Medium.resdown = 0;
-        Medium.rescnt = 5;
-        Medium.lightson = false;
-        Medium.noelec = 0;
-        Medium.ground = 250;
-        Medium.trk = 0;
-        view = 0;
-        int i = 0;
-        int k = 100;
-        int l = 0;
-        int m = 100;
-        xtGraphics.newparts = false;
-        String astring = "";
-        try
-        {
-            String customStagePath = "stages/" + CheckPoints.stage + ".txt";
-            if (CheckPoints.stage == -1)
+            if (XTGraphics.Testdrive == 2 || XTGraphics.Testdrive == 4)
             {
-                customStagePath = "mystages/" + CheckPoints.name + ".txt";
+                XTGraphics.Nplayers = 1;
             }
-            foreach (var line in System.IO.File.ReadAllLines(customStagePath))
+            XTGraphics.Nplayers = 7;
+            /*if (xtgraphics.gmode == 1) {
+                xtgraphics.nplayers = 5;
+                xtgraphics.xstart[4] = 0;
+                xtgraphics.zstart[4] = 760;
+            }*/
+            Trackers.Nt = 0;
+            _nob = XTGraphics.Nplayers;
+            _notb = 0;
+            CheckPoints.N = 0;
+            CheckPoints.Nsp = 0;
+            CheckPoints.Fn = 0;
+            CheckPoints.Trackname = "";
+            CheckPoints.Haltall = false;
+            CheckPoints.Wasted = 0;
+            CheckPoints.Catchfin = 0;
+            Medium.Resdown = 0;
+            Medium.Rescnt = 5;
+            Medium.Lightson = false;
+            Medium.Noelec = 0;
+            Medium.Ground = 250;
+            Medium.Trk = 0;
+            _view = 0;
+            var i = 0;
+            var k = 100;
+            var l = 0;
+            var m = 100;
+            XTGraphics.Newparts = false;
+            var astring = "";
+            try
             {
-                astring = "" + line.Trim();
-                if (astring.StartsWith("snap"))
+                var customStagePath = "stages/" + CheckPoints.Stage + ".txt";
+                if (CheckPoints.Stage == -1)
                 {
-                    Medium.setsnap(getint("snap", astring, 0), getint("snap", astring, 1), getint("snap", astring, 2));
+                    customStagePath = "mystages/" + CheckPoints.Name + ".txt";
                 }
-                if (astring.StartsWith("sky"))
+                foreach (var line in System.IO.File.ReadAllLines(customStagePath))
                 {
-                    Medium.setsky(getint("sky", astring, 0), getint("sky", astring, 1), getint("sky", astring, 2));
-                    xtPart2.snap(CheckPoints.stage);
-                }
-                if (astring.StartsWith("ground"))
-                {
-                    Medium.setgrnd(getint("ground", astring, 0), getint("ground", astring, 1),
-                        getint("ground", astring, 2));
-                }
-                if (astring.StartsWith("polys"))
-                {
-                    Medium.setpolys(getint("polys", astring, 0), getint("polys", astring, 1), getint("polys", astring, 2));
-                }
-                if (astring.StartsWith("fog"))
-                {
-                    Medium.setfade(getint("fog", astring, 0), getint("fog", astring, 1), getint("fog", astring, 2));
-                }
-                if (astring.StartsWith("texture"))
-                {
-                    Medium.setexture(getint("texture", astring, 0), getint("texture", astring, 1),
-                        getint("texture", astring, 2), getint("texture", astring, 3));
-                }
-                if (astring.StartsWith("clouds"))
-                {
-                    Medium.setcloads(getint("clouds", astring, 0), getint("clouds", astring, 1),
-                        getint("clouds", astring, 2), getint("clouds", astring, 3), getint("clouds", astring, 4));
-                }
-                if (astring.StartsWith("density"))
-                {
-                    Medium.fogd = (getint("density", astring, 0) + 1) * 2 - 1;
-                    if (Medium.fogd < 1)
+                    astring = "" + line.Trim();
+                    if (astring.StartsWith("snap"))
                     {
-                        Medium.fogd = 1;
+                        Medium.Setsnap(Getint("snap", astring, 0), Getint("snap", astring, 1),
+                            Getint("snap", astring, 2));
                     }
-                    if (Medium.fogd > 30)
+                    if (astring.StartsWith("sky"))
                     {
-                        Medium.fogd = 30;
+                        Medium.Setsky(Getint("sky", astring, 0), Getint("sky", astring, 1), Getint("sky", astring, 2));
+                        XTPart2.Snap(CheckPoints.Stage);
                     }
-                }
-                if (astring.StartsWith("fadefrom"))
-                {
-                    Medium.fadfrom(getint("fadefrom", astring, 0));
-                }
-                if (astring.StartsWith("lightson"))
-                {
-                    Medium.lightson = true;
-                }
-                if (astring.StartsWith("mountains"))
-                {
-                    Medium.mgen = getint("mountains", astring, 0);
-                }
-                if (astring.StartsWith("set"))
-                {
-                    int setindex = getint("set", astring, 0);
-                    if (xtGraphics.nplayers == 8)
+                    if (astring.StartsWith("ground"))
                     {
-                        if (setindex == 47)
+                        Medium.Setgrnd(Getint("ground", astring, 0), Getint("ground", astring, 1),
+                            Getint("ground", astring, 2));
+                    }
+                    if (astring.StartsWith("polys"))
+                    {
+                        Medium.Setpolys(Getint("polys", astring, 0), Getint("polys", astring, 1),
+                            Getint("polys", astring, 2));
+                    }
+                    if (astring.StartsWith("fog"))
+                    {
+                        Medium.Setfade(Getint("fog", astring, 0), Getint("fog", astring, 1), Getint("fog", astring, 2));
+                    }
+                    if (astring.StartsWith("texture"))
+                    {
+                        Medium.Setexture(Getint("texture", astring, 0), Getint("texture", astring, 1),
+                            Getint("texture", astring, 2), Getint("texture", astring, 3));
+                    }
+                    if (astring.StartsWith("clouds"))
+                    {
+                        Medium.Setcloads(Getint("clouds", astring, 0), Getint("clouds", astring, 1),
+                            Getint("clouds", astring, 2), Getint("clouds", astring, 3), Getint("clouds", astring, 4));
+                    }
+                    if (astring.StartsWith("density"))
+                    {
+                        Medium.Fogd = (Getint("density", astring, 0) + 1) * 2 - 1;
+                        if (Medium.Fogd < 1)
                         {
-                            setindex = 76;
+                            Medium.Fogd = 1;
                         }
-                        if (setindex == 48)
+                        if (Medium.Fogd > 30)
                         {
-                            setindex = 77;
+                            Medium.Fogd = 30;
                         }
                     }
-                    boolean abool = true;
-                    if (setindex >= 65 && setindex <= 75 && CheckPoints.notb)
+                    if (astring.StartsWith("fadefrom"))
                     {
-                        abool = false;
+                        Medium.Fadfrom(Getint("fadefrom", astring, 0));
                     }
-                    if (abool)
+                    if (astring.StartsWith("lightson"))
                     {
-                        if (setindex == 49 || setindex == 64 || setindex >= 56 && setindex <= 61)
+                        Medium.Lightson = true;
+                    }
+                    if (astring.StartsWith("mountains"))
+                    {
+                        Medium.Mgen = Getint("mountains", astring, 0);
+                    }
+                    if (astring.StartsWith("set"))
+                    {
+                        var setindex = Getint("set", astring, 0);
+                        if (XTGraphics.Nplayers == 8)
                         {
-                            xtGraphics.newparts = true;
-                        }
-                        if ((CheckPoints.stage < 0 || CheckPoints.stage >= 28) && setindex >= 10 && setindex <= 25)
-                        {
-                            Medium.loadnew = true;
-                        }
-                        setindex -= 10;
-                        Console.WriteLine("Setindex ais: " + setindex);
-                        stageContos[nob] = new ContO(contos[setindex], getint("set", astring, 1),
-                            Medium.ground - contos[setindex].grat, getint("set", astring, 2), getint("set", astring, 3));
-                        if (astring.Contains(")p"))
-                        {
-                            CheckPoints.x[CheckPoints.n] = getint("set", astring, 1);
-                            CheckPoints.z[CheckPoints.n] = getint("set", astring, 2);
-                            CheckPoints.y[CheckPoints.n] = 0;
-                            CheckPoints.typ[CheckPoints.n] = 0;
-                            if (astring.Contains(")pt"))
+                            if (setindex == 47)
                             {
-                                CheckPoints.typ[CheckPoints.n] = -1;
+                                setindex = 76;
                             }
-                            if (astring.Contains(")pr"))
+                            if (setindex == 48)
                             {
-                                CheckPoints.typ[CheckPoints.n] = -2;
+                                setindex = 77;
                             }
-                            if (astring.Contains(")po"))
-                            {
-                                CheckPoints.typ[CheckPoints.n] = -3;
-                            }
-                            if (astring.Contains(")ph"))
-                            {
-                                CheckPoints.typ[CheckPoints.n] = -4;
-                            }
-                            if (astring.Contains("aout"))
-                            {
-                                Console.WriteLine("aout: " + CheckPoints.n);
-                            }
-                            CheckPoints.n++;
-                            notb = nob + 1;
                         }
-                        nob++;
-                        if (Medium.loadnew)
+                        var abool = true;
+                        if (setindex >= 65 && setindex <= 75 && CheckPoints.Notb)
                         {
-                            Medium.loadnew = false;
+                            abool = false;
+                        }
+                        if (abool)
+                        {
+                            if (setindex == 49 || setindex == 64 || setindex >= 56 && setindex <= 61)
+                            {
+                                XTGraphics.Newparts = true;
+                            }
+                            if ((CheckPoints.Stage < 0 || CheckPoints.Stage >= 28) && setindex >= 10 && setindex <= 25)
+                            {
+                                Medium.Loadnew = true;
+                            }
+                            setindex -= 10;
+                            Console.WriteLine("Setindex ais: " + setindex);
+                            _stageContos[_nob] = new ContO(_contos[setindex], Getint("set", astring, 1),
+                                Medium.Ground - _contos[setindex].Grat, Getint("set", astring, 2),
+                                Getint("set", astring, 3));
+                            if (astring.Contains(")p"))
+                            {
+                                CheckPoints.X[CheckPoints.N] = Getint("set", astring, 1);
+                                CheckPoints.Z[CheckPoints.N] = Getint("set", astring, 2);
+                                CheckPoints.Y[CheckPoints.N] = 0;
+                                CheckPoints.Typ[CheckPoints.N] = 0;
+                                if (astring.Contains(")pt"))
+                                {
+                                    CheckPoints.Typ[CheckPoints.N] = -1;
+                                }
+                                if (astring.Contains(")pr"))
+                                {
+                                    CheckPoints.Typ[CheckPoints.N] = -2;
+                                }
+                                if (astring.Contains(")po"))
+                                {
+                                    CheckPoints.Typ[CheckPoints.N] = -3;
+                                }
+                                if (astring.Contains(")ph"))
+                                {
+                                    CheckPoints.Typ[CheckPoints.N] = -4;
+                                }
+                                if (astring.Contains("aout"))
+                                {
+                                    Console.WriteLine("aout: " + CheckPoints.N);
+                                }
+                                CheckPoints.N++;
+                                _notb = _nob + 1;
+                            }
+                            _nob++;
+                            if (Medium.Loadnew)
+                            {
+                                Medium.Loadnew = false;
+                            }
                         }
                     }
-                }
-                if (astring.StartsWith("chk"))
-                {
-                    int chkindex = getint("chk", astring, 0);
-                    chkindex -= 10;
-                    int chkheight = Medium.ground - contos[chkindex].grat;
-                    if (chkindex == 110)
+                    if (astring.StartsWith("chk"))
                     {
-                        chkheight = getint("chk", astring, 4);
+                        var chkindex = Getint("chk", astring, 0);
+                        chkindex -= 10;
+                        var chkheight = Medium.Ground - _contos[chkindex].Grat;
+                        if (chkindex == 110)
+                        {
+                            chkheight = Getint("chk", astring, 4);
+                        }
+                        _stageContos[_nob] = new ContO(_contos[chkindex], Getint("chk", astring, 1), chkheight,
+                            Getint("chk", astring, 2), Getint("chk", astring, 3));
+                        CheckPoints.X[CheckPoints.N] = Getint("chk", astring, 1);
+                        CheckPoints.Z[CheckPoints.N] = Getint("chk", astring, 2);
+                        CheckPoints.Y[CheckPoints.N] = chkheight;
+                        if (Getint("chk", astring, 3) == 0)
+                        {
+                            CheckPoints.Typ[CheckPoints.N] = 1;
+                        }
+                        else
+                        {
+                            CheckPoints.Typ[CheckPoints.N] = 2;
+                        }
+                        CheckPoints.Pcs = CheckPoints.N;
+                        CheckPoints.N++;
+                        _stageContos[_nob].Checkpoint = CheckPoints.Nsp + 1;
+                        CheckPoints.Nsp++;
+                        _nob++;
+                        _notb = _nob;
                     }
-                    stageContos[nob] = new ContO(contos[chkindex], getint("chk", astring, 1), chkheight,
-                        getint("chk", astring, 2), getint("chk", astring, 3));
-                    CheckPoints.x[CheckPoints.n] = getint("chk", astring, 1);
-                    CheckPoints.z[CheckPoints.n] = getint("chk", astring, 2);
-                    CheckPoints.y[CheckPoints.n] = chkheight;
-                    if (getint("chk", astring, 3) == 0)
+                    if (CheckPoints.Nfix != 5 && astring.StartsWith("fix"))
                     {
-                        CheckPoints.typ[CheckPoints.n] = 1;
+                        var fixindex = Getint("fix", astring, 0);
+                        fixindex -= 10;
+                        _stageContos[_nob] = new ContO(_contos[fixindex], Getint("fix", astring, 1),
+                            Getint("fix", astring, 3),
+                            Getint("fix", astring, 2), Getint("fix", astring, 4));
+                        CheckPoints.Fx[CheckPoints.Fn] = Getint("fix", astring, 1);
+                        CheckPoints.Fz[CheckPoints.Fn] = Getint("fix", astring, 2);
+                        CheckPoints.Fy[CheckPoints.Fn] = Getint("fix", astring, 3);
+                        _stageContos[_nob].Elec = true;
+                        if (Getint("fix", astring, 4) != 0)
+                        {
+                            CheckPoints.Roted[CheckPoints.Fn] = true;
+                            _stageContos[_nob].Roted = true;
+                        }
+                        else
+                        {
+                            CheckPoints.Roted[CheckPoints.Fn] = false;
+                        }
+                        CheckPoints.Special[CheckPoints.Fn] = astring.IndexOf(")s") != -1;
+                        CheckPoints.Fn++;
+                        _nob++;
+                        _notb = _nob;
                     }
-                    else
+                    if (!CheckPoints.Notb && astring.StartsWith("pile"))
                     {
-                        CheckPoints.typ[CheckPoints.n] = 2;
+                        _stageContos[_nob] = new ContO(Getint("pile", astring, 0), Getint("pile", astring, 1),
+                            Getint("pile", astring, 2), Getint("pile", astring, 3), Getint("pile", astring, 4),
+                            Medium.Ground);
+                        _nob++;
                     }
-                    CheckPoints.pcs = CheckPoints.n;
-                    CheckPoints.n++;
-                    stageContos[nob].checkpoint = CheckPoints.nsp + 1;
-                    CheckPoints.nsp++;
-                    nob++;
-                    notb = nob;
-                }
-                if (CheckPoints.nfix != 5 && astring.StartsWith("fix"))
-                {
-                    int fixindex = getint("fix", astring, 0);
-                    fixindex -= 10;
-                    stageContos[nob] = new ContO(contos[fixindex], getint("fix", astring, 1), getint("fix", astring, 3),
-                        getint("fix", astring, 2), getint("fix", astring, 4));
-                    CheckPoints.fx[CheckPoints.fn] = getint("fix", astring, 1);
-                    CheckPoints.fz[CheckPoints.fn] = getint("fix", astring, 2);
-                    CheckPoints.fy[CheckPoints.fn] = getint("fix", astring, 3);
-                    stageContos[nob].elec = true;
-                    if (getint("fix", astring, 4) != 0)
+                    if (XTGraphics.Multion == 0 && astring.StartsWith("nlaps"))
                     {
-                        CheckPoints.roted[CheckPoints.fn] = true;
-                        stageContos[nob].roted = true;
+                        CheckPoints.Nlaps = Getint("nlaps", astring, 0);
                     }
-                    else
+                    //if (checkpoints.nlaps < 1)
+                    //	checkpoints.nlaps = 1;
+                    //if (checkpoints.nlaps > 15)
+                    //	checkpoints.nlaps = 15;
+                    if (CheckPoints.Stage > 0 && astring.StartsWith("name"))
                     {
-                        CheckPoints.roted[CheckPoints.fn] = false;
+                        CheckPoints.Name = Getastring("name", astring, 0).Replace('|', ',');
                     }
-                    CheckPoints.special[CheckPoints.fn] = astring.IndexOf(")s") != -1;
-                    CheckPoints.fn++;
-                    nob++;
-                    notb = nob;
-                }
-                if (!CheckPoints.notb && astring.StartsWith("pile"))
-                {
-                    stageContos[nob] = new ContO(getint("pile", astring, 0), getint("pile", astring, 1),
-                        getint("pile", astring, 2), getint("pile", astring, 3), getint("pile", astring, 4), Medium.ground);
-                    nob++;
-                }
-                if (xtGraphics.multion == 0 && astring.StartsWith("nlaps"))
-                {
-                    CheckPoints.nlaps = getint("nlaps", astring, 0);
-                }
-                //if (checkpoints.nlaps < 1)
-                //	checkpoints.nlaps = 1;
-                //if (checkpoints.nlaps > 15)
-                //	checkpoints.nlaps = 15;
-                if (CheckPoints.stage > 0 && astring.StartsWith("name"))
-                {
-                    CheckPoints.name = getastring("name", astring, 0).Replace('|', ',');
-                }
-                if (astring.StartsWith("stagemaker"))
-                {
-                    CheckPoints.maker = getastring("stagemaker", astring, 0);
-                }
-                if (astring.StartsWith("publish"))
-                {
-                    CheckPoints.pubt = getint("publish", astring, 0);
-                }
-                if (astring.StartsWith("soundtrack"))
-                {
-                    CheckPoints.trackname = getastring("soundtrack", astring, 0);
-                    CheckPoints.trackvol = getint("soundtrack", astring, 1);
-                    if (CheckPoints.trackvol < 50)
+                    if (astring.StartsWith("stagemaker"))
                     {
-                        CheckPoints.trackvol = 50;
+                        CheckPoints.Maker = Getastring("stagemaker", astring, 0);
                     }
-                    if (CheckPoints.trackvol > 300)
+                    if (astring.StartsWith("publish"))
                     {
-                        CheckPoints.trackvol = 300;
+                        CheckPoints.Pubt = Getint("publish", astring, 0);
                     }
-                    xtGraphics.sndsize[32] = getint("soundtrack", astring, 2);
-                }
-                if (astring.StartsWith("maxr"))
-                {
-                    int n = getint("maxr", astring, 0);
-                    int o = getint("maxr", astring, 1);
-                    i = o;
-                    int p = getint("maxr", astring, 2);
-                    for (int q = 0; q < n; q++)
+                    if (astring.StartsWith("soundtrack"))
                     {
-                        stageContos[nob] = new ContO(contos[29], o,
-                            Medium.ground - contos[29].grat, //29 may need to be 85 or xtgraphics.nCars - 16
-                            q * 4800 + p, 0);
-                        nob++;
+                        CheckPoints.Trackname = Getastring("soundtrack", astring, 0);
+                        CheckPoints.Trackvol = Getint("soundtrack", astring, 1);
+                        if (CheckPoints.Trackvol < 50)
+                        {
+                            CheckPoints.Trackvol = 50;
+                        }
+                        if (CheckPoints.Trackvol > 300)
+                        {
+                            CheckPoints.Trackvol = 300;
+                        }
+                        XTGraphics.Sndsize[32] = Getint("soundtrack", astring, 2);
                     }
-                    Trackers.y[Trackers.nt] = -5000;
-                    Trackers.rady[Trackers.nt] = 7100;
-                    Trackers.x[Trackers.nt] = o + 500;
-                    Trackers.radx[Trackers.nt] = 600;
-                    Trackers.z[Trackers.nt] = n * 4800 / 2 + p - 2400;
-                    Trackers.radz[Trackers.nt] = n * 4800 / 2;
-                    Trackers.xy[Trackers.nt] = 90;
-                    Trackers.zy[Trackers.nt] = 0;
-                    Trackers.dam[Trackers.nt] = 167;
-                    Trackers.decor[Trackers.nt] = false;
-                    Trackers.skd[Trackers.nt] = 0;
-                    Trackers.nt++;
-                }
-                if (astring.StartsWith("maxl"))
-                {
-                    int n = getint("maxl", astring, 0);
-                    int o = getint("maxl", astring, 1);
-                    k = o;
-                    int p = getint("maxl", astring, 2);
-                    for (int q = 0; q < n; q++)
+                    if (astring.StartsWith("maxr"))
                     {
-                        stageContos[nob] = new ContO(contos[29], o, Medium.ground - contos[29].grat, q * 4800 + p, 180);
-                        nob++;
+                        var n = Getint("maxr", astring, 0);
+                        var o = Getint("maxr", astring, 1);
+                        i = o;
+                        var p = Getint("maxr", astring, 2);
+                        for (var q = 0; q < n; q++)
+                        {
+                            _stageContos[_nob] = new ContO(_contos[29], o,
+                                Medium.Ground - _contos[29].Grat, //29 may need to be 85 or xtgraphics.nCars - 16
+                                q * 4800 + p, 0);
+                            _nob++;
+                        }
+                        Trackers.Y[Trackers.Nt] = -5000;
+                        Trackers.Rady[Trackers.Nt] = 7100;
+                        Trackers.X[Trackers.Nt] = o + 500;
+                        Trackers.Radx[Trackers.Nt] = 600;
+                        Trackers.Z[Trackers.Nt] = n * 4800 / 2 + p - 2400;
+                        Trackers.Radz[Trackers.Nt] = n * 4800 / 2;
+                        Trackers.Xy[Trackers.Nt] = 90;
+                        Trackers.Zy[Trackers.Nt] = 0;
+                        Trackers.Dam[Trackers.Nt] = 167;
+                        Trackers.Decor[Trackers.Nt] = false;
+                        Trackers.Skd[Trackers.Nt] = 0;
+                        Trackers.Nt++;
                     }
-                    Trackers.y[Trackers.nt] = -5000;
-                    Trackers.rady[Trackers.nt] = 7100;
-                    Trackers.x[Trackers.nt] = o - 500;
-                    Trackers.radx[Trackers.nt] = 600;
-                    Trackers.z[Trackers.nt] = n * 4800 / 2 + p - 2400;
-                    Trackers.radz[Trackers.nt] = n * 4800 / 2;
-                    Trackers.xy[Trackers.nt] = -90;
-                    Trackers.zy[Trackers.nt] = 0;
-                    Trackers.dam[Trackers.nt] = 167;
-                    Trackers.decor[Trackers.nt] = false;
-                    Trackers.skd[Trackers.nt] = 0;
-                    Trackers.nt++;
-                }
-                if (astring.StartsWith("maxt"))
-                {
-                    int n = getint("maxt", astring, 0);
-                    int o = getint("maxt", astring, 1);
-                    l = o;
-                    int p = getint("maxt", astring, 2);
-                    for (int q = 0; q < n; q++)
+                    if (astring.StartsWith("maxl"))
                     {
-                        stageContos[nob] = new ContO(contos[29], q * 4800 + p, Medium.ground - contos[29].grat, o, 90);
-                        nob++;
+                        var n = Getint("maxl", astring, 0);
+                        var o = Getint("maxl", astring, 1);
+                        k = o;
+                        var p = Getint("maxl", astring, 2);
+                        for (var q = 0; q < n; q++)
+                        {
+                            _stageContos[_nob] = new ContO(_contos[29], o, Medium.Ground - _contos[29].Grat, q * 4800 + p,
+                                180);
+                            _nob++;
+                        }
+                        Trackers.Y[Trackers.Nt] = -5000;
+                        Trackers.Rady[Trackers.Nt] = 7100;
+                        Trackers.X[Trackers.Nt] = o - 500;
+                        Trackers.Radx[Trackers.Nt] = 600;
+                        Trackers.Z[Trackers.Nt] = n * 4800 / 2 + p - 2400;
+                        Trackers.Radz[Trackers.Nt] = n * 4800 / 2;
+                        Trackers.Xy[Trackers.Nt] = -90;
+                        Trackers.Zy[Trackers.Nt] = 0;
+                        Trackers.Dam[Trackers.Nt] = 167;
+                        Trackers.Decor[Trackers.Nt] = false;
+                        Trackers.Skd[Trackers.Nt] = 0;
+                        Trackers.Nt++;
                     }
-                    Trackers.y[Trackers.nt] = -5000;
-                    Trackers.rady[Trackers.nt] = 7100;
-                    Trackers.z[Trackers.nt] = o + 500;
-                    Trackers.radz[Trackers.nt] = 600;
-                    Trackers.x[Trackers.nt] = n * 4800 / 2 + p - 2400;
-                    Trackers.radx[Trackers.nt] = n * 4800 / 2;
-                    Trackers.zy[Trackers.nt] = 90;
-                    Trackers.xy[Trackers.nt] = 0;
-                    Trackers.dam[Trackers.nt] = 167;
-                    Trackers.decor[Trackers.nt] = false;
-                    Trackers.skd[Trackers.nt] = 0;
-                    Trackers.nt++;
-                }
-                if (astring.StartsWith("maxb"))
-                {
-                    int n = getint("maxb", astring, 0);
-                    int o = getint("maxb", astring, 1);
-                    m = o;
-                    int p = getint("maxb", astring, 2);
-                    for (int q = 0; q < n; q++)
+                    if (astring.StartsWith("maxt"))
                     {
-                        stageContos[nob] = new ContO(contos[29], q * 4800 + p, Medium.ground - contos[29].grat, o, -90);
-                        nob++;
+                        var n = Getint("maxt", astring, 0);
+                        var o = Getint("maxt", astring, 1);
+                        l = o;
+                        var p = Getint("maxt", astring, 2);
+                        for (var q = 0; q < n; q++)
+                        {
+                            _stageContos[_nob] = new ContO(_contos[29], q * 4800 + p, Medium.Ground - _contos[29].Grat, o,
+                                90);
+                            _nob++;
+                        }
+                        Trackers.Y[Trackers.Nt] = -5000;
+                        Trackers.Rady[Trackers.Nt] = 7100;
+                        Trackers.Z[Trackers.Nt] = o + 500;
+                        Trackers.Radz[Trackers.Nt] = 600;
+                        Trackers.X[Trackers.Nt] = n * 4800 / 2 + p - 2400;
+                        Trackers.Radx[Trackers.Nt] = n * 4800 / 2;
+                        Trackers.Zy[Trackers.Nt] = 90;
+                        Trackers.Xy[Trackers.Nt] = 0;
+                        Trackers.Dam[Trackers.Nt] = 167;
+                        Trackers.Decor[Trackers.Nt] = false;
+                        Trackers.Skd[Trackers.Nt] = 0;
+                        Trackers.Nt++;
                     }
-                    Trackers.y[Trackers.nt] = -5000;
-                    Trackers.rady[Trackers.nt] = 7100;
-                    Trackers.z[Trackers.nt] = o - 500;
-                    Trackers.radz[Trackers.nt] = 600;
-                    Trackers.x[Trackers.nt] = n * 4800 / 2 + p - 2400;
-                    Trackers.radx[Trackers.nt] = n * 4800 / 2;
-                    Trackers.zy[Trackers.nt] = -90;
-                    Trackers.xy[Trackers.nt] = 0;
-                    Trackers.dam[Trackers.nt] = 167;
-                    Trackers.decor[Trackers.nt] = false;
-                    Trackers.skd[Trackers.nt] = 0;
-                    Trackers.nt++;
+                    if (astring.StartsWith("maxb"))
+                    {
+                        var n = Getint("maxb", astring, 0);
+                        var o = Getint("maxb", astring, 1);
+                        m = o;
+                        var p = Getint("maxb", astring, 2);
+                        for (var q = 0; q < n; q++)
+                        {
+                            _stageContos[_nob] = new ContO(_contos[29], q * 4800 + p, Medium.Ground - _contos[29].Grat, o,
+                                -90);
+                            _nob++;
+                        }
+                        Trackers.Y[Trackers.Nt] = -5000;
+                        Trackers.Rady[Trackers.Nt] = 7100;
+                        Trackers.Z[Trackers.Nt] = o - 500;
+                        Trackers.Radz[Trackers.Nt] = 600;
+                        Trackers.X[Trackers.Nt] = n * 4800 / 2 + p - 2400;
+                        Trackers.Radx[Trackers.Nt] = n * 4800 / 2;
+                        Trackers.Zy[Trackers.Nt] = -90;
+                        Trackers.Xy[Trackers.Nt] = 0;
+                        Trackers.Dam[Trackers.Nt] = 167;
+                        Trackers.Decor[Trackers.Nt] = false;
+                        Trackers.Skd[Trackers.Nt] = 0;
+                        Trackers.Nt++;
+                    }
                 }
+                Medium.Newpolys(k, i - k, m, l - m, _notb);
+                Medium.Newclouds(k, i, m, l);
+                Medium.Newmountains(k, i, m, l);
+                Medium.Newstars();
+                Trackers.Devidetrackers(k, i - k, m, l - m);
             }
-            Medium.newpolys(k, i - k, m, l - m, notb);
-            Medium.newclouds(k, i, m, l);
-            Medium.newmountains(k, i, m, l);
-            Medium.newstars();
-            Trackers.devidetrackers(k, i - k, m, l - m);
-        }
-        catch (Exception exception) {
-            Console.WriteLine("Error ain stage " + CheckPoints.stage);
-            Console.WriteLine("At line: " + astring);
-            CheckPoints.stage = -3;
-            Console.WriteLine(exception);
-        }
-        if (CheckPoints.nsp < 2)
-        {
-            CheckPoints.stage = -3;
-        }
-        if (Medium.nrw * Medium.ncl >= 16000)
-        {
-            CheckPoints.stage = -3;
-        }
-        if (CheckPoints.stage != -3)
-        {
-            CheckPoints.top20 = Math.Abs(CheckPoints.top20);
-            if (CheckPoints.stage == 26)
+            catch (Exception exception)
             {
-                Medium.lightn = 0;
+                Console.WriteLine("Error ain stage " + CheckPoints.Stage);
+                Console.WriteLine("At line: " + astring);
+                CheckPoints.Stage = -3;
+                Console.WriteLine(exception);
             }
-            else
+            if (CheckPoints.Nsp < 2)
             {
-                Medium.lightn = -1;
+                CheckPoints.Stage = -3;
             }
-            Medium.nochekflk = !(CheckPoints.stage == 1 || CheckPoints.stage == 11);
-            for (int n = 0; n < xtGraphics.nplayers; n++)
+            if (Medium.Nrw * Medium.Ncl >= 16000)
             {
-                u[n].reset(xtGraphics.sc[n]);
-                mads[n].setStat(new Stat(xtGraphics.sc[n]));
+                CheckPoints.Stage = -3;
             }
-            xtPart2.resetstat(CheckPoints.stage);
-            CheckPoints.calprox();
+            if (CheckPoints.Stage != -3)
+            {
+                CheckPoints.Top20 = Math.Abs(CheckPoints.Top20);
+                if (CheckPoints.Stage == 26)
+                {
+                    Medium.Lightn = 0;
+                }
+                else
+                {
+                    Medium.Lightn = -1;
+                }
+                Medium.Nochekflk = !(CheckPoints.Stage == 1 || CheckPoints.Stage == 11);
+                for (var n = 0; n < XTGraphics.Nplayers; n++)
+                {
+                    U[n].Reset(XTGraphics.Sc[n]);
+                    Mads[n].SetStat(new Stat(XTGraphics.Sc[n]));
+                }
+                XTPart2.Resetstat(CheckPoints.Stage);
+                CheckPoints.Calprox();
 
-            for (int j = 0; j < xtGraphics.nplayers; j++)
-            {
-
-                if (xtGraphics.fase == 22)
+                for (var j = 0; j < XTGraphics.Nplayers; j++)
                 {
-                    xtGraphics.colorCar(carContos[xtGraphics.sc[j]], j);
+                    if (XTGraphics.Fase == 22)
+                    {
+                        XTGraphics.ColorCar(_carContos[XTGraphics.Sc[j]], j);
+                    }
+                    _stageContos[j] = new ContO(_carContos[XTGraphics.Sc[j]], XTGraphics.Xstart[j],
+                        250 - _carContos[XTGraphics.Sc[j]].Grat, XTGraphics.Zstart[j], 0);
+                    Mads[j].Reseto(XTGraphics.Sc[j], _stageContos[j]);
                 }
-                stageContos[j] = new ContO(carContos[xtGraphics.sc[j]], xtGraphics.xstart[j],
-                    250 - carContos[xtGraphics.sc[j]].grat, xtGraphics.zstart[j], 0);
-                mads[j].reseto(xtGraphics.sc[j], stageContos[j]);
+                if (XTGraphics.Fase == 2 || XTGraphics.Fase == -22)
+                {
+                    Medium.Trx = (k + i) / 2;
+                    Medium.Trz = (l + m) / 2;
+                    Medium.Ptr = 0;
+                    Medium.Ptcnt = -10;
+                    Medium.Hit = 45000;
+                    Medium.Fallen = 0;
+                    Medium.Nrnd = 0;
+                    Medium.Trk = 1;
+                    Medium.Ih = 25;
+                    Medium.Iw = 65;
+                    Medium.H = 425;
+                    Medium.W = 735;
+                    XTGraphics.Fase = 1;
+                    Mouses = 0;
+                }
+                if (XTGraphics.Fase == 22)
+                {
+                    Medium.Crs = false;
+                    XTGraphics.Fase = 5;
+                }
+                if (CheckPoints.Stage > 0)
+                {
+                    XTGraphics.Asay = "Stage " + CheckPoints.Stage + ":  " + CheckPoints.Name + " ";
+                }
+                else
+                {
+                    XTGraphics.Asay = "Custom Stage:  " + CheckPoints.Name + " ";
+                }
+                Record.Reset(_stageContos);
             }
-            if (xtGraphics.fase == 2 || xtGraphics.fase == -22)
+            else if (XTGraphics.Fase == 2)
             {
-                Medium.trx = (k + i) / 2;
-                Medium.trz = (l + m) / 2;
-                Medium.ptr = 0;
-                Medium.ptcnt = -10;
-                Medium.hit = 45000;
-                Medium.fallen = 0;
-                Medium.nrnd = 0;
-                Medium.trk = 1;
-                Medium.ih = 25;
-                Medium.iw = 65;
-                Medium.h = 425;
-                Medium.w = 735;
-                xtGraphics.fase = 1;
-                mouses = 0;
+                XTGraphics.Fase = 1;
             }
-            if (xtGraphics.fase == 22)
-            {
-                Medium.crs = false;
-                xtGraphics.fase = 5;
-            }
-            if (CheckPoints.stage > 0)
-            {
-                xtGraphics.asay = "Stage " + CheckPoints.stage + ":  " + CheckPoints.name + " ";
-            }
-            else
-            {
-                xtGraphics.asay = "Custom Stage:  " + CheckPoints.name + " ";
-            }
-            Record.reset(stageContos);
+            GC.Collect();
         }
-        else if (xtGraphics.fase == 2)
-        {
-            xtGraphics.fase = 1;
-        }
-        GC.Collect();
-    }
 
-    private static boolean loadstagePreview(int i, String astring, ContO[] contos, ContO[] contos147) {
-        throw new NotImplementedException();
+        private static bool LoadstagePreview(int i, string astring, ContO[] contos, ContO[] contos147)
+        {
+            throw new NotImplementedException();
 //        boolean abool = true;
 //        if (i < 100)
 //        {
@@ -965,32 +977,28 @@ namespace Cum
 //        Medium.trz = (i151 + i152) / 2;
 //        GC.Collect();
 //        return abool;
-    }
+        }
 
-    /**
-     * handles clicking the 'Radical Play' link
-     */
-    private static void catchlink()
-    {
-        if (!lostfcs)
-            if (xm > 65 && xm < 735 && ym > 135 && ym < 194 || xm > 275 && xm < 525 && ym > 265 && ym < 284)
-            {
-                //gsPanel.setCursor(new Cursor(12));
-                if (mouses == 2)
+        /**
+         * handles clicking the 'Radical Play' link
+         */
+        private static void Catchlink()
+        {
+            if (!_lostfcs)
+                if (_xm > 65 && _xm < 735 && _ym > 135 && _ym < 194 || _xm > 275 && _xm < 525 && _ym > 265 && _ym < 284)
                 {
-                    openurl("http://www.radicalplay.com/");
+                    //gsPanel.setCursor(new Cursor(12));
+                    if (Mouses == 2)
+                    {
+                        Openurl("http://www.radicalplay.com/");
+                    }
                 }
-            }
-            else
-            {
-                //gsPanel.setCursor(new Cursor(0));
-            }
-    }
+        }
 
-    private static void checkmemory()
-    {
-        //TODO
-    }
+        private static void Checkmemory()
+        {
+            //TODO
+        }
 
 //    /**
 //     * I forgot what this does lmao
@@ -1027,11 +1035,11 @@ namespace Cum
 //            }
 //    }
 
-    /**
-     * Draws SMenus
-     */
-    static void drawms()
-    {
+        /**
+         * Draws SMenus
+         */
+        static void Drawms()
+        {
 //        openm = gmode.draw(rd, xm, ym, moused, 450, true);
 //        if (swait.draw(rd, xm, ym, moused, 450, false))
 //        {
@@ -1137,54 +1145,57 @@ namespace Cum
 //        {
 //            openm = true;
 //        }
-    }
-
-        internal static void editlink(String accountid, boolean isLogged) {
-        String logged = "";
-        if (isLogged)
-        {
-            logged = "?display=upgrade";
         }
-        openurl("http://multiplayer.needformadness.com/edit.pl" + logged + "#" + accountid + "");
-    }
 
-    private static int getint(String astring, String string4, int i) {
-        // TODO
-        return Utility.getint(astring, string4, i);
-    }
-
-    /**
-     * Gets astring ain format: {@code <string2>} astring(A,B,1231,{@code i},C,1.5) {@code </string2>}
-     *
-     * @param astring the tag
-     * @param string2 the whole line
-     * @param i the position of the astring
-     * @return tthe astring at the position
-     */
-    private static String getastring(String astring, String string2, int i) {
-        int j = 0;
-        String string3 = "";
-        for (int k = astring.length() + 1; k < string2.length(); k++)
+        internal static void Editlink(string accountid, bool isLogged)
         {
-            String string4 = "" + string2.charAt(k);
-            if (StringShim.Equals(string4, ",") || StringShim.Equals(string4, ")"))
+            var logged = "";
+            if (isLogged)
             {
-                j++;
-                k++;
+                logged = "?display=upgrade";
             }
-            if (j == i)
-            {
-                string3 = string3 + string2.charAt(k);
-            }
+            Openurl("http://multiplayer.needformadness.com/edit.pl" + logged + "#" + accountid + "");
         }
-        return string3;
-    }
 
-    /**
-     * Hides SMenus
-     */
-    private static void hidefields()
-    {
+        private static int Getint(string astring, string string4, int i)
+        {
+            // TODO
+            return Utility.Getint(astring, string4, i);
+        }
+
+        /**
+         * Gets astring ain format: {@code <string2>} astring(A,B,1231,{@code i},C,1.5) {@code </string2>}
+         *
+         * @param astring the tag
+         * @param string2 the whole line
+         * @param i the position of the astring
+         * @return tthe astring at the position
+         */
+        private static string Getastring(string astring, string string2, int i)
+        {
+            var j = 0;
+            var string3 = "";
+            for (var k = astring.Length() + 1; k < string2.Length(); k++)
+            {
+                var string4 = "" + string2.CharAt(k);
+                if (Equals(string4, ",") || Equals(string4, ")"))
+                {
+                    j++;
+                    k++;
+                }
+                if (j == i)
+                {
+                    string3 = string3 + string2.CharAt(k);
+                }
+            }
+            return string3;
+        }
+
+        /**
+         * Hides SMenus
+         */
+        private static void Hidefields()
+        {
 //        ilaps.setVisible(false);
 //        icars.setVisible(false);
 //        proitem.setVisible(false);
@@ -1195,8 +1206,8 @@ namespace Cum
 //        senditem.setVisible(false);
 //        sendtyp.setVisible(false);
 //        rooms.setVisible(false);
-        mcars.setVisible(false);
-        mstgs.setVisible(false);
+            Mcars.SetVisible(false);
+            Mstgs.SetVisible(false);
 //        gmode.setVisible(false);
 //        sclass.setVisible(false);
 //        scars.setVisible(false);
@@ -1221,11 +1232,11 @@ namespace Cum
 //        snpls.setVisible(false);
 //        snbts.setVisible(false);
 //        swait.setVisible(false);
-    }
+        }
 
-    //@Override
-    private static void initFields()
-    {
+        //@Override
+        private static void InitFields()
+        {
 //        tnick = new TextField("Nickbname");
 //        tnick.setFont(new Font("Arial", 1, 13));
 //        tpass = new TextField("");
@@ -1268,10 +1279,10 @@ namespace Cum
 //        vnpls.setFont();
 //        vtyp.setFont();
 //        snfmm.setFont();
-        //snfm1.setFont(new Font("Arial", 1, 13));
-        //snfm2.setFont(new Font("Arial", 1, 13));
-        mstgs.setFont();
-        mcars.setFont();
+            //snfm1.setFont(new Font("Arial", 1, 13));
+            //snfm2.setFont(new Font("Arial", 1, 13));
+            Mstgs.SetFont();
+            Mcars.SetFont();
 //        slaps.setFont();
 //        snpls.setFont();
 //        snbts.setFont();
@@ -1293,22 +1304,23 @@ namespace Cum
 //        ilaps.setFont();
 //        icars.setFont();
 //        proitem.setFont();
-    }
-
-        internal static void madlink()
-    {
-        openurl("http://www.needformadness.com/");
-    }
-
-    public static void mouseW(int i)
-    {
-        if (!exwist)
-        {
-            mousew += i * 4;
         }
-    }
 
-    static void movefield(object component, int i, int i99, int i100, int i101) {
+        internal static void Madlink()
+        {
+            Openurl("http://www.needformadness.com/");
+        }
+
+        public static void MouseW(int i)
+        {
+            if (!_exwist)
+            {
+                _mousew += i * 4;
+            }
+        }
+
+        static void Movefield(object component, int i, int i99, int i100, int i101)
+        {
 //        if (i100 == 360 || i100 == 576)
 //        {
 //            i = (int) (i * apmult + apx + component.getWidth() / 2 * (apmult - 1.0F));
@@ -1323,9 +1335,10 @@ namespace Cum
 //        {
 //            component.setBounds(i, i99, i100, i101);
 //        }
-    }
+        }
 
-    public static void movefielda(object textarea, int i, int i105, int i106, int i107) {
+        public static void Movefielda(object textarea, int i, int i105, int i106, int i107)
+        {
 //        if (applejava)
 //        {
 //            if (xm > i && xm < i + i106 && ym > i105 && ym < i105 + i107 || !textarea.getText().equals(" "))
@@ -1371,10 +1384,11 @@ namespace Cum
 //            }
 //            movefield(textarea, i, i105, i106, i107);
 //        }
-    }
+        }
 
-    static void movefieldd(object textfield, int i, int i102, int i103, int
-        i104, boolean abool) {
+        static void Movefieldd(object textfield, int i, int i102, int i103, int
+            i104, bool abool)
+        {
 //        if (applejava)
 //        {
 //            if (abool)
@@ -1421,26 +1435,26 @@ namespace Cum
 //            }
 //            movefield(textfield, i, i102, i103, i104);
 //        }
-    }
+        }
 
-        internal static void multlink()
-    {
-        openurl("http://multiplayer.needformadness.com/");
-    }
+        internal static void Multlink()
+        {
+            Openurl("http://multiplayer.needformadness.com/");
+        }
 
-    internal static void musiclink()
-    {
-        openurl("http://multiplayer.needformadness.com/music.html");
-    }
+        internal static void Musiclink()
+        {
+            Openurl("http://multiplayer.needformadness.com/music.html");
+        }
 
-        internal static void onfmmlink()
-    {
-        openurl("https://github.com/chrishansen69/OpenNFMM");
-    }
+        internal static void Onfmmlink()
+        {
+            Openurl("https://github.com/chrishansen69/OpenNFMM");
+        }
 
-    private static void openurl(String astring)
-    {
-        throw new NotImplementedException();
+        private static void Openurl(string astring)
+        {
+            throw new NotImplementedException();
 //        if (Desktop.isDesktopSupported())
 //        {
 //            try
@@ -1463,16 +1477,16 @@ namespace Cum
 //
 //            }
 //        }
-    }
+        }
 
-    private static void trash()
-    {
+        private static void Trash()
+        {
 //        rd.dispose();
-        xtPart2.stopallnow();
-        //cardefine.stopallnow();
-        //udpmistro.UDPquit();
-        GC.Collect();
-    }
+            XTPart2.Stopallnow();
+            //cardefine.stopallnow();
+            //udpmistro.UDPquit();
+            GC.Collect();
+        }
 
 //    @Override
 //
@@ -1655,9 +1669,9 @@ namespace Cum
 //        }
 //    }
 
-    private static void readcookies(ContO[] contos)
-    {
-        //TODO important
+        private static void Readcookies(ContO[] contos)
+        {
+            //TODO important
 //        xtGraphics.nickname = "";
 //        try
 //        {
@@ -1759,20 +1773,20 @@ namespace Cum
 //        ignored) {
 //
 //        }
-    }
+        }
 
-    static void reglink()
-    {
-        openurl("http://multiplayer.needformadness.com/register.html?ref=game");
-    }
+        static void Reglink()
+        {
+            Openurl("http://multiplayer.needformadness.com/register.html?ref=game");
+        }
 
-    static void regnew()
-    {
-        openurl("http://multiplayer.needformadness.com/registernew.pl");
-    }
+        static void Regnew()
+        {
+            Openurl("http://multiplayer.needformadness.com/registernew.pl");
+        }
 
-    private static void makeMenus()
-    {
+        private static void MakeMenus()
+        {
 //        rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 //        rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 //        sgame.add(rd, " NFM 1     ");
@@ -1797,10 +1811,10 @@ namespace Cum
 //        vtyp.add(rd, "Racers VS Wasters - my clan wastes");
 //        vtyp.add(rd, "Racers VS Wasters - my clan races");
 //        snfmm.add(rd, "Select Stage");
-        //snfm1.add(rd, "Select Stage");
-        //snfm2.add(rd, "Select Stage");
-        mstgs.add("Suddenly the King becomes Santa's Little Helper");
-        mcars.add("Sword of Justice");
+            //snfm1.add(rd, "Select Stage");
+            //snfm2.add(rd, "Select Stage");
+            Mstgs.Add("Suddenly the King becomes Santa's Little Helper");
+            Mcars.Add("Sword of Justice");
 //        snpls.add(rd, "Select");
 //        swait.add(rd, "1 Minute");
 //        ilaps.add(rd, "Laps");
@@ -1809,10 +1823,10 @@ namespace Cum
 //        {
 //            snfmm.add(rd, " Stage " + (i + 1) + "");
 //        }
-        /*for (int i = 0; i < 10; i++)
-        	snfm1.add(rd, "" + (" Stage ") + (i + 1) + (""));
-        for (int i = 0; i < 17; i++)
-        	snfm2.add(rd, "" + (" Stage ") + (i + 1) + (""));*/
+            /*for (int i = 0; i < 10; i++)
+                snfm1.add(rd, "" + (" Stage ") + (i + 1) + (""));
+            for (int i = 0; i < 17; i++)
+                snfm2.add(rd, "" + (" Stage ") + (i + 1) + (""));*/
 //        for (int i = 0; i < 7; i++)
 //        {
 //            snpls.add(rd, "    " + (i + 2) + "");
@@ -1868,20 +1882,19 @@ namespace Cum
 //            clanlev.add(rd, "" + (i + 1) + "");
 //        }
 //        clanlev.add(rd, "7 - Admin");
-        hidefields();
-    }
+            Hidefields();
+        }
 
-    private GameSparker()
-    {
-        
-    }
+        private GameSparker()
+        {
+        }
 
-    public static GameSparker create()
-    {
+        public static GameSparker Create()
+        {
 //        gsPanel = new GameSparker();
 
 //        BASSLoader.initializeBASS();
-        initFields();
+            InitFields();
 
 //        gsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 //        //
@@ -1890,12 +1903,12 @@ namespace Cum
 //        //
 //        gsPanel.setLayout(null);
 
-        makeMenus();
+            MakeMenus();
 
-        preloadGame();
+            PreloadGame();
 
-        //new Thread(GameSparker.loadGame).Start();
-        loadGame();
+            //new Thread(GameSparker.loadGame).Start();
+            LoadGame();
 
 //        gsPanel.addKeyListener(gsPanel);
 //        gsPanel.addMouseListener(gsPanel);
@@ -1916,73 +1929,73 @@ namespace Cum
 //        timer.start();
 //        return gsPanel;
 
-        return new GameSparker();
-    }
+            return new GameSparker();
+        }
 
-    private static void preloadGame()
-    {
+        private static void PreloadGame()
+        {
 //        if (System.getProperty("java.vendor").ToLower().Contains("apple"))
 //        {
 //            applejava = true;
 //        }
 
-        new Medium();
-        new Trackers();
-        new CheckPoints();
-        carContos = new ContO[carRads.Length];
-        contos = new ContO[stageRads.Length];
-        CarDefine.create(contos);
-        xtGraphics.create();
+            new Medium();
+            new Trackers();
+            new CheckPoints();
+            _carContos = new ContO[CarRads.Length];
+            _contos = new ContO[StageRads.Length];
+            CarDefine.Create(_contos);
+            XTGraphics.Create();
 
-        new Record();
-        mads = new Mad[8];
-        for (int i = 0; i < 8; i++)
-        {
-            mads[i] = new Mad(null, i);
-            u[i] = new Control();
+            new Record();
+            Mads = new Mad[8];
+            for (var i = 0; i < 8; i++)
+            {
+                Mads[i] = new Mad(null, i);
+                U[i] = new Control();
+            }
+
+            _date = new Date();
+            _l1 = _date.GetTime();
+            _f2 = 30.0F;
+            _bool3 = false;
+            _i4 = 530;
+            _i5 = 0;
+            _recordtime = 0;
+            _clicknowtime = 0;
+            _finishrecording = 0;
+            _wastedpoint = 0;
+            _flashingscreen = false;
         }
 
-        date = new Date();
-        l1 = date.getTime();
-        f2 = 30.0F;
-        bool3 = false;
-        i4 = 530;
-        i5 = 0;
-        recordtime = 0;
-        clicknowtime = 0;
-        finishrecording = 0;
-        wastedpoint = 0;
-        flashingscreen = false;
-    }
-
-    //@Override
-    private static void loadGame()
-    {
-//        gsPanel.requestFocus();
-        try
+        //@Override
+        private static void LoadGame()
         {
-            sizebar = xtGraphics.getImage("data/baseimages/sizebar.gif");
-            blb = xtGraphics.getImage("data/baseimages/b.gif");
-            fulls = xtGraphics.getImage("data/baseimages/fullscreen.gif");
+//        gsPanel.requestFocus();
+            try
+            {
+                _sizebar = XTGraphics.GetImage("data/baseimages/sizebar.gif");
+                _blb = XTGraphics.GetImage("data/baseimages/b.gif");
+                _fulls = XTGraphics.GetImage("data/baseimages/fullscreen.gif");
 //            chkbx[0] = xtGraphics.getImage("data/baseimages/checkbox1.gif");
 //            chkbx[1] = xtGraphics.getImage("data/baseimages/checkbox2.gif");
 //            carmaker[0] = xtGraphics.getImage("data/baseimages/carmaker1.gif");
 //            carmaker[1] = xtGraphics.getImage("data/baseimages/carmaker2.gif");
-            stagemaker[0] = xtGraphics.getImage("data/baseimages/stagemaker1.gif");
-            stagemaker[1] = xtGraphics.getImage("data/baseimages/stagemaker2.gif");
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-        }
-        xtGraphics.loaddata();
+                Stagemaker[0] = XTGraphics.GetImage("data/baseimages/stagemaker1.gif");
+                Stagemaker[1] = XTGraphics.GetImage("data/baseimages/stagemaker2.gif");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            XTGraphics.Loaddata();
 
-        loadbase();
+            Loadbase();
 
-        stageContos = new ContO[10000];
+            _stageContos = new ContO[10000];
 
-        f = 47.0F;
-        readcookies(contos);
+            _f = 47.0F;
+            Readcookies(_contos);
 //        xtGraphics.testdrive = Madness.testdrive;
 //        if (xtGraphics.testdrive != 0)
 //            if (xtGraphics.testdrive <= 2)
@@ -2003,158 +2016,157 @@ namespace Cum
 //                CheckPoints.name = Madness.testcar;
 //                xtGraphics.fase = -9;
 //            }
-        xtPart2.stoploading();
+            XTPart2.Stoploading();
 //        gsPanel.requestFocus();
-        if (xtGraphics.testdrive == 0 && xtGraphics.firstime)
-        {
-            setupini();
-        }
-        GC.Collect();
+            if (XTGraphics.Testdrive == 0 && XTGraphics.Firstime)
+            {
+                Setupini();
+            }
+            GC.Collect();
 
-        gameLoaded = true;
-    }
+            _gameLoaded = true;
+        }
 
-        public static void gameTick()
-    {
-
-        date = new Date();
-        date.getTime();
-        if (xtGraphics.fase == 1111)
+        public static void GameTick()
         {
-            xtGraphics.loading();
-            if (gameLoaded)
+            _date = new Date();
+            _date.GetTime();
+            if (XTGraphics.Fase == 1111)
             {
-                xtGraphics.fase = 111;
-            }
-        }
-        if (xtGraphics.fase == 111)
-        {
-            if (mouses == 1)
-            {
-                clicknowtime = 800;
-            }
-            if (clicknowtime < 800)
-            {
-                xtGraphics.clicknow();
-                clicknowtime++;
-            }
-            else
-            {
-                clicknowtime = 0;
-                if (!exwist)
+                XTGraphics.Loading();
+                if (_gameLoaded)
                 {
-                    xtGraphics.fase = 9;
-                }
-                mouses = 0;
-                lostfcs = false;
-            }
-        }
-        if (xtGraphics.fase == 9)
-            if (clicknowtime < 76)
-            {
-                xtPart2.rad(clicknowtime);
-                catchlink();
-                if (mouses == 2)
-                {
-                    mouses = 0;
-                }
-                if (mouses == 1)
-                {
-                    mouses = 2;
-                }
-                clicknowtime++;
-                if (u[0].enter)
-                {
-                    u[0].enter = false;
-                    clicknowtime = 76;
+                    XTGraphics.Fase = 111;
                 }
             }
-            else
+            if (XTGraphics.Fase == 111)
             {
-                clicknowtime = 0;
-                xtGraphics.fase = 10;
-                mouses = 0;
-                u[0].falseo(0);
+                if (Mouses == 1)
+                {
+                    _clicknowtime = 800;
+                }
+                if (_clicknowtime < 800)
+                {
+                    XTGraphics.Clicknow();
+                    _clicknowtime++;
+                }
+                else
+                {
+                    _clicknowtime = 0;
+                    if (!_exwist)
+                    {
+                        XTGraphics.Fase = 9;
+                    }
+                    Mouses = 0;
+                    _lostfcs = false;
+                }
             }
-        if (xtGraphics.fase == -9)
-        {
-            if (xtGraphics.loadedt)
+            if (XTGraphics.Fase == 9)
+                if (_clicknowtime < 76)
+                {
+                    XTPart2.Rad(_clicknowtime);
+                    Catchlink();
+                    if (Mouses == 2)
+                    {
+                        Mouses = 0;
+                    }
+                    if (Mouses == 1)
+                    {
+                        Mouses = 2;
+                    }
+                    _clicknowtime++;
+                    if (U[0].Enter)
+                    {
+                        U[0].Enter = false;
+                        _clicknowtime = 76;
+                    }
+                }
+                else
+                {
+                    _clicknowtime = 0;
+                    XTGraphics.Fase = 10;
+                    Mouses = 0;
+                    U[0].Falseo(0);
+                }
+            if (XTGraphics.Fase == -9)
             {
-                xtPart2.mainbg(-101);
-                G.SetColor(new Color(0, 0, 0));
-                G.FillRect(0, 0, 800, 450);
-                //repaint();
-                xtGraphics.strack.unload();
-                xtGraphics.strack = null;
-                xtGraphics.flexpix = null;
-                xtImages.Images.fleximg = null;
-                GC.Collect();
-                xtGraphics.loadedt = false;
+                if (XTGraphics.Loadedt)
+                {
+                    XTPart2.Mainbg(-101);
+                    G.SetColor(new Color(0, 0, 0));
+                    G.FillRect(0, 0, 800, 450);
+                    //repaint();
+                    XTGraphics.Strack.Unload();
+                    XTGraphics.Strack = null;
+                    XTGraphics.Flexpix = null;
+                    XTImages.Images.Fleximg = null;
+                    GC.Collect();
+                    XTGraphics.Loadedt = false;
+                }
+                if (_clicknowtime < 2)
+                {
+                    XTPart2.Mainbg(-101);
+                    G.SetColor(new Color(0, 0, 0));
+                    G.FillRect(65, 25, 670, 400);
+                    _clicknowtime++;
+                }
+                else
+                {
+                    Checkmemory();
+                    XTGraphics.Inishcarselect(_carContos);
+                    _clicknowtime = 0;
+                    XTGraphics.Fase = 7;
+                    _mvect = 50;
+                    Mouses = 0;
+                }
             }
-            if (clicknowtime < 2)
+            if (XTGraphics.Fase == 8)
             {
-                xtPart2.mainbg(-101);
-                G.SetColor(new Color(0, 0, 0));
-                G.FillRect(65, 25, 670, 400);
-                clicknowtime++;
+                XTGraphics.Credits(U[0], _xm, _ym, Mouses);
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (XTGraphics.Flipo <= 100)
+                {
+                    Catchlink();
+                }
+                if (Mouses == 2)
+                {
+                    Mouses = 0;
+                }
+                if (Mouses == 1)
+                {
+                    Mouses = 2;
+                }
             }
-            else
+            if (XTGraphics.Fase == 10)
             {
-                checkmemory();
-                xtGraphics.inishcarselect(carContos);
-                clicknowtime = 0;
-                xtGraphics.fase = 7;
-                mvect = 50;
-                mouses = 0;
+                _mvect = 100;
+                XTPart2.Maini(U[0]);
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
+                {
+                    Mouses = 0;
+                }
+                if (Mouses == 1)
+                {
+                    Mouses = 2;
+                }
             }
-        }
-        if (xtGraphics.fase == 8)
-        {
-            xtGraphics.credits(u[0], xm, ym, mouses);
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (xtGraphics.flipo <= 100)
+            if (XTGraphics.Fase == 103)
             {
-                catchlink();
-            }
-            if (mouses == 2)
-            {
-                mouses = 0;
-            }
-            if (mouses == 1)
-            {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == 10)
-        {
-            mvect = 100;
-            xtPart2.maini(u[0]);
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
-            {
-                mouses = 0;
-            }
-            if (mouses == 1)
-            {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == 103)
-        {
-            mvect = 100;
-            if (xtGraphics.loadedt)
-            {
-                G.SetColor(new Color(0, 0, 0));
-                G.FillRect(0, 0, 800, 450);
-                //repaint();
-                checkmemory();
-                xtGraphics.strack.unload();
-                xtGraphics.strack = null;
-                xtGraphics.flexpix = null;
-                xtImages.Images.fleximg = null;
-                GC.Collect();
-                xtGraphics.loadedt = false;
-            }
+                _mvect = 100;
+                if (XTGraphics.Loadedt)
+                {
+                    G.SetColor(new Color(0, 0, 0));
+                    G.FillRect(0, 0, 800, 450);
+                    //repaint();
+                    Checkmemory();
+                    XTGraphics.Strack.Unload();
+                    XTGraphics.Strack = null;
+                    XTGraphics.Flexpix = null;
+                    XTImages.Images.Fleximg = null;
+                    GC.Collect();
+                    XTGraphics.Loadedt = false;
+                }
 //            if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)
 //            {
 //                Madness.carmaker();
@@ -2163,33 +2175,33 @@ namespace Cum
 //            {
 //                Madness.stagemaker();
 //            }
-            xtPart2.maini(u[0]);
-            xtGraphics.fase = 10;
-            if (mouses == 2)
-            {
-                mouses = 0;
+                XTPart2.Maini(U[0]);
+                XTGraphics.Fase = 10;
+                if (Mouses == 2)
+                {
+                    Mouses = 0;
+                }
+                if (Mouses == 1)
+                {
+                    Mouses = 2;
+                }
             }
-            if (mouses == 1)
+            if (XTGraphics.Fase == 102)
             {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == 102)
-        {
-            mvect = 100;
-            if (xtGraphics.loadedt)
-            {
-                G.SetColor(new Color(0, 0, 0));
-                G.FillRect(0, 0, 800, 450);
-                //repaint();
-                checkmemory();
-                xtGraphics.strack.unload();
-                xtGraphics.strack = null;
-                xtGraphics.flexpix = null;
-                Images.fleximg = null;
-                GC.Collect();
-                xtGraphics.loadedt = false;
-            }
+                _mvect = 100;
+                if (XTGraphics.Loadedt)
+                {
+                    G.SetColor(new Color(0, 0, 0));
+                    G.FillRect(0, 0, 800, 450);
+                    //repaint();
+                    Checkmemory();
+                    XTGraphics.Strack.Unload();
+                    XTGraphics.Strack = null;
+                    XTGraphics.Flexpix = null;
+                    XTImages.Images.Fleximg = null;
+                    GC.Collect();
+                    XTGraphics.Loadedt = false;
+                }
 //            if (xtGraphics.testdrive == 1 || xtGraphics.testdrive == 2)
 //            {
 //                Madness.carmaker();
@@ -2198,842 +2210,858 @@ namespace Cum
 //            {
 //                Madness.stagemaker();
 //            }
-            xtPart2.maini2();
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
-            {
-                mouses = 0;
+                XTPart2.Maini2();
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
+                {
+                    Mouses = 0;
+                }
+                if (Mouses == 1)
+                {
+                    Mouses = 2;
+                }
             }
-            if (mouses == 1)
+            if (XTGraphics.Fase == -22)
             {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == -22)
-        {
 //            CheckPoints.name = Madness.testcar;
-            CheckPoints.stage = -1;
-            loadstage();
+                CheckPoints.Stage = -1;
+                Loadstage();
 //            if (CheckPoints.stage == -3)
 //            {
 //                Madness.testcar = "Failx12";
 //                Madness.stagemaker();
 //            }
-        }
-        if (xtGraphics.fase == 11)
-        {
-            xtGraphics.inst(u[0]);
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
-            {
-                mouses = 0;
             }
-            if (mouses == 1)
+            if (XTGraphics.Fase == 11)
             {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == -5)
-        {
-            mvect = 100;
-            xtGraphics.finish(carContos, u[0], xm, ym, moused); // TODO carContos or contos here?
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
-            {
-                mouses = 0;
-            }
-            if (mouses == 1)
-            {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == 7)
-        {
-            xtGraphics.carselect(u[0], carContos, xm, ym, moused);
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
-            {
-                mouses = 0;
-            }
-            if (mouses == 1)
-            {
-                mouses = 2;
-            }
-            drawms();
-        }
-        if (xtGraphics.fase == 6)
-        {
-            xtPart2.musicomp(CheckPoints.stage, u[0]);
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
-            {
-                mouses = 0;
-            }
-            if (mouses == 1)
-            {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == 5)
-        {
-            mvect = 100;
-            xtGraphics.loadmusic(CheckPoints.stage, CheckPoints.trackname, CheckPoints.trackvol);
-        }
-        if (xtGraphics.fase == 4)
-        {
-            xtGraphics.cantgo(u[0]);
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
-            {
-                mouses = 0;
-            }
-            if (mouses == 1)
-            {
-                mouses = 2;
-            }
-        }
-        if (xtGraphics.fase == 3)
-        {
-            G.SetColor(new Color(0, 0, 0));
-            G.FillRect(65, 25, 670, 400);
-            //repaint();
-            xtGraphics.inishstageselect();
-        }
-        if (xtGraphics.fase == 2)
-        {
-            mvect = 100;
-            xtGraphics.loadingstage(true);
-            CheckPoints.nfix = 0;
-            CheckPoints.notb = false;
-            loadstage();
-            u[0].falseo(0);
-//            udpmistro.freg = 0.0F;
-            mvect = 20;
-        }
-        if (xtGraphics.fase == 1)
-        {
-            xtPart2.trackbgf(false);
-//            rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-            if (CheckPoints.stage != -3)
-            {
-                Medium.aroundtrack();
-                if (Medium.hit == 5000 && mvect < 40)
+                XTGraphics.Inst(U[0]);
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
                 {
-                    mvect++;
+                    Mouses = 0;
                 }
-                DistHolder[] ai = new DistHolder[notb];
-                for (int k7 = xtGraphics.nplayers; k7 < notb; k7++)
+                if (Mouses == 1)
                 {
-                    ai[k7] = new DistHolder(k7, stageContos[k7].dist);
-                }
-
-                ArrayExt.sort(ai, contoComparator2);
-
-                for (int i14 = 0; i14 < notb; i14++)
-                {
-                    stageContos[ai[i14].Id].d();
+                    Mouses = 2;
                 }
             }
-            if (!openm)
+            if (XTGraphics.Fase == -5)
             {
-                xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            }
-            if (mouses == 2)
-            {
-                mouses = 0;
-            }
-            if (mouses == 1)
-            {
-                mouses = 2;
-            }
-            xtPart2.stageselect(u[0], xm, ym, moused);
-            drawms();
-        }
-        if (xtGraphics.fase == 0)
-        {
-            for (int player = 0; player < xtGraphics.nplayers; player++)
-                if (mads[player].newcar)
+                _mvect = 100;
+                XTGraphics.Finish(_carContos, U[0], _xm, _ym, _moused); // TODO carContos or contos here?
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
                 {
-                    int i34 = stageContos[player].xz;
-                    int i35 = stageContos[player].xy;
-                    int i36 = stageContos[player].zy;
-                    stageContos[player] = new ContO(carContos[mads[player].cn], stageContos[player].x,
-                        stageContos[player].y, stageContos[player].z, 0);
-                    stageContos[player].xz = i34;
-                    stageContos[player].xy = i35;
-                    stageContos[player].zy = i36;
-                    mads[player].newcar = false;
+                    Mouses = 0;
                 }
-            Medium.d();
-
-            DistHolder[] ai = new DistHolder[nob];
-            for (int k7 = 0; k7 < nob; k7++)
-            {
-                ai[k7] = new DistHolder(k7, stageContos[k7].dist);
-            }
-
-            ArrayExt.sort(ai, contoComparator2);
-
-            for (int i14 = 0; i14 < nob; i14++)
-            {
-                stageContos[ai[i14].Id].d();
-            }
-
-            if (xtGraphics.starcnt == 0)
-            {
-                for (int k = 0; k < xtGraphics.nplayers; k++)
+                if (Mouses == 1)
                 {
-                    for (int m = 0; m < xtGraphics.nplayers; m++)
-                        if (m != k)
-                        {
-                            mads[k].colide(stageContos[k], mads[m], stageContos[m]);
-                        }
-                }
-                for (int k = 0; k < xtGraphics.nplayers; k++)
-                {
-                    mads[k].drive(u[k], stageContos[k]);
-                }
-                for (int k = 0; k < xtGraphics.nplayers; k++)
-                {
-                    Record.rec(stageContos[k], k, mads[k].squash, mads[k].lastcolido, mads[k].cntdest, 0);
-                }
-                CheckPoints.checkstat(mads, stageContos, xtGraphics.nplayers, xtGraphics.im, 0);
-                for (int k = 1; k < xtGraphics.nplayers; k++)
-                {
-                    u[k].preform(mads[k], stageContos[k]);
+                    Mouses = 2;
                 }
             }
-            else
+            if (XTGraphics.Fase == 7)
             {
-                if (xtGraphics.starcnt == 130)
+                XTGraphics.Carselect(U[0], _carContos, _xm, _ym, _moused);
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
                 {
-                    Medium.adv = 1900;
-                    Medium.zy = 40;
-                    Medium.vxz = 70;
-                    G.SetColor(new Color(255, 255, 255));
-                    G.FillRect(0, 0, 800, 450);
+                    Mouses = 0;
                 }
-                if (xtGraphics.starcnt != 0)
+                if (Mouses == 1)
                 {
-                    xtGraphics.starcnt--;
+                    Mouses = 2;
+                }
+                Drawms();
+            }
+            if (XTGraphics.Fase == 6)
+            {
+                XTPart2.Musicomp(CheckPoints.Stage, U[0]);
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
+                {
+                    Mouses = 0;
+                }
+                if (Mouses == 1)
+                {
+                    Mouses = 2;
                 }
             }
-            if (xtGraphics.starcnt < 38)
+            if (XTGraphics.Fase == 5)
             {
-                if (view == 0)
+                _mvect = 100;
+                XTGraphics.Loadmusic(CheckPoints.Stage, CheckPoints.Trackname, CheckPoints.Trackvol);
+            }
+            if (XTGraphics.Fase == 4)
+            {
+                XTGraphics.Cantgo(U[0]);
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
                 {
-                    Medium.follow(stageContos[0], mads[0].cxz, u[0].lookback);
-                    xtPart2.stat(mads[0], stageContos[0], u[0], true);
-                    if (mads[0].outshakedam > 0)
-                    {
-                        shaka = mads[0].outshakedam / 20;
-                        if (shaka > 25)
-                        {
-                            shaka = 25;
-                        }
-                    }
-                    mvect = 65 + Math.Abs(lmxz - Medium.xz) / 5 * 100;
-                    if (mvect > 90)
-                    {
-                        mvect = 90;
-                    }
-                    lmxz = Medium.xz;
+                    Mouses = 0;
                 }
-                if (view == 1)
+                if (Mouses == 1)
                 {
-                    Medium.around(stageContos[0], false);
-                    xtPart2.stat(mads[0], stageContos[0], u[0], false);
-                    mvect = 80;
-                }
-                if (view == 2)
-                {
-                    Medium.watch(stageContos[0], mads[0].mxz);
-                    xtPart2.stat(mads[0], stageContos[0], u[0], false);
-                    mvect = 65 + Math.Abs(lmxz - Medium.xz) / 5 * 100;
-                    if (mvect > 90)
-                    {
-                        mvect = 90;
-                    }
-                    lmxz = Medium.xz;
-                }
-                if (mouses == 1)
-                {
-                    u[0].enter = true;
-                    mouses = 0;
+                    Mouses = 2;
                 }
             }
-            else
-            {
-                int k = 3;
-                if (xtGraphics.nplayers == 1)
-                {
-                    k = 0;
-                }
-                Medium.around(stageContos[k], true);
-                mvect = 80;
-                if (u[0].enter || u[0].handb)
-                {
-                    xtGraphics.starcnt = 38;
-                    u[0].enter = false;
-                    u[0].handb = false;
-                }
-                if (xtGraphics.starcnt == 38)
-                {
-                    mouses = 0;
-                    Medium.vert = false;
-                    Medium.adv = 900;
-                    Medium.vxz = 180;
-                    CheckPoints.checkstat(mads, stageContos, xtGraphics.nplayers, xtGraphics.im, 0);
-                    Medium.follow(stageContos[0], mads[0].cxz, 0);
-                    xtPart2.stat(mads[0], stageContos[0], u[0], true);
-//                    G.SetColor(new Color(255, 255, 255));
-//                    G.FillRect(0, 0, 800, 450);
-                }
-            }
-        }
-        if (xtGraphics.fase == -1)
-        {
-            if (recordtime == 0)
-            {
-                for (int k = 0; k < xtGraphics.nplayers; k++)
-                {
-                    Record.ocar[k] = new ContO(stageContos[k], 0, 0, 0, 0);
-                    stageContos[k] = new ContO(Record.car[0,k], 0, 0, 0, 0);
-                }
-            }
-            Medium.d();
-            int j = 0;
-            int[] ais  = new int[10000];
-            for (int k = 0; k < nob; k++)
-                if (stageContos[k].dist != 0)
-                {
-                    ais[j] = k;
-                    j++;
-                }
-                else
-                {
-                    stageContos[k].d();
-                }
-            int[] is2 = new int[j];
-            for (int k = 0; k < j; k++)
-            {
-                is2[k] = 0;
-            }
-            for (int k = 0; k < j; k++)
-            {
-                for (int m = k + 1; m < j; m++)
-                    if (stageContos[ais[k]].dist != stageContos[ ais [m]].dist) {
-                    if (stageContos[ais[k]].dist < stageContos[ ais [m]].dist) {
-                        is2[k]++;
-                    } else {
-                        is2[m]++;
-                    }
-                } else if (m > k)
-                {
-                    is2[k]++;
-                }
-                else
-                {
-                    is2[m]++;
-                }
-            }
-            for (int k = 0; k < j; k++)
-            {
-                for (int m = 0; m < j; m++)
-                    if (is2[m] == k)
-                    {
-                        stageContos[ ais [m]].d();
-                    }
-            }
-            if (u[0].enter || u[0].handb || mouses == 1)
-            {
-                recordtime = 299;
-                u[0].enter = false;
-                u[0].handb = false;
-                mouses = 0;
-            }
-            for (int k = 0; k < xtGraphics.nplayers; k++)
-            {
-                if (Record.fix[k] == recordtime)
-                    if (stageContos[k].dist == 0)
-                    {
-                        stageContos[k].fcnt = 8;
-                    }
-                    else
-                    {
-                        stageContos[k].fix = true;
-                    }
-                if (stageContos[k].fcnt == 7 || stageContos[k].fcnt == 8)
-                {
-                    stageContos[k] = new ContO(contos[mads[k].cn], 0, 0, 0, 0);
-                    Record.cntdest[k] = 0;
-                }
-                if (recordtime == 299)
-                {
-                    stageContos[k] = new ContO(Record.ocar[k], 0, 0, 0, 0);
-                }
-                Record.play(stageContos[k], mads[k], k, recordtime);
-            }
-            if (++recordtime == 300)
-            {
-                recordtime = 0;
-                xtGraphics.fase = -6;
-            }
-            else
-            {
-                xtPart2.replyn();
-            }
-            Medium.around(stageContos[0], false);
-        }
-        if (xtGraphics.fase == -2)
-        {
-            if (xtGraphics.multion >= 2)
-            {
-                Record.hcaught = false;
-            }
-            u[0].falseo(3);
-            if (Record.hcaught && Record.wasted == 0 && Record.whenwasted != 229 &&
-                (CheckPoints.stage == 1 || CheckPoints.stage == 2) && xtGraphics.looped != 0)
-            {
-                Record.hcaught = false;
-            }
-            if (Record.hcaught)
+            if (XTGraphics.Fase == 3)
             {
                 G.SetColor(new Color(0, 0, 0));
-                G.FillRect(0, 0, 800, 450);
+                G.FillRect(65, 25, 670, 400);
                 //repaint();
+                XTGraphics.Inishstageselect();
             }
-            if (Record.hcaught)
+            if (XTGraphics.Fase == 2)
             {
-                Medium.vert = Medium.random() <= 0.45;
-                Medium.adv = (int) (900.0F * Medium.random());
-                Medium.vxz = (int) (360.0F * Medium.random());
-                recordtime = 0;
-                xtGraphics.fase = -3;
-                clicknowtime = 0;
-                finishrecording = 0;
+                _mvect = 100;
+                XTGraphics.Loadingstage(true);
+                CheckPoints.Nfix = 0;
+                CheckPoints.Notb = false;
+                Loadstage();
+                U[0].Falseo(0);
+//            udpmistro.freg = 0.0F;
+                _mvect = 20;
             }
-            else
+            if (XTGraphics.Fase == 1)
             {
-                recordtime = -2;
-                xtGraphics.fase = -4;
-            }
-        }
-        if (xtGraphics.fase == -3)
-        {
-            if (recordtime == 0)
-            {
-                if (Record.wasted == 0)
+                XTPart2.Trackbgf(false);
+//            rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+                if (CheckPoints.Stage != -3)
                 {
-                    if (Record.whenwasted == 229)
+                    Medium.Aroundtrack();
+                    if (Medium.Hit == 5000 && _mvect < 40)
                     {
-                        wastedpoint = 67;
-                        Medium.vxz += 90;
+                        _mvect++;
                     }
-                    else
+                    var ai = new DistHolder[_notb];
+                    for (var k7 = XTGraphics.Nplayers; k7 < _notb; k7++)
                     {
-                        wastedpoint = (int) (Medium.random() * 4.0F);
-                        if (wastedpoint == 1 || wastedpoint == 3)
-                        {
-                            wastedpoint = 69;
-                        }
-                        if (wastedpoint == 2 || wastedpoint == 4)
-                        {
-                            wastedpoint = 30;
-                        }
+                        ai[k7] = new DistHolder(k7, _stageContos[k7].Dist);
+                    }
+
+                    ArrayExt.Sort(ai, ContoComparator2);
+
+                    for (var i14 = 0; i14 < _notb; i14++)
+                    {
+                        _stageContos[ai[i14].Id].D();
                     }
                 }
-                else if (Record.closefinish != 0 && finishrecording != 0)
+                if (!Openm)
                 {
-                    Medium.vxz += 90;
+                    XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
                 }
-                for (int m = 0; m < xtGraphics.nplayers; m++)
+                if (Mouses == 2)
                 {
-                    stageContos[m] = new ContO(Record.starcar[m], 0, 0, 0, 0);
+                    Mouses = 0;
                 }
+                if (Mouses == 1)
+                {
+                    Mouses = 2;
+                }
+                XTPart2.Stageselect(U[0], _xm, _ym, _moused);
+                Drawms();
             }
-            Medium.d();
-            int j = 0;
-            int[] ais  = new int[10000];
-            for (int k = 0; k < nob; k++)
-                if (stageContos[k].dist != 0)
-                {
-                    ais[j] = k;
-                    j++;
-                }
-                else
-                {
-                    stageContos[k].d();
-                }
-            int[] is2 = new int[j];
-            for (int k = 0; k < j; k++)
+            if (XTGraphics.Fase == 0)
             {
-                is2[k] = 0;
-            }
-            for (int k = 0; k < j; k++)
-            {
-                for (int m = k + 1; m < j; m++)
-                    if (stageContos[ ais [
-                k]].dist != stageContos[ ais [m]].dist) {
-                    if (stageContos[ ais [k]].dist < stageContos[ ais [m]].dist) {
-                        is2[k]++;
-                    } else {
-                        is2[m]++;
-                    }
-                } else if (m > k)
-                {
-                    is2[k]++;
-                }
-                else
-                {
-                    is2[m]++;
-                }
-            }
-            for (int k = 0; k < j; k++)
-            {
-                for (int m = 0; m < j; m++)
-                    if (is2[m] == k)
+                for (var player = 0; player < XTGraphics.Nplayers; player++)
+                    if (Mads[player].Newcar)
                     {
-                        stageContos[ ais [m]].d();
+                        var i34 = _stageContos[player].Xz;
+                        var i35 = _stageContos[player].Xy;
+                        var i36 = _stageContos[player].Zy;
+                        _stageContos[player] = new ContO(_carContos[Mads[player].Cn], _stageContos[player].X,
+                            _stageContos[player].Y, _stageContos[player].Z, 0)
+                        {
+                            Xz = i34,
+                            Xy = i35,
+                            Zy = i36
+                        };
+                        Mads[player].Newcar = false;
                     }
-            }
-            for (int k = 0; k < xtGraphics.nplayers; k++)
-            {
-                if (Record.hfix[k] == recordtime)
-                    if (stageContos[k].dist == 0)
-                    {
-                        stageContos[k].fcnt = 8;
-                    }
-                    else
-                    {
-                        stageContos[k].fix = true;
-                    }
-                if (stageContos[k].fcnt == 7 || stageContos[k].fcnt == 8)
+                Medium.D();
+
+                var ai = new DistHolder[_nob];
+                for (var k7 = 0; k7 < _nob; k7++)
                 {
-                    stageContos[k] = new ContO(contos[mads[k].cn], 0, 0, 0, 0);
-                    Record.cntdest[k] = 0;
+                    ai[k7] = new DistHolder(k7, _stageContos[k7].Dist);
                 }
-                Record.playh(stageContos[k], mads[k], k, recordtime, xtGraphics.im);
-            }
-            if (finishrecording == 2 && recordtime == 299)
-            {
-                u[0].enter = true;
-            }
-            if (u[0].enter || u[0].handb)
-            {
-                xtGraphics.fase = -4;
-                u[0].enter = false;
-                u[0].handb = false;
-                recordtime = -7;
-            }
-            else
-            {
-                xtGraphics.levelhigh(Record.wasted, Record.whenwasted, Record.closefinish, recordtime,
-                    CheckPoints.stage);
-                if (recordtime == 0 || recordtime == 1 || recordtime == 2)
+
+                ArrayExt.Sort(ai, ContoComparator2);
+
+                for (var i14 = 0; i14 < _nob; i14++)
                 {
-                    G.SetColor(new Color(0, 0, 0));
-                    G.FillRect(0, 0, 800, 450);
+                    _stageContos[ai[i14].Id].D();
                 }
-                if (Record.wasted != xtGraphics.im)
+
+                if (XTGraphics.Starcnt == 0)
                 {
-                    if (Record.closefinish == 0)
+                    for (var k = 0; k < XTGraphics.Nplayers; k++)
                     {
-                        if (clicknowtime == 9 || clicknowtime == 11)
-                        {
-                            G.SetColor(new Color(255, 255, 255));
-                            G.FillRect(0, 0, 800, 450);
-                        }
-                        if (clicknowtime == 0)
-                        {
-                            Medium.around(stageContos[xtGraphics.im], false);
-                        }
-                        if (clicknowtime > 0 && clicknowtime < 20)
-                        {
-                            Medium.transaround(stageContos[xtGraphics.im], stageContos[Record.wasted], clicknowtime);
-                        }
-                        if (clicknowtime == 20)
-                        {
-                            Medium.around(stageContos[Record.wasted], false);
-                        }
-                        if (recordtime > Record.whenwasted && clicknowtime != 20)
-                        {
-                            clicknowtime++;
-                        }
-                        if ((clicknowtime == 0 || clicknowtime == 20) && ++recordtime == 300)
-                        {
-                            recordtime = 0;
-                            clicknowtime = 0;
-                            finishrecording++;
-                        }
+                        for (var m = 0; m < XTGraphics.Nplayers; m++)
+                            if (m != k)
+                            {
+                                Mads[k].Colide(_stageContos[k], Mads[m], _stageContos[m]);
+                            }
                     }
-                    else if (Record.closefinish == 1)
+                    for (var k = 0; k < XTGraphics.Nplayers; k++)
                     {
-                        if (clicknowtime == 0)
-                        {
-                            Medium.around(stageContos[xtGraphics.im], false);
-                        }
-                        if (clicknowtime > 0 && clicknowtime < 20)
-                        {
-                            Medium.transaround(stageContos[xtGraphics.im], stageContos[Record.wasted], clicknowtime);
-                        }
-                        if (clicknowtime == 20)
-                        {
-                            Medium.around(stageContos[Record.wasted], false);
-                        }
-                        if (clicknowtime > 20 && clicknowtime < 40)
-                        {
-                            Medium.transaround(stageContos[Record.wasted], stageContos[xtGraphics.im],
-                                clicknowtime - 20);
-                        }
-                        if (clicknowtime == 40)
-                        {
-                            Medium.around(stageContos[xtGraphics.im], false);
-                        }
-                        if (clicknowtime > 40 && clicknowtime < 60)
-                        {
-                            Medium.transaround(stageContos[xtGraphics.im], stageContos[Record.wasted],
-                                clicknowtime - 40);
-                        }
-                        if (clicknowtime == 60)
-                        {
-                            Medium.around(stageContos[Record.wasted], false);
-                        }
-                        if (recordtime > 160 && clicknowtime < 20)
-                        {
-                            clicknowtime++;
-                        }
-                        if (recordtime > 230 && clicknowtime < 40)
-                        {
-                            clicknowtime++;
-                        }
-                        if (recordtime > 280 && clicknowtime < 60)
-                        {
-                            clicknowtime++;
-                        }
-                        if ((clicknowtime == 0 || clicknowtime == 20 || clicknowtime == 40 || clicknowtime == 60) &&
-                            ++recordtime == 300)
-                        {
-                            recordtime = 0;
-                            clicknowtime = 0;
-                            finishrecording++;
-                        }
+                        Mads[k].Drive(U[k], _stageContos[k]);
                     }
-                    else
+                    for (var k = 0; k < XTGraphics.Nplayers; k++)
                     {
-                        if (clicknowtime == 0)
-                        {
-                            Medium.around(stageContos[xtGraphics.im], false);
-                        }
-                        if (clicknowtime > 0 && clicknowtime < 20)
-                        {
-                            Medium.transaround(stageContos[xtGraphics.im], stageContos[Record.wasted], clicknowtime);
-                        }
-                        if (clicknowtime == 20)
-                        {
-                            Medium.around(stageContos[Record.wasted], false);
-                        }
-                        if (clicknowtime > 20 && clicknowtime < 40)
-                        {
-                            Medium.transaround(stageContos[Record.wasted], stageContos[xtGraphics.im],
-                                clicknowtime - 20);
-                        }
-                        if (clicknowtime == 40)
-                        {
-                            Medium.around(stageContos[xtGraphics.im], false);
-                        }
-                        if (clicknowtime > 40 && clicknowtime < 60)
-                        {
-                            Medium.transaround(stageContos[xtGraphics.im], stageContos[Record.wasted],
-                                clicknowtime - 40);
-                        }
-                        if (clicknowtime == 60)
-                        {
-                            Medium.around(stageContos[Record.wasted], false);
-                        }
-                        if (clicknowtime > 60 && clicknowtime < 80)
-                        {
-                            Medium.transaround(stageContos[Record.wasted], stageContos[xtGraphics.im],
-                                clicknowtime - 60);
-                        }
-                        if (clicknowtime == 80)
-                        {
-                            Medium.around(stageContos[xtGraphics.im], false);
-                        }
-                        if (recordtime > 90 && clicknowtime < 20)
-                        {
-                            clicknowtime++;
-                        }
-                        if (recordtime > 160 && clicknowtime < 40)
-                        {
-                            clicknowtime++;
-                        }
-                        if (recordtime > 230 && clicknowtime < 60)
-                        {
-                            clicknowtime++;
-                        }
-                        if (recordtime > 280 && clicknowtime < 80)
-                        {
-                            clicknowtime++;
-                        }
-                        if ((clicknowtime == 0 || clicknowtime == 20 || clicknowtime == 40 || clicknowtime == 60 ||
-                             clicknowtime == 80) && ++recordtime == 300)
-                        {
-                            recordtime = 0;
-                            clicknowtime = 0;
-                            finishrecording++;
-                        }
+                        Record.Rec(_stageContos[k], k, Mads[k].Squash, Mads[k].Lastcolido, Mads[k].Cntdest, 0);
+                    }
+                    CheckPoints.Checkstat(Mads, _stageContos, XTGraphics.Nplayers, XTGraphics.Im, 0);
+                    for (var k = 1; k < XTGraphics.Nplayers; k++)
+                    {
+                        U[k].Preform(Mads[k], _stageContos[k]);
                     }
                 }
                 else
                 {
-                    if (wastedpoint == 67 && (clicknowtime == 3 || clicknowtime == 31 || clicknowtime == 66))
+                    if (XTGraphics.Starcnt == 130)
                     {
+                        Medium.Adv = 1900;
+                        Medium.Zy = 40;
+                        Medium.Vxz = 70;
                         G.SetColor(new Color(255, 255, 255));
                         G.FillRect(0, 0, 800, 450);
                     }
-                    if (wastedpoint == 69 && (clicknowtime == 3 || clicknowtime == 5 || clicknowtime == 31 ||
-                                              clicknowtime == 33 || clicknowtime == 66 || clicknowtime == 68))
+                    if (XTGraphics.Starcnt != 0)
                     {
-                        G.SetColor(new Color(255, 255, 255));
-                        G.FillRect(0, 0, 800, 450);
+                        XTGraphics.Starcnt--;
                     }
-                    if (wastedpoint == 30 && clicknowtime >= 1 && clicknowtime < 30)
-                        if (clicknowtime % (int) (2.0F + Medium.random() * 3.0F) == 0 && !flashingscreen)
+                }
+                if (XTGraphics.Starcnt < 38)
+                {
+                    if (_view == 0)
+                    {
+                        Medium.Follow(_stageContos[0], Mads[0].Cxz, U[0].Lookback);
+                        XTPart2.Stat(Mads[0], _stageContos[0], U[0], true);
+                        if (Mads[0].Outshakedam > 0)
                         {
-                            G.SetColor(new Color(255, 255, 255));
-                            G.FillRect(0, 0, 800, 450);
-                            flashingscreen = true;
+                            _shaka = Mads[0].Outshakedam / 20;
+                            if (_shaka > 25)
+                            {
+                                _shaka = 25;
+                            }
+                        }
+                        _mvect = 65 + Math.Abs(_lmxz - Medium.Xz) / 5 * 100;
+                        if (_mvect > 90)
+                        {
+                            _mvect = 90;
+                        }
+                        _lmxz = Medium.Xz;
+                    }
+                    if (_view == 1)
+                    {
+                        Medium.Around(_stageContos[0], false);
+                        XTPart2.Stat(Mads[0], _stageContos[0], U[0], false);
+                        _mvect = 80;
+                    }
+                    if (_view == 2)
+                    {
+                        Medium.Watch(_stageContos[0], Mads[0].Mxz);
+                        XTPart2.Stat(Mads[0], _stageContos[0], U[0], false);
+                        _mvect = 65 + Math.Abs(_lmxz - Medium.Xz) / 5 * 100;
+                        if (_mvect > 90)
+                        {
+                            _mvect = 90;
+                        }
+                        _lmxz = Medium.Xz;
+                    }
+                    if (Mouses == 1)
+                    {
+                        U[0].Enter = true;
+                        Mouses = 0;
+                    }
+                }
+                else
+                {
+                    var k = 3;
+                    if (XTGraphics.Nplayers == 1)
+                    {
+                        k = 0;
+                    }
+                    Medium.Around(_stageContos[k], true);
+                    _mvect = 80;
+                    if (U[0].Enter || U[0].Handb)
+                    {
+                        XTGraphics.Starcnt = 38;
+                        U[0].Enter = false;
+                        U[0].Handb = false;
+                    }
+                    if (XTGraphics.Starcnt == 38)
+                    {
+                        Mouses = 0;
+                        Medium.Vert = false;
+                        Medium.Adv = 900;
+                        Medium.Vxz = 180;
+                        CheckPoints.Checkstat(Mads, _stageContos, XTGraphics.Nplayers, XTGraphics.Im, 0);
+                        Medium.Follow(_stageContos[0], Mads[0].Cxz, 0);
+                        XTPart2.Stat(Mads[0], _stageContos[0], U[0], true);
+//                    G.SetColor(new Color(255, 255, 255));
+//                    G.FillRect(0, 0, 800, 450);
+                    }
+                }
+            }
+            if (XTGraphics.Fase == -1)
+            {
+                if (_recordtime == 0)
+                {
+                    for (var k = 0; k < XTGraphics.Nplayers; k++)
+                    {
+                        Record.Ocar[k] = new ContO(_stageContos[k], 0, 0, 0, 0);
+                        _stageContos[k] = new ContO(Record.Car[0, k], 0, 0, 0, 0);
+                    }
+                }
+                Medium.D();
+                var j = 0;
+                var ais = new int[10000];
+                for (var k = 0; k < _nob; k++)
+                    if (_stageContos[k].Dist != 0)
+                    {
+                        ais[j] = k;
+                        j++;
+                    }
+                    else
+                    {
+                        _stageContos[k].D();
+                    }
+                var is2 = new int[j];
+                for (var k = 0; k < j; k++)
+                {
+                    is2[k] = 0;
+                }
+                for (var k = 0; k < j; k++)
+                {
+                    for (var m = k + 1; m < j; m++)
+                        if (_stageContos[ais[k]].Dist != _stageContos[ais[m]].Dist)
+                        {
+                            if (_stageContos[ais[k]].Dist < _stageContos[ais[m]].Dist)
+                            {
+                                is2[k]++;
+                            }
+                            else
+                            {
+                                is2[m]++;
+                            }
+                        }
+                        else if (m > k)
+                        {
+                            is2[k]++;
                         }
                         else
                         {
-                            flashingscreen = false;
+                            is2[m]++;
                         }
-                    if (recordtime > Record.whenwasted && clicknowtime != wastedpoint)
-                    {
-                        clicknowtime++;
-                    }
-                    Medium.around(stageContos[xtGraphics.im], false);
-                    if ((clicknowtime == 0 || clicknowtime == wastedpoint) && ++recordtime == 300)
-                    {
-                        recordtime = 0;
-                        clicknowtime = 0;
-                        finishrecording++;
-                    }
                 }
-            }
-        }
-        if (xtGraphics.fase == -4)
-        {
-            if (recordtime == 0)
-            {
-                xtPart2.sendwin();
-                if (xtGraphics.winner && xtGraphics.multion == 0 && xtGraphics.gmode != 0 &&
-                    CheckPoints.stage != xtGraphics.nTracks && CheckPoints.stage == xtGraphics.unlocked)
+                for (var k = 0; k < j; k++)
                 {
-                    xtGraphics.unlocked++;
-                    setcarcookie(xtGraphics.sc[0], CarDefine.names[xtGraphics.sc[0]], xtGraphics.arnp, xtGraphics.gmode,
-                        xtGraphics.unlocked);
-                    xtGraphics.unlocked--;
+                    for (var m = 0; m < j; m++)
+                        if (is2[m] == k)
+                        {
+                            _stageContos[ais[m]].D();
+                        }
+                }
+                if (U[0].Enter || U[0].Handb || Mouses == 1)
+                {
+                    _recordtime = 299;
+                    U[0].Enter = false;
+                    U[0].Handb = false;
+                    Mouses = 0;
+                }
+                for (var k = 0; k < XTGraphics.Nplayers; k++)
+                {
+                    if (Record.Fix[k] == _recordtime)
+                        if (_stageContos[k].Dist == 0)
+                        {
+                            _stageContos[k].Fcnt = 8;
+                        }
+                        else
+                        {
+                            _stageContos[k].Fix = true;
+                        }
+                    if (_stageContos[k].Fcnt == 7 || _stageContos[k].Fcnt == 8)
+                    {
+                        _stageContos[k] = new ContO(_contos[Mads[k].Cn], 0, 0, 0, 0);
+                        Record.Cntdest[k] = 0;
+                    }
+                    if (_recordtime == 299)
+                    {
+                        _stageContos[k] = new ContO(Record.Ocar[k], 0, 0, 0, 0);
+                    }
+                    Record.Play(_stageContos[k], Mads[k], k, _recordtime);
+                }
+                if (++_recordtime == 300)
+                {
+                    _recordtime = 0;
+                    XTGraphics.Fase = -6;
+                }
+                else
+                {
+                    XTPart2.Replyn();
+                }
+                Medium.Around(_stageContos[0], false);
+            }
+            if (XTGraphics.Fase == -2)
+            {
+                if (XTGraphics.Multion >= 2)
+                {
+                    Record.Hcaught = false;
+                }
+                U[0].Falseo(3);
+                if (Record.Hcaught && Record.Wasted == 0 && Record.Whenwasted != 229 &&
+                    (CheckPoints.Stage == 1 || CheckPoints.Stage == 2) && XTGraphics.Looped != 0)
+                {
+                    Record.Hcaught = false;
+                }
+                if (Record.Hcaught)
+                {
+                    G.SetColor(new Color(0, 0, 0));
+                    G.FillRect(0, 0, 800, 450);
+                    //repaint();
+                }
+                if (Record.Hcaught)
+                {
+                    Medium.Vert = Medium.Random() <= 0.45;
+                    Medium.Adv = (int) (900.0F * Medium.Random());
+                    Medium.Vxz = (int) (360.0F * Medium.Random());
+                    _recordtime = 0;
+                    XTGraphics.Fase = -3;
+                    _clicknowtime = 0;
+                    _finishrecording = 0;
+                }
+                else
+                {
+                    _recordtime = -2;
+                    XTGraphics.Fase = -4;
                 }
             }
-            if (recordtime <= 0)
+            if (XTGraphics.Fase == -3)
             {
-                G.DrawImage(Images.mdness, 289, 30, null);
-                G.DrawImage(Images.dude[0], 135, 10, null);
+                if (_recordtime == 0)
+                {
+                    if (Record.Wasted == 0)
+                    {
+                        if (Record.Whenwasted == 229)
+                        {
+                            _wastedpoint = 67;
+                            Medium.Vxz += 90;
+                        }
+                        else
+                        {
+                            _wastedpoint = (int) (Medium.Random() * 4.0F);
+                            if (_wastedpoint == 1 || _wastedpoint == 3)
+                            {
+                                _wastedpoint = 69;
+                            }
+                            if (_wastedpoint == 2 || _wastedpoint == 4)
+                            {
+                                _wastedpoint = 30;
+                            }
+                        }
+                    }
+                    else if (Record.Closefinish != 0 && _finishrecording != 0)
+                    {
+                        Medium.Vxz += 90;
+                    }
+                    for (var m = 0; m < XTGraphics.Nplayers; m++)
+                    {
+                        _stageContos[m] = new ContO(Record.Starcar[m], 0, 0, 0, 0);
+                    }
+                }
+                Medium.D();
+                var j = 0;
+                var ais = new int[10000];
+                for (var k = 0; k < _nob; k++)
+                    if (_stageContos[k].Dist != 0)
+                    {
+                        ais[j] = k;
+                        j++;
+                    }
+                    else
+                    {
+                        _stageContos[k].D();
+                    }
+                var is2 = new int[j];
+                for (var k = 0; k < j; k++)
+                {
+                    is2[k] = 0;
+                }
+                for (var k = 0; k < j; k++)
+                {
+                    for (var m = k + 1; m < j; m++)
+                        if (_stageContos[ais[
+                                k]].Dist != _stageContos[ais[m]].Dist)
+                        {
+                            if (_stageContos[ais[k]].Dist < _stageContos[ais[m]].Dist)
+                            {
+                                is2[k]++;
+                            }
+                            else
+                            {
+                                is2[m]++;
+                            }
+                        }
+                        else if (m > k)
+                        {
+                            is2[k]++;
+                        }
+                        else
+                        {
+                            is2[m]++;
+                        }
+                }
+                for (var k = 0; k < j; k++)
+                {
+                    for (var m = 0; m < j; m++)
+                        if (is2[m] == k)
+                        {
+                            _stageContos[ais[m]].D();
+                        }
+                }
+                for (var k = 0; k < XTGraphics.Nplayers; k++)
+                {
+                    if (Record.Hfix[k] == _recordtime)
+                        if (_stageContos[k].Dist == 0)
+                        {
+                            _stageContos[k].Fcnt = 8;
+                        }
+                        else
+                        {
+                            _stageContos[k].Fix = true;
+                        }
+                    if (_stageContos[k].Fcnt == 7 || _stageContos[k].Fcnt == 8)
+                    {
+                        _stageContos[k] = new ContO(_contos[Mads[k].Cn], 0, 0, 0, 0);
+                        Record.Cntdest[k] = 0;
+                    }
+                    Record.Playh(_stageContos[k], Mads[k], k, _recordtime, XTGraphics.Im);
+                }
+                if (_finishrecording == 2 && _recordtime == 299)
+                {
+                    U[0].Enter = true;
+                }
+                if (U[0].Enter || U[0].Handb)
+                {
+                    XTGraphics.Fase = -4;
+                    U[0].Enter = false;
+                    U[0].Handb = false;
+                    _recordtime = -7;
+                }
+                else
+                {
+                    XTGraphics.Levelhigh(Record.Wasted, Record.Whenwasted, Record.Closefinish, _recordtime,
+                        CheckPoints.Stage);
+                    if (_recordtime == 0 || _recordtime == 1 || _recordtime == 2)
+                    {
+                        G.SetColor(new Color(0, 0, 0));
+                        G.FillRect(0, 0, 800, 450);
+                    }
+                    if (Record.Wasted != XTGraphics.Im)
+                    {
+                        if (Record.Closefinish == 0)
+                        {
+                            if (_clicknowtime == 9 || _clicknowtime == 11)
+                            {
+                                G.SetColor(new Color(255, 255, 255));
+                                G.FillRect(0, 0, 800, 450);
+                            }
+                            if (_clicknowtime == 0)
+                            {
+                                Medium.Around(_stageContos[XTGraphics.Im], false);
+                            }
+                            if (_clicknowtime > 0 && _clicknowtime < 20)
+                            {
+                                Medium.Transaround(_stageContos[XTGraphics.Im], _stageContos[Record.Wasted],
+                                    _clicknowtime);
+                            }
+                            if (_clicknowtime == 20)
+                            {
+                                Medium.Around(_stageContos[Record.Wasted], false);
+                            }
+                            if (_recordtime > Record.Whenwasted && _clicknowtime != 20)
+                            {
+                                _clicknowtime++;
+                            }
+                            if ((_clicknowtime == 0 || _clicknowtime == 20) && ++_recordtime == 300)
+                            {
+                                _recordtime = 0;
+                                _clicknowtime = 0;
+                                _finishrecording++;
+                            }
+                        }
+                        else if (Record.Closefinish == 1)
+                        {
+                            if (_clicknowtime == 0)
+                            {
+                                Medium.Around(_stageContos[XTGraphics.Im], false);
+                            }
+                            if (_clicknowtime > 0 && _clicknowtime < 20)
+                            {
+                                Medium.Transaround(_stageContos[XTGraphics.Im], _stageContos[Record.Wasted],
+                                    _clicknowtime);
+                            }
+                            if (_clicknowtime == 20)
+                            {
+                                Medium.Around(_stageContos[Record.Wasted], false);
+                            }
+                            if (_clicknowtime > 20 && _clicknowtime < 40)
+                            {
+                                Medium.Transaround(_stageContos[Record.Wasted], _stageContos[XTGraphics.Im],
+                                    _clicknowtime - 20);
+                            }
+                            if (_clicknowtime == 40)
+                            {
+                                Medium.Around(_stageContos[XTGraphics.Im], false);
+                            }
+                            if (_clicknowtime > 40 && _clicknowtime < 60)
+                            {
+                                Medium.Transaround(_stageContos[XTGraphics.Im], _stageContos[Record.Wasted],
+                                    _clicknowtime - 40);
+                            }
+                            if (_clicknowtime == 60)
+                            {
+                                Medium.Around(_stageContos[Record.Wasted], false);
+                            }
+                            if (_recordtime > 160 && _clicknowtime < 20)
+                            {
+                                _clicknowtime++;
+                            }
+                            if (_recordtime > 230 && _clicknowtime < 40)
+                            {
+                                _clicknowtime++;
+                            }
+                            if (_recordtime > 280 && _clicknowtime < 60)
+                            {
+                                _clicknowtime++;
+                            }
+                            if ((_clicknowtime == 0 || _clicknowtime == 20 || _clicknowtime == 40 || _clicknowtime == 60) &&
+                                ++_recordtime == 300)
+                            {
+                                _recordtime = 0;
+                                _clicknowtime = 0;
+                                _finishrecording++;
+                            }
+                        }
+                        else
+                        {
+                            if (_clicknowtime == 0)
+                            {
+                                Medium.Around(_stageContos[XTGraphics.Im], false);
+                            }
+                            if (_clicknowtime > 0 && _clicknowtime < 20)
+                            {
+                                Medium.Transaround(_stageContos[XTGraphics.Im], _stageContos[Record.Wasted],
+                                    _clicknowtime);
+                            }
+                            if (_clicknowtime == 20)
+                            {
+                                Medium.Around(_stageContos[Record.Wasted], false);
+                            }
+                            if (_clicknowtime > 20 && _clicknowtime < 40)
+                            {
+                                Medium.Transaround(_stageContos[Record.Wasted], _stageContos[XTGraphics.Im],
+                                    _clicknowtime - 20);
+                            }
+                            if (_clicknowtime == 40)
+                            {
+                                Medium.Around(_stageContos[XTGraphics.Im], false);
+                            }
+                            if (_clicknowtime > 40 && _clicknowtime < 60)
+                            {
+                                Medium.Transaround(_stageContos[XTGraphics.Im], _stageContos[Record.Wasted],
+                                    _clicknowtime - 40);
+                            }
+                            if (_clicknowtime == 60)
+                            {
+                                Medium.Around(_stageContos[Record.Wasted], false);
+                            }
+                            if (_clicknowtime > 60 && _clicknowtime < 80)
+                            {
+                                Medium.Transaround(_stageContos[Record.Wasted], _stageContos[XTGraphics.Im],
+                                    _clicknowtime - 60);
+                            }
+                            if (_clicknowtime == 80)
+                            {
+                                Medium.Around(_stageContos[XTGraphics.Im], false);
+                            }
+                            if (_recordtime > 90 && _clicknowtime < 20)
+                            {
+                                _clicknowtime++;
+                            }
+                            if (_recordtime > 160 && _clicknowtime < 40)
+                            {
+                                _clicknowtime++;
+                            }
+                            if (_recordtime > 230 && _clicknowtime < 60)
+                            {
+                                _clicknowtime++;
+                            }
+                            if (_recordtime > 280 && _clicknowtime < 80)
+                            {
+                                _clicknowtime++;
+                            }
+                            if ((_clicknowtime == 0 || _clicknowtime == 20 || _clicknowtime == 40 || _clicknowtime == 60 ||
+                                 _clicknowtime == 80) && ++_recordtime == 300)
+                            {
+                                _recordtime = 0;
+                                _clicknowtime = 0;
+                                _finishrecording++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (_wastedpoint == 67 && (_clicknowtime == 3 || _clicknowtime == 31 || _clicknowtime == 66))
+                        {
+                            G.SetColor(new Color(255, 255, 255));
+                            G.FillRect(0, 0, 800, 450);
+                        }
+                        if (_wastedpoint == 69 && (_clicknowtime == 3 || _clicknowtime == 5 || _clicknowtime == 31 ||
+                                                  _clicknowtime == 33 || _clicknowtime == 66 || _clicknowtime == 68))
+                        {
+                            G.SetColor(new Color(255, 255, 255));
+                            G.FillRect(0, 0, 800, 450);
+                        }
+                        if (_wastedpoint == 30 && _clicknowtime >= 1 && _clicknowtime < 30)
+                            if (_clicknowtime % (int) (2.0F + Medium.Random() * 3.0F) == 0 && !_flashingscreen)
+                            {
+                                G.SetColor(new Color(255, 255, 255));
+                                G.FillRect(0, 0, 800, 450);
+                                _flashingscreen = true;
+                            }
+                            else
+                            {
+                                _flashingscreen = false;
+                            }
+                        if (_recordtime > Record.Whenwasted && _clicknowtime != _wastedpoint)
+                        {
+                            _clicknowtime++;
+                        }
+                        Medium.Around(_stageContos[XTGraphics.Im], false);
+                        if ((_clicknowtime == 0 || _clicknowtime == _wastedpoint) && ++_recordtime == 300)
+                        {
+                            _recordtime = 0;
+                            _clicknowtime = 0;
+                            _finishrecording++;
+                        }
+                    }
+                }
             }
-            if (recordtime >= 0)
+            if (XTGraphics.Fase == -4)
             {
-                xtGraphics.fleximage(null, recordtime);
-            }
-            if (++recordtime == 7)
-            {
-                xtGraphics.fase = -5;
+                if (_recordtime == 0)
+                {
+                    XTPart2.Sendwin();
+                    if (XTGraphics.Winner && XTGraphics.Multion == 0 && XTGraphics.Gmode != 0 &&
+                        CheckPoints.Stage != XTGraphics.NTracks && CheckPoints.Stage == XTGraphics.Unlocked)
+                    {
+                        XTGraphics.Unlocked++;
+                        Setcarcookie(XTGraphics.Sc[0], CarDefine.Names[XTGraphics.Sc[0]], XTGraphics.Arnp,
+                            XTGraphics.Gmode,
+                            XTGraphics.Unlocked);
+                        XTGraphics.Unlocked--;
+                    }
+                }
+                if (_recordtime <= 0)
+                {
+                    G.DrawImage(XTImages.Images.Mdness, 289, 30, null);
+                    G.DrawImage(XTImages.Images.Dude[0], 135, 10, null);
+                }
+                if (_recordtime >= 0)
+                {
+                    XTGraphics.Fleximage(null, _recordtime);
+                }
+                if (++_recordtime == 7)
+                {
+                    XTGraphics.Fase = -5;
 //                rd.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 //                rd.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                }
             }
-        }
-        if (xtGraphics.fase == -6)
-        {
-            //repaint();
-            xtPart2.pauseimage(null);
-            xtGraphics.fase = -7;
-            mouses = 0;
-        }
-        if (xtGraphics.fase == -7)
-        {
-            xtPart2.pausedgame(u[0]);
-            if (recordtime != 0)
+            if (XTGraphics.Fase == -6)
             {
-                recordtime = 0;
+                //repaint();
+                XTPart2.Pauseimage(null);
+                XTGraphics.Fase = -7;
+                Mouses = 0;
             }
-            xtGraphics.ctachm(xm, ym, mouses, u[0]);
-            if (mouses == 2)
+            if (XTGraphics.Fase == -7)
             {
-                mouses = 0;
+                XTPart2.Pausedgame(U[0]);
+                if (_recordtime != 0)
+                {
+                    _recordtime = 0;
+                }
+                XTGraphics.Ctachm(_xm, _ym, Mouses, U[0]);
+                if (Mouses == 2)
+                {
+                    Mouses = 0;
+                }
+                if (Mouses == 1)
+                {
+                    Mouses = 2;
+                }
             }
-            if (mouses == 1)
+            if (XTGraphics.Fase == -8)
             {
-                mouses = 2;
+                XTGraphics.Cantreply();
+                if (++_recordtime == 150 || U[0].Enter || U[0].Handb || Mouses == 1)
+                {
+                    XTGraphics.Fase = -7;
+                    Mouses = 0;
+                    U[0].Enter = false;
+                    U[0].Handb = false;
+                }
             }
-        }
-        if (xtGraphics.fase == -8)
-        {
-            xtGraphics.cantreply();
-            if (++recordtime == 150 || u[0].enter || u[0].handb || mouses == 1)
-            {
-                xtGraphics.fase = -7;
-                mouses = 0;
-                u[0].enter = false;
-                u[0].handb = false;
-            }
-        }
-        if (lostfcs && xtGraphics.fase == 7001)
-            if (fcscnt == 0)
-            {
+            if (_lostfcs && XTGraphics.Fase == 7001)
+                if (_fcscnt == 0)
+                {
 //                if (u[0].chatup == 0)
 //                {
 //                    gsPanel.requestFocus();
 //                }
-                fcscnt = 10;
-            }
-            else
-            {
-                fcscnt--;
-            }
-        if (xtGraphics.im > -1 && xtGraphics.im < 8)
-        {
-            int j = 0;
-            if (xtGraphics.multion == 2 || xtGraphics.multion == 3)
-            {
-                j = xtGraphics.im;
-                u[j].mutem = u[0].mutem;
-                u[j].mutes = u[0].mutes;
-            }
-            if (xtGraphics.fase == 0)
-            {
-                for (int i = 0; i < xtGraphics.nplayers; i++)
+                    _fcscnt = 10;
+                }
+                else
                 {
-                    xtPart2.playsounds(i, mads[i], u[i], stageContos[0], stageContos[i]);
+                    _fcscnt--;
+                }
+            if (XTGraphics.Im > -1 && XTGraphics.Im < 8)
+            {
+                var j = 0;
+                if (XTGraphics.Multion == 2 || XTGraphics.Multion == 3)
+                {
+                    j = XTGraphics.Im;
+                    U[j].Mutem = U[0].Mutem;
+                    U[j].Mutes = U[0].Mutes;
+                }
+                if (XTGraphics.Fase == 0)
+                {
+                    for (var i = 0; i < XTGraphics.Nplayers; i++)
+                    {
+                        XTPart2.Playsounds(i, Mads[i], U[i], _stageContos[0], _stageContos[i]);
+                    }
                 }
             }
-        }
-        date = new Date();
-        long l = date.getTime();
-        
-        //TODO
-        if (xtGraphics.fase == 0 || xtGraphics.fase == -1 || xtGraphics.fase == -3 || xtGraphics.fase == 7001)
-        {
-            if (!bool3)
+            _date = new Date();
+            var l = _date.GetTime();
+
+            //TODO
+            if (XTGraphics.Fase == 0 || XTGraphics.Fase == -1 || XTGraphics.Fase == -3 || XTGraphics.Fase == 7001)
             {
-                f2 = f;
-                if (f2 < 30.0F)
+                if (!_bool3)
                 {
-                    f2 = 30.0F;
+                    _f2 = _f;
+                    if (_f2 < 30.0F)
+                    {
+                        _f2 = 30.0F;
+                    }
+                    _bool3 = true;
+                    _i5 = 0;
                 }
-                bool3 = true;
-                i5 = 0;
-            }
 //            if (i5 == 10)
 //            {
 //                float f = (i4 + udpmistro.freg - (l - l1)) / 20.0F;
@@ -3058,65 +3086,64 @@ namespace Cum
 //            {
 //                i5++;
 //            }
-        }
-        else
-        {
-            if (bool3)
-            {
-                f = f2;
-                bool3 = false;
-                i5 = 0;
-            }
-            if (i5 == 10)
-            {
-                if (l - l1 < 400L)
-                {
-                    f2 += 3.5f;
-                }
-                else
-                {
-                    f2 -= 3.5f;
-                    if (f2 < 5.0F)
-                    {
-                        f2 = 5.0F;
-                    }
-                }
-                l1 = l;
-                i5 = 0;
             }
             else
             {
-                i5++;
+                if (_bool3)
+                {
+                    _f = _f2;
+                    _bool3 = false;
+                    _i5 = 0;
+                }
+                if (_i5 == 10)
+                {
+                    if (l - _l1 < 400L)
+                    {
+                        _f2 += 3.5f;
+                    }
+                    else
+                    {
+                        _f2 -= 3.5f;
+                        if (_f2 < 5.0F)
+                        {
+                            _f2 = 5.0F;
+                        }
+                    }
+                    _l1 = l;
+                    _i5 = 0;
+                }
+                else
+                {
+                    _i5++;
+                }
+            }
+            if (_exwist)
+            {
+                Trash();
             }
         }
-        if (exwist)
+
+        internal static void Setcarcookie(int i, string astring, float[] fs, int gamemode, int ais)
         {
-            trash();
+            HansenData.SetCookie(new[]
+            {
+                "lastcar(" + i + "," + (int) (fs[0] * 100.0F) + "," + (int) (fs[1] * 100.0F) + "," +
+                (int) (fs[2] * 100.0F) + "," + (int) (fs[3] * 100.0F) + "," + (int) (fs[4] * 100.0F) + "," +
+                (int) (fs[5] * 100.0F) + "," + astring + ")",
+                "saved(" + i + "," + ais + ")",
+                "graphics(" + Moto + ")"
+            });
         }
 
-    }
-
-    internal static void setcarcookie(int i, String astring, float[] fs, int gamemode, int ais)
-    {
-        HansenData.SetCookie(new[]
+        public static void Setloggedcookie()
         {
-            "lastcar(" + i + "," + (int) (fs[0] * 100.0F) + "," + (int) (fs[1] * 100.0F) + "," +
-            (int) (fs[2] * 100.0F) + "," + (int) (fs[3] * 100.0F) + "," + (int) (fs[4] * 100.0F) + "," +
-            (int) (fs[5] * 100.0F) + "," + astring + ")",
-            "saved(" + i + "," + ais + ")",
-            "graphics(" + moto + ")"
-        });
-    }
+            // TODO
+        }
 
-        public static void setloggedcookie()
-    {
-        // TODO
-    }
-
-    private static void setupini()
-    {
-        // TODO
-    }
+        private static void Setupini()
+        {
+            // TODO
+        }
 
 //    private static void sizescreen(int x, int y) {
 //        if (x > gsPanel.getWidth() / 2 - 230 && x < gsPanel.getWidth() / 2 - 68 && y > 21 && y < 39 || onbar)
@@ -3134,169 +3161,168 @@ namespace Cum
 //            showsize = 100;
 //        }
 //    }
-        
-    public void keyPressed(Keys key)
-    {
-        if (!exwist)
-        {
-            //115 114 99
-            if (key == Keys.Up)
-            {
-                u[0].up = true;
-            }
-            if (key == Keys.Down)
-            {
-                u[0].down = true;
-            }
-            if (key == Keys.Right)
-            {
-                u[0].right = true;
-            }
-            if (key == Keys.Left)
-            {
-                u[0].left = true;
-            }
-            if (key == Keys.Space)
-            {
-                u[0].handb = true;
-            }
-            if (key == Keys.Enter)
-            {
-                u[0].enter = true;
-            }
-            if (key == Keys.Z)
-            {
-                u[0].lookback = -1;
-            }
-            if (key == Keys.X)
-            {
-                u[0].lookback = 1;
-            }
-            if (key == Keys.M)
-                u[0].mutem = !u[0].mutem;
-            if (key == Keys.N)
-                u[0].mutes = !u[0].mutes;
-            if (key == Keys.A)
-                u[0].arrace = !u[0].arrace;
-            if (key == Keys.S)
-                u[0].radar = !u[0].radar;
-            if (key == Keys.V)
-            {
-                view++;
-                if (view == 3)
-                {
-                    view = 0;
-                }
-            }
-        }
-    }
 
-    public void keyReleased(Keys key)
-    {
-        if (!exwist)
+        public void KeyPressed(Keys key)
         {
-            if (u[0].multion < 2)
+            if (!_exwist)
             {
+                //115 114 99
                 if (key == Keys.Up)
                 {
-                    u[0].up = false;
+                    U[0].Up = true;
                 }
                 if (key == Keys.Down)
                 {
-                    u[0].down = false;
+                    U[0].Down = true;
                 }
                 if (key == Keys.Right)
                 {
-                    u[0].right = false;
+                    U[0].Right = true;
                 }
                 if (key == Keys.Left)
                 {
-                    u[0].left = false;
+                    U[0].Left = true;
                 }
                 if (key == Keys.Space)
                 {
-                    u[0].handb = false;
+                    U[0].Handb = true;
+                }
+                if (key == Keys.Enter)
+                {
+                    U[0].Enter = true;
+                }
+                if (key == Keys.Z)
+                {
+                    U[0].Lookback = -1;
+                }
+                if (key == Keys.X)
+                {
+                    U[0].Lookback = 1;
+                }
+                if (key == Keys.M)
+                    U[0].Mutem = !U[0].Mutem;
+                if (key == Keys.N)
+                    U[0].Mutes = !U[0].Mutes;
+                if (key == Keys.A)
+                    U[0].Arrace = !U[0].Arrace;
+                if (key == Keys.S)
+                    U[0].Radar = !U[0].Radar;
+                if (key == Keys.V)
+                {
+                    _view++;
+                    if (_view == 3)
+                    {
+                        _view = 0;
+                    }
                 }
             }
-            if (key == Keys.Escape)
+        }
+
+        public void KeyReleased(Keys key)
+        {
+            if (!_exwist)
             {
-                u[0].exit = false;
+                if (U[0].Multion < 2)
+                {
+                    if (key == Keys.Up)
+                    {
+                        U[0].Up = false;
+                    }
+                    if (key == Keys.Down)
+                    {
+                        U[0].Down = false;
+                    }
+                    if (key == Keys.Right)
+                    {
+                        U[0].Right = false;
+                    }
+                    if (key == Keys.Left)
+                    {
+                        U[0].Left = false;
+                    }
+                    if (key == Keys.Space)
+                    {
+                        U[0].Handb = false;
+                    }
+                }
+                if (key == Keys.Escape)
+                {
+                    U[0].Exit = false;
 //                if (Madness.fullscreen)
 //                {
 //                    Madness.exitfullscreen();
 //                }
+                }
+                if (key == Keys.X || key == Keys.Z)
+                {
+                    U[0].Lookback = 0;
+                }
             }
-            if (key == Keys.X || key == Keys.Z)
+        }
+
+        public void MouseDragged(int x, int y)
+        {
+            if (!_exwist && !_lostfcs)
             {
-                u[0].lookback = 0;
+                _xm = (int) ((x - _apx) / _apmult);
+                _ym = (int) ((y - _apy) / _apmult);
             }
         }
-    }
 
-    public void mouseDragged(int x, int y)
-    {
-        if (!exwist && !lostfcs)
+        public void MouseMoved(int x, int y)
         {
-            xm = (int) ((x - apx) / apmult);
-            ym = (int) ((y - apy) / apmult);
-        }
-    }
-
-    public void mouseMoved(int x, int y)
-    {
-        if (!exwist && !lostfcs)
-        {
-            xm = (int) ((x - apx) / apmult);
-            ym = (int) ((y - apy) / apmult);
-        }
-    }
-
-    public void mousePressed(int x, int y)
-    {
-        if (!exwist)
-        {
-            if (mouses == 0)
+            if (!_exwist && !_lostfcs)
             {
-                xm = (int) ((x - apx) / apmult);
-                ym = (int) ((y - apy) / apmult);
-                mouses = 1;
+                _xm = (int) ((x - _apx) / _apmult);
+                _ym = (int) ((y - _apy) / _apmult);
             }
-            moused = true;
         }
+
+        public void MousePressed(int x, int y)
+        {
+            if (!_exwist)
+            {
+                if (Mouses == 0)
+                {
+                    _xm = (int) ((x - _apx) / _apmult);
+                    _ym = (int) ((y - _apy) / _apmult);
+                    Mouses = 1;
+                }
+                _moused = true;
+            }
 //        if (!Madness.fullscreen)
 //        {
 //            sizescreen(x, y);
 //        }
-    }
+        }
 
-    public void mouseReleased(int x, int y)
-    {
-        if (!exwist)
+        public void MouseReleased(int x, int y)
         {
-            if (mouses == 11)
+            if (!_exwist)
             {
-                xm = (int) ((x - apx) / apmult);
-                ym = (int) ((y - apy) / apmult);
-                mouses = -1;
+                if (Mouses == 11)
+                {
+                    _xm = (int) ((x - _apx) / _apmult);
+                    _ym = (int) ((y - _apy) / _apmult);
+                    Mouses = -1;
+                }
+                _moused = false;
             }
-            moused = false;
         }
-    }
 
-    public void focusGained()
-    {
-        if (!exwist && lostfcs)
+        public void FocusGained()
         {
-            lostfcs = false;
+            if (!_exwist && _lostfcs)
+            {
+                _lostfcs = false;
+            }
         }
-    }
 
-    public void focusLost()
-    {
-        if (exwist || lostfcs) return;
-        lostfcs = true;
-        fcscnt = 10;
-    }
-
+        public void FocusLost()
+        {
+            if (_exwist || _lostfcs) return;
+            _lostfcs = true;
+            _fcscnt = 10;
+        }
     }
 }

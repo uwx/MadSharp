@@ -4,258 +4,258 @@ using boolean = System.Boolean;
 
 namespace Cum {
 class Plane : IComparable<Plane> {
-    private int av = 0;
-    internal int bfase = 0;
-    internal readonly int[] c = new int[3];
-    internal int chip = 0;
-    internal int colnum = 0;
-    private readonly int[] cox = new int[3];
-    private readonly int[] coy = new int[3];
-    private readonly int[] coz = new int[3];
-    internal float ctmag = 0.0F;
-    private int cxy = 0;
-    private int cxz = 0;
-    private int czy = 0;
-    private float deltaf = 1.0F;
-    private int disline = 7;
-    private int dx = 0;
-    private int dy = 0;
-    private int dz = 0;
-    internal int embos = 0;
-    internal int flx = 0;
-    internal int fs = 0;
-    internal int glass = 0;
-    internal int gr = 0;
-    internal readonly float[] hsb = new float[3];
-    internal int light = 0;
-    internal int master = 0;
-    internal int n;
-    internal boolean nocol = false;
-    internal readonly int[] oc = new int[3];
-    internal readonly int[] ox;
-    internal readonly int[] oy;
-    internal readonly int[] oz;
-    private int pa = 0;
-    private int pb = 0;
-    private float projf = 1.0F;
-    internal boolean road = false;
-    internal boolean solo = false;
-    private int typ = 0;
-    private int vx = 0;
-    private int vy = 0;
-    private int vz = 0;
-    internal int wx = 0;
-    internal int wy = 0;
-    internal int wz = 0;
+    private int _av;
+    internal int Bfase;
+    internal readonly int[] C = new int[3];
+    internal int Chip;
+    internal int Colnum = 0;
+    private readonly int[] _cox = new int[3];
+    private readonly int[] _coy = new int[3];
+    private readonly int[] _coz = new int[3];
+    internal float Ctmag;
+    private int _cxy;
+    private int _cxz;
+    private int _czy;
+    private float _deltaf = 1.0F;
+    private int _disline = 7;
+    private int _dx;
+    private int _dy;
+    private int _dz;
+    internal int Embos;
+    internal int Flx;
+    internal int Fs;
+    internal int Glass;
+    internal int Gr;
+    internal readonly float[] HSB = new float[3];
+    internal int Light;
+    internal int Master = 0;
+    internal int N;
+    internal bool Nocol;
+    internal readonly int[] Oc = new int[3];
+    internal readonly int[] Ox;
+    internal readonly int[] Oy;
+    internal readonly int[] Oz;
+    private int _pa;
+    private int _pb;
+    private float _projf = 1.0F;
+    internal bool Road;
+    internal bool Solo;
+    private int _typ;
+    private int _vx;
+    private int _vy;
+    private int _vz;
+    internal int Wx;
+    internal int Wy;
+    internal int Wz;
     
-    internal sbyte project;
+    internal sbyte Project;
 
-    internal Plane(int[] ais, int[] is0, int[] is1, int i, int[] is2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, boolean abool, int i11, boolean bool12) {
-        n = i;
-        ox = new int[n];
-        oz = new int[n];
-        oy = new int[n];
-        for (int i13 = 0; i13 < n; i13++) {
-            ox[i13] = ais[i13];
-            oy[i13] = is1[i13];
-            oz[i13] = is0[i13];
+    internal Plane(int[] ais, int[] is0, int[] is1, int i, int[] is2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, bool abool, int i11, bool bool12) {
+        N = i;
+        Ox = new int[N];
+        Oz = new int[N];
+        Oy = new int[N];
+        for (var i13 = 0; i13 < N; i13++) {
+            Ox[i13] = ais[i13];
+            Oy[i13] = is1[i13];
+            Oz[i13] = is0[i13];
         }
-        HansenSystem.ArrayCopy(is2, 0, oc, 0, 3);
+        HansenSystem.ArrayCopy(is2, 0, Oc, 0, 3);
         if (i4 == -15) {
             if (is2[0] == 211) {
-                int i15 = (int) (HansenRandom.Double() * 40.0 - 20.0);
-                int i16 = (int) (HansenRandom.Double() * 40.0 - 20.0);
-                for (int i17 = 0; i17 < n; i17++) {
-                    ox[i17] += i15;
-                    oz[i17] += i16;
+                var i15 = (int) (HansenRandom.Double() * 40.0 - 20.0);
+                var i16 = (int) (HansenRandom.Double() * 40.0 - 20.0);
+                for (var i17 = 0; i17 < N; i17++) {
+                    Ox[i17] += i15;
+                    Oz[i17] += i16;
                 }
             }
-            int i18 = (int) (185.0 + HansenRandom.Double() * 20.0);
+            var i18 = (int) (185.0 + HansenRandom.Double() * 20.0);
             is2[0] = (217 + i18) / 2;
             if (is2[0] == 211) {
                 is2[0] = 210;
             }
             is2[1] = (189 + i18) / 2;
             is2[2] = (132 + i18) / 2;
-            for (int i19 = 0; i19 < n; i19++) {
+            for (var i19 = 0; i19 < N; i19++) {
                 if (HansenRandom.Double() > HansenRandom.Double()) {
-                    ox[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
+                    Ox[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
                 }
                 if (HansenRandom.Double() > HansenRandom.Double()) {
-                    oy[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
+                    Oy[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
                 }
                 if (HansenRandom.Double() > HansenRandom.Double()) {
-                    oz[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
+                    Oz[i19] += (int) (8.0 * HansenRandom.Double() - 4.0);
                 }
             }
         }
         if (is2[0] == is2[1] && is2[1] == is2[2]) {
-            nocol = true;
+            Nocol = true;
         }
         if (i3 == 0) {
-            for (int i20 = 0; i20 < 3; i20++) {
-                c[i20] = (int) (is2[i20] + is2[i20] * (Medium.snap[i20] / 100.0F));
-                if (c[i20] > 255) {
-                    c[i20] = 255;
+            for (var i20 = 0; i20 < 3; i20++) {
+                C[i20] = (int) (is2[i20] + is2[i20] * (Medium.Snap[i20] / 100.0F));
+                if (C[i20] > 255) {
+                    C[i20] = 255;
                 }
-                if (c[i20] < 0) {
-                    c[i20] = 0;
+                if (C[i20] < 0) {
+                    C[i20] = 0;
                 }
             }
         }
         if (i3 == 1) {
-            for (int i21 = 0; i21 < 3; i21++) {
-                c[i21] = (Medium.csky[i21] * Medium.fade[0] * 2 + Medium.cfade[i21] * 3000) / (Medium.fade[0] * 2 + 3000);
+            for (var i21 = 0; i21 < 3; i21++) {
+                C[i21] = (Medium.Csky[i21] * Medium.Fade[0] * 2 + Medium.Cfade[i21] * 3000) / (Medium.Fade[0] * 2 + 3000);
             }
         }
         if (i3 == 2) {
-            for (int i22 = 0; i22 < 3; i22++) {
-                c[i22] = (int) (Medium.crgrnd[i22] * 0.925F);
+            for (var i22 = 0; i22 < 3; i22++) {
+                C[i22] = (int) (Medium.Crgrnd[i22] * 0.925F);
             }
         }
         if (i3 == 3) {
-            HansenSystem.ArrayCopy(is2, 0, c, 0, 3);
+            HansenSystem.ArrayCopy(is2, 0, C, 0, 3);
         }
-        disline = i9;
-        bfase = i10;
-        glass = i3;
-        Colors.RGBtoHSB(c[0], c[1], c[2], hsb);
-        if (i3 == 3 && Medium.trk != 2) {
-            hsb[1] += 0.05F;
-            if (hsb[1] > 1.0F) {
-                hsb[1] = 1.0F;
-            }
-        }
-        if (!nocol && glass != 1) {
-            if (bfase > 20 && hsb[1] > 0.25) {
-                hsb[1] = 0.25F;
-            }
-            if (bfase > 25 && hsb[2] > 0.7) {
-                hsb[2] = 0.7F;
-            }
-            if (bfase > 30 && hsb[1] > 0.15) {
-                hsb[1] = 0.15F;
-            }
-            if (bfase > 35 && hsb[2] > 0.6) {
-                hsb[2] = 0.6F;
-            }
-            if (bfase > 40) {
-                hsb[0] = 0.075F;
-            }
-            if (bfase > 50 && hsb[2] > 0.5) {
-                hsb[2] = 0.5F;
-            }
-            if (bfase > 60) {
-                hsb[0] = 0.05F;
+        _disline = i9;
+        Bfase = i10;
+        Glass = i3;
+        Colors.RGBtoHSB(C[0], C[1], C[2], HSB);
+        if (i3 == 3 && Medium.Trk != 2) {
+            HSB[1] += 0.05F;
+            if (HSB[1] > 1.0F) {
+                HSB[1] = 1.0F;
             }
         }
-        road = abool;
-        light = i11;
-        solo = bool12;
-        gr = i4;
-        if (gr == -1337) {
-            project = -1;
-            gr = 0;
-        } else if (gr == 1337) {
-            project = 1;
-            gr = 0;
+        if (!Nocol && Glass != 1) {
+            if (Bfase > 20 && HSB[1] > 0.25) {
+                HSB[1] = 0.25F;
+            }
+            if (Bfase > 25 && HSB[2] > 0.7) {
+                HSB[2] = 0.7F;
+            }
+            if (Bfase > 30 && HSB[1] > 0.15) {
+                HSB[1] = 0.15F;
+            }
+            if (Bfase > 35 && HSB[2] > 0.6) {
+                HSB[2] = 0.6F;
+            }
+            if (Bfase > 40) {
+                HSB[0] = 0.075F;
+            }
+            if (Bfase > 50 && HSB[2] > 0.5) {
+                HSB[2] = 0.5F;
+            }
+            if (Bfase > 60) {
+                HSB[0] = 0.05F;
+            }
         }
-        fs = i5;
-        wx = i6;
-        wy = i7;
-        wz = i8;
-        deltafntyp();
+        Road = abool;
+        Light = i11;
+        Solo = bool12;
+        Gr = i4;
+        if (Gr == -1337) {
+            Project = -1;
+            Gr = 0;
+        } else if (Gr == 1337) {
+            Project = 1;
+            Gr = 0;
+        }
+        Fs = i5;
+        Wx = i6;
+        Wy = i7;
+        Wz = i8;
+        Deltafntyp();
     }
 
-    internal void d(Plane _last, Plane _next, int _mx, int _my, int _mz, int _xz, int _xy, int _yz, int i34, int i35, boolean abool, int i36) {
-        if (master == 1)
-            if (av > 1500 && !Medium.crs) {
-                n = 12;
+    internal void D(Plane last, Plane next, int mx, int my, int mz, int xz, int xy, int yz, int i34, int i35, bool abool, int i36) {
+        if (Master == 1)
+            if (_av > 1500 && !Medium.Crs) {
+                N = 12;
             } else {
-                n = 20;
+                N = 20;
             }
-        int[] _x = new int[n];
-        int[] _z = new int[n];
-        int[] _y = new int[n];
-        if (embos == 0) {
-            for (int i39 = 0; i39 < n; i39++) {
-                _x[i39] = ox[i39] + _mx;
-                _y[i39] = oy[i39] + _my;
-                _z[i39] = oz[i39] + _mz;
+        var x = new int[N];
+        var z = new int[N];
+        var y = new int[N];
+        if (Embos == 0) {
+            for (var i39 = 0; i39 < N; i39++) {
+                x[i39] = Ox[i39] + mx;
+                y[i39] = Oy[i39] + my;
+                z[i39] = Oz[i39] + mz;
             }
-            if ((gr == -11 || gr == -12 || gr == -13) && Medium.lastmaf == 1) {
-                for (int i40 = 0; i40 < n; i40++) {
-                    _x[i40] = -ox[i40] + _mx;
-                    _y[i40] = oy[i40] + _my;
-                    _z[i40] = -oz[i40] + _mz;
+            if ((Gr == -11 || Gr == -12 || Gr == -13) && Medium.Lastmaf == 1) {
+                for (var i40 = 0; i40 < N; i40++) {
+                    x[i40] = -Ox[i40] + mx;
+                    y[i40] = Oy[i40] + my;
+                    z[i40] = -Oz[i40] + mz;
                 }
             }
         } else {
-            if (embos <= 11 && Medium.random() > 0.5 && glass != 1) {
-                for (int i41 = 0; i41 < n; i41++) {
-                    _x[i41] = (int) (ox[i41] + _mx + (15.0F - Medium.random() * 30.0F));
-                    _y[i41] = (int) (oy[i41] + _my + (15.0F - Medium.random() * 30.0F));
-                    _z[i41] = (int) (oz[i41] + _mz + (15.0F - Medium.random() * 30.0F));
+            if (Embos <= 11 && Medium.Random() > 0.5 && Glass != 1) {
+                for (var i41 = 0; i41 < N; i41++) {
+                    x[i41] = (int) (Ox[i41] + mx + (15.0F - Medium.Random() * 30.0F));
+                    y[i41] = (int) (Oy[i41] + my + (15.0F - Medium.Random() * 30.0F));
+                    z[i41] = (int) (Oz[i41] + mz + (15.0F - Medium.Random() * 30.0F));
                 }
-                rot(_x, _y, _mx, _my, _xy, n);
-                rot(_y, _z, _my, _mz, _yz, n);
-                rot(_x, _z, _mx, _mz, _xz, n);
-                rot(_x, _z, Medium.cx, Medium.cz, Medium.xz, n);
-                rot(_y, _z, Medium.cy, Medium.cz, Medium.zy, n);
-                int[] is42 = new int[n];
-                int[] is43 = new int[n];
-                for (int i44 = 0; i44 < n; i44++) {
-                    is42[i44] = xs(_x[i44], _z[i44]);
-                    is43[i44] = ys(_y[i44], _z[i44]);
+                Rot(x, y, mx, my, xy, N);
+                Rot(y, z, my, mz, yz, N);
+                Rot(x, z, mx, mz, xz, N);
+                Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, N);
+                Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, N);
+                var is42 = new int[N];
+                var is43 = new int[N];
+                for (var i44 = 0; i44 < N; i44++) {
+                    is42[i44] = Xs(x[i44], z[i44]);
+                    is43[i44] = Ys(y[i44], z[i44]);
                 }
                 G.SetColor(new Color(230, 230, 230));
-                G.FillPolygon(is42, is43, n);
+                G.FillPolygon(is42, is43, N);
             }
-            float f = 1.0F;
-            if (embos <= 4) {
-                f = 1.0F + Medium.random() / 5.0F;
+            var f = 1.0F;
+            if (Embos <= 4) {
+                f = 1.0F + Medium.Random() / 5.0F;
             }
-            if (embos > 4 && embos <= 7) {
-                f = 1.0F + Medium.random() / 4.0F;
+            if (Embos > 4 && Embos <= 7) {
+                f = 1.0F + Medium.Random() / 4.0F;
             }
-            if (embos > 7 && embos <= 9) {
-                f = 1.0F + Medium.random() / 3.0F;
-                if (hsb[2] > 0.7) {
-                    hsb[2] = 0.7F;
+            if (Embos > 7 && Embos <= 9) {
+                f = 1.0F + Medium.Random() / 3.0F;
+                if (HSB[2] > 0.7) {
+                    HSB[2] = 0.7F;
                 }
             }
-            if (embos > 9 && embos <= 10) {
-                f = 1.0F + Medium.random() / 2.0F;
-                if (hsb[2] > 0.6) {
-                    hsb[2] = 0.6F;
+            if (Embos > 9 && Embos <= 10) {
+                f = 1.0F + Medium.Random() / 2.0F;
+                if (HSB[2] > 0.6) {
+                    HSB[2] = 0.6F;
                 }
             }
-            if (embos > 10 && embos <= 12) {
-                f = 1.0F + Medium.random() / 1.0F;
-                if (hsb[2] > 0.5) {
-                    hsb[2] = 0.5F;
+            if (Embos > 10 && Embos <= 12) {
+                f = 1.0F + Medium.Random() / 1.0F;
+                if (HSB[2] > 0.5) {
+                    HSB[2] = 0.5F;
                 }
             }
-            if (embos == 12) {
-                chip = 1;
-                ctmag = 2.0F;
-                bfase = -7;
+            if (Embos == 12) {
+                Chip = 1;
+                Ctmag = 2.0F;
+                Bfase = -7;
             }
-            if (embos == 13) {
-                hsb[1] = 0.2F;
-                hsb[2] = 0.4F;
+            if (Embos == 13) {
+                HSB[1] = 0.2F;
+                HSB[2] = 0.4F;
             }
-            if (embos == 16) {
-                pa = (int) (Medium.random() * n);
-                for (pb = (int) (Medium.random() * n); pa == pb; pb = (int) (Medium.random() * n)) {
+            if (Embos == 16) {
+                _pa = (int) (Medium.Random() * N);
+                for (_pb = (int) (Medium.Random() * N); _pa == _pb; _pb = (int) (Medium.Random() * N)) {
 
                 }
             }
-            if (embos >= 16) {
-                int i45 = 1;
-                int i46 = 1;
+            if (Embos >= 16) {
+                var i45 = 1;
+                var i46 = 1;
                 int i47;
-                for (i47 = Math.Abs(_yz); i47 > 270; i47 -= 360) {
+                for (i47 = Math.Abs(yz); i47 > 270; i47 -= 360) {
 
                 }
                 i47 = Math.Abs(i47);
@@ -263,63 +263,63 @@ class Plane : IComparable<Plane> {
                     i45 = -1;
                 }
                 int i48;
-                for (i48 = Math.Abs(_xy); i48 > 270; i48 -= 360) {
+                for (i48 = Math.Abs(xy); i48 > 270; i48 -= 360) {
 
                 }
                 i48 = Math.Abs(i48);
                 if (i48 > 90) {
                     i46 = -1;
                 }
-                int[] is49 = new int[3];
-                int[] is50 = new int[3];
-                _x[0] = ox[pa] + _mx;
-                _y[0] = oy[pa] + _my;
-                _z[0] = oz[pa] + _mz;
-                _x[1] = ox[pb] + _mx;
-                _y[1] = oy[pb] + _my;
-                _z[1] = oz[pb] + _mz;
-                while (Math.Abs(_x[0] - _x[1]) > 100)
-                    if (_x[1] > _x[0]) {
-                        _x[1] -= 30;
+                var is49 = new int[3];
+                var is50 = new int[3];
+                x[0] = Ox[_pa] + mx;
+                y[0] = Oy[_pa] + my;
+                z[0] = Oz[_pa] + mz;
+                x[1] = Ox[_pb] + mx;
+                y[1] = Oy[_pb] + my;
+                z[1] = Oz[_pb] + mz;
+                while (Math.Abs(x[0] - x[1]) > 100)
+                    if (x[1] > x[0]) {
+                        x[1] -= 30;
                     } else {
-                        _x[1] += 30;
+                        x[1] += 30;
                     }
-                while (Math.Abs(_z[0] - _z[1]) > 100)
-                    if (_z[1] > _z[0]) {
-                        _z[1] -= 30;
+                while (Math.Abs(z[0] - z[1]) > 100)
+                    if (z[1] > z[0]) {
+                        z[1] -= 30;
                     } else {
-                        _z[1] += 30;
+                        z[1] += 30;
                     }
-                int i51 = (int) (Math.Abs(_x[0] - _x[1]) / 3 * (0.5 - Medium.random()));
-                int i52 = (int) (Math.Abs(_z[0] - _z[1]) / 3 * (0.5 - Medium.random()));
-                _x[2] = (_x[0] + _x[1]) / 2 + i51;
-                _z[2] = (_z[0] + _z[1]) / 2 + i52;
-                int i53 = (int) ((Math.Abs(_x[0] - _x[1]) + Math.Abs(_z[0] - _z[1])) / 1.5 * (Medium.random() / 2.0F + 0.5));
-                _y[2] = (_y[0] + _y[1]) / 2 - i45 * i46 * i53;
-                rot(_x, _y, _mx, _my, _xy, 3);
-                rot(_y, _z, _my, _mz, _yz, 3);
-                rot(_x, _z, _mx, _mz, _xz, 3);
-                rot(_x, _z, Medium.cx, Medium.cz, Medium.xz, 3);
-                rot(_y, _z, Medium.cy, Medium.cz, Medium.zy, 3);
-                for (int i54 = 0; i54 < 3; i54++) {
-                    is49[i54] = xs(_x[i54], _z[i54]);
-                    is50[i54] = ys(_y[i54], _z[i54]);
+                var i51 = (int) (Math.Abs(x[0] - x[1]) / 3 * (0.5 - Medium.Random()));
+                var i52 = (int) (Math.Abs(z[0] - z[1]) / 3 * (0.5 - Medium.Random()));
+                x[2] = (x[0] + x[1]) / 2 + i51;
+                z[2] = (z[0] + z[1]) / 2 + i52;
+                var i53 = (int) ((Math.Abs(x[0] - x[1]) + Math.Abs(z[0] - z[1])) / 1.5 * (Medium.Random() / 2.0F + 0.5));
+                y[2] = (y[0] + y[1]) / 2 - i45 * i46 * i53;
+                Rot(x, y, mx, my, xy, 3);
+                Rot(y, z, my, mz, yz, 3);
+                Rot(x, z, mx, mz, xz, 3);
+                Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, 3);
+                Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, 3);
+                for (var i54 = 0; i54 < 3; i54++) {
+                    is49[i54] = Xs(x[i54], z[i54]);
+                    is50[i54] = Ys(y[i54], z[i54]);
                 }
-                int i55 = (int) (255.0F + 255.0F * (Medium.snap[0] / 400.0F));
+                var i55 = (int) (255.0F + 255.0F * (Medium.Snap[0] / 400.0F));
                 if (i55 > 255) {
                     i55 = 255;
                 }
                 if (i55 < 0) {
                     i55 = 0;
                 }
-                int i56 = (int) (169.0F + 169.0F * (Medium.snap[1] / 300.0F));
+                var i56 = (int) (169.0F + 169.0F * (Medium.Snap[1] / 300.0F));
                 if (i56 > 255) {
                     i56 = 255;
                 }
                 if (i56 < 0) {
                     i56 = 0;
                 }
-                int i57 = (int) (89.0F + 89.0F * (Medium.snap[2] / 200.0F));
+                var i57 = (int) (89.0F + 89.0F * (Medium.Snap[2] / 200.0F));
                 if (i57 > 255) {
                     i57 = 255;
                 }
@@ -328,52 +328,52 @@ class Plane : IComparable<Plane> {
                 }
                 G.SetColor(new Color(i55, i56, i57));
                 G.FillPolygon(is49, is50, 3);
-                _x[0] = ox[pa] + _mx;
-                _y[0] = oy[pa] + _my;
-                _z[0] = oz[pa] + _mz;
-                _x[1] = ox[pb] + _mx;
-                _y[1] = oy[pb] + _my;
-                _z[1] = oz[pb] + _mz;
-                while (Math.Abs(_x[0] - _x[1]) > 100)
-                    if (_x[1] > _x[0]) {
-                        _x[1] -= 30;
+                x[0] = Ox[_pa] + mx;
+                y[0] = Oy[_pa] + my;
+                z[0] = Oz[_pa] + mz;
+                x[1] = Ox[_pb] + mx;
+                y[1] = Oy[_pb] + my;
+                z[1] = Oz[_pb] + mz;
+                while (Math.Abs(x[0] - x[1]) > 100)
+                    if (x[1] > x[0]) {
+                        x[1] -= 30;
                     } else {
-                        _x[1] += 30;
+                        x[1] += 30;
                     }
-                while (Math.Abs(_z[0] - _z[1]) > 100)
-                    if (_z[1] > _z[0]) {
-                        _z[1] -= 30;
+                while (Math.Abs(z[0] - z[1]) > 100)
+                    if (z[1] > z[0]) {
+                        z[1] -= 30;
                     } else {
-                        _z[1] += 30;
+                        z[1] += 30;
                     }
-                _x[2] = (_x[0] + _x[1]) / 2 + i51;
-                _z[2] = (_z[0] + _z[1]) / 2 + i52;
+                x[2] = (x[0] + x[1]) / 2 + i51;
+                z[2] = (z[0] + z[1]) / 2 + i52;
                 i53 = (int)(i53 * 0.8);
-                _y[2] = (_y[0] + _y[1]) / 2 - i45 * i46 * i53;
-                rot(_x, _y, _mx, _my, _xy, 3);
-                rot(_y, _z, _my, _mz, _yz, 3);
-                rot(_x, _z, _mx, _mz, _xz, 3);
-                rot(_x, _z, Medium.cx, Medium.cz, Medium.xz, 3);
-                rot(_y, _z, Medium.cy, Medium.cz, Medium.zy, 3);
-                for (int i58 = 0; i58 < 3; i58++) {
-                    is49[i58] = xs(_x[i58], _z[i58]);
-                    is50[i58] = ys(_y[i58], _z[i58]);
+                y[2] = (y[0] + y[1]) / 2 - i45 * i46 * i53;
+                Rot(x, y, mx, my, xy, 3);
+                Rot(y, z, my, mz, yz, 3);
+                Rot(x, z, mx, mz, xz, 3);
+                Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, 3);
+                Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, 3);
+                for (var i58 = 0; i58 < 3; i58++) {
+                    is49[i58] = Xs(x[i58], z[i58]);
+                    is50[i58] = Ys(y[i58], z[i58]);
                 }
-                i55 = (int) (255.0F + 255.0F * (Medium.snap[0] / 400.0F));
+                i55 = (int) (255.0F + 255.0F * (Medium.Snap[0] / 400.0F));
                 if (i55 > 255) {
                     i55 = 255;
                 }
                 if (i55 < 0) {
                     i55 = 0;
                 }
-                i56 = (int) (207.0F + 207.0F * (Medium.snap[1] / 300.0F));
+                i56 = (int) (207.0F + 207.0F * (Medium.Snap[1] / 300.0F));
                 if (i56 > 255) {
                     i56 = 255;
                 }
                 if (i56 < 0) {
                     i56 = 0;
                 }
-                i57 = (int) (136.0F + 136.0F * (Medium.snap[2] / 200.0F));
+                i57 = (int) (136.0F + 136.0F * (Medium.Snap[2] / 200.0F));
                 if (i57 > 255) {
                     i57 = 255;
                 }
@@ -383,153 +383,153 @@ class Plane : IComparable<Plane> {
                 G.SetColor(new Color(i55, i56, i57));
                 G.FillPolygon(is49, is50, 3);
             }
-            for (int i59 = 0; i59 < n; i59++) {
-                if (typ == 1) {
-                    _x[i59] = (int) (ox[i59] * f + _mx);
+            for (var i59 = 0; i59 < N; i59++) {
+                if (_typ == 1) {
+                    x[i59] = (int) (Ox[i59] * f + mx);
                 } else {
-                    _x[i59] = ox[i59] + _mx;
+                    x[i59] = Ox[i59] + mx;
                 }
-                if (typ == 2) {
-                    _y[i59] = (int) (oy[i59] * f + _my);
+                if (_typ == 2) {
+                    y[i59] = (int) (Oy[i59] * f + my);
                 } else {
-                    _y[i59] = oy[i59] + _my;
+                    y[i59] = Oy[i59] + my;
                 }
-                if (typ == 3) {
-                    _z[i59] = (int) (oz[i59] * f + _mz);
+                if (_typ == 3) {
+                    z[i59] = (int) (Oz[i59] * f + mz);
                 } else {
-                    _z[i59] = oz[i59] + _mz;
+                    z[i59] = Oz[i59] + mz;
                 }
             }
-            if (embos != 70) {
-                embos++;
+            if (Embos != 70) {
+                Embos++;
             } else {
-                embos = 16;
+                Embos = 16;
             }
         }
-        if (wz != 0) {
-            rot(_y, _z, wy + _my, wz + _mz, i35, n);
+        if (Wz != 0) {
+            Rot(y, z, Wy + my, Wz + mz, i35, N);
         }
-        if (wx != 0) {
-            rot(_x, _z, wx + _mx, wz + _mz, i34, n);
+        if (Wx != 0) {
+            Rot(x, z, Wx + mx, Wz + mz, i34, N);
         }
-        if (chip == 1 && (Medium.random() > 0.6 || bfase == 0)) {
-            chip = 0;
-            if (bfase == 0 && nocol) {
-                bfase = 1;
+        if (Chip == 1 && (Medium.Random() > 0.6 || Bfase == 0)) {
+            Chip = 0;
+            if (Bfase == 0 && Nocol) {
+                Bfase = 1;
             }
         }
-        if (chip != 0) {
-            if (chip == 1) {
-                cxz = _xz;
-                cxy = _xy;
-                czy = _yz;
-                int i60 = (int) (Medium.random() * n);
-                cox[0] = ox[i60];
-                coz[0] = oz[i60];
-                coy[0] = oy[i60];
-                if (ctmag > 3.0F) {
-                    ctmag = 3.0F;
+        if (Chip != 0) {
+            if (Chip == 1) {
+                _cxz = xz;
+                _cxy = xy;
+                _czy = yz;
+                var i60 = (int) (Medium.Random() * N);
+                _cox[0] = Ox[i60];
+                _coz[0] = Oz[i60];
+                _coy[0] = Oy[i60];
+                if (Ctmag > 3.0F) {
+                    Ctmag = 3.0F;
                 }
-                if (ctmag < -3.0F) {
-                    ctmag = -3.0F;
+                if (Ctmag < -3.0F) {
+                    Ctmag = -3.0F;
                 }
-                cox[1] = (int) (cox[0] + ctmag * (10.0F - Medium.random() * 20.0F));
-                cox[2] = (int) (cox[0] + ctmag * (10.0F - Medium.random() * 20.0F));
-                coy[1] = (int) (coy[0] + ctmag * (10.0F - Medium.random() * 20.0F));
-                coy[2] = (int) (coy[0] + ctmag * (10.0F - Medium.random() * 20.0F));
-                coz[1] = (int) (coz[0] + ctmag * (10.0F - Medium.random() * 20.0F));
-                coz[2] = (int) (coz[0] + ctmag * (10.0F - Medium.random() * 20.0F));
-                dx = 0;
-                dy = 0;
-                dz = 0;
-                if (bfase != -7) {
-                    vx = (int) (ctmag * (30.0F - Medium.random() * 60.0F));
-                    vz = (int) (ctmag * (30.0F - Medium.random() * 60.0F));
-                    vy = (int) (ctmag * (30.0F - Medium.random() * 60.0F));
+                _cox[1] = (int) (_cox[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _cox[2] = (int) (_cox[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coy[1] = (int) (_coy[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coy[2] = (int) (_coy[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coz[1] = (int) (_coz[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coz[2] = (int) (_coz[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _dx = 0;
+                _dy = 0;
+                _dz = 0;
+                if (Bfase != -7) {
+                    _vx = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
+                    _vz = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
+                    _vy = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
                 } else {
-                    vx = (int) (ctmag * (10.0F - Medium.random() * 20.0F));
-                    vz = (int) (ctmag * (10.0F - Medium.random() * 20.0F));
-                    vy = (int) (ctmag * (10.0F - Medium.random() * 20.0F));
+                    _vx = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
+                    _vz = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
+                    _vy = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
                 }
-                chip = 2;
+                Chip = 2;
             }
-            int[] is61 = new int[3];
-            int[] is62 = new int[3];
-            int[] is63 = new int[3];
-            for (int i64 = 0; i64 < 3; i64++) {
-                is61[i64] = cox[i64] + _mx;
-                is63[i64] = coy[i64] + _my;
-                is62[i64] = coz[i64] + _mz;
+            var is61 = new int[3];
+            var is62 = new int[3];
+            var is63 = new int[3];
+            for (var i64 = 0; i64 < 3; i64++) {
+                is61[i64] = _cox[i64] + mx;
+                is63[i64] = _coy[i64] + my;
+                is62[i64] = _coz[i64] + mz;
             }
-            rot(is61, is63, _mx, _my, cxy, 3);
-            rot(is63, is62, _my, _mz, czy, 3);
-            rot(is61, is62, _mx, _mz, cxz, 3);
-            for (int i65 = 0; i65 < 3; i65++) {
-                is61[i65] += dx;
-                is63[i65] += dy;
-                is62[i65] += dz;
+            Rot(is61, is63, mx, my, _cxy, 3);
+            Rot(is63, is62, my, mz, _czy, 3);
+            Rot(is61, is62, mx, mz, _cxz, 3);
+            for (var i65 = 0; i65 < 3; i65++) {
+                is61[i65] += _dx;
+                is63[i65] += _dy;
+                is62[i65] += _dz;
             }
-            dx += vx;
-            dz += vz;
-            dy += vy;
-            vy += 7;
-            if (is63[0] > Medium.ground) {
-                chip = 19;
+            _dx += _vx;
+            _dz += _vz;
+            _dy += _vy;
+            _vy += 7;
+            if (is63[0] > Medium.Ground) {
+                Chip = 19;
             }
-            rot(is61, is62, Medium.cx, Medium.cz, Medium.xz, 3);
-            rot(is63, is62, Medium.cy, Medium.cz, Medium.zy, 3);
-            int[] is66 = new int[3];
-            int[] is67 = new int[3];
-            for (int i68 = 0; i68 < 3; i68++) {
-                is66[i68] = xs(is61[i68], is62[i68]);
-                is67[i68] = ys(is63[i68], is62[i68]);
+            Rot(is61, is62, Medium.Cx, Medium.Cz, Medium.Xz, 3);
+            Rot(is63, is62, Medium.Cy, Medium.Cz, Medium.Zy, 3);
+            var is66 = new int[3];
+            var is67 = new int[3];
+            for (var i68 = 0; i68 < 3; i68++) {
+                is66[i68] = Xs(is61[i68], is62[i68]);
+                is67[i68] = Ys(is63[i68], is62[i68]);
             }
-            int i69 = (int) (Medium.random() * 3.0F);
-            if (bfase != -7) {
+            var i69 = (int) (Medium.Random() * 3.0F);
+            if (Bfase != -7) {
                 if (i69 == 0) {
-                    G.SetColor(new Color(c[0], c[1], c[2]).darker());
+                    G.SetColor(new Color(C[0], C[1], C[2]).Darker());
                 }
                 if (i69 == 1) {
-                    G.SetColor(new Color(c[0], c[1], c[2]));
+                    G.SetColor(new Color(C[0], C[1], C[2]));
                 }
                 if (i69 == 2) {
-                    G.SetColor(new Color(c[0], c[1], c[2]).brighter());
+                    G.SetColor(new Color(C[0], C[1], C[2]).Brighter());
                 }
             } else {
-                G.SetColor(Color.getHSBColor(hsb[0], hsb[1], hsb[2]));
+                G.SetColor(Color.GetHSBColor(HSB[0], HSB[1], HSB[2]));
             }
             G.FillPolygon(is66, is67, 3);
-            chip++;
-            if (chip == 20) {
-                chip = 0;
+            Chip++;
+            if (Chip == 20) {
+                Chip = 0;
             }
         }
-        rot(_x, _y, _mx, _my, _xy, n);
-        rot(_y, _z, _my, _mz, _yz, n);
-        rot(_x, _z, _mx, _mz, _xz, n);
-        if ((_xy != 0 || _yz != 0 || _xz != 0) && Medium.trk != 2) {
-            projf = 1.0F;
-            for (int i70 = 0; i70 < 3; i70++) {
-                for (int i71 = 0; i71 < 3; i71++)
+        Rot(x, y, mx, my, xy, N);
+        Rot(y, z, my, mz, yz, N);
+        Rot(x, z, mx, mz, xz, N);
+        if ((xy != 0 || yz != 0 || xz != 0) && Medium.Trk != 2) {
+            _projf = 1.0F;
+            for (var i70 = 0; i70 < 3; i70++) {
+                for (var i71 = 0; i71 < 3; i71++)
                     if (i71 != i70) {
-                        projf *= (float) (Math.Sqrt((_x[i70] - _x[i71]) * (_x[i70] - _x[i71]) + (_z[i70] - _z[i71]) * (_z[i70] - _z[i71])) / 100.0);
+                        _projf *= (float) (Math.Sqrt((x[i70] - x[i71]) * (x[i70] - x[i71]) + (z[i70] - z[i71]) * (z[i70] - z[i71])) / 100.0);
                     }
             }
-            projf = projf / 3.0F;
+            _projf = _projf / 3.0F;
         }
-        rot(_x, _z, Medium.cx, Medium.cz, Medium.xz, n);
-        boolean bool72 = false;
-        int[] is73 = new int[n];
-        int[] is74 = new int[n];
-        int i75 = 500;
-        for (int i76 = 0; i76 < n; i76++) {
-            is73[i76] = xs(_x[i76], _z[i76]);
-            is74[i76] = ys(_y[i76], _z[i76]);
+        Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, N);
+        var bool72 = false;
+        var is73 = new int[N];
+        var is74 = new int[N];
+        var i75 = 500;
+        for (var i76 = 0; i76 < N; i76++) {
+            is73[i76] = Xs(x[i76], z[i76]);
+            is74[i76] = Ys(y[i76], z[i76]);
         }
-        int i77 = 0;
-        int i78 = 1;
-        for (int i79 = 0; i79 < n; i79++) {
-            for (int i80 = i79; i80 < n; i80++)
+        var i77 = 0;
+        var i78 = 1;
+        for (var i79 = 0; i79 < N; i79++) {
+            for (var i80 = i79; i80 < N; i80++)
                 if (i79 != i80 && Math.Abs(is73[i79] - is73[i80]) - Math.Abs(is74[i79] - is74[i80]) < i75) {
                     i78 = i79;
                     i77 = i80;
@@ -537,68 +537,68 @@ class Plane : IComparable<Plane> {
                 }
         }
         if (is74[i77] < is74[i78]) {
-            int i81 = i77;
+            var i81 = i77;
             i77 = i78;
             i78 = i81;
         }
-        if (spy(_x[i77], _z[i77]) > spy(_x[i78], _z[i78])) {
+        if (Spy(x[i77], z[i77]) > Spy(x[i78], z[i78])) {
             bool72 = true;
-            int i82 = 0;
-            for (int i83 = 0; i83 < n; i83++)
-                if (_z[i83] < 50 && _y[i83] > Medium.cy) {
+            var i82 = 0;
+            for (var i83 = 0; i83 < N; i83++)
+                if (z[i83] < 50 && y[i83] > Medium.Cy) {
                     bool72 = false;
-                } else if (_y[i83] == _y[0]) {
+                } else if (y[i83] == y[0]) {
                     i82++;
                 }
-            if (i82 == n && _y[0] > Medium.cy) {
+            if (i82 == N && y[0] > Medium.Cy) {
                 bool72 = false;
             }
         }
-        rot(_y, _z, Medium.cy, Medium.cz, Medium.zy, n);
-        boolean bool84 = true;
-        int[] is85 = new int[n];
-        int[] is86 = new int[n];
-        int i87 = 0;
-        int i88 = 0;
-        int i89 = 0;
-        int i90 = 0;
-        int i91 = 0;
-        for (int i92 = 0; i92 < n; i92++) {
-            is85[i92] = xs(_x[i92], _z[i92]);
-            is86[i92] = ys(_y[i92], _z[i92]);
-            if (is86[i92] < Medium.ih || _z[i92] < 10) {
+        Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, N);
+        var bool84 = true;
+        var is85 = new int[N];
+        var is86 = new int[N];
+        var i87 = 0;
+        var i88 = 0;
+        var i89 = 0;
+        var i90 = 0;
+        var i91 = 0;
+        for (var i92 = 0; i92 < N; i92++) {
+            is85[i92] = Xs(x[i92], z[i92]);
+            is86[i92] = Ys(y[i92], z[i92]);
+            if (is86[i92] < Medium.Ih || z[i92] < 10) {
                 i87++;
             }
-            if (is86[i92] > Medium.h || _z[i92] < 10) {
+            if (is86[i92] > Medium.H || z[i92] < 10) {
                 i88++;
             }
-            if (is85[i92] < Medium.iw || _z[i92] < 10) {
+            if (is85[i92] < Medium.Iw || z[i92] < 10) {
                 i89++;
             }
-            if (is85[i92] > Medium.w || _z[i92] < 10) {
+            if (is85[i92] > Medium.W || z[i92] < 10) {
                 i90++;
             }
-            if (_z[i92] < 10) {
+            if (z[i92] < 10) {
                 i91++;
             }
         }
-        if (i89 == n || i87 == n || i88 == n || i90 == n) {
+        if (i89 == N || i87 == N || i88 == N || i90 == N) {
             bool84 = false;
         }
-        if ((Medium.trk == 1 || Medium.trk == 4) && (i89 != 0 || i87 != 0 || i88 != 0 || i90 != 0)) {
+        if ((Medium.Trk == 1 || Medium.Trk == 4) && (i89 != 0 || i87 != 0 || i88 != 0 || i90 != 0)) {
             bool84 = false;
         }
-        if (Medium.trk == 3 && i91 != 0) {
+        if (Medium.Trk == 3 && i91 != 0) {
             bool84 = false;
         }
         if (i91 != 0) {
             abool = true;
         }
         if (bool84 && i36 != -1) {
-            int i93 = 0;
-            int i94 = 0;
-            for (int i95 = 0; i95 < n; i95++) {
-                for (int i96 = i95; i96 < n; i96++)
+            var i93 = 0;
+            var i94 = 0;
+            for (var i95 = 0; i95 < N; i95++) {
+                for (var i96 = i95; i96 < N; i96++)
                     if (i95 != i96) {
                         if (Math.Abs(is85[i95] - is85[i96]) > i93) {
                             i93 = Math.Abs(is85[i95] - is85[i96]);
@@ -610,29 +610,29 @@ class Plane : IComparable<Plane> {
             }
             if (i93 == 0 || i94 == 0) {
                 bool84 = false;
-            } else if (i93 < 3 && i94 < 3 && (i36 / i93 > 15 && i36 / i94 > 15 || abool) && (!Medium.lightson || light == 0)) {
+            } else if (i93 < 3 && i94 < 3 && (i36 / i93 > 15 && i36 / i94 > 15 || abool) && (!Medium.Lightson || Light == 0)) {
                 bool84 = false;
             }
         }
         if (bool84) {
-            int i97 = 1;
-            int i98 = gr;
+            var i97 = 1;
+            var i98 = Gr;
             if (i98 < 0 && i98 >= -15) {
                 i98 = 0;
             }
-            if (gr == -11) {
+            if (Gr == -11) {
                 i98 = -90;
             }
-            if (gr == -12) {
+            if (Gr == -12) {
                 i98 = -75;
             }
-            if (gr == -14 || gr == -15) {
+            if (Gr == -14 || Gr == -15) {
                 i98 = -50;
             }
-            if (glass == 2) {
+            if (Glass == 2) {
                 i98 = 200;
             }
-            if (fs != 0) {
+            if (Fs != 0) {
                 int i101;
                 int i102;
                 if (Math.Abs(is86[0] - is86[1]) > Math.Abs(is86[2] - is86[1])) {
@@ -649,86 +649,86 @@ class Plane : IComparable<Plane> {
                 if (is85[1] > is85[i102]) {
                     i97 *= -1;
                 }
-                if (fs != 22) {
-                    i97 *= fs;
+                if (Fs != 22) {
+                    i97 *= Fs;
                     if (i97 == -1) {
                         i98 += 40;
                         i97 = -111;
                     }
                 }
             }
-            if (Medium.lightson && light == 2) {
+            if (Medium.Lightson && Light == 2) {
                 i98 -= 40;
             }
-            int i103 = _y[0];
-            int i104 = _y[0];
-            int i105 = _x[0];
-            int i106 = _x[0];
-            int i107 = _z[0];
-            int i108 = _z[0];
-            for (int i109 = 0; i109 < n; i109++) {
-                if (_y[i109] > i103) {
-                    i103 = _y[i109];
+            var i103 = y[0];
+            var i104 = y[0];
+            var i105 = x[0];
+            var i106 = x[0];
+            var i107 = z[0];
+            var i108 = z[0];
+            for (var i109 = 0; i109 < N; i109++) {
+                if (y[i109] > i103) {
+                    i103 = y[i109];
                 }
-                if (_y[i109] < i104) {
-                    i104 = _y[i109];
+                if (y[i109] < i104) {
+                    i104 = y[i109];
                 }
-                if (_x[i109] > i105) {
-                    i105 = _x[i109];
+                if (x[i109] > i105) {
+                    i105 = x[i109];
                 }
-                if (_x[i109] < i106) {
-                    i106 = _x[i109];
+                if (x[i109] < i106) {
+                    i106 = x[i109];
                 }
-                if (_z[i109] > i107) {
-                    i107 = _z[i109];
+                if (z[i109] > i107) {
+                    i107 = z[i109];
                 }
-                if (_z[i109] < i108) {
-                    i108 = _z[i109];
+                if (z[i109] < i108) {
+                    i108 = z[i109];
                 }
             }
-            int i110 = (i103 + i104) / 2;
-            int i111 = (i105 + i106) / 2;
-            int i112 = (i107 + i108) / 2;
-            av = (int) Math.Sqrt((Medium.cy - i110) * (Medium.cy - i110) + (Medium.cx - i111) * (Medium.cx - i111) + i112 * i112 + i98 * i98 * i98);
-            if (Medium.trk == 0 && (av > Medium.fade[disline] || av == 0)) {
+            var i110 = (i103 + i104) / 2;
+            var i111 = (i105 + i106) / 2;
+            var i112 = (i107 + i108) / 2;
+            _av = (int) Math.Sqrt((Medium.Cy - i110) * (Medium.Cy - i110) + (Medium.Cx - i111) * (Medium.Cx - i111) + i112 * i112 + i98 * i98 * i98);
+            if (Medium.Trk == 0 && (_av > Medium.Fade[_disline] || _av == 0)) {
                 bool84 = false;
             }
-            if (i97 == -111 && av > 4500 && !road) {
+            if (i97 == -111 && _av > 4500 && !Road) {
                 bool84 = false;
             }
-            if (i97 == -111 && av > 1500) {
+            if (i97 == -111 && _av > 1500) {
                 abool = true;
             }
-            if (av > 3000 && Medium.adv <= 900) {
+            if (_av > 3000 && Medium.Adv <= 900) {
                 abool = true;
             }
-            if (fs == 22 && av < 11200) {
-                Medium.lastmaf = i97;
+            if (Fs == 22 && _av < 11200) {
+                Medium.Lastmaf = i97;
             }
-            if (gr == -13 && (!Medium.lastcheck || i36 != -1)) {
+            if (Gr == -13 && (!Medium.Lastcheck || i36 != -1)) {
                 bool84 = false;
             }
-            if (master == 2 && av > 1500 && !Medium.crs) {
+            if (Master == 2 && _av > 1500 && !Medium.Crs) {
                 bool84 = false;
             }
-            if ((gr == -14 || gr == -15 || gr == -12) && (av > 11000 || bool72 || i97 == -111 || Medium.resdown == 2) && Medium.trk != 2 && Medium.trk != 3) {
+            if ((Gr == -14 || Gr == -15 || Gr == -12) && (_av > 11000 || bool72 || i97 == -111 || Medium.Resdown == 2) && Medium.Trk != 2 && Medium.Trk != 3) {
                 bool84 = false;
             }
-            if (gr == -11 && av > 11000 && Medium.trk != 2 && Medium.trk != 3) {
+            if (Gr == -11 && _av > 11000 && Medium.Trk != 2 && Medium.Trk != 3) {
                 bool84 = false;
             }
-            if (glass == 2 && (Medium.trk != 0 || av > 6700)) {
+            if (Glass == 2 && (Medium.Trk != 0 || _av > 6700)) {
                 bool84 = false;
             }
-            if (flx != 0 && Medium.random() > 0.3 && flx != 77) {
+            if (Flx != 0 && Medium.Random() > 0.3 && Flx != 77) {
                 bool84 = false;
             }
         }
         if (bool84) {
-            float f = (projf / deltaf + 0.3).CapF();
+            var f = (_projf / _deltaf + 0.3).CapF();
             
-            if (abool && !solo) {
-                boolean bool113 = false;
+            if (abool && !Solo) {
+                var bool113 = false;
                 if (f > 1.0F) {
                     if (f >= 1.27) {
                         bool113 = true;
@@ -743,37 +743,37 @@ class Plane : IComparable<Plane> {
                 if (f < 0.37) {
                     f = 0.37F;
                 }
-                if (gr == -9) {
+                if (Gr == -9) {
                     f = 0.7F;
                 }
-                if (gr == -4) {
+                if (Gr == -4) {
                     f = 0.74F;
                 }
-                if (gr != -7 && Medium.trk == 0 && bool72) {
+                if (Gr != -7 && Medium.Trk == 0 && bool72) {
                     f = 0.32F;
                 }
-                if (gr == -8 || gr == -14 || gr == -15) {
+                if (Gr == -8 || Gr == -14 || Gr == -15) {
                     f = 1.0F;
                 }
-                if (gr == -11 || gr == -12) {
+                if (Gr == -11 || Gr == -12) {
                     f = 0.6F;
                     if (i36 == -1)
-                        if (Medium.cpflik || Medium.nochekflk && !Medium.lastcheck) {
+                        if (Medium.Cpflik || Medium.Nochekflk && !Medium.Lastcheck) {
                             f = 1.0F;
                         } else {
                             f = 0.76F;
                         }
                 }
-                if (gr == -13 && i36 == -1)
-                    if (Medium.cpflik) {
+                if (Gr == -13 && i36 == -1)
+                    if (Medium.Cpflik) {
                         f = 0.0F;
                     } else {
                         f = 0.76F;
                     }
-                if (gr == -6) {
+                if (Gr == -6) {
                     f = 0.62F;
                 }
-                if (gr == -5) {
+                if (Gr == -5) {
                     f = 0.55F;
                 }
             } else {
@@ -784,8 +784,8 @@ class Plane : IComparable<Plane> {
                     f = 0.6F;
                 }
             }
-            if (project==-1) {
-                f = (float) (_last.projf / _last.deltaf + 0.3);
+            if (Project==-1) {
+                f = (float) (last._projf / last._deltaf + 0.3);
 
                 if (f > 1.0F) {
                     f = 1.0F;
@@ -793,8 +793,8 @@ class Plane : IComparable<Plane> {
                 if (f < 0.6 || bool72) {//yeah its referencing OUR bool72, i dunno man...
                     f = 0.6F;
                 }
-            } else if (project==1 && _next!=null) {
-                f = (float) (_next.projf / _next.deltaf + 0.3);
+            } else if (Project==1 && next!=null) {
+                f = (float) (next._projf / next._deltaf + 0.3);
 
                 if (f > 1.0F) {
                     f = 1.0F;
@@ -803,24 +803,24 @@ class Plane : IComparable<Plane> {
                     f = 0.6F;
                 }
             }
-            Color color = Color.getHSBColor(hsb[0], hsb[1], hsb[2] * f);
-            if (Medium.trk == 1) {
-                float[] fs = new float[3];
-                Color.RGBtoHSB(oc[0], oc[1], oc[2], fs);
+            var color = Color.GetHSBColor(HSB[0], HSB[1], HSB[2] * f);
+            if (Medium.Trk == 1) {
+                var fs = new float[3];
+                Color.RGBtoHSB(Oc[0], Oc[1], Oc[2], fs);
                 fs[0] = 0.15F;
                 fs[1] = 0.3F;
-                color = Color.getHSBColor(fs[0], fs[1], fs[2] * f + 0.0F);
+                color = Color.GetHSBColor(fs[0], fs[1], fs[2] * f + 0.0F);
             }
-            if (Medium.trk == 3) {
-                float[] fs = new float[3];
-                Color.RGBtoHSB(oc[0], oc[1], oc[2], fs);
+            if (Medium.Trk == 3) {
+                var fs = new float[3];
+                Color.RGBtoHSB(Oc[0], Oc[1], Oc[2], fs);
                 fs[0] = 0.6F;
                 fs[1] = 0.14F;
-                color = Color.getHSBColor(fs[0], fs[1], fs[2] * f + 0.0F);
+                color = Color.GetHSBColor(fs[0], fs[1], fs[2] * f + 0.0F);
             }
-            int i114 = color.getRed();
-            int i115 = color.getGreen();
-            int i116 = color.getBlue();
+            var i114 = color.GetRed();
+            var i115 = color.GetGreen();
+            var i116 = color.GetBlue();
 /*
             if (false) { //before the dim
                 i114 = (int) (HansenRandom.Double() * 255);
@@ -828,22 +828,22 @@ class Plane : IComparable<Plane> {
                 i116 = (int) (HansenRandom.Double() * 255);
             }
 */
-            if (Medium.lightson && (light != 0 || (gr == -11 || gr == -12) && i36 == -1)) {
-                i114 = oc[0];
+            if (Medium.Lightson && (Light != 0 || (Gr == -11 || Gr == -12) && i36 == -1)) {
+                i114 = Oc[0];
                 if (i114 > 255) {
                     i114 = 255;
                 }
                 if (i114 < 0) {
                     i114 = 0;
                 }
-                i115 = oc[1];
+                i115 = Oc[1];
                 if (i115 > 255) {
                     i115 = 255;
                 }
                 if (i115 < 0) {
                     i115 = 0;
                 }
-                i116 = oc[2];
+                i116 = Oc[2];
                 if (i116 > 255) {
                     i116 = 255;
                 }
@@ -851,22 +851,22 @@ class Plane : IComparable<Plane> {
                     i116 = 0;
                 }
             }
-            if (Medium.trk == 0) {
-                for (int i117 = 0; i117 < 16; i117++)
-                    if (av > Medium.fade[i117]) {
-                        i114 = (i114 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
-                        i115 = (i115 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
-                        i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
+            if (Medium.Trk == 0) {
+                for (var i117 = 0; i117 < 16; i117++)
+                    if (_av > Medium.Fade[i117]) {
+                        i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
+                        i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
+                        i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                     }
             }
             G.SetColor(new Color(i114, i115, i116));
-            G.FillPolygon(is85, is86, n);
-            if (Medium.trk != 0 && gr == -10) {
+            G.FillPolygon(is85, is86, N);
+            if (Medium.Trk != 0 && Gr == -10) {
                 abool = false;
             }
             if (!abool) {
-                if (flx == 0) {
-                    if (!solo) {
+                if (Flx == 0) {
+                    if (!Solo) {
                         i114 = 0;
                         i115 = 0;
                         i116 = 0;
@@ -877,22 +877,22 @@ class Plane : IComparable<Plane> {
                             i116 = (int) (HansenRandom.Double() * 255);
                         }
 */
-                        if (Medium.lightson && light != 0) {
-                            i114 = oc[0] / 2;
+                        if (Medium.Lightson && Light != 0) {
+                            i114 = Oc[0] / 2;
                             if (i114 > 255) {
                                 i114 = 255;
                             }
                             if (i114 < 0) {
                                 i114 = 0;
                             }
-                            i115 = oc[1] / 2;
+                            i115 = Oc[1] / 2;
                             if (i115 > 255) {
                                 i115 = 255;
                             }
                             if (i115 < 0) {
                                 i115 = 0;
                             }
-                            i116 = oc[2] / 2;
+                            i116 = Oc[2] / 2;
                             if (i116 > 255) {
                                 i116 = 255;
                             }
@@ -901,23 +901,23 @@ class Plane : IComparable<Plane> {
                             }
                         }
                         G.SetColor(new Color(i114, i115, i116));
-                        G.DrawPolygon(is85, is86, n);
+                        G.DrawPolygon(is85, is86, N);
                     }
                 } else {
-                    if (flx == 2) {
+                    if (Flx == 2) {
                         G.SetColor(new Color(0, 0, 0));
-                        G.DrawPolygon(is85, is86, n);
+                        G.DrawPolygon(is85, is86, N);
                     }
-                    if (flx == 1) {
+                    if (Flx == 1) {
                         i114 = 0;
-                        i115 = (int) (223.0F + 223.0F * (Medium.snap[1] / 100.0F));
+                        i115 = (int) (223.0F + 223.0F * (Medium.Snap[1] / 100.0F));
                         if (i115 > 255) {
                             i115 = 255;
                         }
                         if (i115 < 0) {
                             i115 = 0;
                         }
-                        i116 = (int) (255.0F + 255.0F * (Medium.snap[2] / 100.0F));
+                        i116 = (int) (255.0F + 255.0F * (Medium.Snap[2] / 100.0F));
                         if (i116 > 255) {
                             i116 = 255;
                         }
@@ -925,19 +925,19 @@ class Plane : IComparable<Plane> {
                             i116 = 0;
                         }
                         G.SetColor(new Color(i114, i115, i116));
-                        G.DrawPolygon(is85, is86, n);
-                        flx = 2;
+                        G.DrawPolygon(is85, is86, N);
+                        Flx = 2;
                     }
-                    if (flx == 3) {
+                    if (Flx == 3) {
                         i114 = 0;
-                        i115 = (int) (255.0F + 255.0F * (Medium.snap[1] / 100.0F));
+                        i115 = (int) (255.0F + 255.0F * (Medium.Snap[1] / 100.0F));
                         if (i115 > 255) {
                             i115 = 255;
                         }
                         if (i115 < 0) {
                             i115 = 0;
                         }
-                        i116 = (int) (223.0F + 223.0F * (Medium.snap[2] / 100.0F));
+                        i116 = (int) (223.0F + 223.0F * (Medium.Snap[2] / 100.0F));
                         if (i116 > 255) {
                             i116 = 255;
                         }
@@ -945,16 +945,16 @@ class Plane : IComparable<Plane> {
                             i116 = 0;
                         }
                         G.SetColor(new Color(i114, i115, i116));
-                        G.DrawPolygon(is85, is86, n);
-                        flx = 2;
+                        G.DrawPolygon(is85, is86, N);
+                        Flx = 2;
                     }
-                    if (flx == 77) {
+                    if (Flx == 77) {
                         G.SetColor(new Color(16, 198, 255));
-                        G.DrawPolygon(is85, is86, n);
-                        flx = 0;
+                        G.DrawPolygon(is85, is86, N);
+                        Flx = 0;
                     }
                 }
-            } else if (road && av <= 3000 && Medium.trk == 0 && Medium.fade[0] > 4000) {
+            } else if (Road && _av <= 3000 && Medium.Trk == 0 && Medium.Fade[0] > 4000) {
                 i114 -= 10;
                 if (i114 < 0) {
                     i114 = 0;
@@ -968,14 +968,14 @@ class Plane : IComparable<Plane> {
                     i116 = 0;
                 }
                 G.SetColor(new Color(i114, i115, i116));
-                G.DrawPolygon(is85, is86, n);
+                G.DrawPolygon(is85, is86, N);
             }
-            if (gr == -10)
-                if (Medium.trk == 0) {
-                    i114 = c[0];
-                    i115 = c[1];
-                    i116 = c[2];
-                    if (i36 == -1 && Medium.cpflik) {
+            if (Gr == -10)
+                if (Medium.Trk == 0) {
+                    i114 = C[0];
+                    i115 = C[1];
+                    i116 = C[2];
+                    if (i36 == -1 && Medium.Cpflik) {
                         i114 = (int)(i114 * 1.6);
                         if (i114 > 255) {
                             i114 = 255;
@@ -989,15 +989,15 @@ class Plane : IComparable<Plane> {
                             i116 = 255;
                         }
                     }
-                    for (int i118 = 0; i118 < 16; i118++)
-                        if (av > Medium.fade[i118]) {
-                            i114 = (i114 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
-                            i115 = (i115 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
-                            i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
+                    for (var i118 = 0; i118 < 16; i118++)
+                        if (_av > Medium.Fade[i118]) {
+                            i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
+                            i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
+                            i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                         }
                     G.SetColor(new Color(i114, i115, i116));
-                    G.DrawPolygon(is85, is86, n);
-                } else if (Medium.cpflik && Medium.hit == 5000) {
+                    G.DrawPolygon(is85, is86, N);
+                } else if (Medium.Cpflik && Medium.Hit == 5000) {
                     i115 = (int) (HansenRandom.Double() * 115.0);
                     i114 = i115 * 2 - 54;
                     if (i114 < 0) {
@@ -1021,109 +1021,109 @@ class Plane : IComparable<Plane> {
                         i115 = 255;
                     }
                     G.SetColor(new Color(i114, i115, i116));
-                    G.DrawPolygon(is85, is86, n);
+                    G.DrawPolygon(is85, is86, N);
                 }
-            if (gr == -18 && Medium.trk == 0) {
-                i114 = c[0];
-                i115 = c[1];
-                i116 = c[2];
-                if (Medium.cpflik && Medium.elecr >= 0.0F) {
-                    i114 = (int) (25.5F * Medium.elecr);
+            if (Gr == -18 && Medium.Trk == 0) {
+                i114 = C[0];
+                i115 = C[1];
+                i116 = C[2];
+                if (Medium.Cpflik && Medium.Elecr >= 0.0F) {
+                    i114 = (int) (25.5F * Medium.Elecr);
                     if (i114 > 255) {
                         i114 = 255;
                     }
-                    i115 = (int) (128.0F + 12.8F * Medium.elecr);
+                    i115 = (int) (128.0F + 12.8F * Medium.Elecr);
                     if (i115 > 255) {
                         i115 = 255;
                     }
                     i116 = 255;
                 }
-                for (int i119 = 0; i119 < 16; i119++)
-                    if (av > Medium.fade[i119]) {
-                        i114 = (i114 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
-                        i115 = (i115 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
-                        i116 = (i116 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
+                for (var i119 = 0; i119 < 16; i119++)
+                    if (_av > Medium.Fade[i119]) {
+                        i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
+                        i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
+                        i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                     }
                 G.SetColor(new Color(i114, i115, i116));
-                G.DrawPolygon(is85, is86, n);
+                G.DrawPolygon(is85, is86, N);
             }
         }
     }
 
-    internal void deltafntyp() {
-        int i = HMath.SafeAbs(ox[2] - ox[1]);
-        int i24 = HMath.SafeAbs(oy[2] - oy[1]);
-        int i25 = HMath.SafeAbs(oz[2] - oz[1]);
+    internal void Deltafntyp() {
+        var i = HMath.SafeAbs(Ox[2] - Ox[1]);
+        var i24 = HMath.SafeAbs(Oy[2] - Oy[1]);
+        var i25 = HMath.SafeAbs(Oz[2] - Oz[1]);
         if (i24 <= i && i24 <= i25) {
-            typ = 2;
+            _typ = 2;
         }
         if (i <= i24 && i <= i25) {
-            typ = 1;
+            _typ = 1;
         }
         if (i25 <= i && i25 <= i24) {
-            typ = 3;
+            _typ = 3;
         }
-        deltaf = 1.0F;
-        for (int i26 = 0; i26 < 3; i26++) {
-            for (int i27 = 0; i27 < 3; i27++)
+        _deltaf = 1.0F;
+        for (var i26 = 0; i26 < 3; i26++) {
+            for (var i27 = 0; i27 < 3; i27++)
                 if (i27 != i26) {
-                    deltaf *= (float) (Math.Sqrt((ox[i27] - ox[i26]) * (ox[i27] - ox[i26]) + (oy[i27] - oy[i26]) * (oy[i27] - oy[i26]) + (oz[i27] - oz[i26]) * (oz[i27] - oz[i26])) / 100.0);
+                    _deltaf *= (float) (Math.Sqrt((Ox[i27] - Ox[i26]) * (Ox[i27] - Ox[i26]) + (Oy[i27] - Oy[i26]) * (Oy[i27] - Oy[i26]) + (Oz[i27] - Oz[i26]) * (Oz[i27] - Oz[i26])) / 100.0);
                 }
         }
-        deltaf = deltaf / 3.0F;
+        _deltaf = _deltaf / 3.0F;
     }
 
-    internal void loadprojf() {
-        projf = 1.0F;
-        for (int i = 0; i < 3; i++) {
-            for (int i28 = 0; i28 < 3; i28++)
+    internal void Loadprojf() {
+        _projf = 1.0F;
+        for (var i = 0; i < 3; i++) {
+            for (var i28 = 0; i28 < 3; i28++)
                 if (i28 != i) {
-                    projf *= (float) (Math.Sqrt((ox[i] - ox[i28]) * (ox[i] - ox[i28]) + (oz[i] - oz[i28]) * (oz[i] - oz[i28])) / 100.0);
+                    _projf *= (float) (Math.Sqrt((Ox[i] - Ox[i28]) * (Ox[i] - Ox[i28]) + (Oz[i] - Oz[i28]) * (Oz[i] - Oz[i28])) / 100.0);
                 }
         }
-        projf = projf / 3.0F;
+        _projf = _projf / 3.0F;
     }
 
-    internal void rot(int[] ais, int[] is163, int i, int i164, int i165, int i166) {
+    internal void Rot(int[] ais, int[] is163, int i, int i164, int i165, int i166) {
         if (i165 != 0) {
-            for (int i167 = 0; i167 < i166; i167++) {
-                int i168 = ais[i167];
-                int i169 = is163[i167];
-                ais[i167] = i + (int) ((i168 - i) * Medium.cos(i165) - (i169 - i164) * Medium.sin(i165));
-                is163[i167] = i164 + (int) ((i168 - i) * Medium.sin(i165) + (i169 - i164) * Medium.cos(i165));
+            for (var i167 = 0; i167 < i166; i167++) {
+                var i168 = ais[i167];
+                var i169 = is163[i167];
+                ais[i167] = i + (int) ((i168 - i) * Medium.Cos(i165) - (i169 - i164) * Medium.Sin(i165));
+                is163[i167] = i164 + (int) ((i168 - i) * Medium.Sin(i165) + (i169 - i164) * Medium.Cos(i165));
             }
         }
     }
 
-    internal void s(int i, int i120, int i121, int i122, int i123, int i124, int i125) {
-        int[] ais = new int[n];
-        int[] is126 = new int[n];
-        int[] is127 = new int[n];
-        for (int i128 = 0; i128 < n; i128++) {
-            ais[i128] = ox[i128] + i;
-            is127[i128] = oy[i128] + i120;
-            is126[i128] = oz[i128] + i121;
+    internal void S(int i, int i120, int i121, int i122, int i123, int i124, int i125) {
+        var ais = new int[N];
+        var is126 = new int[N];
+        var is127 = new int[N];
+        for (var i128 = 0; i128 < N; i128++) {
+            ais[i128] = Ox[i128] + i;
+            is127[i128] = Oy[i128] + i120;
+            is126[i128] = Oz[i128] + i121;
         }
-        rot(ais, is127, i, i120, i123, n);
-        rot(is127, is126, i120, i121, i124, n);
-        rot(ais, is126, i, i121, i122, n);
-        int i129 = (int) (Medium.crgrnd[0] / 1.5);
-        int i130 = (int) (Medium.crgrnd[1] / 1.5);
-        int i131 = (int) (Medium.crgrnd[2] / 1.5);
-        for (int i132 = 0; i132 < n; i132++) {
-            is127[i132] = Medium.ground;
+        Rot(ais, is127, i, i120, i123, N);
+        Rot(is127, is126, i120, i121, i124, N);
+        Rot(ais, is126, i, i121, i122, N);
+        var i129 = (int) (Medium.Crgrnd[0] / 1.5);
+        var i130 = (int) (Medium.Crgrnd[1] / 1.5);
+        var i131 = (int) (Medium.Crgrnd[2] / 1.5);
+        for (var i132 = 0; i132 < N; i132++) {
+            is127[i132] = Medium.Ground;
         }
         if (i125 == 0) {
-            int i133 = 0;
-            int i134 = 0;
-            int i135 = 0;
-            int i136 = 0;
-            for (int i137 = 0; i137 < n; i137++) {
-                int i138 = 0;
-                int i139 = 0;
-                int i140 = 0;
-                int i141 = 0;
-                for (int i142 = 0; i142 < n; i142++) {
+            var i133 = 0;
+            var i134 = 0;
+            var i135 = 0;
+            var i136 = 0;
+            for (var i137 = 0; i137 < N; i137++) {
+                var i138 = 0;
+                var i139 = 0;
+                var i140 = 0;
+                var i141 = 0;
+                for (var i142 = 0; i142 < N; i142++) {
                     if (ais[i137] >= ais[i142]) {
                         i138++;
                     }
@@ -1137,134 +1137,134 @@ class Plane : IComparable<Plane> {
                         i141++;
                     }
                 }
-                if (i138 == n) {
+                if (i138 == N) {
                     i133 = ais[i137];
                 }
-                if (i139 == n) {
+                if (i139 == N) {
                     i134 = ais[i137];
                 }
-                if (i140 == n) {
+                if (i140 == N) {
                     i135 = is126[i137];
                 }
-                if (i141 == n) {
+                if (i141 == N) {
                     i136 = is126[i137];
                 }
             }
-            int i143 = (i133 + i134) / 2;
-            int i144 = (i135 + i136) / 2;
-            int i145 = (i143 - Trackers.sx + Medium.x) / 3000;
-            if (i145 > Trackers.ncx) {
-                i145 = Trackers.ncx;
+            var i143 = (i133 + i134) / 2;
+            var i144 = (i135 + i136) / 2;
+            var i145 = (i143 - Trackers.Sx + Medium.X) / 3000;
+            if (i145 > Trackers.Ncx) {
+                i145 = Trackers.Ncx;
             }
             if (i145 < 0) {
                 i145 = 0;
             }
-            int i146 = (i144 - Trackers.sz + Medium.z) / 3000;
-            if (i146 > Trackers.ncz) {
-                i146 = Trackers.ncz;
+            var i146 = (i144 - Trackers.Sz + Medium.Z) / 3000;
+            if (i146 > Trackers.Ncz) {
+                i146 = Trackers.Ncz;
             }
             if (i146 < 0) {
                 i146 = 0;
             }
-            for (int i147 = Trackers.sect[i145,i146].Length - 1; i147 >= 0; i147--) {
-                int i148 = Trackers.sect[i145,i146][i147];
-                int i149 = 0;
-                if (Math.Abs(Trackers.zy[i148]) != 90 && Math.Abs(Trackers.xy[i148]) != 90 && Trackers.rady[i148] != 801 && Math.Abs(i143 - (Trackers.x[i148] - Medium.x)) < Trackers.radx[i148] && Math.Abs(i144 - (Trackers.z[i148] - Medium.z)) < Trackers.radz[i148] && (!Trackers.decor[i148] || Medium.resdown != 2)) {
+            for (var i147 = Trackers.Sect[i145,i146].Length - 1; i147 >= 0; i147--) {
+                var i148 = Trackers.Sect[i145,i146][i147];
+                var i149 = 0;
+                if (Math.Abs(Trackers.Zy[i148]) != 90 && Math.Abs(Trackers.Xy[i148]) != 90 && Trackers.Rady[i148] != 801 && Math.Abs(i143 - (Trackers.X[i148] - Medium.X)) < Trackers.Radx[i148] && Math.Abs(i144 - (Trackers.Z[i148] - Medium.Z)) < Trackers.Radz[i148] && (!Trackers.Decor[i148] || Medium.Resdown != 2)) {
                     i149++;
                 }
                 if (i149 != 0) {
-                    for (int i150 = 0; i150 < n; i150++) {
-                        is127[i150] = Trackers.y[i148] - Medium.y;
-                        if (Trackers.zy[i148] != 0) {
-                            is127[i150] += (int) ((is126[i150] - (Trackers.z[i148] - Medium.z - Trackers.radz[i148])) * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]) - Trackers.radz[i148] * Medium.sin(Trackers.zy[i148]) / Medium.sin(90 - Trackers.zy[i148]));
+                    for (var i150 = 0; i150 < N; i150++) {
+                        is127[i150] = Trackers.Y[i148] - Medium.Y;
+                        if (Trackers.Zy[i148] != 0) {
+                            is127[i150] += (int) ((is126[i150] - (Trackers.Z[i148] - Medium.Z - Trackers.Radz[i148])) * Medium.Sin(Trackers.Zy[i148]) / Medium.Sin(90 - Trackers.Zy[i148]) - Trackers.Radz[i148] * Medium.Sin(Trackers.Zy[i148]) / Medium.Sin(90 - Trackers.Zy[i148]));
                         }
-                        if (Trackers.xy[i148] != 0) {
-                            is127[i150] += (int)((ais[i150] - (Trackers.x[i148] - Medium.x - Trackers.radx[i148])) * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]) - Trackers.radx[i148] * Medium.sin(Trackers.xy[i148]) / Medium.sin(90 - Trackers.xy[i148]));
+                        if (Trackers.Xy[i148] != 0) {
+                            is127[i150] += (int)((ais[i150] - (Trackers.X[i148] - Medium.X - Trackers.Radx[i148])) * Medium.Sin(Trackers.Xy[i148]) / Medium.Sin(90 - Trackers.Xy[i148]) - Trackers.Radx[i148] * Medium.Sin(Trackers.Xy[i148]) / Medium.Sin(90 - Trackers.Xy[i148]));
                         }
                     }
-                    i129 = (int) (Trackers.c[i148][0] / 1.5);
-                    i130 = (int) (Trackers.c[i148][1] / 1.5);
-                    i131 = (int) (Trackers.c[i148][2] / 1.5);
+                    i129 = (int) (Trackers.C[i148][0] / 1.5);
+                    i130 = (int) (Trackers.C[i148][1] / 1.5);
+                    i131 = (int) (Trackers.C[i148][2] / 1.5);
                     break;
                 }
             }
         }
-        boolean abool = true;
-        int[] is151 = new int[n];
-        int[] is152 = new int[n];
+        var abool = true;
+        var is151 = new int[N];
+        var is152 = new int[N];
         if (i125 == 2) {
             i129 = 87;
             i130 = 85;
             i131 = 57;
         } else {
-            for (int i153 = 0; i153 < Medium.nsp; i153++) {
-                for (int i154 = 0; i154 < n; i154++)
-                    if (Math.Abs(ais[i154] - Medium.spx[i153]) < Medium.sprad[i153] && Math.Abs(is126[i154] - Medium.spz[i153]) < Medium.sprad[i153]) {
+            for (var i153 = 0; i153 < Medium.Nsp; i153++) {
+                for (var i154 = 0; i154 < N; i154++)
+                    if (Math.Abs(ais[i154] - Medium.Spx[i153]) < Medium.Sprad[i153] && Math.Abs(is126[i154] - Medium.Spz[i153]) < Medium.Sprad[i153]) {
                         abool = false;
                     }
             }
         }
         if (abool) {
-            rot(ais, is126, Medium.cx, Medium.cz, Medium.xz, n);
-            rot(is127, is126, Medium.cy, Medium.cz, Medium.zy, n);
-            int i155 = 0;
-            int i156 = 0;
-            int i157 = 0;
-            int i158 = 0;
-            for (int i159 = 0; i159 < n; i159++) {
-                is151[i159] = xs(ais[i159], is126[i159]);
-                is152[i159] = ys(is127[i159], is126[i159]);
-                if (is152[i159] < Medium.ih || is126[i159] < 10) {
+            Rot(ais, is126, Medium.Cx, Medium.Cz, Medium.Xz, N);
+            Rot(is127, is126, Medium.Cy, Medium.Cz, Medium.Zy, N);
+            var i155 = 0;
+            var i156 = 0;
+            var i157 = 0;
+            var i158 = 0;
+            for (var i159 = 0; i159 < N; i159++) {
+                is151[i159] = Xs(ais[i159], is126[i159]);
+                is152[i159] = Ys(is127[i159], is126[i159]);
+                if (is152[i159] < Medium.Ih || is126[i159] < 10) {
                     i155++;
                 }
-                if (is152[i159] > Medium.h || is126[i159] < 10) {
+                if (is152[i159] > Medium.H || is126[i159] < 10) {
                     i156++;
                 }
-                if (is151[i159] < Medium.iw || is126[i159] < 10) {
+                if (is151[i159] < Medium.Iw || is126[i159] < 10) {
                     i157++;
                 }
-                if (is151[i159] > Medium.w || is126[i159] < 10) {
+                if (is151[i159] > Medium.W || is126[i159] < 10) {
                     i158++;
                 }
             }
-            if (i157 == n || i155 == n || i156 == n || i158 == n) {
+            if (i157 == N || i155 == N || i156 == N || i158 == N) {
                 abool = false;
             }
         }
         if (abool) {
-            for (int i160 = 0; i160 < 16; i160++)
-                if (av > Medium.fade[i160]) {
-                    i129 = (i129 * Medium.fogd + Medium.cfade[0]) / (Medium.fogd + 1);
-                    i130 = (i130 * Medium.fogd + Medium.cfade[1]) / (Medium.fogd + 1);
-                    i131 = (i131 * Medium.fogd + Medium.cfade[2]) / (Medium.fogd + 1);
+            for (var i160 = 0; i160 < 16; i160++)
+                if (_av > Medium.Fade[i160]) {
+                    i129 = (i129 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
+                    i130 = (i130 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
+                    i131 = (i131 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                 }
             G.SetColor(new Color(i129, i130, i131));
-            G.FillPolygon(is151, is152, n);
+            G.FillPolygon(is151, is152, N);
         }
     }
 
-    private int spy(int i, int i170) {
-        return (int) Math.Sqrt((i - Medium.cx) * (i - Medium.cx) + i170 * i170);
+    private int Spy(int i, int i170) {
+        return (int) Math.Sqrt((i - Medium.Cx) * (i - Medium.Cx) + i170 * i170);
     }
 
-    private int xs(int i, int i161) {
-        if (i161 < Medium.cz) {
-            i161 = Medium.cz;
+    private int Xs(int i, int i161) {
+        if (i161 < Medium.Cz) {
+            i161 = Medium.Cz;
         }
-        return (i161 - Medium.focusPoint) * (Medium.cx - i) / i161 + i;
+        return (i161 - Medium.FocusPoint) * (Medium.Cx - i) / i161 + i;
     }
 
-    private int ys(int i, int i162) {
-        if (i162 < Medium.cz) {
-            i162 = Medium.cz;
+    private int Ys(int i, int i162) {
+        if (i162 < Medium.Cz) {
+            i162 = Medium.Cz;
         }
-        return (i162 - Medium.focusPoint) * (Medium.cy - i) / i162 + i;
+        return (i162 - Medium.FocusPoint) * (Medium.Cy - i) / i162 + i;
     }
 
     public int CompareTo(Plane o)
     {
-        if (av == o.av) return 0;
-        if (av < o.av)
+        if (_av == o._av) return 0;
+        if (_av < o._av)
             return 1;
         return -1;
     }

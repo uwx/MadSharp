@@ -4,114 +4,114 @@ namespace Cum
 {
     internal class Record
     {
-        internal static readonly ContO[,] car = new ContO[6,8];
-        internal static int caught = 0;
-        private static readonly int[] checkpoint = new int[300];
-        internal static int closefinish = 0;
-        internal static readonly int[] cntdest = new int[8];
-        private static int cntf = 50;
-        internal static readonly int[] dest = new int[8];
-        internal static readonly int[] fix = new int[8];
-        internal static boolean hcaught = false;
-        private static readonly int[] hcheckpoint = new int[300];
-        private static readonly int[] hdest =
+        internal static readonly ContO[,] Car = new ContO[6,8];
+        internal static int Caught;
+        private static readonly int[] Checkpoint = new int[300];
+        internal static int Closefinish;
+        internal static readonly int[] Cntdest = new int[8];
+        private static int _cntf = 50;
+        internal static readonly int[] Dest = new int[8];
+        internal static readonly int[] Fix = new int[8];
+        internal static bool Hcaught;
+        private static readonly int[] Hcheckpoint = new int[300];
+        private static readonly int[] Hdest =
         {
             -1, -1, -1, -1, -1, -1, -1, -1
         };
 
-        internal static readonly int[] hfix =
+        internal static readonly int[] Hfix =
         {
             -1, -1, -1, -1, -1, -1, -1, -1
         };
 
-        private static readonly boolean[] hlastcheck = new boolean[300];
-        private static readonly int[,,] hmagx = new int[8,4,7];
-        private static readonly int[,,] hmagy = new int[8,4,7];
-        private static readonly int[,,] hmagz = new int[8,4,7];
-        private static readonly boolean[,] hmtouch = new boolean[8,7];
-        private static readonly float[,] hrcx = new float[8,200];
-        private static readonly float[,] hrcy = new float[8,200];
-        private static readonly float[,] hrcz = new float[8,200];
-        private static readonly int[,] hrspark = new int[8,200];
-        private static readonly int[,,] hrx = new int[8,4,7];
-        private static readonly int[,,] hry = new int[8,4,7];
-        private static readonly int[,,] hrz = new int[8,4,7];
-        private static readonly int[,,] hscx = new int[8,20,30];
-        private static readonly int[,,] hscz = new int[8,20,30];
-        private static readonly float[,,] hsmag = new float[8,20,30];
-        private static readonly int[,] hsprk = new int[8,200];
-        private static readonly int[] hsquash =
+        private static readonly bool[] Hlastcheck = new bool[300];
+        private static readonly int[,,] Hmagx = new int[8,4,7];
+        private static readonly int[,,] Hmagy = new int[8,4,7];
+        private static readonly int[,,] Hmagz = new int[8,4,7];
+        private static readonly bool[,] Hmtouch = new bool[8,7];
+        private static readonly float[,] Hrcx = new float[8,200];
+        private static readonly float[,] Hrcy = new float[8,200];
+        private static readonly float[,] Hrcz = new float[8,200];
+        private static readonly int[,] Hrspark = new int[8,200];
+        private static readonly int[,,] Hrx = new int[8,4,7];
+        private static readonly int[,,] Hry = new int[8,4,7];
+        private static readonly int[,,] Hrz = new int[8,4,7];
+        private static readonly int[,,] Hscx = new int[8,20,30];
+        private static readonly int[,,] Hscz = new int[8,20,30];
+        private static readonly float[,,] Hsmag = new float[8,20,30];
+        private static readonly int[,] Hsprk = new int[8,200];
+        private static readonly int[] Hsquash =
         {
             0, 0, 0, 0, 0, 0, 0, 0
         };
 
-        private static readonly int[,] hsrx = new int[8,200];
-        private static readonly int[,] hsry = new int[8,200];
-        private static readonly int[,] hsrz = new int[8,200];
-        private static readonly int[,,] hsspark = new int[8,20,30];
-        private static readonly int[,,] hsx = new int[8,20,30];
-        private static readonly int[,,] hsy = new int[8,20,30];
-        private static readonly int[,,] hsz = new int[8,20,30];
-        private static readonly int[,] hwxz = new int[300,8];
-        private static readonly int[,] hwzy = new int[300,8];
-        private static readonly int[,] hx = new int[300,8];
-        private static readonly int[,] hxy = new int[300,8];
-        private static readonly int[,] hxz = new int[300,8];
-        private static readonly int[,] hy = new int[300,8];
-        private static readonly int[,] hz = new int[300,8];
-        private static readonly int[,] hzy = new int[300,8];
-        private static readonly boolean[] lastcheck = new boolean[300];
-        private static int lastfr = 0;
-        private static readonly int[,,] magx = new int[8,4,7];
-        private static readonly int[,,] magy = new int[8,4,7];
-        private static readonly int[,,] magz = new int[8,4,7];
-        private static readonly boolean[,] mtouch = new boolean[8,7];
-        private static readonly int[] nr = new int[8];
-        private static readonly int[,] nrx = new int[8,4];
-        private static readonly int[,] nry = new int[8,4];
-        private static readonly int[,] nrz = new int[8,4];
-        private static readonly int[,] ns = new int[8,20];
-        internal static readonly ContO[] ocar = new ContO[8];
-        internal static int powered = 0;
-        private static boolean prepit = true;
-        private static readonly float[,] rcx = new float[8,200];
-        private static readonly float[,] rcy = new float[8,200];
-        private static readonly float[,] rcz = new float[8,200];
-        private static readonly int[,] rspark = new int[8,200];
-        private static readonly int[,,] rx = new int[8,4,7];
-        private static readonly int[,,] ry = new int[8,4,7];
-        private static readonly int[,,] rz = new int[8,4,7];
-        private static readonly int[,,] scx = new int[8,20,30];
-        private static readonly int[,,] scz = new int[8,20,30];
-        private static readonly float[,,] smag = new float[8,20,30];
-        private static readonly int[,] sprk = new int[8,200];
-        private static readonly int[,] squash = new int[6,8];
-        private static readonly int[,] srx = new int[8,200];
-        private static readonly int[,] sry = new int[8,200];
-        private static readonly int[,] srz = new int[8,200];
-        private static readonly int[,,] sspark = new int[8,20,30];
-        internal static readonly ContO[] starcar = new ContO[8];
-        private static readonly int[,,] sx = new int[8,20,30];
-        private static readonly int[,,] sy = new int[8,20,30];
-        private static readonly int[,,] sz = new int[8,20,30];
-        internal static int wasted = 0;
-        internal static int whenwasted = 0;
-        private static readonly int[,] wxz = new int[300,8];
-        private static readonly int[,] wzy = new int[300,8];
-        private static readonly int[,] x = new int[300,8];
-        private static readonly int[,] xy = new int[300,8];
-        private static readonly int[,] xz = new int[300,8];
-        private static readonly int[,] y = new int[300,8];
-        private static readonly int[,] z = new int[300,8];
-        private static readonly int[,] zy = new int[300,8];
+        private static readonly int[,] Hsrx = new int[8,200];
+        private static readonly int[,] Hsry = new int[8,200];
+        private static readonly int[,] Hsrz = new int[8,200];
+        private static readonly int[,,] Hsspark = new int[8,20,30];
+        private static readonly int[,,] Hsx = new int[8,20,30];
+        private static readonly int[,,] Hsy = new int[8,20,30];
+        private static readonly int[,,] Hsz = new int[8,20,30];
+        private static readonly int[,] Hwxz = new int[300,8];
+        private static readonly int[,] Hwzy = new int[300,8];
+        private static readonly int[,] Hx = new int[300,8];
+        private static readonly int[,] Hxy = new int[300,8];
+        private static readonly int[,] Hxz = new int[300,8];
+        private static readonly int[,] Hy = new int[300,8];
+        private static readonly int[,] Hz = new int[300,8];
+        private static readonly int[,] Hzy = new int[300,8];
+        private static readonly bool[] Lastcheck = new bool[300];
+        private static int _lastfr;
+        private static readonly int[,,] Magx = new int[8,4,7];
+        private static readonly int[,,] Magy = new int[8,4,7];
+        private static readonly int[,,] Magz = new int[8,4,7];
+        private static readonly bool[,] Mtouch = new bool[8,7];
+        private static readonly int[] Nr = new int[8];
+        private static readonly int[,] Nrx = new int[8,4];
+        private static readonly int[,] Nry = new int[8,4];
+        private static readonly int[,] Nrz = new int[8,4];
+        private static readonly int[,] Ns = new int[8,20];
+        internal static readonly ContO[] Ocar = new ContO[8];
+        internal static int Powered;
+        private static bool _prepit = true;
+        private static readonly float[,] Rcx = new float[8,200];
+        private static readonly float[,] Rcy = new float[8,200];
+        private static readonly float[,] Rcz = new float[8,200];
+        private static readonly int[,] Rspark = new int[8,200];
+        private static readonly int[,,] Rx = new int[8,4,7];
+        private static readonly int[,,] Ry = new int[8,4,7];
+        private static readonly int[,,] Rz = new int[8,4,7];
+        private static readonly int[,,] Scx = new int[8,20,30];
+        private static readonly int[,,] Scz = new int[8,20,30];
+        private static readonly float[,,] Smag = new float[8,20,30];
+        private static readonly int[,] Sprk = new int[8,200];
+        private static readonly int[,] Squash = new int[6,8];
+        private static readonly int[,] Srx = new int[8,200];
+        private static readonly int[,] Sry = new int[8,200];
+        private static readonly int[,] Srz = new int[8,200];
+        private static readonly int[,,] Sspark = new int[8,20,30];
+        internal static readonly ContO[] Starcar = new ContO[8];
+        private static readonly int[,,] Sx = new int[8,20,30];
+        private static readonly int[,,] Sy = new int[8,20,30];
+        private static readonly int[,,] Sz = new int[8,20,30];
+        internal static int Wasted;
+        internal static int Whenwasted;
+        private static readonly int[,] Wxz = new int[300,8];
+        private static readonly int[,] Wzy = new int[300,8];
+        private static readonly int[,] X = new int[300,8];
+        private static readonly int[,] Xy = new int[300,8];
+        private static readonly int[,] Xz = new int[300,8];
+        private static readonly int[,] Y = new int[300,8];
+        private static readonly int[,] Z = new int[300,8];
+        private static readonly int[,] Zy = new int[300,8];
 
         internal Record()
         {
-            caught = 0;
-            cotchinow(0);
+            Caught = 0;
+            Cotchinow(0);
         }
 
-        private static void chipx(int i, float f, ContO conto, Mad mad) {
+        private static void Chipx(int i, float f, ContO conto, Mad mad) {
             if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -122,26 +122,24 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                for (int i68 = 0; i68 < conto.npl; i68++)
+                for (var i68 = 0; i68 < conto.Npl; i68++)
                 {
-                    float f69 = 0.0F;
-                    for (int i70 = 0; i70 < conto.p[i68].n; i70++)
-                        if (conto.p[i68].wz == 0 &&
-                            py(conto.keyx[i], conto.p[i68].ox[i70], conto.keyz[i], conto.p[i68].oz[i70]) <
-                            mad.stat.clrad)
+                    var f69 = 0.0F;
+                    for (var i70 = 0; i70 < conto.P[i68].N; i70++)
+                        if (conto.P[i68].Wz == 0 &&
+                            Py(conto.Keyx[i], conto.P[i68].Ox[i70], conto.Keyz[i], conto.P[i68].Oz[i70]) <
+                            mad.Stat.Clrad)
                         {
-                            f69 = f / 20.0F * Medium.random();
+                            f69 = f / 20.0F * Medium.Random();
                         }
-                    if (f69 != 0.0F && Math.Abs(f69) >= 1.0F)
-                    {
-                        conto.p[i68].chip = 1;
-                        conto.p[i68].ctmag = f69;
-                    }
+                    if (f69 == 0.0F || !(Math.Abs(f69) >= 1.0F)) continue;
+                    conto.P[i68].Chip = 1;
+                    conto.P[i68].Ctmag = f69;
                 }
             }
         }
 
-        private static void chipz(int i, float f, ContO conto, Mad mad) {
+        private static void Chipz(int i, float f, ContO conto, Mad mad) {
             if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -152,436 +150,436 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                for (int i71 = 0; i71 < conto.npl; i71++)
+                for (var i71 = 0; i71 < conto.Npl; i71++)
                 {
-                    float f72 = 0.0F;
-                    for (int i73 = 0; i73 < conto.p[i71].n; i73++)
-                        if (conto.p[i71].wz == 0 &&
-                            py(conto.keyx[i], conto.p[i71].ox[i73], conto.keyz[i], conto.p[i71].oz[i73]) <
-                            mad.stat.clrad)
+                    var f72 = 0.0F;
+                    for (var i73 = 0; i73 < conto.P[i71].N; i73++)
+                        if (conto.P[i71].Wz == 0 &&
+                            Py(conto.Keyx[i], conto.P[i71].Ox[i73], conto.Keyz[i], conto.P[i71].Oz[i73]) <
+                            mad.Stat.Clrad)
                         {
-                            f72 = f / 20.0F * Medium.random();
+                            f72 = f / 20.0F * Medium.Random();
                         }
                     if (f72 != 0.0F && Math.Abs(f72) >= 1.0F)
                     {
-                        conto.p[i71].chip = 1;
-                        conto.p[i71].ctmag = f72;
+                        conto.P[i71].Chip = 1;
+                        conto.P[i71].Ctmag = f72;
                     }
                 }
             }
         }
 
-        internal static void cotchinow(int i)
+        internal static void Cotchinow(int i)
         {
-            if (caught >= 300)
+            if (Caught >= 300)
             {
-                wasted = i;
-                for (int i6 = 0; i6 < 8; i6++)
+                Wasted = i;
+                for (var i6 = 0; i6 < 8; i6++)
                 {
-                    starcar[i6] = new ContO(car[0,i6], 0, 0, 0, 0);
-                    hsquash[i6] = squash[0,i6];
-                    hfix[i6] = fix[i6];
-                    hdest[i6] = dest[i6];
+                    Starcar[i6] = new ContO(Car[0,i6], 0, 0, 0, 0);
+                    Hsquash[i6] = Squash[0,i6];
+                    Hfix[i6] = Fix[i6];
+                    Hdest[i6] = Dest[i6];
                 }
-                for (int i7 = 0; i7 < 300; i7++)
+                for (var i7 = 0; i7 < 300; i7++)
                 {
-                    for (int i8 = 0; i8 < 8; i8++)
+                    for (var i8 = 0; i8 < 8; i8++)
                     {
-                        hx[i7,i8] = x[i7,i8];
-                        hy[i7,i8] = y[i7,i8];
-                        hz[i7,i8] = z[i7,i8];
-                        hxy[i7,i8] = xy[i7,i8];
-                        hzy[i7,i8] = zy[i7,i8];
-                        hxz[i7,i8] = xz[i7,i8];
-                        hwxz[i7,i8] = wxz[i7,i8];
-                        hwzy[i7,i8] = wzy[i7,i8];
+                        Hx[i7,i8] = X[i7,i8];
+                        Hy[i7,i8] = Y[i7,i8];
+                        Hz[i7,i8] = Z[i7,i8];
+                        Hxy[i7,i8] = Xy[i7,i8];
+                        Hzy[i7,i8] = Zy[i7,i8];
+                        Hxz[i7,i8] = Xz[i7,i8];
+                        Hwxz[i7,i8] = Wxz[i7,i8];
+                        Hwzy[i7,i8] = Wzy[i7,i8];
                     }
-                    hcheckpoint[i7] = checkpoint[i7];
-                    hlastcheck[i7] = lastcheck[i7];
+                    Hcheckpoint[i7] = Checkpoint[i7];
+                    Hlastcheck[i7] = Lastcheck[i7];
                 }
-                for (int i9 = 0; i9 < 8; i9++)
+                for (var i9 = 0; i9 < 8; i9++)
                 {
-                    for (int i10 = 0; i10 < 20; i10++)
+                    for (var i10 = 0; i10 < 20; i10++)
                     {
-                        for (int i11 = 0; i11 < 30; i11++)
+                        for (var i11 = 0; i11 < 30; i11++)
                         {
-                            hsspark[i9,i10,i11] = sspark[i9,i10,i11];
-                            hsx[i9,i10,i11] = sx[i9,i10,i11];
-                            hsy[i9,i10,i11] = sy[i9,i10,i11];
-                            hsz[i9,i10,i11] = sz[i9,i10,i11];
-                            hsmag[i9,i10,i11] = smag[i9,i10,i11];
-                            hscx[i9,i10,i11] = scx[i9,i10,i11];
-                            hscz[i9,i10,i11] = scz[i9,i10,i11];
+                            Hsspark[i9,i10,i11] = Sspark[i9,i10,i11];
+                            Hsx[i9,i10,i11] = Sx[i9,i10,i11];
+                            Hsy[i9,i10,i11] = Sy[i9,i10,i11];
+                            Hsz[i9,i10,i11] = Sz[i9,i10,i11];
+                            Hsmag[i9,i10,i11] = Smag[i9,i10,i11];
+                            Hscx[i9,i10,i11] = Scx[i9,i10,i11];
+                            Hscz[i9,i10,i11] = Scz[i9,i10,i11];
                         }
                     }
-                    for (int i12 = 0; i12 < 200; i12++)
+                    for (var i12 = 0; i12 < 200; i12++)
                     {
-                        hrspark[i9,i12] = rspark[i9,i12];
-                        hsprk[i9,i12] = sprk[i9,i12];
-                        hsrx[i9,i12] = srx[i9,i12];
-                        hsry[i9,i12] = sry[i9,i12];
-                        hsrz[i9,i12] = srz[i9,i12];
-                        hrcx[i9,i12] = rcx[i9,i12];
-                        hrcy[i9,i12] = rcy[i9,i12];
-                        hrcz[i9,i12] = rcz[i9,i12];
+                        Hrspark[i9,i12] = Rspark[i9,i12];
+                        Hsprk[i9,i12] = Sprk[i9,i12];
+                        Hsrx[i9,i12] = Srx[i9,i12];
+                        Hsry[i9,i12] = Sry[i9,i12];
+                        Hsrz[i9,i12] = Srz[i9,i12];
+                        Hrcx[i9,i12] = Rcx[i9,i12];
+                        Hrcy[i9,i12] = Rcy[i9,i12];
+                        Hrcz[i9,i12] = Rcz[i9,i12];
                     }
                 }
-                for (int i13 = 0; i13 < 8; i13++)
+                for (var i13 = 0; i13 < 8; i13++)
                 {
-                    for (int i14 = 0; i14 < 4; i14++)
+                    for (var i14 = 0; i14 < 4; i14++)
                     {
-                        for (int i15 = 0; i15 < 7; i15++)
+                        for (var i15 = 0; i15 < 7; i15++)
                         {
-                            hry[i13,i14,i15] = ry[i13,i14,i15];
-                            hmagy[i13,i14,i15] = magy[i13,i14,i15];
-                            hrx[i13,i14,i15] = rx[i13,i14,i15];
-                            hmagx[i13,i14,i15] = magx[i13,i14,i15];
-                            hrz[i13,i14,i15] = rz[i13,i14,i15];
-                            hmagz[i13,i14,i15] = magz[i13,i14,i15];
+                            Hry[i13,i14,i15] = Ry[i13,i14,i15];
+                            Hmagy[i13,i14,i15] = Magy[i13,i14,i15];
+                            Hrx[i13,i14,i15] = Rx[i13,i14,i15];
+                            Hmagx[i13,i14,i15] = Magx[i13,i14,i15];
+                            Hrz[i13,i14,i15] = Rz[i13,i14,i15];
+                            Hmagz[i13,i14,i15] = Magz[i13,i14,i15];
                         }
                     }
                 }
-                for (int i16 = 0; i16 < 8; i16++)
+                for (var i16 = 0; i16 < 8; i16++)
                 {
-                    HansenSystem.ArrayCopy(mtouch.Slice(i16), 0, hmtouch.Slice(i16), 0, 7);
+                    HansenSystem.ArrayCopy(Mtouch.Slice(i16), 0, Hmtouch.Slice(i16), 0, 7);
                 }
-                hcaught = true;
+                Hcaught = true;
             }
         }
 
-        internal static void play(ContO conto, Mad mad, int i, int i30) {
-            conto.x = x[i30,i];
-            conto.y = y[i30,i];
-            conto.z = z[i30,i];
-            conto.zy = zy[i30,i];
-            conto.xy = xy[i30,i];
-            conto.xz = xz[i30,i];
-            conto.wxz = wxz[i30,i];
-            conto.wzy = wzy[i30,i];
+        internal static void Play(ContO conto, Mad mad, int i, int i30) {
+            conto.X = X[i30,i];
+            conto.Y = Y[i30,i];
+            conto.Z = Z[i30,i];
+            conto.Zy = Zy[i30,i];
+            conto.Xy = Xy[i30,i];
+            conto.Xz = Xz[i30,i];
+            conto.Wxz = Wxz[i30,i];
+            conto.Wzy = Wzy[i30,i];
             if (i == 0)
             {
-                Medium.checkpoint = checkpoint[i30];
-                Medium.lastcheck = lastcheck[i30];
+                Medium.Checkpoint = Checkpoint[i30];
+                Medium.Lastcheck = Lastcheck[i30];
             }
             if (i30 == 0)
             {
-                cntdest[i] = 0;
+                Cntdest[i] = 0;
             }
-            if (dest[i] == i30)
+            if (Dest[i] == i30)
             {
-                cntdest[i] = 7;
+                Cntdest[i] = 7;
             }
-            if (i30 == 0 && dest[i] < -1)
+            if (i30 == 0 && Dest[i] < -1)
             {
-                for (int i31 = 0; i31 < conto.npl; i31++)
-                    if (conto.p[i31].wz == 0 || conto.p[i31].gr == -17 || conto.p[i31].gr == -16)
+                for (var i31 = 0; i31 < conto.Npl; i31++)
+                    if (conto.P[i31].Wz == 0 || conto.P[i31].Gr == -17 || conto.P[i31].Gr == -16)
                     {
-                        conto.p[i31].embos = 13;
+                        conto.P[i31].Embos = 13;
                     }
             }
-            if (cntdest[i] != 0)
+            if (Cntdest[i] != 0)
             {
-                for (int i32 = 0; i32 < conto.npl; i32++)
-                    if (conto.p[i32].wz == 0 || conto.p[i32].gr == -17 || conto.p[i32].gr == -16)
+                for (var i32 = 0; i32 < conto.Npl; i32++)
+                    if (conto.P[i32].Wz == 0 || conto.P[i32].Gr == -17 || conto.P[i32].Gr == -16)
                     {
-                        conto.p[i32].embos = 1;
+                        conto.P[i32].Embos = 1;
                     }
-                cntdest[i]--;
+                Cntdest[i]--;
             }
-            for (int i33 = 0; i33 < 20; i33++)
+            for (var i33 = 0; i33 < 20; i33++)
             {
-                for (int i34 = 0; i34 < 30; i34++)
-                    if (sspark[i,i33,i34] == i30)
+                for (var i34 = 0; i34 < 30; i34++)
+                    if (Sspark[i,i33,i34] == i30)
                     {
-                        conto.stg[i33] = 1;
-                        conto.sx[i33] = sx[i,i33,i34];
-                        conto.sy[i33] = sy[i,i33,i34];
-                        conto.sz[i33] = sz[i,i33,i34];
-                        conto.osmag[i33] = smag[i,i33,i34];
-                        conto.scx[i33] = scx[i,i33,i34];
-                        conto.scz[i33] = scz[i,i33,i34];
+                        conto.Stg[i33] = 1;
+                        conto.Sx[i33] = Sx[i,i33,i34];
+                        conto.Sy[i33] = Sy[i,i33,i34];
+                        conto.Sz[i33] = Sz[i,i33,i34];
+                        conto.Osmag[i33] = Smag[i,i33,i34];
+                        conto.Scx[i33] = Scx[i,i33,i34];
+                        conto.Scz[i33] = Scz[i,i33,i34];
                     }
             }
-            for (int i35 = 0; i35 < 200; i35++)
-                if (rspark[i,i35] == i30)
+            for (var i35 = 0; i35 < 200; i35++)
+                if (Rspark[i,i35] == i30)
                 {
-                    conto.sprk = sprk[i,i35];
-                    conto.srx = srx[i,i35];
-                    conto.sry = sry[i,i35];
-                    conto.srz = srz[i,i35];
-                    conto.rcx = rcx[i,i35];
-                    conto.rcy = rcy[i,i35];
-                    conto.rcz = rcz[i,i35];
+                    conto.Sprk = Sprk[i,i35];
+                    conto.Srx = Srx[i,i35];
+                    conto.Sry = Sry[i,i35];
+                    conto.Srz = Srz[i,i35];
+                    conto.Rcx = Rcx[i,i35];
+                    conto.Rcy = Rcy[i,i35];
+                    conto.Rcz = Rcz[i,i35];
                 }
-            for (int i36 = 0; i36 < 4; i36++)
+            for (var i36 = 0; i36 < 4; i36++)
             {
-                for (int i37 = 0; i37 < 7; i37++)
+                for (var i37 = 0; i37 < 7; i37++)
                 {
-                    if (ry[i,i36,i37] == i30)
+                    if (Ry[i,i36,i37] == i30)
                     {
-                        regy(i36, magy[i,i36,i37], mtouch[i,i37], conto, mad);
+                        Regy(i36, Magy[i,i36,i37], Mtouch[i,i37], conto, mad);
                     }
-                    if (rx[i,i36,i37] == i30)
+                    if (Rx[i,i36,i37] == i30)
                     {
-                        regx(i36, magx[i,i36,i37], conto, mad);
+                        Regx(i36, Magx[i,i36,i37], conto, mad);
                     }
-                    if (rz[i,i36,i37] == i30)
+                    if (Rz[i,i36,i37] == i30)
                     {
-                        regz(i36, magz[i,i36,i37], conto, mad);
+                        Regz(i36, Magz[i,i36,i37], conto, mad);
                     }
                 }
             }
         }
 
-        internal static void playh(ContO conto, Mad mad, int i, int i38, int i39) {
-            conto.x = hx[i38,i];
-            conto.y = hy[i38,i];
-            conto.z = hz[i38,i];
-            conto.zy = hzy[i38,i];
-            conto.xy = hxy[i38,i];
-            conto.xz = hxz[i38,i];
-            conto.wxz = hwxz[i38,i];
-            conto.wzy = hwzy[i38,i];
+        internal static void Playh(ContO conto, Mad mad, int i, int i38, int i39) {
+            conto.X = Hx[i38,i];
+            conto.Y = Hy[i38,i];
+            conto.Z = Hz[i38,i];
+            conto.Zy = Hzy[i38,i];
+            conto.Xy = Hxy[i38,i];
+            conto.Xz = Hxz[i38,i];
+            conto.Wxz = Hwxz[i38,i];
+            conto.Wzy = Hwzy[i38,i];
             if (i == i39)
             {
-                Medium.checkpoint = hcheckpoint[i38];
-                Medium.lastcheck = hlastcheck[i38];
+                Medium.Checkpoint = Hcheckpoint[i38];
+                Medium.Lastcheck = Hlastcheck[i38];
             }
             if (i38 == 0)
             {
-                cntdest[i] = 0;
+                Cntdest[i] = 0;
             }
-            if (hdest[i] == i38)
+            if (Hdest[i] == i38)
             {
-                cntdest[i] = 7;
+                Cntdest[i] = 7;
             }
-            if (i38 == 0 && hdest[i] < -1)
+            if (i38 == 0 && Hdest[i] < -1)
             {
-                for (int i40 = 0; i40 < conto.npl; i40++)
-                    if (conto.p[i40].wz == 0 || conto.p[i40].gr == -17 || conto.p[i40].gr == -16)
+                for (var i40 = 0; i40 < conto.Npl; i40++)
+                    if (conto.P[i40].Wz == 0 || conto.P[i40].Gr == -17 || conto.P[i40].Gr == -16)
                     {
-                        conto.p[i40].embos = 13;
+                        conto.P[i40].Embos = 13;
                     }
             }
-            if (cntdest[i] != 0)
+            if (Cntdest[i] != 0)
             {
-                for (int i41 = 0; i41 < conto.npl; i41++)
-                    if (conto.p[i41].wz == 0 || conto.p[i41].gr == -17 || conto.p[i41].gr == -16)
+                for (var i41 = 0; i41 < conto.Npl; i41++)
+                    if (conto.P[i41].Wz == 0 || conto.P[i41].Gr == -17 || conto.P[i41].Gr == -16)
                     {
-                        conto.p[i41].embos = 1;
+                        conto.P[i41].Embos = 1;
                     }
-                cntdest[i]--;
+                Cntdest[i]--;
             }
-            for (int i42 = 0; i42 < 20; i42++)
+            for (var i42 = 0; i42 < 20; i42++)
             {
-                for (int i43 = 0; i43 < 30; i43++)
-                    if (hsspark[i,i42,i43] == i38)
+                for (var i43 = 0; i43 < 30; i43++)
+                    if (Hsspark[i,i42,i43] == i38)
                     {
-                        conto.stg[i42] = 1;
-                        conto.sx[i42] = hsx[i,i42,i43];
-                        conto.sy[i42] = hsy[i,i42,i43];
-                        conto.sz[i42] = hsz[i,i42,i43];
-                        conto.osmag[i42] = hsmag[i,i42,i43];
-                        conto.scx[i42] = hscx[i,i42,i43];
-                        conto.scz[i42] = hscz[i,i42,i43];
+                        conto.Stg[i42] = 1;
+                        conto.Sx[i42] = Hsx[i,i42,i43];
+                        conto.Sy[i42] = Hsy[i,i42,i43];
+                        conto.Sz[i42] = Hsz[i,i42,i43];
+                        conto.Osmag[i42] = Hsmag[i,i42,i43];
+                        conto.Scx[i42] = Hscx[i,i42,i43];
+                        conto.Scz[i42] = Hscz[i,i42,i43];
                     }
             }
-            for (int i44 = 0; i44 < 200; i44++)
-                if (hrspark[i,i44] == i38)
+            for (var i44 = 0; i44 < 200; i44++)
+                if (Hrspark[i,i44] == i38)
                 {
-                    conto.sprk = hsprk[i,i44];
-                    conto.srx = hsrx[i,i44];
-                    conto.sry = hsry[i,i44];
-                    conto.srz = hsrz[i,i44];
-                    conto.rcx = hrcx[i,i44];
-                    conto.rcy = hrcy[i,i44];
-                    conto.rcz = hrcz[i,i44];
+                    conto.Sprk = Hsprk[i,i44];
+                    conto.Srx = Hsrx[i,i44];
+                    conto.Sry = Hsry[i,i44];
+                    conto.Srz = Hsrz[i,i44];
+                    conto.Rcx = Hrcx[i,i44];
+                    conto.Rcy = Hrcy[i,i44];
+                    conto.Rcz = Hrcz[i,i44];
                 }
-            for (int i45 = 0; i45 < 4; i45++)
+            for (var i45 = 0; i45 < 4; i45++)
             {
-                for (int i46 = 0; i46 < 7; i46++)
+                for (var i46 = 0; i46 < 7; i46++)
                 {
-                    if (hry[i,i45,i46] == i38 && lastfr != i38)
+                    if (Hry[i,i45,i46] == i38 && _lastfr != i38)
                     {
-                        regy(i45, hmagy[i,i45,i46], hmtouch[i,i46], conto, mad);
+                        Regy(i45, Hmagy[i,i45,i46], Hmtouch[i,i46], conto, mad);
                     }
-                    if (hrx[i,i45,i46] == i38)
-                        if (lastfr != i38)
+                    if (Hrx[i,i45,i46] == i38)
+                        if (_lastfr != i38)
                         {
-                            regx(i45, hmagx[i,i45,i46], conto, mad);
+                            Regx(i45, Hmagx[i,i45,i46], conto, mad);
                         }
                         else
                         {
-                            chipx(i45, hmagx[i,i45,i46], conto, mad);
+                            Chipx(i45, Hmagx[i,i45,i46], conto, mad);
                         }
-                    if (hrz[i,i45,i46] == i38)
-                        if (lastfr != i38)
+                    if (Hrz[i,i45,i46] == i38)
+                        if (_lastfr != i38)
                         {
-                            regz(i45, hmagz[i,i45,i46], conto, mad);
+                            Regz(i45, Hmagz[i,i45,i46], conto, mad);
                         }
                         else
                         {
-                            chipz(i45, hmagz[i,i45,i46], conto, mad);
+                            Chipz(i45, Hmagz[i,i45,i46], conto, mad);
                         }
                 }
             }
-            lastfr = i38;
+            _lastfr = i38;
         }
 
-        private static int py(int i, int i74, int i75, int i76) {
+        private static int Py(int i, int i74, int i75, int i76) {
             return (i - i74) * (i - i74) + (i75 - i76) * (i75 - i76);
         }
 
-        internal static void rec(ContO conto, int i, int i18, int i19, int i20, int i21) {
+        internal static void Rec(ContO conto, int i, int i18, int i19, int i20, int i21) {
             if (i == i21)
             {
-                caught++;
+                Caught++;
             }
-            if (cntf == 50)
+            if (_cntf == 50)
             {
-                for (int i22 = 0; i22 < 5; i22++)
+                for (var i22 = 0; i22 < 5; i22++)
                 {
-                    car[i22,i] = new ContO(car[i22 + 1,i], 0, 0, 0, 0);
-                    squash[i22,i] = squash[i22 + 1,i];
+                    Car[i22,i] = new ContO(Car[i22 + 1,i], 0, 0, 0, 0);
+                    Squash[i22,i] = Squash[i22 + 1,i];
                 }
-                car[5,i] = new ContO(conto, 0, 0, 0, 0);
-                squash[5,i] = i18;
-                cntf = 0;
+                Car[5,i] = new ContO(conto, 0, 0, 0, 0);
+                Squash[5,i] = i18;
+                _cntf = 0;
             }
             else
             {
-                cntf++;
+                _cntf++;
             }
-            fix[i]--;
+            Fix[i]--;
             if (i20 != 0)
             {
-                dest[i]--;
+                Dest[i]--;
             }
-            if (dest[i] == 230)
+            if (Dest[i] == 230)
                 if (i == i21)
                 {
-                    cotchinow(i21);
-                    whenwasted = 229;
+                    Cotchinow(i21);
+                    Whenwasted = 229;
                 }
                 else if (i19 != 0)
                 {
-                    cotchinow(i);
-                    whenwasted = 165 + i19;
+                    Cotchinow(i);
+                    Whenwasted = 165 + i19;
                 }
-            for (int i23 = 0; i23 < 299; i23++)
+            for (var i23 = 0; i23 < 299; i23++)
             {
-                x[i23,i] = x[i23 + 1,i];
-                y[i23,i] = y[i23 + 1,i];
-                z[i23,i] = z[i23 + 1,i];
-                zy[i23,i] = zy[i23 + 1,i];
-                xy[i23,i] = xy[i23 + 1,i];
-                xz[i23,i] = xz[i23 + 1,i];
-                wxz[i23,i] = wxz[i23 + 1,i];
-                wzy[i23,i] = wzy[i23 + 1,i];
+                X[i23,i] = X[i23 + 1,i];
+                Y[i23,i] = Y[i23 + 1,i];
+                Z[i23,i] = Z[i23 + 1,i];
+                Zy[i23,i] = Zy[i23 + 1,i];
+                Xy[i23,i] = Xy[i23 + 1,i];
+                Xz[i23,i] = Xz[i23 + 1,i];
+                Wxz[i23,i] = Wxz[i23 + 1,i];
+                Wzy[i23,i] = Wzy[i23 + 1,i];
             }
-            x[299,i] = conto.x;
-            y[299,i] = conto.y;
-            z[299,i] = conto.z;
-            xy[299,i] = conto.xy;
-            zy[299,i] = conto.zy;
-            xz[299,i] = conto.xz;
-            wxz[299,i] = conto.wxz;
-            wzy[299,i] = conto.wzy;
+            X[299,i] = conto.X;
+            Y[299,i] = conto.Y;
+            Z[299,i] = conto.Z;
+            Xy[299,i] = conto.Xy;
+            Zy[299,i] = conto.Zy;
+            Xz[299,i] = conto.Xz;
+            Wxz[299,i] = conto.Wxz;
+            Wzy[299,i] = conto.Wzy;
             if (i == i21)
             {
-                for (int i24 = 0; i24 < 299; i24++)
+                for (var i24 = 0; i24 < 299; i24++)
                 {
-                    checkpoint[i24] = checkpoint[i24 + 1];
-                    lastcheck[i24] = lastcheck[i24 + 1];
+                    Checkpoint[i24] = Checkpoint[i24 + 1];
+                    Lastcheck[i24] = Lastcheck[i24 + 1];
                 }
-                checkpoint[299] = Medium.checkpoint;
-                lastcheck[299] = Medium.lastcheck;
+                Checkpoint[299] = Medium.Checkpoint;
+                Lastcheck[299] = Medium.Lastcheck;
             }
-            for (int i25 = 0; i25 < 20; i25++)
+            for (var i25 = 0; i25 < 20; i25++)
             {
-                if (conto.stg != null && conto.stg[i25] == 1)
+                if (conto.Stg != null && conto.Stg[i25] == 1)
                 {
-                    sspark[i,i25,ns[i,i25]] = 300;
-                    sx[i,i25,ns[i,i25]] = conto.sx[i25];
-                    sy[i,i25,ns[i,i25]] = conto.sy[i25];
-                    sz[i,i25,ns[i,i25]] = conto.sz[i25];
-                    smag[i,i25,ns[i,i25]] = conto.osmag[i25];
-                    scx[i,i25,ns[i,i25]] = conto.scx[i25];
-                    scz[i,i25,ns[i,i25]] = conto.scz[i25];
-                    ns[i,i25]++;
-                    if (ns[i,i25] == 30)
+                    Sspark[i,i25,Ns[i,i25]] = 300;
+                    Sx[i,i25,Ns[i,i25]] = conto.Sx[i25];
+                    Sy[i,i25,Ns[i,i25]] = conto.Sy[i25];
+                    Sz[i,i25,Ns[i,i25]] = conto.Sz[i25];
+                    Smag[i,i25,Ns[i,i25]] = conto.Osmag[i25];
+                    Scx[i,i25,Ns[i,i25]] = conto.Scx[i25];
+                    Scz[i,i25,Ns[i,i25]] = conto.Scz[i25];
+                    Ns[i,i25]++;
+                    if (Ns[i,i25] == 30)
                     {
-                        ns[i,i25] = 0;
+                        Ns[i,i25] = 0;
                     }
                 }
-                for (int i26 = 0; i26 < 30; i26++)
+                for (var i26 = 0; i26 < 30; i26++)
                 {
-                    sspark[i,i25,i26]--;
+                    Sspark[i,i25,i26]--;
                 }
             }
-            if (conto.sprk != 0)
+            if (conto.Sprk != 0)
             {
-                rspark[i,nr[i]] = 300;
-                sprk[i,nr[i]] = conto.sprk;
-                srx[i,nr[i]] = conto.srx;
-                sry[i,nr[i]] = conto.sry;
-                srz[i,nr[i]] = conto.srz;
-                rcx[i,nr[i]] = conto.rcx;
-                rcy[i,nr[i]] = conto.rcy;
-                rcz[i,nr[i]] = conto.rcz;
-                nr[i]++;
-                if (nr[i] == 200)
+                Rspark[i,Nr[i]] = 300;
+                Sprk[i,Nr[i]] = conto.Sprk;
+                Srx[i,Nr[i]] = conto.Srx;
+                Sry[i,Nr[i]] = conto.Sry;
+                Srz[i,Nr[i]] = conto.Srz;
+                Rcx[i,Nr[i]] = conto.Rcx;
+                Rcy[i,Nr[i]] = conto.Rcy;
+                Rcz[i,Nr[i]] = conto.Rcz;
+                Nr[i]++;
+                if (Nr[i] == 200)
                 {
-                    nr[i] = 0;
+                    Nr[i] = 0;
                 }
             }
-            for (int i27 = 0; i27 < 200; i27++)
+            for (var i27 = 0; i27 < 200; i27++)
             {
-                rspark[i,i27]--;
+                Rspark[i,i27]--;
             }
-            for (int i28 = 0; i28 < 4; i28++)
+            for (var i28 = 0; i28 < 4; i28++)
             {
-                for (int i29 = 0; i29 < 7; i29++)
+                for (var i29 = 0; i29 < 7; i29++)
                 {
-                    ry[i,i28,i29]--;
-                    rx[i,i28,i29]--;
-                    rz[i,i28,i29]--;
+                    Ry[i,i28,i29]--;
+                    Rx[i,i28,i29]--;
+                    Rz[i,i28,i29]--;
                 }
             }
         }
 
-        internal static void recx(int i, float f, int i48) {
-            rx[i48,i,nry[i48,i]] = 300;
-            magx[i48,i,nry[i48,i]] = (int) f;
-            nrx[i48,i]++;
-            if (nrx[i48,i] == 7)
+        internal static void Recx(int i, float f, int i48) {
+            Rx[i48,i,Nry[i48,i]] = 300;
+            Magx[i48,i,Nry[i48,i]] = (int) f;
+            Nrx[i48,i]++;
+            if (Nrx[i48,i] == 7)
             {
-                nrx[i48,i] = 0;
+                Nrx[i48,i] = 0;
             }
         }
 
-        internal static void recy(int i, float f, boolean abool, int i47) {
-            ry[i47,i,nry[i47,i]] = 300;
-            magy[i47,i,nry[i47,i]] = (int) f;
-            mtouch[i47,nry[i47,i]] = abool;
-            nry[i47,i]++;
-            if (nry[i47,i] == 7)
+        internal static void Recy(int i, float f, bool abool, int i47) {
+            Ry[i47,i,Nry[i47,i]] = 300;
+            Magy[i47,i,Nry[i47,i]] = (int) f;
+            Mtouch[i47,Nry[i47,i]] = abool;
+            Nry[i47,i]++;
+            if (Nry[i47,i] == 7)
             {
-                nry[i47,i] = 0;
+                Nry[i47,i] = 0;
             }
         }
 
-        internal static void recz(int i, float f, int i49) {
-            rz[i49,i,nry[i49,i]] = 300;
-            magz[i49,i,nry[i49,i]] = (int) f;
-            nrz[i49,i]++;
-            if (nrz[i49,i] == 7)
+        internal static void Recz(int i, float f, int i49) {
+            Rz[i49,i,Nry[i49,i]] = 300;
+            Magz[i49,i,Nry[i49,i]] = (int) f;
+            Nrz[i49,i]++;
+            if (Nrz[i49,i] == 7)
             {
-                nrz[i49,i] = 0;
+                Nrz[i49,i] = 0;
             }
         }
 
-        private static void regx(int i, float f, ContO conto, Mad mad) {
+        private static void Regx(int i, float f, ContO conto, Mad mad) {
             if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -592,84 +590,84 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                for (int i62 = 0; i62 < conto.npl; i62++)
+                for (var i62 = 0; i62 < conto.Npl; i62++)
                 {
-                    float f63 = 0.0F;
-                    for (int i64 = 0; i64 < conto.p[i62].n; i64++)
-                        if (conto.p[i62].wz == 0 &&
-                            py(conto.keyx[i], conto.p[i62].ox[i64], conto.keyz[i], conto.p[i62].oz[i64]) <
-                            mad.stat.clrad)
+                    var f63 = 0.0F;
+                    for (var i64 = 0; i64 < conto.P[i62].N; i64++)
+                        if (conto.P[i62].Wz == 0 &&
+                            Py(conto.Keyx[i], conto.P[i62].Ox[i64], conto.Keyz[i], conto.P[i62].Oz[i64]) <
+                            mad.Stat.Clrad)
                         {
-                            f63 = f / 20.0F * Medium.random();
-                            conto.p[i62].oz[i64] -= (int)(f63 * Medium.sin(conto.xz) * Medium.cos(conto.zy));
-                            conto.p[i62].ox[i64] += (int)(f63 * Medium.cos(conto.xz) * Medium.cos(conto.xy));
+                            f63 = f / 20.0F * Medium.Random();
+                            conto.P[i62].Oz[i64] -= (int)(f63 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Zy));
+                            conto.P[i62].Ox[i64] += (int)(f63 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Xy));
                         }
                     if (f63 != 0.0F)
                     {
                         if (Math.Abs(f63) >= 1.0F)
                         {
-                            conto.p[i62].chip = 1;
-                            conto.p[i62].ctmag = f63;
+                            conto.P[i62].Chip = 1;
+                            conto.P[i62].Ctmag = f63;
                         }
-                        if (!conto.p[i62].nocol && conto.p[i62].glass != 1)
+                        if (!conto.P[i62].Nocol && conto.P[i62].Glass != 1)
                         {
-                            if (conto.p[i62].bfase > 20 && conto.p[i62].hsb[1] > 0.2)
+                            if (conto.P[i62].Bfase > 20 && conto.P[i62].HSB[1] > 0.2)
                             {
-                                conto.p[i62].hsb[1] = 0.2F;
+                                conto.P[i62].HSB[1] = 0.2F;
                             }
-                            if (conto.p[i62].bfase > 30)
+                            if (conto.P[i62].Bfase > 30)
                             {
-                                if (conto.p[i62].hsb[2] < 0.5)
+                                if (conto.P[i62].HSB[2] < 0.5)
                                 {
-                                    conto.p[i62].hsb[2] = 0.5F;
+                                    conto.P[i62].HSB[2] = 0.5F;
                                 }
-                                if (conto.p[i62].hsb[1] > 0.1)
+                                if (conto.P[i62].HSB[1] > 0.1)
                                 {
-                                    conto.p[i62].hsb[1] = 0.1F;
+                                    conto.P[i62].HSB[1] = 0.1F;
                                 }
                             }
-                            if (conto.p[i62].bfase > 40)
+                            if (conto.P[i62].Bfase > 40)
                             {
-                                conto.p[i62].hsb[1] = 0.05F;
+                                conto.P[i62].HSB[1] = 0.05F;
                             }
-                            if (conto.p[i62].bfase > 50)
+                            if (conto.P[i62].Bfase > 50)
                             {
-                                if (conto.p[i62].hsb[2] > 0.8)
+                                if (conto.P[i62].HSB[2] > 0.8)
                                 {
-                                    conto.p[i62].hsb[2] = 0.8F;
+                                    conto.P[i62].HSB[2] = 0.8F;
                                 }
-                                conto.p[i62].hsb[0] = 0.075F;
-                                conto.p[i62].hsb[1] = 0.05F;
+                                conto.P[i62].HSB[0] = 0.075F;
+                                conto.P[i62].HSB[1] = 0.05F;
                             }
-                            if (conto.p[i62].bfase > 60)
+                            if (conto.P[i62].Bfase > 60)
                             {
-                                conto.p[i62].hsb[0] = 0.05F;
+                                conto.P[i62].HSB[0] = 0.05F;
                             }
-                            conto.p[i62].bfase += (int)Math.Abs(f63);
-                            new Color(conto.p[i62].c[0], conto.p[i62].c[1], conto.p[i62].c[2]);
-                            Color color = Color.getHSBColor(conto.p[i62].hsb[0], conto.p[i62].hsb[1],
-                                conto.p[i62].hsb[2]);
-                            conto.p[i62].c[0] = color.getRed();
-                            conto.p[i62].c[1] = color.getGreen();
-                            conto.p[i62].c[2] = color.getBlue();
+                            conto.P[i62].Bfase += (int)Math.Abs(f63);
+                            new Color(conto.P[i62].C[0], conto.P[i62].C[1], conto.P[i62].C[2]);
+                            var color = Color.GetHSBColor(conto.P[i62].HSB[0], conto.P[i62].HSB[1],
+                                conto.P[i62].HSB[2]);
+                            conto.P[i62].C[0] = color.GetRed();
+                            conto.P[i62].C[1] = color.GetGreen();
+                            conto.P[i62].C[2] = color.GetBlue();
                         }
-                        if (conto.p[i62].glass == 1)
+                        if (conto.P[i62].Glass == 1)
                         {
-                            conto.p[i62].gr += (int)Math.Abs(f63 * 1.5);
+                            conto.P[i62].Gr += (int)Math.Abs(f63 * 1.5);
                         }
                     }
                 }
             }
         }
 
-        private static void regy(int i, float f, boolean abool, ContO conto, Mad mad) {
+        private static void Regy(int i, float f, bool abool, ContO conto, Mad mad) {
             if (f > 100.0F)
             {
                 f -= 100.0F;
-                int i50 = 0;
-                int i51 = 0;
-                int i52 = conto.zy;
-                int i53 = conto.xy;
+                var i50 = 0;
+                var i51 = 0;
+                var i52 = conto.Zy;
+                var i53 = conto.Xy;
                 for ( /**/; i52 < 360; i52 += 360)
                 {
 
@@ -704,115 +702,115 @@ namespace Cum
                 }
                 if (i51 * i50 == 0 || abool)
                 {
-                    for (int i54 = 0; i54 < conto.npl; i54++)
+                    for (var i54 = 0; i54 < conto.Npl; i54++)
                     {
-                        float f55 = 0.0F;
-                        for (int i56 = 0; i56 < conto.p[i54].n; i56++)
-                            if (conto.p[i54].wz == 0 &&
-                                py(conto.keyx[i], conto.p[i54].ox[i56], conto.keyz[i], conto.p[i54].oz[i56]) <
-                                mad.stat.clrad)
+                        var f55 = 0.0F;
+                        for (var i56 = 0; i56 < conto.P[i54].N; i56++)
+                            if (conto.P[i54].Wz == 0 &&
+                                Py(conto.Keyx[i], conto.P[i54].Ox[i56], conto.Keyz[i], conto.P[i54].Oz[i56]) <
+                                mad.Stat.Clrad)
                             {
-                                f55 = f / 20.0F * Medium.random();
-                                conto.p[i54].oz[i56] += (int)(f55 * Medium.sin(i52));
-                                conto.p[i54].ox[i56] -= (int)(f55 * Medium.sin(i53));
+                                f55 = f / 20.0F * Medium.Random();
+                                conto.P[i54].Oz[i56] += (int)(f55 * Medium.Sin(i52));
+                                conto.P[i54].Ox[i56] -= (int)(f55 * Medium.Sin(i53));
                             }
                         if (f55 != 0.0F)
                         {
                             if (Math.Abs(f55) >= 1.0F)
                             {
-                                conto.p[i54].chip = 1;
-                                conto.p[i54].ctmag = f55;
+                                conto.P[i54].Chip = 1;
+                                conto.P[i54].Ctmag = f55;
                             }
-                            if (!conto.p[i54].nocol && conto.p[i54].glass != 1)
+                            if (!conto.P[i54].Nocol && conto.P[i54].Glass != 1)
                             {
-                                if (conto.p[i54].bfase > 20 && conto.p[i54].hsb[1] > 0.2)
+                                if (conto.P[i54].Bfase > 20 && conto.P[i54].HSB[1] > 0.2)
                                 {
-                                    conto.p[i54].hsb[1] = 0.2F;
+                                    conto.P[i54].HSB[1] = 0.2F;
                                 }
-                                if (conto.p[i54].bfase > 30)
+                                if (conto.P[i54].Bfase > 30)
                                 {
-                                    if (conto.p[i54].hsb[2] < 0.5)
+                                    if (conto.P[i54].HSB[2] < 0.5)
                                     {
-                                        conto.p[i54].hsb[2] = 0.5F;
+                                        conto.P[i54].HSB[2] = 0.5F;
                                     }
-                                    if (conto.p[i54].hsb[1] > 0.1)
+                                    if (conto.P[i54].HSB[1] > 0.1)
                                     {
-                                        conto.p[i54].hsb[1] = 0.1F;
+                                        conto.P[i54].HSB[1] = 0.1F;
                                     }
                                 }
-                                if (conto.p[i54].bfase > 40)
+                                if (conto.P[i54].Bfase > 40)
                                 {
-                                    conto.p[i54].hsb[1] = 0.05F;
+                                    conto.P[i54].HSB[1] = 0.05F;
                                 }
-                                if (conto.p[i54].bfase > 50)
+                                if (conto.P[i54].Bfase > 50)
                                 {
-                                    if (conto.p[i54].hsb[2] > 0.8)
+                                    if (conto.P[i54].HSB[2] > 0.8)
                                     {
-                                        conto.p[i54].hsb[2] = 0.8F;
+                                        conto.P[i54].HSB[2] = 0.8F;
                                     }
-                                    conto.p[i54].hsb[0] = 0.075F;
-                                    conto.p[i54].hsb[1] = 0.05F;
+                                    conto.P[i54].HSB[0] = 0.075F;
+                                    conto.P[i54].HSB[1] = 0.05F;
                                 }
-                                if (conto.p[i54].bfase > 60)
+                                if (conto.P[i54].Bfase > 60)
                                 {
-                                    conto.p[i54].hsb[0] = 0.05F;
+                                    conto.P[i54].HSB[0] = 0.05F;
                                 }
-                                conto.p[i54].bfase += (int)f55;
-                                new Color(conto.p[i54].c[0], conto.p[i54].c[1], conto.p[i54].c[2]);
-                                Color color = Color.getHSBColor(conto.p[i54].hsb[0], conto.p[i54].hsb[1],
-                                    conto.p[i54].hsb[2]);
-                                conto.p[i54].c[0] = color.getRed();
-                                conto.p[i54].c[1] = color.getGreen();
-                                conto.p[i54].c[2] = color.getBlue();
+                                conto.P[i54].Bfase += (int)f55;
+                                new Color(conto.P[i54].C[0], conto.P[i54].C[1], conto.P[i54].C[2]);
+                                var color = Color.GetHSBColor(conto.P[i54].HSB[0], conto.P[i54].HSB[1],
+                                    conto.P[i54].HSB[2]);
+                                conto.P[i54].C[0] = color.GetRed();
+                                conto.P[i54].C[1] = color.GetGreen();
+                                conto.P[i54].C[2] = color.GetBlue();
                             }
-                            if (conto.p[i54].glass == 1)
+                            if (conto.P[i54].Glass == 1)
                             {
-                                conto.p[i54].gr += (int)Math.Abs(f55 * 1.5);
+                                conto.P[i54].Gr += (int)Math.Abs(f55 * 1.5);
                             }
                         }
                     }
                 }
                 if (i51 * i50 == -1)
                 {
-                    int i57 = 0;
-                    int i58 = 1;
-                    for (int i59 = 0; i59 < conto.npl; i59++)
+                    var i57 = 0;
+                    var i58 = 1;
+                    for (var i59 = 0; i59 < conto.Npl; i59++)
                     {
-                        float f60 = 0.0F;
-                        for (int i61 = 0; i61 < conto.p[i59].n; i61++)
-                            if (conto.p[i59].wz == 0)
+                        var f60 = 0.0F;
+                        for (var i61 = 0; i61 < conto.P[i59].N; i61++)
+                            if (conto.P[i59].Wz == 0)
                             {
-                                f60 = f / 15.0F * Medium.random();
-                                if ((Math.Abs(conto.p[i59].oy[i61] - mad.stat.flipy - squash[0,mad.im]) <
-                                     mad.stat.msquash * 3 ||
-                                     conto.p[i59].oy[i61] < mad.stat.flipy + squash[0,mad.im]) &&
-                                    squash[0,mad.im] < mad.stat.msquash)
+                                f60 = f / 15.0F * Medium.Random();
+                                if ((Math.Abs(conto.P[i59].Oy[i61] - mad.Stat.Flipy - Squash[0,mad.Im]) <
+                                     mad.Stat.Msquash * 3 ||
+                                     conto.P[i59].Oy[i61] < mad.Stat.Flipy + Squash[0,mad.Im]) &&
+                                    Squash[0,mad.Im] < mad.Stat.Msquash)
                                 {
-                                    conto.p[i59].oy[i61] += (int)f60;
+                                    conto.P[i59].Oy[i61] += (int)f60;
                                     i57 += (int)f60;
                                     i58++;
                                 }
                             }
-                        if (conto.p[i59].glass == 1)
+                        if (conto.P[i59].Glass == 1)
                         {
-                            conto.p[i59].gr += 5;
+                            conto.P[i59].Gr += 5;
                         }
                         else if (f60 != 0.0F)
                         {
-                            conto.p[i59].bfase += (int)f60;
+                            conto.P[i59].Bfase += (int)f60;
                         }
                         if (Math.Abs(f60) >= 1.0F)
                         {
-                            conto.p[i59].chip = 1;
-                            conto.p[i59].ctmag = f60;
+                            conto.P[i59].Chip = 1;
+                            conto.P[i59].Ctmag = f60;
                         }
                     }
-                    squash[0,mad.im] += i57 / i58;
+                    Squash[0,mad.Im] += i57 / i58;
                 }
             }
         }
 
-        private static void regz(int i, float f, ContO conto, Mad mad) {
+        private static void Regz(int i, float f, ContO conto, Mad mad) {
             if (Math.Abs(f) > 100.0F)
             {
                 if (f > 100.0F)
@@ -823,131 +821,131 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                for (int i65 = 0; i65 < conto.npl; i65++)
+                for (var i65 = 0; i65 < conto.Npl; i65++)
                 {
-                    float f66 = 0.0F;
-                    for (int i67 = 0; i67 < conto.p[i65].n; i67++)
-                        if (conto.p[i65].wz == 0 &&
-                            py(conto.keyx[i], conto.p[i65].ox[i67], conto.keyz[i], conto.p[i65].oz[i67]) <
-                            mad.stat.clrad)
+                    var f66 = 0.0F;
+                    for (var i67 = 0; i67 < conto.P[i65].N; i67++)
+                        if (conto.P[i65].Wz == 0 &&
+                            Py(conto.Keyx[i], conto.P[i65].Ox[i67], conto.Keyz[i], conto.P[i65].Oz[i67]) <
+                            mad.Stat.Clrad)
                         {
-                            f66 = f / 20.0F * Medium.random();
-                            conto.p[i65].oz[i67] += (int)(f66 * Medium.cos(conto.xz) * Medium.cos(conto.zy));
-                            conto.p[i65].ox[i67] += (int)(f66 * Medium.sin(conto.xz) * Medium.cos(conto.xy));
+                            f66 = f / 20.0F * Medium.Random();
+                            conto.P[i65].Oz[i67] += (int)(f66 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Zy));
+                            conto.P[i65].Ox[i67] += (int)(f66 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Xy));
                         }
                     if (f66 != 0.0F)
                     {
                         if (Math.Abs(f66) >= 1.0F)
                         {
-                            conto.p[i65].chip = 1;
-                            conto.p[i65].ctmag = f66;
+                            conto.P[i65].Chip = 1;
+                            conto.P[i65].Ctmag = f66;
                         }
-                        if (!conto.p[i65].nocol && conto.p[i65].glass != 1)
+                        if (!conto.P[i65].Nocol && conto.P[i65].Glass != 1)
                         {
-                            if (conto.p[i65].bfase > 20 && conto.p[i65].hsb[1] > 0.2)
+                            if (conto.P[i65].Bfase > 20 && conto.P[i65].HSB[1] > 0.2)
                             {
-                                conto.p[i65].hsb[1] = 0.2F;
+                                conto.P[i65].HSB[1] = 0.2F;
                             }
-                            if (conto.p[i65].bfase > 30)
+                            if (conto.P[i65].Bfase > 30)
                             {
-                                if (conto.p[i65].hsb[2] < 0.5)
+                                if (conto.P[i65].HSB[2] < 0.5)
                                 {
-                                    conto.p[i65].hsb[2] = 0.5F;
+                                    conto.P[i65].HSB[2] = 0.5F;
                                 }
-                                if (conto.p[i65].hsb[1] > 0.1)
+                                if (conto.P[i65].HSB[1] > 0.1)
                                 {
-                                    conto.p[i65].hsb[1] = 0.1F;
+                                    conto.P[i65].HSB[1] = 0.1F;
                                 }
                             }
-                            if (conto.p[i65].bfase > 40)
+                            if (conto.P[i65].Bfase > 40)
                             {
-                                conto.p[i65].hsb[1] = 0.05F;
+                                conto.P[i65].HSB[1] = 0.05F;
                             }
-                            if (conto.p[i65].bfase > 50)
+                            if (conto.P[i65].Bfase > 50)
                             {
-                                if (conto.p[i65].hsb[2] > 0.8)
+                                if (conto.P[i65].HSB[2] > 0.8)
                                 {
-                                    conto.p[i65].hsb[2] = 0.8F;
+                                    conto.P[i65].HSB[2] = 0.8F;
                                 }
-                                conto.p[i65].hsb[0] = 0.075F;
-                                conto.p[i65].hsb[1] = 0.05F;
+                                conto.P[i65].HSB[0] = 0.075F;
+                                conto.P[i65].HSB[1] = 0.05F;
                             }
-                            if (conto.p[i65].bfase > 60)
+                            if (conto.P[i65].Bfase > 60)
                             {
-                                conto.p[i65].hsb[0] = 0.05F;
+                                conto.P[i65].HSB[0] = 0.05F;
                             }
-                            conto.p[i65].bfase += (int)Math.Abs(f66);
+                            conto.P[i65].Bfase += (int)Math.Abs(f66);
                             //new Color(conto.p[i65].c[0], conto.p[i65].c[1], conto.p[i65].c[2]);
-                            Color color = Color.getHSBColor(conto.p[i65].hsb[0], conto.p[i65].hsb[1],
-                                conto.p[i65].hsb[2]);
-                            conto.p[i65].c[0] = color.getRed();
-                            conto.p[i65].c[1] = color.getGreen();
-                            conto.p[i65].c[2] = color.getBlue();
+                            var color = Color.GetHSBColor(conto.P[i65].HSB[0], conto.P[i65].HSB[1],
+                                conto.P[i65].HSB[2]);
+                            conto.P[i65].C[0] = color.GetRed();
+                            conto.P[i65].C[1] = color.GetGreen();
+                            conto.P[i65].C[2] = color.GetBlue();
                         }
-                        if (conto.p[i65].glass == 1)
+                        if (conto.P[i65].Glass == 1)
                         {
-                            conto.p[i65].gr += (int)Math.Abs(f66 * 1.5);
+                            conto.P[i65].Gr += (int)Math.Abs(f66 * 1.5);
                         }
                     }
                 }
             }
         }
 
-        internal static void reset(ContO[] contos)
+        internal static void Reset(ContO[] contos)
         {
-            caught = 0;
-            hcaught = false;
-            wasted = 0;
-            whenwasted = 0;
-            closefinish = 0;
-            powered = 0;
-            for (int i = 0; i < 8; i++)
+            Caught = 0;
+            Hcaught = false;
+            Wasted = 0;
+            Whenwasted = 0;
+            Closefinish = 0;
+            Powered = 0;
+            for (var i = 0; i < 8; i++)
             {
-                if (prepit)
+                if (_prepit)
                 {
-                    starcar[i] = new ContO(contos[i], 0, 0, 0, 0);
+                    Starcar[i] = new ContO(contos[i], 0, 0, 0, 0);
                 }
-                fix[i] = -1;
-                dest[i] = -1;
-                cntdest[i] = 0;
+                Fix[i] = -1;
+                Dest[i] = -1;
+                Cntdest[i] = 0;
             }
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
-                for (int i0 = 0; i0 < 8; i0++)
+                for (var i0 = 0; i0 < 8; i0++)
                 {
-                    car[i,i0] = new ContO(contos[i0], 0, 0, 0, 0);
-                    squash[i,i0] = 0;
+                    Car[i,i0] = new ContO(contos[i0], 0, 0, 0, 0);
+                    Squash[i,i0] = 0;
                 }
             }
-            for (int i = 0; i < 8; i++)
+            for (var i = 0; i < 8; i++)
             {
-                nr[i] = 0;
-                for (int i1 = 0; i1 < 200; i1++)
+                Nr[i] = 0;
+                for (var i1 = 0; i1 < 200; i1++)
                 {
-                    rspark[i,i1] = -1;
+                    Rspark[i,i1] = -1;
                 }
-                for (int i2 = 0; i2 < 20; i2++)
+                for (var i2 = 0; i2 < 20; i2++)
                 {
-                    ns[i,i2] = 0;
-                    for (int i3 = 0; i3 < 30; i3++)
+                    Ns[i,i2] = 0;
+                    for (var i3 = 0; i3 < 30; i3++)
                     {
-                        sspark[i,i2,i3] = -1;
+                        Sspark[i,i2,i3] = -1;
                     }
                 }
-                for (int i4 = 0; i4 < 4; i4++)
+                for (var i4 = 0; i4 < 4; i4++)
                 {
-                    nry[i,i4] = 0;
-                    nrx[i,i4] = 0;
-                    nrz[i,i4] = 0;
-                    for (int i5 = 0; i5 < 7; i5++)
+                    Nry[i,i4] = 0;
+                    Nrx[i,i4] = 0;
+                    Nrz[i,i4] = 0;
+                    for (var i5 = 0; i5 < 7; i5++)
                     {
-                        ry[i,i4,i5] = -1;
-                        rx[i,i4,i5] = -1;
-                        rz[i,i4,i5] = -1;
+                        Ry[i,i4,i5] = -1;
+                        Rx[i,i4,i5] = -1;
+                        Rz[i,i4,i5] = -1;
                     }
                 }
             }
-            prepit = false;
+            _prepit = false;
         }
     }
 }

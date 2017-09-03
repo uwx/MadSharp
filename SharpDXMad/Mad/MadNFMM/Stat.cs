@@ -2,36 +2,36 @@ namespace Cum
 {
     public class Stat
     {
-        internal readonly int[] swits;
-        internal readonly float[] acelf;
-        internal readonly int handb;
-        internal readonly float airs;
-        internal readonly int airc;
-        internal readonly int turn;
-        internal readonly float grip;
-        internal readonly float bounce;
-        internal readonly float simag;
-        internal readonly float moment;
-        internal readonly float comprad;
-        internal readonly int push;
-        internal readonly int revpush;
-        internal readonly int lift;
-        internal readonly int revlift;
-        internal readonly int powerloss;
-        internal readonly int flipy;
-        internal readonly int msquash;
-        internal readonly int clrad;
-        internal readonly float dammult;
-        internal readonly int maxmag;
-        internal readonly float dishandle;
-        internal readonly float outdam;
-        internal readonly int cclass;
-        internal readonly string names;
-        internal readonly int enginsignature;
+        internal readonly int[] Swits;
+        internal readonly float[] Acelf;
+        internal readonly int Handb;
+        internal readonly float Airs;
+        internal readonly int Airc;
+        internal readonly int Turn;
+        internal readonly float Grip;
+        internal readonly float Bounce;
+        internal readonly float Simag;
+        internal readonly float Moment;
+        internal readonly float Comprad;
+        internal readonly int Push;
+        internal readonly int Revpush;
+        internal readonly int Lift;
+        internal readonly int Revlift;
+        internal readonly int Powerloss;
+        internal readonly int Flipy;
+        internal readonly int Msquash;
+        internal readonly int Clrad;
+        internal readonly float Dammult;
+        internal readonly int Maxmag;
+        internal readonly float Dishandle;
+        internal readonly float Outdam;
+        internal readonly int Cclass;
+        internal readonly string Names;
+        internal readonly int Enginsignature;
 
-        internal readonly bool include = false;
-        internal readonly string createdby = "";
-        internal readonly int publish = 0;
+        internal readonly bool Include;
+        internal readonly string Createdby = "";
+        internal readonly int Publish;
 
         public Stat(int[] swits, float[] acelf, int handb, float airs, int airc, int turn, float grip, float bounce,
             float simag, float moment, float comprad, int push, int revpush, int lift, int revlift, int powerloss,
@@ -64,9 +64,9 @@ namespace Cum
             names,
             enginsignature)
         {
-            this.include = include;
-            this.createdby = createdby;
-            this.publish = publish;
+            Include = include;
+            Createdby = createdby;
+            Publish = publish;
         }
 
         public Stat(int[] swits, float[] acelf, int handb, float airs, int airc, int turn, float grip, float bounce,
@@ -74,101 +74,101 @@ namespace Cum
             int flipy, int msquash, int clrad, float dammult, int maxmag, float dishandle, float outdam, int cclass,
             string names, int enginsignature)
         {
-            this.swits = swits.CloneArray();
-            this.acelf = acelf.CloneArray();
+            Swits = swits.CloneArray();
+            Acelf = acelf.CloneArray();
 
-            this.handb = handb;
-            this.airs = airs;
-            this.airc = airc;
-            this.turn = turn;
-            this.grip = grip;
-            this.bounce = bounce;
-            this.simag = simag;
-            this.moment = moment;
-            this.comprad = comprad;
-            this.push = push;
-            this.revpush = revpush;
-            this.lift = lift;
-            this.revlift = revlift;
-            this.powerloss = powerloss;
-            this.flipy = flipy;
-            this.msquash = msquash;
-            this.clrad = clrad;
-            this.dammult = dammult;
-            this.maxmag = maxmag;
-            this.dishandle = dishandle;
-            this.outdam = outdam;
-            this.cclass = cclass;
-            this.names = names;
-            this.enginsignature = enginsignature;
+            Handb = handb;
+            Airs = airs;
+            Airc = airc;
+            Turn = turn;
+            Grip = grip;
+            Bounce = bounce;
+            Simag = simag;
+            Moment = moment;
+            Comprad = comprad;
+            Push = push;
+            Revpush = revpush;
+            Lift = lift;
+            Revlift = revlift;
+            Powerloss = powerloss;
+            Flipy = flipy;
+            Msquash = msquash;
+            Clrad = clrad;
+            Dammult = dammult;
+            Maxmag = maxmag;
+            Dishandle = dishandle;
+            Outdam = outdam;
+            Cclass = cclass;
+            Names = names;
+            Enginsignature = enginsignature;
         }
 
         public Stat(Stat clone)
         {
-            swits = clone.swits.CloneArray();
-            acelf = clone.acelf.CloneArray();
+            Swits = clone.Swits.CloneArray();
+            Acelf = clone.Acelf.CloneArray();
 
-            handb = clone.handb;
-            airs = clone.airs;
-            airc = clone.airc;
-            turn = clone.turn;
-            grip = clone.grip;
-            bounce = clone.bounce;
-            simag = clone.simag;
-            moment = clone.moment;
-            comprad = clone.comprad;
-            push = clone.push;
-            revpush = clone.revpush;
-            lift = clone.lift;
-            revlift = clone.revlift;
-            powerloss = clone.powerloss;
-            flipy = clone.flipy;
-            msquash = clone.msquash;
-            clrad = clone.clrad;
-            dammult = clone.dammult;
-            maxmag = clone.maxmag;
-            dishandle = clone.dishandle;
-            outdam = clone.outdam;
-            cclass = clone.cclass;
-            names = clone.names;
-            enginsignature = clone.enginsignature;
+            Handb = clone.Handb;
+            Airs = clone.Airs;
+            Airc = clone.Airc;
+            Turn = clone.Turn;
+            Grip = clone.Grip;
+            Bounce = clone.Bounce;
+            Simag = clone.Simag;
+            Moment = clone.Moment;
+            Comprad = clone.Comprad;
+            Push = clone.Push;
+            Revpush = clone.Revpush;
+            Lift = clone.Lift;
+            Revlift = clone.Revlift;
+            Powerloss = clone.Powerloss;
+            Flipy = clone.Flipy;
+            Msquash = clone.Msquash;
+            Clrad = clone.Clrad;
+            Dammult = clone.Dammult;
+            Maxmag = clone.Maxmag;
+            Dishandle = clone.Dishandle;
+            Outdam = clone.Outdam;
+            Cclass = clone.Cclass;
+            Names = clone.Names;
+            Enginsignature = clone.Enginsignature;
         }
 
         public Stat(int cn)
         {
-            swits = CarDefine.swits.Slice(cn);
-            acelf = CarDefine.acelf.Slice(cn);
+            Swits = CarDefine.Swits.Slice(cn);
+            Acelf = CarDefine.Acelf.Slice(cn);
 
-            handb = CarDefine.handb[cn];
-            airs = CarDefine.airs[cn];
-            airc = CarDefine.airc[cn];
-            turn = CarDefine.turn[cn];
-            grip = CarDefine.grip[cn];
-            bounce = CarDefine.bounce[cn];
-            simag = CarDefine.simag[cn];
-            moment = CarDefine.moment[cn];
-            comprad = CarDefine.comprad[cn];
-            push = CarDefine.push[cn];
-            revpush = CarDefine.revpush[cn];
-            lift = CarDefine.lift[cn];
-            revlift = CarDefine.revlift[cn];
-            powerloss = CarDefine.powerloss[cn];
-            flipy = CarDefine.flipy[cn];
-            msquash = CarDefine.msquash[cn];
-            clrad = CarDefine.clrad[cn];
-            dammult = CarDefine.dammult[cn];
-            maxmag = CarDefine.maxmag[cn];
-            dishandle = CarDefine.dishandle[cn];
-            outdam = CarDefine.outdam[cn];
-            cclass = CarDefine.cclass[cn];
-            names = CarDefine.names[cn];
-            enginsignature = CarDefine.enginsignature[cn];
+            Handb = CarDefine.Handb[cn];
+            Airs = CarDefine.Airs[cn];
+            Airc = CarDefine.Airc[cn];
+            Turn = CarDefine.Turn[cn];
+            Grip = CarDefine.Grip[cn];
+            Bounce = CarDefine.Bounce[cn];
+            Simag = CarDefine.Simag[cn];
+            Moment = CarDefine.Moment[cn];
+            Comprad = CarDefine.Comprad[cn];
+            Push = CarDefine.Push[cn];
+            Revpush = CarDefine.Revpush[cn];
+            Lift = CarDefine.Lift[cn];
+            Revlift = CarDefine.Revlift[cn];
+            Powerloss = CarDefine.Powerloss[cn];
+            Flipy = CarDefine.Flipy[cn];
+            Msquash = CarDefine.Msquash[cn];
+            Clrad = CarDefine.Clrad[cn];
+            Dammult = CarDefine.Dammult[cn];
+            Maxmag = CarDefine.Maxmag[cn];
+            Dishandle = CarDefine.Dishandle[cn];
+            Outdam = CarDefine.Outdam[cn];
+            Cclass = CarDefine.Cclass[cn];
+            Names = CarDefine.Names[cn];
+            Enginsignature = CarDefine.Enginsignature[cn];
 
-            if (cn >= CarDefine.SIXTEEN)
+            if (cn >= CarDefine.Sixteen)
             {
-                include = CarDefine.include[cn];
-                createdby = CarDefine.createdby[cn];
-                publish = CarDefine.publish[cn];
+                Include = CarDefine.Include[cn];
+                Createdby = CarDefine.Createdby[cn];
+                Publish = CarDefine.Publish[cn];
             }
         }
     }

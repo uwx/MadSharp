@@ -10,8 +10,8 @@ namespace MiscUtil
 	/// </summary>
 	public static class StaticRandom
 	{
-		static Random random = new Random();
-		static object myLock = new object();
+		static Random _random = new Random();
+		static object _myLock = new object();
 
 		/// <summary>
 		/// Returns a nonnegative random number. 
@@ -19,9 +19,9 @@ namespace MiscUtil
 		/// <returns>A 32-bit signed integer greater than or equal to zero and less than Int32.MaxValue.</returns>
 		public static int Next()
 		{
-			lock (myLock)
+			lock (_myLock)
 			{
-				return random.Next();
+				return _random.Next();
 			}
 		}
 
@@ -35,9 +35,9 @@ namespace MiscUtil
 		/// <exception cref="ArgumentOutOfRangeException">maxValue is less than zero.</exception>
 		public static int Next(int max)
 		{
-			lock (myLock)
+			lock (_myLock)
 			{
-				return random.Next(max);
+				return _random.Next(max);
 			}
 		}
 
@@ -57,9 +57,9 @@ namespace MiscUtil
 		/// <exception cref="ArgumentOutOfRangeException">minValue is greater than maxValue.</exception>
 		public static int Next(int min, int max)
 		{
-			lock (myLock)
+			lock (_myLock)
 			{
-				return random.Next(min, max);
+				return _random.Next(min, max);
 			}
 		}
 
@@ -69,9 +69,9 @@ namespace MiscUtil
 		/// <returns>A double-precision floating point number greater than or equal to 0.0, and less than 1.0.</returns>
 		public static double NextDouble()
 		{
-			lock (myLock)
+			lock (_myLock)
 			{
-				return random.NextDouble();
+				return _random.NextDouble();
 			}
 		}
 
@@ -82,9 +82,9 @@ namespace MiscUtil
 		/// <exception cref="ArgumentNullException">buffer is a null reference (Nothing in Visual Basic).</exception>
 		public static void NextBytes(byte[] buffer)
 		{
-			lock (myLock)
+			lock (_myLock)
 			{
-				random.NextBytes(buffer);
+				_random.NextBytes(buffer);
 			}
 		}
 	}

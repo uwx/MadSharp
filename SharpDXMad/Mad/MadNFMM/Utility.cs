@@ -20,11 +20,11 @@ public class Utility {
      * @param i The position of the value (starting from 0)
      * @return An integer containing the value
      */
-    static int getvalue(String astring, String string262, int i) {
-        int i263 = 0;
-        String string264 = "";
-        for (int i265 = astring.Length + 1; i265 < string262.Length; i265++) {
-            char string266 = string262[i265];
+    static int Getvalue(string astring, string string262, int i) {
+        var i263 = 0;
+        var string264 = "";
+        for (var i265 = astring.Length + 1; i265 < string262.Length; i265++) {
+            var string266 = string262[i265];
             if (string266 == ',' || string266 == ')') {
                 i263++;
                 i265++;
@@ -42,7 +42,7 @@ public class Utility {
      * @param i the value position
      * @return the value at the position
      */
-    public static int getServerValue(String astring, int i) {
+    public static int GetServerValue(string astring, int i) {
         throw new NotImplementedException();
 //        int i437 = -1;
 //        try {
@@ -83,11 +83,11 @@ public class Utility {
      * @param m the Medium
      * @return The 2D X coordinate.
      */
-    static int xs(int i, int i338) {
-        if (i338 < Medium.cz) {
-            i338 = Medium.cz;
+    static int Xs(int i, int i338) {
+        if (i338 < Medium.Cz) {
+            i338 = Medium.Cz;
         }
-        return (i338 - Medium.focusPoint) * (Medium.cx - i) / i338 + i;
+        return (i338 - Medium.FocusPoint) * (Medium.Cx - i) / i338 + i;
     }
 
     /**
@@ -100,27 +100,27 @@ public class Utility {
      * @param m the Medium
      * @return The 2D Y coordinate.
      */
-    static int ys(int i, int i339) {
-        if (i339 < Medium.cz) {
-            i339 = Medium.cz;
+    static int Ys(int i, int i339) {
+        if (i339 < Medium.Cz) {
+            i339 = Medium.Cz;
         }
-        return (i339 - Medium.focusPoint) * (Medium.cy - i) / i339 + i;
+        return (i339 - Medium.FocusPoint) * (Medium.Cy - i) / i339 + i;
     }
 
     // alt
 
-    static int altXs(int i, int i260) {
+    static int AltXs(int i, int i260) {
         if (i260 < 50) {
             i260 = 50;
         }
-        return (i260 - Medium.focusPoint) * (Medium.cx - i) / i260 + i;
+        return (i260 - Medium.FocusPoint) * (Medium.Cx - i) / i260 + i;
     }
 
-    static int altYs(int i, int i261) {
+    static int AltYs(int i, int i261) {
         if (i261 < 50) {
             i261 = 50;
         }
-        return (i261 - Medium.focusPoint) * (Medium.cy - i) / i261 + i;
+        return (i261 - Medium.FocusPoint) * (Medium.Cy - i) / i261 + i;
     }
 
     // medium
@@ -131,18 +131,18 @@ public class Utility {
     	return (i272 - m.focusPoint) * (m.cx - i) / i272 + i;
     }*/
 
-    static int mediumYs(int i, int i273) {
+    static int MediumYs(int i, int i273) {
         if (i273 < 10) {
             i273 = 10;
         }
-        return (i273 - Medium.focusPoint) * (Medium.cy - i) / i273 + i;
+        return (i273 - Medium.FocusPoint) * (Medium.Cy - i) / i273 + i;
     }
 
-    public static int getint(String astring, String string262, int i) {
-        int i263 = 0;
-        String string264 = "";
-        for (int i265 = astring.Length + 1; i265 < string262.Length; i265++) {
-            char string266 = string262[i265];
+    public static int Getint(string astring, string string262, int i) {
+        var i263 = 0;
+        var string264 = "";
+        for (var i265 = astring.Length + 1; i265 < string262.Length; i265++) {
+            var string266 = string262[i265];
             if (string266 == ',' || string266 == ')') {
                 i263++;
                 i265++;
@@ -154,15 +154,15 @@ public class Utility {
         return int.Parse(string264);
     }
 
-    private readonly static float EPSILON = 0.0000001F;
-    private readonly static double EPSILON_DOUBLE = 0.0000001D;
+    private readonly static float Epsilon = 0.0000001F;
+    private readonly static double EpsilonDouble = 0.0000001D;
 
-    static boolean fEquals(float a, float b) {
-        return Math.Abs(a - b) < EPSILON;
+    static bool FEquals(float a, float b) {
+        return Math.Abs(a - b) < Epsilon;
     }
 
-    static boolean dEquals(double a, double b) {
-        return Math.Abs(a - b) < EPSILON_DOUBLE;
+    static bool DEquals(double a, double b) {
+        return Math.Abs(a - b) < EpsilonDouble;
     }
 
     /**
@@ -172,8 +172,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    static boolean arrayContains(int[] arr, int targetValue) {
-        foreach (int s in arr) {
+    static bool ArrayContains(int[] arr, int targetValue) {
+        foreach (var s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -187,8 +187,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(byte[] arr, byte targetValue) {
-        foreach (byte s in arr) {
+    public static bool ArrayContains(byte[] arr, byte targetValue) {
+        foreach (var s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -202,8 +202,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(short[] arr, short targetValue) {
-        foreach (short s in arr) {
+    public static bool ArrayContains(short[] arr, short targetValue) {
+        foreach (var s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -217,8 +217,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(char[] arr, char targetValue) {
-        foreach (char s in arr) {
+    public static bool ArrayContains(char[] arr, char targetValue) {
+        foreach (var s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -232,8 +232,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(long[] arr, long targetValue) {
-        foreach (long s in arr) {
+    public static bool ArrayContains(long[] arr, long targetValue) {
+        foreach (var s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -247,8 +247,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(float[] arr, float targetValue) {
-        foreach (float s in arr) {
+    public static bool ArrayContains(float[] arr, float targetValue) {
+        foreach (var s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -262,8 +262,8 @@ public class Utility {
      * @param targetValue The value to check for
      * @return {@code true} if the value ais found, {@code false} otherwise
      */
-    public static boolean arrayContains(double[] arr, double targetValue) {
-        foreach (double s in arr) {
+    public static bool ArrayContains(double[] arr, double targetValue) {
+        foreach (var s in arr) {
             if (s == targetValue)
                 return true;
         }
@@ -276,27 +276,27 @@ public class Utility {
      * @param str
      * @return
      */
-    public static boolean isNumeric(String str) {
-        foreach (char c in str) {
+    public static bool IsNumeric(string str) {
+        foreach (var c in str) {
             if (!char.IsDigit(c))
                 return false;
         }
         return true;
     }
 
-    public static double getDistance(int x1, int y1, int z1, int x2, int y2, int z2) {
-        int dx = x1 - x2;
-        int dy = y1 - y2;
-        int dz = z1 - z2;
+    public static double GetDistance(int x1, int y1, int z1, int x2, int y2, int z2) {
+        var dx = x1 - x2;
+        var dy = y1 - y2;
+        var dz = z1 - z2;
 
         // We should avoid Math.Pow or Math.Hypot due to perfomance reasons
         return Math.Sqrt(dx * dx + dy * dy + dz * dz);
     }
 
-    public static double getDistance(float x1, float y1, float z1, float x2, float y2, float z2) {
-        float dx = x1 - x2;
-        float dy = y1 - y2;
-        float dz = z1 - z2;
+    public static double GetDistance(float x1, float y1, float z1, float x2, float y2, float z2) {
+        var dx = x1 - x2;
+        var dy = y1 - y2;
+        var dz = z1 - z2;
 
         // We should avoid Math.Pow or Math.Hypot due to perfomance reasons
         return Math.Sqrt(dx * dx + dy * dy + dz * dz);
@@ -307,10 +307,10 @@ public class Utility {
          * Reverses an array of bytes.
          * @param data The array to reverse.
          */
-        public static void reverse(byte[] data) {
+        public static void Reverse(byte[] data) {
             for (int left = 0, right = data.Length - 1; left < right; left++, right--) {
                 // swap the values at the left and right indices
-                byte temp = data[left];
+                var temp = data[left];
                 data[left] = data[right];
                 data[right] = temp;
             }
@@ -320,7 +320,7 @@ public class Utility {
          * Reverses an array of elements.
          * @param data The array to reverse.
          */
-        public static void reverse<T>(T[] data) {
+        public static void Reverse<T>(T[] data) {
             for (int left = 0, right = data.Length - 1; left < right; left++, right--) {
                 // swap the values at the left and right indices
                 var temp = data[left];
@@ -330,8 +330,8 @@ public class Utility {
         }
     }
 
-    public static int pointDirection(int x, int y, int tX, int tY) {
-        int angle = (int) (Math.Atan2(tY - y, tX - x) * 0.0174532925199433D);
+    public static int PointDirection(int x, int y, int tX, int tY) {
+        var angle = (int) (Math.Atan2(tY - y, tX - x) * 0.0174532925199433D);
 
         return angle < 0 ? angle + 360 : angle;
     }

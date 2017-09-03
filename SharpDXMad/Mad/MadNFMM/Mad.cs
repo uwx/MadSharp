@@ -5,173 +5,173 @@ namespace Cum
 {
     internal class Mad
     {
-        internal boolean btab = false;
-        internal int capcnt = 0;
-        internal boolean capsized = false;
-        private readonly boolean[] caught = new boolean[8];
-        internal Stat stat;
-        internal int clear = 0;
-        internal int cn = 0;
-        internal int cntdest = 0;
-        private int cntouch = 0;
-        private boolean colidim = false;
-        private readonly int[,] crank = new int[4,4];
-        internal int cxz = 0;
-        private int dcnt = 0;
-        internal float dcomp = 0.0F;
-        internal boolean dest = false;
-        private readonly boolean[] dominate = new boolean[8];
-        private readonly float drag = 0.5F;
-        private int fixes = -1;
-        private int focus = -1;
-        private float forca = 0.0F;
-        internal boolean ftab = false;
-        private int fxz = 0;
-        internal boolean gtouch = false;
-        internal int hitmag = 0;
-        internal int im = 0;
-        internal int lastcolido = 0;
-        internal float lcomp = 0.0F;
-        private readonly int[,] lcrank = new int[4,4];
-        internal int loop = 0;
-        private int lxz = 0;
-        internal int missedcp = 0;
-        internal boolean mtouch = false;
-        internal int mxz = 0;
-        private int nbsq = 0;
-        internal boolean newcar = false;
-        internal int newedcar = 0;
-        internal int nlaps = 0;
-        private int nmlt = 1;
-        internal boolean nofocus = false;
-        internal int outshakedam = 0;
-        internal int pcleared = 0;
-        internal boolean pd = false;
-        internal boolean pl = false;
-        private int pmlt = 1;
-        internal int point = 0;
-        internal float power = 75.0F;
-        internal float powerup = 0.0F;
-        internal boolean pr = false;
-        internal boolean pu = false;
-        internal boolean pushed = false;
-        internal int pxy = 0;
-        internal int pzy = 0;
-        internal float rcomp = 0.0F;
-        private int rpdcatch = 0;
-        internal boolean rtab = false;
-        internal readonly float[] scx = new float[4];
-        internal readonly float[] scy = new float[4];
-        internal readonly float[] scz = new float[4];
-        internal int shakedam = 0;
-        internal int skid = 0;
-        internal float speed = 0.0F;
-        internal int squash = 0;
-        private int srfcnt = 0;
-        internal boolean surfer = false;
-        private float tilt = 0.0F;
-        internal int travxy = 0;
-        internal int travxz = 0;
-        internal int travzy = 0;
-        internal int trcnt = 0;
-        internal int txz = 0;
-        internal float ucomp = 0.0F;
-        internal boolean wtouch = false;
-        private int xtpower = 0;
+        internal bool Btab;
+        internal int Capcnt;
+        internal bool Capsized;
+        private readonly bool[] _caught = new bool[8];
+        internal Stat Stat;
+        internal int Clear;
+        internal int Cn;
+        internal int Cntdest;
+        private int _cntouch;
+        private bool _colidim;
+        private readonly int[,] _crank = new int[4,4];
+        internal int Cxz;
+        private int _dcnt;
+        internal float Dcomp;
+        internal bool Dest;
+        private readonly bool[] _dominate = new bool[8];
+        private readonly float _drag = 0.5F;
+        private int _fixes = -1;
+        private int _focus = -1;
+        private float _forca;
+        internal bool Ftab;
+        private int _fxz;
+        internal bool Gtouch;
+        internal int Hitmag;
+        internal int Im;
+        internal int Lastcolido;
+        internal float Lcomp;
+        private readonly int[,] _lcrank = new int[4,4];
+        internal int Loop;
+        private int _lxz;
+        internal int Missedcp;
+        internal bool Mtouch;
+        internal int Mxz;
+        private int _nbsq;
+        internal bool Newcar;
+        internal int Newedcar;
+        internal int Nlaps;
+        private int _nmlt = 1;
+        internal bool Nofocus;
+        internal int Outshakedam = 0;
+        internal int Pcleared;
+        internal bool Pd;
+        internal bool Pl;
+        private int _pmlt = 1;
+        internal int Point;
+        internal float Power = 75.0F;
+        internal float Powerup;
+        internal bool Pr;
+        internal bool Pu;
+        internal bool Pushed;
+        internal int Pxy;
+        internal int Pzy;
+        internal float Rcomp;
+        private int _rpdcatch;
+        internal bool Rtab;
+        internal readonly float[] Scx = new float[4];
+        internal readonly float[] Scy = new float[4];
+        internal readonly float[] Scz = new float[4];
+        internal int Shakedam;
+        internal int Skid;
+        internal float Speed;
+        internal int Squash;
+        private int _srfcnt;
+        internal bool Surfer;
+        private float _tilt;
+        internal int Travxy;
+        internal int Travxz;
+        internal int Travzy;
+        internal int Trcnt;
+        internal int Txz;
+        internal float Ucomp;
+        internal bool Wtouch;
+        private int _xtpower;
 
         internal Mad(Stat stat, int i) {
-            this.stat = stat;
-            im = i;
+            Stat = stat;
+            Im = i;
         }
 
-        public void setStat(Stat stat)
+        public void SetStat(Stat stat)
         {
-            this.stat = stat;
+            Stat = stat;
         }
 
-        internal void colide(ContO conto, Mad mad118, ContO conto119) {
-            float[] fs = new float[4];
-            float[] fs120 = new float[4];
-            float[] fs121 = new float[4];
-            float[] fs122 = new float[4];
-            float[] fs123 = new float[4];
-            float[] fs124 = new float[4];
-            for (int i1 = 0; i1 < 4; i1++)
+        internal void Colide(ContO conto, Mad mad118, ContO conto119) {
+            var fs = new float[4];
+            var fs120 = new float[4];
+            var fs121 = new float[4];
+            var fs122 = new float[4];
+            var fs123 = new float[4];
+            var fs124 = new float[4];
+            for (var i1 = 0; i1 < 4; i1++)
             {
-                fs[i1] = conto.x + conto.keyx[i1];
-                if (capsized)
+                fs[i1] = conto.X + conto.Keyx[i1];
+                if (Capsized)
                 {
-                    fs120[i1] = conto.y + stat.flipy + squash;
+                    fs120[i1] = conto.Y + Stat.Flipy + Squash;
                 }
                 else
                 {
-                    fs120[i1] = conto.y + conto.grat;
+                    fs120[i1] = conto.Y + conto.Grat;
                 }
-                fs121[i1] = conto.z + conto.keyz[i1];
-                fs122[i1] = conto119.x + conto119.keyx[i1];
-                if (capsized)
+                fs121[i1] = conto.Z + conto.Keyz[i1];
+                fs122[i1] = conto119.X + conto119.Keyx[i1];
+                if (Capsized)
                 {
-                    fs123[i1] = conto119.y + mad118.stat.flipy + mad118.squash;
+                    fs123[i1] = conto119.Y + mad118.Stat.Flipy + mad118.Squash;
                 }
                 else
                 {
-                    fs123[i1] = conto119.y + conto119.grat;
+                    fs123[i1] = conto119.Y + conto119.Grat;
                 }
-                fs124[i1] = conto119.z + conto119.keyz[i1];
+                fs124[i1] = conto119.Z + conto119.Keyz[i1];
             }
-            rot(fs, fs120, conto.x, conto.y, conto.xy, 4);
-            rot(fs120, fs121, conto.y, conto.z, conto.zy, 4);
-            rot(fs, fs121, conto.x, conto.z, conto.xz, 4);
-            rot(fs122, fs123, conto119.x, conto119.y, conto119.xy, 4);
-            rot(fs123, fs124, conto119.y, conto119.z, conto119.zy, 4);
-            rot(fs122, fs124, conto119.x, conto119.z, conto119.xz, 4);
-            if (rpy(conto.x, conto119.x, conto.y, conto119.y, conto.z, conto119.z) <
-                (conto.maxR * conto.maxR + conto119.maxR * conto119.maxR) * 1.5)
+            Rot(fs, fs120, conto.X, conto.Y, conto.Xy, 4);
+            Rot(fs120, fs121, conto.Y, conto.Z, conto.Zy, 4);
+            Rot(fs, fs121, conto.X, conto.Z, conto.Xz, 4);
+            Rot(fs122, fs123, conto119.X, conto119.Y, conto119.Xy, 4);
+            Rot(fs123, fs124, conto119.Y, conto119.Z, conto119.Zy, 4);
+            Rot(fs122, fs124, conto119.X, conto119.Z, conto119.Xz, 4);
+            if (Rpy(conto.X, conto119.X, conto.Y, conto119.Y, conto.Z, conto119.Z) <
+                (conto.MaxR * conto.MaxR + conto119.MaxR * conto119.MaxR) * 1.5)
             {
-                if (!caught[mad118.im] && (speed != 0.0F || mad118.speed != 0.0F))
+                if (!_caught[mad118.Im] && (Speed != 0.0F || mad118.Speed != 0.0F))
                 {
-                    if (Math.Abs(power * speed * stat.moment) !=
-                        Math.Abs(mad118.power * mad118.speed * mad118.stat.moment))
+                    if (Math.Abs(Power * Speed * Stat.Moment) !=
+                        Math.Abs(mad118.Power * mad118.Speed * mad118.Stat.Moment))
                     {
-                        dominate[mad118.im] = Math.Abs(power * speed * stat.moment) >
-                                              Math.Abs(mad118.power * mad118.speed * mad118.stat.moment);
+                        _dominate[mad118.Im] = Math.Abs(Power * Speed * Stat.Moment) >
+                                              Math.Abs(mad118.Power * mad118.Speed * mad118.Stat.Moment);
                     }
-                    else dominate[mad118.im] = stat.moment > mad118.stat.moment;
-                    caught[mad118.im] = true;
+                    else _dominate[mad118.Im] = Stat.Moment > mad118.Stat.Moment;
+                    _caught[mad118.Im] = true;
                 }
             }
-            else if (caught[mad118.im])
+            else if (_caught[mad118.Im])
             {
-                caught[mad118.im] = false;
+                _caught[mad118.Im] = false;
             }
-            int i = 0;
-            int i125 = 0;
-            if (dominate[mad118.im])
+            var i = 0;
+            var i125 = 0;
+            if (_dominate[mad118.Im])
             {
-                int i126 =
-                    (int) (((scz[0] - mad118.scz[0] + scz[1] - mad118.scz[1] + scz[2] - mad118.scz[2] + scz[3] -
-                             mad118.scz[3]) *
-                            (scz[0] - mad118.scz[0] + scz[1] - mad118.scz[1] + scz[2] - mad118.scz[2] + scz[3] -
-                             mad118.scz[3]) +
-                            (scx[0] - mad118.scx[0] + scx[1] - mad118.scx[1] + scx[2] - mad118.scx[2] + scx[3] -
-                             mad118.scx[3]) * (scx[0] - mad118.scx[0] + scx[1] - mad118.scx[1] + scx[2] -
-                                               mad118.scx[2] + scx[3] - mad118.scx[3])) / 16.0F);
-                int i127 = 7000;
-                float f = 1.0F;
-                if (xtGraphics.multion != 0)
+                var i126 =
+                    (int) (((Scz[0] - mad118.Scz[0] + Scz[1] - mad118.Scz[1] + Scz[2] - mad118.Scz[2] + Scz[3] -
+                             mad118.Scz[3]) *
+                            (Scz[0] - mad118.Scz[0] + Scz[1] - mad118.Scz[1] + Scz[2] - mad118.Scz[2] + Scz[3] -
+                             mad118.Scz[3]) +
+                            (Scx[0] - mad118.Scx[0] + Scx[1] - mad118.Scx[1] + Scx[2] - mad118.Scx[2] + Scx[3] -
+                             mad118.Scx[3]) * (Scx[0] - mad118.Scx[0] + Scx[1] - mad118.Scx[1] + Scx[2] -
+                                               mad118.Scx[2] + Scx[3] - mad118.Scx[3])) / 16.0F);
+                var i127 = 7000;
+                var f = 1.0F;
+                if (XTGraphics.Multion != 0)
                 {
                     i127 = 28000;
                     f = 1.27F;
                 }
-                for (int i128 = 0; i128 < 4; i128++)
+                for (var i128 = 0; i128 < 4; i128++)
                 {
-                    for (int i129 = 0; i129 < 4; i129++)
-                        if (rpy(fs[i128], fs122[i129], fs120[i128], fs123[i129], fs121[i128], fs124[i129]) <
-                            (i126 + i127) * (mad118.stat.comprad + stat.comprad))
+                    for (var i129 = 0; i129 < 4; i129++)
+                        if (Rpy(fs[i128], fs122[i129], fs120[i128], fs123[i129], fs121[i128], fs124[i129]) <
+                            (i126 + i127) * (mad118.Stat.Comprad + Stat.Comprad))
                         {
-                            if (Math.Abs(scx[i128] * stat.moment) > Math.Abs(mad118.scx[i129] * mad118.stat.moment))
+                            if (Math.Abs(Scx[i128] * Stat.Moment) > Math.Abs(mad118.Scx[i129] * mad118.Stat.Moment))
                             {
-                                float f130 = mad118.scx[i129] * stat.revpush;
+                                var f130 = mad118.Scx[i129] * Stat.Revpush;
                                 if (f130 > 300.0F)
                                 {
                                     f130 = 300.0F;
@@ -180,7 +180,7 @@ namespace Cum
                                 {
                                     f130 = -300.0F;
                                 }
-                                float f131 = scx[i128] * stat.push;
+                                var f131 = Scx[i128] * Stat.Push;
                                 if (f131 > 300.0F)
                                 {
                                     f131 = 300.0F;
@@ -189,39 +189,39 @@ namespace Cum
                                 {
                                     f131 = -300.0F;
                                 }
-                                mad118.scx[i129] += f131;
-                                if (im == xtGraphics.im)
+                                mad118.Scx[i129] += f131;
+                                if (Im == XTGraphics.Im)
                                 {
-                                    mad118.colidim = true;
+                                    mad118._colidim = true;
                                 }
-                                i += mad118.regx(i129, f131 * stat.moment * f, conto119);
-                                if (mad118.colidim)
+                                i += mad118.Regx(i129, f131 * Stat.Moment * f, conto119);
+                                if (mad118._colidim)
                                 {
-                                    mad118.colidim = false;
+                                    mad118._colidim = false;
                                 }
-                                scx[i128] -= f130;
-                                i125 += regx(i128, -f130 * stat.moment * f, conto);
-                                scy[i128] -= stat.revlift;
-                                if (im == xtGraphics.im)
+                                Scx[i128] -= f130;
+                                i125 += Regx(i128, -f130 * Stat.Moment * f, conto);
+                                Scy[i128] -= Stat.Revlift;
+                                if (Im == XTGraphics.Im)
                                 {
-                                    mad118.colidim = true;
+                                    mad118._colidim = true;
                                 }
-                                i += mad118.regy(i129, stat.revlift * 7, conto119);
-                                if (mad118.colidim)
+                                i += mad118.Regy(i129, Stat.Revlift * 7, conto119);
+                                if (mad118._colidim)
                                 {
-                                    mad118.colidim = false;
+                                    mad118._colidim = false;
                                 }
-                                if (Medium.random() > Medium.random())
+                                if (Medium.Random() > Medium.Random())
                                 {
-                                    conto119.spark((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
-                                        (fs121[i128] + fs124[i129]) / 2.0F, (mad118.scx[i129] + scx[i128]) / 4.0F,
-                                        (mad118.scy[i129] + scy[i128]) / 4.0F, (mad118.scz[i129] + scz[i128]) / 4.0F,
+                                    conto119.Spark((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
+                                        (fs121[i128] + fs124[i129]) / 2.0F, (mad118.Scx[i129] + Scx[i128]) / 4.0F,
+                                        (mad118.Scy[i129] + Scy[i128]) / 4.0F, (mad118.Scz[i129] + Scz[i128]) / 4.0F,
                                         2);
                                 }
                             }
-                            if (Math.Abs(scz[i128] * stat.moment) > Math.Abs(mad118.scz[i129] * mad118.stat.moment))
+                            if (Math.Abs(Scz[i128] * Stat.Moment) > Math.Abs(mad118.Scz[i129] * mad118.Stat.Moment))
                             {
-                                float f132 = mad118.scz[i129] * stat.revpush;
+                                var f132 = mad118.Scz[i129] * Stat.Revpush;
                                 if (f132 > 300.0F)
                                 {
                                     f132 = 300.0F;
@@ -230,7 +230,7 @@ namespace Cum
                                 {
                                     f132 = -300.0F;
                                 }
-                                float f133 = scz[i128] * stat.push;
+                                var f133 = Scz[i128] * Stat.Push;
                                 if (f133 > 300.0F)
                                 {
                                     f133 = 300.0F;
@@ -239,79 +239,79 @@ namespace Cum
                                 {
                                     f133 = -300.0F;
                                 }
-                                mad118.scz[i129] += f133;
-                                if (im == xtGraphics.im)
+                                mad118.Scz[i129] += f133;
+                                if (Im == XTGraphics.Im)
                                 {
-                                    mad118.colidim = true;
+                                    mad118._colidim = true;
                                 }
-                                i += mad118.regz(i129, f133 * stat.moment * f, conto119);
-                                if (mad118.colidim)
+                                i += mad118.Regz(i129, f133 * Stat.Moment * f, conto119);
+                                if (mad118._colidim)
                                 {
-                                    mad118.colidim = false;
+                                    mad118._colidim = false;
                                 }
-                                scz[i128] -= f132;
-                                i125 += regz(i128, -f132 * stat.moment * f, conto);
-                                scy[i128] -= stat.revlift;
-                                if (im == xtGraphics.im)
+                                Scz[i128] -= f132;
+                                i125 += Regz(i128, -f132 * Stat.Moment * f, conto);
+                                Scy[i128] -= Stat.Revlift;
+                                if (Im == XTGraphics.Im)
                                 {
-                                    mad118.colidim = true;
+                                    mad118._colidim = true;
                                 }
-                                i += mad118.regy(i129, stat.revlift * 7, conto119);
-                                if (mad118.colidim)
+                                i += mad118.Regy(i129, Stat.Revlift * 7, conto119);
+                                if (mad118._colidim)
                                 {
-                                    mad118.colidim = false;
+                                    mad118._colidim = false;
                                 }
-                                if (Medium.random() > Medium.random())
+                                if (Medium.Random() > Medium.Random())
                                 {
-                                    conto119.spark((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
-                                        (fs121[i128] + fs124[i129]) / 2.0F, (mad118.scx[i129] + scx[i128]) / 4.0F,
-                                        (mad118.scy[i129] + scy[i128]) / 4.0F, (mad118.scz[i129] + scz[i128]) / 4.0F,
+                                    conto119.Spark((fs[i128] + fs122[i129]) / 2.0F, (fs120[i128] + fs123[i129]) / 2.0F,
+                                        (fs121[i128] + fs124[i129]) / 2.0F, (mad118.Scx[i129] + Scx[i128]) / 4.0F,
+                                        (mad118.Scy[i129] + Scy[i128]) / 4.0F, (mad118.Scz[i129] + Scz[i128]) / 4.0F,
                                         2);
                                 }
                             }
-                            if (im == xtGraphics.im)
+                            if (Im == XTGraphics.Im)
                             {
-                                mad118.lastcolido = 70;
+                                mad118.Lastcolido = 70;
                             }
-                            if (mad118.im == xtGraphics.im)
+                            if (mad118.Im == XTGraphics.Im)
                             {
-                                lastcolido = 70;
+                                Lastcolido = 70;
                             }
-                            mad118.scy[i129] -= stat.lift;
+                            mad118.Scy[i129] -= Stat.Lift;
                         }
                 }
             }
-            if (xtGraphics.multion == 1)
+            if (XTGraphics.Multion == 1)
             {
-                if (mad118.im == xtGraphics.im && i != 0)
+                if (mad118.Im == XTGraphics.Im && i != 0)
                 {
-                    xtGraphics.dcrashes[im] += i;
+                    XTGraphics.Dcrashes[Im] += i;
                 }
-                if (im == xtGraphics.im && i125 != 0)
+                if (Im == XTGraphics.Im && i125 != 0)
                 {
-                    xtGraphics.dcrashes[mad118.im] += i125;
+                    XTGraphics.Dcrashes[mad118.Im] += i125;
                 }
             }
         }
 
-        private void distruct(ContO conto)
+        private void Distruct(ContO conto)
         {
-            for (int i = 0; i < conto.npl; i++)
-                if (conto.p[i].wz == 0 || conto.p[i].gr == -17 || conto.p[i].gr == -16)
+            for (var i = 0; i < conto.Npl; i++)
+                if (conto.P[i].Wz == 0 || conto.P[i].Gr == -17 || conto.P[i].Gr == -16)
                 {
-                    conto.p[i].embos = 1;
+                    conto.P[i].Embos = 1;
                 }
         }
 
-        internal void drive(Control control, ContO conto) {
-            int i = 1;
-            int i4 = 1;
-            boolean abool = false;
-            boolean bool5 = false;
-            boolean bool6 = false;
-            capsized = false;
+        internal void Drive(Control control, ContO conto) {
+            var i = 1;
+            var i4 = 1;
+            var abool = false;
+            var bool5 = false;
+            var bool6 = false;
+            Capsized = false;
             int i7;
-            for (i7 = Math.Abs(pzy); i7 > 270; i7 -= 360)
+            for (i7 = Math.Abs(Pzy); i7 > 270; i7 -= 360)
             {
 
             }
@@ -320,9 +320,9 @@ namespace Cum
             {
                 abool = true;
             }
-            boolean bool8 = false;
+            var bool8 = false;
             int i9;
-            for (i9 = Math.Abs(pxy); i9 > 270; i9 -= 360)
+            for (i9 = Math.Abs(Pxy); i9 > 270; i9 -= 360)
             {
 
             }
@@ -332,7 +332,7 @@ namespace Cum
                 bool8 = true;
                 i4 = -1;
             }
-            int i10 = conto.grat;
+            var i10 = conto.Grat;
             if (abool)
             {
                 if (bool8)
@@ -343,551 +343,551 @@ namespace Cum
                 else
                 {
                     bool8 = true;
-                    capsized = true;
+                    Capsized = true;
                 }
                 i = -1;
             }
             else if (bool8)
             {
-                capsized = true;
+                Capsized = true;
             }
-            if (capsized)
+            if (Capsized)
             {
-                i10 = stat.flipy + squash;
+                i10 = Stat.Flipy + Squash;
             }
-            control.zyinv = abool;
-            float f = 0.0F;
-            float f11 = 0.0F;
-            float f12 = 0.0F;
-            if (mtouch)
+            control.Zyinv = abool;
+            var f = 0.0F;
+            var f11 = 0.0F;
+            var f12 = 0.0F;
+            if (Mtouch)
             {
-                loop = 0;
+                Loop = 0;
             }
-            if (wtouch)
+            if (Wtouch)
             {
-                if (loop == 2 || loop == -1)
+                if (Loop == 2 || Loop == -1)
                 {
-                    loop = -1;
-                    if (control.left)
+                    Loop = -1;
+                    if (control.Left)
                     {
-                        pl = true;
+                        Pl = true;
                     }
-                    if (control.right)
+                    if (control.Right)
                     {
-                        pr = true;
+                        Pr = true;
                     }
-                    if (control.up)
+                    if (control.Up)
                     {
-                        pu = true;
+                        Pu = true;
                     }
-                    if (control.down)
+                    if (control.Down)
                     {
-                        pd = true;
+                        Pd = true;
                     }
                 }
-                ucomp = 0.0F;
-                dcomp = 0.0F;
-                lcomp = 0.0F;
-                rcomp = 0.0F;
+                Ucomp = 0.0F;
+                Dcomp = 0.0F;
+                Lcomp = 0.0F;
+                Rcomp = 0.0F;
             }
-            if (control.handb)
+            if (control.Handb)
             {
-                if (!pushed)
-                    if (!wtouch)
+                if (!Pushed)
+                    if (!Wtouch)
                     {
-                        if (loop == 0)
+                        if (Loop == 0)
                         {
-                            loop = 1;
+                            Loop = 1;
                         }
                     }
-                    else if (gtouch)
+                    else if (Gtouch)
                     {
-                        pushed = true;
+                        Pushed = true;
                     }
             }
             else
             {
-                pushed = false;
+                Pushed = false;
             }
-            if (loop == 1)
+            if (Loop == 1)
             {
-                float f13 = (scy[0] + scy[1] + scy[2] + scy[3]) / 4.0F;
-                for (int i14 = 0; i14 < 4; i14++)
+                var f13 = (Scy[0] + Scy[1] + Scy[2] + Scy[3]) / 4.0F;
+                for (var i14 = 0; i14 < 4; i14++)
                 {
-                    scy[i14] = f13;
+                    Scy[i14] = f13;
                 }
-                loop = 2;
+                Loop = 2;
             }
-            if (!dest)
-                if (loop == 2)
+            if (!Dest)
+                if (Loop == 2)
                 {
-                    if (control.up)
+                    if (control.Up)
                     {
-                        if (ucomp == 0.0F)
+                        if (Ucomp == 0.0F)
                         {
-                            ucomp = 10.0F + (scy[0] + 50.0F) / 20.0F;
-                            if (ucomp < 5.0F)
+                            Ucomp = 10.0F + (Scy[0] + 50.0F) / 20.0F;
+                            if (Ucomp < 5.0F)
                             {
-                                ucomp = 5.0F;
+                                Ucomp = 5.0F;
                             }
-                            if (ucomp > 10.0F)
+                            if (Ucomp > 10.0F)
                             {
-                                ucomp = 10.0F;
+                                Ucomp = 10.0F;
                             }
-                            ucomp *= stat.airs;
+                            Ucomp *= Stat.Airs;
                         }
-                        if (ucomp < 20.0F)
+                        if (Ucomp < 20.0F)
                         {
-                            ucomp += (int)(0.5 * stat.airs);
+                            Ucomp += (int)(0.5 * Stat.Airs);
                         }
-                        f = -stat.airc * Medium.sin(conto.xz) * i4;
-                        f11 = stat.airc * Medium.cos(conto.xz) * i4;
+                        f = -Stat.Airc * Medium.Sin(conto.Xz) * i4;
+                        f11 = Stat.Airc * Medium.Cos(conto.Xz) * i4;
                     }
-                    else if (ucomp != 0.0F && ucomp > -2.0F)
+                    else if (Ucomp != 0.0F && Ucomp > -2.0F)
                     {
-                        ucomp -= (int)(0.5 * stat.airs);
+                        Ucomp -= (int)(0.5 * Stat.Airs);
                     }
-                    if (control.down)
+                    if (control.Down)
                     {
-                        if (dcomp == 0.0F)
+                        if (Dcomp == 0.0F)
                         {
-                            dcomp = 10.0F + (scy[0] + 50.0F) / 20.0F;
-                            if (dcomp < 5.0F)
+                            Dcomp = 10.0F + (Scy[0] + 50.0F) / 20.0F;
+                            if (Dcomp < 5.0F)
                             {
-                                dcomp = 5.0F;
+                                Dcomp = 5.0F;
                             }
-                            if (dcomp > 10.0F)
+                            if (Dcomp > 10.0F)
                             {
-                                dcomp = 10.0F;
+                                Dcomp = 10.0F;
                             }
-                            dcomp *= stat.airs;
+                            Dcomp *= Stat.Airs;
                         }
-                        if (dcomp < 20.0F)
+                        if (Dcomp < 20.0F)
                         {
-                            dcomp += (int)(0.5 * stat.airs);
+                            Dcomp += (int)(0.5 * Stat.Airs);
                         }
-                        f12 = -stat.airc;
+                        f12 = -Stat.Airc;
                     }
-                    else if (dcomp != 0.0F && ucomp > -2.0F)
+                    else if (Dcomp != 0.0F && Ucomp > -2.0F)
                     {
-                        dcomp -= (int)(0.5 * stat.airs);
+                        Dcomp -= (int)(0.5 * Stat.Airs);
                     }
-                    if (control.left)
+                    if (control.Left)
                     {
-                        if (lcomp == 0.0F)
+                        if (Lcomp == 0.0F)
                         {
-                            lcomp = 5.0F;
+                            Lcomp = 5.0F;
                         }
-                        if (lcomp < 20.0F)
+                        if (Lcomp < 20.0F)
                         {
-                            lcomp += 2.0F * stat.airs;
+                            Lcomp += 2.0F * Stat.Airs;
                         }
-                        f = -stat.airc * Medium.cos(conto.xz) * i;
-                        f11 = -stat.airc * Medium.sin(conto.xz) * i;
+                        f = -Stat.Airc * Medium.Cos(conto.Xz) * i;
+                        f11 = -Stat.Airc * Medium.Sin(conto.Xz) * i;
                     }
-                    else if (lcomp > 0.0F)
+                    else if (Lcomp > 0.0F)
                     {
-                        lcomp -= 2.0F * stat.airs;
+                        Lcomp -= 2.0F * Stat.Airs;
                     }
-                    if (control.right)
+                    if (control.Right)
                     {
-                        if (rcomp == 0.0F)
+                        if (Rcomp == 0.0F)
                         {
-                            rcomp = 5.0F;
+                            Rcomp = 5.0F;
                         }
-                        if (rcomp < 20.0F)
+                        if (Rcomp < 20.0F)
                         {
-                            rcomp += 2.0F * stat.airs;
+                            Rcomp += 2.0F * Stat.Airs;
                         }
-                        f = stat.airc * Medium.cos(conto.xz) * i;
-                        f11 = stat.airc * Medium.sin(conto.xz) * i;
+                        f = Stat.Airc * Medium.Cos(conto.Xz) * i;
+                        f11 = Stat.Airc * Medium.Sin(conto.Xz) * i;
                     }
-                    else if (rcomp > 0.0F)
+                    else if (Rcomp > 0.0F)
                     {
-                        rcomp -= 2.0F * stat.airs;
+                        Rcomp -= 2.0F * Stat.Airs;
                     }
-                    pzy += (int)((dcomp - ucomp) * Medium.cos(pxy));
+                    Pzy += (int)((Dcomp - Ucomp) * Medium.Cos(Pxy));
                     if (abool)
                     {
-                        conto.xz += (int)((dcomp - ucomp) * Medium.sin(pxy));
+                        conto.Xz += (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
                     }
                     else
                     {
-                        conto.xz -= (int)((dcomp - ucomp) * Medium.sin(pxy));
+                        conto.Xz -= (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
                     }
-                    pxy += (int)(rcomp - lcomp);
+                    Pxy += (int)(Rcomp - Lcomp);
                 }
                 else
                 {
-                    float f15 = power;
+                    var f15 = Power;
                     if (f15 < 40.0F)
                     {
                         f15 = 40.0F;
                     }
-                    if (control.down)
-                        if (speed > 0.0F)
+                    if (control.Down)
+                        if (Speed > 0.0F)
                         {
-                            speed -= stat.handb / 2;
+                            Speed -= Stat.Handb / 2;
                         }
                         else
                         {
-                            int i16 = 0;
-                            for (int i17 = 0; i17 < 2; i17++)
-                                if (speed <= -(stat.swits[i17] / 2 + f15 * stat.swits[i17] / 196.0F))
+                            var i16 = 0;
+                            for (var i17 = 0; i17 < 2; i17++)
+                                if (Speed <= -(Stat.Swits[i17] / 2 + f15 * Stat.Swits[i17] / 196.0F))
                                 {
                                     i16++;
                                 }
                             if (i16 != 2)
                             {
-                                speed -= stat.acelf[i16] / 2.0F + f15 * stat.acelf[i16] / 196.0F;
+                                Speed -= Stat.Acelf[i16] / 2.0F + f15 * Stat.Acelf[i16] / 196.0F;
                             }
                             else
                             {
-                                speed = -(stat.swits[1] / 2 + f15 * stat.swits[1] / 196.0F);
+                                Speed = -(Stat.Swits[1] / 2 + f15 * Stat.Swits[1] / 196.0F);
                             }
                         }
-                    if (control.up)
-                        if (speed < 0.0F)
+                    if (control.Up)
+                        if (Speed < 0.0F)
                         {
-                            speed += stat.handb;
+                            Speed += Stat.Handb;
                         }
                         else
                         {
-                            int i18 = 0;
-                            for (int i19 = 0; i19 < 3; i19++)
-                                if (speed >= stat.swits[i19] / 2 + f15 * stat.swits[i19] / 196.0F)
+                            var i18 = 0;
+                            for (var i19 = 0; i19 < 3; i19++)
+                                if (Speed >= Stat.Swits[i19] / 2 + f15 * Stat.Swits[i19] / 196.0F)
                                 {
                                     i18++;
                                 }
                             if (i18 != 3)
                             {
-                                speed += stat.acelf[i18] / 2.0F + f15 * stat.acelf[i18] / 196.0F;
+                                Speed += Stat.Acelf[i18] / 2.0F + f15 * Stat.Acelf[i18] / 196.0F;
                             }
                             else
                             {
-                                speed = stat.swits[2] / 2 + f15 * stat.swits[2] / 196.0F;
+                                Speed = Stat.Swits[2] / 2 + f15 * Stat.Swits[2] / 196.0F;
                             }
                         }
-                    if (control.handb && Math.Abs(speed) > stat.handb)
-                        if (speed < 0.0F)
+                    if (control.Handb && Math.Abs(Speed) > Stat.Handb)
+                        if (Speed < 0.0F)
                         {
-                            speed += stat.handb;
+                            Speed += Stat.Handb;
                         }
                         else
                         {
-                            speed -= stat.handb;
+                            Speed -= Stat.Handb;
                         }
-                    if (loop == -1 && conto.y < 100)
+                    if (Loop == -1 && conto.Y < 100)
                     {
-                        if (control.left)
+                        if (control.Left)
                         {
-                            if (!pl)
+                            if (!Pl)
                             {
-                                if (lcomp == 0.0F)
+                                if (Lcomp == 0.0F)
                                 {
-                                    lcomp = 5.0F * stat.airs;
+                                    Lcomp = 5.0F * Stat.Airs;
                                 }
-                                if (lcomp < 20.0F)
+                                if (Lcomp < 20.0F)
                                 {
-                                    lcomp += 2.0F * stat.airs;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (lcomp > 0.0F)
-                            {
-                                lcomp -= 2.0F * stat.airs;
-                            }
-                            pl = false;
-                        }
-                        if (control.right)
-                        {
-                            if (!pr)
-                            {
-                                if (rcomp == 0.0F)
-                                {
-                                    rcomp = 5.0F * stat.airs;
-                                }
-                                if (rcomp < 20.0F)
-                                {
-                                    rcomp += 2.0F * stat.airs;
+                                    Lcomp += 2.0F * Stat.Airs;
                                 }
                             }
                         }
                         else
                         {
-                            if (rcomp > 0.0F)
+                            if (Lcomp > 0.0F)
                             {
-                                rcomp -= 2.0F * stat.airs;
+                                Lcomp -= 2.0F * Stat.Airs;
                             }
-                            pr = false;
+                            Pl = false;
                         }
-                        if (control.up)
+                        if (control.Right)
                         {
-                            if (!pu)
+                            if (!Pr)
                             {
-                                if (ucomp == 0.0F)
+                                if (Rcomp == 0.0F)
                                 {
-                                    ucomp = 5.0F * stat.airs;
+                                    Rcomp = 5.0F * Stat.Airs;
                                 }
-                                if (ucomp < 20.0F)
+                                if (Rcomp < 20.0F)
                                 {
-                                    ucomp += 2.0F * stat.airs;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (ucomp > 0.0F)
-                            {
-                                ucomp -= 2.0F * stat.airs;
-                            }
-                            pu = false;
-                        }
-                        if (control.down)
-                        {
-                            if (!pd)
-                            {
-                                if (dcomp == 0.0F)
-                                {
-                                    dcomp = 5.0F * stat.airs;
-                                }
-                                if (dcomp < 20.0F)
-                                {
-                                    dcomp += 2.0F * stat.airs;
+                                    Rcomp += 2.0F * Stat.Airs;
                                 }
                             }
                         }
                         else
                         {
-                            if (dcomp > 0.0F)
+                            if (Rcomp > 0.0F)
                             {
-                                dcomp -= 2.0F * stat.airs;
+                                Rcomp -= 2.0F * Stat.Airs;
                             }
-                            pd = false;
+                            Pr = false;
                         }
-                        pzy += (int)((dcomp - ucomp) * Medium.cos(pxy));
+                        if (control.Up)
+                        {
+                            if (!Pu)
+                            {
+                                if (Ucomp == 0.0F)
+                                {
+                                    Ucomp = 5.0F * Stat.Airs;
+                                }
+                                if (Ucomp < 20.0F)
+                                {
+                                    Ucomp += 2.0F * Stat.Airs;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Ucomp > 0.0F)
+                            {
+                                Ucomp -= 2.0F * Stat.Airs;
+                            }
+                            Pu = false;
+                        }
+                        if (control.Down)
+                        {
+                            if (!Pd)
+                            {
+                                if (Dcomp == 0.0F)
+                                {
+                                    Dcomp = 5.0F * Stat.Airs;
+                                }
+                                if (Dcomp < 20.0F)
+                                {
+                                    Dcomp += 2.0F * Stat.Airs;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Dcomp > 0.0F)
+                            {
+                                Dcomp -= 2.0F * Stat.Airs;
+                            }
+                            Pd = false;
+                        }
+                        Pzy += (int)((Dcomp - Ucomp) * Medium.Cos(Pxy));
                         if (abool)
                         {
-                            conto.xz += (int)((dcomp - ucomp) * Medium.sin(pxy));
+                            conto.Xz += (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
                         }
                         else
                         {
-                            conto.xz -= (int)((dcomp - ucomp) * Medium.sin(pxy));
+                            conto.Xz -= (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
                         }
-                        pxy += (int)(rcomp - lcomp);
+                        Pxy += (int)(Rcomp - Lcomp);
                     }
                 }
-            float f20 = 20.0F * speed / (154.0F * stat.simag);
+            var f20 = 20.0F * Speed / (154.0F * Stat.Simag);
             if (f20 > 20.0F)
             {
                 f20 = 20.0F;
             }
-            conto.wzy -= (int)(f20);
-            if (conto.wzy < -30)
+            conto.Wzy -= (int)(f20);
+            if (conto.Wzy < -30)
             {
-                conto.wzy += 30;
+                conto.Wzy += 30;
             }
-            if (conto.wzy > 30)
+            if (conto.Wzy > 30)
             {
-                conto.wzy -= 30;
+                conto.Wzy -= 30;
             }
-            if (control.right)
+            if (control.Right)
             {
-                conto.wxz -= stat.turn;
-                if (conto.wxz < -36)
+                conto.Wxz -= Stat.Turn;
+                if (conto.Wxz < -36)
                 {
-                    conto.wxz = -36;
+                    conto.Wxz = -36;
                 }
             }
-            if (control.left)
+            if (control.Left)
             {
-                conto.wxz += stat.turn;
-                if (conto.wxz > 36)
+                conto.Wxz += Stat.Turn;
+                if (conto.Wxz > 36)
                 {
-                    conto.wxz = 36;
+                    conto.Wxz = 36;
                 }
             }
-            if (conto.wxz != 0 && !control.left && !control.right)
-                if (Math.Abs(speed) < 10.0F)
+            if (conto.Wxz != 0 && !control.Left && !control.Right)
+                if (Math.Abs(Speed) < 10.0F)
                 {
-                    if (Math.Abs(conto.wxz) == 1)
+                    if (Math.Abs(conto.Wxz) == 1)
                     {
-                        conto.wxz = 0;
+                        conto.Wxz = 0;
                     }
-                    if (conto.wxz > 0)
+                    if (conto.Wxz > 0)
                     {
-                        conto.wxz--;
+                        conto.Wxz--;
                     }
-                    if (conto.wxz < 0)
+                    if (conto.Wxz < 0)
                     {
-                        conto.wxz++;
+                        conto.Wxz++;
                     }
                 }
                 else
                 {
-                    if (Math.Abs(conto.wxz) < stat.turn * 2)
+                    if (Math.Abs(conto.Wxz) < Stat.Turn * 2)
                     {
-                        conto.wxz = 0;
+                        conto.Wxz = 0;
                     }
-                    if (conto.wxz > 0)
+                    if (conto.Wxz > 0)
                     {
-                        conto.wxz -= stat.turn * 2;
+                        conto.Wxz -= Stat.Turn * 2;
                     }
-                    if (conto.wxz < 0)
+                    if (conto.Wxz < 0)
                     {
-                        conto.wxz += stat.turn * 2;
+                        conto.Wxz += Stat.Turn * 2;
                     }
                 }
-            int i21 = (int) (3600.0F / (speed * speed));
+            var i21 = (int) (3600.0F / (Speed * Speed));
             if (i21 < 5)
             {
                 i21 = 5;
             }
-            if (speed < 0.0F)
+            if (Speed < 0.0F)
             {
                 i21 = -i21;
             }
-            if (wtouch)
+            if (Wtouch)
             {
-                if (!capsized)
+                if (!Capsized)
                 {
-                    if (!control.handb)
+                    if (!control.Handb)
                     {
-                        fxz = conto.wxz / (i21 * 3);
+                        _fxz = conto.Wxz / (i21 * 3);
                     }
                     else
                     {
-                        fxz = conto.wxz / i21;
+                        _fxz = conto.Wxz / i21;
                     }
-                    conto.xz += conto.wxz / i21;
+                    conto.Xz += conto.Wxz / i21;
                 }
-                wtouch = false;
-                gtouch = false;
+                Wtouch = false;
+                Gtouch = false;
             }
             else
             {
-                conto.xz += fxz;
+                conto.Xz += _fxz;
             }
-            if (speed > 30.0F || speed < -100.0F)
+            if (Speed > 30.0F || Speed < -100.0F)
             {
-                while (Math.Abs(mxz - cxz) > 180)
-                    if (cxz > mxz)
+                while (Math.Abs(Mxz - Cxz) > 180)
+                    if (Cxz > Mxz)
                     {
-                        cxz -= 360;
+                        Cxz -= 360;
                     }
-                    else if (cxz < mxz)
+                    else if (Cxz < Mxz)
                     {
-                        cxz += 360;
+                        Cxz += 360;
                     }
-                if (Math.Abs(mxz - cxz) < 30)
+                if (Math.Abs(Mxz - Cxz) < 30)
                 {
-                    cxz += (int)((mxz - cxz) / 4.0F);
+                    Cxz += (int)((Mxz - Cxz) / 4.0F);
                 }
                 else
                 {
-                    if (cxz > mxz)
+                    if (Cxz > Mxz)
                     {
-                        cxz -= 10;
+                        Cxz -= 10;
                     }
-                    if (cxz < mxz)
+                    if (Cxz < Mxz)
                     {
-                        cxz += 10;
+                        Cxz += 10;
                     }
                 }
             }
-            float[] fs = new float[4];
-            float[] fs22 = new float[4];
-            float[] fs23 = new float[4];
-            for (int i24 = 0; i24 < 4; i24++)
+            var fs = new float[4];
+            var fs22 = new float[4];
+            var fs23 = new float[4];
+            for (var i24 = 0; i24 < 4; i24++)
             {
-                fs[i24] = conto.keyx[i24] + conto.x;
-                fs23[i24] = i10 + conto.y;
-                fs22[i24] = conto.z + conto.keyz[i24];
-                scy[i24] += 7.0F;
+                fs[i24] = conto.Keyx[i24] + conto.X;
+                fs23[i24] = i10 + conto.Y;
+                fs22[i24] = conto.Z + conto.Keyz[i24];
+                Scy[i24] += 7.0F;
             }
-            rot(fs, fs23, conto.x, conto.y, pxy, 4);
-            rot(fs23, fs22, conto.y, conto.z, pzy, 4);
-            rot(fs, fs22, conto.x, conto.z, conto.xz, 4);
-            boolean bool25 = false;
+            Rot(fs, fs23, conto.X, conto.Y, Pxy, 4);
+            Rot(fs23, fs22, conto.Y, conto.Z, Pzy, 4);
+            Rot(fs, fs22, conto.X, conto.Z, conto.Xz, 4);
+            var bool25 = false;
             double d;
-            int i26 = (int) ((scx[0] + scx[1] + scx[2] + scx[3]) / 4.0F);
-            int i27 = (int) ((scz[0] + scz[1] + scz[2] + scz[3]) / 4.0F);
-            for (int i28 = 0; i28 < 4; i28++)
+            var i26 = (int) ((Scx[0] + Scx[1] + Scx[2] + Scx[3]) / 4.0F);
+            var i27 = (int) ((Scz[0] + Scz[1] + Scz[2] + Scz[3]) / 4.0F);
+            for (var i28 = 0; i28 < 4; i28++)
             {
-                if (scx[i28] - i26 > 200.0F)
+                if (Scx[i28] - i26 > 200.0F)
                 {
-                    scx[i28] = 200 + i26;
+                    Scx[i28] = 200 + i26;
                 }
-                if (scx[i28] - i26 < -200.0F)
+                if (Scx[i28] - i26 < -200.0F)
                 {
-                    scx[i28] = i26 - 200;
+                    Scx[i28] = i26 - 200;
                 }
-                if (scz[i28] - i27 > 200.0F)
+                if (Scz[i28] - i27 > 200.0F)
                 {
-                    scz[i28] = 200 + i27;
+                    Scz[i28] = 200 + i27;
                 }
-                if (scz[i28] - i27 < -200.0F)
+                if (Scz[i28] - i27 < -200.0F)
                 {
-                    scz[i28] = i27 - 200;
+                    Scz[i28] = i27 - 200;
                 }
             }
-            for (int i29 = 0; i29 < 4; i29++)
+            for (var i29 = 0; i29 < 4; i29++)
             {
-                fs23[i29] += scy[i29];
-                fs[i29] += (scx[0] + scx[1] + scx[2] + scx[3]) / 4.0F;
-                fs22[i29] += (scz[0] + scz[1] + scz[2] + scz[3]) / 4.0F;
+                fs23[i29] += Scy[i29];
+                fs[i29] += (Scx[0] + Scx[1] + Scx[2] + Scx[3]) / 4.0F;
+                fs22[i29] += (Scz[0] + Scz[1] + Scz[2] + Scz[3]) / 4.0F;
             }
-            int i30 = (conto.x - Trackers.sx) / 3000;
-            if (i30 > Trackers.ncx)
+            var i30 = (conto.X - Trackers.Sx) / 3000;
+            if (i30 > Trackers.Ncx)
             {
-                i30 = Trackers.ncx;
+                i30 = Trackers.Ncx;
             }
             if (i30 < 0)
             {
                 i30 = 0;
             }
-            int i31 = (conto.z - Trackers.sz) / 3000;
-            if (i31 > Trackers.ncz)
+            var i31 = (conto.Z - Trackers.Sz) / 3000;
+            if (i31 > Trackers.Ncz)
             {
-                i31 = Trackers.ncz;
+                i31 = Trackers.Ncz;
             }
             if (i31 < 0)
             {
                 i31 = 0;
             }
-            int i32 = 1;
-            for (int i33 = 0; i33 < Trackers.sect[i30,i31].Length; i33++)
+            var i32 = 1;
+            for (var i33 = 0; i33 < Trackers.Sect[i30,i31].Length; i33++)
             {
-                int i34 = Trackers.sect[i30,i31][i33];
-                if (Math.Abs(Trackers.zy[i34]) != 90 && Math.Abs(Trackers.xy[i34]) != 90 &&
-                    Math.Abs(conto.x - Trackers.x[i34]) < Trackers.radx[i34] &&
-                    Math.Abs(conto.z - Trackers.z[i34]) < Trackers.radz[i34] &&
-                    (!Trackers.decor[i34] || Medium.resdown != 2 || xtGraphics.multion != 0))
+                var i34 = Trackers.Sect[i30,i31][i33];
+                if (Math.Abs(Trackers.Zy[i34]) != 90 && Math.Abs(Trackers.Xy[i34]) != 90 &&
+                    Math.Abs(conto.X - Trackers.X[i34]) < Trackers.Radx[i34] &&
+                    Math.Abs(conto.Z - Trackers.Z[i34]) < Trackers.Radz[i34] &&
+                    (!Trackers.Decor[i34] || Medium.Resdown != 2 || XTGraphics.Multion != 0))
                 {
-                    i32 = Trackers.skd[i34];
+                    i32 = Trackers.Skd[i34];
                 }
             }
-            if (mtouch)
+            if (Mtouch)
             {
-                float f35 = stat.grip;
-                f35 -= Math.Abs(txz - conto.xz) * speed / 250.0F;
-                if (control.handb)
+                var f35 = Stat.Grip;
+                f35 -= Math.Abs(Txz - conto.Xz) * Speed / 250.0F;
+                if (control.Handb)
                 {
-                    f35 -= Math.Abs(txz - conto.xz) * 4;
+                    f35 -= Math.Abs(Txz - conto.Xz) * 4;
                 }
-                if (f35 < stat.grip)
+                if (f35 < Stat.Grip)
                 {
-                    if (skid != 2)
+                    if (Skid != 2)
                     {
-                        skid = 1;
+                        Skid = 1;
                     }
-                    speed -= speed / 100.0F;
+                    Speed -= Speed / 100.0F;
                 }
-                else if (skid == 1)
+                else if (Skid == 1)
                 {
-                    skid = 2;
+                    Skid = 2;
                 }
                 if (i32 == 1)
                 {
@@ -897,40 +897,40 @@ namespace Cum
                 {
                     f35 = (int)(f35 * 0.55);
                 }
-                int i36 = -(int) (speed * Medium.sin(conto.xz) * Medium.cos(pzy));
-                int i37 = (int) (speed * Medium.cos(conto.xz) * Medium.cos(pzy));
-                int i38 = -(int) (speed * Medium.sin(pzy));
-                if (capsized || dest || CheckPoints.haltall)
+                var i36 = -(int) (Speed * Medium.Sin(conto.Xz) * Medium.Cos(Pzy));
+                var i37 = (int) (Speed * Medium.Cos(conto.Xz) * Medium.Cos(Pzy));
+                var i38 = -(int) (Speed * Medium.Sin(Pzy));
+                if (Capsized || Dest || CheckPoints.Haltall)
                 {
                     i36 = 0;
                     i37 = 0;
                     i38 = 0;
-                    f35 = stat.grip / 5.0F;
-                    if (speed > 0.0F)
+                    f35 = Stat.Grip / 5.0F;
+                    if (Speed > 0.0F)
                     {
-                        speed -= 2.0F;
+                        Speed -= 2.0F;
                     }
                     else
                     {
-                        speed += 2.0F;
+                        Speed += 2.0F;
                     }
                 }
-                if (Math.Abs(speed) > drag)
+                if (Math.Abs(Speed) > _drag)
                 {
-                    if (speed > 0.0F)
+                    if (Speed > 0.0F)
                     {
-                        speed -= drag;
+                        Speed -= _drag;
                     }
                     else
                     {
-                        speed += drag;
+                        Speed += _drag;
                     }
                 }
                 else
                 {
-                    speed = 0.0F;
+                    Speed = 0.0F;
                 }
-                if (cn == 8 && f35 < 5.0F)
+                if (Cn == 8 && f35 < 5.0F)
                 {
                     f35 = 5.0F;
                 }
@@ -938,119 +938,119 @@ namespace Cum
                 {
                     f35 = 1.0F;
                 }
-                float f39 = 0.0F;
-                float f40 = 0.0F;
-                for (int i41 = 0; i41 < 4; i41++)
+                var f39 = 0.0F;
+                var f40 = 0.0F;
+                for (var i41 = 0; i41 < 4; i41++)
                 {
-                    if (Math.Abs(scx[i41] - i36) > f35)
+                    if (Math.Abs(Scx[i41] - i36) > f35)
                     {
-                        if (scx[i41] < i36)
+                        if (Scx[i41] < i36)
                         {
-                            scx[i41] += f35;
+                            Scx[i41] += f35;
                         }
                         else
                         {
-                            scx[i41] -= f35;
+                            Scx[i41] -= f35;
                         }
                     }
                     else
                     {
-                        scx[i41] = i36;
+                        Scx[i41] = i36;
                     }
-                    if (Math.Abs(scz[i41] - i37) > f35)
+                    if (Math.Abs(Scz[i41] - i37) > f35)
                     {
-                        if (scz[i41] < i37)
+                        if (Scz[i41] < i37)
                         {
-                            scz[i41] += f35;
+                            Scz[i41] += f35;
                         }
                         else
                         {
-                            scz[i41] -= f35;
+                            Scz[i41] -= f35;
                         }
                     }
                     else
                     {
-                        scz[i41] = i37;
+                        Scz[i41] = i37;
                     }
-                    if (Math.Abs(scy[i41] - i38) > f35)
+                    if (Math.Abs(Scy[i41] - i38) > f35)
                     {
-                        if (scy[i41] < i38)
+                        if (Scy[i41] < i38)
                         {
-                            scy[i41] += f35;
+                            Scy[i41] += f35;
                         }
                         else
                         {
-                            scy[i41] -= f35;
+                            Scy[i41] -= f35;
                         }
                     }
                     else
                     {
-                        scy[i41] = i38;
+                        Scy[i41] = i38;
                     }
-                    if (f35 < stat.grip)
+                    if (f35 < Stat.Grip)
                     {
-                        if (txz != conto.xz)
+                        if (Txz != conto.Xz)
                         {
-                            dcnt++;
+                            _dcnt++;
                         }
-                        else if (dcnt != 0)
+                        else if (_dcnt != 0)
                         {
-                            dcnt = 0;
+                            _dcnt = 0;
                         }
-                        if (dcnt > 40.0F * f35 / stat.grip || capsized)
+                        if (_dcnt > 40.0F * f35 / Stat.Grip || Capsized)
                         {
-                            float f42 = 1.0F;
+                            var f42 = 1.0F;
                             if (i32 != 0)
                             {
                                 f42 = 1.2F;
                             }
-                            if (Medium.random() > 0.65)
+                            if (Medium.Random() > 0.65)
                             {
-                                conto.dust(i41, fs[i41], fs23[i41], fs22[i41], (int) scx[i41], (int) scz[i41],
-                                    f42 * stat.simag, (int) tilt, capsized && mtouch);
-                                if (im == xtGraphics.im && !capsized)
+                                conto.Dust(i41, fs[i41], fs23[i41], fs22[i41], (int) Scx[i41], (int) Scz[i41],
+                                    f42 * Stat.Simag, (int) _tilt, Capsized && Mtouch);
+                                if (Im == XTGraphics.Im && !Capsized)
                                 {
-                                    xtPart2.skidf(im, i32,
-                                        (float) Math.Sqrt(scx[i41] * scx[i41] + scz[i41] * scz[i41]));
+                                    XTPart2.Skidf(Im, i32,
+                                        (float) Math.Sqrt(Scx[i41] * Scx[i41] + Scz[i41] * Scz[i41]));
                                 }
                             }
                         }
                         else
                         {
-                            if (i32 == 1 && Medium.random() > 0.8)
+                            if (i32 == 1 && Medium.Random() > 0.8)
                             {
-                                conto.dust(i41, fs[i41], fs23[i41], fs22[i41], (int) scx[i41], (int) scz[i41],
-                                    1.1F * stat.simag, (int) tilt, capsized && mtouch);
+                                conto.Dust(i41, fs[i41], fs23[i41], fs22[i41], (int) Scx[i41], (int) Scz[i41],
+                                    1.1F * Stat.Simag, (int) _tilt, Capsized && Mtouch);
                             }
-                            if ((i32 == 2 || i32 == 3) && Medium.random() > 0.6)
+                            if ((i32 == 2 || i32 == 3) && Medium.Random() > 0.6)
                             {
-                                conto.dust(i41, fs[i41], fs23[i41], fs22[i41], (int) scx[i41], (int) scz[i41],
-                                    1.15F * stat.simag, (int) tilt, capsized && mtouch);
+                                conto.Dust(i41, fs[i41], fs23[i41], fs22[i41], (int) Scx[i41], (int) Scz[i41],
+                                    1.15F * Stat.Simag, (int) _tilt, Capsized && Mtouch);
                             }
                         }
                     }
-                    else if (dcnt != 0)
+                    else if (_dcnt != 0)
                     {
-                        dcnt -= 2;
-                        if (dcnt < 0)
+                        _dcnt -= 2;
+                        if (_dcnt < 0)
                         {
-                            dcnt = 0;
+                            _dcnt = 0;
                         }
                     }
                     if (i32 == 3)
                     {
-                        int i43 = (int) (Medium.random() * 4.0F);
-                        scy[i43] = (float) (-100.0F * Medium.random() * (speed / stat.swits[2]) * (stat.bounce - 0.3));
+                        var i43 = (int) (Medium.Random() * 4.0F);
+                        Scy[i43] = (float) (-100.0F * Medium.Random() * (Speed / Stat.Swits[2]) * (Stat.Bounce - 0.3));
                     }
                     if (i32 == 4)
                     {
-                        int i44 = (int) (Medium.random() * 4.0F);
-                        scy[i44] = (float) (-150.0F * Medium.random() * (speed / stat.swits[2]) * (stat.bounce - 0.3));
+                        var i44 = (int) (Medium.Random() * 4.0F);
+                        Scy[i44] = (float) (-150.0F * Medium.Random() * (Speed / Stat.Swits[2]) * (Stat.Bounce - 0.3));
                     }
-                    f39 += scx[i41];
-                    f40 += scz[i41];
+                    f39 += Scx[i41];
+                    f40 += Scz[i41];
                 }
-                txz = conto.xz;
+                Txz = conto.Xz;
                 if (f39 > 0.0F)
                 {
                     i = -1;
@@ -1060,52 +1060,52 @@ namespace Cum
                     i = 1;
                 }
                 d = f40 / Math.Sqrt(f39 * f39 + f40 * f40);
-                mxz = (int) (Math.Acos(d) / 0.017453292519943295 * i);
-                if (skid == 2)
+                Mxz = (int) (Math.Acos(d) / 0.017453292519943295 * i);
+                if (Skid == 2)
                 {
-                    if (!capsized)
+                    if (!Capsized)
                     {
                         f39 /= 4.0F;
                         f40 /= 4.0F;
                         if (bool5)
                         {
-                            speed = -((float) Math.Sqrt(f39 * f39 + f40 * f40) * Medium.cos(mxz - conto.xz));
+                            Speed = -((float) Math.Sqrt(f39 * f39 + f40 * f40) * Medium.Cos(Mxz - conto.Xz));
                         }
                         else
                         {
-                            speed = (float) Math.Sqrt(f39 * f39 + f40 * f40) * Medium.cos(mxz - conto.xz);
+                            Speed = (float) Math.Sqrt(f39 * f39 + f40 * f40) * Medium.Cos(Mxz - conto.Xz);
                         }
                     }
-                    skid = 0;
+                    Skid = 0;
                 }
-                if (capsized && f39 == 0.0F && f40 == 0.0F)
+                if (Capsized && f39 == 0.0F && f40 == 0.0F)
                 {
                     i32 = 0;
                 }
-                mtouch = false;
+                Mtouch = false;
                 bool25 = true;
             }
-            else if (skid != 2)
+            else if (Skid != 2)
             {
-                skid = 2;
+                Skid = 2;
             }
-            int i45 = 0;
-            boolean[] bools = new boolean[4];
-            boolean[] bools46 = new boolean[4];
-            boolean[] bools47 = new boolean[4];
-            float f48 = 0.0F;
-            for (int i49 = 0; i49 < 4; i49++)
+            var i45 = 0;
+            var bools = new bool[4];
+            var bools46 = new bool[4];
+            var bools47 = new bool[4];
+            var f48 = 0.0F;
+            for (var i49 = 0; i49 < 4; i49++)
             {
                 bools46[i49] = false;
                 bools47[i49] = false;
                 if (fs23[i49] > 245.0F)
                 {
                     i45++;
-                    wtouch = true;
-                    gtouch = true;
-                    if (!bool25 && scy[i49] != 7.0F)
+                    Wtouch = true;
+                    Gtouch = true;
+                    if (!bool25 && Scy[i49] != 7.0F)
                     {
-                        float f50 = scy[i49] / 333.33F;
+                        var f50 = Scy[i49] / 333.33F;
                         if (f50 > 0.3)
                         {
                             f50 = 0.3F;
@@ -1118,29 +1118,29 @@ namespace Cum
                         {
                             f50 += 1.2f;
                         }
-                        conto.dust(i49, fs[i49], fs23[i49], fs22[i49], (int) scx[i49], (int) scz[i49], f50 * stat.simag,
-                            0, capsized && mtouch);
+                        conto.Dust(i49, fs[i49], fs23[i49], fs22[i49], (int) Scx[i49], (int) Scz[i49], f50 * Stat.Simag,
+                            0, Capsized && Mtouch);
                     }
                     fs23[i49] = 250.0F;
                     bools47[i49] = true;
                     f48 += fs23[i49] - 250.0F;
-                    float f51 = Math.Abs(Medium.sin(pxy)) + Math.Abs(Medium.sin(pzy));
+                    var f51 = Math.Abs(Medium.Sin(Pxy)) + Math.Abs(Medium.Sin(Pzy));
                     f51 /= 3.0F;
                     if (f51 > 0.4)
                     {
                         f51 = 0.4F;
                     }
-                    f51 += stat.bounce;
+                    f51 += Stat.Bounce;
                     if (f51 < 1.1)
                     {
                         f51 = 1.1F;
                     }
-                    regy(i49, Math.Abs(scy[i49] * f51), conto);
-                    if (scy[i49] > 0.0F)
+                    Regy(i49, Math.Abs(Scy[i49] * f51), conto);
+                    if (Scy[i49] > 0.0F)
                     {
-                        scy[i49] -= Math.Abs(scy[i49] * f51);
+                        Scy[i49] -= Math.Abs(Scy[i49] * f51);
                     }
-                    if (capsized)
+                    if (Capsized)
                     {
                         bools46[i49] = true;
                     }
@@ -1150,49 +1150,49 @@ namespace Cum
             if (i45 != 0)
             {
                 f48 /= i45;
-                for (int i52 = 0; i52 < 4; i52++)
+                for (var i52 = 0; i52 < 4; i52++)
                     if (!bools47[i52])
                     {
                         fs23[i52] -= f48;
                     }
             }
-            int i53 = 0;
-            for (int i54 = 0; i54 < Trackers.sect[i30,i31].Length; i54++)
+            var i53 = 0;
+            for (var i54 = 0; i54 < Trackers.Sect[i30,i31].Length; i54++)
             {
-                int i55 = Trackers.sect[i30,i31][i54];
-                int i56 = 0;
-                int i57 = 0;
-                for (int i58 = 0; i58 < 4; i58++)
+                var i55 = Trackers.Sect[i30,i31][i54];
+                var i56 = 0;
+                var i57 = 0;
+                for (var i58 = 0; i58 < 4; i58++)
                 {
-                    if (bools46[i58] && (Trackers.skd[i55] == 0 || Trackers.skd[i55] == 1) &&
-                        fs[i58] > Trackers.x[i55] - Trackers.radx[i55] &&
-                        fs[i58] < Trackers.x[i55] + Trackers.radx[i55] &&
-                        fs22[i58] > Trackers.z[i55] - Trackers.radz[i55] &&
-                        fs22[i58] < Trackers.z[i55] + Trackers.radz[i55])
+                    if (bools46[i58] && (Trackers.Skd[i55] == 0 || Trackers.Skd[i55] == 1) &&
+                        fs[i58] > Trackers.X[i55] - Trackers.Radx[i55] &&
+                        fs[i58] < Trackers.X[i55] + Trackers.Radx[i55] &&
+                        fs22[i58] > Trackers.Z[i55] - Trackers.Radz[i55] &&
+                        fs22[i58] < Trackers.Z[i55] + Trackers.Radz[i55])
                     {
-                        conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
-                        if (im == xtGraphics.im)
+                        conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 1);
+                        if (Im == XTGraphics.Im)
                         {
-                            xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                            XTGraphics.Gscrape(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                         }
                     }
-                    if (!bools[i58] && fs[i58] > Trackers.x[i55] - Trackers.radx[i55] &&
-                        fs[i58] < Trackers.x[i55] + Trackers.radx[i55] &&
-                        fs22[i58] > Trackers.z[i55] - Trackers.radz[i55] &&
-                        fs22[i58] < Trackers.z[i55] + Trackers.radz[i55] &&
-                        fs23[i58] > Trackers.y[i55] - Trackers.rady[i55] &&
-                        fs23[i58] < Trackers.y[i55] + Trackers.rady[i55] &&
-                        (!Trackers.decor[i55] || Medium.resdown != 2 || xtGraphics.multion != 0))
+                    if (!bools[i58] && fs[i58] > Trackers.X[i55] - Trackers.Radx[i55] &&
+                        fs[i58] < Trackers.X[i55] + Trackers.Radx[i55] &&
+                        fs22[i58] > Trackers.Z[i55] - Trackers.Radz[i55] &&
+                        fs22[i58] < Trackers.Z[i55] + Trackers.Radz[i55] &&
+                        fs23[i58] > Trackers.Y[i55] - Trackers.Rady[i55] &&
+                        fs23[i58] < Trackers.Y[i55] + Trackers.Rady[i55] &&
+                        (!Trackers.Decor[i55] || Medium.Resdown != 2 || XTGraphics.Multion != 0))
                     {
-                        if (Trackers.xy[i55] == 0 && Trackers.zy[i55] == 0 && Trackers.y[i55] != 250 &&
-                            fs23[i58] > Trackers.y[i55] - 5)
+                        if (Trackers.Xy[i55] == 0 && Trackers.Zy[i55] == 0 && Trackers.Y[i55] != 250 &&
+                            fs23[i58] > Trackers.Y[i55] - 5)
                         {
                             i57++;
-                            wtouch = true;
-                            gtouch = true;
-                            if (!bool25 && scy[i58] != 7.0F)
+                            Wtouch = true;
+                            Gtouch = true;
+                            if (!bool25 && Scy[i58] != 7.0F)
                             {
-                                float f59 = scy[i58] / 333.33F;
+                                var f59 = Scy[i58] / 333.33F;
                                 if (f59 > 0.3)
                                 {
                                     f59 = 0.3F;
@@ -1205,62 +1205,62 @@ namespace Cum
                                 {
                                     f59 += 1.2f;
                                 }
-                                conto.dust(i58, fs[i58], fs23[i58], fs22[i58], (int) scx[i58], (int) scz[i58],
-                                    f59 * stat.simag, 0, capsized && mtouch);
+                                conto.Dust(i58, fs[i58], fs23[i58], fs22[i58], (int) Scx[i58], (int) Scz[i58],
+                                    f59 * Stat.Simag, 0, Capsized && Mtouch);
                             }
-                            fs23[i58] = Trackers.y[i55];
-                            if (capsized && (Trackers.skd[i55] == 0 || Trackers.skd[i55] == 1))
+                            fs23[i58] = Trackers.Y[i55];
+                            if (Capsized && (Trackers.Skd[i55] == 0 || Trackers.Skd[i55] == 1))
                             {
-                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
-                                if (im == xtGraphics.im)
+                                conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 1);
+                                if (Im == XTGraphics.Im)
                                 {
-                                    xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    XTGraphics.Gscrape(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                                 }
                             }
-                            float f60 = Math.Abs(Medium.sin(pxy)) + Math.Abs(Medium.sin(pzy));
+                            var f60 = Math.Abs(Medium.Sin(Pxy)) + Math.Abs(Medium.Sin(Pzy));
                             f60 /= 3.0F;
                             if (f60 > 0.4)
                             {
                                 f60 = 0.4F;
                             }
-                            f60 += stat.bounce;
+                            f60 += Stat.Bounce;
                             if (f60 < 1.1)
                             {
                                 f60 = 1.1F;
                             }
-                            regy(i58, Math.Abs(scy[i58] * f60), conto);
-                            if (scy[i58] > 0.0F)
+                            Regy(i58, Math.Abs(Scy[i58] * f60), conto);
+                            if (Scy[i58] > 0.0F)
                             {
-                                scy[i58] -= Math.Abs(scy[i58] * f60);
+                                Scy[i58] -= Math.Abs(Scy[i58] * f60);
                             }
                             bools[i58] = true;
                         }
-                        if (Trackers.zy[i55] == -90 && fs22[i58] < Trackers.z[i55] + Trackers.radz[i55] &&
-                            (scz[i58] < 0.0F || Trackers.radz[i55] == 287))
+                        if (Trackers.Zy[i55] == -90 && fs22[i58] < Trackers.Z[i55] + Trackers.Radz[i55] &&
+                            (Scz[i58] < 0.0F || Trackers.Radz[i55] == 287))
                         {
-                            for (int i61 = 0; i61 < 4; i61++)
-                                if (i58 != i61 && fs22[i61] >= Trackers.z[i55] + Trackers.radz[i55])
+                            for (var i61 = 0; i61 < 4; i61++)
+                                if (i58 != i61 && fs22[i61] >= Trackers.Z[i55] + Trackers.Radz[i55])
                                 {
-                                    fs22[i61] -= fs22[i58] - (Trackers.z[i55] + Trackers.radz[i55]);
+                                    fs22[i61] -= fs22[i58] - (Trackers.Z[i55] + Trackers.Radz[i55]);
                                 }
-                            fs22[i58] = Trackers.z[i55] + Trackers.radz[i55];
-                            if (Trackers.skd[i55] != 2)
+                            fs22[i58] = Trackers.Z[i55] + Trackers.Radz[i55];
+                            if (Trackers.Skd[i55] != 2)
                             {
-                                crank[0,i58]++;
+                                _crank[0,i58]++;
                             }
-                            if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
+                            if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                crank[0,i58]++;
+                                _crank[0,i58]++;
                             }
-                            if (crank[0,i58] > 1)
+                            if (_crank[0,i58] > 1)
                             {
-                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
-                                if (im == xtGraphics.im)
+                                conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
+                                if (Im == XTGraphics.Im)
                                 {
-                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    XTPart2.Scrapef(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                                 }
                             }
-                            float f62 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
+                            var f62 = Math.Abs(Medium.Cos(Pxy)) + Math.Abs(Medium.Cos(Pzy));
                             f62 /= 4.0F;
                             if (f62 > 0.3)
                             {
@@ -1270,47 +1270,47 @@ namespace Cum
                             {
                                 f62 = 0.0F;
                             }
-                            f62 += stat.bounce - 0.2f;
+                            f62 += Stat.Bounce - 0.2f;
                             if (f62 < 1.1)
                             {
                                 f62 = 1.1F;
                             }
-                            regz(i58, Math.Abs(scz[i58] * f62 * Trackers.dam[i55]), conto);
-                            scz[i58] += Math.Abs(scz[i58] * f62);
-                            skid = 2;
+                            Regz(i58, Math.Abs(Scz[i58] * f62 * Trackers.Dam[i55]), conto);
+                            Scz[i58] += Math.Abs(Scz[i58] * f62);
+                            Skid = 2;
                             bool6 = true;
                             bools[i58] = true;
-                            if (!Trackers.notwall[i55])
+                            if (!Trackers.Notwall[i55])
                             {
-                                control.wall = i55;
+                                control.Wall = i55;
                             }
                         }
-                        if (Trackers.zy[i55] == 90 && fs22[i58] > Trackers.z[i55] - Trackers.radz[i55] &&
-                            (scz[i58] > 0.0F || Trackers.radz[i55] == 287))
+                        if (Trackers.Zy[i55] == 90 && fs22[i58] > Trackers.Z[i55] - Trackers.Radz[i55] &&
+                            (Scz[i58] > 0.0F || Trackers.Radz[i55] == 287))
                         {
-                            for (int i63 = 0; i63 < 4; i63++)
-                                if (i58 != i63 && fs22[i63] <= Trackers.z[i55] - Trackers.radz[i55])
+                            for (var i63 = 0; i63 < 4; i63++)
+                                if (i58 != i63 && fs22[i63] <= Trackers.Z[i55] - Trackers.Radz[i55])
                                 {
-                                    fs22[i63] -= fs22[i58] - (Trackers.z[i55] - Trackers.radz[i55]);
+                                    fs22[i63] -= fs22[i58] - (Trackers.Z[i55] - Trackers.Radz[i55]);
                                 }
-                            fs22[i58] = Trackers.z[i55] - Trackers.radz[i55];
-                            if (Trackers.skd[i55] != 2)
+                            fs22[i58] = Trackers.Z[i55] - Trackers.Radz[i55];
+                            if (Trackers.Skd[i55] != 2)
                             {
-                                crank[1,i58]++;
+                                _crank[1,i58]++;
                             }
-                            if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
+                            if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                crank[1,i58]++;
+                                _crank[1,i58]++;
                             }
-                            if (crank[1,i58] > 1)
+                            if (_crank[1,i58] > 1)
                             {
-                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
-                                if (im == xtGraphics.im)
+                                conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
+                                if (Im == XTGraphics.Im)
                                 {
-                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    XTPart2.Scrapef(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                                 }
                             }
-                            float f64 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
+                            var f64 = Math.Abs(Medium.Cos(Pxy)) + Math.Abs(Medium.Cos(Pzy));
                             f64 /= 4.0F;
                             if (f64 > 0.3)
                             {
@@ -1320,47 +1320,47 @@ namespace Cum
                             {
                                 f64 = 0.0F;
                             }
-                            f64 += stat.bounce - 0.2f;
+                            f64 += Stat.Bounce - 0.2f;
                             if (f64 < 1.1)
                             {
                                 f64 = 1.1F;
                             }
-                            regz(i58, -Math.Abs(scz[i58] * f64 * Trackers.dam[i55]), conto);
-                            scz[i58] -= Math.Abs(scz[i58] * f64);
-                            skid = 2;
+                            Regz(i58, -Math.Abs(Scz[i58] * f64 * Trackers.Dam[i55]), conto);
+                            Scz[i58] -= Math.Abs(Scz[i58] * f64);
+                            Skid = 2;
                             bool6 = true;
                             bools[i58] = true;
-                            if (!Trackers.notwall[i55])
+                            if (!Trackers.Notwall[i55])
                             {
-                                control.wall = i55;
+                                control.Wall = i55;
                             }
                         }
-                        if (Trackers.xy[i55] == -90 && fs[i58] < Trackers.x[i55] + Trackers.radx[i55] &&
-                            (scx[i58] < 0.0F || Trackers.radx[i55] == 287))
+                        if (Trackers.Xy[i55] == -90 && fs[i58] < Trackers.X[i55] + Trackers.Radx[i55] &&
+                            (Scx[i58] < 0.0F || Trackers.Radx[i55] == 287))
                         {
-                            for (int i65 = 0; i65 < 4; i65++)
-                                if (i58 != i65 && fs[i65] >= Trackers.x[i55] + Trackers.radx[i55])
+                            for (var i65 = 0; i65 < 4; i65++)
+                                if (i58 != i65 && fs[i65] >= Trackers.X[i55] + Trackers.Radx[i55])
                                 {
-                                    fs[i65] -= fs[i58] - (Trackers.x[i55] + Trackers.radx[i55]);
+                                    fs[i65] -= fs[i58] - (Trackers.X[i55] + Trackers.Radx[i55]);
                                 }
-                            fs[i58] = Trackers.x[i55] + Trackers.radx[i55];
-                            if (Trackers.skd[i55] != 2)
+                            fs[i58] = Trackers.X[i55] + Trackers.Radx[i55];
+                            if (Trackers.Skd[i55] != 2)
                             {
-                                crank[2,i58]++;
+                                _crank[2,i58]++;
                             }
-                            if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
+                            if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                crank[2,i58]++;
+                                _crank[2,i58]++;
                             }
-                            if (crank[2,i58] > 1)
+                            if (_crank[2,i58] > 1)
                             {
-                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
-                                if (im == xtGraphics.im)
+                                conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
+                                if (Im == XTGraphics.Im)
                                 {
-                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    XTPart2.Scrapef(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                                 }
                             }
-                            float f66 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
+                            var f66 = Math.Abs(Medium.Cos(Pxy)) + Math.Abs(Medium.Cos(Pzy));
                             f66 /= 4.0F;
                             if (f66 > 0.3)
                             {
@@ -1370,47 +1370,47 @@ namespace Cum
                             {
                                 f66 = 0.0F;
                             }
-                            f66 += stat.bounce - 0.2f;
+                            f66 += Stat.Bounce - 0.2f;
                             if (f66 < 1.1)
                             {
                                 f66 = 1.1F;
                             }
-                            regx(i58, Math.Abs(scx[i58] * f66 * Trackers.dam[i55]), conto);
-                            scx[i58] += Math.Abs(scx[i58] * f66);
-                            skid = 2;
+                            Regx(i58, Math.Abs(Scx[i58] * f66 * Trackers.Dam[i55]), conto);
+                            Scx[i58] += Math.Abs(Scx[i58] * f66);
+                            Skid = 2;
                             bool6 = true;
                             bools[i58] = true;
-                            if (!Trackers.notwall[i55])
+                            if (!Trackers.Notwall[i55])
                             {
-                                control.wall = i55;
+                                control.Wall = i55;
                             }
                         }
-                        if (Trackers.xy[i55] == 90 && fs[i58] > Trackers.x[i55] - Trackers.radx[i55] &&
-                            (scx[i58] > 0.0F || Trackers.radx[i55] == 287))
+                        if (Trackers.Xy[i55] == 90 && fs[i58] > Trackers.X[i55] - Trackers.Radx[i55] &&
+                            (Scx[i58] > 0.0F || Trackers.Radx[i55] == 287))
                         {
-                            for (int i67 = 0; i67 < 4; i67++)
-                                if (i58 != i67 && fs[i67] <= Trackers.x[i55] - Trackers.radx[i55])
+                            for (var i67 = 0; i67 < 4; i67++)
+                                if (i58 != i67 && fs[i67] <= Trackers.X[i55] - Trackers.Radx[i55])
                                 {
-                                    fs[i67] -= fs[i58] - (Trackers.x[i55] - Trackers.radx[i55]);
+                                    fs[i67] -= fs[i58] - (Trackers.X[i55] - Trackers.Radx[i55]);
                                 }
-                            fs[i58] = Trackers.x[i55] - Trackers.radx[i55];
-                            if (Trackers.skd[i55] != 2)
+                            fs[i58] = Trackers.X[i55] - Trackers.Radx[i55];
+                            if (Trackers.Skd[i55] != 2)
                             {
-                                crank[3,i58]++;
+                                _crank[3,i58]++;
                             }
-                            if (Trackers.skd[i55] == 5 && Medium.random() > Medium.random())
+                            if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                crank[3,i58]++;
+                                _crank[3,i58]++;
                             }
-                            if (crank[3,i58] > 1)
+                            if (_crank[3,i58] > 1)
                             {
-                                conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 0);
-                                if (im == xtGraphics.im)
+                                conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
+                                if (Im == XTGraphics.Im)
                                 {
-                                    xtPart2.scrapef(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                    XTPart2.Scrapef(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                                 }
                             }
-                            float f68 = Math.Abs(Medium.cos(pxy)) + Math.Abs(Medium.cos(pzy));
+                            var f68 = Math.Abs(Medium.Cos(Pxy)) + Math.Abs(Medium.Cos(Pzy));
                             f68 /= 4.0F;
                             if (f68 > 0.3)
                             {
@@ -1420,43 +1420,43 @@ namespace Cum
                             {
                                 f68 = 0.0F;
                             }
-                            f68 += stat.bounce - 0.2f;
+                            f68 += Stat.Bounce - 0.2f;
                             if (f68 < 1.1)
                             {
                                 f68 = 1.1F;
                             }
-                            regx(i58, -Math.Abs(scx[i58] * f68 * Trackers.dam[i55]), conto);
-                            scx[i58] -= Math.Abs(scx[i58] * f68);
-                            skid = 2;
+                            Regx(i58, -Math.Abs(Scx[i58] * f68 * Trackers.Dam[i55]), conto);
+                            Scx[i58] -= Math.Abs(Scx[i58] * f68);
+                            Skid = 2;
                             bool6 = true;
                             bools[i58] = true;
-                            if (!Trackers.notwall[i55])
+                            if (!Trackers.Notwall[i55])
                             {
-                                control.wall = i55;
+                                control.Wall = i55;
                             }
                         }
-                        if (Trackers.zy[i55] != 0 && Trackers.zy[i55] != 90 && Trackers.zy[i55] != -90)
+                        if (Trackers.Zy[i55] != 0 && Trackers.Zy[i55] != 90 && Trackers.Zy[i55] != -90)
                         {
-                            int i69 = 90 + Trackers.zy[i55];
-                            float f70 = 1.0F + (50 - Math.Abs(Trackers.zy[i55])) / 30.0F;
+                            var i69 = 90 + Trackers.Zy[i55];
+                            var f70 = 1.0F + (50 - Math.Abs(Trackers.Zy[i55])) / 30.0F;
                             if (f70 < 1.0F)
                             {
                                 f70 = 1.0F;
                             }
-                            float f71 = Trackers.y[i55] +
-                                              ((fs23[i58] - Trackers.y[i55]) * Medium.cos(i69) -
-                                               (fs22[i58] - Trackers.z[i55]) * Medium.sin(i69));
-                            float f72 = Trackers.z[i55] +
-                                        ((fs23[i58] - Trackers.y[i55]) * Medium.sin(i69) +
-                                         (fs22[i58] - Trackers.z[i55]) * Medium.cos(i69));
-                            if (f72 > Trackers.z[i55] && f72 < Trackers.z[i55] + 200)
+                            var f71 = Trackers.Y[i55] +
+                                              ((fs23[i58] - Trackers.Y[i55]) * Medium.Cos(i69) -
+                                               (fs22[i58] - Trackers.Z[i55]) * Medium.Sin(i69));
+                            var f72 = Trackers.Z[i55] +
+                                        ((fs23[i58] - Trackers.Y[i55]) * Medium.Sin(i69) +
+                                         (fs22[i58] - Trackers.Z[i55]) * Medium.Cos(i69));
+                            if (f72 > Trackers.Z[i55] && f72 < Trackers.Z[i55] + 200)
                             {
-                                scy[i58] -= (f72 - Trackers.z[i55]) / f70;
-                                f72 = Trackers.z[i55];
+                                Scy[i58] -= (f72 - Trackers.Z[i55]) / f70;
+                                f72 = Trackers.Z[i55];
                             }
-                            if (f72 > Trackers.z[i55] - 30)
+                            if (f72 > Trackers.Z[i55] - 30)
                             {
-                                if (Trackers.skd[i55] == 2)
+                                if (Trackers.Skd[i55] == 2)
                                 {
                                     i56++;
                                 }
@@ -1464,53 +1464,53 @@ namespace Cum
                                 {
                                     i53++;
                                 }
-                                wtouch = true;
-                                gtouch = false;
-                                if (capsized && (Trackers.skd[i55] == 0 || Trackers.skd[i55] == 1))
+                                Wtouch = true;
+                                Gtouch = false;
+                                if (Capsized && (Trackers.Skd[i55] == 0 || Trackers.Skd[i55] == 1))
                                 {
-                                    conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
-                                    if (im == xtGraphics.im)
+                                    conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 1);
+                                    if (Im == XTGraphics.Im)
                                     {
-                                        xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                        XTGraphics.Gscrape(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                                     }
                                 }
                                 if (!bool25 && i32 != 0)
                                 {
-                                    float f73 = 1.4F;
-                                    conto.dust(i58, fs[i58], fs23[i58], fs22[i58], (int) scx[i58], (int) scz[i58],
-                                        f73 * stat.simag, 0, capsized && mtouch);
+                                    var f73 = 1.4F;
+                                    conto.Dust(i58, fs[i58], fs23[i58], fs22[i58], (int) Scx[i58], (int) Scz[i58],
+                                        f73 * Stat.Simag, 0, Capsized && Mtouch);
                                 }
                             }
-                            fs23[i58] = Trackers.y[i55] +
-                                        ((f71 - Trackers.y[i55]) * Medium.cos(-i69) -
-                                         (f72 - Trackers.z[i55]) * Medium.sin(-i69));
-                            fs22[i58] = Trackers.z[i55] +
-                                        ((f71 - Trackers.y[i55]) * Medium.sin(-i69) +
-                                         (f72 - Trackers.z[i55]) * Medium.cos(-i69));
+                            fs23[i58] = Trackers.Y[i55] +
+                                        ((f71 - Trackers.Y[i55]) * Medium.Cos(-i69) -
+                                         (f72 - Trackers.Z[i55]) * Medium.Sin(-i69));
+                            fs22[i58] = Trackers.Z[i55] +
+                                        ((f71 - Trackers.Y[i55]) * Medium.Sin(-i69) +
+                                         (f72 - Trackers.Z[i55]) * Medium.Cos(-i69));
                             bools[i58] = true;
                         }
-                        if (Trackers.xy[i55] != 0 && Trackers.xy[i55] != 90 && Trackers.xy[i55] != -90)
+                        if (Trackers.Xy[i55] != 0 && Trackers.Xy[i55] != 90 && Trackers.Xy[i55] != -90)
                         {
-                            int i74 = 90 + Trackers.xy[i55];
-                            float f75 = 1.0F + (50 - Math.Abs(Trackers.xy[i55])) / 30.0F;
+                            var i74 = 90 + Trackers.Xy[i55];
+                            var f75 = 1.0F + (50 - Math.Abs(Trackers.Xy[i55])) / 30.0F;
                             if (f75 < 1.0F)
                             {
                                 f75 = 1.0F;
                             }
-                            float f76 = Trackers.y[i55] +
-                                              ((fs23[i58] - Trackers.y[i55]) * Medium.cos(i74) -
-                                               (fs[i58] - Trackers.x[i55]) * Medium.sin(i74));
-                            float f77 = Trackers.x[i55] +
-                                        ((fs23[i58] - Trackers.y[i55]) * Medium.sin(i74) +
-                                         (fs[i58] - Trackers.x[i55]) * Medium.cos(i74));
-                            if (f77 > Trackers.x[i55] && f77 < Trackers.x[i55] + 200)
+                            var f76 = Trackers.Y[i55] +
+                                              ((fs23[i58] - Trackers.Y[i55]) * Medium.Cos(i74) -
+                                               (fs[i58] - Trackers.X[i55]) * Medium.Sin(i74));
+                            var f77 = Trackers.X[i55] +
+                                        ((fs23[i58] - Trackers.Y[i55]) * Medium.Sin(i74) +
+                                         (fs[i58] - Trackers.X[i55]) * Medium.Cos(i74));
+                            if (f77 > Trackers.X[i55] && f77 < Trackers.X[i55] + 200)
                             {
-                                scy[i58] -= (f77 - Trackers.x[i55]) / f75;
-                                f77 = Trackers.x[i55];
+                                Scy[i58] -= (f77 - Trackers.X[i55]) / f75;
+                                f77 = Trackers.X[i55];
                             }
-                            if (f77 > Trackers.x[i55] - 30)
+                            if (f77 > Trackers.X[i55] - 30)
                             {
-                                if (Trackers.skd[i55] == 2)
+                                if (Trackers.Skd[i55] == 2)
                                 {
                                     i56++;
                                 }
@@ -1518,36 +1518,36 @@ namespace Cum
                                 {
                                     i53++;
                                 }
-                                wtouch = true;
-                                gtouch = false;
-                                if (capsized && (Trackers.skd[i55] == 0 || Trackers.skd[i55] == 1))
+                                Wtouch = true;
+                                Gtouch = false;
+                                if (Capsized && (Trackers.Skd[i55] == 0 || Trackers.Skd[i55] == 1))
                                 {
-                                    conto.spark(fs[i58], fs23[i58], fs22[i58], scx[i58], scy[i58], scz[i58], 1);
-                                    if (im == xtGraphics.im)
+                                    conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 1);
+                                    if (Im == XTGraphics.Im)
                                     {
-                                        xtGraphics.gscrape(im, (int) scx[i58], (int) scy[i58], (int) scz[i58]);
+                                        XTGraphics.Gscrape(Im, (int) Scx[i58], (int) Scy[i58], (int) Scz[i58]);
                                     }
                                 }
                                 if (!bool25 && i32 != 0)
                                 {
-                                    float f78 = 1.4F;
-                                    conto.dust(i58, fs[i58], fs23[i58], fs22[i58], (int) scx[i58], (int) scz[i58],
-                                        f78 * stat.simag, 0, capsized && mtouch);
+                                    var f78 = 1.4F;
+                                    conto.Dust(i58, fs[i58], fs23[i58], fs22[i58], (int) Scx[i58], (int) Scz[i58],
+                                        f78 * Stat.Simag, 0, Capsized && Mtouch);
                                 }
                             }
-                            fs23[i58] = Trackers.y[i55] +
-                                        ((f76 - Trackers.y[i55]) * Medium.cos(-i74) -
-                                         (f77 - Trackers.x[i55]) * Medium.sin(-i74));
-                            fs[i58] = Trackers.x[i55] +
-                                      ((f76 - Trackers.y[i55]) * Medium.sin(-i74) +
-                                       (f77 - Trackers.x[i55]) * Medium.cos(-i74));
+                            fs23[i58] = Trackers.Y[i55] +
+                                        ((f76 - Trackers.Y[i55]) * Medium.Cos(-i74) -
+                                         (f77 - Trackers.X[i55]) * Medium.Sin(-i74));
+                            fs[i58] = Trackers.X[i55] +
+                                      ((f76 - Trackers.Y[i55]) * Medium.Sin(-i74) +
+                                       (f77 - Trackers.X[i55]) * Medium.Cos(-i74));
                             bools[i58] = true;
                         }
                     }
                 }
                 if (i56 == 4)
                 {
-                    mtouch = true;
+                    Mtouch = true;
                 }
                 if (i57 == 4)
                 {
@@ -1556,26 +1556,26 @@ namespace Cum
             }
             if (i53 == 4)
             {
-                mtouch = true;
+                Mtouch = true;
             }
-            for (int i79 = 0; i79 < 4; i79++)
+            for (var i79 = 0; i79 < 4; i79++)
             {
-                for (int i80 = 0; i80 < 4; i80++)
+                for (var i80 = 0; i80 < 4; i80++)
                 {
-                    if (crank[i79,i80] == lcrank[i79,i80])
+                    if (_crank[i79,i80] == _lcrank[i79,i80])
                     {
-                        crank[i79,i80] = 0;
+                        _crank[i79,i80] = 0;
                     }
-                    lcrank[i79,i80] = crank[i79,i80];
+                    _lcrank[i79,i80] = _crank[i79,i80];
                 }
             }
-            int i81 = 0;
-            int i82 = 0;
-            int i83 = 0;
-            int i84 = 0;
-            if (scy[2] != scy[0])
+            var i81 = 0;
+            var i82 = 0;
+            var i83 = 0;
+            var i84 = 0;
+            if (Scy[2] != Scy[0])
             {
-                if (scy[2] < scy[0])
+                if (Scy[2] < Scy[0])
                 {
                     i = -1;
                 }
@@ -1584,7 +1584,7 @@ namespace Cum
                     i = 1;
                 }
                 d = Math.Sqrt((fs22[0] - fs22[2]) * (fs22[0] - fs22[2]) + (fs23[0] - fs23[2]) * (fs23[0] - fs23[2]) +
-                              (fs[0] - fs[2]) * (fs[0] - fs[2])) / (Math.Abs(conto.keyz[0]) + Math.Abs(conto.keyz[2]));
+                              (fs[0] - fs[2]) * (fs[0] - fs[2])) / (Math.Abs(conto.Keyz[0]) + Math.Abs(conto.Keyz[2]));
                 if (d >= 0.9998)
                 {
                     i81 = i;
@@ -1594,9 +1594,9 @@ namespace Cum
                     i81 = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 }
             }
-            if (scy[3] != scy[1])
+            if (Scy[3] != Scy[1])
             {
-                if (scy[3] < scy[1])
+                if (Scy[3] < Scy[1])
                 {
                     i = -1;
                 }
@@ -1605,7 +1605,7 @@ namespace Cum
                     i = 1;
                 }
                 d = Math.Sqrt((fs22[1] - fs22[3]) * (fs22[1] - fs22[3]) + (fs23[1] - fs23[3]) * (fs23[1] - fs23[3]) +
-                              (fs[1] - fs[3]) * (fs[1] - fs[3])) / (Math.Abs(conto.keyz[1]) + Math.Abs(conto.keyz[3]));
+                              (fs[1] - fs[3]) * (fs[1] - fs[3])) / (Math.Abs(conto.Keyz[1]) + Math.Abs(conto.Keyz[3]));
                 if (d >= 0.9998)
                 {
                     i82 = i;
@@ -1615,9 +1615,9 @@ namespace Cum
                     i82 = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 }
             }
-            if (scy[1] != scy[0])
+            if (Scy[1] != Scy[0])
             {
-                if (scy[1] < scy[0])
+                if (Scy[1] < Scy[0])
                 {
                     i = -1;
                 }
@@ -1626,7 +1626,7 @@ namespace Cum
                     i = 1;
                 }
                 d = Math.Sqrt((fs22[0] - fs22[1]) * (fs22[0] - fs22[1]) + (fs23[0] - fs23[1]) * (fs23[0] - fs23[1]) +
-                              (fs[0] - fs[1]) * (fs[0] - fs[1])) / (Math.Abs(conto.keyx[0]) + Math.Abs(conto.keyx[1]));
+                              (fs[0] - fs[1]) * (fs[0] - fs[1])) / (Math.Abs(conto.Keyx[0]) + Math.Abs(conto.Keyx[1]));
                 if (d >= 0.9998)
                 {
                     i83 = i;
@@ -1636,9 +1636,9 @@ namespace Cum
                     i83 = (int) (Math.Acos(d) / 0.017453292519943295 * i);
                 }
             }
-            if (scy[3] != scy[2])
+            if (Scy[3] != Scy[2])
             {
-                if (scy[3] < scy[2])
+                if (Scy[3] < Scy[2])
                 {
                     i = -1;
                 }
@@ -1647,7 +1647,7 @@ namespace Cum
                     i = 1;
                 }
                 d = Math.Sqrt((fs22[2] - fs22[3]) * (fs22[2] - fs22[3]) + (fs23[2] - fs23[3]) * (fs23[2] - fs23[3]) +
-                              (fs[2] - fs[3]) * (fs[2] - fs[3])) / (Math.Abs(conto.keyx[2]) + Math.Abs(conto.keyx[3]));
+                              (fs[2] - fs[3]) * (fs[2] - fs[3])) / (Math.Abs(conto.Keyx[2]) + Math.Abs(conto.Keyx[3]));
                 if (d >= 0.9998)
                 {
                     i84 = i;
@@ -1660,33 +1660,33 @@ namespace Cum
             if (bool6)
             {
                 int i85;
-                for (i85 = Math.Abs(conto.xz + 45); i85 > 180; i85 -= 360)
+                for (i85 = Math.Abs(conto.Xz + 45); i85 > 180; i85 -= 360)
                 {
 
                 }
                 if (Math.Abs(i85) > 90)
                 {
-                    pmlt = 1;
+                    _pmlt = 1;
                 }
                 else
                 {
-                    pmlt = -1;
+                    _pmlt = -1;
                 }
-                for (i85 = Math.Abs(conto.xz - 45); i85 > 180; i85 -= 360)
+                for (i85 = Math.Abs(conto.Xz - 45); i85 > 180; i85 -= 360)
                 {
 
                 }
                 if (Math.Abs(i85) > 90)
                 {
-                    nmlt = 1;
+                    _nmlt = 1;
                 }
                 else
                 {
-                    nmlt = -1;
+                    _nmlt = -1;
                 }
             }
-            conto.xz += (int)(forca * (scz[0] * nmlt - scz[1] * pmlt + scz[2] * pmlt - scz[3] * nmlt + scx[0] * pmlt +
-                                 scx[1] * nmlt - scx[2] * nmlt - scx[3] * pmlt));
+            conto.Xz += (int)(_forca * (Scz[0] * _nmlt - Scz[1] * _pmlt + Scz[2] * _pmlt - Scz[3] * _nmlt + Scx[0] * _pmlt +
+                                 Scx[1] * _nmlt - Scx[2] * _nmlt - Scx[3] * _pmlt));
             if (Math.Abs(i82) > Math.Abs(i81))
             {
                 i81 = i82;
@@ -1697,93 +1697,93 @@ namespace Cum
             }
             if (!abool)
             {
-                pzy += i81;
+                Pzy += i81;
             }
             else
             {
-                pzy -= i81;
+                Pzy -= i81;
             }
             if (!bool8)
             {
-                pxy += i83;
+                Pxy += i83;
             }
             else
             {
-                pxy -= i83;
+                Pxy -= i83;
             }
             if (i45 == 4)
             {
 //# of touching wheels
-                int i86 = 0;
-                while (pzy < 360)
+                var i86 = 0;
+                while (Pzy < 360)
                 {
-                    pzy += 360;
-                    conto.zy += 360;
+                    Pzy += 360;
+                    conto.Zy += 360;
                 }
-                while (pzy > 360)
+                while (Pzy > 360)
                 {
-                    pzy -= 360;
-                    conto.zy -= 360;
+                    Pzy -= 360;
+                    conto.Zy -= 360;
                 }
-                if (pzy < 190 && pzy > 170)
+                if (Pzy < 190 && Pzy > 170)
                 {
 //player zy angle
                     // rounds off the angle, capsizing the player
-                    pzy = 180;
-                    conto.zy = 180;
+                    Pzy = 180;
+                    conto.Zy = 180;
                     i86++;
                 }
-                if (pzy > 350 || pzy < 10)
+                if (Pzy > 350 || Pzy < 10)
                 {
                     // this ais the opposite, rounds off the angle but lands properly
-                    pzy = 0;
-                    conto.zy = 0;
+                    Pzy = 0;
+                    conto.Zy = 0;
                     i86++;
                 }
-                while (pxy < 360)
+                while (Pxy < 360)
                 {
-                    pxy += 360;
-                    conto.xy += 360;
+                    Pxy += 360;
+                    conto.Xy += 360;
                 }
-                while (pxy > 360)
+                while (Pxy > 360)
                 {
-                    pxy -= 360;
-                    conto.xy -= 360;
+                    Pxy -= 360;
+                    conto.Xy -= 360;
                 }
-                if (pxy < 190 && pxy > 170)
+                if (Pxy < 190 && Pxy > 170)
                 {
 //same as above but for xy
-                    pxy = 180;
-                    conto.xy = 180;
+                    Pxy = 180;
+                    conto.Xy = 180;
                     i86++;
                 }
-                if (pxy > 350 || pxy < 10)
+                if (Pxy > 350 || Pxy < 10)
                 {
-                    pxy = 0;
-                    conto.xy = 0;
+                    Pxy = 0;
+                    conto.Xy = 0;
                     i86++;
                 }
                 if (i86 == 2)
                 {
-                    mtouch = true;
+                    Mtouch = true;
                 }
             }
-            if (!mtouch && wtouch)
+            if (!Mtouch && Wtouch)
             {
-                if (cntouch == 10)
+                if (_cntouch == 10)
                 {
-                    mtouch = true;
+                    Mtouch = true;
                 }
                 else
                 {
-                    cntouch++;
+                    _cntouch++;
                 }
             }
             else
             {
-                cntouch = 0;
+                _cntouch = 0;
             }
-            conto.y = (int) ((fs23[0] + fs23[1] + fs23[2] + fs23[3]) / 4.0F - i10 * Medium.cos(pzy) * Medium.cos(pxy) +
+            conto.Y = (int) ((fs23[0] + fs23[1] + fs23[2] + fs23[3]) / 4.0F - i10 * Medium.Cos(Pzy) * Medium.Cos(Pxy) +
                              f12);
             if (abool)
             {
@@ -1793,137 +1793,137 @@ namespace Cum
             {
                 i = 1;
             }
-            conto.x = (int) ((fs[0] - conto.keyx[0] * Medium.cos(conto.xz) + i * conto.keyz[0] * Medium.sin(conto.xz) +
-                              fs[1] - conto.keyx[1] * Medium.cos(conto.xz) + i * conto.keyz[1] * Medium.sin(conto.xz) +
-                              fs[2] - conto.keyx[2] * Medium.cos(conto.xz) + i * conto.keyz[2] * Medium.sin(conto.xz) +
-                              fs[3] - conto.keyx[3] * Medium.cos(conto.xz) + i * conto.keyz[3] * Medium.sin(conto.xz)) /
-                             4.0F + i10 * Medium.sin(pxy) * Medium.cos(conto.xz) -
-                             i10 * Medium.sin(pzy) * Medium.sin(conto.xz) + f);
-            conto.z = (int) ((fs22[0] - i * conto.keyz[0] * Medium.cos(conto.xz) -
-                              conto.keyx[0] * Medium.sin(conto.xz) + fs22[1] -
-                              i * conto.keyz[1] * Medium.cos(conto.xz) - conto.keyx[1] * Medium.sin(conto.xz) +
-                              fs22[2] - i * conto.keyz[2] * Medium.cos(conto.xz) -
-                              conto.keyx[2] * Medium.sin(conto.xz) + fs22[3] -
-                              i * conto.keyz[3] * Medium.cos(conto.xz) - conto.keyx[3] * Medium.sin(conto.xz)) / 4.0F +
-                             i10 * Medium.sin(pxy) * Medium.sin(conto.xz) -
-                             i10 * Medium.sin(pzy) * Medium.cos(conto.xz) + f11);
-            if (Math.Abs(speed) > 10.0F || !mtouch)
+            conto.X = (int) ((fs[0] - conto.Keyx[0] * Medium.Cos(conto.Xz) + i * conto.Keyz[0] * Medium.Sin(conto.Xz) +
+                              fs[1] - conto.Keyx[1] * Medium.Cos(conto.Xz) + i * conto.Keyz[1] * Medium.Sin(conto.Xz) +
+                              fs[2] - conto.Keyx[2] * Medium.Cos(conto.Xz) + i * conto.Keyz[2] * Medium.Sin(conto.Xz) +
+                              fs[3] - conto.Keyx[3] * Medium.Cos(conto.Xz) + i * conto.Keyz[3] * Medium.Sin(conto.Xz)) /
+                             4.0F + i10 * Medium.Sin(Pxy) * Medium.Cos(conto.Xz) -
+                             i10 * Medium.Sin(Pzy) * Medium.Sin(conto.Xz) + f);
+            conto.Z = (int) ((fs22[0] - i * conto.Keyz[0] * Medium.Cos(conto.Xz) -
+                              conto.Keyx[0] * Medium.Sin(conto.Xz) + fs22[1] -
+                              i * conto.Keyz[1] * Medium.Cos(conto.Xz) - conto.Keyx[1] * Medium.Sin(conto.Xz) +
+                              fs22[2] - i * conto.Keyz[2] * Medium.Cos(conto.Xz) -
+                              conto.Keyx[2] * Medium.Sin(conto.Xz) + fs22[3] -
+                              i * conto.Keyz[3] * Medium.Cos(conto.Xz) - conto.Keyx[3] * Medium.Sin(conto.Xz)) / 4.0F +
+                             i10 * Medium.Sin(Pxy) * Medium.Sin(conto.Xz) -
+                             i10 * Medium.Sin(Pzy) * Medium.Cos(conto.Xz) + f11);
+            if (Math.Abs(Speed) > 10.0F || !Mtouch)
             {
-                if (Math.Abs(pxy - conto.xy) >= 4)
+                if (Math.Abs(Pxy - conto.Xy) >= 4)
                 {
-                    if (pxy > conto.xy)
+                    if (Pxy > conto.Xy)
                     {
-                        conto.xy += 2 + (pxy - conto.xy) / 2;
+                        conto.Xy += 2 + (Pxy - conto.Xy) / 2;
                     }
                     else
                     {
-                        conto.xy -= 2 + (conto.xy - pxy) / 2;
+                        conto.Xy -= 2 + (conto.Xy - Pxy) / 2;
                     }
                 }
                 else
                 {
-                    conto.xy = pxy;
+                    conto.Xy = Pxy;
                 }
-                if (Math.Abs(pzy - conto.zy) >= 4)
+                if (Math.Abs(Pzy - conto.Zy) >= 4)
                 {
-                    if (pzy > conto.zy)
+                    if (Pzy > conto.Zy)
                     {
-                        conto.zy += 2 + (pzy - conto.zy) / 2;
+                        conto.Zy += 2 + (Pzy - conto.Zy) / 2;
                     }
                     else
                     {
-                        conto.zy -= 2 + (conto.zy - pzy) / 2;
+                        conto.Zy -= 2 + (conto.Zy - Pzy) / 2;
                     }
                 }
                 else
                 {
-                    conto.zy = pzy;
+                    conto.Zy = Pzy;
                 }
             }
-            if (wtouch && !capsized)
+            if (Wtouch && !Capsized)
             {
-                float f87 = (float) (speed / stat.swits[2] * 14.0F * (stat.bounce - 0.4));
-                if (control.left && tilt < f87 && tilt >= 0.0F)
+                var f87 = (float) (Speed / Stat.Swits[2] * 14.0F * (Stat.Bounce - 0.4));
+                if (control.Left && _tilt < f87 && _tilt >= 0.0F)
                 {
-                    tilt += 0.4f;
+                    _tilt += 0.4f;
                 }
-                else if (control.right && tilt > -f87 && tilt <= 0.0F)
+                else if (control.Right && _tilt > -f87 && _tilt <= 0.0F)
                 {
-                    tilt -= 0.4f;
+                    _tilt -= 0.4f;
                 }
-                else if (Math.Abs(tilt) > 3.0 * (stat.bounce - 0.4))
+                else if (Math.Abs(_tilt) > 3.0 * (Stat.Bounce - 0.4))
                 {
-                    if (tilt > 0.0F)
+                    if (_tilt > 0.0F)
                     {
-                        tilt -= 3.0f * (stat.bounce - 0.3f);
+                        _tilt -= 3.0f * (Stat.Bounce - 0.3f);
                     }
                     else
                     {
-                        tilt += 3.0f * (stat.bounce - 0.3f);
+                        _tilt += 3.0f * (Stat.Bounce - 0.3f);
                     }
                 }
                 else
                 {
-                    tilt = 0.0F;
+                    _tilt = 0.0F;
                 }
-                conto.xy += (int)tilt;
-                if (gtouch)
+                conto.Xy += (int)_tilt;
+                if (Gtouch)
                 {
-                    conto.y -= (int)(tilt / 1.5f);
+                    conto.Y -= (int)(_tilt / 1.5f);
                 }
             }
-            else if (tilt != 0.0F)
+            else if (_tilt != 0.0F)
             {
-                tilt = 0.0F;
+                _tilt = 0.0F;
             }
-            if (wtouch && i32 == 2)
+            if (Wtouch && i32 == 2)
             {
-                conto.zy += (int) ((Medium.random() * 6.0F * speed / stat.swits[2] - 3.0F * speed / stat.swits[2]) *
-                                   (stat.bounce - 0.3));
-                conto.xy += (int) ((Medium.random() * 6.0F * speed / stat.swits[2] - 3.0F * speed / stat.swits[2]) *
-                                   (stat.bounce - 0.3));
+                conto.Zy += (int) ((Medium.Random() * 6.0F * Speed / Stat.Swits[2] - 3.0F * Speed / Stat.Swits[2]) *
+                                   (Stat.Bounce - 0.3));
+                conto.Xy += (int) ((Medium.Random() * 6.0F * Speed / Stat.Swits[2] - 3.0F * Speed / Stat.Swits[2]) *
+                                   (Stat.Bounce - 0.3));
             }
-            if (wtouch && i32 == 1)
+            if (Wtouch && i32 == 1)
             {
-                conto.zy += (int) ((Medium.random() * 4.0F * speed / stat.swits[2] - 2.0F * speed / stat.swits[2]) *
-                                   (stat.bounce - 0.3));
-                conto.xy += (int) ((Medium.random() * 4.0F * speed / stat.swits[2] - 2.0F * speed / stat.swits[2]) *
-                                   (stat.bounce - 0.3));
+                conto.Zy += (int) ((Medium.Random() * 4.0F * Speed / Stat.Swits[2] - 2.0F * Speed / Stat.Swits[2]) *
+                                   (Stat.Bounce - 0.3));
+                conto.Xy += (int) ((Medium.Random() * 4.0F * Speed / Stat.Swits[2] - 2.0F * Speed / Stat.Swits[2]) *
+                                   (Stat.Bounce - 0.3));
             }
-            if (hitmag >= stat.maxmag && !dest)
+            if (Hitmag >= Stat.Maxmag && !Dest)
             {
-                distruct(conto);
-                if (cntdest == 7)
+                Distruct(conto);
+                if (Cntdest == 7)
                 {
-                    dest = true;
+                    Dest = true;
                 }
                 else
                 {
-                    cntdest++;
+                    Cntdest++;
                 }
-                if (cntdest == 1)
+                if (Cntdest == 1)
                 {
-                    Record.dest[im] = 300;
+                    Record.Dest[Im] = 300;
                 }
             }
-            if (conto.dist == 0)
+            if (conto.Dist == 0)
             {
-                for (int i88 = 0; i88 < conto.npl; i88++)
+                for (var i88 = 0; i88 < conto.Npl; i88++)
                 {
-                    if (conto.p[i88].chip != 0)
+                    if (conto.P[i88].Chip != 0)
                     {
-                        conto.p[i88].chip = 0;
+                        conto.P[i88].Chip = 0;
                     }
-                    if (conto.p[i88].embos != 0)
+                    if (conto.P[i88].Embos != 0)
                     {
-                        conto.p[i88].embos = 13;
+                        conto.P[i88].Embos = 13;
                     }
                 }
             }
-            int i89 = 0;
-            int i90 = 0;
-            int i91 = 0;
-            if (nofocus)
+            var i89 = 0;
+            var i90 = 0;
+            var i91 = 0;
+            if (Nofocus)
             {
                 i4 = 1;
             }
@@ -1931,89 +1931,89 @@ namespace Cum
             {
                 i4 = 7;
             }
-            for (int i92 = 0; i92 < CheckPoints.n; i92++)
+            for (var i92 = 0; i92 < CheckPoints.N; i92++)
             {
-                if (CheckPoints.typ[i92] > 0)
+                if (CheckPoints.Typ[i92] > 0)
                 {
                     i91++;
-                    if (CheckPoints.typ[i92] == 1)
+                    if (CheckPoints.Typ[i92] == 1)
                     {
-                        if (clear == i91 + nlaps * CheckPoints.nsp)
+                        if (Clear == i91 + Nlaps * CheckPoints.Nsp)
                         {
                             i4 = 1;
                         }
-                        if (Math.Abs(conto.z - CheckPoints.z[i92]) <
-                            60.0F + Math.Abs(scz[0] + scz[1] + scz[2] + scz[3]) / 4.0F &&
-                            Math.Abs(conto.x - CheckPoints.x[i92]) < 700 &&
-                            Math.Abs(conto.y - CheckPoints.y[i92] + 350) < 450 &&
-                            clear == i91 + nlaps * CheckPoints.nsp - 1)
+                        if (Math.Abs(conto.Z - CheckPoints.Z[i92]) <
+                            60.0F + Math.Abs(Scz[0] + Scz[1] + Scz[2] + Scz[3]) / 4.0F &&
+                            Math.Abs(conto.X - CheckPoints.X[i92]) < 700 &&
+                            Math.Abs(conto.Y - CheckPoints.Y[i92] + 350) < 450 &&
+                            Clear == i91 + Nlaps * CheckPoints.Nsp - 1)
                         {
-                            clear = i91 + nlaps * CheckPoints.nsp;
-                            pcleared = i92;
-                            focus = -1;
+                            Clear = i91 + Nlaps * CheckPoints.Nsp;
+                            Pcleared = i92;
+                            _focus = -1;
                         }
                     }
-                    if (CheckPoints.typ[i92] == 2)
+                    if (CheckPoints.Typ[i92] == 2)
                     {
-                        if (clear == i91 + nlaps * CheckPoints.nsp)
+                        if (Clear == i91 + Nlaps * CheckPoints.Nsp)
                         {
                             i4 = 1;
                         }
-                        if (Math.Abs(conto.x - CheckPoints.x[i92]) <
-                            60.0F + Math.Abs(scx[0] + scx[1] + scx[2] + scx[3]) / 4.0F &&
-                            Math.Abs(conto.z - CheckPoints.z[i92]) < 700 &&
-                            Math.Abs(conto.y - CheckPoints.y[i92] + 350) < 450 &&
-                            clear == i91 + nlaps * CheckPoints.nsp - 1)
+                        if (Math.Abs(conto.X - CheckPoints.X[i92]) <
+                            60.0F + Math.Abs(Scx[0] + Scx[1] + Scx[2] + Scx[3]) / 4.0F &&
+                            Math.Abs(conto.Z - CheckPoints.Z[i92]) < 700 &&
+                            Math.Abs(conto.Y - CheckPoints.Y[i92] + 350) < 450 &&
+                            Clear == i91 + Nlaps * CheckPoints.Nsp - 1)
                         {
-                            clear = i91 + nlaps * CheckPoints.nsp;
-                            pcleared = i92;
-                            focus = -1;
+                            Clear = i91 + Nlaps * CheckPoints.Nsp;
+                            Pcleared = i92;
+                            _focus = -1;
                         }
                     }
                 }
-                if (py(conto.x / 100, CheckPoints.x[i92] / 100, conto.z / 100, CheckPoints.z[i92] / 100) * i4 < i90 ||
+                if (Py(conto.X / 100, CheckPoints.X[i92] / 100, conto.Z / 100, CheckPoints.Z[i92] / 100) * i4 < i90 ||
                     i90 == 0)
                 {
                     i89 = i92;
-                    i90 = py(conto.x / 100, CheckPoints.x[i92] / 100, conto.z / 100, CheckPoints.z[i92] / 100) * i4;
+                    i90 = Py(conto.X / 100, CheckPoints.X[i92] / 100, conto.Z / 100, CheckPoints.Z[i92] / 100) * i4;
                 }
             }
-            if (clear == i91 + nlaps * CheckPoints.nsp)
+            if (Clear == i91 + Nlaps * CheckPoints.Nsp)
             {
-                nlaps++;
-                if (xtGraphics.multion == 1 && im == xtGraphics.im)
+                Nlaps++;
+                if (XTGraphics.Multion == 1 && Im == XTGraphics.Im)
                 {
-                    if (xtGraphics.laptime < xtGraphics.fastestlap || xtGraphics.fastestlap == 0)
+                    if (XTGraphics.Laptime < XTGraphics.Fastestlap || XTGraphics.Fastestlap == 0)
                     {
-                        xtGraphics.fastestlap = xtGraphics.laptime;
+                        XTGraphics.Fastestlap = XTGraphics.Laptime;
                     }
-                    xtGraphics.laptime = 0;
+                    XTGraphics.Laptime = 0;
                 }
             }
-            if (im == xtGraphics.im)
+            if (Im == XTGraphics.Im)
             {
-                if (xtGraphics.multion == 1 && xtGraphics.starcnt == 0)
+                if (XTGraphics.Multion == 1 && XTGraphics.Starcnt == 0)
                 {
-                    xtGraphics.laptime++;
+                    XTGraphics.Laptime++;
                 }
-                for (Medium.checkpoint = clear;
-                    Medium.checkpoint >= CheckPoints.nsp;
-                    Medium.checkpoint -= CheckPoints.nsp)
+                for (Medium.Checkpoint = Clear;
+                    Medium.Checkpoint >= CheckPoints.Nsp;
+                    Medium.Checkpoint -= CheckPoints.Nsp)
                 {
 
                 }
-                if (clear == CheckPoints.nlaps * CheckPoints.nsp - 1)
+                if (Clear == CheckPoints.Nlaps * CheckPoints.Nsp - 1)
                 {
-                    Medium.lastcheck = true;
+                    Medium.Lastcheck = true;
                 }
-                if (CheckPoints.haltall)
+                if (CheckPoints.Haltall)
                 {
-                    Medium.lastcheck = false;
+                    Medium.Lastcheck = false;
                 }
             }
-            if (focus == -1)
+            if (_focus == -1)
             {
-                if (im == xtGraphics.im)
+                if (Im == XTGraphics.Im)
                 {
                     i89 += 2;
                 }
@@ -2021,403 +2021,403 @@ namespace Cum
                 {
                     i89++;
                 }
-                if (!nofocus)
+                if (!Nofocus)
                 {
-                    i91 = pcleared + 1;
-                    if (i91 >= CheckPoints.n)
+                    i91 = Pcleared + 1;
+                    if (i91 >= CheckPoints.N)
                     {
                         i91 = 0;
                     }
-                    while (CheckPoints.typ[i91] <= 0)
-                        if (++i91 >= CheckPoints.n)
+                    while (CheckPoints.Typ[i91] <= 0)
+                        if (++i91 >= CheckPoints.N)
                         {
                             i91 = 0;
                         }
-                    if (i89 > i91 && (clear != nlaps * CheckPoints.nsp || i89 < pcleared))
+                    if (i89 > i91 && (Clear != Nlaps * CheckPoints.Nsp || i89 < Pcleared))
                     {
                         i89 = i91;
-                        focus = i89;
+                        _focus = i89;
                     }
                 }
-                if (i89 >= CheckPoints.n)
+                if (i89 >= CheckPoints.N)
                 {
-                    i89 -= CheckPoints.n;
+                    i89 -= CheckPoints.N;
                 }
-                if (CheckPoints.typ[i89] == -3)
+                if (CheckPoints.Typ[i89] == -3)
                 {
                     i89 = 0;
                 }
-                if (im == xtGraphics.im)
+                if (Im == XTGraphics.Im)
                 {
-                    if (missedcp != -1)
+                    if (Missedcp != -1)
                     {
-                        missedcp = -1;
+                        Missedcp = -1;
                     }
                 }
-                else if (missedcp != 0)
+                else if (Missedcp != 0)
                 {
-                    missedcp = 0;
+                    Missedcp = 0;
                 }
             }
             else
             {
-                i89 = focus;
-                if (im == xtGraphics.im)
+                i89 = _focus;
+                if (Im == XTGraphics.Im)
                 {
-                    if (missedcp == 0 && mtouch && Math.Sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
-                            CheckPoints.z[focus] / 10)) > 800.0)
+                    if (Missedcp == 0 && Mtouch && Math.Sqrt(Py(conto.X / 10, CheckPoints.X[_focus] / 10, conto.Z / 10,
+                            CheckPoints.Z[_focus] / 10)) > 800.0)
                     {
-                        missedcp = 1;
+                        Missedcp = 1;
                     }
-                    if (missedcp == -2 && Math.Sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
-                            CheckPoints.z[focus] / 10)) < 400.0)
+                    if (Missedcp == -2 && Math.Sqrt(Py(conto.X / 10, CheckPoints.X[_focus] / 10, conto.Z / 10,
+                            CheckPoints.Z[_focus] / 10)) < 400.0)
                     {
-                        missedcp = 0;
+                        Missedcp = 0;
                     }
-                    if (missedcp != 0 && mtouch && Math.Sqrt(py(conto.x / 10, CheckPoints.x[focus] / 10, conto.z / 10,
-                            CheckPoints.z[focus] / 10)) < 250.0)
+                    if (Missedcp != 0 && Mtouch && Math.Sqrt(Py(conto.X / 10, CheckPoints.X[_focus] / 10, conto.Z / 10,
+                            CheckPoints.Z[_focus] / 10)) < 250.0)
                     {
-                        missedcp = 68;
+                        Missedcp = 68;
                     }
                 }
                 else
                 {
-                    missedcp = 1;
+                    Missedcp = 1;
                 }
-                if (nofocus)
+                if (Nofocus)
                 {
-                    focus = -1;
-                    missedcp = 0;
+                    _focus = -1;
+                    Missedcp = 0;
                 }
             }
-            if (nofocus)
+            if (Nofocus)
             {
-                nofocus = false;
+                Nofocus = false;
             }
-            point = i89;
-            if (fixes != 0)
+            Point = i89;
+            if (_fixes != 0)
             {
-                if (Medium.noelec == 0)
+                if (Medium.Noelec == 0)
                 {
-                    for (int i93 = 0; i93 < CheckPoints.fn; i93++)
-                        if (!CheckPoints.roted[i93])
+                    for (var i93 = 0; i93 < CheckPoints.Fn; i93++)
+                        if (!CheckPoints.Roted[i93])
                         {
-                            if (Math.Abs(conto.z - CheckPoints.fz[i93]) < 200 && py(conto.x / 100,
-                                    CheckPoints.fx[i93] / 100, conto.y / 100, CheckPoints.fy[i93] / 100) < 30)
+                            if (Math.Abs(conto.Z - CheckPoints.Fz[i93]) < 200 && Py(conto.X / 100,
+                                    CheckPoints.Fx[i93] / 100, conto.Y / 100, CheckPoints.Fy[i93] / 100) < 30)
                             {
-                                if (conto.dist == 0)
+                                if (conto.Dist == 0)
                                 {
-                                    conto.fcnt = 8;
+                                    conto.Fcnt = 8;
                                 }
                                 else
                                 {
-                                    if (im == xtGraphics.im && !conto.fix && !xtGraphics.mutes)
+                                    if (Im == XTGraphics.Im && !conto.Fix && !XTGraphics.Mutes)
                                     {
-                                        xtGraphics.carfixed.play();
+                                        XTGraphics.Carfixed.Play();
                                     }
-                                    conto.fix = true;
+                                    conto.Fix = true;
                                 }
-                                Record.fix[im] = 300;
+                                Record.Fix[Im] = 300;
                             }
                         }
-                        else if (Math.Abs(conto.x - CheckPoints.fx[i93]) < 200 && py(conto.z / 100,
-                                     CheckPoints.fz[i93] / 100, conto.y / 100, CheckPoints.fy[i93] / 100) < 30)
+                        else if (Math.Abs(conto.X - CheckPoints.Fx[i93]) < 200 && Py(conto.Z / 100,
+                                     CheckPoints.Fz[i93] / 100, conto.Y / 100, CheckPoints.Fy[i93] / 100) < 30)
                         {
-                            if (conto.dist == 0)
+                            if (conto.Dist == 0)
                             {
-                                conto.fcnt = 8;
+                                conto.Fcnt = 8;
                             }
                             else
                             {
-                                if (im == xtGraphics.im && !conto.fix && !xtGraphics.mutes)
+                                if (Im == XTGraphics.Im && !conto.Fix && !XTGraphics.Mutes)
                                 {
-                                    xtGraphics.carfixed.play();
+                                    XTGraphics.Carfixed.Play();
                                 }
-                                conto.fix = true;
+                                conto.Fix = true;
                             }
-                            Record.fix[im] = 300;
+                            Record.Fix[Im] = 300;
                         }
                 }
             }
             else
             {
-                for (int i94 = 0; i94 < CheckPoints.fn; i94++)
-                    if (rpy(conto.x / 100, CheckPoints.fx[i94] / 100, conto.y / 100, CheckPoints.fy[i94] / 100,
-                            conto.z / 100, CheckPoints.fz[i94] / 100) < 760)
+                for (var i94 = 0; i94 < CheckPoints.Fn; i94++)
+                    if (Rpy(conto.X / 100, CheckPoints.Fx[i94] / 100, conto.Y / 100, CheckPoints.Fy[i94] / 100,
+                            conto.Z / 100, CheckPoints.Fz[i94] / 100) < 760)
                     {
-                        Medium.noelec = 2;
+                        Medium.Noelec = 2;
                     }
             }
-            if (conto.fcnt == 7 || conto.fcnt == 8)
+            if (conto.Fcnt == 7 || conto.Fcnt == 8)
             {
-                squash = 0;
-                nbsq = 0;
-                hitmag = 0;
-                cntdest = 0;
-                dest = false;
-                newcar = true;
-                conto.fcnt = 9;
-                if (fixes > 0)
+                Squash = 0;
+                _nbsq = 0;
+                Hitmag = 0;
+                Cntdest = 0;
+                Dest = false;
+                Newcar = true;
+                conto.Fcnt = 9;
+                if (_fixes > 0)
                 {
-                    fixes--;
+                    _fixes--;
                 }
             }
-            if (newedcar != 0)
+            if (Newedcar != 0)
             {
-                newedcar--;
-                if (newedcar == 10)
+                Newedcar--;
+                if (Newedcar == 10)
                 {
-                    newcar = false;
+                    Newcar = false;
                 }
             }
-            if (!mtouch)
+            if (!Mtouch)
             {
-                if (trcnt != 1)
+                if (Trcnt != 1)
                 {
-                    trcnt = 1;
-                    lxz = conto.xz;
+                    Trcnt = 1;
+                    _lxz = conto.Xz;
                 }
-                if (loop == 2 || loop == -1)
+                if (Loop == 2 || Loop == -1)
                 {
-                    travxy += (int)(rcomp - lcomp);
-                    if (Math.Abs(travxy) > 135)
+                    Travxy += (int)(Rcomp - Lcomp);
+                    if (Math.Abs(Travxy) > 135)
                     {
-                        rtab = true;
+                        Rtab = true;
                     }
-                    travzy += (int) (ucomp - dcomp);
-                    if (travzy > 135)
+                    Travzy += (int) (Ucomp - Dcomp);
+                    if (Travzy > 135)
                     {
-                        ftab = true;
+                        Ftab = true;
                     }
-                    if (travzy < -135)
+                    if (Travzy < -135)
                     {
-                        btab = true;
+                        Btab = true;
                     }
                 }
-                if (lxz != conto.xz)
+                if (_lxz != conto.Xz)
                 {
-                    travxz += lxz - conto.xz;
-                    lxz = conto.xz;
+                    Travxz += _lxz - conto.Xz;
+                    _lxz = conto.Xz;
                 }
-                if (srfcnt < 10)
+                if (_srfcnt < 10)
                 {
-                    if (control.wall != -1)
+                    if (control.Wall != -1)
                     {
-                        surfer = true;
+                        Surfer = true;
                     }
-                    srfcnt++;
+                    _srfcnt++;
                 }
             }
-            else if (!dest)
+            else if (!Dest)
             {
-                if (!capsized)
+                if (!Capsized)
                 {
-                    if (capcnt != 0)
+                    if (Capcnt != 0)
                     {
-                        capcnt = 0;
+                        Capcnt = 0;
                     }
-                    if (gtouch && trcnt != 0)
+                    if (Gtouch && Trcnt != 0)
                     {
-                        if (trcnt == 9)
+                        if (Trcnt == 9)
                         {
-                            powerup = 0.0F;
-                            if (Math.Abs(travxy) > 90)
+                            Powerup = 0.0F;
+                            if (Math.Abs(Travxy) > 90)
                             {
-                                powerup += Math.Abs(travxy) / 24.0F;
+                                Powerup += Math.Abs(Travxy) / 24.0F;
                             }
-                            else if (rtab)
+                            else if (Rtab)
                             {
-                                powerup += 30.0F;
+                                Powerup += 30.0F;
                             }
-                            if (Math.Abs(travzy) > 90)
+                            if (Math.Abs(Travzy) > 90)
                             {
-                                powerup += Math.Abs(travzy) / 18.0F;
+                                Powerup += Math.Abs(Travzy) / 18.0F;
                             }
                             else
                             {
-                                if (ftab)
+                                if (Ftab)
                                 {
-                                    powerup += 40.0F;
+                                    Powerup += 40.0F;
                                 }
-                                if (btab)
+                                if (Btab)
                                 {
-                                    powerup += 40.0F;
-                                }
-                            }
-                            if (Math.Abs(travxz) > 90)
-                            {
-                                powerup += Math.Abs(travxz) / 18.0F;
-                            }
-                            if (surfer)
-                            {
-                                powerup += 30.0F;
-                            }
-                            power += powerup;
-                            if (im == xtGraphics.im && (int) powerup > Record.powered && Record.wasted == 0 &&
-                                (powerup > 60.0F || CheckPoints.stage == 1 || CheckPoints.stage == 2))
-                            {
-                                rpdcatch = 30;
-                                if (Record.hcaught)
-                                {
-                                    Record.powered = (int) powerup;
-                                }
-                                if (xtGraphics.multion == 1 && powerup > xtGraphics.beststunt)
-                                {
-                                    xtGraphics.beststunt = (int) powerup;
+                                    Powerup += 40.0F;
                                 }
                             }
-                            if (power > 98.0F)
+                            if (Math.Abs(Travxz) > 90)
                             {
-                                power = 98.0F;
-                                if (powerup > 150.0F)
+                                Powerup += Math.Abs(Travxz) / 18.0F;
+                            }
+                            if (Surfer)
+                            {
+                                Powerup += 30.0F;
+                            }
+                            Power += Powerup;
+                            if (Im == XTGraphics.Im && (int) Powerup > Record.Powered && Record.Wasted == 0 &&
+                                (Powerup > 60.0F || CheckPoints.Stage == 1 || CheckPoints.Stage == 2))
+                            {
+                                _rpdcatch = 30;
+                                if (Record.Hcaught)
                                 {
-                                    xtpower = 200;
+                                    Record.Powered = (int) Powerup;
+                                }
+                                if (XTGraphics.Multion == 1 && Powerup > XTGraphics.Beststunt)
+                                {
+                                    XTGraphics.Beststunt = (int) Powerup;
+                                }
+                            }
+                            if (Power > 98.0F)
+                            {
+                                Power = 98.0F;
+                                if (Powerup > 150.0F)
+                                {
+                                    _xtpower = 200;
                                 }
                                 else
                                 {
-                                    xtpower = 100;
+                                    _xtpower = 100;
                                 }
                             }
                         }
-                        if (trcnt == 10)
+                        if (Trcnt == 10)
                         {
-                            travxy = 0;
-                            travzy = 0;
-                            travxz = 0;
-                            ftab = false;
-                            rtab = false;
-                            btab = false;
-                            trcnt = 0;
-                            srfcnt = 0;
-                            surfer = false;
+                            Travxy = 0;
+                            Travzy = 0;
+                            Travxz = 0;
+                            Ftab = false;
+                            Rtab = false;
+                            Btab = false;
+                            Trcnt = 0;
+                            _srfcnt = 0;
+                            Surfer = false;
                         }
                         else
                         {
-                            trcnt++;
+                            Trcnt++;
                         }
                     }
                 }
                 else
                 {
-                    if (trcnt != 0)
+                    if (Trcnt != 0)
                     {
-                        travxy = 0;
-                        travzy = 0;
-                        travxz = 0;
-                        ftab = false;
-                        rtab = false;
-                        btab = false;
-                        trcnt = 0;
-                        srfcnt = 0;
-                        surfer = false;
+                        Travxy = 0;
+                        Travzy = 0;
+                        Travxz = 0;
+                        Ftab = false;
+                        Rtab = false;
+                        Btab = false;
+                        Trcnt = 0;
+                        _srfcnt = 0;
+                        Surfer = false;
                     }
-                    if (capcnt == 0)
+                    if (Capcnt == 0)
                     {
-                        int i95 = 0;
-                        for (int i96 = 0; i96 < 4; i96++)
-                            if (Math.Abs(scz[i96]) < 70.0F && Math.Abs(scx[i96]) < 70.0F)
+                        var i95 = 0;
+                        for (var i96 = 0; i96 < 4; i96++)
+                            if (Math.Abs(Scz[i96]) < 70.0F && Math.Abs(Scx[i96]) < 70.0F)
                             {
                                 i95++;
                             }
                         if (i95 == 4)
                         {
-                            capcnt = 1;
+                            Capcnt = 1;
                         }
                     }
                     else
                     {
-                        capcnt++;
-                        if (capcnt == 30)
+                        Capcnt++;
+                        if (Capcnt == 30)
                         {
-                            speed = 0.0F;
-                            conto.y += stat.flipy;
-                            pxy += 180;
-                            conto.xy += 180;
-                            capcnt = 0;
+                            Speed = 0.0F;
+                            conto.Y += Stat.Flipy;
+                            Pxy += 180;
+                            conto.Xy += 180;
+                            Capcnt = 0;
                         }
                     }
                 }
-                if (trcnt == 0 && speed != 0.0F)
-                    if (xtpower == 0)
+                if (Trcnt == 0 && Speed != 0.0F)
+                    if (_xtpower == 0)
                     {
-                        if (power > 0.0F)
+                        if (Power > 0.0F)
                         {
-                            power -= power * power * power / stat.powerloss;
+                            Power -= Power * Power * Power / Stat.Powerloss;
                         }
                         else
                         {
-                            power = 0.0F;
+                            Power = 0.0F;
                         }
                     }
                     else
                     {
-                        xtpower--;
+                        _xtpower--;
                     }
             }
-            if (im == xtGraphics.im)
+            if (Im == XTGraphics.Im)
             {
-                if (control.wall != -1)
+                if (control.Wall != -1)
                 {
-                    control.wall = -1;
+                    control.Wall = -1;
                 }
             }
-            else if (lastcolido != 0 && !dest)
+            else if (Lastcolido != 0 && !Dest)
             {
-                lastcolido--;
+                Lastcolido--;
             }
-            if (dest)
+            if (Dest)
             {
-                if (CheckPoints.dested[im] == 0)
-                    if (lastcolido == 0)
+                if (CheckPoints.Dested[Im] == 0)
+                    if (Lastcolido == 0)
                     {
-                        CheckPoints.dested[im] = 1;
+                        CheckPoints.Dested[Im] = 1;
                     }
                     else
                     {
-                        CheckPoints.dested[im] = 2;
+                        CheckPoints.Dested[Im] = 2;
                     }
             }
-            else if (CheckPoints.dested[im] != 0 && CheckPoints.dested[im] != 3)
+            else if (CheckPoints.Dested[Im] != 0 && CheckPoints.Dested[Im] != 3)
             {
-                CheckPoints.dested[im] = 0;
+                CheckPoints.Dested[Im] = 0;
             }
-            if (im == xtGraphics.im && Record.wasted == 0 && rpdcatch != 0)
+            if (Im == XTGraphics.Im && Record.Wasted == 0 && _rpdcatch != 0)
             {
-                rpdcatch--;
-                if (rpdcatch == 0)
+                _rpdcatch--;
+                if (_rpdcatch == 0)
                 {
-                    Record.cotchinow(im);
-                    if (Record.hcaught)
+                    Record.Cotchinow(Im);
+                    if (Record.Hcaught)
                     {
-                        Record.whenwasted = (int) (185.0F + Medium.random() * 20.0F);
+                        Record.Whenwasted = (int) (185.0F + Medium.Random() * 20.0F);
                     }
                 }
             }
         }
 
-        private int py(int i, int i145, int i146, int i147) {
+        private int Py(int i, int i145, int i146, int i147) {
             return (i - i145) * (i - i145) + (i146 - i147) * (i146 - i147);
         }
 
-        private int regx(int i, float f, ContO conto) {
-            int i110 = 0;
-            boolean abool = true;
-            if (xtGraphics.multion == 1 && xtGraphics.im != im)
+        private int Regx(int i, float f, ContO conto) {
+            var i110 = 0;
+            var abool = true;
+            if (XTGraphics.Multion == 1 && XTGraphics.Im != Im)
             {
                 abool = false;
             }
-            if (xtGraphics.multion >= 2)
+            if (XTGraphics.Multion >= 2)
             {
                 abool = false;
             }
-            if (xtGraphics.lan && xtGraphics.multion >= 1 && xtGraphics.isbot[im])
+            if (XTGraphics.Lan && XTGraphics.Multion >= 1 && XTGraphics.Isbot[Im])
             {
                 abool = true;
             }
-            f *= stat.dammult;
+            f *= Stat.Dammult;
             if (Math.Abs(f) > 100.0F)
             {
-                Record.recx(i, f, im);
+                Record.Recx(i, f, Im);
                 if (f > 100.0F)
                 {
                     f -= 100.0F;
@@ -2426,24 +2426,24 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                shakedam = (int) ((Math.Abs(f) + shakedam) / 2.0F);
-                if (im == xtGraphics.im || colidim)
+                Shakedam = (int) ((Math.Abs(f) + Shakedam) / 2.0F);
+                if (Im == XTGraphics.Im || _colidim)
                 {
-                    xtGraphics.acrash(im, f, 0);
+                    XTGraphics.Acrash(Im, f, 0);
                 }
-                for (int i111 = 0; i111 < conto.npl; i111++)
+                for (var i111 = 0; i111 < conto.Npl; i111++)
                 {
-                    float f112 = 0.0F;
-                    for (int i113 = 0; i113 < conto.p[i111].n; i113++)
-                        if (conto.p[i111].wz == 0 && py(conto.keyx[i], conto.p[i111].ox[i113], conto.keyz[i],
-                                conto.p[i111].oz[i113]) < stat.clrad)
+                    var f112 = 0.0F;
+                    for (var i113 = 0; i113 < conto.P[i111].N; i113++)
+                        if (conto.P[i111].Wz == 0 && Py(conto.Keyx[i], conto.P[i111].Ox[i113], conto.Keyz[i],
+                                conto.P[i111].Oz[i113]) < Stat.Clrad)
                         {
-                            f112 = f / 20.0F * Medium.random();
-                            conto.p[i111].oz[i113] -= (int)(f112 * Medium.sin(conto.xz) * Medium.cos(conto.zy));
-                            conto.p[i111].ox[i113] += (int)(f112 * Medium.cos(conto.xz) * Medium.cos(conto.xy));
+                            f112 = f / 20.0F * Medium.Random();
+                            conto.P[i111].Oz[i113] -= (int)(f112 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Zy));
+                            conto.P[i111].Ox[i113] += (int)(f112 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Xy));
                             if (abool)
                             {
-                                hitmag += (int)Math.Abs(f112);
+                                Hitmag += (int)Math.Abs(f112);
                                 i110 += (int)Math.Abs(f112);
                             }
                         }
@@ -2451,50 +2451,50 @@ namespace Cum
                     {
                         if (Math.Abs(f112) >= 1.0F)
                         {
-                            conto.p[i111].chip = 1;
-                            conto.p[i111].ctmag = f112;
+                            conto.P[i111].Chip = 1;
+                            conto.P[i111].Ctmag = f112;
                         }
-                        if (!conto.p[i111].nocol && conto.p[i111].glass != 1)
+                        if (!conto.P[i111].Nocol && conto.P[i111].Glass != 1)
                         {
-                            if (conto.p[i111].bfase > 20 && conto.p[i111].hsb[1] > 0.25)
+                            if (conto.P[i111].Bfase > 20 && conto.P[i111].HSB[1] > 0.25)
                             {
-                                conto.p[i111].hsb[1] = 0.25F;
+                                conto.P[i111].HSB[1] = 0.25F;
                             }
-                            if (conto.p[i111].bfase > 25 && conto.p[i111].hsb[2] > 0.7)
+                            if (conto.P[i111].Bfase > 25 && conto.P[i111].HSB[2] > 0.7)
                             {
-                                conto.p[i111].hsb[2] = 0.7F;
+                                conto.P[i111].HSB[2] = 0.7F;
                             }
-                            if (conto.p[i111].bfase > 30 && conto.p[i111].hsb[1] > 0.15)
+                            if (conto.P[i111].Bfase > 30 && conto.P[i111].HSB[1] > 0.15)
                             {
-                                conto.p[i111].hsb[1] = 0.15F;
+                                conto.P[i111].HSB[1] = 0.15F;
                             }
-                            if (conto.p[i111].bfase > 35 && conto.p[i111].hsb[2] > 0.6)
+                            if (conto.P[i111].Bfase > 35 && conto.P[i111].HSB[2] > 0.6)
                             {
-                                conto.p[i111].hsb[2] = 0.6F;
+                                conto.P[i111].HSB[2] = 0.6F;
                             }
-                            if (conto.p[i111].bfase > 40)
+                            if (conto.P[i111].Bfase > 40)
                             {
-                                conto.p[i111].hsb[0] = 0.075F;
+                                conto.P[i111].HSB[0] = 0.075F;
                             }
-                            if (conto.p[i111].bfase > 50 && conto.p[i111].hsb[2] > 0.5)
+                            if (conto.P[i111].Bfase > 50 && conto.P[i111].HSB[2] > 0.5)
                             {
-                                conto.p[i111].hsb[2] = 0.5F;
+                                conto.P[i111].HSB[2] = 0.5F;
                             }
-                            if (conto.p[i111].bfase > 60)
+                            if (conto.P[i111].Bfase > 60)
                             {
-                                conto.p[i111].hsb[0] = 0.05F;
+                                conto.P[i111].HSB[0] = 0.05F;
                             }
-                            conto.p[i111].bfase += (int)Math.Abs(f112);
-                            new Color(conto.p[i111].c[0], conto.p[i111].c[1], conto.p[i111].c[2]);
-                            Color color = Color.getHSBColor(conto.p[i111].hsb[0], conto.p[i111].hsb[1],
-                                conto.p[i111].hsb[2]);
-                            conto.p[i111].c[0] = color.getRed();
-                            conto.p[i111].c[1] = color.getGreen();
-                            conto.p[i111].c[2] = color.getBlue();
+                            conto.P[i111].Bfase += (int)Math.Abs(f112);
+                            new Color(conto.P[i111].C[0], conto.P[i111].C[1], conto.P[i111].C[2]);
+                            var color = Color.GetHSBColor(conto.P[i111].HSB[0], conto.P[i111].HSB[1],
+                                conto.P[i111].HSB[2]);
+                            conto.P[i111].C[0] = color.GetRed();
+                            conto.P[i111].C[1] = color.GetGreen();
+                            conto.P[i111].C[2] = color.GetBlue();
                         }
-                        if (conto.p[i111].glass == 1)
+                        if (conto.P[i111].Glass == 1)
                         {
-                            conto.p[i111].gr += (int)Math.Abs(f112 * 1.5);
+                            conto.P[i111].Gr += (int)Math.Abs(f112 * 1.5);
                         }
                     }
                 }
@@ -2502,30 +2502,30 @@ namespace Cum
             return i110;
         }
 
-        private int regy(int i, float f, ContO conto) {
-            int i97 = 0;
-            boolean abool = true;
-            if (xtGraphics.multion == 1 && xtGraphics.im != im)
+        private int Regy(int i, float f, ContO conto) {
+            var i97 = 0;
+            var abool = true;
+            if (XTGraphics.Multion == 1 && XTGraphics.Im != Im)
             {
                 abool = false;
             }
-            if (xtGraphics.multion >= 2)
+            if (XTGraphics.Multion >= 2)
             {
                 abool = false;
             }
-            if (xtGraphics.lan && xtGraphics.multion >= 1 && xtGraphics.isbot[im])
+            if (XTGraphics.Lan && XTGraphics.Multion >= 1 && XTGraphics.Isbot[Im])
             {
                 abool = true;
             }
-            f *= stat.dammult;
+            f *= Stat.Dammult;
             if (f > 100.0F)
             {
-                Record.recy(i, f, mtouch, im);
+                Record.Recy(i, f, Mtouch, Im);
                 f -= 100.0F;
-                int i98 = 0;
-                int i99 = 0;
-                int i100 = conto.zy;
-                int i101 = conto.xy;
+                var i98 = 0;
+                var i99 = 0;
+                var i100 = conto.Zy;
+                var i101 = conto.Xy;
                 for ( /**/; i100 < 360; i100 += 360)
                 {
 
@@ -2560,27 +2560,27 @@ namespace Cum
                 }
                 if (i99 * i98 == 0)
                 {
-                    shakedam = (int) ((Math.Abs(f) + shakedam) / 2.0F);
+                    Shakedam = (int) ((Math.Abs(f) + Shakedam) / 2.0F);
                 }
-                if (im == xtGraphics.im || colidim)
+                if (Im == XTGraphics.Im || _colidim)
                 {
-                    xtGraphics.acrash(im, f, i99 * i98);
+                    XTGraphics.Acrash(Im, f, i99 * i98);
                 }
-                if (i99 * i98 == 0 || mtouch)
+                if (i99 * i98 == 0 || Mtouch)
                 {
-                    for (int i102 = 0; i102 < conto.npl; i102++)
+                    for (var i102 = 0; i102 < conto.Npl; i102++)
                     {
-                        float f103 = 0.0F;
-                        for (int i104 = 0; i104 < conto.p[i102].n; i104++)
-                            if (conto.p[i102].wz == 0 && py(conto.keyx[i], conto.p[i102].ox[i104], conto.keyz[i],
-                                    conto.p[i102].oz[i104]) < stat.clrad)
+                        var f103 = 0.0F;
+                        for (var i104 = 0; i104 < conto.P[i102].N; i104++)
+                            if (conto.P[i102].Wz == 0 && Py(conto.Keyx[i], conto.P[i102].Ox[i104], conto.Keyz[i],
+                                    conto.P[i102].Oz[i104]) < Stat.Clrad)
                             {
-                                f103 = f / 20.0F * Medium.random();
-                                conto.p[i102].oz[i104] += (int)(f103 * Medium.sin(i100));
-                                conto.p[i102].ox[i104] -= (int)(f103 * Medium.sin(i101));
+                                f103 = f / 20.0F * Medium.Random();
+                                conto.P[i102].Oz[i104] += (int)(f103 * Medium.Sin(i100));
+                                conto.P[i102].Ox[i104] -= (int)(f103 * Medium.Sin(i101));
                                 if (abool)
                                 {
-                                    hitmag += (int)Math.Abs(f103);
+                                    Hitmag += (int)Math.Abs(f103);
                                     i97 += (int)Math.Abs(f103);
                                 }
                             }
@@ -2588,123 +2588,123 @@ namespace Cum
                         {
                             if (Math.Abs(f103) >= 1.0F)
                             {
-                                conto.p[i102].chip = 1;
-                                conto.p[i102].ctmag = f103;
+                                conto.P[i102].Chip = 1;
+                                conto.P[i102].Ctmag = f103;
                             }
-                            if (!conto.p[i102].nocol && conto.p[i102].glass != 1)
+                            if (!conto.P[i102].Nocol && conto.P[i102].Glass != 1)
                             {
-                                if (conto.p[i102].bfase > 20 && conto.p[i102].hsb[1] > 0.25)
+                                if (conto.P[i102].Bfase > 20 && conto.P[i102].HSB[1] > 0.25)
                                 {
-                                    conto.p[i102].hsb[1] = 0.25F;
+                                    conto.P[i102].HSB[1] = 0.25F;
                                 }
-                                if (conto.p[i102].bfase > 25 && conto.p[i102].hsb[2] > 0.7)
+                                if (conto.P[i102].Bfase > 25 && conto.P[i102].HSB[2] > 0.7)
                                 {
-                                    conto.p[i102].hsb[2] = 0.7F;
+                                    conto.P[i102].HSB[2] = 0.7F;
                                 }
-                                if (conto.p[i102].bfase > 30 && conto.p[i102].hsb[1] > 0.15)
+                                if (conto.P[i102].Bfase > 30 && conto.P[i102].HSB[1] > 0.15)
                                 {
-                                    conto.p[i102].hsb[1] = 0.15F;
+                                    conto.P[i102].HSB[1] = 0.15F;
                                 }
-                                if (conto.p[i102].bfase > 35 && conto.p[i102].hsb[2] > 0.6)
+                                if (conto.P[i102].Bfase > 35 && conto.P[i102].HSB[2] > 0.6)
                                 {
-                                    conto.p[i102].hsb[2] = 0.6F;
+                                    conto.P[i102].HSB[2] = 0.6F;
                                 }
-                                if (conto.p[i102].bfase > 40)
+                                if (conto.P[i102].Bfase > 40)
                                 {
-                                    conto.p[i102].hsb[0] = 0.075F;
+                                    conto.P[i102].HSB[0] = 0.075F;
                                 }
-                                if (conto.p[i102].bfase > 50 && conto.p[i102].hsb[2] > 0.5)
+                                if (conto.P[i102].Bfase > 50 && conto.P[i102].HSB[2] > 0.5)
                                 {
-                                    conto.p[i102].hsb[2] = 0.5F;
+                                    conto.P[i102].HSB[2] = 0.5F;
                                 }
-                                if (conto.p[i102].bfase > 60)
+                                if (conto.P[i102].Bfase > 60)
                                 {
-                                    conto.p[i102].hsb[0] = 0.05F;
+                                    conto.P[i102].HSB[0] = 0.05F;
                                 }
-                                conto.p[i102].bfase += (int)f103;
-                                new Color(conto.p[i102].c[0], conto.p[i102].c[1], conto.p[i102].c[2]);
-                                Color color = Color.getHSBColor(conto.p[i102].hsb[0], conto.p[i102].hsb[1],
-                                    conto.p[i102].hsb[2]);
-                                conto.p[i102].c[0] = color.getRed();
-                                conto.p[i102].c[1] = color.getGreen();
-                                conto.p[i102].c[2] = color.getBlue();
+                                conto.P[i102].Bfase += (int)f103;
+                                new Color(conto.P[i102].C[0], conto.P[i102].C[1], conto.P[i102].C[2]);
+                                var color = Color.GetHSBColor(conto.P[i102].HSB[0], conto.P[i102].HSB[1],
+                                    conto.P[i102].HSB[2]);
+                                conto.P[i102].C[0] = color.GetRed();
+                                conto.P[i102].C[1] = color.GetGreen();
+                                conto.P[i102].C[2] = color.GetBlue();
                             }
-                            if (conto.p[i102].glass == 1)
+                            if (conto.P[i102].Glass == 1)
                             {
-                                conto.p[i102].gr += (int)Math.Abs(f103 * 1.5);
+                                conto.P[i102].Gr += (int)Math.Abs(f103 * 1.5);
                             }
                         }
                     }
                 }
                 if (i99 * i98 == -1)
-                    if (nbsq > 0)
+                    if (_nbsq > 0)
                     {
-                        int i105 = 0;
-                        int i106 = 1;
-                        for (int i107 = 0; i107 < conto.npl; i107++)
+                        var i105 = 0;
+                        var i106 = 1;
+                        for (var i107 = 0; i107 < conto.Npl; i107++)
                         {
-                            float f108 = 0.0F;
-                            for (int i109 = 0; i109 < conto.p[i107].n; i109++)
-                                if (conto.p[i107].wz == 0)
+                            var f108 = 0.0F;
+                            for (var i109 = 0; i109 < conto.P[i107].N; i109++)
+                                if (conto.P[i107].Wz == 0)
                                 {
-                                    f108 = f / 15.0F * Medium.random();
-                                    if ((Math.Abs(conto.p[i107].oy[i109] - stat.flipy - squash) < stat.msquash * 3 ||
-                                         conto.p[i107].oy[i109] < stat.flipy + squash) && squash < stat.msquash)
+                                    f108 = f / 15.0F * Medium.Random();
+                                    if ((Math.Abs(conto.P[i107].Oy[i109] - Stat.Flipy - Squash) < Stat.Msquash * 3 ||
+                                         conto.P[i107].Oy[i109] < Stat.Flipy + Squash) && Squash < Stat.Msquash)
                                     {
-                                        conto.p[i107].oy[i109] += (int)f108;
+                                        conto.P[i107].Oy[i109] += (int)f108;
                                         i105 += (int)f108;
                                         i106++;
                                         if (abool)
                                         {
-                                            hitmag += (int)Math.Abs(f108);
+                                            Hitmag += (int)Math.Abs(f108);
                                             i97 += (int)Math.Abs(f108);
                                         }
                                     }
                                 }
-                            if (conto.p[i107].glass == 1)
+                            if (conto.P[i107].Glass == 1)
                             {
-                                conto.p[i107].gr += 5;
+                                conto.P[i107].Gr += 5;
                             }
                             else if (f108 != 0.0F)
                             {
-                                conto.p[i107].bfase += (int)f108;
+                                conto.P[i107].Bfase += (int)f108;
                             }
                             if (Math.Abs(f108) >= 1.0F)
                             {
-                                conto.p[i107].chip = 1;
-                                conto.p[i107].ctmag = f108;
+                                conto.P[i107].Chip = 1;
+                                conto.P[i107].Ctmag = f108;
                             }
                         }
-                        squash += i105 / i106;
-                        nbsq = 0;
+                        Squash += i105 / i106;
+                        _nbsq = 0;
                     }
                     else
                     {
-                        nbsq++;
+                        _nbsq++;
                     }
             }
             return i97;
         }
 
-        private int regz(int i, float f, ContO conto) {
-            int i114 = 0;
-            boolean abool = true;
-            if (xtGraphics.multion == 1 && xtGraphics.im != im)
+        private int Regz(int i, float f, ContO conto) {
+            var i114 = 0;
+            var abool = true;
+            if (XTGraphics.Multion == 1 && XTGraphics.Im != Im)
             {
                 abool = false;
             }
-            if (xtGraphics.multion >= 2)
+            if (XTGraphics.Multion >= 2)
             {
                 abool = false;
             }
-            if (xtGraphics.lan && xtGraphics.multion >= 1 && xtGraphics.isbot[im])
+            if (XTGraphics.Lan && XTGraphics.Multion >= 1 && XTGraphics.Isbot[Im])
             {
                 abool = true;
             }
-            f *= stat.dammult;
+            f *= Stat.Dammult;
             if (Math.Abs(f) > 100.0F)
             {
-                Record.recz(i, f, im);
+                Record.Recz(i, f, Im);
                 if (f > 100.0F)
                 {
                     f -= 100.0F;
@@ -2713,24 +2713,24 @@ namespace Cum
                 {
                     f += 100.0F;
                 }
-                shakedam = (int) ((Math.Abs(f) + shakedam) / 2.0F);
-                if (im == xtGraphics.im || colidim)
+                Shakedam = (int) ((Math.Abs(f) + Shakedam) / 2.0F);
+                if (Im == XTGraphics.Im || _colidim)
                 {
-                    xtGraphics.acrash(im, f, 0);
+                    XTGraphics.Acrash(Im, f, 0);
                 }
-                for (int i115 = 0; i115 < conto.npl; i115++)
+                for (var i115 = 0; i115 < conto.Npl; i115++)
                 {
-                    float f116 = 0.0F;
-                    for (int i117 = 0; i117 < conto.p[i115].n; i117++)
-                        if (conto.p[i115].wz == 0 && py(conto.keyx[i], conto.p[i115].ox[i117], conto.keyz[i],
-                                conto.p[i115].oz[i117]) < stat.clrad)
+                    var f116 = 0.0F;
+                    for (var i117 = 0; i117 < conto.P[i115].N; i117++)
+                        if (conto.P[i115].Wz == 0 && Py(conto.Keyx[i], conto.P[i115].Ox[i117], conto.Keyz[i],
+                                conto.P[i115].Oz[i117]) < Stat.Clrad)
                         {
-                            f116 = f / 20.0F * Medium.random();
-                            conto.p[i115].oz[i117] += (int)(f116 * Medium.cos(conto.xz) * Medium.cos(conto.zy));
-                            conto.p[i115].ox[i117] += (int)(f116 * Medium.sin(conto.xz) * Medium.cos(conto.xy));
+                            f116 = f / 20.0F * Medium.Random();
+                            conto.P[i115].Oz[i117] += (int)(f116 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Zy));
+                            conto.P[i115].Ox[i117] += (int)(f116 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Xy));
                             if (abool)
                             {
-                                hitmag += (int)Math.Abs(f116);
+                                Hitmag += (int)Math.Abs(f116);
                                 i114 += (int)Math.Abs(f116);
                             }
                         }
@@ -2738,50 +2738,50 @@ namespace Cum
                     {
                         if (Math.Abs(f116) >= 1.0F)
                         {
-                            conto.p[i115].chip = 1;
-                            conto.p[i115].ctmag = f116;
+                            conto.P[i115].Chip = 1;
+                            conto.P[i115].Ctmag = f116;
                         }
-                        if (!conto.p[i115].nocol && conto.p[i115].glass != 1)
+                        if (!conto.P[i115].Nocol && conto.P[i115].Glass != 1)
                         {
-                            if (conto.p[i115].bfase > 20 && conto.p[i115].hsb[1] > 0.25)
+                            if (conto.P[i115].Bfase > 20 && conto.P[i115].HSB[1] > 0.25)
                             {
-                                conto.p[i115].hsb[1] = 0.25F;
+                                conto.P[i115].HSB[1] = 0.25F;
                             }
-                            if (conto.p[i115].bfase > 25 && conto.p[i115].hsb[2] > 0.7)
+                            if (conto.P[i115].Bfase > 25 && conto.P[i115].HSB[2] > 0.7)
                             {
-                                conto.p[i115].hsb[2] = 0.7F;
+                                conto.P[i115].HSB[2] = 0.7F;
                             }
-                            if (conto.p[i115].bfase > 30 && conto.p[i115].hsb[1] > 0.15)
+                            if (conto.P[i115].Bfase > 30 && conto.P[i115].HSB[1] > 0.15)
                             {
-                                conto.p[i115].hsb[1] = 0.15F;
+                                conto.P[i115].HSB[1] = 0.15F;
                             }
-                            if (conto.p[i115].bfase > 35 && conto.p[i115].hsb[2] > 0.6)
+                            if (conto.P[i115].Bfase > 35 && conto.P[i115].HSB[2] > 0.6)
                             {
-                                conto.p[i115].hsb[2] = 0.6F;
+                                conto.P[i115].HSB[2] = 0.6F;
                             }
-                            if (conto.p[i115].bfase > 40)
+                            if (conto.P[i115].Bfase > 40)
                             {
-                                conto.p[i115].hsb[0] = 0.075F;
+                                conto.P[i115].HSB[0] = 0.075F;
                             }
-                            if (conto.p[i115].bfase > 50 && conto.p[i115].hsb[2] > 0.5)
+                            if (conto.P[i115].Bfase > 50 && conto.P[i115].HSB[2] > 0.5)
                             {
-                                conto.p[i115].hsb[2] = 0.5F;
+                                conto.P[i115].HSB[2] = 0.5F;
                             }
-                            if (conto.p[i115].bfase > 60)
+                            if (conto.P[i115].Bfase > 60)
                             {
-                                conto.p[i115].hsb[0] = 0.05F;
+                                conto.P[i115].HSB[0] = 0.05F;
                             }
-                            conto.p[i115].bfase += (int)Math.Abs(f116);
-                            new Color(conto.p[i115].c[0], conto.p[i115].c[1], conto.p[i115].c[2]);
-                            Color color = Color.getHSBColor(conto.p[i115].hsb[0], conto.p[i115].hsb[1],
-                                conto.p[i115].hsb[2]);
-                            conto.p[i115].c[0] = color.getRed();
-                            conto.p[i115].c[1] = color.getGreen();
-                            conto.p[i115].c[2] = color.getBlue();
+                            conto.P[i115].Bfase += (int)Math.Abs(f116);
+                            new Color(conto.P[i115].C[0], conto.P[i115].C[1], conto.P[i115].C[2]);
+                            var color = Color.GetHSBColor(conto.P[i115].HSB[0], conto.P[i115].HSB[1],
+                                conto.P[i115].HSB[2]);
+                            conto.P[i115].C[0] = color.GetRed();
+                            conto.P[i115].C[1] = color.GetGreen();
+                            conto.P[i115].C[2] = color.GetBlue();
                         }
-                        if (conto.p[i115].glass == 1)
+                        if (conto.P[i115].Glass == 1)
                         {
-                            conto.p[i115].gr += (int)Math.Abs(f116 * 1.5);
+                            conto.P[i115].Gr += (int)Math.Abs(f116 * 1.5);
                         }
                     }
                 }
@@ -2789,124 +2789,124 @@ namespace Cum
             return i114;
         }
 
-        internal void reseto(int i, ContO conto) {
-            cn = i;
-            for (int i0 = 0; i0 < 8; i0++)
+        internal void Reseto(int i, ContO conto) {
+            Cn = i;
+            for (var i0 = 0; i0 < 8; i0++)
             {
-                dominate[i0] = false;
-                caught[i0] = false;
+                _dominate[i0] = false;
+                _caught[i0] = false;
             }
-            mxz = 0;
-            cxz = 0;
-            pzy = 0;
-            pxy = 0;
-            speed = 0.0F;
-            for (int i1 = 0; i1 < 4; i1++)
+            Mxz = 0;
+            Cxz = 0;
+            Pzy = 0;
+            Pxy = 0;
+            Speed = 0.0F;
+            for (var i1 = 0; i1 < 4; i1++)
             {
-                scy[i1] = 0.0F;
-                scx[i1] = 0.0F;
-                scz[i1] = 0.0F;
+                Scy[i1] = 0.0F;
+                Scx[i1] = 0.0F;
+                Scz[i1] = 0.0F;
             }
-            forca = ((float) Math.Sqrt(conto.keyz[0] * conto.keyz[0] + conto.keyx[0] * conto.keyx[0]) +
-                     (float) Math.Sqrt(conto.keyz[1] * conto.keyz[1] + conto.keyx[1] * conto.keyx[1]) +
-                     (float) Math.Sqrt(conto.keyz[2] * conto.keyz[2] + conto.keyx[2] * conto.keyx[2]) +
-                     (float) Math.Sqrt(conto.keyz[3] * conto.keyz[3] + conto.keyx[3] * conto.keyx[3])) / 10000.0F *
-                    (float) (stat.bounce - 0.3);
-            mtouch = false;
-            wtouch = false;
-            txz = 0;
-            fxz = 0;
-            pmlt = 1;
-            nmlt = 1;
-            dcnt = 0;
-            skid = 0;
-            pushed = false;
-            gtouch = false;
-            pl = false;
-            pr = false;
-            pd = false;
-            pu = false;
-            loop = 0;
-            ucomp = 0.0F;
-            dcomp = 0.0F;
-            lcomp = 0.0F;
-            rcomp = 0.0F;
-            lxz = 0;
-            travxy = 0;
-            travzy = 0;
-            travxz = 0;
-            rtab = false;
-            ftab = false;
-            btab = false;
-            powerup = 0.0F;
-            xtpower = 0;
-            trcnt = 0;
-            capcnt = 0;
-            tilt = 0.0F;
-            for (int i2 = 0; i2 < 4; i2++)
+            _forca = ((float) Math.Sqrt(conto.Keyz[0] * conto.Keyz[0] + conto.Keyx[0] * conto.Keyx[0]) +
+                     (float) Math.Sqrt(conto.Keyz[1] * conto.Keyz[1] + conto.Keyx[1] * conto.Keyx[1]) +
+                     (float) Math.Sqrt(conto.Keyz[2] * conto.Keyz[2] + conto.Keyx[2] * conto.Keyx[2]) +
+                     (float) Math.Sqrt(conto.Keyz[3] * conto.Keyz[3] + conto.Keyx[3] * conto.Keyx[3])) / 10000.0F *
+                    (float) (Stat.Bounce - 0.3);
+            Mtouch = false;
+            Wtouch = false;
+            Txz = 0;
+            _fxz = 0;
+            _pmlt = 1;
+            _nmlt = 1;
+            _dcnt = 0;
+            Skid = 0;
+            Pushed = false;
+            Gtouch = false;
+            Pl = false;
+            Pr = false;
+            Pd = false;
+            Pu = false;
+            Loop = 0;
+            Ucomp = 0.0F;
+            Dcomp = 0.0F;
+            Lcomp = 0.0F;
+            Rcomp = 0.0F;
+            _lxz = 0;
+            Travxy = 0;
+            Travzy = 0;
+            Travxz = 0;
+            Rtab = false;
+            Ftab = false;
+            Btab = false;
+            Powerup = 0.0F;
+            _xtpower = 0;
+            Trcnt = 0;
+            Capcnt = 0;
+            _tilt = 0.0F;
+            for (var i2 = 0; i2 < 4; i2++)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                for (var i3 = 0; i3 < 4; i3++)
                 {
-                    crank[i2,i3] = 0;
-                    lcrank[i2,i3] = 0;
+                    _crank[i2,i3] = 0;
+                    _lcrank[i2,i3] = 0;
                 }
             }
-            pcleared = CheckPoints.pcs;
-            clear = 0;
-            nlaps = 0;
-            focus = -1;
-            missedcp = 0;
-            nofocus = false;
-            power = 98.0F;
-            lastcolido = 0;
-            CheckPoints.dested[im] = 0;
-            squash = 0;
-            nbsq = 0;
-            hitmag = 0;
-            cntdest = 0;
-            dest = false;
-            newcar = false;
-            if (im == xtGraphics.im)
+            Pcleared = CheckPoints.Pcs;
+            Clear = 0;
+            Nlaps = 0;
+            _focus = -1;
+            Missedcp = 0;
+            Nofocus = false;
+            Power = 98.0F;
+            Lastcolido = 0;
+            CheckPoints.Dested[Im] = 0;
+            Squash = 0;
+            _nbsq = 0;
+            Hitmag = 0;
+            Cntdest = 0;
+            Dest = false;
+            Newcar = false;
+            if (Im == XTGraphics.Im)
             {
-                Medium.checkpoint = -1;
-                Medium.lastcheck = false;
+                Medium.Checkpoint = -1;
+                Medium.Lastcheck = false;
             }
-            rpdcatch = 0;
-            newedcar = 0;
-            fixes = -1;
-            if (CheckPoints.nfix == 1)
+            _rpdcatch = 0;
+            Newedcar = 0;
+            _fixes = -1;
+            if (CheckPoints.Nfix == 1)
             {
-                fixes = 4;
+                _fixes = 4;
             }
-            if (CheckPoints.nfix == 2)
+            if (CheckPoints.Nfix == 2)
             {
-                fixes = 3;
+                _fixes = 3;
             }
-            if (CheckPoints.nfix == 3)
+            if (CheckPoints.Nfix == 3)
             {
-                fixes = 2;
+                _fixes = 2;
             }
-            if (CheckPoints.nfix == 4)
+            if (CheckPoints.Nfix == 4)
             {
-                fixes = 1;
+                _fixes = 1;
             }
         }
 
-        private void rot(float[] fs, float[] fs134, int i, int i135, int i136, int
+        private void Rot(float[] fs, float[] fs134, int i, int i135, int i136, int
             i137) {
             if (i136 != 0)
             {
-                for (int i138 = 0; i138 < i137; i138++)
+                for (var i138 = 0; i138 < i137; i138++)
                 {
-                    float f = fs[i138];
-                    float f139 = fs134[i138];
-                    fs[i138] = i + ((f - i) * Medium.cos(i136) - (f139 - i135) * Medium.sin(i136));
-                    fs134[i138] = i135 + ((f - i) * Medium.sin(i136) + (f139 - i135) * Medium.cos(i136));
+                    var f = fs[i138];
+                    var f139 = fs134[i138];
+                    fs[i138] = i + ((f - i) * Medium.Cos(i136) - (f139 - i135) * Medium.Sin(i136));
+                    fs134[i138] = i135 + ((f - i) * Medium.Sin(i136) + (f139 - i135) * Medium.Cos(i136));
                 }
             }
         }
 
-        private int rpy(float f, float f140, float f141, float f142, float
+        private int Rpy(float f, float f140, float f141, float f142, float
             f143, float f144) {
             return (int) ((f - f140) * (f - f140) + (f141 - f142) * (f141 - f142) + (f143 - f144) * (f143 - f144));
         }

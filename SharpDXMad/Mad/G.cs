@@ -84,10 +84,10 @@ namespace MadGame
                 _currentColor = new SolidColorBrush(D2D, new RawColor4());
             }
             var currentColorColor = _currentColor.Color;
-            currentColorColor.R = color._r / 255f;
-            currentColorColor.G = color._g / 255f;
-            currentColorColor.B = color._b / 255f;
-            currentColorColor.A = color._a / 255f;
+            currentColorColor.R = color.R / 255f;
+            currentColorColor.G = color.G / 255f;
+            currentColorColor.B = color.B / 255f;
+            currentColorColor.A = color.A / 255f;
             _currentColor.Color = currentColorColor;
         }
 
@@ -110,7 +110,7 @@ namespace MadGame
 
         public static void DrawImage(Image image, int x, int y, object p3)
         {
-            D2D.DrawBitmap(image, new RectangleF(x, y, image.getWidth(null), image.getHeight(null)), 1.0f, BitmapInterpolationMode.NearestNeighbor);
+            D2D.DrawBitmap(image, new RectangleF(x, y, image.GetWidth(null), image.GetHeight(null)), 1.0f, BitmapInterpolationMode.NearestNeighbor);
         }
 
         public static void SetFont(Font p0)
