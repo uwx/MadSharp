@@ -93,11 +93,12 @@ namespace MadGame
 
         public static void FillRect(int x1, int y1, int width, int height)
         {
-            D2D.FillRectangle(new RectangleF(x1, y1, 800, 450), _currentColor);
+            D2D.FillRectangle(new RectangleF(x1, y1, width, height), _currentColor);
         }
 
-        public static void DrawLine(int i252, int i253, int i254, int i255)
+        public static void DrawLine(int x1, int y1, int x2, int y2)
         {
+            D2D.DrawLine(new RawVector2(x1, y1), new RawVector2(x2, y2), _currentColor);
             //throw new NotImplementedException();
         }
 
@@ -110,6 +111,7 @@ namespace MadGame
 
         public static void DrawImage(Image image, int x, int y, object p3)
         {
+            if (image == null) return;
             D2D.DrawBitmap(image, new RectangleF(x, y, image.GetWidth(null), image.GetHeight(null)), 1.0f, BitmapInterpolationMode.NearestNeighbor);
         }
 
@@ -129,7 +131,7 @@ namespace MadGame
 
         public static void DrawString(string text, int x, int y)
         {
-            D2D.DrawText(text, _textFormat, new RectangleF(x, y, 400, 400), _currentColor);
+            D2D.DrawText(text, _textFormat, new RectangleF(x, y - _fontCached.Metrics.Height(text), 400, 400), _currentColor);
         }
 
         public static void FillOval(int p0, int p1, int p2, int p3)
@@ -137,19 +139,29 @@ namespace MadGame
             //throw new NotImplementedException();
         }
 
-        public static void FillRoundRect(int i, int i1, int i2, int i3, int i4, int i5)
+        public static void FillRoundRect(int x, int y, int wid, int hei, int arcWid, int arcHei)
         {
-            //throw new NotImplementedException();
+            D2D.FillRoundedRectangle(new RoundedRectangle()
+            {
+                Rect = new RectangleF(x, y, wid, hei),
+                RadiusX = arcWid,
+                RadiusY = arcHei,
+            }, _currentColor);
         }
 
-        public static void DrawRoundRect(int p0, int p1, int p2, int p3, int p4, int p5)
+        public static void DrawRoundRect(int x, int y, int wid, int hei, int arcWid, int arcHei)
         {
-            //throw new NotImplementedException();
+            D2D.DrawRoundedRectangle(new RoundedRectangle()
+            {
+                Rect = new RectangleF(x, y, wid, hei),
+                RadiusX = arcWid,
+                RadiusY = arcHei,
+            }, _currentColor);
         }
 
-        public static void DrawRect(int p0, int p1, int p2, int p3)
+        public static void DrawRect(int x1, int y1, int width, int height)
         {
-            //throw new NotImplementedException();
+            D2D.DrawRectangle(new RectangleF(x1, y1, width, height), _currentColor);
         }
 
         public static void DrawImage(Image bggo, int p1, int i429, int p3, int i, object o)

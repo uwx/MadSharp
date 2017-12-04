@@ -1,5 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Rafael\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_MadGame.-872102625.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Rafael\Documents\GitHub\MadGame" t="IncludeFlat">
+      <e p="MadGame" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="Content" t="Include">
+            <e p="effects.fx" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Colors.cs" t="Include" />
+        <e p="ContO.cs" t="Include" />
+        <e p="Delauney.cs" t="Include" />
+        <e p="F51.cs" t="Include" />
+        <e p="Game1.cs" t="Include" />
+        <e p="Geometry" t="Include">
+          <e p="Edge.cs" t="Include" />
+          <e p="Point.cs" t="Include" />
+          <e p="PointN.cs" t="Include" />
+          <e p="Triangle.cs" t="Include" />
+        </e>
+        <e p="LilyPath" t="Include">
+          <e p="Brush.cs" t="Include" />
+          <e p="Brushes" t="Include">
+            <e p="CheckerBrush.cs" t="Include" />
+          </e>
+          <e p="DrawBatch.cs" t="Include" />
+          <e p="DrawCache.cs" t="Include" />
+          <e p="Enums.cs" t="Include" />
+          <e p="GraphicsPath.cs" t="Include" />
+          <e p="LineCapInfo.cs" t="Include" />
+          <e p="PathBuilder.cs" t="Include" />
+          <e p="Pen.cs" t="Include" />
+          <e p="Pens" t="Include">
+            <e p="GradientPen.cs" t="Include" />
+            <e p="PathGradientPen.cs" t="Include" />
+          </e>
+          <e p="Properties" t="Include">
+            <e p="AssemblyInfo.cs" t="Include" />
+            <e p="AssemblyInfo.WP8.cs" t="Include" />
+          </e>
+          <e p="Shapes" t="Include">
+            <e p="Grid.cs" t="Include" />
+          </e>
+          <e p="SolidColorBrush.cs" t="Include" />
+          <e p="TextureBrush.cs" t="Include" />
+          <e p="Triangulator.cs" t="Include" />
+          <e p="Utility" t="Include">
+            <e p="Buffer.cs" t="Include" />
+            <e p="PenWorkspace.cs" t="Include" />
+            <e p="Pool.cs" t="Include" />
+            <e p="Pools.cs" t="Include" />
+            <e p="ZeroList.cs" t="Include" />
+          </e>
+        </e>
+        <e p="MadGame.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Plane.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="RD.cs" t="Include" />
+        <e p="Triangle.NET" t="Include">
+          <e p="Data" t="Include">
+            <e p="A.node" t="Include" />
+            <e p="A.poly" t="Include" />
+            <e p="bird.json" t="Include" />
+            <e p="superior-1.ele" t="Include" />
+            <e p="superior-1.poly" t="Include" />
+            <e p="superior.poly" t="Include" />
+          </e>
+          <e p="MeshRenderer.Core" t="Include">
+            <e p="BoundingBox.cs" t="Include" />
+            <e p="ColorManager.cs" t="Include" />
+            <e p="ExtensionMethods.cs" t="Include" />
+            <e p="GDI" t="Include">
+              <e p="MeshRenderer.cs" t="Include" />
+              <e p="RenderControl.cs" t="Include" />
+              <e p="VoronoiRenderer.cs" t="Include" />
+            </e>
+            <e p="IMeshRenderer.cs" t="Include" />
+            <e p="MeshRenderer.Core.csproj" t="Include" />
+            <e p="MeshRenderer.Core.csproj.vspscc" t="Include" />
+            <e p="RenderData.cs" t="Include" />
+            <e p="RenderManager.cs" t="Include" />
+            <e p="Zoom.cs" t="Include" />
+          </e>
+          <e p="Triangle" t="Include">
+            <e p="Algorithm" t="Include">
+              <e p="Dwyer.cs" t="Include" />
+              <e p="Incremental.cs" t="Include" />
+              <e p="ITriangulator.cs" t="Include" />
+              <e p="SweepLine.cs" t="Include" />
+            </e>
+            <e p="BadTriQueue.cs" t="Include" />
+            <e p="Behavior.cs" t="Include" />
+            <e p="Carver.cs" t="Include" />
+            <e p="Data" t="Include">
+              <e p="BadSubseg.cs" t="Include" />
+              <e p="BadTriangle.cs" t="Include" />
+              <e p="Osub.cs" t="Include" />
+              <e p="Otri.cs" t="Include" />
+              <e p="Segment.cs" t="Include" />
+              <e p="Triangle.cs" t="Include" />
+              <e p="Vertex.cs" t="Include" />
+            </e>
+            <e p="Enums.cs" t="Include" />
+            <e p="Geometry" t="Include">
+              <e p="BoundingBox.cs" t="Include" />
+              <e p="Edge.cs" t="Include" />
+              <e p="EdgeEnumerator.cs" t="Include" />
+              <e p="InputGeometry.cs" t="Include" />
+              <e p="ISegment.cs" t="Include" />
+              <e p="ITriangle.cs" t="Include" />
+              <e p="Point.cs" t="Include" />
+              <e p="RegionPointer.cs" t="Include" />
+            </e>
+            <e p="IO" t="Include">
+              <e p="DataReader.cs" t="Include" />
+              <e p="DebugWriter.cs" t="Include" />
+              <e p="FileReader.cs" t="Include" />
+              <e p="FileWriter.cs" t="Include" />
+              <e p="IGeometryFormat.cs" t="Include" />
+              <e p="IMeshFormat.cs" t="Include" />
+              <e p="InputTriangle.cs" t="Include" />
+              <e p="TriangleFormat.cs" t="Include" />
+            </e>
+            <e p="Log" t="Include">
+              <e p="ILog.cs" t="Include" />
+              <e p="ILogItem.cs" t="Include" />
+              <e p="SimpleLog.cs" t="Include" />
+              <e p="SimpleLogItem.cs" t="Include" />
+            </e>
+            <e p="Mesh.cs" t="Include" />
+            <e p="NewLocation.cs" t="Include" />
+            <e p="Primitives.cs" t="Include" />
+            <e p="Quality.cs" t="Include" />
+            <e p="Sampler.cs" t="Include" />
+            <e p="Smoothing" t="Include">
+              <e p="ISmoother.cs" t="Include" />
+              <e p="SimpleSmoother.cs" t="Include" />
+            </e>
+            <e p="Tools" t="Include">
+              <e p="AdjacencyMatrix.cs" t="Include" />
+              <e p="BoundedVoronoi.cs" t="Include" />
+              <e p="CuthillMcKee.cs" t="Include" />
+              <e p="IVoronoi.cs" t="Include" />
+              <e p="QuadTree.cs" t="Include" />
+              <e p="QualityMeasure.cs" t="Include" />
+              <e p="RegionIterator.cs" t="Include" />
+              <e p="Statistic.cs" t="Include" />
+              <e p="Voronoi.cs" t="Include" />
+              <e p="VoronoiRegion.cs" t="Include" />
+            </e>
+            <e p="Triangle.csproj" t="Include" />
+            <e p="Triangle.csproj.vspscc" t="Include" />
+            <e p="TriangleLocator.cs" t="Include" />
+          </e>
+          <e p="Triangle.sln" t="Include" />
+          <e p="Triangle.vssscc" t="Include" />
+        </e>
+      </e>
+      <e p="MadGame.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="SharpDX-Samples-ed7e80cdcac145cf1864c6b9358a558e5fe8deb6\Desktop\Common" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DemoApp.cs" t="Include" />
+        <e p="DemoConfiguration.cs" t="Include" />
+        <e p="DemoTime.cs" t="Include" />
+        <e p="Direct2D1DemoApp.cs" t="Include" />
+        <e p="Direct2D1WinFormDemoApp.cs" t="Include" />
+        <e p="Direct3D11DemoApp.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SharpDX.Samples.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="SharpDXMad" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Images.cs" t="Include" />
+        <e p="Mad" t="Include">
+          <e p="Colors.cs" t="Include" />
+          <e p="ContO.cs" t="Include" />
+          <e p="F51.cs" t="Include" />
+          <e p="G.cs" t="Include" />
+          <e p="MadNFMM" t="Include">
+            <e p="CarDefine.cs" t="Include" />
+            <e p="CheckPoints.cs" t="Include" />
+            <e p="ContO.cs" t="Include" />
+            <e p="Control.cs" t="Include" />
+            <e p="GameSparker.cs" t="Include" />
+            <e p="Hansen.cs" t="Include" />
+            <e p="Mad.cs" t="Include" />
+            <e p="Medium.cs" t="Include" />
+            <e p="MouseHandler.cs" t="Include" />
+            <e p="Plane.cs" t="Include" />
+            <e p="Record.cs" t="Include" />
+            <e p="Smenu.cs" t="Include" />
+            <e p="Stat.cs" t="Include" />
+            <e p="Trackers.cs" t="Include" />
+            <e p="Util" t="Include">
+              <e p="StaticRandom.cs" t="Include" />
+            </e>
+            <e p="Utility.cs" t="Include" />
+            <e p="Wheels.cs" t="Include" />
+            <e p="xtGraphics.cs" t="Include" />
+            <e p="xtImages.cs" t="Include" />
+            <e p="xtPart2.cs" t="Include" />
+          </e>
+          <e p="Medium.cs" t="Include" />
+          <e p="Plane.cs" t="Include" />
+          <e p="Trackers.cs" t="Include" />
+          <e p="Wheels.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SharpDXMad.csproj" t="IncludeRecursive" />
+      </e>
+    </e>
+  </component>
   <component name="RiderRiderContentModelStore">
     <excludedPaths />
   </component>

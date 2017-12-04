@@ -19,3 +19,4 @@ C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\obj\Debug\SharpDXMad.exe
 C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\obj\Debug\SharpDXMad.pdb
 C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\bin\Debug\SharpDX.DirectInput.dll
 C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\bin\Debug\SharpDX.DirectInput.xml
+C:\Users\Rafael\Documents\GitHub\MadGame\SharpDXMad\obj\Debug\SharpDXMad.csproj.CoreCompileInputs.cache

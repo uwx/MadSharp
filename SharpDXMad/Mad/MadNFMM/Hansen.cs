@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using MadGame;
 using MiscUtil;
@@ -146,6 +147,11 @@ namespace Cum
         {
             return TextRenderer.MeasureText(astring, _font).Width;
         }
+
+        public int Height(string astring)
+        {
+            return TextRenderer.MeasureText(astring, _font).Height;
+        }
     }
 
     public struct CachedFont
@@ -196,57 +202,94 @@ namespace Cum
         public Color(int packed)//TODO uint
         {
             // TODO order?
-            B = (byte)(packed);
-            G = (byte)(packed >> 8);
-            R = (byte)(packed >> 16);
-            A = (byte)(packed >> 24);
+            B = (byte)(packed & 0xFF);
+            G = (byte)(packed >> 8 & 0xFF);
+            R = (byte)(packed >> 16 & 0xFF);
+            A = (byte)(packed >> 24 & 0xFF);
         }
         
         public Color(uint packed)
         {
             // TODO order?
-            B = (byte)(packed);
-            G = (byte)(packed >> 8);
-            R = (byte)(packed >> 16);
-            A = (byte)(packed >> 24);
+            B = (byte)(packed & 0xFF);
+            G = (byte)(packed >> 8 & 0xFF);
+            R = (byte)(packed >> 16 & 0xFF);
+            A = (byte)(packed >> 24 & 0xFF);
         }
 
-        public static Color GetHSBColor(float p0, float p1, float p2)
+        public static Color GetHSBColor(float hue, float saturation, float brightness)
         {
-            return new Color(Colors.HSBtoRGB(p0, p1, p2));
+            var v = Colors.HSBtoRGB(hue, saturation, brightness);
+            return new Color(v.r, v.g, v.b);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetRed()
         {
             return R;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetGreen()
         {
             return G;
         }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetBlue()
         {
             return B;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void RGBtoHSB(int i, int i1, int i2, float[] fs)
         {
             Colors.RGBtoHSB(i, i1, i2, fs);
         }
 
+        private const double Factor = 0.7;
+
         public Color Darker()
         {
-            throw new NotImplementedException();
+            return new Color(Math.Max((int)(R  *Factor), 0),
+                Math.Max((int)(G*Factor), 0),
+                Math.Max((int)(B *Factor), 0),
+                A);
         }
 
         public Color Brighter()
         {
-            throw new NotImplementedException();
+
+            var r = R;
+            var g = G;
+            var b = B;
+            var alpha = A;
+
+            /* From 2D group:
+             * 1. black.brighter() should return grey
+             * 2. applying brighter to blue will always return blue, brighter
+             * 3. non pure color (non zero rgb) will eventually return white
+             */
+            const int i = (int)(1.0/(1.0-Factor));
+            if ( r == 0 && g == 0 && b == 0) {
+                return new Color(i, i, i, alpha);
+            }
+            if ( r > 0 && r < i ) r = i;
+            if ( g > 0 && g < i ) g = i;
+            if ( b > 0 && b < i ) b = i;
+
+            return new Color(Math.Min((int)(r/Factor), 255),
+                Math.Min((int)(g/Factor), 255),
+                Math.Min((int)(b/Factor), 255),
+                alpha);
         }
 
         public int GetRGB()
         {
-            throw new NotImplementedException();
+            var packed = 0;
+            packed |= (byte)(B & 0xFF);
+            packed |= (byte)((G & 0xFF) >> 8);
+            packed |= (byte)((R & 0xFF) >> 16);
+            packed |= (byte)((A & 0xFF) >> 24);
+            return packed;
         }
     }
 

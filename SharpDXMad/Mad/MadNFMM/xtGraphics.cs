@@ -758,17 +758,24 @@ class XTGraphics {
         G.FillRect(735, 0, 65, 450);
         G.FillRect(65, 0, 670, 25);
         G.FillRect(65, 425, 670, 25);
-        if (Flatrstart == 6) {
-            //if (multion != 0 || testdrive == 1 || testdrive == 2)
-            G.DrawImage(Carsbgc, 65, 25, null);
-        } else if (Flatrstart <= 1) {
-            DrawSmokeCarsbg();
-        } else {
-            G.SetColor(new Color(255, 255, 255));
-            G.FillRect(65, 25, 670, 400);
-            Carsbginflex();
+        
+        G.DrawImage(Carsbg, 65, 25, null);
+        //if (Flatrstart == 6) {
+        //    //if (multion != 0 || testdrive == 1 || testdrive == 2)
+        //    G.DrawImage(Carsbgc, 65, 25, null);
+        //} else if (Flatrstart <= 1) {
+        //    DrawSmokeCarsbg();
+        //} else {
+        //    G.SetColor(new Color(255, 255, 255));
+        //    G.FillRect(65, 25, 670, 400);
+        //    Carsbginflex();
+        //    Flatrstart = 6;
+        //}
+        if (Flatrstart > 1)
+        {
             Flatrstart = 6;
         }
+
         G.DrawImage(Selectcar, 321, 37, null);
         if (Cfase == 3 || Cfase == 7 || Remi) {
             if (CarDefine.Lastload == 1) {
