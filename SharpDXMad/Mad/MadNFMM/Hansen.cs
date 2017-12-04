@@ -27,7 +27,7 @@ namespace Cum
             Id = id;
         }
     }
-    
+
     public class HansenData
     {
         public static void SetCookie(string[] lines)
@@ -35,12 +35,14 @@ namespace Cum
 //            throw new NotImplementedException();
         }
     }
+
     public static class HansenSystem
     {
         public static void ArrayCopy(int[] src, int srcPos, int[] dest, int destPos, int length)
         {
             Array.Copy(src, srcPos, dest, destPos, length);
         }
+
         public static void ArrayCopy<T>(T[] src, int srcPos, T[] dest, int destPos, int length)
         {
             Array.Copy(src, srcPos, dest, destPos, length);
@@ -53,7 +55,7 @@ namespace Cum
 
         public static void Exit(int i)
         {
-            if (Application.MessageLoop) 
+            if (Application.MessageLoop)
             {
                 // WinForms app
                 Application.Exit();
@@ -74,27 +76,28 @@ namespace Cum
         {
             return double.IsNaN(f) ? 0 : f;
         }
-        
+
         public static float CapF(this double f)
         {
             return (float) (double.IsNaN(f) ? 0 : f);
         }
     }
+
     public class HansenRandom
     {
-    
         public static double Double()
         {
             return StaticRandom.NextDouble();
         }
     }
-    
-    internal class Random {
+
+    internal class Random
+    {
         private System.Random _rand;
 
         public Random(long l)
         {
-            _rand = new System.Random((int)l);
+            _rand = new System.Random((int) l);
         }
 
         public double NextDouble()
@@ -165,7 +168,7 @@ namespace Cum
             Metrics = res.Item2;
         }
     }
-    
+
     public static class Fonts
     {
         private static readonly Dictionary<Font, CachedFont> Dict = new Dictionary<Font, CachedFont>();
@@ -183,7 +186,7 @@ namespace Cum
     public struct Color
     {
         public int R, G, B, A;
-        
+
         public Color(int r, int g, int b, int a)
         {
             R = r;
@@ -191,6 +194,7 @@ namespace Cum
             B = b;
             A = a;
         }
+
         public Color(int r, int g, int b)
         {
             R = r;
@@ -199,22 +203,22 @@ namespace Cum
             A = 255;
         }
 
-        public Color(int packed)//TODO uint
+        public Color(int packed) //TODO uint
         {
             // TODO order?
-            B = (byte)(packed & 0xFF);
-            G = (byte)(packed >> 8 & 0xFF);
-            R = (byte)(packed >> 16 & 0xFF);
-            A = (byte)(packed >> 24 & 0xFF);
+            B = (byte) (packed & 0xFF);
+            G = (byte) (packed >> 8 & 0xFF);
+            R = (byte) (packed >> 16 & 0xFF);
+            A = (byte) (packed >> 24 & 0xFF);
         }
-        
+
         public Color(uint packed)
         {
             // TODO order?
-            B = (byte)(packed & 0xFF);
-            G = (byte)(packed >> 8 & 0xFF);
-            R = (byte)(packed >> 16 & 0xFF);
-            A = (byte)(packed >> 24 & 0xFF);
+            B = (byte) (packed & 0xFF);
+            G = (byte) (packed >> 8 & 0xFF);
+            R = (byte) (packed >> 16 & 0xFF);
+            A = (byte) (packed >> 24 & 0xFF);
         }
 
         public static Color GetHSBColor(float hue, float saturation, float brightness)
@@ -228,11 +232,13 @@ namespace Cum
         {
             return R;
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetGreen()
         {
             return G;
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetBlue()
         {
@@ -249,15 +255,14 @@ namespace Cum
 
         public Color Darker()
         {
-            return new Color(Math.Max((int)(R  *Factor), 0),
-                Math.Max((int)(G*Factor), 0),
-                Math.Max((int)(B *Factor), 0),
+            return new Color(Math.Max((int) (R * Factor), 0),
+                Math.Max((int) (G * Factor), 0),
+                Math.Max((int) (B * Factor), 0),
                 A);
         }
 
         public Color Brighter()
         {
-
             var r = R;
             var g = G;
             var b = B;
@@ -268,27 +273,28 @@ namespace Cum
              * 2. applying brighter to blue will always return blue, brighter
              * 3. non pure color (non zero rgb) will eventually return white
              */
-            const int i = (int)(1.0/(1.0-Factor));
-            if ( r == 0 && g == 0 && b == 0) {
+            const int i = (int) (1.0 / (1.0 - Factor));
+            if (r == 0 && g == 0 && b == 0)
+            {
                 return new Color(i, i, i, alpha);
             }
-            if ( r > 0 && r < i ) r = i;
-            if ( g > 0 && g < i ) g = i;
-            if ( b > 0 && b < i ) b = i;
+            if (r > 0 && r < i) r = i;
+            if (g > 0 && g < i) g = i;
+            if (b > 0 && b < i) b = i;
 
-            return new Color(Math.Min((int)(r/Factor), 255),
-                Math.Min((int)(g/Factor), 255),
-                Math.Min((int)(b/Factor), 255),
+            return new Color(Math.Min((int) (r / Factor), 255),
+                Math.Min((int) (g / Factor), 255),
+                Math.Min((int) (b / Factor), 255),
                 alpha);
         }
 
         public int GetRGB()
         {
             var packed = 0;
-            packed |= (byte)(B & 0xFF);
-            packed |= (byte)((G & 0xFF) >> 8);
-            packed |= (byte)((R & 0xFF) >> 16);
-            packed |= (byte)((A & 0xFF) >> 24);
+            packed |= (byte) (B & 0xFF);
+            packed |= (byte) ((G & 0xFF) >> 8);
+            packed |= (byte) ((R & 0xFF) >> 16);
+            packed |= (byte) ((A & 0xFF) >> 24);
             return packed;
         }
     }
@@ -320,18 +326,18 @@ namespace Cum
 //            throw new NotImplementedException();
         }
     }
-    
+
     public static class ArrayExt
     {
         private static readonly System.Random Rng = new System.Random();
-        
+
         public static T[] CloneArray<T>(this T[] arr)
         {
             var to = new T[arr.Length];
             arr.CopyTo(to, 0);
             return to;
         }
-        
+
         public static T[] Slice<T>(this T[,] arr2, int i)
         {
             var len = arr2.GetLength(1);
@@ -352,7 +358,7 @@ namespace Cum
             }
             return arr;
         }
-        
+
         public static T[][][] New<T>(int l0, int l1, int l2)
         {
             var arr = new T[l0][][];
@@ -368,7 +374,8 @@ namespace Cum
         }
 
         public static void Sort<T>(T[] arr)
-        {//TODO
+        {
+//TODO
             Array.Sort(arr);
         }
 
@@ -379,13 +386,14 @@ namespace Cum
 
         public static List<T> Shuffle<T>(this List<T> list)
         {
-            var n = list.Count;  
-            while (n > 1) {  
-                n--;  
-                var k = Rng.Next(n + 1);  
-                var value = list[k];  
-                list[k] = list[n];  
-                list[n] = value;  
+            var n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                var k = Rng.Next(n + 1);
+                var value = list[k];
+                list[k] = list[n];
+                list[n] = value;
             }
             return list;
         }
@@ -394,22 +402,24 @@ namespace Cum
         {
             Array.Sort(arr, comparator);
         }
-        
+
         public static void Sort<T>(T[,] arr, Comparer<T[]> comparator)
         {
             Array.Sort(arr, comparator);
         }
-        
+
         ///<summary>Finds the index of the first item matching an expression in an enumerable.</summary>
         ///<param name="items">The enumerable to search.</param>
         ///<param name="predicate">The expression to test the items against.</param>
         ///<returns>The index of the first matching item, or -1 if no items match.</returns>
-        public static int FindIndex<T>(this IEnumerable<T> items, Func<T, bool> predicate) {
+        public static int FindIndex<T>(this IEnumerable<T> items, Func<T, bool> predicate)
+        {
             if (items == null) throw new ArgumentNullException(nameof(items));
             if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
             var retVal = 0;
-            foreach (var item in items) {
+            foreach (var item in items)
+            {
                 if (predicate(item)) return retVal;
                 retVal++;
             }
@@ -425,7 +435,8 @@ namespace Cum
             if (items == null) throw new ArgumentNullException(nameof(items));
 
             var retVal = 0;
-            foreach (var item in items) {
+            foreach (var item in items)
+            {
                 if (Equals(item, target)) return retVal;
                 retVal++;
             }
@@ -439,6 +450,7 @@ namespace Cum
         {
             return self.Length;
         }
+
         public static char CharAt(this string self, int at)
         {
             return self[at];
@@ -527,26 +539,29 @@ namespace Cum
     {
         private readonly int _width;
         private readonly int _height;
-        
+
         public Image(RenderTarget renderTarget, Size2 size) : base(renderTarget, size)
         {
             _width = size.Width;
             _height = size.Height;
         }
 
-        public Image(RenderTarget renderTarget, Size2 size, BitmapProperties bitmapProperties) : base(renderTarget, size, bitmapProperties)
+        public Image(RenderTarget renderTarget, Size2 size, BitmapProperties bitmapProperties) : base(renderTarget,
+            size, bitmapProperties)
         {
             _width = size.Width;
             _height = size.Height;
         }
 
-        public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch) : base(renderTarget, size, dataPointer, pitch)
+        public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch) : base(renderTarget,
+            size, dataPointer, pitch)
         {
             _width = size.Width;
             _height = size.Height;
         }
 
-        public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch, BitmapProperties bitmapProperties) : base(renderTarget, size, dataPointer, pitch, bitmapProperties)
+        public Image(RenderTarget renderTarget, Size2 size, DataPointer dataPointer, int pitch,
+            BitmapProperties bitmapProperties) : base(renderTarget, size, dataPointer, pitch, bitmapProperties)
         {
             _width = size.Width;
             _height = size.Height;
@@ -558,7 +573,8 @@ namespace Cum
             _height = (int) bitmap.Size.Height;
         }
 
-        public Image(RenderTarget renderTarget, Bitmap bitmap, BitmapProperties? bitmapProperties) : base(renderTarget, bitmap, bitmapProperties)
+        public Image(RenderTarget renderTarget, Bitmap bitmap, BitmapProperties? bitmapProperties) : base(renderTarget,
+            bitmap, bitmapProperties)
         {
             _width = (int) bitmap.Size.Width;
             _height = (int) bitmap.Size.Height;
@@ -570,7 +586,8 @@ namespace Cum
             _height = (int) Size.Height;
         }
 
-        public Image(RenderTarget renderTarget, Surface surface, BitmapProperties? bitmapProperties) : base(renderTarget, surface, bitmapProperties)
+        public Image(RenderTarget renderTarget, Surface surface, BitmapProperties? bitmapProperties) : base(
+            renderTarget, surface, bitmapProperties)
         {
             _width = (int) Size.Width;
             _height = (int) Size.Height;
@@ -582,7 +599,8 @@ namespace Cum
             _height = (int) Size.Height;
         }
 
-        public Image(RenderTarget renderTarget, BitmapLock bitmapLock, BitmapProperties? bitmapProperties) : base(renderTarget, bitmapLock, bitmapProperties)
+        public Image(RenderTarget renderTarget, BitmapLock bitmapLock, BitmapProperties? bitmapProperties) : base(
+            renderTarget, bitmapLock, bitmapProperties)
         {
             _width = (int) Size.Width;
             _height = (int) Size.Height;

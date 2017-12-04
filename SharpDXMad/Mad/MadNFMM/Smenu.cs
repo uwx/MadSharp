@@ -4,7 +4,6 @@ namespace Cum
 {
     public class Smenu
     {
-
         public bool Alphad = false;
         public bool Carsel = false;
         public int[] Iroom;
@@ -20,7 +19,7 @@ namespace Cum
         public string[] Sopts;
 
         public int W;
-        
+
         public int GetScreenSize()
         {
             return 250;
@@ -43,7 +42,8 @@ namespace Cum
          * @param graphics2d the graphics2d
          * @param astring     the astring
          */
-        public void Add(string astring) {
+        public void Add(string astring)
+        {
         }
 
         /**
@@ -61,7 +61,8 @@ namespace Cum
          * @param astring  the astring
          * @param string0 the string0
          */
-        public void Addw(string astring, string string0) {
+        public void Addw(string astring, string string0)
+        {
         }
 
         /**
@@ -83,7 +84,8 @@ namespace Cum
          * @return true, if successful
          */
         public bool Draw(int mousex, int
-            mousey, bool abool, int i5, bool bool6) {
+            mousey, bool abool, int i5, bool bool6)
+        {
             return false;
         }
 
@@ -101,7 +103,7 @@ namespace Cum
          */
         public Color GetBackground()
         {
-            return new Color(0,0,0);
+            return new Color(0, 0, 0);
         }
 
         /**
@@ -111,7 +113,7 @@ namespace Cum
          */
         public Color GetForeground()
         {
-            return new Color(0,0,0);
+            return new Color(0, 0, 0);
         }
 
         /**
@@ -187,7 +189,6 @@ namespace Cum
          */
         public void Hide()
         {
-            
         }
 
         /**
@@ -216,7 +217,8 @@ namespace Cum
          * @param i  the i
          * @param i3 the i3
          */
-        public void Move(int i, int i3) {
+        public void Move(int i, int i3)
+        {
         }
 
         /**
@@ -233,7 +235,6 @@ namespace Cum
          */
         public void RemoveAll()
         {
-            
         }
 
         /**
@@ -243,7 +244,6 @@ namespace Cum
          */
         public void Select(int i)
         {
-            
         }
 
         /**
@@ -287,7 +287,8 @@ namespace Cum
          * @param i  the i
          * @param i2 the i2
          */
-        public void SetSize(int i, int i2) {
+        public void SetSize(int i, int i2)
+        {
         }
 
         public void SetSize(int i)

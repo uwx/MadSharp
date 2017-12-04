@@ -1,5 +1,6 @@
 namespace Cum
 {
-    class MouseHandler {
+    class MouseHandler
+    {
     }
 }

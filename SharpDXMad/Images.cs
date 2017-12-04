@@ -19,7 +19,7 @@ namespace SharpDXMad
         public static Bitmap LoadFromFile(SharpDX.Direct2D1.RenderTarget renderTarget, string file)
         {
             // Loads from file using System.Drawing.Image
-            using (var bitmap = (System.Drawing.Bitmap)System.Drawing.Image.FromFile(file))
+            using (var bitmap = (System.Drawing.Bitmap) System.Drawing.Image.FromFile(file))
             {
                 return BitmapToImage(renderTarget, bitmap);
             }
@@ -34,7 +34,7 @@ namespace SharpDXMad
         public static Bitmap LoadFromFile(SharpDX.Direct2D1.RenderTarget renderTarget, byte[] file)
         {
             // Loads from file using System.Drawing.Image
-            using (var bitmap = (System.Drawing.Bitmap)System.Drawing.Image.FromStream(new MemoryStream(file)))
+            using (var bitmap = (System.Drawing.Bitmap) System.Drawing.Image.FromStream(new MemoryStream(file)))
             {
                 return BitmapToImage(renderTarget, bitmap);
             }

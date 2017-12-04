@@ -2,7 +2,6 @@ namespace MadGame
 {
     public class Trackers
     {
-
         public Trackers()
         {
             x = new int[100];
@@ -20,10 +19,10 @@ namespace MadGame
 
         public void prepare()
         {
-            for(var i = 0; i < nt; i++)
+            for (var i = 0; i < nt; i++)
                 _in[i] = false;
+        }
 
-        } 
         internal int[] x;
         internal int[] y;
         internal int[] z;

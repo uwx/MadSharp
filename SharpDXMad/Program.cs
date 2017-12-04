@@ -27,12 +27,12 @@ namespace MadGame
     /// </summary>
     public class Program : Direct2D1DemoApp
     {
-        private const int FrameDelay = (int)(1000 / 21f);
-        
+        private const int FrameDelay = (int) (1000 / 21f);
+
         private static readonly Stopwatch Stopwatch = new Stopwatch();
-        
+
         public GameSparker GameSparker { get; set; }
-        
+
         protected override void Initialize(DemoConfiguration demoConfiguration)
         {
             base.Initialize(demoConfiguration);
@@ -61,20 +61,20 @@ namespace MadGame
         protected override void Draw(DemoTime time)
         {
             Stopwatch.Reset();
-            
+
             base.Draw(time);
 
             // Draw the TextLayout
             //RenderTarget2D.DrawBitmap(_bitmap, 1.0f, Direct2D1.BitmapInterpolationMode.Linear);
-            
+
             if (GameSparker == null)
             {
                 GameSparker = GameSparker.Create();
             }
-            
+
             GameSparker.GameTick();
 
-            var delay = FrameDelay - (int)Stopwatch.ElapsedMilliseconds;
+            var delay = FrameDelay - (int) Stopwatch.ElapsedMilliseconds;
             if (delay > 0)
             {
                 Thread.Sleep(delay);
@@ -94,7 +94,7 @@ namespace MadGame
             const bool isDown = false;
             HandleKeyPress(args, isDown);
         }
-        
+
         private void MouseUp(object sender, MouseEventArgs e)
         {
             GameSparker.MouseReleased(e.X, e.Y);
@@ -123,5 +123,5 @@ namespace MadGame
             var program = new Program();
             program.SetupAndRun();
         }
-}
+    }
 }

@@ -15,7 +15,7 @@ namespace Cum
         internal int Cntdest;
         private int _cntouch;
         private bool _colidim;
-        private readonly int[,] _crank = new int[4,4];
+        private readonly int[,] _crank = new int[4, 4];
         internal int Cxz;
         private int _dcnt;
         internal float Dcomp;
@@ -32,7 +32,7 @@ namespace Cum
         internal int Im;
         internal int Lastcolido;
         internal float Lcomp;
-        private readonly int[,] _lcrank = new int[4,4];
+        private readonly int[,] _lcrank = new int[4, 4];
         internal int Loop;
         private int _lxz;
         internal int Missedcp;
@@ -79,7 +79,8 @@ namespace Cum
         internal bool Wtouch;
         private int _xtpower;
 
-        internal Mad(Stat stat, int i) {
+        internal Mad(Stat stat, int i)
+        {
             Stat = stat;
             Im = i;
         }
@@ -89,7 +90,8 @@ namespace Cum
             Stat = stat;
         }
 
-        internal void Colide(ContO conto, Mad mad118, ContO conto119) {
+        internal void Colide(ContO conto, Mad mad118, ContO conto119)
+        {
             var fs = new float[4];
             var fs120 = new float[4];
             var fs121 = new float[4];
@@ -134,7 +136,7 @@ namespace Cum
                         Math.Abs(mad118.Power * mad118.Speed * mad118.Stat.Moment))
                     {
                         _dominate[mad118.Im] = Math.Abs(Power * Speed * Stat.Moment) >
-                                              Math.Abs(mad118.Power * mad118.Speed * mad118.Stat.Moment);
+                                               Math.Abs(mad118.Power * mad118.Speed * mad118.Stat.Moment);
                     }
                     else _dominate[mad118.Im] = Stat.Moment > mad118.Stat.Moment;
                     _caught[mad118.Im] = true;
@@ -303,7 +305,8 @@ namespace Cum
                 }
         }
 
-        internal void Drive(Control control, ContO conto) {
+        internal void Drive(Control control, ContO conto)
+        {
             var i = 1;
             var i4 = 1;
             var abool = false;
@@ -313,7 +316,6 @@ namespace Cum
             int i7;
             for (i7 = Math.Abs(Pzy); i7 > 270; i7 -= 360)
             {
-
             }
             i7 = Math.Abs(i7);
             if (i7 > 90)
@@ -324,7 +326,6 @@ namespace Cum
             int i9;
             for (i9 = Math.Abs(Pxy); i9 > 270; i9 -= 360)
             {
-
             }
             i9 = Math.Abs(i9);
             if (i9 > 90)
@@ -438,14 +439,14 @@ namespace Cum
                         }
                         if (Ucomp < 20.0F)
                         {
-                            Ucomp += (int)(0.5 * Stat.Airs);
+                            Ucomp += (int) (0.5 * Stat.Airs);
                         }
                         f = -Stat.Airc * Medium.Sin(conto.Xz) * i4;
                         f11 = Stat.Airc * Medium.Cos(conto.Xz) * i4;
                     }
                     else if (Ucomp != 0.0F && Ucomp > -2.0F)
                     {
-                        Ucomp -= (int)(0.5 * Stat.Airs);
+                        Ucomp -= (int) (0.5 * Stat.Airs);
                     }
                     if (control.Down)
                     {
@@ -464,13 +465,13 @@ namespace Cum
                         }
                         if (Dcomp < 20.0F)
                         {
-                            Dcomp += (int)(0.5 * Stat.Airs);
+                            Dcomp += (int) (0.5 * Stat.Airs);
                         }
                         f12 = -Stat.Airc;
                     }
                     else if (Dcomp != 0.0F && Ucomp > -2.0F)
                     {
-                        Dcomp -= (int)(0.5 * Stat.Airs);
+                        Dcomp -= (int) (0.5 * Stat.Airs);
                     }
                     if (control.Left)
                     {
@@ -506,16 +507,16 @@ namespace Cum
                     {
                         Rcomp -= 2.0F * Stat.Airs;
                     }
-                    Pzy += (int)((Dcomp - Ucomp) * Medium.Cos(Pxy));
+                    Pzy += (int) ((Dcomp - Ucomp) * Medium.Cos(Pxy));
                     if (abool)
                     {
-                        conto.Xz += (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
+                        conto.Xz += (int) ((Dcomp - Ucomp) * Medium.Sin(Pxy));
                     }
                     else
                     {
-                        conto.Xz -= (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
+                        conto.Xz -= (int) ((Dcomp - Ucomp) * Medium.Sin(Pxy));
                     }
-                    Pxy += (int)(Rcomp - Lcomp);
+                    Pxy += (int) (Rcomp - Lcomp);
                 }
                 else
                 {
@@ -667,16 +668,16 @@ namespace Cum
                             }
                             Pd = false;
                         }
-                        Pzy += (int)((Dcomp - Ucomp) * Medium.Cos(Pxy));
+                        Pzy += (int) ((Dcomp - Ucomp) * Medium.Cos(Pxy));
                         if (abool)
                         {
-                            conto.Xz += (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
+                            conto.Xz += (int) ((Dcomp - Ucomp) * Medium.Sin(Pxy));
                         }
                         else
                         {
-                            conto.Xz -= (int)((Dcomp - Ucomp) * Medium.Sin(Pxy));
+                            conto.Xz -= (int) ((Dcomp - Ucomp) * Medium.Sin(Pxy));
                         }
-                        Pxy += (int)(Rcomp - Lcomp);
+                        Pxy += (int) (Rcomp - Lcomp);
                     }
                 }
             var f20 = 20.0F * Speed / (154.0F * Stat.Simag);
@@ -684,7 +685,7 @@ namespace Cum
             {
                 f20 = 20.0F;
             }
-            conto.Wzy -= (int)(f20);
+            conto.Wzy -= (int) (f20);
             if (conto.Wzy < -30)
             {
                 conto.Wzy += 30;
@@ -783,7 +784,7 @@ namespace Cum
                     }
                 if (Math.Abs(Mxz - Cxz) < 30)
                 {
-                    Cxz += (int)((Mxz - Cxz) / 4.0F);
+                    Cxz += (int) ((Mxz - Cxz) / 4.0F);
                 }
                 else
                 {
@@ -858,9 +859,9 @@ namespace Cum
                 i31 = 0;
             }
             var i32 = 1;
-            for (var i33 = 0; i33 < Trackers.Sect[i30,i31].Length; i33++)
+            for (var i33 = 0; i33 < Trackers.Sect[i30, i31].Length; i33++)
             {
-                var i34 = Trackers.Sect[i30,i31][i33];
+                var i34 = Trackers.Sect[i30, i31][i33];
                 if (Math.Abs(Trackers.Zy[i34]) != 90 && Math.Abs(Trackers.Xy[i34]) != 90 &&
                     Math.Abs(conto.X - Trackers.X[i34]) < Trackers.Radx[i34] &&
                     Math.Abs(conto.Z - Trackers.Z[i34]) < Trackers.Radz[i34] &&
@@ -891,11 +892,11 @@ namespace Cum
                 }
                 if (i32 == 1)
                 {
-                    f35 = (int)(f35 * 0.75);
+                    f35 = (int) (f35 * 0.75);
                 }
                 if (i32 == 2)
                 {
-                    f35 = (int)(f35 * 0.55);
+                    f35 = (int) (f35 * 0.55);
                 }
                 var i36 = -(int) (Speed * Medium.Sin(conto.Xz) * Medium.Cos(Pzy));
                 var i37 = (int) (Speed * Medium.Cos(conto.Xz) * Medium.Cos(Pzy));
@@ -1157,9 +1158,9 @@ namespace Cum
                     }
             }
             var i53 = 0;
-            for (var i54 = 0; i54 < Trackers.Sect[i30,i31].Length; i54++)
+            for (var i54 = 0; i54 < Trackers.Sect[i30, i31].Length; i54++)
             {
-                var i55 = Trackers.Sect[i30,i31][i54];
+                var i55 = Trackers.Sect[i30, i31][i54];
                 var i56 = 0;
                 var i57 = 0;
                 for (var i58 = 0; i58 < 4; i58++)
@@ -1246,13 +1247,13 @@ namespace Cum
                             fs22[i58] = Trackers.Z[i55] + Trackers.Radz[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
-                                _crank[0,i58]++;
+                                _crank[0, i58]++;
                             }
                             if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                _crank[0,i58]++;
+                                _crank[0, i58]++;
                             }
-                            if (_crank[0,i58] > 1)
+                            if (_crank[0, i58] > 1)
                             {
                                 conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
                                 if (Im == XTGraphics.Im)
@@ -1296,13 +1297,13 @@ namespace Cum
                             fs22[i58] = Trackers.Z[i55] - Trackers.Radz[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
-                                _crank[1,i58]++;
+                                _crank[1, i58]++;
                             }
                             if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                _crank[1,i58]++;
+                                _crank[1, i58]++;
                             }
-                            if (_crank[1,i58] > 1)
+                            if (_crank[1, i58] > 1)
                             {
                                 conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
                                 if (Im == XTGraphics.Im)
@@ -1346,13 +1347,13 @@ namespace Cum
                             fs[i58] = Trackers.X[i55] + Trackers.Radx[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
-                                _crank[2,i58]++;
+                                _crank[2, i58]++;
                             }
                             if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                _crank[2,i58]++;
+                                _crank[2, i58]++;
                             }
-                            if (_crank[2,i58] > 1)
+                            if (_crank[2, i58] > 1)
                             {
                                 conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
                                 if (Im == XTGraphics.Im)
@@ -1396,13 +1397,13 @@ namespace Cum
                             fs[i58] = Trackers.X[i55] - Trackers.Radx[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
-                                _crank[3,i58]++;
+                                _crank[3, i58]++;
                             }
                             if (Trackers.Skd[i55] == 5 && Medium.Random() > Medium.Random())
                             {
-                                _crank[3,i58]++;
+                                _crank[3, i58]++;
                             }
-                            if (_crank[3,i58] > 1)
+                            if (_crank[3, i58] > 1)
                             {
                                 conto.Spark(fs[i58], fs23[i58], fs22[i58], Scx[i58], Scy[i58], Scz[i58], 0);
                                 if (Im == XTGraphics.Im)
@@ -1444,11 +1445,11 @@ namespace Cum
                                 f70 = 1.0F;
                             }
                             var f71 = Trackers.Y[i55] +
-                                              ((fs23[i58] - Trackers.Y[i55]) * Medium.Cos(i69) -
-                                               (fs22[i58] - Trackers.Z[i55]) * Medium.Sin(i69));
+                                      ((fs23[i58] - Trackers.Y[i55]) * Medium.Cos(i69) -
+                                       (fs22[i58] - Trackers.Z[i55]) * Medium.Sin(i69));
                             var f72 = Trackers.Z[i55] +
-                                        ((fs23[i58] - Trackers.Y[i55]) * Medium.Sin(i69) +
-                                         (fs22[i58] - Trackers.Z[i55]) * Medium.Cos(i69));
+                                      ((fs23[i58] - Trackers.Y[i55]) * Medium.Sin(i69) +
+                                       (fs22[i58] - Trackers.Z[i55]) * Medium.Cos(i69));
                             if (f72 > Trackers.Z[i55] && f72 < Trackers.Z[i55] + 200)
                             {
                                 Scy[i58] -= (f72 - Trackers.Z[i55]) / f70;
@@ -1498,11 +1499,11 @@ namespace Cum
                                 f75 = 1.0F;
                             }
                             var f76 = Trackers.Y[i55] +
-                                              ((fs23[i58] - Trackers.Y[i55]) * Medium.Cos(i74) -
-                                               (fs[i58] - Trackers.X[i55]) * Medium.Sin(i74));
+                                      ((fs23[i58] - Trackers.Y[i55]) * Medium.Cos(i74) -
+                                       (fs[i58] - Trackers.X[i55]) * Medium.Sin(i74));
                             var f77 = Trackers.X[i55] +
-                                        ((fs23[i58] - Trackers.Y[i55]) * Medium.Sin(i74) +
-                                         (fs[i58] - Trackers.X[i55]) * Medium.Cos(i74));
+                                      ((fs23[i58] - Trackers.Y[i55]) * Medium.Sin(i74) +
+                                       (fs[i58] - Trackers.X[i55]) * Medium.Cos(i74));
                             if (f77 > Trackers.X[i55] && f77 < Trackers.X[i55] + 200)
                             {
                                 Scy[i58] -= (f77 - Trackers.X[i55]) / f75;
@@ -1562,11 +1563,11 @@ namespace Cum
             {
                 for (var i80 = 0; i80 < 4; i80++)
                 {
-                    if (_crank[i79,i80] == _lcrank[i79,i80])
+                    if (_crank[i79, i80] == _lcrank[i79, i80])
                     {
-                        _crank[i79,i80] = 0;
+                        _crank[i79, i80] = 0;
                     }
-                    _lcrank[i79,i80] = _crank[i79,i80];
+                    _lcrank[i79, i80] = _crank[i79, i80];
                 }
             }
             var i81 = 0;
@@ -1662,7 +1663,6 @@ namespace Cum
                 int i85;
                 for (i85 = Math.Abs(conto.Xz + 45); i85 > 180; i85 -= 360)
                 {
-
                 }
                 if (Math.Abs(i85) > 90)
                 {
@@ -1674,7 +1674,6 @@ namespace Cum
                 }
                 for (i85 = Math.Abs(conto.Xz - 45); i85 > 180; i85 -= 360)
                 {
-
                 }
                 if (Math.Abs(i85) > 90)
                 {
@@ -1685,8 +1684,9 @@ namespace Cum
                     _nmlt = -1;
                 }
             }
-            conto.Xz += (int)(_forca * (Scz[0] * _nmlt - Scz[1] * _pmlt + Scz[2] * _pmlt - Scz[3] * _nmlt + Scx[0] * _pmlt +
-                                 Scx[1] * _nmlt - Scx[2] * _nmlt - Scx[3] * _pmlt));
+            conto.Xz += (int) (_forca * (Scz[0] * _nmlt - Scz[1] * _pmlt + Scz[2] * _pmlt - Scz[3] * _nmlt +
+                                         Scx[0] * _pmlt +
+                                         Scx[1] * _nmlt - Scx[2] * _nmlt - Scx[3] * _pmlt));
             if (Math.Abs(i82) > Math.Abs(i81))
             {
                 i81 = i82;
@@ -1866,10 +1866,10 @@ namespace Cum
                 {
                     _tilt = 0.0F;
                 }
-                conto.Xy += (int)_tilt;
+                conto.Xy += (int) _tilt;
                 if (Gtouch)
                 {
-                    conto.Y -= (int)(_tilt / 1.5f);
+                    conto.Y -= (int) (_tilt / 1.5f);
                 }
             }
             else if (_tilt != 0.0F)
@@ -2000,7 +2000,6 @@ namespace Cum
                     Medium.Checkpoint >= CheckPoints.Nsp;
                     Medium.Checkpoint -= CheckPoints.Nsp)
                 {
-
                 }
                 if (Clear == CheckPoints.Nlaps * CheckPoints.Nsp - 1)
                 {
@@ -2179,7 +2178,7 @@ namespace Cum
                 }
                 if (Loop == 2 || Loop == -1)
                 {
-                    Travxy += (int)(Rcomp - Lcomp);
+                    Travxy += (int) (Rcomp - Lcomp);
                     if (Math.Abs(Travxy) > 135)
                     {
                         Rtab = true;
@@ -2395,11 +2394,13 @@ namespace Cum
             }
         }
 
-        private int Py(int i, int i145, int i146, int i147) {
+        private int Py(int i, int i145, int i146, int i147)
+        {
             return (i - i145) * (i - i145) + (i146 - i147) * (i146 - i147);
         }
 
-        private int Regx(int i, float f, ContO conto) {
+        private int Regx(int i, float f, ContO conto)
+        {
             var i110 = 0;
             var abool = true;
             if (XTGraphics.Multion == 1 && XTGraphics.Im != Im)
@@ -2439,12 +2440,12 @@ namespace Cum
                                 conto.P[i111].Oz[i113]) < Stat.Clrad)
                         {
                             f112 = f / 20.0F * Medium.Random();
-                            conto.P[i111].Oz[i113] -= (int)(f112 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Zy));
-                            conto.P[i111].Ox[i113] += (int)(f112 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Xy));
+                            conto.P[i111].Oz[i113] -= (int) (f112 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Zy));
+                            conto.P[i111].Ox[i113] += (int) (f112 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Xy));
                             if (abool)
                             {
-                                Hitmag += (int)Math.Abs(f112);
-                                i110 += (int)Math.Abs(f112);
+                                Hitmag += (int) Math.Abs(f112);
+                                i110 += (int) Math.Abs(f112);
                             }
                         }
                     if (f112 != 0.0F)
@@ -2484,7 +2485,7 @@ namespace Cum
                             {
                                 conto.P[i111].HSB[0] = 0.05F;
                             }
-                            conto.P[i111].Bfase += (int)Math.Abs(f112);
+                            conto.P[i111].Bfase += (int) Math.Abs(f112);
                             new Color(conto.P[i111].C[0], conto.P[i111].C[1], conto.P[i111].C[2]);
                             var color = Color.GetHSBColor(conto.P[i111].HSB[0], conto.P[i111].HSB[1],
                                 conto.P[i111].HSB[2]);
@@ -2494,7 +2495,7 @@ namespace Cum
                         }
                         if (conto.P[i111].Glass == 1)
                         {
-                            conto.P[i111].Gr += (int)Math.Abs(f112 * 1.5);
+                            conto.P[i111].Gr += (int) Math.Abs(f112 * 1.5);
                         }
                     }
                 }
@@ -2502,7 +2503,8 @@ namespace Cum
             return i110;
         }
 
-        private int Regy(int i, float f, ContO conto) {
+        private int Regy(int i, float f, ContO conto)
+        {
             var i97 = 0;
             var abool = true;
             if (XTGraphics.Multion == 1 && XTGraphics.Im != Im)
@@ -2528,11 +2530,9 @@ namespace Cum
                 var i101 = conto.Xy;
                 for ( /**/; i100 < 360; i100 += 360)
                 {
-
                 }
                 for ( /**/; i100 > 360; i100 -= 360)
                 {
-
                 }
                 if (i100 < 210 && i100 > 150)
                 {
@@ -2544,11 +2544,9 @@ namespace Cum
                 }
                 for ( /**/; i101 < 360; i101 += 360)
                 {
-
                 }
                 for ( /**/; i101 > 360; i101 -= 360)
                 {
-
                 }
                 if (i101 < 210 && i101 > 150)
                 {
@@ -2576,12 +2574,12 @@ namespace Cum
                                     conto.P[i102].Oz[i104]) < Stat.Clrad)
                             {
                                 f103 = f / 20.0F * Medium.Random();
-                                conto.P[i102].Oz[i104] += (int)(f103 * Medium.Sin(i100));
-                                conto.P[i102].Ox[i104] -= (int)(f103 * Medium.Sin(i101));
+                                conto.P[i102].Oz[i104] += (int) (f103 * Medium.Sin(i100));
+                                conto.P[i102].Ox[i104] -= (int) (f103 * Medium.Sin(i101));
                                 if (abool)
                                 {
-                                    Hitmag += (int)Math.Abs(f103);
-                                    i97 += (int)Math.Abs(f103);
+                                    Hitmag += (int) Math.Abs(f103);
+                                    i97 += (int) Math.Abs(f103);
                                 }
                             }
                         if (f103 != 0.0F)
@@ -2621,7 +2619,7 @@ namespace Cum
                                 {
                                     conto.P[i102].HSB[0] = 0.05F;
                                 }
-                                conto.P[i102].Bfase += (int)f103;
+                                conto.P[i102].Bfase += (int) f103;
                                 new Color(conto.P[i102].C[0], conto.P[i102].C[1], conto.P[i102].C[2]);
                                 var color = Color.GetHSBColor(conto.P[i102].HSB[0], conto.P[i102].HSB[1],
                                     conto.P[i102].HSB[2]);
@@ -2631,7 +2629,7 @@ namespace Cum
                             }
                             if (conto.P[i102].Glass == 1)
                             {
-                                conto.P[i102].Gr += (int)Math.Abs(f103 * 1.5);
+                                conto.P[i102].Gr += (int) Math.Abs(f103 * 1.5);
                             }
                         }
                     }
@@ -2651,13 +2649,13 @@ namespace Cum
                                     if ((Math.Abs(conto.P[i107].Oy[i109] - Stat.Flipy - Squash) < Stat.Msquash * 3 ||
                                          conto.P[i107].Oy[i109] < Stat.Flipy + Squash) && Squash < Stat.Msquash)
                                     {
-                                        conto.P[i107].Oy[i109] += (int)f108;
-                                        i105 += (int)f108;
+                                        conto.P[i107].Oy[i109] += (int) f108;
+                                        i105 += (int) f108;
                                         i106++;
                                         if (abool)
                                         {
-                                            Hitmag += (int)Math.Abs(f108);
-                                            i97 += (int)Math.Abs(f108);
+                                            Hitmag += (int) Math.Abs(f108);
+                                            i97 += (int) Math.Abs(f108);
                                         }
                                     }
                                 }
@@ -2667,7 +2665,7 @@ namespace Cum
                             }
                             else if (f108 != 0.0F)
                             {
-                                conto.P[i107].Bfase += (int)f108;
+                                conto.P[i107].Bfase += (int) f108;
                             }
                             if (Math.Abs(f108) >= 1.0F)
                             {
@@ -2686,7 +2684,8 @@ namespace Cum
             return i97;
         }
 
-        private int Regz(int i, float f, ContO conto) {
+        private int Regz(int i, float f, ContO conto)
+        {
             var i114 = 0;
             var abool = true;
             if (XTGraphics.Multion == 1 && XTGraphics.Im != Im)
@@ -2726,12 +2725,12 @@ namespace Cum
                                 conto.P[i115].Oz[i117]) < Stat.Clrad)
                         {
                             f116 = f / 20.0F * Medium.Random();
-                            conto.P[i115].Oz[i117] += (int)(f116 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Zy));
-                            conto.P[i115].Ox[i117] += (int)(f116 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Xy));
+                            conto.P[i115].Oz[i117] += (int) (f116 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Zy));
+                            conto.P[i115].Ox[i117] += (int) (f116 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Xy));
                             if (abool)
                             {
-                                Hitmag += (int)Math.Abs(f116);
-                                i114 += (int)Math.Abs(f116);
+                                Hitmag += (int) Math.Abs(f116);
+                                i114 += (int) Math.Abs(f116);
                             }
                         }
                     if (f116 != 0.0F)
@@ -2771,7 +2770,7 @@ namespace Cum
                             {
                                 conto.P[i115].HSB[0] = 0.05F;
                             }
-                            conto.P[i115].Bfase += (int)Math.Abs(f116);
+                            conto.P[i115].Bfase += (int) Math.Abs(f116);
                             new Color(conto.P[i115].C[0], conto.P[i115].C[1], conto.P[i115].C[2]);
                             var color = Color.GetHSBColor(conto.P[i115].HSB[0], conto.P[i115].HSB[1],
                                 conto.P[i115].HSB[2]);
@@ -2781,7 +2780,7 @@ namespace Cum
                         }
                         if (conto.P[i115].Glass == 1)
                         {
-                            conto.P[i115].Gr += (int)Math.Abs(f116 * 1.5);
+                            conto.P[i115].Gr += (int) Math.Abs(f116 * 1.5);
                         }
                     }
                 }
@@ -2789,7 +2788,8 @@ namespace Cum
             return i114;
         }
 
-        internal void Reseto(int i, ContO conto) {
+        internal void Reseto(int i, ContO conto)
+        {
             Cn = i;
             for (var i0 = 0; i0 < 8; i0++)
             {
@@ -2808,10 +2808,10 @@ namespace Cum
                 Scz[i1] = 0.0F;
             }
             _forca = ((float) Math.Sqrt(conto.Keyz[0] * conto.Keyz[0] + conto.Keyx[0] * conto.Keyx[0]) +
-                     (float) Math.Sqrt(conto.Keyz[1] * conto.Keyz[1] + conto.Keyx[1] * conto.Keyx[1]) +
-                     (float) Math.Sqrt(conto.Keyz[2] * conto.Keyz[2] + conto.Keyx[2] * conto.Keyx[2]) +
-                     (float) Math.Sqrt(conto.Keyz[3] * conto.Keyz[3] + conto.Keyx[3] * conto.Keyx[3])) / 10000.0F *
-                    (float) (Stat.Bounce - 0.3);
+                      (float) Math.Sqrt(conto.Keyz[1] * conto.Keyz[1] + conto.Keyx[1] * conto.Keyx[1]) +
+                      (float) Math.Sqrt(conto.Keyz[2] * conto.Keyz[2] + conto.Keyx[2] * conto.Keyx[2]) +
+                      (float) Math.Sqrt(conto.Keyz[3] * conto.Keyz[3] + conto.Keyx[3] * conto.Keyx[3])) / 10000.0F *
+                     (float) (Stat.Bounce - 0.3);
             Mtouch = false;
             Wtouch = false;
             Txz = 0;
@@ -2847,8 +2847,8 @@ namespace Cum
             {
                 for (var i3 = 0; i3 < 4; i3++)
                 {
-                    _crank[i2,i3] = 0;
-                    _lcrank[i2,i3] = 0;
+                    _crank[i2, i3] = 0;
+                    _lcrank[i2, i3] = 0;
                 }
             }
             Pcleared = CheckPoints.Pcs;
@@ -2893,7 +2893,8 @@ namespace Cum
         }
 
         private void Rot(float[] fs, float[] fs134, int i, int i135, int i136, int
-            i137) {
+            i137)
+        {
             if (i136 != 0)
             {
                 for (var i138 = 0; i138 < i137; i138++)
@@ -2907,7 +2908,8 @@ namespace Cum
         }
 
         private int Rpy(float f, float f140, float f141, float f142, float
-            f143, float f144) {
+            f143, float f144)
+        {
             return (int) ((f - f140) * (f - f140) + (f141 - f142) * (f141 - f142) + (f143 - f144) * (f143 - f144));
         }
     }

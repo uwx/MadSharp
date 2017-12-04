@@ -505,7 +505,8 @@ namespace Cum
                         var p = Getint("maxl", astring, 2);
                         for (var q = 0; q < n; q++)
                         {
-                            _stageContos[_nob] = new ContO(_contos[29], o, Medium.Ground - _contos[29].Grat, q * 4800 + p,
+                            _stageContos[_nob] = new ContO(_contos[29], o, Medium.Ground - _contos[29].Grat,
+                                q * 4800 + p,
                                 180);
                             _nob++;
                         }
@@ -530,7 +531,8 @@ namespace Cum
                         var p = Getint("maxt", astring, 2);
                         for (var q = 0; q < n; q++)
                         {
-                            _stageContos[_nob] = new ContO(_contos[29], q * 4800 + p, Medium.Ground - _contos[29].Grat, o,
+                            _stageContos[_nob] = new ContO(_contos[29], q * 4800 + p, Medium.Ground - _contos[29].Grat,
+                                o,
                                 90);
                             _nob++;
                         }
@@ -555,7 +557,8 @@ namespace Cum
                         var p = Getint("maxb", astring, 2);
                         for (var q = 0; q < n; q++)
                         {
-                            _stageContos[_nob] = new ContO(_contos[29], q * 4800 + p, Medium.Ground - _contos[29].Grat, o,
+                            _stageContos[_nob] = new ContO(_contos[29], q * 4800 + p, Medium.Ground - _contos[29].Grat,
+                                o,
                                 -90);
                             _nob++;
                         }
@@ -2837,7 +2840,8 @@ namespace Cum
                             {
                                 _clicknowtime++;
                             }
-                            if ((_clicknowtime == 0 || _clicknowtime == 20 || _clicknowtime == 40 || _clicknowtime == 60) &&
+                            if ((_clicknowtime == 0 || _clicknowtime == 20 || _clicknowtime == 40 ||
+                                 _clicknowtime == 60) &&
                                 ++_recordtime == 300)
                             {
                                 _recordtime = 0;
@@ -2903,7 +2907,8 @@ namespace Cum
                             {
                                 _clicknowtime++;
                             }
-                            if ((_clicknowtime == 0 || _clicknowtime == 20 || _clicknowtime == 40 || _clicknowtime == 60 ||
+                            if ((_clicknowtime == 0 || _clicknowtime == 20 || _clicknowtime == 40 ||
+                                 _clicknowtime == 60 ||
                                  _clicknowtime == 80) && ++_recordtime == 300)
                             {
                                 _recordtime = 0;
@@ -2920,7 +2925,7 @@ namespace Cum
                             G.FillRect(0, 0, 800, 450);
                         }
                         if (_wastedpoint == 69 && (_clicknowtime == 3 || _clicknowtime == 5 || _clicknowtime == 31 ||
-                                                  _clicknowtime == 33 || _clicknowtime == 66 || _clicknowtime == 68))
+                                                   _clicknowtime == 33 || _clicknowtime == 66 || _clicknowtime == 68))
                         {
                             G.SetColor(new Color(255, 255, 255));
                             G.FillRect(0, 0, 800, 450);

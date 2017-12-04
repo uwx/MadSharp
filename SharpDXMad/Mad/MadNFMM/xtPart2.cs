@@ -9,10 +9,9 @@ namespace Cum
 {
     public class XTPart2
     {
-        
-    static internal Image Loadude(byte[] ais)
-    {
-        return ImageIo.Read(ais);
+        static internal Image Loadude(byte[] ais)
+        {
+            return ImageIo.Read(ais);
 //        Image image = ImageIO.read(ais);
 //        int i = image.getHeight(null);
 //        int i364 = image.getWidth(null);
@@ -35,356 +34,451 @@ namespace Cum
 //        BufferedImage bufferedimage = new BufferedImage(i364, i, 2);
 //        bufferedimage.setRGB(0, 0, i364, i, is365, 0, i364);
 //        return bufferedimage;
-    }
+        }
 
-    internal static void Mainbg(int i) {
-        var i26 = 2;
-        G.SetColor(new Color(191, 184, 124));
-        if (i == -1) {
-            if (i != Lmode) {
-                Bgmy[0] = 0;
-                Bgmy[1] = -400;
-                Bgup = false;
-                Bgf = 0.0F;
-                Lmode = i;
-            }
-            G.SetColor(new Color(144, 222, 9));
-            i26 = 8;
-        }
-        if (i == 0) {
-            if (i != Lmode) {
-                Bgmy[0] = 0;
-                Bgmy[1] = -400;
-                Bgup = false;
-                Bgf = 0.0F;
-                Lmode = i;
-            }
-            var i27 = (int) (255.0F * Bgf + 191.0F * (1.0F - Bgf));
-            var i28 = (int) (176.0F * Bgf + 184.0F * (1.0F - Bgf));
-            var i29 = (int) (67.0F * Bgf + 124.0F * (1.0F - Bgf));
-            if (!Bgup) {
-                Bgf += 0.02F;
-                if (Bgf > 0.9F) {
-                    Bgf = 0.9F;
-                    Bgup = true;
-                }
-            } else {
-                Bgf -= 0.02F;
-                if (Bgf < 0.2F) {
-                    Bgf = 0.2F;
+        internal static void Mainbg(int i)
+        {
+            var i26 = 2;
+            G.SetColor(new Color(191, 184, 124));
+            if (i == -1)
+            {
+                if (i != Lmode)
+                {
+                    Bgmy[0] = 0;
+                    Bgmy[1] = -400;
                     Bgup = false;
+                    Bgf = 0.0F;
+                    Lmode = i;
                 }
+                G.SetColor(new Color(144, 222, 9));
+                i26 = 8;
             }
-            G.SetColor(new Color(i27, i28, i29));
-            i26 = 4;
-        }
-        if (i == 1) {
-            if (i != Lmode) {
-                Bgmy[0] = 0;
-                Bgmy[1] = -400;
-                Lmode = i;
-            }
-            G.SetColor(new Color(255, 176, 67));
-            i26 = 8;
-        }
-        if (i == 2) {
-            if (i != Lmode) {
-                Bgmy[0] = 0;
-                Bgmy[1] = -400;
-                Lmode = i;
-                Bgf = 0.2F;
-            }
-            G.SetColor(new Color(188, 170, 122));
-            if (Flipo == 16) {
-                var i30 = (int) (176.0F * Bgf + 191.0F * (1.0F - Bgf));
-                var i31 = (int) (202.0F * Bgf + 184.0F * (1.0F - Bgf));
-                var i32 = (int) (255.0F * Bgf + 124.0F * (1.0F - Bgf));
-                G.SetColor(new Color(i30, i31, i32));
-                Bgf += 0.025F;
-                if (Bgf > 0.85F) {
-                    Bgf = 0.85F;
-                }
-            } else {
-                Bgf = 0.2F;
-            }
-            i26 = 2;
-        }
-        if (i == 3) {
-            if (i != Lmode) {
-                Bgmy[0] = 0;
-                Bgmy[1] = -400;
-                Bgup = false;
-                Bgf = 0.0F;
-                Lmode = i;
-            }
-            var i33 = (int) (255.0F * Bgf + 191.0F * (1.0F - Bgf));
-            var i34 = (int) (176.0F * Bgf + 184.0F * (1.0F - Bgf));
-            var i35 = (int) (67.0F * Bgf + 124.0F * (1.0F - Bgf));
-            if (!Bgup) {
-                Bgf += 0.02F;
-                if (Bgf > 0.9F) {
-                    Bgf = 0.9F;
-                    Bgup = true;
-                }
-            } else {
-                Bgf -= 0.02F;
-                if (Bgf < 0.2F) {
-                    Bgf = 0.2F;
+            if (i == 0)
+            {
+                if (i != Lmode)
+                {
+                    Bgmy[0] = 0;
+                    Bgmy[1] = -400;
                     Bgup = false;
+                    Bgf = 0.0F;
+                    Lmode = i;
                 }
-            }
-            G.SetColor(new Color(i33, i34, i35));
-            i26 = 2;
-        }
-        if (i != -101)
-            if (i == 4) {
-                G.SetColor(new Color(216, 177, 100));
-                G.FillRect(65, 0, 670, 425);
-            } else {
-                G.FillRect(65, 25, 670, 400);
-            }
-        if (i == 4) {
-            if (i != Lmode) {
-                Bgmy[0] = 0;
-                Bgmy[1] = 400;
-                for (var i36 = 0; i36 < 4; i36++) {
-                    Ovw[i36] = (int) (50.0 + 150.0 * HansenRandom.Double());
-                    Ovh[i36] = (int) (50.0 + 150.0 * HansenRandom.Double());
-                    Ovy[i36] = (int) (400.0 * HansenRandom.Double());
-                    Ovx[i36] = (int) (HansenRandom.Double() * 670.0);
-                    Ovsx[i36] = (int) (5.0 + HansenRandom.Double() * 10.0);
+                var i27 = (int) (255.0F * Bgf + 191.0F * (1.0F - Bgf));
+                var i28 = (int) (176.0F * Bgf + 184.0F * (1.0F - Bgf));
+                var i29 = (int) (67.0F * Bgf + 124.0F * (1.0F - Bgf));
+                if (!Bgup)
+                {
+                    Bgf += 0.02F;
+                    if (Bgf > 0.9F)
+                    {
+                        Bgf = 0.9F;
+                        Bgup = true;
+                    }
                 }
-                Lmode = i;
+                else
+                {
+                    Bgf -= 0.02F;
+                    if (Bgf < 0.2F)
+                    {
+                        Bgf = 0.2F;
+                        Bgup = false;
+                    }
+                }
+                G.SetColor(new Color(i27, i28, i29));
+                i26 = 4;
             }
-            for (var i37 = 0; i37 < 4; i37++) {
-                G.SetColor(new Color(235, 176, 84));
-                G.FillOval((int) (65 + Ovx[i37] - Ovw[i37] * 1.5 / 2.0), (int) (25 + Ovy[i37] - Ovh[i37] * 1.5 / 2.0), (int) (Ovw[i37] * 1.5), (int) (Ovh[i37] * 1.5));
+            if (i == 1)
+            {
+                if (i != Lmode)
+                {
+                    Bgmy[0] = 0;
+                    Bgmy[1] = -400;
+                    Lmode = i;
+                }
                 G.SetColor(new Color(255, 176, 67));
-                G.FillOval(65 + Ovx[i37] - Ovh[i37] / 2, 25 + Ovy[i37] - Ovh[i37] / 2, Ovw[i37], Ovh[i37]);
-                Ovx[i37] -= Ovsx[i37];
-                if (Ovx[i37] + Ovw[i37] * 1.5 / 2.0 < 0.0) {
-                    Ovw[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
-                    Ovh[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
-                    Ovy[i37] = (int) (400.0 * HansenRandom.Double());
-                    Ovx[i37] = (int) (670.0 + Ovw[i37] * 1.5 / 2.0);
-                    Ovsx[i37] = (int) (5.0 + HansenRandom.Double() * 10.0);
+                i26 = 8;
+            }
+            if (i == 2)
+            {
+                if (i != Lmode)
+                {
+                    Bgmy[0] = 0;
+                    Bgmy[1] = -400;
+                    Lmode = i;
+                    Bgf = 0.2F;
+                }
+                G.SetColor(new Color(188, 170, 122));
+                if (Flipo == 16)
+                {
+                    var i30 = (int) (176.0F * Bgf + 191.0F * (1.0F - Bgf));
+                    var i31 = (int) (202.0F * Bgf + 184.0F * (1.0F - Bgf));
+                    var i32 = (int) (255.0F * Bgf + 124.0F * (1.0F - Bgf));
+                    G.SetColor(new Color(i30, i31, i32));
+                    Bgf += 0.025F;
+                    if (Bgf > 0.85F)
+                    {
+                        Bgf = 0.85F;
+                    }
+                }
+                else
+                {
+                    Bgf = 0.2F;
+                }
+                i26 = 2;
+            }
+            if (i == 3)
+            {
+                if (i != Lmode)
+                {
+                    Bgmy[0] = 0;
+                    Bgmy[1] = -400;
+                    Bgup = false;
+                    Bgf = 0.0F;
+                    Lmode = i;
+                }
+                var i33 = (int) (255.0F * Bgf + 191.0F * (1.0F - Bgf));
+                var i34 = (int) (176.0F * Bgf + 184.0F * (1.0F - Bgf));
+                var i35 = (int) (67.0F * Bgf + 124.0F * (1.0F - Bgf));
+                if (!Bgup)
+                {
+                    Bgf += 0.02F;
+                    if (Bgf > 0.9F)
+                    {
+                        Bgf = 0.9F;
+                        Bgup = true;
+                    }
+                }
+                else
+                {
+                    Bgf -= 0.02F;
+                    if (Bgf < 0.2F)
+                    {
+                        Bgf = 0.2F;
+                        Bgup = false;
+                    }
+                }
+                G.SetColor(new Color(i33, i34, i35));
+                i26 = 2;
+            }
+            if (i != -101)
+                if (i == 4)
+                {
+                    G.SetColor(new Color(216, 177, 100));
+                    G.FillRect(65, 0, 670, 425);
+                }
+                else
+                {
+                    G.FillRect(65, 25, 670, 400);
+                }
+            if (i == 4)
+            {
+                if (i != Lmode)
+                {
+                    Bgmy[0] = 0;
+                    Bgmy[1] = 400;
+                    for (var i36 = 0; i36 < 4; i36++)
+                    {
+                        Ovw[i36] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                        Ovh[i36] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                        Ovy[i36] = (int) (400.0 * HansenRandom.Double());
+                        Ovx[i36] = (int) (HansenRandom.Double() * 670.0);
+                        Ovsx[i36] = (int) (5.0 + HansenRandom.Double() * 10.0);
+                    }
+                    Lmode = i;
+                }
+                for (var i37 = 0; i37 < 4; i37++)
+                {
+                    G.SetColor(new Color(235, 176, 84));
+                    G.FillOval((int) (65 + Ovx[i37] - Ovw[i37] * 1.5 / 2.0),
+                        (int) (25 + Ovy[i37] - Ovh[i37] * 1.5 / 2.0), (int) (Ovw[i37] * 1.5), (int) (Ovh[i37] * 1.5));
+                    G.SetColor(new Color(255, 176, 67));
+                    G.FillOval(65 + Ovx[i37] - Ovh[i37] / 2, 25 + Ovy[i37] - Ovh[i37] / 2, Ovw[i37], Ovh[i37]);
+                    Ovx[i37] -= Ovsx[i37];
+                    if (Ovx[i37] + Ovw[i37] * 1.5 / 2.0 < 0.0)
+                    {
+                        Ovw[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                        Ovh[i37] = (int) (50.0 + 150.0 * HansenRandom.Double());
+                        Ovy[i37] = (int) (400.0 * HansenRandom.Double());
+                        Ovx[i37] = (int) (670.0 + Ovw[i37] * 1.5 / 2.0);
+                        Ovsx[i37] = (int) (5.0 + HansenRandom.Double() * 10.0);
+                    }
                 }
             }
-        }
-        if (i != -101 && i != 4) {
-            for (var i38 = 0; i38 < 2; i38++) {
-                if (i != 2 || Flipo != 16) {
-                    G.DrawImage(Bgmain, 65, 25 + Bgmy[i38], null);
-                }
-                Bgmy[i38] += i26;
-                if (Bgmy[i38] >= 400) {
-                    Bgmy[i38] = -400;
+            if (i != -101 && i != 4)
+            {
+                for (var i38 = 0; i38 < 2; i38++)
+                {
+                    if (i != 2 || Flipo != 16)
+                    {
+                        G.DrawImage(Bgmain, 65, 25 + Bgmy[i38], null);
+                    }
+                    Bgmy[i38] += i26;
+                    if (Bgmy[i38] >= 400)
+                    {
+                        Bgmy[i38] = -400;
+                    }
                 }
             }
+            G.SetColor(new Color(0, 0, 0));
+            G.FillRect(0, 0, 65, 450);
+            G.FillRect(735, 0, 65, 450);
+            if (i != 4)
+            {
+                G.FillRect(65, 0, 670, 25);
+            }
+            G.FillRect(65, 425, 670, 25);
         }
-        G.SetColor(new Color(0, 0, 0));
-        G.FillRect(0, 0, 65, 450);
-        G.FillRect(735, 0, 65, 450);
-        if (i != 4) {
-            G.FillRect(65, 0, 670, 25);
-        }
-        G.FillRect(65, 425, 670, 25);
-    }
 
-        internal static void Maini(Control control) {
-        if (Flipo == 0) {
-            //app.setCursor(new Cursor(0));
-            Flipo++;
-        }
-        Mainbg(1);
-        G.SetAlpha(0.6F);
-        G.DrawImage(Logomadbg, 65, 25, null);
-        G.SetAlpha(1.0F);
-        G.DrawImage(Logomadnes, 233, 186, null);
-        var f = Flkat / 800.0F;
-        if (f > 0.2) {
-            f = 0.2F;
-        }
-        if (Flkat > 200) {
-            f = (400 - Flkat) / 1000.0F;
-            if (f < 0.0F) {
-                f = 0.0F;
+        internal static void Maini(Control control)
+        {
+            if (Flipo == 0)
+            {
+                //app.setCursor(new Cursor(0));
+                Flipo++;
             }
-        }
-        Flkat++;
-        if (Flkat == 400) {
-            Flkat = 0;
-        }
-        G.SetAlpha(f);
-        G.DrawImage(Dude[0], 351 + Gxdu, 28 + Gydu, null);
-        G.SetAlpha(1.0F);
-        if (Movly == 0) {
-            Gxdu = (int) (5.0 - 11.0 * HansenRandom.Double());
-            Gydu = (int) (5.0 - 11.0 * HansenRandom.Double());
-        }
-        Movly++;
-        if (Movly == 2) {
-            Movly = 0;
-        }
-        G.DrawImage(Logocars, 66, 33, null);
-        G.DrawImage(Opback, 247, 237, null);
-        if (Muhi < 0) {
-            G.SetColor(new Color(140, 70, 0));
-            G.FillRoundRect(335, 293, 114, 19, 7, 20);
-        }
-        Muhi--;
-        if (Muhi < -5) {
-            Muhi = 50;
-        }
-        if (control.Up) {
-            Opselect--;
-            if (Opselect == -1) {
-                Opselect = 3;
+            Mainbg(1);
+            G.SetAlpha(0.6F);
+            G.DrawImage(Logomadbg, 65, 25, null);
+            G.SetAlpha(1.0F);
+            G.DrawImage(Logomadnes, 233, 186, null);
+            var f = Flkat / 800.0F;
+            if (f > 0.2)
+            {
+                f = 0.2F;
             }
-            control.Up = false;
-        }
-        if (control.Down) {
-            Opselect++;
-            if (Opselect == 4) {
-                Opselect = 0;
-            }
-            control.Down = false;
-        }
-        if (Opselect == 0) {
-            if (Shaded) {
-                G.SetColor(new Color(140, 70, 0));
-                G.FillRect(343, 261, 110, 22);
-                Aflk = false;
-            }
-            if (Aflk) {
-                G.SetColor(new Color(200, 200, 0));
-                Aflk = false;
-            } else {
-                G.SetColor(new Color(255, 128, 0));
-                Aflk = true;
-            }
-            G.DrawRoundRect(343, 261, 110, 22, 7, 20);
-        } else {
-            G.SetColor(new Color(0, 0, 0));
-            G.DrawRoundRect(343, 261, 110, 22, 7, 20);
-        }
-        if (Opselect == 1) {
-            if (Shaded) {
-                G.SetColor(new Color(140, 70, 0));
-                G.FillRect(288, 291, 221, 22);
-                Aflk = false;
-            }
-            if (Aflk) {
-                G.SetColor(new Color(200, 191, 0));
-                Aflk = false;
-            } else {
-                G.SetColor(new Color(255, 95, 0));
-                Aflk = true;
-            }
-            G.DrawRoundRect(288, 291, 221, 22, 7, 20);
-        } else {
-            G.SetColor(new Color(0, 0, 0));
-            G.DrawRoundRect(288, 291, 221, 22, 7, 20);
-        }
-        if (Opselect == 2) {
-            if (Shaded) {
-                G.SetColor(new Color(140, 70, 0));
-                G.FillRect(301, 321, 196, 22);
-                Aflk = false;
-            }
-            if (Aflk) {
-                G.SetColor(new Color(200, 128, 0));
-                Aflk = false;
-            } else {
-                G.SetColor(new Color(255, 128, 0));
-                Aflk = true;
-            }
-            G.DrawRoundRect(301, 321, 196, 22, 7, 20);
-        } else {
-            G.SetColor(new Color(0, 0, 0));
-            G.DrawRoundRect(301, 321, 196, 22, 7, 20);
-        }
-        if (Opselect == 3) {
-            if (Shaded) {
-                G.SetColor(new Color(140, 70, 0));
-                G.FillRect(357, 351, 85, 22);
-                Aflk = false;
-            }
-            if (Aflk) {
-                G.SetColor(new Color(200, 0, 0));
-                Aflk = false;
-            } else {
-                G.SetColor(new Color(255, 128, 0));
-                Aflk = true;
-            }
-            G.DrawRoundRect(357, 351, 85, 22, 7, 20);
-        } else {
-            G.SetColor(new Color(0, 0, 0));
-            G.DrawRoundRect(357, 351, 85, 22, 7, 20);
-        }
-        G.DrawImage(Opti, 294, 265, null);
-        if (control.Enter || control.Handb) {
-            if (Opselect == 1) {
-                Mtop = true;
-                Multion = 1;
-                Gmode = 0;
-                if (Firstime) {
-                    Oldfase = -9;
-                    Fase = 11;
-                    Firstime = false;
-                } else {
-                    Fase = -9;
+            if (Flkat > 200)
+            {
+                f = (400 - Flkat) / 1000.0F;
+                if (f < 0.0F)
+                {
+                    f = 0.0F;
                 }
             }
-            if (Opselect == 2) {
-                Oldfase = 10;
-                Fase = 11;
-                Firstime = false;
+            Flkat++;
+            if (Flkat == 400)
+            {
+                Flkat = 0;
             }
-            if (Opselect == 3) {
-                Fase = 8;
+            G.SetAlpha(f);
+            G.DrawImage(Dude[0], 351 + Gxdu, 28 + Gydu, null);
+            G.SetAlpha(1.0F);
+            if (Movly == 0)
+            {
+                Gxdu = (int) (5.0 - 11.0 * HansenRandom.Double());
+                Gydu = (int) (5.0 - 11.0 * HansenRandom.Double());
+            }
+            Movly++;
+            if (Movly == 2)
+            {
+                Movly = 0;
+            }
+            G.DrawImage(Logocars, 66, 33, null);
+            G.DrawImage(Opback, 247, 237, null);
+            if (Muhi < 0)
+            {
+                G.SetColor(new Color(140, 70, 0));
+                G.FillRoundRect(335, 293, 114, 19, 7, 20);
+            }
+            Muhi--;
+            if (Muhi < -5)
+            {
+                Muhi = 50;
+            }
+            if (control.Up)
+            {
+                Opselect--;
+                if (Opselect == -1)
+                {
+                    Opselect = 3;
+                }
+                control.Up = false;
+            }
+            if (control.Down)
+            {
+                Opselect++;
+                if (Opselect == 4)
+                {
+                    Opselect = 0;
+                }
+                control.Down = false;
             }
             if (Opselect == 0)
-                /*if (unlocked[0] == 11)
-                	if (unlocked[1] != 17)
-                		opselect = 1;
-                	else
-                		opselect = 2;*/
-                if (Firstime) {
-                    Oldfase = 102;
+            {
+                if (Shaded)
+                {
+                    G.SetColor(new Color(140, 70, 0));
+                    G.FillRect(343, 261, 110, 22);
+                    Aflk = false;
+                }
+                if (Aflk)
+                {
+                    G.SetColor(new Color(200, 200, 0));
+                    Aflk = false;
+                }
+                else
+                {
+                    G.SetColor(new Color(255, 128, 0));
+                    Aflk = true;
+                }
+                G.DrawRoundRect(343, 261, 110, 22, 7, 20);
+            }
+            else
+            {
+                G.SetColor(new Color(0, 0, 0));
+                G.DrawRoundRect(343, 261, 110, 22, 7, 20);
+            }
+            if (Opselect == 1)
+            {
+                if (Shaded)
+                {
+                    G.SetColor(new Color(140, 70, 0));
+                    G.FillRect(288, 291, 221, 22);
+                    Aflk = false;
+                }
+                if (Aflk)
+                {
+                    G.SetColor(new Color(200, 191, 0));
+                    Aflk = false;
+                }
+                else
+                {
+                    G.SetColor(new Color(255, 95, 0));
+                    Aflk = true;
+                }
+                G.DrawRoundRect(288, 291, 221, 22, 7, 20);
+            }
+            else
+            {
+                G.SetColor(new Color(0, 0, 0));
+                G.DrawRoundRect(288, 291, 221, 22, 7, 20);
+            }
+            if (Opselect == 2)
+            {
+                if (Shaded)
+                {
+                    G.SetColor(new Color(140, 70, 0));
+                    G.FillRect(301, 321, 196, 22);
+                    Aflk = false;
+                }
+                if (Aflk)
+                {
+                    G.SetColor(new Color(200, 128, 0));
+                    Aflk = false;
+                }
+                else
+                {
+                    G.SetColor(new Color(255, 128, 0));
+                    Aflk = true;
+                }
+                G.DrawRoundRect(301, 321, 196, 22, 7, 20);
+            }
+            else
+            {
+                G.SetColor(new Color(0, 0, 0));
+                G.DrawRoundRect(301, 321, 196, 22, 7, 20);
+            }
+            if (Opselect == 3)
+            {
+                if (Shaded)
+                {
+                    G.SetColor(new Color(140, 70, 0));
+                    G.FillRect(357, 351, 85, 22);
+                    Aflk = false;
+                }
+                if (Aflk)
+                {
+                    G.SetColor(new Color(200, 0, 0));
+                    Aflk = false;
+                }
+                else
+                {
+                    G.SetColor(new Color(255, 128, 0));
+                    Aflk = true;
+                }
+                G.DrawRoundRect(357, 351, 85, 22, 7, 20);
+            }
+            else
+            {
+                G.SetColor(new Color(0, 0, 0));
+                G.DrawRoundRect(357, 351, 85, 22, 7, 20);
+            }
+            G.DrawImage(Opti, 294, 265, null);
+            if (control.Enter || control.Handb)
+            {
+                if (Opselect == 1)
+                {
+                    Mtop = true;
+                    Multion = 1;
+                    Gmode = 0;
+                    if (Firstime)
+                    {
+                        Oldfase = -9;
+                        Fase = 11;
+                        Firstime = false;
+                    }
+                    else
+                    {
+                        Fase = -9;
+                    }
+                }
+                if (Opselect == 2)
+                {
+                    Oldfase = 10;
                     Fase = 11;
                     Firstime = false;
-                } else {
-                    Fase = 102;
                 }
-            Flipo = 0;
-            control.Enter = false;
-            control.Handb = false;
-        }
-        G.DrawImage(Byrd, 72, 410, null);
-        G.DrawImage(Nfmcoms, 567, 410, null);
-        if (Shaded) {
-            //app.repaint();
-            try {
-                HansenSystem.RequestSleep(200L);
-            } catch (Exception ignored) {
-
+                if (Opselect == 3)
+                {
+                    Fase = 8;
+                }
+                if (Opselect == 0)
+                    /*if (unlocked[0] == 11)
+                        if (unlocked[1] != 17)
+                            opselect = 1;
+                        else
+                            opselect = 2;*/
+                    if (Firstime)
+                    {
+                        Oldfase = 102;
+                        Fase = 11;
+                        Firstime = false;
+                    }
+                    else
+                    {
+                        Fase = 102;
+                    }
+                Flipo = 0;
+                control.Enter = false;
+                control.Handb = false;
+            }
+            G.DrawImage(Byrd, 72, 410, null);
+            G.DrawImage(Nfmcoms, 567, 410, null);
+            if (Shaded)
+            {
+                //app.repaint();
+                try
+                {
+                    HansenSystem.RequestSleep(200L);
+                }
+                catch (Exception ignored)
+                {
+                }
             }
         }
-    }
 
-    internal static void Maini2() {
-        Mainbg(1);
-        Multion = 0;
-        Clangame = 0;
-        Gmode = 2;
-        Fase = -9;
-        Opselect = 0;
-    }
+        internal static void Maini2()
+        {
+            Mainbg(1);
+            Multion = 0;
+            Clangame = 0;
+            Gmode = 2;
+            Fase = -9;
+            Opselect = 0;
+        }
 
         internal static void Makecarsbgc(Image image, Image image386)
-    {
-        Carsbgc = Carsbg; // TODO
+        {
+            Carsbgc = Carsbg; // TODO
 //        int[] ais = new int[268000];
 //        PixelGrabber pixelgrabber = new PixelGrabber(carsbg, 0, 0, 670, 400, ais, 0, 670);
 //        try {
@@ -492,143 +586,184 @@ namespace Cum
 //            }
 //        }
 //        carsbgc = xt.createImage(new MemoryImageSource(670, 400, ais, 0, 670));
-    }
+        }
 
-    static bool Msgcheck(string astring) {
-        var abool = false;
-        astring = astring.ToLower();
-        string[] strings = {
-                "fu ", " rape", "slut ", "screw ", "redtube", "fuck", "fuk", "f*ck", "fu*k", "f**k", "ass hole",
-                "asshole", "dick", "dik", "cock", "cok ", "shit", "damn", "sex", "anal", "whore", "bitch", "biatch",
-                "bich", " ass", "bastard", "cunt", "dildo", "fag", "homo", "mothaf", "motherf", "negro", "nigga",
+        static bool Msgcheck(string astring)
+        {
+            var abool = false;
+            astring = astring.ToLower();
+            string[] strings =
+            {
+                "fu ", " rape", "slut ", "screw ", "redtube", "fuck", "fuk", "f*ck", "fu*k", "f**k",
+                "ass hole",
+                "asshole", "dick", "dik", "cock", "cok ", "shit", "damn", "sex", "anal", "whore", "bitch",
+                "biatch",
+                "bich", " ass", "bastard", "cunt", "dildo", "fag", "homo", "mothaf", "motherf", "negro",
+                "nigga",
                 "nigger", "pussy", "gay", "homo", "you punk", "i will kill you"
-        };
-        foreach (var string2 in strings)
-            if (astring.Contains(string2)) {
+            };
+            foreach (var string2 in strings)
+                if (astring.Contains(string2))
+                {
+                    abool = true;
+                }
+            if (astring.StartsWith("ass "))
+            {
                 abool = true;
             }
-        if (astring.StartsWith("ass ")) {
-            abool = true;
-        }
-        if (astring.Equals("ass")) {
-            abool = true;
-        }
-        if (astring.Equals("rape")) {
-            abool = true;
-        }
-        if (astring.Equals("fu")) {
-            abool = true;
-        }
-        var string419 = "";
-        var string420 = "";
-        var i = 0;
-        var bool421 = false;
-        bool bool422;
-        for (bool422 = false; i < astring.Length() && !bool422; i++)
-            if (!bool421) {
-                string419 = "" + string419 + "" + astring.CharAt(i);
-                bool421 = true;
-            } else {
-                bool421 = false;
-                if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i))) {
-                    bool422 = true;
-                }
-                string420 = "" + astring.CharAt(i);
+            if (astring.Equals("ass"))
+            {
+                abool = true;
             }
-        if (!bool422) {
-            foreach (var string2 in strings)
-                if (string419.Contains(string2)) {
-                    abool = true;
-                }
-        }
-        string419 = "";
-        string420 = "";
-        i = 0;
-        bool421 = true;
-        for (bool422 = false; i < astring.Length() && !bool422; i++)
-            if (!bool421) {
-                string419 = "" + string419 + "" + astring.CharAt(i);
-                bool421 = true;
-            } else {
-                bool421 = false;
-                if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i))) {
-                    bool422 = true;
-                }
-                string420 = "" + astring.CharAt(i);
+            if (astring.Equals("rape"))
+            {
+                abool = true;
             }
-        if (!bool422) {
-            foreach (var string2 in strings)
-                if (string419.Contains(string2)) {
-                    abool = true;
-                }
-        }
-        string419 = "";
-        string420 = "";
-        i = 0;
-        var i425 = 0;
-        for (bool422 = false; i < astring.Length() && !bool422; i++)
-            if (i425 == 0) {
-                string419 = "" + string419 + "" + astring.CharAt(i);
-                i425 = 2;
-            } else {
-                i425--;
-                if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i))) {
-                    bool422 = true;
-                }
-                string420 = "" + astring.CharAt(i);
+            if (astring.Equals("fu"))
+            {
+                abool = true;
             }
-        if (!bool422) {
-            foreach (var string2 in strings)
-                if (string419.Contains(string2)) {
-                    abool = true;
+            var string419 = "";
+            var string420 = "";
+            var i = 0;
+            var bool421 = false;
+            bool bool422;
+            for (bool422 = false; i < astring.Length() && !bool422; i++)
+                if (!bool421)
+                {
+                    string419 = "" + string419 + "" + astring.CharAt(i);
+                    bool421 = true;
                 }
-        }
-        string419 = "";
-        string420 = "";
-        i = 0;
-        i425 = 1;
-        for (bool422 = false; i < astring.Length() && !bool422; i++)
-            if (i425 == 0) {
-                string419 = "" + string419 + "" + astring.CharAt(i);
-                i425 = 2;
-            } else {
-                i425--;
-                if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i))) {
-                    bool422 = true;
+                else
+                {
+                    bool421 = false;
+                    if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i)))
+                    {
+                        bool422 = true;
+                    }
+                    string420 = "" + astring.CharAt(i);
                 }
-                string420 = "" + astring.CharAt(i);
+            if (!bool422)
+            {
+                foreach (var string2 in strings)
+                    if (string419.Contains(string2))
+                    {
+                        abool = true;
+                    }
             }
-        if (!bool422) {
-            foreach (var string2 in strings)
-                if (string419.Contains(string2)) {
-                    abool = true;
+            string419 = "";
+            string420 = "";
+            i = 0;
+            bool421 = true;
+            for (bool422 = false; i < astring.Length() && !bool422; i++)
+                if (!bool421)
+                {
+                    string419 = "" + string419 + "" + astring.CharAt(i);
+                    bool421 = true;
                 }
-        }
-        string419 = "";
-        string420 = "";
-        i = 0;
-        i425 = 2;
-        for (bool422 = false; i < astring.Length() && !bool422; i++)
-            if (i425 == 0) {
-                string419 = "" + string419 + "" + astring.CharAt(i);
-                i425 = 2;
-            } else {
-                i425--;
-                if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i))) {
-                    bool422 = true;
+                else
+                {
+                    bool421 = false;
+                    if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i)))
+                    {
+                        bool422 = true;
+                    }
+                    string420 = "" + astring.CharAt(i);
                 }
-                string420 = "" + astring.CharAt(i);
+            if (!bool422)
+            {
+                foreach (var string2 in strings)
+                    if (string419.Contains(string2))
+                    {
+                        abool = true;
+                    }
             }
-        if (!bool422) {
-            foreach (var string2 in strings)
-                if (string419.Contains(string2)) {
-                    abool = true;
+            string419 = "";
+            string420 = "";
+            i = 0;
+            var i425 = 0;
+            for (bool422 = false; i < astring.Length() && !bool422; i++)
+                if (i425 == 0)
+                {
+                    string419 = "" + string419 + "" + astring.CharAt(i);
+                    i425 = 2;
                 }
+                else
+                {
+                    i425--;
+                    if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i)))
+                    {
+                        bool422 = true;
+                    }
+                    string420 = "" + astring.CharAt(i);
+                }
+            if (!bool422)
+            {
+                foreach (var string2 in strings)
+                    if (string419.Contains(string2))
+                    {
+                        abool = true;
+                    }
+            }
+            string419 = "";
+            string420 = "";
+            i = 0;
+            i425 = 1;
+            for (bool422 = false; i < astring.Length() && !bool422; i++)
+                if (i425 == 0)
+                {
+                    string419 = "" + string419 + "" + astring.CharAt(i);
+                    i425 = 2;
+                }
+                else
+                {
+                    i425--;
+                    if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i)))
+                    {
+                        bool422 = true;
+                    }
+                    string420 = "" + astring.CharAt(i);
+                }
+            if (!bool422)
+            {
+                foreach (var string2 in strings)
+                    if (string419.Contains(string2))
+                    {
+                        abool = true;
+                    }
+            }
+            string419 = "";
+            string420 = "";
+            i = 0;
+            i425 = 2;
+            for (bool422 = false; i < astring.Length() && !bool422; i++)
+                if (i425 == 0)
+                {
+                    string419 = "" + string419 + "" + astring.CharAt(i);
+                    i425 = 2;
+                }
+                else
+                {
+                    i425--;
+                    if (!string420.Equals("") && !string420.Equals("" + astring.CharAt(i)))
+                    {
+                        bool422 = true;
+                    }
+                    string420 = "" + astring.CharAt(i);
+                }
+            if (!bool422)
+            {
+                foreach (var string2 in strings)
+                    if (string419.Contains(string2))
+                    {
+                        abool = true;
+                    }
+            }
+            return abool;
         }
-        return abool;
-    }
 
-    static void Multistat(Control control, int i, int i53, bool abool) {
+        static void Multistat(Control control, int i, int i53, bool abool)
+        {
 //        int i54 = -1;
 //        if (fase != -2) {
 //            if (exitm != 0 && !holdit) {
@@ -1375,175 +1510,226 @@ namespace Cum
 //            G.SetFont(new Font("Arial", 1, 11));
 //            ftm = G.GetFontMetrics();
 //        }
-    }
+        }
 
-        internal static void Musicomp(int i, Control control) {
-        Hipnoload(i, true);
-        if (Multion != 0) {
-            Forstart--;
-            if (Lan && Im == 0) {
-                Forstart = 0;
-            }
-        }
-        if (control.Handb || control.Enter || Forstart == 0) {
-            GC.Collect();
-            Medium.Trk = 0;
-            Medium.Crs = false;
-            Medium.Ih = 0;
-            Medium.Iw = 0;
-            Medium.H = 450;
-            Medium.W = 800;
-            Medium.FocusPoint = 400;
-            Medium.Cx = 400;
-            Medium.Cy = 225;
-            Medium.Cz = 50;
-            if (Multion == 0) {
-                Fase = 0;
-            } else {
-                Fase = 7001;
-                Forstart = 0;
-            }
-            if (HansenRandom.Double() > HansenRandom.Double()) {
-                Dudo = 250;
-            } else {
-                Dudo = 428;
-            }
-            control.Handb = false;
-            control.Enter = false;
-        }
-    }
-
-    static public void Nofocus() {
-        G.SetColor(new Color(255, 255, 255));
-        G.FillRect(0, 0, 800, 20);
-        G.FillRect(0, 0, 20, 450);
-        G.FillRect(0, 430, 800, 20);
-        G.FillRect(780, 0, 20, 450);
-        G.SetColor(new Color(192, 192, 192));
-        G.DrawRect(20, 20, 760, 410);
-        G.SetColor(new Color(0, 0, 0));
-        G.DrawRect(22, 22, 756, 406);
-        G.SetFont(new Font("Arial", 1, 11));
-        Ftm = G.GetFontMetrics();
-        Drawcs(14, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
-        Drawcs(445, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
-    }
-
-    static internal bool Over(Image image, int i, int i294, int i295, int i296) {
-        var i297 = image.GetHeight(null);
-        var i298 = image.GetWidth(null);
-        return i > i295 - 5 && i < i295 + i298 + 5 && i294 > i296 - 5 && i294 < i296 + i297 + 5;
-    }
-
-    static internal bool Overon(int i, int i289, int i290, int i291, int i292, int i293) {
-        return i292 > i && i292 < i + i290 && i293 > i289 && i293 < i289 + i291;
-    }
-
-        internal static void Pausedgame(Control control) {
-        if (!Badmac) {
-            G.DrawImage(Fleximg, 0, 0, null);
-        } else {
-            G.SetColor(new Color(30, 67, 110));
-            G.FillRect(281, 8, 237, 188);
-        }
-        if (control.Up) {
-            Opselect--;
-            if (Opselect == -1) {
-                Opselect = 3;
-            }
-            control.Up = false;
-        }
-        if (control.Down) {
-            Opselect++;
-            if (Opselect == 4) {
-                Opselect = 0;
-            }
-            control.Down = false;
-        }
-        if (Opselect == 0) {
-            G.SetColor(new Color(64, 143, 223));
-            G.FillRoundRect(329, 45, 137, 22, 7, 20);
-            if (Shaded) {
-                G.SetColor(new Color(225, 200, 255));
-            } else {
-                G.SetColor(new Color(0, 89, 223));
-            }
-            G.DrawRoundRect(329, 45, 137, 22, 7, 20);
-        }
-        if (Opselect == 1) {
-            G.SetColor(new Color(64, 143, 223));
-            G.FillRoundRect(320, 73, 155, 22, 7, 20);
-            if (Shaded) {
-                G.SetColor(new Color(225, 200, 255));
-            } else {
-                G.SetColor(new Color(0, 89, 223));
-            }
-            G.DrawRoundRect(320, 73, 155, 22, 7, 20);
-        }
-        if (Opselect == 2) {
-            G.SetColor(new Color(64, 143, 223));
-            G.FillRoundRect(303, 99, 190, 22, 7, 20);
-            if (Shaded) {
-                G.SetColor(new Color(225, 200, 255));
-            } else {
-                G.SetColor(new Color(0, 89, 223));
-            }
-            G.DrawRoundRect(303, 99, 190, 22, 7, 20);
-        }
-        if (Opselect == 3) {
-            G.SetColor(new Color(64, 143, 223));
-            G.FillRoundRect(341, 125, 109, 22, 7, 20);
-            if (Shaded) {
-                G.SetColor(new Color(225, 200, 255));
-            } else {
-                G.SetColor(new Color(0, 89, 223));
-            }
-            G.DrawRoundRect(341, 125, 109, 22, 7, 20);
-        }
-        G.DrawImage(Paused, 281, 8, null);
-        if (control.Enter || control.Handb) {
-            if (Opselect == 0) {
-                if (Loadedt && !Mutem) {
-                    Strack.SetPaused(false);
+        internal static void Musicomp(int i, Control control)
+        {
+            Hipnoload(i, true);
+            if (Multion != 0)
+            {
+                Forstart--;
+                if (Lan && Im == 0)
+                {
+                    Forstart = 0;
                 }
-                Fase = 0;
             }
-            if (Opselect == 1)
-                if (Record.Caught >= 300) {
-                    if (Loadedt && !Mutem) {
-                        Strack.SetPaused(false);
-                    }
-                    Fase = -1;
-                } else {
-                    Fase = -8;
+            if (control.Handb || control.Enter || Forstart == 0)
+            {
+                GC.Collect();
+                Medium.Trk = 0;
+                Medium.Crs = false;
+                Medium.Ih = 0;
+                Medium.Iw = 0;
+                Medium.H = 450;
+                Medium.W = 800;
+                Medium.FocusPoint = 400;
+                Medium.Cx = 400;
+                Medium.Cy = 225;
+                Medium.Cz = 50;
+                if (Multion == 0)
+                {
+                    Fase = 0;
                 }
-            if (Opselect == 2) {
-                if (Loadedt) {
-                    Strack.SetPaused(true);
+                else
+                {
+                    Fase = 7001;
+                    Forstart = 0;
                 }
-                Oldfase = -7;
-                Fase = 11;
+                if (HansenRandom.Double() > HansenRandom.Double())
+                {
+                    Dudo = 250;
+                }
+                else
+                {
+                    Dudo = 428;
+                }
+                control.Handb = false;
+                control.Enter = false;
             }
-            if (Opselect == 3) {
-                if (Loadedt) {
-                    Strack.Unload();
-                }
-                Fase = 102;
-                if (Gmode == 0) {
+        }
+
+        static public void Nofocus()
+        {
+            G.SetColor(new Color(255, 255, 255));
+            G.FillRect(0, 0, 800, 20);
+            G.FillRect(0, 0, 20, 450);
+            G.FillRect(0, 430, 800, 20);
+            G.FillRect(780, 0, 20, 450);
+            G.SetColor(new Color(192, 192, 192));
+            G.DrawRect(20, 20, 760, 410);
+            G.SetColor(new Color(0, 0, 0));
+            G.DrawRect(22, 22, 756, 406);
+            G.SetFont(new Font("Arial", 1, 11));
+            Ftm = G.GetFontMetrics();
+            Drawcs(14, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
+            Drawcs(445, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
+        }
+
+        static internal bool Over(Image image, int i, int i294, int i295, int i296)
+        {
+            var i297 = image.GetHeight(null);
+            var i298 = image.GetWidth(null);
+            return i > i295 - 5 && i < i295 + i298 + 5 && i294 > i296 - 5 && i294 < i296 + i297 + 5;
+        }
+
+        static internal bool Overon(int i, int i289, int i290, int i291, int i292, int i293)
+        {
+            return i292 > i && i292 < i + i290 && i293 > i289 && i293 < i289 + i291;
+        }
+
+        internal static void Pausedgame(Control control)
+        {
+            if (!Badmac)
+            {
+                G.DrawImage(Fleximg, 0, 0, null);
+            }
+            else
+            {
+                G.SetColor(new Color(30, 67, 110));
+                G.FillRect(281, 8, 237, 188);
+            }
+            if (control.Up)
+            {
+                Opselect--;
+                if (Opselect == -1)
+                {
                     Opselect = 3;
                 }
-                //if (gmode == 1)
-                //	opselect = 0;
-                if (Gmode == 2) {
-                    Opselect = 1;
-                }
+                control.Up = false;
             }
-            control.Enter = false;
-            control.Handb = false;
+            if (control.Down)
+            {
+                Opselect++;
+                if (Opselect == 4)
+                {
+                    Opselect = 0;
+                }
+                control.Down = false;
+            }
+            if (Opselect == 0)
+            {
+                G.SetColor(new Color(64, 143, 223));
+                G.FillRoundRect(329, 45, 137, 22, 7, 20);
+                if (Shaded)
+                {
+                    G.SetColor(new Color(225, 200, 255));
+                }
+                else
+                {
+                    G.SetColor(new Color(0, 89, 223));
+                }
+                G.DrawRoundRect(329, 45, 137, 22, 7, 20);
+            }
+            if (Opselect == 1)
+            {
+                G.SetColor(new Color(64, 143, 223));
+                G.FillRoundRect(320, 73, 155, 22, 7, 20);
+                if (Shaded)
+                {
+                    G.SetColor(new Color(225, 200, 255));
+                }
+                else
+                {
+                    G.SetColor(new Color(0, 89, 223));
+                }
+                G.DrawRoundRect(320, 73, 155, 22, 7, 20);
+            }
+            if (Opselect == 2)
+            {
+                G.SetColor(new Color(64, 143, 223));
+                G.FillRoundRect(303, 99, 190, 22, 7, 20);
+                if (Shaded)
+                {
+                    G.SetColor(new Color(225, 200, 255));
+                }
+                else
+                {
+                    G.SetColor(new Color(0, 89, 223));
+                }
+                G.DrawRoundRect(303, 99, 190, 22, 7, 20);
+            }
+            if (Opselect == 3)
+            {
+                G.SetColor(new Color(64, 143, 223));
+                G.FillRoundRect(341, 125, 109, 22, 7, 20);
+                if (Shaded)
+                {
+                    G.SetColor(new Color(225, 200, 255));
+                }
+                else
+                {
+                    G.SetColor(new Color(0, 89, 223));
+                }
+                G.DrawRoundRect(341, 125, 109, 22, 7, 20);
+            }
+            G.DrawImage(Paused, 281, 8, null);
+            if (control.Enter || control.Handb)
+            {
+                if (Opselect == 0)
+                {
+                    if (Loadedt && !Mutem)
+                    {
+                        Strack.SetPaused(false);
+                    }
+                    Fase = 0;
+                }
+                if (Opselect == 1)
+                    if (Record.Caught >= 300)
+                    {
+                        if (Loadedt && !Mutem)
+                        {
+                            Strack.SetPaused(false);
+                        }
+                        Fase = -1;
+                    }
+                    else
+                    {
+                        Fase = -8;
+                    }
+                if (Opselect == 2)
+                {
+                    if (Loadedt)
+                    {
+                        Strack.SetPaused(true);
+                    }
+                    Oldfase = -7;
+                    Fase = 11;
+                }
+                if (Opselect == 3)
+                {
+                    if (Loadedt)
+                    {
+                        Strack.Unload();
+                    }
+                    Fase = 102;
+                    if (Gmode == 0)
+                    {
+                        Opselect = 3;
+                    }
+                    //if (gmode == 1)
+                    //	opselect = 0;
+                    if (Gmode == 2)
+                    {
+                        Opselect = 1;
+                    }
+                }
+                control.Enter = false;
+                control.Handb = false;
+            }
         }
-    }
 
-        internal static void Pauseimage(Image image) {
+        internal static void Pauseimage(Image image)
+        {
 //        if (!badmac) {
 //            int[] ais = new int[360000];
 //            PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, 800, 450, ais, 0, 800);
@@ -1592,9 +1778,10 @@ namespace Cum
             G.FillRect(0, 0, 800, 450);
             G.SetAlpha(1.0F);
 //        }
-    }
+        }
 
-    static private void Pingstat() {
+        static private void Pingstat()
+        {
 //        int i = (int) (100.0 * HansenRandom.Double());
 //        try {
 //            URL url = new URL("http://c.statcounter.com/9994681/0/14bb645e/1/?reco=" + i + "");
@@ -1607,178 +1794,262 @@ namespace Cum
 //        } catch (Exception ignored) {
 //
 //        }
-    }
+        }
 
-        internal static void Playsounds(int im, Mad mad, Control control, ContO player, ContO conto) {
-        SoundClip.Source = conto;
-        SoundClip.Player = player;
-        
-        if ((Fase == 0 || Fase == 7001) && Starcnt < 35 && Cntwis[im] != 8 && !Mutes) {
-            var abool = control.Up && mad.Speed > 0.0F || control.Down && mad.Speed < 10.0F;
-            var bool257 = mad.Skid == 1 && control.Handb || Math.Abs(mad.Scz[0] - (mad.Scz[1] + mad.Scz[0] + mad.Scz[2] + mad.Scz[3]) / 4.0F) > 1.0F || Math.Abs(mad.Scx[0] - (mad.Scx[1] + mad.Scx[0] + mad.Scx[2] + mad.Scx[3]) / 4.0F) > 1.0F;
-            var bool258 = false;
-            if (control.Up && mad.Speed < 10.0F) {
-                bool257 = true;
-                abool = true;
-                bool258 = true;
-            }
-            if (abool && mad.Mtouch) {
-                if (!mad.Capsized) {
-                    if (!bool257) {
-                        if (mad.Power != 98.0F) {
-                            if (Math.Abs(mad.Speed) > 0.0F && Math.Abs(mad.Speed) <= CarDefine.Swits[mad.Cn,0]) {
-                                var i259 = (int) (3.0F * Math.Abs(mad.Speed) / CarDefine.Swits[mad.Cn,0]);
-                                if (i259 == 2) {
-                                    if (Pwait[im] == 0) {
-                                        i259 = 0;
-                                    } else {
-                                        Pwait[im]--;
+        internal static void Playsounds(int im, Mad mad, Control control, ContO player, ContO conto)
+        {
+            SoundClip.Source = conto;
+            SoundClip.Player = player;
+
+            if ((Fase == 0 || Fase == 7001) && Starcnt < 35 && Cntwis[im] != 8 && !Mutes)
+            {
+                var abool = control.Up && mad.Speed > 0.0F || control.Down && mad.Speed < 10.0F;
+                var bool257 = mad.Skid == 1 && control.Handb ||
+                              Math.Abs(mad.Scz[0] - (mad.Scz[1] + mad.Scz[0] + mad.Scz[2] + mad.Scz[3]) /
+                                       4.0F) > 1.0F ||
+                              Math.Abs(mad.Scx[0] - (mad.Scx[1] + mad.Scx[0] + mad.Scx[2] + mad.Scx[3]) /
+                                       4.0F) > 1.0F;
+                var bool258 = false;
+                if (control.Up && mad.Speed < 10.0F)
+                {
+                    bool257 = true;
+                    abool = true;
+                    bool258 = true;
+                }
+                if (abool && mad.Mtouch)
+                {
+                    if (!mad.Capsized)
+                    {
+                        if (!bool257)
+                        {
+                            if (mad.Power != 98.0F)
+                            {
+                                if (Math.Abs(mad.Speed) > 0.0F &&
+                                    Math.Abs(mad.Speed) <= CarDefine.Swits[mad.Cn, 0])
+                                {
+                                    var i259 = (int) (3.0F * Math.Abs(mad.Speed) /
+                                                      CarDefine.Swits[mad.Cn, 0]);
+                                    if (i259 == 2)
+                                    {
+                                        if (Pwait[im] == 0)
+                                        {
+                                            i259 = 0;
+                                        }
+                                        else
+                                        {
+                                            Pwait[im]--;
+                                        }
                                     }
-                                } else {
-                                    Pwait[im] = 7;
-                                }
-                                Sparkeng(i259, mad.Cn);
-                            }
-                            if (Math.Abs(mad.Speed) > CarDefine.Swits[mad.Cn,0] && Math.Abs(mad.Speed) <= CarDefine.Swits[mad.Cn,1]) {
-                                var i260 = (int) (3.0F * (Math.Abs(mad.Speed) - CarDefine.Swits[mad.Cn,0]) / (CarDefine.Swits[mad.Cn,1] - CarDefine.Swits[mad.Cn,0]));
-                                if (i260 == 2) {
-                                    if (Pwait[im] == 0) {
-                                        i260 = 0;
-                                    } else {
-                                        Pwait[im]--;
+                                    else
+                                    {
+                                        Pwait[im] = 7;
                                     }
-                                } else {
-                                    Pwait[im] = 7;
+                                    Sparkeng(i259, mad.Cn);
                                 }
-                                Sparkeng(i260, mad.Cn);
-                            }
-                            if (Math.Abs(mad.Speed) > CarDefine.Swits[mad.Cn,1] && Math.Abs(mad.Speed) <= CarDefine.Swits[mad.Cn,2]) {
-                                var i261 = (int) (3.0F * (Math.Abs(mad.Speed) - CarDefine.Swits[mad.Cn,1]) / (CarDefine.Swits[mad.Cn,2] - CarDefine.Swits[mad.Cn,1]));
-                                Sparkeng(i261, mad.Cn);
-                            }
-                        } else {
-                            var i262 = 2;
-                            if (Pwait[im] == 0) {
-                                if (Math.Abs(mad.Speed) > CarDefine.Swits[mad.Cn,1]) {
-                                    i262 = 3;
+                                if (Math.Abs(mad.Speed) > CarDefine.Swits[mad.Cn, 0] &&
+                                    Math.Abs(mad.Speed) <= CarDefine.Swits[mad.Cn, 1])
+                                {
+                                    var i260 =
+                                        (int) (3.0F * (Math.Abs(mad.Speed) - CarDefine.Swits[mad.Cn, 0]) /
+                                               (CarDefine.Swits[mad.Cn, 1] - CarDefine.Swits[mad.Cn, 0]));
+                                    if (i260 == 2)
+                                    {
+                                        if (Pwait[im] == 0)
+                                        {
+                                            i260 = 0;
+                                        }
+                                        else
+                                        {
+                                            Pwait[im]--;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Pwait[im] = 7;
+                                    }
+                                    Sparkeng(i260, mad.Cn);
                                 }
-                            } else {
-                                Pwait[im]--;
+                                if (Math.Abs(mad.Speed) > CarDefine.Swits[mad.Cn, 1] &&
+                                    Math.Abs(mad.Speed) <= CarDefine.Swits[mad.Cn, 2])
+                                {
+                                    var i261 =
+                                        (int) (3.0F * (Math.Abs(mad.Speed) - CarDefine.Swits[mad.Cn, 1]) /
+                                               (CarDefine.Swits[mad.Cn, 2] - CarDefine.Swits[mad.Cn, 1]));
+                                    Sparkeng(i261, mad.Cn);
+                                }
                             }
-                            Sparkeng(i262, mad.Cn);
+                            else
+                            {
+                                var i262 = 2;
+                                if (Pwait[im] == 0)
+                                {
+                                    if (Math.Abs(mad.Speed) > CarDefine.Swits[mad.Cn, 1])
+                                    {
+                                        i262 = 3;
+                                    }
+                                }
+                                else
+                                {
+                                    Pwait[im]--;
+                                }
+                                Sparkeng(i262, mad.Cn);
+                            }
                         }
-                    } else {
-                        Sparkeng(-1, mad.Cn);
-                        if (bool258) {
-                            if (Stopcnt[im] <= 0) {
-                                Air[5].Loop();
-                                Stopcnt[im] = 10;
+                        else
+                        {
+                            Sparkeng(-1, mad.Cn);
+                            if (bool258)
+                            {
+                                if (Stopcnt[im] <= 0)
+                                {
+                                    Air[5].Loop();
+                                    Stopcnt[im] = 10;
+                                }
                             }
-                        } else if (Stopcnt[im] <= -2) {
-                            Air[2 + (int) (Medium.Random() * 3.0F)].Loop();
-                            Stopcnt[im] = 7;
+                            else if (Stopcnt[im] <= -2)
+                            {
+                                Air[2 + (int) (Medium.Random() * 3.0F)].Loop();
+                                Stopcnt[im] = 7;
+                            }
                         }
                     }
-                } else {
-                    Sparkeng(3, mad.Cn);
+                    else
+                    {
+                        Sparkeng(3, mad.Cn);
+                    }
+                    Grrd[im] = false;
+                    Aird[im] = false;
                 }
-                Grrd[im] = false;
-                Aird [im]= false;
-            } else {
-                Pwait[im] = 15;
-                if (!mad.Mtouch && !Grrd[im] && Medium.Random() > 0.4) {
-                    Air[(int) (Medium.Random() * 4.0F)].Loop();
-                    Stopcnt[im] = 5;
-                    Grrd [im]= true;
+                else
+                {
+                    Pwait[im] = 15;
+                    if (!mad.Mtouch && !Grrd[im] && Medium.Random() > 0.4)
+                    {
+                        Air[(int) (Medium.Random() * 4.0F)].Loop();
+                        Stopcnt[im] = 5;
+                        Grrd[im] = true;
+                    }
+                    if (!mad.Wtouch && !Aird[im])
+                    {
+                        Stopairs();
+                        Air[(int) (Medium.Random() * 4.0F)].Loop();
+                        Stopcnt[im] = 10;
+                        Aird[im] = true;
+                    }
+                    Sparkeng(-1, mad.Cn);
                 }
-                if (!mad.Wtouch && !Aird[im]) {
-                    Stopairs();
-                    Air[(int) (Medium.Random() * 4.0F)].Loop();
-                    Stopcnt[im] = 10;
-                    Aird [im]= true;
+                if (mad.Cntdest != 0 && Cntwis[im] < 7)
+                {
+                    if (!Pwastd[im])
+                    {
+                        Wastd.Loop();
+                        Pwastd[im] = true;
+                    }
                 }
-                Sparkeng(-1, mad.Cn);
+                else
+                {
+                    if (Pwastd[im])
+                    {
+                        Wastd.Stop();
+                        Pwastd[im] = false;
+                    }
+                    if (Cntwis[im] == 7 && !Mutes)
+                    {
+                        Firewasted.Play();
+                    }
+                }
             }
-            if (mad.Cntdest != 0 && Cntwis[im] < 7) {
-                if (!Pwastd[im]) {
-                    Wastd.Loop();
-                    Pwastd[im] = true;
-                }
-            } else {
-                if (Pwastd[im]) {
+            else
+            {
+                Sparkeng(-2, mad.Cn);
+                if (Pwastd[im])
+                {
                     Wastd.Stop();
                     Pwastd[im] = false;
                 }
-                if (Cntwis[im] == 7 && !Mutes) {
-                    Firewasted.Play();
+            }
+            if (Stopcnt[im] != -20)
+            {
+                if (Stopcnt[im] == 1)
+                {
+                    Stopairs();
                 }
+                Stopcnt[im]--;
             }
-        } else {
-            Sparkeng(-2, mad.Cn);
-            if (Pwastd[im]) {
-                Wastd.Stop();
-                Pwastd [im]= false;
+            if (Bfcrash[im] != 0)
+            {
+                Bfcrash[im]--;
             }
-        }
-        if (Stopcnt[im] != -20) {
-            if (Stopcnt[im] == 1) {
-                Stopairs();
+            if (Bfscrape[im] != 0)
+            {
+                Bfscrape[im]--;
             }
-            Stopcnt[im]--;
-        }
-        if (Bfcrash[im] != 0) {
-            Bfcrash[im]--;
-        }
-        if (Bfscrape[im] != 0) {
-            Bfscrape[im]--;
-        }
-        if (Bfsc1[im] != 0) {
-            Bfsc1[im]--;
-        }
-        if (Bfsc2[im] != 0) {
-            Bfsc2[im]--;
-        }
-        if (Bfskid[im] != 0) {
-            Bfskid[im]--;
-        }
-        if (mad.Newcar) {
-            Cntwis[im] = 0;
-        }
-        if (Fase == 0 || Fase == 7001 || Fase == 6 || Fase == -1 || Fase == -2 || Fase == -3 || Fase == -4 || Fase == -5) {
-            if (Mutes != control.Mutes) {
-                Mutes = control.Mutes;
+            if (Bfsc1[im] != 0)
+            {
+                Bfsc1[im]--;
             }
-            if (control.Mutem != Mutem) {
-                Mutem = control.Mutem;
-                if (Mutem) {
-                    if (Loadedt) {
-                        Strack.SetPaused(true);
-                    }
-                } else if (Loadedt) {
-                    Strack.SetPaused(false);
-                }
+            if (Bfsc2[im] != 0)
+            {
+                Bfsc2[im]--;
             }
-        }
-        if (mad.Cntdest != 0 && Cntwis[im] < 7) {
-            if (mad.Dest) {
-                Cntwis[im]++;
+            if (Bfskid[im] != 0)
+            {
+                Bfskid[im]--;
             }
-        } else {
-            if (mad.Cntdest == 0) {
+            if (mad.Newcar)
+            {
                 Cntwis[im] = 0;
             }
-            if (Cntwis[im] == 7) {
-                Cntwis[im] = 8;
+            if (Fase == 0 || Fase == 7001 || Fase == 6 || Fase == -1 || Fase == -2 || Fase == -3 ||
+                Fase == -4 || Fase == -5)
+            {
+                if (Mutes != control.Mutes)
+                {
+                    Mutes = control.Mutes;
+                }
+                if (control.Mutem != Mutem)
+                {
+                    Mutem = control.Mutem;
+                    if (Mutem)
+                    {
+                        if (Loadedt)
+                        {
+                            Strack.SetPaused(true);
+                        }
+                    }
+                    else if (Loadedt)
+                    {
+                        Strack.SetPaused(false);
+                    }
+                }
+            }
+            if (mad.Cntdest != 0 && Cntwis[im] < 7)
+            {
+                if (mad.Dest)
+                {
+                    Cntwis[im]++;
+                }
+            }
+            else
+            {
+                if (mad.Cntdest == 0)
+                {
+                    Cntwis[im] = 0;
+                }
+                if (Cntwis[im] == 7)
+                {
+                    Cntwis[im] = 8;
+                }
+            }
+            if (GameSparker.Applejava)
+            {
+                Closesounds();
             }
         }
-        if (GameSparker.Applejava) {
-            Closesounds();
-        }
-    }
 
-    static internal Image Pressed(Image image)
-    {
-        return image;
+        static internal Image Pressed(Image image)
+        {
+            return image;
 //        int i = image.getHeight(null);
 //        int i337 = image.getWidth(null);
 //        int[] ais = new int[i337 * i];
@@ -1793,337 +2064,423 @@ namespace Cum
 //                ais[i338] = -16777216;
 //            }
 //        return xt.createImage(new MemoryImageSource(i337, i, ais, 0, i337));
-    }
-
-    static internal int Py(int i, int i281, int i282, int i283) {
-        return (i - i281) * (i - i281) + (i282 - i283) * (i282 - i283);
-    }
-
-    static internal float Pys(int i, int i284, int i285, int i286) {
-        return (float) Math.Sqrt((i - i284) * (i - i284) + (i285 - i286) * (i285 - i286));
-    }
-
-        internal static void Rad(int i) {
-        if (i == 0) {
-            Powerup.Play();
-            Radpx = 212;
-            Pin = 0;
         }
-        Trackbgf(false);
-        G.SetColor(new Color(0, 0, 0));
-        G.FillRect(65, 135, 670, 59);
-        if (Pin != 0) {
-            G.DrawImage(Radicalplay, Radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
-        } else {
-            G.DrawImage(Radicalplay, 212, 135, null);
+
+        static internal int Py(int i, int i281, int i282, int i283)
+        {
+            return (i - i281) * (i - i281) + (i282 - i283) * (i282 - i283);
         }
-        if (Radpx != 212) {
-            Radpx += 40;
-            if (Radpx > 735) {
-                Radpx = -388;
+
+        static internal float Pys(int i, int i284, int i285, int i286)
+        {
+            return (float) Math.Sqrt((i - i284) * (i - i284) + (i285 - i286) * (i285 - i286));
+        }
+
+        internal static void Rad(int i)
+        {
+            if (i == 0)
+            {
+                Powerup.Play();
+                Radpx = 212;
+                Pin = 0;
             }
-        } else if (Pin != 0) {
-            Pin--;
-        }
-        if (i == 40) {
-            Radpx = 213;
-            Pin = 7;
-        }
-        if (Radpx == 212) {
+            Trackbgf(false);
+            G.SetColor(new Color(0, 0, 0));
+            G.FillRect(65, 135, 670, 59);
+            if (Pin != 0)
+            {
+                G.DrawImage(Radicalplay, Radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
+            }
+            else
+            {
+                G.DrawImage(Radicalplay, 212, 135, null);
+            }
+            if (Radpx != 212)
+            {
+                Radpx += 40;
+                if (Radpx > 735)
+                {
+                    Radpx = -388;
+                }
+            }
+            else if (Pin != 0)
+            {
+                Pin--;
+            }
+            if (i == 40)
+            {
+                Radpx = 213;
+                Pin = 7;
+            }
+            if (Radpx == 212)
+            {
+                G.SetFont(new Font("Arial", 1, 11));
+                Ftm = G.GetFontMetrics();
+                Drawcs(185 + (int) (5.0F * Medium.Random()), "Radicalplay.com", 112, 120, 143, 3);
+            }
             G.SetFont(new Font("Arial", 1, 11));
             Ftm = G.GetFontMetrics();
-            Drawcs(185 + (int) (5.0F * Medium.Random()), "Radicalplay.com", 112, 120, 143, 3);
+            if (Aflk)
+            {
+                Drawcs(215, "And we are never going to find the new unless we get a little crazy...", 112,
+                    120, 143, 3);
+                Aflk = false;
+            }
+            else
+            {
+                Drawcs(217, "And we are never going to find the new unless we get a little crazy...", 150,
+                    150, 150, 3);
+                Aflk = true;
+            }
+            G.DrawImage(Rpro, 275, 265, null);
+            G.SetColor(new Color(0, 0, 0));
+            G.FillRect(0, 0, 65, 450);
+            G.FillRect(735, 0, 65, 450);
+            G.FillRect(65, 0, 670, 25);
+            G.FillRect(65, 425, 670, 25);
         }
-        G.SetFont(new Font("Arial", 1, 11));
-        Ftm = G.GetFontMetrics();
-        if (Aflk) {
-            Drawcs(215, "And we are never going to find the new unless we get a little crazy...", 112, 120, 143, 3);
-            Aflk = false;
-        } else {
-            Drawcs(217, "And we are never going to find the new unless we get a little crazy...", 150, 150, 150, 3);
-            Aflk = true;
-        }
-        G.DrawImage(Rpro, 275, 265, null);
-        G.SetColor(new Color(0, 0, 0));
-        G.FillRect(0, 0, 65, 450);
-        G.FillRect(735, 0, 65, 450);
-        G.FillRect(65, 0, 670, 25);
-        G.FillRect(65, 425, 670, 25);
-    }
 
-    static private void Radarstat(Mad mad, ContO conto) {
-        G.SetAlpha(0.5F);
-        G.SetColor(new Color(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2]));
-        G.FillRoundRect(10, 55, 172, 172, 30, 30);
-        G.SetAlpha(1.0F);
-        G.SetColor(new Color(Medium.Csky[0] / 2, Medium.Csky[1] / 2, Medium.Csky[2] / 2));
-        int i;
-        for (i = 0; i < CheckPoints.N; i++) {
-            var i241 = i + 1;
-            if (i == CheckPoints.N - 1) {
-                i241 = 0;
-            }
-            var abool = false;
-            if (CheckPoints.Typ[i241] == -3) {
-                i241 = 0;
-                abool = true;
-            }
-            int[] ais = {
+        static private void Radarstat(Mad mad, ContO conto)
+        {
+            G.SetAlpha(0.5F);
+            G.SetColor(new Color(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2]));
+            G.FillRoundRect(10, 55, 172, 172, 30, 30);
+            G.SetAlpha(1.0F);
+            G.SetColor(new Color(Medium.Csky[0] / 2, Medium.Csky[1] / 2, Medium.Csky[2] / 2));
+            int i;
+            for (i = 0; i < CheckPoints.N; i++)
+            {
+                var i241 = i + 1;
+                if (i == CheckPoints.N - 1)
+                {
+                    i241 = 0;
+                }
+                var abool = false;
+                if (CheckPoints.Typ[i241] == -3)
+                {
+                    i241 = 0;
+                    abool = true;
+                }
+                int[] ais =
+                {
                     (int) (96.0F - (CheckPoints.Opx[Im] - CheckPoints.X[i]) / CheckPoints.Prox),
                     (int) (96.0F - (CheckPoints.Opx[Im] - CheckPoints.X[i241]) / CheckPoints.Prox)
-            };
-            int[] is242 = {
+                };
+                int[] is242 =
+                {
                     (int) (141.0F - (CheckPoints.Z[i] - CheckPoints.Opz[Im]) / CheckPoints.Prox),
                     (int) (141.0F - (CheckPoints.Z[i241] - CheckPoints.Opz[Im]) / CheckPoints.Prox)
-            };
-            Rot(ais, is242, 96, 141, mad.Cxz, 2);
-            G.DrawLine(ais[0], is242[0], ais[1], is242[1]);
-            if (abool) {
-                break;
-            }
-        }
-        if (Arrace || Multion > 1) {
-            var ais = new int[Nplayers];
-            var is245 = new int[Nplayers];
-            for (i = 0; i < Nplayers; i++) {
-                ais[i] = (int) (96.0F - (CheckPoints.Opx[Im] - CheckPoints.Opx[i]) / CheckPoints.Prox);
-                is245[i] = (int) (141.0F - (CheckPoints.Opz[i] - CheckPoints.Opz[Im]) / CheckPoints.Prox);
-            }
-            Rot(ais, is245, 96, 141, mad.Cxz, Nplayers);
-            i = 0;
-            var i246 = (int) (80.0F + 80.0F * (Medium.Snap[1] / 100.0F));
-            if (i246 > 255) {
-                i246 = 255;
-            }
-            if (i246 < 0) {
-                i246 = 0;
-            }
-            var i247 = (int) (159.0F + 159.0F * (Medium.Snap[2] / 100.0F));
-            if (i247 > 255) {
-                i247 = 255;
-            }
-            if (i247 < 0) {
-                i247 = 0;
-            }
-            for (var i248 = 0; i248 < Nplayers; i248++)
-                if (i248 != Im && CheckPoints.Dested[i248] == 0) {
-                    if (Clangame != 0) {
-                        if (Pclan[i248].EqualsIgnoreCase(Gaclan)) {
-                            i = 159;
-                            i246 = 80;
-                            i247 = 0;
-                        } else {
-                            i = 0;
-                            i246 = 80;
-                            i247 = 159;
-                        }
-                        i += (int)(i * (Medium.Snap[0] / 100.0F));
-                        if (i > 255) {
-                            i = 255;
-                        }
-                        if (i < 0) {
-                            i = 0;
-                        }
-                        i246 += (int)(i246 * (Medium.Snap[1] / 100.0F));
-                        if (i246 > 255) {
-                            i246 = 255;
-                        }
-                        if (i246 < 0) {
-                            i246 = 0;
-                        }
-                        i247 += (int)(i247 * (Medium.Snap[2] / 100.0F));
-                        if (i247 > 255) {
-                            i247 = 255;
-                        }
-                        if (i247 < 0) {
-                            i247 = 0;
-                        }
-                    }
-                    var i249 = 2;
-                    if (Alocked == i248) {
-                        i249 = 3;
-                        G.SetColor(new Color(i, i246, i247));
-                    } else {
-                        G.SetColor(new Color((i + Medium.Csky[0]) / 2, (Medium.Csky[1] + i246) / 2, (i247 + Medium.Csky[2]) / 2));
-                    }
-                    G.DrawLine(ais[i248] - i249, is245[i248], ais[i248] + i249, is245[i248]);
-                    G.DrawLine(ais[i248], is245[i248] + i249, ais[i248], is245[i248] - i249);
-                    G.SetColor(new Color(i, i246, i247));
-                    G.FillRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
+                };
+                Rot(ais, is242, 96, 141, mad.Cxz, 2);
+                G.DrawLine(ais[0], is242[0], ais[1], is242[1]);
+                if (abool)
+                {
+                    break;
                 }
-        }
-        i = (int) (159.0F + 159.0F * (Medium.Snap[0] / 100.0F));
-        if (i > 255) {
-            i = 255;
-        }
-        if (i < 0) {
-            i = 0;
-        }
-        var i250 = 0;
-        var i251 = 0;
-        if (Clangame != 0) {
-            if (Pclan[Im].EqualsIgnoreCase(Gaclan)) {
-                i = 159;
-                i250 = 80;
-                i251 = 0;
-            } else {
-                i = 0;
-                i250 = 80;
-                i251 = 159;
             }
-            i += (int)(i * (Medium.Snap[0] / 100.0F));
-            if (i > 255) {
+            if (Arrace || Multion > 1)
+            {
+                var ais = new int[Nplayers];
+                var is245 = new int[Nplayers];
+                for (i = 0; i < Nplayers; i++)
+                {
+                    ais[i] = (int) (96.0F - (CheckPoints.Opx[Im] - CheckPoints.Opx[i]) / CheckPoints.Prox);
+                    is245[i] =
+                        (int) (141.0F - (CheckPoints.Opz[i] - CheckPoints.Opz[Im]) / CheckPoints.Prox);
+                }
+                Rot(ais, is245, 96, 141, mad.Cxz, Nplayers);
+                i = 0;
+                var i246 = (int) (80.0F + 80.0F * (Medium.Snap[1] / 100.0F));
+                if (i246 > 255)
+                {
+                    i246 = 255;
+                }
+                if (i246 < 0)
+                {
+                    i246 = 0;
+                }
+                var i247 = (int) (159.0F + 159.0F * (Medium.Snap[2] / 100.0F));
+                if (i247 > 255)
+                {
+                    i247 = 255;
+                }
+                if (i247 < 0)
+                {
+                    i247 = 0;
+                }
+                for (var i248 = 0; i248 < Nplayers; i248++)
+                    if (i248 != Im && CheckPoints.Dested[i248] == 0)
+                    {
+                        if (Clangame != 0)
+                        {
+                            if (Pclan[i248].EqualsIgnoreCase(Gaclan))
+                            {
+                                i = 159;
+                                i246 = 80;
+                                i247 = 0;
+                            }
+                            else
+                            {
+                                i = 0;
+                                i246 = 80;
+                                i247 = 159;
+                            }
+                            i += (int) (i * (Medium.Snap[0] / 100.0F));
+                            if (i > 255)
+                            {
+                                i = 255;
+                            }
+                            if (i < 0)
+                            {
+                                i = 0;
+                            }
+                            i246 += (int) (i246 * (Medium.Snap[1] / 100.0F));
+                            if (i246 > 255)
+                            {
+                                i246 = 255;
+                            }
+                            if (i246 < 0)
+                            {
+                                i246 = 0;
+                            }
+                            i247 += (int) (i247 * (Medium.Snap[2] / 100.0F));
+                            if (i247 > 255)
+                            {
+                                i247 = 255;
+                            }
+                            if (i247 < 0)
+                            {
+                                i247 = 0;
+                            }
+                        }
+                        var i249 = 2;
+                        if (Alocked == i248)
+                        {
+                            i249 = 3;
+                            G.SetColor(new Color(i, i246, i247));
+                        }
+                        else
+                        {
+                            G.SetColor(new Color((i + Medium.Csky[0]) / 2, (Medium.Csky[1] + i246) / 2,
+                                (i247 + Medium.Csky[2]) / 2));
+                        }
+                        G.DrawLine(ais[i248] - i249, is245[i248], ais[i248] + i249, is245[i248]);
+                        G.DrawLine(ais[i248], is245[i248] + i249, ais[i248], is245[i248] - i249);
+                        G.SetColor(new Color(i, i246, i247));
+                        G.FillRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
+                    }
+            }
+            i = (int) (159.0F + 159.0F * (Medium.Snap[0] / 100.0F));
+            if (i > 255)
+            {
                 i = 255;
             }
-            if (i < 0) {
+            if (i < 0)
+            {
                 i = 0;
             }
-            i250 += (int)(i250 * (Medium.Snap[1] / 100.0F));
-            if (i250 > 255) {
-                i250 = 255;
-            }
-            if (i250 < 0) {
-                i250 = 0;
-            }
-            i251 += (int)(i251 * (Medium.Snap[2] / 100.0F));
-            if (i251 > 255) {
-                i251 = 255;
-            }
-            if (i251 < 0) {
-                i251 = 0;
-            }
-        }
-        G.SetColor(new Color((i + Medium.Csky[0]) / 2, (Medium.Csky[1] + i250) / 2, (i251 + Medium.Csky[2]) / 2));
-        G.DrawLine(96, 139, 96, 143);
-        G.DrawLine(94, 141, 98, 141);
-        G.SetColor(new Color(i, i250, i251));
-        G.FillRect(95, 140, 3, 3);
-        if (Medium.Darksky) {
-            var color = new Color(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2]);
-            var fs = new float[3];
-            Color.RGBtoHSB(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2], fs);
-            fs[2] = 0.6F;
-            color = Color.GetHSBColor(fs[0], fs[1], fs[2]);
-            G.SetColor(color);
-            G.FillRect(5, 232, 181, 17);
-            G.DrawLine(4, 233, 4, 247);
-            G.DrawLine(3, 235, 3, 245);
-            G.DrawLine(186, 233, 186, 247);
-            G.DrawLine(187, 235, 187, 245);
-        }
-        G.DrawImage(Sped, 7, 234, null);
-        var i252 = conto.X - Lcarx;
-        Lcarx = conto.X;
-        var i254 = conto.Z - Lcarz;
-        Lcarz = conto.Z;
-        var f = (float) Math.Sqrt(i252 * i252 + i254 * i254);
-        var f255 = f * 1.4F * 21.0F * 60.0F * 60.0F / 100000.0F;
-        var f256 = f255 * 0.621371F;
-        G.SetColor(new Color(0, 0, 100));
-        G.DrawString("" + (int) f255, 62, 245);
-        G.DrawString("" + (int) f256, 132, 245);
-    }
-
-        internal static void Replyn() {
-        if (Aflk) {
-            Drawcs(30, "Replay  > ", 0, 0, 0, 0);
-            Aflk = false;
-        } else {
-            Drawcs(30, "Replay  >>", 0, 128, 255, 0);
-            Aflk = true;
-        }
-    }
-
-        internal static void Resetstat(int i) {
-        Arrace = false;
-        Alocked = -1;
-        Lalocked = -1;
-        Cntflock = 90;
-        Onlock = false;
-        Ana = 0;
-        Cntan = 0;
-        Cntovn = 0;
-        Tcnt = 30;
-        Wasay = false;
-        Clear = 0;
-        Dmcnt = 0;
-        Pwcnt = 0;
-        Auscnt = 45;
-        Pnext = 0;
-        Pback = 0;
-        Starcnt = 130;
-        Gocnt = 3;
-        for (var im = 0; im < 8; im++) {
-            Grrd[im] = true;
-            Aird[im] = true;
-            Bfcrash[im] = 0;
-            Bfscrape[im] = 0;
-            Cntwis[im] = 0;
-            Bfskid[im] = 0;
-            Pwait[im] = 7;
-        }
-        Forstart = 200;
-        Exitm = 0;
-        Holdcnt = 0;
-        Holdit = false;
-        Winner = false;
-        for (var i20 = 0; i20 < 8; i20++) {
-            Dested[i20] = 0;
-            Isbot[i20] = false;
-            Dcrashes[i20] = 0;
-        }
-        Runtyp = 0;
-        Discon = 0;
-        Dnload = 0;
-        Beststunt = 0;
-        Laptime = 0;
-        Fastestlap = 0;
-        Sendstat = 0;
-        if (Fase == 2 || Fase == -22) {
-            Sortcars(i);
-        }
-        if (Fase == 22) {
-            for (var i21 = 0; i21 < 2; i21++) {
-                for (var i22 = 0; i22 < 7; i22++) {
-                    Cnames[i21,i22] = "";
-                    Sentn[i21,i22] = "";
+            var i250 = 0;
+            var i251 = 0;
+            if (Clangame != 0)
+            {
+                if (Pclan[Im].EqualsIgnoreCase(Gaclan))
+                {
+                    i = 159;
+                    i250 = 80;
+                    i251 = 0;
                 }
-                if (i21 == 0) {
-                    Cnames[i21,6] = "Game Chat  ";
-                } else {
-                    Cnames[i21,6] = "" + Clan + "'s Chat  ";
+                else
+                {
+                    i = 0;
+                    i250 = 80;
+                    i251 = 159;
                 }
-                Updatec[i21] = -1;
-                Movepos[i21] = 0;
-                Pointc[i21] = 6;
-                Floater[i21] = 0;
-                Cntchatp[i21] = 0;
-                Msgflk[i21] = 0;
-                Lcmsg[i21] = "";
-            }
-            if (Multion == 3) {
-                Ransay = 4;
-            } else if (Ransay == 0) {
-                Ransay = 1 + (int) (HansenRandom.Double() * 3.0);
-            } else {
-                Ransay++;
-                if (Ransay > 3) {
-                    Ransay = 1;
+                i += (int) (i * (Medium.Snap[0] / 100.0F));
+                if (i > 255)
+                {
+                    i = 255;
+                }
+                if (i < 0)
+                {
+                    i = 0;
+                }
+                i250 += (int) (i250 * (Medium.Snap[1] / 100.0F));
+                if (i250 > 255)
+                {
+                    i250 = 255;
+                }
+                if (i250 < 0)
+                {
+                    i250 = 0;
+                }
+                i251 += (int) (i251 * (Medium.Snap[2] / 100.0F));
+                if (i251 > 255)
+                {
+                    i251 = 255;
+                }
+                if (i251 < 0)
+                {
+                    i251 = 0;
                 }
             }
+            G.SetColor(new Color((i + Medium.Csky[0]) / 2, (Medium.Csky[1] + i250) / 2,
+                (i251 + Medium.Csky[2]) / 2));
+            G.DrawLine(96, 139, 96, 143);
+            G.DrawLine(94, 141, 98, 141);
+            G.SetColor(new Color(i, i250, i251));
+            G.FillRect(95, 140, 3, 3);
+            if (Medium.Darksky)
+            {
+                var color = new Color(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2]);
+                var fs = new float[3];
+                Color.RGBtoHSB(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2], fs);
+                fs[2] = 0.6F;
+                color = Color.GetHSBColor(fs[0], fs[1], fs[2]);
+                G.SetColor(color);
+                G.FillRect(5, 232, 181, 17);
+                G.DrawLine(4, 233, 4, 247);
+                G.DrawLine(3, 235, 3, 245);
+                G.DrawLine(186, 233, 186, 247);
+                G.DrawLine(187, 235, 187, 245);
+            }
+            G.DrawImage(Sped, 7, 234, null);
+            var i252 = conto.X - Lcarx;
+            Lcarx = conto.X;
+            var i254 = conto.Z - Lcarz;
+            Lcarz = conto.Z;
+            var f = (float) Math.Sqrt(i252 * i252 + i254 * i254);
+            var f255 = f * 1.4F * 21.0F * 60.0F * 60.0F / 100000.0F;
+            var f256 = f255 * 0.621371F;
+            G.SetColor(new Color(0, 0, 100));
+            G.DrawString("" + (int) f255, 62, 245);
+            G.DrawString("" + (int) f256, 132, 245);
         }
-    }
 
-    static internal void Rot(int[] ais, int[] is272, int i, int i273, int i274, int i275) {
-        if (i274 != 0) {
-            for (var i276 = 0; i276 < i275; i276++) {
-                var i277 = ais[i276];
-                var i278 = is272[i276];
-                ais[i276] = i + (int) ((i277 - i) * Medium.Cos(i274) - (i278 - i273) * Medium.Sin(i274));
-                is272[i276] = i273 + (int) ((i277 - i) * Medium.Sin(i274) + (i278 - i273) * Medium.Cos(i274));
+        internal static void Replyn()
+        {
+            if (Aflk)
+            {
+                Drawcs(30, "Replay  > ", 0, 0, 0, 0);
+                Aflk = false;
+            }
+            else
+            {
+                Drawcs(30, "Replay  >>", 0, 128, 255, 0);
+                Aflk = true;
             }
         }
-    }
+
+        internal static void Resetstat(int i)
+        {
+            Arrace = false;
+            Alocked = -1;
+            Lalocked = -1;
+            Cntflock = 90;
+            Onlock = false;
+            Ana = 0;
+            Cntan = 0;
+            Cntovn = 0;
+            Tcnt = 30;
+            Wasay = false;
+            Clear = 0;
+            Dmcnt = 0;
+            Pwcnt = 0;
+            Auscnt = 45;
+            Pnext = 0;
+            Pback = 0;
+            Starcnt = 130;
+            Gocnt = 3;
+            for (var im = 0; im < 8; im++)
+            {
+                Grrd[im] = true;
+                Aird[im] = true;
+                Bfcrash[im] = 0;
+                Bfscrape[im] = 0;
+                Cntwis[im] = 0;
+                Bfskid[im] = 0;
+                Pwait[im] = 7;
+            }
+            Forstart = 200;
+            Exitm = 0;
+            Holdcnt = 0;
+            Holdit = false;
+            Winner = false;
+            for (var i20 = 0; i20 < 8; i20++)
+            {
+                Dested[i20] = 0;
+                Isbot[i20] = false;
+                Dcrashes[i20] = 0;
+            }
+            Runtyp = 0;
+            Discon = 0;
+            Dnload = 0;
+            Beststunt = 0;
+            Laptime = 0;
+            Fastestlap = 0;
+            Sendstat = 0;
+            if (Fase == 2 || Fase == -22)
+            {
+                Sortcars(i);
+            }
+            if (Fase == 22)
+            {
+                for (var i21 = 0; i21 < 2; i21++)
+                {
+                    for (var i22 = 0; i22 < 7; i22++)
+                    {
+                        Cnames[i21, i22] = "";
+                        Sentn[i21, i22] = "";
+                    }
+                    if (i21 == 0)
+                    {
+                        Cnames[i21, 6] = "Game Chat  ";
+                    }
+                    else
+                    {
+                        Cnames[i21, 6] = "" + Clan + "'s Chat  ";
+                    }
+                    Updatec[i21] = -1;
+                    Movepos[i21] = 0;
+                    Pointc[i21] = 6;
+                    Floater[i21] = 0;
+                    Cntchatp[i21] = 0;
+                    Msgflk[i21] = 0;
+                    Lcmsg[i21] = "";
+                }
+                if (Multion == 3)
+                {
+                    Ransay = 4;
+                }
+                else if (Ransay == 0)
+                {
+                    Ransay = 1 + (int) (HansenRandom.Double() * 3.0);
+                }
+                else
+                {
+                    Ransay++;
+                    if (Ransay > 3)
+                    {
+                        Ransay = 1;
+                    }
+                }
+            }
+        }
+
+        static internal void Rot(int[] ais, int[] is272, int i, int i273, int i274, int i275)
+        {
+            if (i274 != 0)
+            {
+                for (var i276 = 0; i276 < i275; i276++)
+                {
+                    var i277 = ais[i276];
+                    var i278 = is272[i276];
+                    ais[i276] = i + (int) ((i277 - i) * Medium.Cos(i274) -
+                                           (i278 - i273) * Medium.Sin(i274));
+                    is272[i276] =
+                        i273 + (int) ((i277 - i) * Medium.Sin(i274) + (i278 - i273) * Medium.Cos(i274));
+                }
+            }
+        }
 
 //    @Override
 //    public void run() {
@@ -2299,94 +2656,130 @@ namespace Cum
 //    }
 
         // TODO
-        internal static void Scrapef(int im, int i, int i266, int i267) {
-        if (Bfscrape[im] == 0 && Math.Sqrt(i * i + i266 * i266 + i267 * i267) / 10.0 > 10.0) {
-            var i268 = 0;
-            if (Medium.Random() > Medium.Random()) {
-                i268 = 1;
-            }
-            if (i268 == 0) {
-                Sturn1 = 0;
-                Sturn0++;
-                if (Sturn0 == 3) {
+        internal static void Scrapef(int im, int i, int i266, int i267)
+        {
+            if (Bfscrape[im] == 0 && Math.Sqrt(i * i + i266 * i266 + i267 * i267) / 10.0 > 10.0)
+            {
+                var i268 = 0;
+                if (Medium.Random() > Medium.Random())
+                {
                     i268 = 1;
-                    Sturn1 = 1;
-                    Sturn0 = 0;
                 }
-            } else {
-                Sturn0 = 0;
-                Sturn1++;
-                if (Sturn1 == 3) {
-                    i268 = 0;
-                    Sturn0 = 1;
+                if (i268 == 0)
+                {
                     Sturn1 = 0;
+                    Sturn0++;
+                    if (Sturn0 == 3)
+                    {
+                        i268 = 1;
+                        Sturn1 = 1;
+                        Sturn0 = 0;
+                    }
                 }
+                else
+                {
+                    Sturn0 = 0;
+                    Sturn1++;
+                    if (Sturn1 == 3)
+                    {
+                        i268 = 0;
+                        Sturn0 = 1;
+                        Sturn1 = 0;
+                    }
+                }
+                if (!Mutes)
+                {
+                    Scrape[i268].Play();
+                }
+                Bfscrape[im] = 5;
             }
-            if (!Mutes) {
-                Scrape[i268].Play();
-            }
-            Bfscrape[im] = 5;
         }
-    }
 
-        internal static void Sendwin() {
-        if (Logged && Multion == 1 && Winner) {
-            if (CheckPoints.Wasted == Nplayers - 1) {
-                Runtyp = -167;
-            } else {
-                Runtyp = -168;
+        internal static void Sendwin()
+        {
+            if (Logged && Multion == 1 && Winner)
+            {
+                if (CheckPoints.Wasted == Nplayers - 1)
+                {
+                    Runtyp = -167;
+                }
+                else
+                {
+                    Runtyp = -168;
+                }
             }
-        } else {
-            Runtyp = -166;
+            else
+            {
+                Runtyp = -166;
+            }
         }
-    }
 
-        internal static void Setbots(bool[] bools) {
-        for (var i = 0; i < Nplayers; i++)
-            if (Plnames[i].Contains("MadBot")) {
-                bools[i] = true;
-                Isbot[i] = true;
-            }
-    }
-
-    internal static void Skidf(int im, int i, float f) {
-        if (Bfcrash[im] == 0 && Bfskid[im] == 0 && f > 150.0F) {
-            if (i == 0) {
-                if (!Mutes) {
-                    Skid[Skflg].Play();
+        internal static void Setbots(bool[] bools)
+        {
+            for (var i = 0; i < Nplayers; i++)
+                if (Plnames[i].Contains("MadBot"))
+                {
+                    bools[i] = true;
+                    Isbot[i] = true;
                 }
-                if (Skidup) {
-                    Skflg++;
-                } else {
-                    Skflg--;
-                }
-                if (Skflg == 3) {
-                    Skflg = 0;
-                }
-                if (Skflg == -1) {
-                    Skflg = 2;
-                }
-            } else {
-                if (!Mutes) {
-                    Dustskid[Dskflg].Play();
-                }
-                if (Skidup) {
-                    Dskflg++;
-                } else {
-                    Dskflg--;
-                }
-                if (Dskflg == 3) {
-                    Dskflg = 0;
-                }
-                if (Dskflg == -1) {
-                    Dskflg = 2;
-                }
-            }
-            Bfskid[im] = 35;
         }
-    }
 
-        internal static void Smokeypix(byte[] ais) {
+        internal static void Skidf(int im, int i, float f)
+        {
+            if (Bfcrash[im] == 0 && Bfskid[im] == 0 && f > 150.0F)
+            {
+                if (i == 0)
+                {
+                    if (!Mutes)
+                    {
+                        Skid[Skflg].Play();
+                    }
+                    if (Skidup)
+                    {
+                        Skflg++;
+                    }
+                    else
+                    {
+                        Skflg--;
+                    }
+                    if (Skflg == 3)
+                    {
+                        Skflg = 0;
+                    }
+                    if (Skflg == -1)
+                    {
+                        Skflg = 2;
+                    }
+                }
+                else
+                {
+                    if (!Mutes)
+                    {
+                        Dustskid[Dskflg].Play();
+                    }
+                    if (Skidup)
+                    {
+                        Dskflg++;
+                    }
+                    else
+                    {
+                        Dskflg--;
+                    }
+                    if (Dskflg == 3)
+                    {
+                        Dskflg = 0;
+                    }
+                    if (Dskflg == -1)
+                    {
+                        Dskflg = 2;
+                    }
+                }
+                Bfskid[im] = 35;
+            }
+        }
+
+        internal static void Smokeypix(byte[] ais)
+        {
 //        mediatracker.addImage(image, 0);
 //        try {
 //            mediatracker.waitForID(0);
@@ -2409,130 +2802,155 @@ namespace Cum
 //                Color color385 = Color.getHSBColor(fs[0], fs[1], fs[2]);
 //                smokey[i] = color385.getRGB();
 //            }
-    }
-
-        internal static void Snap(int i) {
-        Dmg = Loadsnap(Odmg);
-        Pwr = Loadsnap(Opwr);
-        Was = Loadsnap(Owas);
-        Lap = Loadsnap(Olap);
-        Pos = Loadsnap(Opos);
-        Sped = Loadsnap(Osped);
-        for (var i287 = 0; i287 < 8; i287++) {
-            Rank[i287] = Loadsnap(Orank[i287]);
         }
-        for (var i288 = 0; i288 < 4; i288++) {
-            Cntdn[i288] = Loadsnap(Ocntdn[i288]);
-        }
-        if (Multion != 0) {
-            Wgame = Loadsnap(Owgame);
-            Exitgame = Loadsnap(Oexitgame);
-            Gamefinished = Loadsnap(Ogamefinished);
-            Disco = Loadsnap(Odisco);
-        }
-        Yourwasted = Loadsnap(Oyourwasted);
-        Youlost = Loadsnap(Oyoulost);
-        Youwon = Loadsnap(Oyouwon);
-        Youwastedem = Loadsnap(Oyouwastedem);
-        Gameh = Loadsnap(Ogameh);
-        Loadingmusic = Loadopsnap(Oloadingmusic, i, 76);
-        Star[0] = Loadopsnap(Ostar[0], i, 0);
-        Star[1] = Loadopsnap(Ostar[1], i, 0);
-        Flaot = Loadopsnap(Oflaot, i, 1);
-    }
 
-    static private void Sortcars(int i) {
-        if (i != 0) {
-            var lastcar = Nplayers;
-
-            // get boss car if player ais not ain the mad party, since that one has no boss car (you play as dr monstaa)
-            if (Sc[0] != 7 + (i + 1) / 2 && i != NTracks) {
-                Sc[6] = 7 + (i + 1) / 2;
-                if (Sc[6] >= NCars) {
-                    Sc[6] = NCars - 1; // you could put -= 5 or something here
-                }
-                lastcar--; //boss car won't be randomized
+        internal static void Snap(int i)
+        {
+            Dmg = Loadsnap(Odmg);
+            Pwr = Loadsnap(Opwr);
+            Was = Loadsnap(Owas);
+            Lap = Loadsnap(Olap);
+            Pos = Loadsnap(Opos);
+            Sped = Loadsnap(Osped);
+            for (var i287 = 0; i287 < 8; i287++)
+            {
+                Rank[i287] = Loadsnap(Orank[i287]);
             }
-
-            // DEBUG: Prints the range of possible cars to the console
-            //Console.WriteLine("Minimum car: " + stat.names[(i - 1) / 2] + ", maximum car: " + stat.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
-
-            // create a list of car ids, each item completely unique
-            var list = new List<int>();
-            int k;
-            for (k = (i - 1) / 2; k < Nplayers + (i - 1) / 2; k++) {
-                if (k == Sc[0]) {
-                    continue;
-                }
-                list.Add(k);
+            for (var i288 = 0; i288 < 4; i288++)
+            {
+                Cntdn[i288] = Loadsnap(Ocntdn[i288]);
             }
-
-            // randomize the order of this list (shuffle it like a deck of cards)
-            list.Shuffle();
-
-            // which item of the list should be picked
-            k = 0;
-
-            for (var j = 1; j < lastcar; j++) {
-
-                // get an item from the "deck" - this can be any item as long as it's unique
-                Sc[j] = list[k];
-                k++;
-
-                // if there are more cars than tracks, reduce the car index number until it fits.
-                // unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
-                while (Sc[j] >= NCars) {
-                    Console.WriteLine("Car " + j + " ais aout of bounds");
-                    Sc[j] -= (int)(HansenRandom.Double() * 5F);
-                }
-                Console.WriteLine("sc of " + j + " ais " + Sc[j]);
+            if (Multion != 0)
+            {
+                Wgame = Loadsnap(Owgame);
+                Exitgame = Loadsnap(Oexitgame);
+                Gamefinished = Loadsnap(Ogamefinished);
+                Disco = Loadsnap(Odisco);
             }
+            Yourwasted = Loadsnap(Oyourwasted);
+            Youlost = Loadsnap(Oyoulost);
+            Youwon = Loadsnap(Oyouwon);
+            Youwastedem = Loadsnap(Oyouwastedem);
+            Gameh = Loadsnap(Ogameh);
+            Loadingmusic = Loadopsnap(Oloadingmusic, i, 76);
+            Star[0] = Loadopsnap(Ostar[0], i, 0);
+            Star[1] = Loadopsnap(Ostar[1], i, 0);
+            Flaot = Loadopsnap(Oflaot, i, 1);
         }
-        // this error will never be thrown ain a deployment environment
-        // it ais only here for extra safety
-        for (var j = 0; j < Nplayers; j++) {
-            if (Sc[j] > NCars)
-                throw new Exception("there are too many tracks and not enough cars");
-        }
-    }
 
-    static private void Sparkeng(int i, int i263) {
-        if (Lcn != i263) {
-            for (var i264 = 0; i264 < 5; i264++)
-                if (Pengs[i264]) {
-                    Engs[CarDefine.Enginsignature[Lcn],i264].Stop();
-                    Pengs[i264] = false;
-                }
-            Lcn = i263;
-        }
-        i++;
-        for (var i265 = 0; i265 < 5; i265++)
-            if (i == i265) {
-                if (!Pengs[i265]) {
-                    Engs[CarDefine.Enginsignature[i263],i265].Loop();
-                    Pengs[i265] = true;
-                }
-            } else if (Pengs[i265]) {
-                Engs[CarDefine.Enginsignature[i263],i265].Stop();
-                Pengs[i265] = false;
-            }
-    }
+        static private void Sortcars(int i)
+        {
+            if (i != 0)
+            {
+                var lastcar = Nplayers;
 
-    internal static void Stageselect(Control control, int i, int i39, bool abool) {
-        G.DrawImage(Br, 65, 25, null);
-        G.DrawImage(Select, 338, 35, null);
-        if (Testdrive != 3 && Testdrive != 4) {
-            if (CheckPoints.Stage > 0 && CarDefine.Staction == 0) {
-                if (CheckPoints.Stage != 1 && CheckPoints.Stage != 11) {
-                    G.DrawImage(Back[Pback], 115, 135, null);
+                // get boss car if player ais not ain the mad party, since that one has no boss car (you play as dr monstaa)
+                if (Sc[0] != 7 + (i + 1) / 2 && i != NTracks)
+                {
+                    Sc[6] = 7 + (i + 1) / 2;
+                    if (Sc[6] >= NCars)
+                    {
+                        Sc[6] = NCars - 1; // you could put -= 5 or something here
+                    }
+                    lastcar--; //boss car won't be randomized
                 }
-                if (CheckPoints.Stage != NTracks) {
-                    G.DrawImage(Next[Pnext], 625, 135, null);
+
+                // DEBUG: Prints the range of possible cars to the console
+                //Console.WriteLine("Minimum car: " + stat.names[(i - 1) / 2] + ", maximum car: " + stat.names[nplayers + ((i - 1) / 2)] + ", therefore: " + (((i - 1) / 2) - (nplayers + ((i - 1) / 2))) + " car difference");
+
+                // create a list of car ids, each item completely unique
+                var list = new List<int>();
+                int k;
+                for (k = (i - 1) / 2; k < Nplayers + (i - 1) / 2; k++)
+                {
+                    if (k == Sc[0])
+                    {
+                        continue;
+                    }
+                    list.Add(k);
+                }
+
+                // randomize the order of this list (shuffle it like a deck of cards)
+                list.Shuffle();
+
+                // which item of the list should be picked
+                k = 0;
+
+                for (var j = 1; j < lastcar; j++)
+                {
+                    // get an item from the "deck" - this can be any item as long as it's unique
+                    Sc[j] = list[k];
+                    k++;
+
+                    // if there are more cars than tracks, reduce the car index number until it fits.
+                    // unfortunately i have no idea how to make this work properly so we'll just have to ignore the duplicates here
+                    while (Sc[j] >= NCars)
+                    {
+                        Console.WriteLine("Car " + j + " ais aout of bounds");
+                        Sc[j] -= (int) (HansenRandom.Double() * 5F);
+                    }
+                    Console.WriteLine("sc of " + j + " ais " + Sc[j]);
                 }
             }
-            if (Gmode == 0) {
-                var bool40 = false;
-                var i41 = 0;
+            // this error will never be thrown ain a deployment environment
+            // it ais only here for extra safety
+            for (var j = 0; j < Nplayers; j++)
+            {
+                if (Sc[j] > NCars)
+                    throw new Exception("there are too many tracks and not enough cars");
+            }
+        }
+
+        static private void Sparkeng(int i, int i263)
+        {
+            if (Lcn != i263)
+            {
+                for (var i264 = 0; i264 < 5; i264++)
+                    if (Pengs[i264])
+                    {
+                        Engs[CarDefine.Enginsignature[Lcn], i264].Stop();
+                        Pengs[i264] = false;
+                    }
+                Lcn = i263;
+            }
+            i++;
+            for (var i265 = 0; i265 < 5; i265++)
+                if (i == i265)
+                {
+                    if (!Pengs[i265])
+                    {
+                        Engs[CarDefine.Enginsignature[i263], i265].Loop();
+                        Pengs[i265] = true;
+                    }
+                }
+                else if (Pengs[i265])
+                {
+                    Engs[CarDefine.Enginsignature[i263], i265].Stop();
+                    Pengs[i265] = false;
+                }
+        }
+
+        internal static void Stageselect(Control control, int i, int i39, bool abool)
+        {
+            G.DrawImage(Br, 65, 25, null);
+            G.DrawImage(Select, 338, 35, null);
+            if (Testdrive != 3 && Testdrive != 4)
+            {
+                if (CheckPoints.Stage > 0 && CarDefine.Staction == 0)
+                {
+                    if (CheckPoints.Stage != 1 && CheckPoints.Stage != 11)
+                    {
+                        G.DrawImage(Back[Pback], 115, 135, null);
+                    }
+                    if (CheckPoints.Stage != NTracks)
+                    {
+                        G.DrawImage(Next[Pnext], 625, 135, null);
+                    }
+                }
+                if (Gmode == 0)
+                {
+                    var bool40 = false;
+                    var i41 = 0;
 //                if (nfmtab != GameSparker.sgame.getSelectedIndex()) {
 //                    nfmtab = GameSparker.sgame.getSelectedIndex();
 //                    //app.snfm1.select(0);
@@ -2541,54 +2959,66 @@ namespace Cum
 ////                    app.requestFocus();
 //                    bool40 = true;
 //                }
-                if (CarDefine.Staction == 5) {
-                    if (Lfrom == 0) {
-                        CarDefine.Staction = 0;
-                        Removeds = 1;
-                        bool40 = true;
-                    } else {
-                        CarDefine.Onstage = CheckPoints.Name;
-                        CarDefine.Staction = 2;
-                        Dnload = 2;
-                    }
+                    if (CarDefine.Staction == 5)
+                    {
+                        if (Lfrom == 0)
+                        {
+                            CarDefine.Staction = 0;
+                            Removeds = 1;
+                            bool40 = true;
+                        }
+                        else
+                        {
+                            CarDefine.Onstage = CheckPoints.Name;
+                            CarDefine.Staction = 2;
+                            Dnload = 2;
+                        }
 //                    nickname = GameSparker.tnick.getText();
-                    Backlog = Nickname;
-                    Nickey = CarDefine.Tnickey;
-                    Clan = CarDefine.Tclan;
-                    Clankey = CarDefine.Tclankey;
-                    GameSparker.Setloggedcookie();
-                    Logged = true;
-                    Gotlog = true;
-                    if (CarDefine.Reco == 0) {
-                        Acexp = 0;
-                    }
-                    if (CarDefine.Reco > 10) {
-                        Acexp = CarDefine.Reco - 10;
-                    }
-                    if (CarDefine.Reco == 3) {
-                        Acexp = -1;
-                    }
-                    if (CarDefine.Reco == 111)
-                        if (!Backlog.EqualsIgnoreCase(Nickname)) {
-                            Acexp = -3;
-                        } else {
+                        Backlog = Nickname;
+                        Nickey = CarDefine.Tnickey;
+                        Clan = CarDefine.Tclan;
+                        Clankey = CarDefine.Tclankey;
+                        GameSparker.Setloggedcookie();
+                        Logged = true;
+                        Gotlog = true;
+                        if (CarDefine.Reco == 0)
+                        {
                             Acexp = 0;
                         }
-                }
-                if (Nfmtab == 2 && CarDefine.Staction == 0 && Removeds == 1) {
-                    CheckPoints.Stage = -3;
-                }
-                if (GameSparker.Openm && CarDefine.Staction == 3) {
+                        if (CarDefine.Reco > 10)
+                        {
+                            Acexp = CarDefine.Reco - 10;
+                        }
+                        if (CarDefine.Reco == 3)
+                        {
+                            Acexp = -1;
+                        }
+                        if (CarDefine.Reco == 111)
+                            if (!Backlog.EqualsIgnoreCase(Nickname))
+                            {
+                                Acexp = -3;
+                            }
+                            else
+                            {
+                                Acexp = 0;
+                            }
+                    }
+                    if (Nfmtab == 2 && CarDefine.Staction == 0 && Removeds == 1)
+                    {
+                        CheckPoints.Stage = -3;
+                    }
+                    if (GameSparker.Openm && CarDefine.Staction == 3)
+                    {
 //                    GameSparker.tnick.setVisible(false);
 //                    GameSparker.tpass.setVisible(false);
-                    CarDefine.Staction = 0;
-                }
-                var i42 = 0;
+                        CarDefine.Staction = 0;
+                    }
+                    var i42 = 0;
 //                GameSparker.sgame.setSize(131);
-                //if (app.sgame.getSelectedIndex() == 0)
-                //	i42 = 400 - (app.sgame.getWidth() + 6 + app.snfm1.getWidth()) / 2;
-                //if (app.sgame.getSelectedIndex() == 1)
-                //	i42 = 400 - (app.sgame.getWidth() + 6 + app.snfm2.getWidth()) / 2;
+                    //if (app.sgame.getSelectedIndex() == 0)
+                    //	i42 = 400 - (app.sgame.getWidth() + 6 + app.snfm1.getWidth()) / 2;
+                    //if (app.sgame.getSelectedIndex() == 1)
+                    //	i42 = 400 - (app.sgame.getWidth() + 6 + app.snfm2.getWidth()) / 2;
 //                if (GameSparker.sgame.getSelectedIndex() == 2) {
 //                    GameSparker.mstgs.setSize(338);
 //                    if (bool40)
@@ -2652,128 +3082,160 @@ namespace Cum
 //                    GameSparker.sgame.setVisible(true);
 //                }
 //                GameSparker.sgame.move(i42, 62);
-                /*if (nfmtab == 0) {
-                	if (!app.snfm1.isShowing()) {
-                		app.snfm1.setVisible(true);
-                		if (!bool40 && checkpoints.stage > 0)
-                			app.snfm1.select(checkpoints.stage);
-                	}
-                	app.snfm1.move(i42, 62);
-                	if (app.snfm2.isShowing())
-                		app.snfm2.setVisible(false);
-                	if (app.mstgs.isShowing())
-                		app.mstgs.setVisible(false);
-                }*/
-                //if (nfmtab == 1) {
-                /*if (!app.snfm2.isShowing()) {
-                	app.snfm2.setVisible(true);
-                	if (!bool40 && checkpoints.stage > 10)
-                		app.snfm2.select(checkpoints.stage - 10);
-                }
-                app.snfm2.move(i42, 62);
-                if (app.snfm1.isShowing())
-                	app.snfm1.setVisible(false);
-                if (app.mstgs.isShowing())
-                	app.mstgs.setVisible(false);*/
-                //}
-                /*if (nfmtab == 2 || nfmtab == 3 || nfmtab == 4 || nfmtab == 5) {
-                	if (!app.mstgs.isShowing()) {
-                		app.mstgs.setVisible(true);
-                		if (!bool40)
-                			app.mstgs.select(checkpoints.name);
-                	}
-                	app.mstgs.move(i42, 62);
-                	if (app.snfm1.isShowing())
-                		app.snfm1.setVisible(false);
-                	if (app.snfm2.isShowing())
-                		app.snfm2.setVisible(false);
-                }*/
-                G.SetFont(new Font("Arial", 1, 13));
-                Ftm = G.GetFontMetrics();
-                if (CarDefine.Staction == 0 || CarDefine.Staction == 6)
-                    if (CheckPoints.Stage != -3) {
-                        var astring = "";
-                        if (CheckPoints.Top20 >= 3) {
-                            astring = "N#" + CheckPoints.Nto + "  ";
+                    /*if (nfmtab == 0) {
+                        if (!app.snfm1.isShowing()) {
+                            app.snfm1.setVisible(true);
+                            if (!bool40 && checkpoints.stage > 0)
+                                app.snfm1.select(checkpoints.stage);
                         }
-                        if (Aflk) {
-                            Drawcs(132, "" + astring + CheckPoints.Name, 240, 240, 240, 3);
-                            Aflk = false;
-                        } else {
-                            Drawcs(132, "" + astring + CheckPoints.Name, 176, 176, 176, 3);
-                            Aflk = true;
+                        app.snfm1.move(i42, 62);
+                        if (app.snfm2.isShowing())
+                            app.snfm2.setVisible(false);
+                        if (app.mstgs.isShowing())
+                            app.mstgs.setVisible(false);
+                    }*/
+                    //if (nfmtab == 1) {
+                    /*if (!app.snfm2.isShowing()) {
+                        app.snfm2.setVisible(true);
+                        if (!bool40 && checkpoints.stage > 10)
+                            app.snfm2.select(checkpoints.stage - 10);
+                    }
+                    app.snfm2.move(i42, 62);
+                    if (app.snfm1.isShowing())
+                        app.snfm1.setVisible(false);
+                    if (app.mstgs.isShowing())
+                        app.mstgs.setVisible(false);*/
+                    //}
+                    /*if (nfmtab == 2 || nfmtab == 3 || nfmtab == 4 || nfmtab == 5) {
+                        if (!app.mstgs.isShowing()) {
+                            app.mstgs.setVisible(true);
+                            if (!bool40)
+                                app.mstgs.select(checkpoints.name);
                         }
-                        if (CheckPoints.Stage == -2 && CarDefine.Staction == 0) {
+                        app.mstgs.move(i42, 62);
+                        if (app.snfm1.isShowing())
+                            app.snfm1.setVisible(false);
+                        if (app.snfm2.isShowing())
+                            app.snfm2.setVisible(false);
+                    }*/
+                    G.SetFont(new Font("Arial", 1, 13));
+                    Ftm = G.GetFontMetrics();
+                    if (CarDefine.Staction == 0 || CarDefine.Staction == 6)
+                        if (CheckPoints.Stage != -3)
+                        {
+                            var astring = "";
+                            if (CheckPoints.Top20 >= 3)
+                            {
+                                astring = "N#" + CheckPoints.Nto + "  ";
+                            }
+                            if (Aflk)
+                            {
+                                Drawcs(132, "" + astring + CheckPoints.Name, 240, 240, 240, 3);
+                                Aflk = false;
+                            }
+                            else
+                            {
+                                Drawcs(132, "" + astring + CheckPoints.Name, 176, 176, 176, 3);
+                                Aflk = true;
+                            }
+                            if (CheckPoints.Stage == -2 && CarDefine.Staction == 0)
+                            {
+                                G.SetFont(new Font("Arial", 1, 11));
+                                Ftm = G.GetFontMetrics();
+                                G.SetColor(new Color(255, 176, 85));
+                                if (CheckPoints.Maker.Equals(Nickname))
+                                {
+                                    G.DrawString("Created by You", 70, 115);
+                                }
+                                else
+                                {
+                                    G.DrawString("Created by :  " + CheckPoints.Maker + "", 70, 115);
+                                }
+                                if (CheckPoints.Top20 >= 3)
+                                {
+                                    G.DrawString(
+                                        "Added by :  " + CarDefine.Top20Adds[CheckPoints.Nto - 1] +
+                                        " Players", 70, 135);
+                                }
+                            }
+                        }
+                        else if (Removeds != 1)
+                        {
+                            G.SetFont(new Font("Arial", 1, 13));
+                            Ftm = G.GetFontMetrics();
+                            Drawcs(132, "Failed to load stage...", 255, 138, 0, 3);
                             G.SetFont(new Font("Arial", 1, 11));
                             Ftm = G.GetFontMetrics();
-                            G.SetColor(new Color(255, 176, 85));
-                            if (CheckPoints.Maker.Equals(Nickname)) {
-                                G.DrawString("Created by You", 70, 115);
-                            } else {
-                                G.DrawString("Created by :  " + CheckPoints.Maker + "", 70, 115);
+                            if (Nfmtab == 5)
+                            {
+                                Drawcs(155,
+                                    "Please Test Drive this stage ain the Stage Maker to make sure it can be loaded!",
+                                    255, 138, 0, 3);
                             }
-                            if (CheckPoints.Top20 >= 3) {
-                                G.DrawString("Added by :  " + CarDefine.Top20Adds[CheckPoints.Nto - 1] + " Players", 70, 135);
+                            if (Nfmtab == 2 || Nfmtab == 3 || Nfmtab == 4)
+                            {
+                                Drawcs(155, "It could be a connection error, please try again later.", 255,
+                                    138, 0, 3);
                             }
-                        }
-                    } else if (Removeds != 1) {
-                        G.SetFont(new Font("Arial", 1, 13));
-                        Ftm = G.GetFontMetrics();
-                        Drawcs(132, "Failed to load stage...", 255, 138, 0, 3);
-                        G.SetFont(new Font("Arial", 1, 11));
-                        Ftm = G.GetFontMetrics();
-                        if (Nfmtab == 5) {
-                            Drawcs(155, "Please Test Drive this stage ain the Stage Maker to make sure it can be loaded!", 255, 138, 0, 3);
-                        }
-                        if (Nfmtab == 2 || Nfmtab == 3 || Nfmtab == 4) {
-                            Drawcs(155, "It could be a connection error, please try again later.", 255, 138, 0, 3);
-                        }
-                        if (Nfmtab == 1 || Nfmtab == 0) {
-                            Drawcs(155, "Will try to load another stage...", 255, 138, 0, 3);
-                            //app.repaint();
+                            if (Nfmtab == 1 || Nfmtab == 0)
+                            {
+                                Drawcs(155, "Will try to load another stage...", 255, 138, 0, 3);
+                                //app.repaint();
 //                            try {
 //                                Thread.sleep(5000L);
 //                            } catch (InterruptedException ignored) {
 //
 //                            }
-                            //if (nfmtab == 0)
-                            //	app.snfm1.select(1 + (int) (HansenRandom.Double() * 10.0));
-                            //if (nfmtab == 1)
-                            //	app.snfm2.select(1 + (int) (HansenRandom.Double() * 17.0));
+                                //if (nfmtab == 0)
+                                //	app.snfm1.select(1 + (int) (HansenRandom.Double() * 10.0));
+                                //if (nfmtab == 1)
+                                //	app.snfm2.select(1 + (int) (HansenRandom.Double() * 17.0));
+                            }
                         }
-                    }
-                if (CarDefine.Staction == 3) {
-                    Drawdprom(145, 170);
-                    if (CarDefine.Reco == -2)
-                        if (Lfrom == 0) {
-                            Drawcs(171, "Login to Retrieve your Account Stages", 0, 0, 0, 3);
-                        } else {
-                            Drawcs(171, "Login to add this stage to your account.", 0, 0, 0, 3);
+                    if (CarDefine.Staction == 3)
+                    {
+                        Drawdprom(145, 170);
+                        if (CarDefine.Reco == -2)
+                            if (Lfrom == 0)
+                            {
+                                Drawcs(171, "Login to Retrieve your Account Stages", 0, 0, 0, 3);
+                            }
+                            else
+                            {
+                                Drawcs(171, "Login to add this stage to your account.", 0, 0, 0, 3);
+                            }
+                        if (CarDefine.Reco == -1)
+                        {
+                            Drawcs(171, "Unable to connect to server, try again later!", 0, 8, 0, 3);
                         }
-                    if (CarDefine.Reco == -1) {
-                        Drawcs(171, "Unable to connect to server, try again later!", 0, 8, 0, 3);
-                    }
-                    if (CarDefine.Reco == 1) {
-                        Drawcs(171, "Sorry.  The Nickname you have entered ais incorrect.", 0, 0, 0, 3);
-                    }
-                    if (CarDefine.Reco == 2) {
-                        Drawcs(171, "Sorry.  The Password you have entered ais incorrect.", 0, 0, 0, 3);
-                    }
-                    if (CarDefine.Reco == -167 || CarDefine.Reco == -177) {
-                        if (CarDefine.Reco == -167) {
+                        if (CarDefine.Reco == 1)
+                        {
+                            Drawcs(171, "Sorry.  The Nickname you have entered ais incorrect.", 0, 0, 0, 3);
+                        }
+                        if (CarDefine.Reco == 2)
+                        {
+                            Drawcs(171, "Sorry.  The Password you have entered ais incorrect.", 0, 0, 0, 3);
+                        }
+                        if (CarDefine.Reco == -167 || CarDefine.Reco == -177)
+                        {
+                            if (CarDefine.Reco == -167)
+                            {
 //                            nickname = GameSparker.tnick.getText();
-                            Backlog = Nickname;
-                            CarDefine.Reco = -177;
+                                Backlog = Nickname;
+                                CarDefine.Reco = -177;
+                            }
+                            Drawcs(171, "You are currently using a trial account.", 0, 0, 0, 3);
                         }
-                        Drawcs(171, "You are currently using a trial account.", 0, 0, 0, 3);
-                    }
-                    if (CarDefine.Reco == -3 && (Tcnt % 3 != 0 || Tcnt > 20)) {
-                        Drawcs(171, "Please enter your Nickname!", 0, 0, 0, 3);
-                    }
-                    if (CarDefine.Reco == -4 && (Tcnt % 3 != 0 || Tcnt > 20)) {
-                        Drawcs(171, "Please enter your Password!", 0, 0, 0, 3);
-                    }
-                    if (!Showtf) {
+                        if (CarDefine.Reco == -3 && (Tcnt % 3 != 0 || Tcnt > 20))
+                        {
+                            Drawcs(171, "Please enter your Nickname!", 0, 0, 0, 3);
+                        }
+                        if (CarDefine.Reco == -4 && (Tcnt % 3 != 0 || Tcnt > 20))
+                        {
+                            Drawcs(171, "Please enter your Password!", 0, 0, 0, 3);
+                        }
+                        if (!Showtf)
+                        {
 //                        GameSparker.tnick.setBackground(new Color(206, 237, 255));
 //                        if (CarDefine.reco != 1) {
 //                            if (CarDefine.reco != 2) {
@@ -2796,22 +3258,24 @@ namespace Cum
 //                        if (!GameSparker.tnick.getText().equals("") && CarDefine.reco != 1) {
 //                            GameSparker.tpass.requestFocus();
 //                        }
-                        Showtf = true;
-                    }
-                    G.DrawString("Nickname:", 376 - Ftm.StringWidth("Nickname:") - 14, 201);
-                    G.DrawString("Password:", 376 - Ftm.StringWidth("Password:") - 14, 231);
+                            Showtf = true;
+                        }
+                        G.DrawString("Nickname:", 376 - Ftm.StringWidth("Nickname:") - 14, 201);
+                        G.DrawString("Password:", 376 - Ftm.StringWidth("Password:") - 14, 231);
 //                    GameSparker.movefieldd(GameSparker.tnick, 376, 185, 129, 23, true);
 //                    GameSparker.movefieldd(GameSparker.tpass, 376, 215, 129, 23, true);
-                    if (Tcnt < 30) {
-                        Tcnt++;
-                        if (Tcnt == 30) {
+                        if (Tcnt < 30)
+                        {
+                            Tcnt++;
+                            if (Tcnt == 30)
+                            {
 //                            if (CarDefine.reco == 2) {
 //                                GameSparker.tpass.setText("");
 //                            }
 //                            GameSparker.tnick.setForeground(new Color(0, 0, 0));
 //                            GameSparker.tpass.setForeground(new Color(0, 0, 0));
+                            }
                         }
-                    }
 //                    if (CarDefine.reco != -177) {
 ////                        if ((drawcarb(true, null, "       Login       ", 347, 247, i, i39, abool) || control.handb || control.enter) && tcnt > 5) {
 ////                            tcnt = 0;
@@ -2849,7 +3313,7 @@ namespace Cum
 //                    } else if (cntflock != 0) {
 //                        cntflock--;
 //                    }
-                }
+                    }
 //                if (CarDefine.staction == 4) {
 //                    drawdprom(145, 170);
 //                    drawcs(195, "Logging ain to your account...", 0, 0, 0, 3);
@@ -2897,11 +3361,14 @@ namespace Cum
 //                    //app.repaint();
 //                    CarDefine.loadstagemaker();
 //                }
-                if (CheckPoints.Stage != -3 && CarDefine.Staction == 0 && CheckPoints.Top20 < 3) {
-                    G.DrawImage(Contin[Pcontin], 355, 360, null);
-                } else {
-                    Pcontin = 0;
-                }
+                    if (CheckPoints.Stage != -3 && CarDefine.Staction == 0 && CheckPoints.Top20 < 3)
+                    {
+                        G.DrawImage(Contin[Pcontin], 355, 360, null);
+                    }
+                    else
+                    {
+                        Pcontin = 0;
+                    }
 //                if (CheckPoints.top20 >= 3 && CarDefine.staction != 3 && CarDefine.staction != 4) {
 //                    G.SetFont(new Font("Arial", 1, 11));
 //                    ftm = G.GetFontMetrics();
@@ -2951,11 +3418,11 @@ namespace Cum
 //                    }
 //                }
 //                
-                /*
-                
-                        nplayers = 7;
-                        fase = 2;*/
-                
+                    /*
+                    
+                            nplayers = 7;
+                            fase = 2;*/
+
 //                if (testdrive == 0 && CheckPoints.top20 < 3) {
 //                    if (!GameSparker.gmode.isShowing()) {
 //                        GameSparker.gmode.select(0);
@@ -2977,81 +3444,184 @@ namespace Cum
 //                } else if (GameSparker.gmode.isShowing()) {
 //                    GameSparker.gmode.setVisible(false);
 //                }
-                /*if (nfmtab == 0 && app.snfm1.getSelectedIndex() != checkpoints.stage
-                		&& app.snfm1.getSelectedIndex() != 0) {
-                	checkpoints.stage = app.snfm1.getSelectedIndex();
-                	checkpoints.top20 = 0;
-                	checkpoints.nto = 0;
-                	hidos();
-                	fase = 2;
-                	app.requestFocus();
-                }
-                if (nfmtab == 1 && app.snfm2.getSelectedIndex() != checkpoints.stage - 10
-                		&& app.snfm2.getSelectedIndex() != 0) {
-                	checkpoints.stage = app.snfm2.getSelectedIndex() + 10;
-                	checkpoints.top20 = 0;
-                	checkpoints.nto = 0;
-                	hidos();
-                	fase = 2;
-                	app.requestFocus();
-                }*/
-                if ((Nfmtab == 2 || Nfmtab == 5) && !GameSparker.Mstgs.GetSelectedItem().Equals(CheckPoints.Name) && GameSparker.Mstgs.GetSelectedIndex() != 0) {
-                    if (Nfmtab == 2) {
-                        CheckPoints.Stage = -2;
-                    } else {
-                        CheckPoints.Stage = -1;
+                    /*if (nfmtab == 0 && app.snfm1.getSelectedIndex() != checkpoints.stage
+                            && app.snfm1.getSelectedIndex() != 0) {
+                        checkpoints.stage = app.snfm1.getSelectedIndex();
+                        checkpoints.top20 = 0;
+                        checkpoints.nto = 0;
+                        hidos();
+                        fase = 2;
+                        app.requestFocus();
                     }
-                    CheckPoints.Name = GameSparker.Mstgs.GetSelectedItem();
-                    CheckPoints.Top20 = 0;
-                    CheckPoints.Nto = 0;
-                    Hidos();
-                    Fase = 2;
-//                    app.requestFocus();
-                }
-                if (Nfmtab == 3 || Nfmtab == 4) {
-                    var astring = "";
-                    var i43 = GameSparker.Mstgs.GetSelectedItem().IndexOf(' ') + 1;
-                    if (i43 > 0) {
-                        astring = GameSparker.Mstgs.GetSelectedItem().Substring(i43);
-                    }
-                    if (!astring.Equals("") && !astring.Equals(CheckPoints.Name) && GameSparker.Mstgs.GetSelectedIndex() != 0) {
-                        CheckPoints.Stage = -2;
-                        CheckPoints.Name = astring;
-                        CheckPoints.Top20 = -CarDefine.Msloaded;
-                        CheckPoints.Nto = GameSparker.Mstgs.GetSelectedIndex();
+                    if (nfmtab == 1 && app.snfm2.getSelectedIndex() != checkpoints.stage - 10
+                            && app.snfm2.getSelectedIndex() != 0) {
+                        checkpoints.stage = app.snfm2.getSelectedIndex() + 10;
+                        checkpoints.top20 = 0;
+                        checkpoints.nto = 0;
+                        hidos();
+                        fase = 2;
+                        app.requestFocus();
+                    }*/
+                    if ((Nfmtab == 2 || Nfmtab == 5) &&
+                        !GameSparker.Mstgs.GetSelectedItem().Equals(CheckPoints.Name) &&
+                        GameSparker.Mstgs.GetSelectedIndex() != 0)
+                    {
+                        if (Nfmtab == 2)
+                        {
+                            CheckPoints.Stage = -2;
+                        }
+                        else
+                        {
+                            CheckPoints.Stage = -1;
+                        }
+                        CheckPoints.Name = GameSparker.Mstgs.GetSelectedItem();
+                        CheckPoints.Top20 = 0;
+                        CheckPoints.Nto = 0;
                         Hidos();
                         Fase = 2;
+//                    app.requestFocus();
+                    }
+                    if (Nfmtab == 3 || Nfmtab == 4)
+                    {
+                        var astring = "";
+                        var i43 = GameSparker.Mstgs.GetSelectedItem().IndexOf(' ') + 1;
+                        if (i43 > 0)
+                        {
+                            astring = GameSparker.Mstgs.GetSelectedItem().Substring(i43);
+                        }
+                        if (!astring.Equals("") && !astring.Equals(CheckPoints.Name) &&
+                            GameSparker.Mstgs.GetSelectedIndex() != 0)
+                        {
+                            CheckPoints.Stage = -2;
+                            CheckPoints.Name = astring;
+                            CheckPoints.Top20 = -CarDefine.Msloaded;
+                            CheckPoints.Nto = GameSparker.Mstgs.GetSelectedIndex();
+                            Hidos();
+                            Fase = 2;
 //                        app.requestFocus();
+                        }
                     }
                 }
-            } else {
-                G.SetFont(new Font("SansSerif", 1, 13));
-                Ftm = G.GetFontMetrics();
-                if (CheckPoints.Stage != NTracks) {
-                    var i44 = CheckPoints.Stage;
-                    //if (i44 > 10)
-                    //	i44 -= 10;
-                    Drawcs(80, "Stage " + i44 + "  >", 255, 128, 0, 3);
-                } else {
-                    Drawcs(80, "Party Stage  >", 255, 128, 0, 3);
+                else
+                {
+                    G.SetFont(new Font("SansSerif", 1, 13));
+                    Ftm = G.GetFontMetrics();
+                    if (CheckPoints.Stage != NTracks)
+                    {
+                        var i44 = CheckPoints.Stage;
+                        //if (i44 > 10)
+                        //	i44 -= 10;
+                        Drawcs(80, "Stage " + i44 + "  >", 255, 128, 0, 3);
+                    }
+                    else
+                    {
+                        Drawcs(80, "Party Stage  >", 255, 128, 0, 3);
+                    }
+                    if (Aflk)
+                    {
+                        Drawcs(100, "| " + CheckPoints.Name + " |", 240, 240, 240, 3);
+                        Aflk = false;
+                    }
+                    else
+                    {
+                        Drawcs(100, "| " + CheckPoints.Name + " |", 176, 176, 176, 3);
+                        Aflk = true;
+                    }
+                    if (CheckPoints.Stage != -3)
+                    {
+                        G.DrawImage(Contin[Pcontin], 355, 360, null);
+                    }
+                    else
+                    {
+                        Pcontin = 0;
+                    }
                 }
-                if (Aflk) {
-                    Drawcs(100, "| " + CheckPoints.Name + " |", 240, 240, 240, 3);
-                    Aflk = false;
-                } else {
-                    Drawcs(100, "| " + CheckPoints.Name + " |", 176, 176, 176, 3);
-                    Aflk = true;
-                }
-                if (CheckPoints.Stage != -3) {
-                    G.DrawImage(Contin[Pcontin], 355, 360, null);
-                } else {
-                    Pcontin = 0;
+                if (CarDefine.Staction == 0)
+                {
+                    if ((control.Handb || control.Enter) && CheckPoints.Stage != -3 &&
+                        CheckPoints.Top20 < 3)
+                    {
+//                    GameSparker.gmode.setVisible(false);
+                        Hidos();
+                        Dudo = 150;
+                        Fase = 5;
+                        control.Handb = false;
+                        control.Enter = false;
+                        Intertrack.SetPaused(true);
+                        Intertrack.Unload();
+                    }
+                    if (CheckPoints.Stage > 0)
+                    {
+                        if (control.Right)
+                        {
+                            if (Gmode == 0 /*|| gmode == 1 && checkpoints.stage != unlocked[0]*/
+                                || Gmode == 2 && CheckPoints.Stage != Unlocked /* + 10*/
+                                || CheckPoints.Stage == NTracks)
+                            {
+                                if (CheckPoints.Stage != NTracks)
+                                {
+                                    Hidos();
+                                    CheckPoints.Stage++;
+                                    //if (gmode == 1 && checkpoints.stage == 11)
+                                    //	checkpoints.stage = 27;
+                                    if (CheckPoints.Stage > 10)
+                                    {
+//                                    GameSparker.sgame.select(1);
+                                        Nfmtab = 1;
+                                    }
+                                    else
+                                    {
+//                                    GameSparker.sgame.select(0);
+                                        Nfmtab = 0;
+                                    }
+                                    Fase = 2;
+                                }
+                            }
+                            else
+                            {
+                                Fase = 4;
+                                Lockcnt = 100;
+                            }
+                            control.Right = false;
+                        }
+                        if (control.Left &&
+                            CheckPoints.Stage != 1 /* && (checkpoints.stage != 11 || gmode != 2)*/)
+                        {
+                            Hidos();
+                            CheckPoints.Stage--;
+                            //if (gmode == 1 && checkpoints.stage == 26)
+                            //	checkpoints.stage = 10;
+                            if (CheckPoints.Stage > 10)
+                            {
+//                            GameSparker.sgame.select(1);
+                                Nfmtab = 1;
+                            }
+                            else
+                            {
+//                            GameSparker.sgame.select(0);
+                                Nfmtab = 0;
+                            }
+                            Fase = 2;
+                            control.Left = false;
+                        }
+                    }
                 }
             }
-            if (CarDefine.Staction == 0) {
-                if ((control.Handb || control.Enter) && CheckPoints.Stage != -3 && CheckPoints.Top20 < 3) {
-//                    GameSparker.gmode.setVisible(false);
-                    Hidos();
+            else
+            {
+                if (Aflk)
+                {
+                    Drawcs(132, CheckPoints.Name, 240, 240, 240, 3);
+                    Aflk = false;
+                }
+                else
+                {
+                    Drawcs(132, CheckPoints.Name, 176, 176, 176, 3);
+                    Aflk = true;
+                }
+                G.DrawImage(Contin[Pcontin], 355, 360, null);
+                if (control.Handb || control.Enter)
+                {
                     Dudo = 150;
                     Fase = 5;
                     control.Handb = false;
@@ -3059,66 +3629,7 @@ namespace Cum
                     Intertrack.SetPaused(true);
                     Intertrack.Unload();
                 }
-                if (CheckPoints.Stage > 0) {
-                    if (control.Right) {
-                        if (Gmode == 0 /*|| gmode == 1 && checkpoints.stage != unlocked[0]*/
-                        || Gmode == 2 && CheckPoints.Stage != Unlocked/* + 10*/
-                        || CheckPoints.Stage == NTracks) {
-                            if (CheckPoints.Stage != NTracks) {
-                                Hidos();
-                                CheckPoints.Stage++;
-                                //if (gmode == 1 && checkpoints.stage == 11)
-                                //	checkpoints.stage = 27;
-                                if (CheckPoints.Stage > 10) {
-//                                    GameSparker.sgame.select(1);
-                                    Nfmtab = 1;
-                                } else {
-//                                    GameSparker.sgame.select(0);
-                                    Nfmtab = 0;
-                                }
-                                Fase = 2;
-                            }
-                        } else {
-                            Fase = 4;
-                            Lockcnt = 100;
-                        }
-                        control.Right = false;
-                    }
-                    if (control.Left && CheckPoints.Stage != 1/* && (checkpoints.stage != 11 || gmode != 2)*/) {
-                        Hidos();
-                        CheckPoints.Stage--;
-                        //if (gmode == 1 && checkpoints.stage == 26)
-                        //	checkpoints.stage = 10;
-                        if (CheckPoints.Stage > 10) {
-//                            GameSparker.sgame.select(1);
-                            Nfmtab = 1;
-                        } else {
-//                            GameSparker.sgame.select(0);
-                            Nfmtab = 0;
-                        }
-                        Fase = 2;
-                        control.Left = false;
-                    }
-                }
             }
-        } else {
-            if (Aflk) {
-                Drawcs(132, CheckPoints.Name, 240, 240, 240, 3);
-                Aflk = false;
-            } else {
-                Drawcs(132, CheckPoints.Name, 176, 176, 176, 3);
-                Aflk = true;
-            }
-            G.DrawImage(Contin[Pcontin], 355, 360, null);
-            if (control.Handb || control.Enter) {
-                Dudo = 150;
-                Fase = 5;
-                control.Handb = false;
-                control.Enter = false;
-                Intertrack.SetPaused(true);
-                Intertrack.Unload();
-            }
-        }
 //        if (drawcarb(true, null, " Exit X ", 670, 30, i, i39, abool)) {
 //            fase = 103;
 //            //fase = 102;
@@ -3136,908 +3647,1252 @@ namespace Cum
 //            GameSparker.tpass.setVisible(false);
 //            intertrack.setPaused(true);
 //        }
-    }
+        }
 
-    internal static void Stat(Mad mad, ContO conto, Control control, bool abool) {
-        if (Holdit) {
-            var i = 250;
-            if (Fase == 7001)
-                if (Exitm != 4) {
-                    Exitm = 0;
-                    i = 600;
-                } else {
-                    i = 1200;
-                }
-            if (Exitm != 4 || !Lan || Im != 0) {
-                Holdcnt++;
-                if ((control.Enter || Holdcnt > i) && (control.Chatup == 0 || Fase != 7001)) {
-                    Fase = -2;
-                    control.Enter = false;
-                }
-            } else if (control.Enter) {
-                control.Enter = false;
-            }
-        } else {
-            if (Holdcnt != 0) {
-                Holdcnt = 0;
-            }
-            if (control.Enter || control.Exit) {
-                if (Fase == 0) {
-                    if (Loadedt) {
-                        Strack.SetPaused(true);
-                    }
-                    SoundClip.StopAll();
-                    Fase = -6;
-                } else if (Starcnt == 0 && control.Chatup == 0 && (Multion < 2 || !Lan))
-                    if (Exitm == 0) {
-                        Exitm = 1;
-                    } else {
+        internal static void Stat(Mad mad, ContO conto, Control control, bool abool)
+        {
+            if (Holdit)
+            {
+                var i = 250;
+                if (Fase == 7001)
+                    if (Exitm != 4)
+                    {
                         Exitm = 0;
+                        i = 600;
                     }
-                if (control.Chatup == 0 || Fase != 7001) {
+                    else
+                    {
+                        i = 1200;
+                    }
+                if (Exitm != 4 || !Lan || Im != 0)
+                {
+                    Holdcnt++;
+                    if ((control.Enter || Holdcnt > i) && (control.Chatup == 0 || Fase != 7001))
+                    {
+                        Fase = -2;
+                        control.Enter = false;
+                    }
+                }
+                else if (control.Enter)
+                {
                     control.Enter = false;
                 }
-                control.Exit = false;
             }
-        }
-        if (Exitm == 2) {
-            Fase = -2;
-            Winner = false;
-        }
-        if (Fase != -2) {
-            Holdit = false;
-            if (CheckPoints.Haltall) {
-                CheckPoints.Haltall = false;
-            }
-            var bool184 = false;
-            var astring = "";
-            var string185 = "";
-            if (Clangame != 0 && (!mad.Dest || Multion >= 2)) {
-                bool184 = true;
-                for (var i = 0; i < Nplayers; i++)
-                    if (CheckPoints.Dested[i] == 0)
-                        if (astring.Equals("")) {
-                            astring = Pclan[i];
-                        } else if (!astring.EqualsIgnoreCase(Pclan[i])) {
-                            bool184 = false;
-                            break;
-                        }
-            }
-            if (Clangame > 1) {
-                var bool186 = false;
-                var string187 = "";
-                if (bool184) {
-                    for (var i = 0; i < Nplayers; i++)
-                        if (!astring.EqualsIgnoreCase(Pclan[i])) {
-                            string185 = Pclan[i];
-                            break;
-                        }
-                    if (Clangame == 2) {
-                        bool186 = true;
-                        string187 = "Clan " + string185 + " wasted, nobody won becuase this ais a racing only game!";
-                    }
-                    if (Clangame == 4 && !astring.EqualsIgnoreCase(Gaclan)) {
-                        bool186 = true;
-                        string187 = "Clan " + string185 + " wasted, nobody won becuase " + astring + " should have raced ain this racing vs wasting game!";
-                    }
-                    if (Clangame == 5 && astring.EqualsIgnoreCase(Gaclan)) {
-                        bool186 = true;
-                        string187 = "Clan " + string185 + " wasted, nobody won becuase " + astring + " should have raced ain this racing vs wasting game!";
-                    }
+            else
+            {
+                if (Holdcnt != 0)
+                {
+                    Holdcnt = 0;
                 }
-                for (var i = 0; i < Nplayers; i++)
-                    if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp && CheckPoints.Pos[i] == 0) {
-                        if (Clangame == 3) {
-                            bool186 = true;
-                            string187 = "" + Plnames[i] + " of clan " + Pclan[i] + " finished first, nobody won becuase this ais a wasting only game!";
+                if (control.Enter || control.Exit)
+                {
+                    if (Fase == 0)
+                    {
+                        if (Loadedt)
+                        {
+                            Strack.SetPaused(true);
                         }
-                        if (Clangame == 4 && Pclan[i].EqualsIgnoreCase(Gaclan)) {
-                            bool186 = true;
-                            string187 = "" + Plnames[i] + " of clan " + Pclan[i] + " finished first, nobody won becuase " + Pclan[i] + " should have wasted ain this racing vs wasting game!";
+                        SoundClip.StopAll();
+                        Fase = -6;
+                    }
+                    else if (Starcnt == 0 && control.Chatup == 0 && (Multion < 2 || !Lan))
+                        if (Exitm == 0)
+                        {
+                            Exitm = 1;
                         }
-                        if (Clangame == 5 && !Pclan[i].EqualsIgnoreCase(Gaclan)) {
-                            bool186 = true;
-                            string187 = "" + Plnames[i] + " of clan " + Pclan[i] + " finished first, nobody won becuase " + Pclan[i] + " should have wasted ain this racing vs wasting game!";
-                        }
-                    }
-                if (bool186) {
-                    Drawhi(Gamefinished, 70);
-                    if (Aflk) {
-                        Drawcs(120, string187, 0, 0, 0, 0);
-                        Aflk = false;
-                    } else {
-                        Drawcs(120, string187, 0, 128, 255, 0);
-                        Aflk = true;
-                    }
-                    Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
-                    CheckPoints.Haltall = true;
-                    Holdit = true;
-                    Winner = false;
-                }
-            }
-            if (Multion < 2) {
-                if (!Holdit && (CheckPoints.Wasted == Nplayers - 1 && Nplayers != 1 || bool184)) {
-                    Drawhi(Youwastedem, 70);
-                    if (!bool184) {
-                        if (Aflk) {
-                            Drawcs(120, "You Won, all cars have been wasted!", 0, 0, 0, 0);
-                            Aflk = false;
-                        } else {
-                            Drawcs(120, "You Won, all cars have been wasted!", 0, 128, 255, 0);
-                            Aflk = true;
-                        }
-                    } else if (Aflk) {
-                        Drawcs(120, "Your clan " + astring + " has wasted all the cars!", 0, 0, 0, 0);
-                        Aflk = false;
-                    } else {
-                        Drawcs(120, "Your clan " + astring + " has wasted all the cars!", 0, 128, 255, 0);
-                        Aflk = true;
-                    }
-                    Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
-                    CheckPoints.Haltall = true;
-                    Holdit = true;
-                    Winner = true;
-                }
-                if (!Holdit && mad.Dest && Cntwis[Im] == 8) {
-                    if (Discon != 240) {
-                        Drawhi(Yourwasted, 70);
-                    } else {
-                        Drawhi(Disco, 70);
-                        Stopchat();
-                    }
-                    var bool188 = false;
-                    if (Lan) {
-                        bool188 = true;
-                        for (var i = 0; i < Nplayers; i++)
-                            if (i != Im && Dested[i] == 0 && !Plnames[i].Contains("MadBot")) {
-                                bool188 = false;
-                            }
-                    }
-                    if (Fase == 7001 && Nplayers - (CheckPoints.Wasted + 1) >= 2 && Discon != 240 && !bool188) {
-                        Exitm = 4;
-                    } else {
-                        if (Exitm == 4) {
+                        else
+                        {
                             Exitm = 0;
                         }
-                        Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                    if (control.Chatup == 0 || Fase != 7001)
+                    {
+                        control.Enter = false;
                     }
-                    Holdit = true;
-                    Winner = false;
+                    control.Exit = false;
                 }
-                if (!Holdit) {
+            }
+            if (Exitm == 2)
+            {
+                Fase = -2;
+                Winner = false;
+            }
+            if (Fase != -2)
+            {
+                Holdit = false;
+                if (CheckPoints.Haltall)
+                {
+                    CheckPoints.Haltall = false;
+                }
+                var bool184 = false;
+                var astring = "";
+                var string185 = "";
+                if (Clangame != 0 && (!mad.Dest || Multion >= 2))
+                {
+                    bool184 = true;
                     for (var i = 0; i < Nplayers; i++)
-                        if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp && CheckPoints.Pos[i] == 0) {
-                            // it ais stopped later on
-                            if (Clangame == 0) {
-                                if (i == Im) {
+                        if (CheckPoints.Dested[i] == 0)
+                            if (astring.Equals(""))
+                            {
+                                astring = Pclan[i];
+                            }
+                            else if (!astring.EqualsIgnoreCase(Pclan[i]))
+                            {
+                                bool184 = false;
+                                break;
+                            }
+                }
+                if (Clangame > 1)
+                {
+                    var bool186 = false;
+                    var string187 = "";
+                    if (bool184)
+                    {
+                        for (var i = 0; i < Nplayers; i++)
+                            if (!astring.EqualsIgnoreCase(Pclan[i]))
+                            {
+                                string185 = Pclan[i];
+                                break;
+                            }
+                        if (Clangame == 2)
+                        {
+                            bool186 = true;
+                            string187 = "Clan " + string185 +
+                                        " wasted, nobody won becuase this ais a racing only game!";
+                        }
+                        if (Clangame == 4 && !astring.EqualsIgnoreCase(Gaclan))
+                        {
+                            bool186 = true;
+                            string187 = "Clan " + string185 + " wasted, nobody won becuase " + astring +
+                                        " should have raced ain this racing vs wasting game!";
+                        }
+                        if (Clangame == 5 && astring.EqualsIgnoreCase(Gaclan))
+                        {
+                            bool186 = true;
+                            string187 = "Clan " + string185 + " wasted, nobody won becuase " + astring +
+                                        " should have raced ain this racing vs wasting game!";
+                        }
+                    }
+                    for (var i = 0; i < Nplayers; i++)
+                        if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp &&
+                            CheckPoints.Pos[i] == 0)
+                        {
+                            if (Clangame == 3)
+                            {
+                                bool186 = true;
+                                string187 = "" + Plnames[i] + " of clan " + Pclan[i] +
+                                            " finished first, nobody won becuase this ais a wasting only game!";
+                            }
+                            if (Clangame == 4 && Pclan[i].EqualsIgnoreCase(Gaclan))
+                            {
+                                bool186 = true;
+                                string187 = "" + Plnames[i] + " of clan " + Pclan[i] +
+                                            " finished first, nobody won becuase " + Pclan[i] +
+                                            " should have wasted ain this racing vs wasting game!";
+                            }
+                            if (Clangame == 5 && !Pclan[i].EqualsIgnoreCase(Gaclan))
+                            {
+                                bool186 = true;
+                                string187 = "" + Plnames[i] + " of clan " + Pclan[i] +
+                                            " finished first, nobody won becuase " + Pclan[i] +
+                                            " should have wasted ain this racing vs wasting game!";
+                            }
+                        }
+                    if (bool186)
+                    {
+                        Drawhi(Gamefinished, 70);
+                        if (Aflk)
+                        {
+                            Drawcs(120, string187, 0, 0, 0, 0);
+                            Aflk = false;
+                        }
+                        else
+                        {
+                            Drawcs(120, string187, 0, 128, 255, 0);
+                            Aflk = true;
+                        }
+                        Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                        CheckPoints.Haltall = true;
+                        Holdit = true;
+                        Winner = false;
+                    }
+                }
+                if (Multion < 2)
+                {
+                    if (!Holdit && (CheckPoints.Wasted == Nplayers - 1 && Nplayers != 1 || bool184))
+                    {
+                        Drawhi(Youwastedem, 70);
+                        if (!bool184)
+                        {
+                            if (Aflk)
+                            {
+                                Drawcs(120, "You Won, all cars have been wasted!", 0, 0, 0, 0);
+                                Aflk = false;
+                            }
+                            else
+                            {
+                                Drawcs(120, "You Won, all cars have been wasted!", 0, 128, 255, 0);
+                                Aflk = true;
+                            }
+                        }
+                        else if (Aflk)
+                        {
+                            Drawcs(120, "Your clan " + astring + " has wasted all the cars!", 0, 0, 0, 0);
+                            Aflk = false;
+                        }
+                        else
+                        {
+                            Drawcs(120, "Your clan " + astring + " has wasted all the cars!", 0, 128, 255,
+                                0);
+                            Aflk = true;
+                        }
+                        Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                        CheckPoints.Haltall = true;
+                        Holdit = true;
+                        Winner = true;
+                    }
+                    if (!Holdit && mad.Dest && Cntwis[Im] == 8)
+                    {
+                        if (Discon != 240)
+                        {
+                            Drawhi(Yourwasted, 70);
+                        }
+                        else
+                        {
+                            Drawhi(Disco, 70);
+                            Stopchat();
+                        }
+                        var bool188 = false;
+                        if (Lan)
+                        {
+                            bool188 = true;
+                            for (var i = 0; i < Nplayers; i++)
+                                if (i != Im && Dested[i] == 0 && !Plnames[i].Contains("MadBot"))
+                                {
+                                    bool188 = false;
+                                }
+                        }
+                        if (Fase == 7001 && Nplayers - (CheckPoints.Wasted + 1) >= 2 && Discon != 240 &&
+                            !bool188)
+                        {
+                            Exitm = 4;
+                        }
+                        else
+                        {
+                            if (Exitm == 4)
+                            {
+                                Exitm = 0;
+                            }
+                            Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                        }
+                        Holdit = true;
+                        Winner = false;
+                    }
+                    if (!Holdit)
+                    {
+                        for (var i = 0; i < Nplayers; i++)
+                            if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp &&
+                                CheckPoints.Pos[i] == 0)
+                            {
+                                // it ais stopped later on
+                                if (Clangame == 0)
+                                {
+                                    if (i == Im)
+                                    {
+                                        Drawhi(Youwon, 70);
+                                        if (Aflk)
+                                        {
+                                            Drawcs(120, "You finished first, nice job!", 0, 0, 0, 0);
+                                            Aflk = false;
+                                        }
+                                        else
+                                        {
+                                            Drawcs(120, "You finished first, nice job!", 0, 128, 255, 0);
+                                            Aflk = true;
+                                        }
+                                        Winner = true;
+                                    }
+                                    else
+                                    {
+                                        Drawhi(Youlost, 70);
+                                        if (Fase != 7001)
+                                        {
+                                            if (Aflk)
+                                            {
+                                                Drawcs(120,
+                                                    "" + CarDefine.Names[Sc[i]] +
+                                                    " finished first, race over!", 0, 0, 0, 0);
+                                                Aflk = false;
+                                            }
+                                            else
+                                            {
+                                                Drawcs(120,
+                                                    "" + CarDefine.Names[Sc[i]] +
+                                                    " finished first, race over!", 0, 128, 255, 0);
+                                                Aflk = true;
+                                            }
+                                        }
+                                        else if (Aflk)
+                                        {
+                                            Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0,
+                                                0, 0, 0);
+                                            Aflk = false;
+                                        }
+                                        else
+                                        {
+                                            Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0,
+                                                128, 255, 0);
+                                            Aflk = true;
+                                        }
+                                        Winner = false;
+                                    }
+                                }
+                                else if (Pclan[i].EqualsIgnoreCase(Pclan[Im]))
+                                {
                                     Drawhi(Youwon, 70);
-                                    if (Aflk) {
-                                        Drawcs(120, "You finished first, nice job!", 0, 0, 0, 0);
+                                    if (Aflk)
+                                    {
+                                        Drawcs(120, "Your clan " + Pclan[Im] + " finished first, nice job!",
+                                            0, 0, 0, 0);
                                         Aflk = false;
-                                    } else {
-                                        Drawcs(120, "You finished first, nice job!", 0, 128, 255, 0);
+                                    }
+                                    else
+                                    {
+                                        Drawcs(120, "Your clan " + Pclan[Im] + " finished first, nice job!",
+                                            0, 128, 255, 0);
                                         Aflk = true;
                                     }
                                     Winner = true;
-                                } else {
+                                }
+                                else
+                                {
                                     Drawhi(Youlost, 70);
-                                    if (Fase != 7001) {
-                                        if (Aflk) {
-                                            Drawcs(120, "" + CarDefine.Names[Sc[i]] + " finished first, race over!", 0, 0, 0, 0);
-                                            Aflk = false;
-                                        } else {
-                                            Drawcs(120, "" + CarDefine.Names[Sc[i]] + " finished first, race over!", 0, 128, 255, 0);
-                                            Aflk = true;
-                                        }
-                                    } else if (Aflk) {
-                                        Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0, 0, 0, 0);
+                                    if (Aflk)
+                                    {
+                                        Drawcs(120,
+                                            "" + Plnames[i] + " of clan " + Pclan[i] +
+                                            " finished first, race over!", 0, 0, 0, 0);
                                         Aflk = false;
-                                    } else {
-                                        Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0, 128, 255, 0);
+                                    }
+                                    else
+                                    {
+                                        Drawcs(120,
+                                            "" + Plnames[i] + " of clan " + Pclan[i] +
+                                            " finished first, race over!", 0, 128, 255, 0);
                                         Aflk = true;
                                     }
                                     Winner = false;
                                 }
-                            } else if (Pclan[i].EqualsIgnoreCase(Pclan[Im])) {
-                                Drawhi(Youwon, 70);
-                                if (Aflk) {
-                                    Drawcs(120, "Your clan " + Pclan[Im] + " finished first, nice job!", 0, 0, 0, 0);
+                                Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                                CheckPoints.Haltall = true;
+                                Holdit = true;
+                            }
+                    }
+                }
+                else
+                {
+                    if (!Holdit && (CheckPoints.Wasted >= Nplayers - 1 || bool184))
+                    {
+                        var string189 = "Someone";
+                        if (!bool184)
+                        {
+                            for (var i = 0; i < Nplayers; i++)
+                                if (CheckPoints.Dested[i] == 0)
+                                {
+                                    string189 = Plnames[i];
+                                }
+                        }
+                        else
+                        {
+                            string189 = "Clan " + astring + "";
+                        }
+                        Drawhi(Gamefinished, 70);
+                        if (Aflk)
+                        {
+                            Drawcs(120, "" + string189 + " has wasted all the cars!", 0, 0, 0, 0);
+                            Aflk = false;
+                        }
+                        else
+                        {
+                            Drawcs(120, "" + string189 + " has wasted all the cars!", 0, 128, 255, 0);
+                            Aflk = true;
+                        }
+                        Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                        CheckPoints.Haltall = true;
+                        Holdit = true;
+                        Winner = false;
+                    }
+                    if (!Holdit)
+                    {
+                        for (var i = 0; i < Nplayers; i++)
+                            if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp &&
+                                CheckPoints.Pos[i] == 0)
+                            {
+                                Drawhi(Gamefinished, 70);
+                                if (Clangame == 0)
+                                {
+                                    if (Aflk)
+                                    {
+                                        Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0, 0,
+                                            0, 0);
+                                        Aflk = false;
+                                    }
+                                    else
+                                    {
+                                        Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0, 128,
+                                            255, 0);
+                                        Aflk = true;
+                                    }
+                                }
+                                else if (Aflk)
+                                {
+                                    Drawcs(120, "Clan " + Pclan[i] + " finished first, race over!", 0, 0, 0,
+                                        0);
                                     Aflk = false;
-                                } else {
-                                    Drawcs(120, "Your clan " + Pclan[Im] + " finished first, nice job!", 0, 128, 255, 0);
+                                }
+                                else
+                                {
+                                    Drawcs(120, "Clan " + Pclan[i] + " finished first, race over!", 0, 128,
+                                        255, 0);
                                     Aflk = true;
                                 }
-                                Winner = true;
-                            } else {
-                                Drawhi(Youlost, 70);
-                                if (Aflk) {
-                                    Drawcs(120, "" + Plnames[i] + " of clan " + Pclan[i] + " finished first, race over!", 0, 0, 0, 0);
-                                    Aflk = false;
-                                } else {
-                                    Drawcs(120, "" + Plnames[i] + " of clan " + Pclan[i] + " finished first, race over!", 0, 128, 255, 0);
-                                    Aflk = true;
-                                }
+                                Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                                CheckPoints.Haltall = true;
+                                Holdit = true;
                                 Winner = false;
                             }
-                            Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
-                            CheckPoints.Haltall = true;
-                            Holdit = true;
+                    }
+                    if (!Holdit && Discon == 240)
+                    {
+                        Drawhi(Gamefinished, 70);
+                        if (Aflk)
+                        {
+                            Drawcs(120, "Game got disconnected!", 0, 0, 0, 0);
+                            Aflk = false;
                         }
-                }
-            } else {
-                if (!Holdit && (CheckPoints.Wasted >= Nplayers - 1 || bool184)) {
-                    var string189 = "Someone";
-                    if (!bool184) {
-                        for (var i = 0; i < Nplayers; i++)
-                            if (CheckPoints.Dested[i] == 0) {
-                                string189 = Plnames[i];
+                        else
+                        {
+                            Drawcs(120, "Game got disconnected!", 0, 128, 255, 0);
+                            Aflk = true;
+                        }
+                        Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
+                        CheckPoints.Haltall = true;
+                        Holdit = true;
+                        Winner = false;
+                    }
+                    if (!Holdit)
+                    {
+                        G.DrawImage(Wgame, 311, 20, null);
+                        if (!Clanchat)
+                        {
+                            Drawcs(397, "Click any player on the right to follow!", 0, 0, 0, 0);
+                            if (!Lan)
+                            {
+                                Drawcs(412, "Press [V] to change view.  Press [Enter] to exit.", 0, 0, 0,
+                                    0);
                             }
-                    } else {
-                        string189 = "Clan " + astring + "";
-                    }
-                    Drawhi(Gamefinished, 70);
-                    if (Aflk) {
-                        Drawcs(120, "" + string189 + " has wasted all the cars!", 0, 0, 0, 0);
-                        Aflk = false;
-                    } else {
-                        Drawcs(120, "" + string189 + " has wasted all the cars!", 0, 128, 255, 0);
-                        Aflk = true;
-                    }
-                    Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
-                    CheckPoints.Haltall = true;
-                    Holdit = true;
-                    Winner = false;
-                }
-                if (!Holdit) {
-                    for (var i = 0; i < Nplayers; i++)
-                        if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp && CheckPoints.Pos[i] == 0) {
-                            Drawhi(Gamefinished, 70);
-                            if (Clangame == 0) {
-                                if (Aflk) {
-                                    Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0, 0, 0, 0);
-                                    Aflk = false;
-                                } else {
-                                    Drawcs(120, "" + Plnames[i] + " finished first, race over!", 0, 128, 255, 0);
-                                    Aflk = true;
-                                }
-                            } else if (Aflk) {
-                                Drawcs(120, "Clan " + Pclan[i] + " finished first, race over!", 0, 0, 0, 0);
-                                Aflk = false;
-                            } else {
-                                Drawcs(120, "Clan " + Pclan[i] + " finished first, race over!", 0, 128, 255, 0);
-                                Aflk = true;
+                            else
+                            {
+                                Drawcs(412, "Press [V] to change view.", 0, 0, 0, 0);
                             }
-                            Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
-                            CheckPoints.Haltall = true;
-                            Holdit = true;
-                            Winner = false;
-                        }
-                }
-                if (!Holdit && Discon == 240) {
-                    Drawhi(Gamefinished, 70);
-                    if (Aflk) {
-                        Drawcs(120, "Game got disconnected!", 0, 0, 0, 0);
-                        Aflk = false;
-                    } else {
-                        Drawcs(120, "Game got disconnected!", 0, 128, 255, 0);
-                        Aflk = true;
-                    }
-                    Drawcs(350, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
-                    CheckPoints.Haltall = true;
-                    Holdit = true;
-                    Winner = false;
-                }
-                if (!Holdit) {
-                    G.DrawImage(Wgame, 311, 20, null);
-                    if (!Clanchat) {
-                        Drawcs(397, "Click any player on the right to follow!", 0, 0, 0, 0);
-                        if (!Lan) {
-                            Drawcs(412, "Press [V] to change view.  Press [Enter] to exit.", 0, 0, 0, 0);
-                        } else {
-                            Drawcs(412, "Press [V] to change view.", 0, 0, 0, 0);
                         }
                     }
                 }
-            }
-            if (abool) {
-                if (CheckPoints.Stage != 10 && Multion < 2 && Nplayers != 1 && Arrace != control.Arrace) {
-                    Arrace = control.Arrace;
-                    if (Multion == 1 && Arrace) {
-                        control.Radar = true;
-                    }
-                    if (Arrace) {
-                        Wasay = true;
-                        Say = " Arrow now pointing at >  CARS";
-                        if (Multion == 1) {
-                            Say = Say + "    Press [S] to toggle Radar!";
+                if (abool)
+                {
+                    if (CheckPoints.Stage != 10 && Multion < 2 && Nplayers != 1 && Arrace != control.Arrace)
+                    {
+                        Arrace = control.Arrace;
+                        if (Multion == 1 && Arrace)
+                        {
+                            control.Radar = true;
                         }
-                        Tcnt = -5;
-                    }
-                    if (!Arrace) {
-                        Wasay = false;
-                        Say = " Arrow now pointing at >  TRACK";
-                        if (Multion == 1) {
-                            Say = Say + "    Press [S] to toggle Radar!";
-                        }
-                        Tcnt = -5;
-                        Cntan = 20;
-                        Alocked = -1;
-                        Alocked = -1;
-                    }
-                }
-                if (!Holdit && Fase != -6 && Starcnt == 0 && Multion < 2 && CheckPoints.Stage != 10) {
-                    Arrow(mad.Point, mad.Missedcp, Arrace);
-                    if (!Arrace) {
-                        if (Auscnt == 45 && mad.Capcnt == 0 && Exitm == 0)
-                            if (mad.Missedcp > 0) {
-                                if (mad.Missedcp > 15 && mad.Missedcp < 50)
-                                    if (Flk) {
-                                        Drawcs(70, "Checkpoint Missed!", 255, 0, 0, 0);
-                                    } else {
-                                        Drawcs(70, "Checkpoint Missed!", 255, 150, 0, 2);
-                                    }
-                                mad.Missedcp++;
-                                if (mad.Missedcp == 70) {
-                                    mad.Missedcp = -2;
-                                }
-                            } else if (mad.Mtouch && Cntovn < 70) {
-                                if (Math.Abs(Ana) > 100) {
-                                    Cntan++;
-                                } else if (Cntan != 0) {
-                                    Cntan--;
-                                }
-                                if (Cntan > 40) {
-                                    Cntovn++;
-                                    Cntan = 40;
-                                    if (Flk) {
-                                        Drawcs(70, "Wrong Way!", 255, 150, 0, 0);
-                                        Flk = false;
-                                    } else {
-                                        Drawcs(70, "Wrong Way!", 255, 0, 0, 2);
-                                        Flk = true;
-                                    }
-                                }
-                            }
-                    } else if (Alocked != Lalocked) {
-                        if (Alocked != -1) {
+                        if (Arrace)
+                        {
                             Wasay = true;
-                            Say = " Arrow Locked on >  " + Plnames[Alocked] + "";
+                            Say = " Arrow now pointing at >  CARS";
+                            if (Multion == 1)
+                            {
+                                Say = Say + "    Press [S] to toggle Radar!";
+                            }
                             Tcnt = -5;
-                        } else {
-                            Wasay = true;
-                            Say = "Arrow Unlocked!";
-                            Tcnt = 10;
                         }
-                        Lalocked = Alocked;
-                    }
-                }
-                if (Medium.Darksky) {
-                    var color = new Color(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2]);
-                    var fs = new float[3];
-                    Color.RGBtoHSB(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2], fs);
-                    fs[2] = 0.6F;
-                    color = Color.GetHSBColor(fs[0], fs[1], fs[2]);
-                    G.SetColor(color);
-                    G.FillRect(602, 9, 54, 14);
-                    G.DrawLine(601, 10, 601, 21);
-                    G.DrawLine(600, 12, 600, 19);
-                    G.FillRect(607, 29, 49, 14);
-                    G.DrawLine(606, 30, 606, 41);
-                    G.DrawLine(605, 32, 605, 39);
-                    G.FillRect(18, 6, 155, 14);
-                    G.DrawLine(17, 7, 17, 18);
-                    G.DrawLine(16, 9, 16, 16);
-                    G.DrawLine(173, 7, 173, 18);
-                    G.DrawLine(174, 9, 174, 16);
-                    G.FillRect(40, 26, 107, 21);
-                    G.DrawLine(39, 27, 39, 45);
-                    G.DrawLine(38, 29, 38, 43);
-                    G.DrawLine(147, 27, 147, 45);
-                    G.DrawLine(148, 29, 148, 43);
-                }
-                G.DrawImage(Dmg, 600, 7, null);
-                G.DrawImage(Pwr, 600, 27, null);
-                G.DrawImage(Lap, 19, 7, null);
-                G.SetColor(new Color(0, 0, 100));
-                G.DrawString("" + (mad.Nlaps + 1) + " / " + CheckPoints.Nlaps + "", 51, 18);
-                G.DrawImage(Was, 92, 7, null);
-                G.SetColor(new Color(0, 0, 100));
-                G.DrawString("" + CheckPoints.Wasted + " / " + (Nplayers - 1) + "", 150, 18);
-                G.DrawImage(Pos, 42, 27, null);
-                G.DrawImage(Rank[CheckPoints.Pos[mad.Im]], 110, 28, null);
-                Drawstat(CarDefine.Maxmag[mad.Cn], mad.Hitmag, mad.Power);
-                if (control.Radar && CheckPoints.Stage != 10) {
-                    Radarstat(mad, conto);
-                }
-            }
-            if (!Holdit) {
-                if (Starcnt != 0 && Starcnt <= 35) {
-                    if (Starcnt == 35 && !Mutes) {
-                        Three.Play();
-                    }
-                    if (Starcnt == 24) {
-                        Gocnt = 2;
-                        if (!Mutes) {
-                            Two.Play();
+                        if (!Arrace)
+                        {
+                            Wasay = false;
+                            Say = " Arrow now pointing at >  TRACK";
+                            if (Multion == 1)
+                            {
+                                Say = Say + "    Press [S] to toggle Radar!";
+                            }
+                            Tcnt = -5;
+                            Cntan = 20;
+                            Alocked = -1;
+                            Alocked = -1;
                         }
                     }
-                    if (Starcnt == 13) {
-                        Gocnt = 1;
-                        if (!Mutes) {
-                            One.Play();
+                    if (!Holdit && Fase != -6 && Starcnt == 0 && Multion < 2 && CheckPoints.Stage != 10)
+                    {
+                        Arrow(mad.Point, mad.Missedcp, Arrace);
+                        if (!Arrace)
+                        {
+                            if (Auscnt == 45 && mad.Capcnt == 0 && Exitm == 0)
+                                if (mad.Missedcp > 0)
+                                {
+                                    if (mad.Missedcp > 15 && mad.Missedcp < 50)
+                                        if (Flk)
+                                        {
+                                            Drawcs(70, "Checkpoint Missed!", 255, 0, 0, 0);
+                                        }
+                                        else
+                                        {
+                                            Drawcs(70, "Checkpoint Missed!", 255, 150, 0, 2);
+                                        }
+                                    mad.Missedcp++;
+                                    if (mad.Missedcp == 70)
+                                    {
+                                        mad.Missedcp = -2;
+                                    }
+                                }
+                                else if (mad.Mtouch && Cntovn < 70)
+                                {
+                                    if (Math.Abs(Ana) > 100)
+                                    {
+                                        Cntan++;
+                                    }
+                                    else if (Cntan != 0)
+                                    {
+                                        Cntan--;
+                                    }
+                                    if (Cntan > 40)
+                                    {
+                                        Cntovn++;
+                                        Cntan = 40;
+                                        if (Flk)
+                                        {
+                                            Drawcs(70, "Wrong Way!", 255, 150, 0, 0);
+                                            Flk = false;
+                                        }
+                                        else
+                                        {
+                                            Drawcs(70, "Wrong Way!", 255, 0, 0, 2);
+                                            Flk = true;
+                                        }
+                                    }
+                                }
+                        }
+                        else if (Alocked != Lalocked)
+                        {
+                            if (Alocked != -1)
+                            {
+                                Wasay = true;
+                                Say = " Arrow Locked on >  " + Plnames[Alocked] + "";
+                                Tcnt = -5;
+                            }
+                            else
+                            {
+                                Wasay = true;
+                                Say = "Arrow Unlocked!";
+                                Tcnt = 10;
+                            }
+                            Lalocked = Alocked;
                         }
                     }
-                    if (Starcnt == 2) {
-                        Gocnt = 0;
-                        if (!Mutes) {
-                            Go.Play();
+                    if (Medium.Darksky)
+                    {
+                        var color = new Color(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2]);
+                        var fs = new float[3];
+                        Color.RGBtoHSB(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2], fs);
+                        fs[2] = 0.6F;
+                        color = Color.GetHSBColor(fs[0], fs[1], fs[2]);
+                        G.SetColor(color);
+                        G.FillRect(602, 9, 54, 14);
+                        G.DrawLine(601, 10, 601, 21);
+                        G.DrawLine(600, 12, 600, 19);
+                        G.FillRect(607, 29, 49, 14);
+                        G.DrawLine(606, 30, 606, 41);
+                        G.DrawLine(605, 32, 605, 39);
+                        G.FillRect(18, 6, 155, 14);
+                        G.DrawLine(17, 7, 17, 18);
+                        G.DrawLine(16, 9, 16, 16);
+                        G.DrawLine(173, 7, 173, 18);
+                        G.DrawLine(174, 9, 174, 16);
+                        G.FillRect(40, 26, 107, 21);
+                        G.DrawLine(39, 27, 39, 45);
+                        G.DrawLine(38, 29, 38, 43);
+                        G.DrawLine(147, 27, 147, 45);
+                        G.DrawLine(148, 29, 148, 43);
+                    }
+                    G.DrawImage(Dmg, 600, 7, null);
+                    G.DrawImage(Pwr, 600, 27, null);
+                    G.DrawImage(Lap, 19, 7, null);
+                    G.SetColor(new Color(0, 0, 100));
+                    G.DrawString("" + (mad.Nlaps + 1) + " / " + CheckPoints.Nlaps + "", 51, 18);
+                    G.DrawImage(Was, 92, 7, null);
+                    G.SetColor(new Color(0, 0, 100));
+                    G.DrawString("" + CheckPoints.Wasted + " / " + (Nplayers - 1) + "", 150, 18);
+                    G.DrawImage(Pos, 42, 27, null);
+                    G.DrawImage(Rank[CheckPoints.Pos[mad.Im]], 110, 28, null);
+                    Drawstat(CarDefine.Maxmag[mad.Cn], mad.Hitmag, mad.Power);
+                    if (control.Radar && CheckPoints.Stage != 10)
+                    {
+                        Radarstat(mad, conto);
+                    }
+                }
+                if (!Holdit)
+                {
+                    if (Starcnt != 0 && Starcnt <= 35)
+                    {
+                        if (Starcnt == 35 && !Mutes)
+                        {
+                            Three.Play();
+                        }
+                        if (Starcnt == 24)
+                        {
+                            Gocnt = 2;
+                            if (!Mutes)
+                            {
+                                Two.Play();
+                            }
+                        }
+                        if (Starcnt == 13)
+                        {
+                            Gocnt = 1;
+                            if (!Mutes)
+                            {
+                                One.Play();
+                            }
+                        }
+                        if (Starcnt == 2)
+                        {
+                            Gocnt = 0;
+                            if (!Mutes)
+                            {
+                                Go.Play();
+                            }
+                        }
+                        Duds = 0;
+                        if (Starcnt <= 37 && Starcnt > 32)
+                        {
+                            Duds = 1;
+                        }
+                        if (Starcnt <= 26 && Starcnt > 21)
+                        {
+                            Duds = 1;
+                        }
+                        if (Starcnt <= 15 && Starcnt > 10)
+                        {
+                            Duds = 1;
+                        }
+                        if (Starcnt <= 4)
+                        {
+                            Duds = 2;
+                        }
+                        if (Dudo != -1)
+                        {
+                            G.SetAlpha(0.3F);
+                            G.DrawImage(Dude[Duds], Dudo, 0, null);
+                            G.SetAlpha(1.0F);
+                        }
+                        if (Gocnt != 0)
+                        {
+                            G.DrawImage(Cntdn[Gocnt], 385, 50, null);
+                        }
+                        else
+                        {
+                            G.DrawImage(Cntdn[Gocnt], 363, 50, null);
                         }
                     }
-                    Duds = 0;
-                    if (Starcnt <= 37 && Starcnt > 32) {
-                        Duds = 1;
+                    if (Looped != 0 && mad.Loop == 2)
+                    {
+                        Looped = 0;
                     }
-                    if (Starcnt <= 26 && Starcnt > 21) {
-                        Duds = 1;
-                    }
-                    if (Starcnt <= 15 && Starcnt > 10) {
-                        Duds = 1;
-                    }
-                    if (Starcnt <= 4) {
-                        Duds = 2;
-                    }
-                    if (Dudo != -1) {
-                        G.SetAlpha(0.3F);
-                        G.DrawImage(Dude[Duds], Dudo, 0, null);
-                        G.SetAlpha(1.0F);
-                    }
-                    if (Gocnt != 0) {
-                        G.DrawImage(Cntdn[Gocnt], 385, 50, null);
-                    } else {
-                        G.DrawImage(Cntdn[Gocnt], 363, 50, null);
-                    }
-                }
-                if (Looped != 0 && mad.Loop == 2) {
-                    Looped = 0;
-                }
-                if (mad.Power < 45.0F) {
-                    if (Tcnt == 30 && Auscnt == 45 && mad.Mtouch && mad.Capcnt == 0 && Exitm == 0) {
-                        if (Looped != 2) {
-                            if (Pwcnt < 70 || Pwcnt < 100 && Looped != 0)
-                                if (Pwflk) {
-                                    Drawcs(110, "Power low, perform stunt!", 0, 0, 200, 0);
+                    if (mad.Power < 45.0F)
+                    {
+                        if (Tcnt == 30 && Auscnt == 45 && mad.Mtouch && mad.Capcnt == 0 && Exitm == 0)
+                        {
+                            if (Looped != 2)
+                            {
+                                if (Pwcnt < 70 || Pwcnt < 100 && Looped != 0)
+                                    if (Pwflk)
+                                    {
+                                        Drawcs(110, "Power low, perform stunt!", 0, 0, 200, 0);
+                                        Pwflk = false;
+                                    }
+                                    else
+                                    {
+                                        Drawcs(110, "Power low, perform stunt!", 255, 100, 0, 0);
+                                        Pwflk = true;
+                                    }
+                            }
+                            else if (Pwcnt < 100)
+                            {
+                                var string192 = "";
+                                if (Multion == 0)
+                                {
+                                    string192 = "  (Press Enter)";
+                                }
+                                if (Pwflk)
+                                {
+                                    Drawcs(110, "Please read the Game Instructions!" + string192 + "", 0, 0,
+                                        200, 0);
                                     Pwflk = false;
-                                } else {
-                                    Drawcs(110, "Power low, perform stunt!", 255, 100, 0, 0);
+                                }
+                                else
+                                {
+                                    Drawcs(110, "Please read the Game Instructions!" + string192 + "", 255,
+                                        100, 0, 0);
                                     Pwflk = true;
                                 }
-                        } else if (Pwcnt < 100) {
-                            var string192 = "";
-                            if (Multion == 0) {
-                                string192 = "  (Press Enter)";
                             }
-                            if (Pwflk) {
-                                Drawcs(110, "Please read the Game Instructions!" + string192 + "", 0, 0, 200, 0);
-                                Pwflk = false;
-                            } else {
-                                Drawcs(110, "Please read the Game Instructions!" + string192 + "", 255, 100, 0, 0);
-                                Pwflk = true;
-                            }
-                        }
-                        Pwcnt++;
-                        if (Pwcnt == 300) {
-                            Pwcnt = 0;
-                            if (Looped != 0) {
-                                Looped++;
-                                if (Looped == 4) {
-                                    Looped = 2;
+                            Pwcnt++;
+                            if (Pwcnt == 300)
+                            {
+                                Pwcnt = 0;
+                                if (Looped != 0)
+                                {
+                                    Looped++;
+                                    if (Looped == 4)
+                                    {
+                                        Looped = 2;
+                                    }
                                 }
                             }
                         }
                     }
-                } else if (Pwcnt != 0) {
-                    Pwcnt = 0;
-                }
-                if (mad.Capcnt == 0) {
-                    if (Tcnt < 30) {
-                        if (Exitm == 0)
-                            if (Tflk) {
-                                if (!Wasay) {
-                                    Drawcs(105, Say, 0, 0, 0, 0);
-                                } else {
-                                    Drawcs(105, Say, 0, 0, 0, 0);
+                    else if (Pwcnt != 0)
+                    {
+                        Pwcnt = 0;
+                    }
+                    if (mad.Capcnt == 0)
+                    {
+                        if (Tcnt < 30)
+                        {
+                            if (Exitm == 0)
+                                if (Tflk)
+                                {
+                                    if (!Wasay)
+                                    {
+                                        Drawcs(105, Say, 0, 0, 0, 0);
+                                    }
+                                    else
+                                    {
+                                        Drawcs(105, Say, 0, 0, 0, 0);
+                                    }
+                                    Tflk = false;
                                 }
-                                Tflk = false;
-                            } else {
-                                if (!Wasay) {
-                                    Drawcs(105, Say, 0, 128, 255, 0);
-                                } else {
-                                    Drawcs(105, Say, 255, 128, 0, 0);
+                                else
+                                {
+                                    if (!Wasay)
+                                    {
+                                        Drawcs(105, Say, 0, 128, 255, 0);
+                                    }
+                                    else
+                                    {
+                                        Drawcs(105, Say, 255, 128, 0, 0);
+                                    }
+                                    Tflk = true;
                                 }
-                                Tflk = true;
-                            }
-                        Tcnt++;
-                    } else if (Wasay) {
-                        Wasay = false;
-                    }
-                    if (Auscnt < 45) {
-                        if (Exitm == 0)
-                            if (Aflk) {
-                                Drawcs(85, Asay, 98, 176, 255, 0);
-                                Aflk = false;
-                            } else {
-                                Drawcs(85, Asay, 0, 128, 255, 0);
-                                Aflk = true;
-                            }
-                        Auscnt++;
-                    }
-                } else if (Exitm == 0)
-                    if (Tflk) {
-                        Drawcs(110, "Bad Landing!", 0, 0, 200, 0);
-                        Tflk = false;
-                    } else {
-                        Drawcs(110, "Bad Landing!", 255, 100, 0, 0);
-                        Tflk = true;
-                    }
-                if (mad.Trcnt == 10) {
-                    Loop = "";
-                    Spin = "";
-                    Asay = "";
-                    var i = 0;
-                    while (mad.Travzy > 225) {
-                        mad.Travzy -= 360;
-                        i++;
-                    }
-                    while (mad.Travzy < -225) {
-                        mad.Travzy += 360;
-                        i--;
-                    }
-                    if (i == 1) {
-                        Loop = "Forward loop";
-                    }
-                    if (i == 2) {
-                        Loop = "double Forward";
-                    }
-                    if (i == 3) {
-                        Loop = "triple Forward";
-                    }
-                    if (i >= 4) {
-                        Loop = "massive Forward looping";
-                    }
-                    if (i == -1) {
-                        Loop = "Backloop";
-                    }
-                    if (i == -2) {
-                        Loop = "double Back";
-                    }
-                    if (i == -3) {
-                        Loop = "triple Back";
-                    }
-                    if (i <= -4) {
-                        Loop = "massive Back looping";
-                    }
-                    if (i == 0)
-                        if (mad.Ftab && mad.Btab) {
-                            Loop = "Tabletop and reversed Tabletop";
-                        } else if (mad.Ftab || mad.Btab) {
-                            Loop = "Tabletop";
+                            Tcnt++;
                         }
-                    if (i > 0 && mad.Btab) {
-                        Loop = "Hanged " + Loop;
-                    }
-                    if (i < 0 && mad.Ftab) {
-                        Loop = "Hanged " + Loop;
-                    }
-                    if (Loop != "") {
-                        Asay = Asay + " " + Loop;
-                    }
-                    i = 0;
-                    mad.Travxy = Math.Abs(mad.Travxy);
-                    while (mad.Travxy > 270) {
-                        mad.Travxy -= 360;
-                        i++;
-                    }
-                    if (i == 0 && mad.Rtab)
-                        Spin = Loop == "" ? "Tabletop" : "Flipside";
-                    if (i == 1) {
-                        Spin = "Rollspin";
-                    }
-                    if (i == 2) {
-                        Spin = "double Rollspin";
-                    }
-                    if (i == 3) {
-                        Spin = "triple Rollspin";
-                    }
-                    if (i >= 4) {
-                        Spin = "massive Roll spinning";
-                    }
-                    i = 0;
-                    var bool194 = false;
-                    mad.Travxz = Math.Abs(mad.Travxz);
-                    while (mad.Travxz > 90) {
-                        mad.Travxz -= 180;
-                        i += 180;
-                        if (i > 900) {
-                            i = 900;
-                            bool194 = true;
+                        else if (Wasay)
+                        {
+                            Wasay = false;
                         }
-                    }
-                    if (i != 0) {
-                        if (Loop == "" && Spin == "") {
-                            Asay = Asay + " " + i;
-                            if (bool194) {
-                                Asay = Asay + " and beyond";
-                            }
-                        } else {
-                            if (Spin != "")
-                                if (Loop == "") {
-                                    Asay = Asay + " " + Spin;
-                                } else {
-                                    Asay = Asay + " with " + Spin;
+                        if (Auscnt < 45)
+                        {
+                            if (Exitm == 0)
+                                if (Aflk)
+                                {
+                                    Drawcs(85, Asay, 98, 176, 255, 0);
+                                    Aflk = false;
                                 }
-                            Asay = Asay + " by " + i;
-                            if (bool194) {
-                                Asay = Asay + " and beyond";
-                            }
-                        }
-                    } else if (Spin != "")
-                        if (Loop == "") {
-                            Asay = Asay + " " + Spin;
-                        } else {
-                            Asay = Asay + " by " + Spin;
-                        }
-                    if (Asay != "") {
-                        Auscnt -= 15;
-                    }
-                    if (Loop != "") {
-                        Auscnt -= 25;
-                    }
-                    if (Spin != "") {
-                        Auscnt -= 25;
-                    }
-                    if (i != 0) {
-                        Auscnt -= 25;
-                    }
-                    if (Auscnt < 45) {
-                        if (!Mutes) {
-                            Powerup.Play();
-                        }
-                        if (Auscnt < -20) {
-                            Auscnt = -20;
-                        }
-                        var i205 = 0;
-                        if (mad.Powerup > 20.0F) {
-                            i205 = 1;
-                        }
-                        if (mad.Powerup > 40.0F) {
-                            i205 = 2;
-                        }
-                        if (mad.Powerup > 150.0F) {
-                            i205 = 3;
-                        }
-                        if (mad.Surfer) {
-                            Asay = " " + Adj[4,(int) (Medium.Random() * 3.0F)] + Asay;
-                        }
-                        if (i205 != 3) {
-                            Asay = "" + Adj[i205,(int) (Medium.Random() * 3.0F)] + Asay + Exlm[i205];
-                        } else {
-                            Asay = Adj[i205,(int) (Medium.Random() * 3.0F)];
-                        }
-                        if (!Wasay) {
-                            Tcnt = Auscnt;
-                            if (mad.Power != 98.0F) {
-                                Say = "Power Up " + (int) (100.0F * mad.Powerup / 98.0F) + "%";
-                            } else {
-                                Say = "Power To The MAX";
-                            }
-                            Skidup = !Skidup;
-                        }
-                    }
-                }
-                if (mad.Newcar) {
-                    if (!Wasay) {
-                        Say = "Car Fixed";
-                        Tcnt = 0;
-                    }
-                    Crashup = !Crashup;
-                }
-                for (var i = 0; i < Nplayers; i++)
-                    if (Dested[i] != CheckPoints.Dested[i] && i != Im) {
-                        Dested[i] = CheckPoints.Dested[i];
-                        if (Fase != 7001) {
-                            if (Dested[i] == 1) {
-                                Wasay = true;
-                                Say = "" + CarDefine.Names[Sc[i]] + " has been wasted!";
-                                Tcnt = -15;
-                            }
-                            if (Dested[i] == 2) {
-                                Wasay = true;
-                                Say = "You wasted " + CarDefine.Names[Sc[i]] + "!";
-                                Tcnt = -15;
-                            }
-                        } else {
-                            if (Dested[i] == 1) {
-                                Wasay = true;
-                                Say = "" + Plnames[i] + " has been wasted!";
-                                Tcnt = -15;
-                            }
-                            if (Dested[i] == 2) {
-                                Wasay = true;
-                                if (Multion < 2) {
-                                    Say = "You wasted " + Plnames[i] + "!";
-                                } else {
-                                    Say = "" + Plnames[Im] + " wasted " + Plnames[i] + "!";
+                                else
+                                {
+                                    Drawcs(85, Asay, 0, 128, 255, 0);
+                                    Aflk = true;
                                 }
-                                Tcnt = -15;
+                            Auscnt++;
+                        }
+                    }
+                    else if (Exitm == 0)
+                        if (Tflk)
+                        {
+                            Drawcs(110, "Bad Landing!", 0, 0, 200, 0);
+                            Tflk = false;
+                        }
+                        else
+                        {
+                            Drawcs(110, "Bad Landing!", 255, 100, 0, 0);
+                            Tflk = true;
+                        }
+                    if (mad.Trcnt == 10)
+                    {
+                        Loop = "";
+                        Spin = "";
+                        Asay = "";
+                        var i = 0;
+                        while (mad.Travzy > 225)
+                        {
+                            mad.Travzy -= 360;
+                            i++;
+                        }
+                        while (mad.Travzy < -225)
+                        {
+                            mad.Travzy += 360;
+                            i--;
+                        }
+                        if (i == 1)
+                        {
+                            Loop = "Forward loop";
+                        }
+                        if (i == 2)
+                        {
+                            Loop = "double Forward";
+                        }
+                        if (i == 3)
+                        {
+                            Loop = "triple Forward";
+                        }
+                        if (i >= 4)
+                        {
+                            Loop = "massive Forward looping";
+                        }
+                        if (i == -1)
+                        {
+                            Loop = "Backloop";
+                        }
+                        if (i == -2)
+                        {
+                            Loop = "double Back";
+                        }
+                        if (i == -3)
+                        {
+                            Loop = "triple Back";
+                        }
+                        if (i <= -4)
+                        {
+                            Loop = "massive Back looping";
+                        }
+                        if (i == 0)
+                            if (mad.Ftab && mad.Btab)
+                            {
+                                Loop = "Tabletop and reversed Tabletop";
                             }
-                            if (Dested[i] == 3) {
-                                Wasay = true;
-                                Say = "" + Plnames[i] + " has been wasted! (Disconnected)";
-                                Tcnt = -15;
+                            else if (mad.Ftab || mad.Btab)
+                            {
+                                Loop = "Tabletop";
+                            }
+                        if (i > 0 && mad.Btab)
+                        {
+                            Loop = "Hanged " + Loop;
+                        }
+                        if (i < 0 && mad.Ftab)
+                        {
+                            Loop = "Hanged " + Loop;
+                        }
+                        if (Loop != "")
+                        {
+                            Asay = Asay + " " + Loop;
+                        }
+                        i = 0;
+                        mad.Travxy = Math.Abs(mad.Travxy);
+                        while (mad.Travxy > 270)
+                        {
+                            mad.Travxy -= 360;
+                            i++;
+                        }
+                        if (i == 0 && mad.Rtab)
+                            Spin = Loop == "" ? "Tabletop" : "Flipside";
+                        if (i == 1)
+                        {
+                            Spin = "Rollspin";
+                        }
+                        if (i == 2)
+                        {
+                            Spin = "double Rollspin";
+                        }
+                        if (i == 3)
+                        {
+                            Spin = "triple Rollspin";
+                        }
+                        if (i >= 4)
+                        {
+                            Spin = "massive Roll spinning";
+                        }
+                        i = 0;
+                        var bool194 = false;
+                        mad.Travxz = Math.Abs(mad.Travxz);
+                        while (mad.Travxz > 90)
+                        {
+                            mad.Travxz -= 180;
+                            i += 180;
+                            if (i > 900)
+                            {
+                                i = 900;
+                                bool194 = true;
+                            }
+                        }
+                        if (i != 0)
+                        {
+                            if (Loop == "" && Spin == "")
+                            {
+                                Asay = Asay + " " + i;
+                                if (bool194)
+                                {
+                                    Asay = Asay + " and beyond";
+                                }
+                            }
+                            else
+                            {
+                                if (Spin != "")
+                                    if (Loop == "")
+                                    {
+                                        Asay = Asay + " " + Spin;
+                                    }
+                                    else
+                                    {
+                                        Asay = Asay + " with " + Spin;
+                                    }
+                                Asay = Asay + " by " + i;
+                                if (bool194)
+                                {
+                                    Asay = Asay + " and beyond";
+                                }
+                            }
+                        }
+                        else if (Spin != "")
+                            if (Loop == "")
+                            {
+                                Asay = Asay + " " + Spin;
+                            }
+                            else
+                            {
+                                Asay = Asay + " by " + Spin;
+                            }
+                        if (Asay != "")
+                        {
+                            Auscnt -= 15;
+                        }
+                        if (Loop != "")
+                        {
+                            Auscnt -= 25;
+                        }
+                        if (Spin != "")
+                        {
+                            Auscnt -= 25;
+                        }
+                        if (i != 0)
+                        {
+                            Auscnt -= 25;
+                        }
+                        if (Auscnt < 45)
+                        {
+                            if (!Mutes)
+                            {
+                                Powerup.Play();
+                            }
+                            if (Auscnt < -20)
+                            {
+                                Auscnt = -20;
+                            }
+                            var i205 = 0;
+                            if (mad.Powerup > 20.0F)
+                            {
+                                i205 = 1;
+                            }
+                            if (mad.Powerup > 40.0F)
+                            {
+                                i205 = 2;
+                            }
+                            if (mad.Powerup > 150.0F)
+                            {
+                                i205 = 3;
+                            }
+                            if (mad.Surfer)
+                            {
+                                Asay = " " + Adj[4, (int) (Medium.Random() * 3.0F)] + Asay;
+                            }
+                            if (i205 != 3)
+                            {
+                                Asay = "" + Adj[i205, (int) (Medium.Random() * 3.0F)] + Asay + Exlm[i205];
+                            }
+                            else
+                            {
+                                Asay = Adj[i205, (int) (Medium.Random() * 3.0F)];
+                            }
+                            if (!Wasay)
+                            {
+                                Tcnt = Auscnt;
+                                if (mad.Power != 98.0F)
+                                {
+                                    Say = "Power Up " + (int) (100.0F * mad.Powerup / 98.0F) + "%";
+                                }
+                                else
+                                {
+                                    Say = "Power To The MAX";
+                                }
+                                Skidup = !Skidup;
                             }
                         }
                     }
-                if (Multion >= 2 && Alocked != Lalocked) {
-                    if (Alocked != -1) {
-                        Wasay = false;
-                        Say = "Now following " + Plnames[Alocked] + "!";
-                        Tcnt = -15;
+                    if (mad.Newcar)
+                    {
+                        if (!Wasay)
+                        {
+                            Say = "Car Fixed";
+                            Tcnt = 0;
+                        }
+                        Crashup = !Crashup;
                     }
-                    Lalocked = Alocked;
-                    Clear = mad.Clear;
-                }
-                if (Clear != mad.Clear && mad.Clear != 0) {
-                    if (!Wasay) {
-                        Say = "Checkpoint!";
-                        Tcnt = 15;
+                    for (var i = 0; i < Nplayers; i++)
+                        if (Dested[i] != CheckPoints.Dested[i] && i != Im)
+                        {
+                            Dested[i] = CheckPoints.Dested[i];
+                            if (Fase != 7001)
+                            {
+                                if (Dested[i] == 1)
+                                {
+                                    Wasay = true;
+                                    Say = "" + CarDefine.Names[Sc[i]] + " has been wasted!";
+                                    Tcnt = -15;
+                                }
+                                if (Dested[i] == 2)
+                                {
+                                    Wasay = true;
+                                    Say = "You wasted " + CarDefine.Names[Sc[i]] + "!";
+                                    Tcnt = -15;
+                                }
+                            }
+                            else
+                            {
+                                if (Dested[i] == 1)
+                                {
+                                    Wasay = true;
+                                    Say = "" + Plnames[i] + " has been wasted!";
+                                    Tcnt = -15;
+                                }
+                                if (Dested[i] == 2)
+                                {
+                                    Wasay = true;
+                                    if (Multion < 2)
+                                    {
+                                        Say = "You wasted " + Plnames[i] + "!";
+                                    }
+                                    else
+                                    {
+                                        Say = "" + Plnames[Im] + " wasted " + Plnames[i] + "!";
+                                    }
+                                    Tcnt = -15;
+                                }
+                                if (Dested[i] == 3)
+                                {
+                                    Wasay = true;
+                                    Say = "" + Plnames[i] + " has been wasted! (Disconnected)";
+                                    Tcnt = -15;
+                                }
+                            }
+                        }
+                    if (Multion >= 2 && Alocked != Lalocked)
+                    {
+                        if (Alocked != -1)
+                        {
+                            Wasay = false;
+                            Say = "Now following " + Plnames[Alocked] + "!";
+                            Tcnt = -15;
+                        }
+                        Lalocked = Alocked;
+                        Clear = mad.Clear;
                     }
-                    Clear = mad.Clear;
-                    if (!Mutes) {
-                        Checkpoint.Play();
-                    }
-                    Cntovn = 0;
-                    if (Cntan != 0) {
-                        Cntan = 0;
+                    if (Clear != mad.Clear && mad.Clear != 0)
+                    {
+                        if (!Wasay)
+                        {
+                            Say = "Checkpoint!";
+                            Tcnt = 15;
+                        }
+                        Clear = mad.Clear;
+                        if (!Mutes)
+                        {
+                            Checkpoint.Play();
+                        }
+                        Cntovn = 0;
+                        if (Cntan != 0)
+                        {
+                            Cntan = 0;
+                        }
                     }
                 }
             }
+            if (Medium.Lightn != -1)
+            {
+                //int i = strack.sClip.stream.available();
+                Medium.Lton = false;
+                //if (i <= 6380001 && i > 5368001)
+                //	m.lton = true;
+                //if (i <= 2992001 && i > 1320001)
+                //	m.lton = true;
+            }
         }
-        if (Medium.Lightn != -1) {
-            //int i = strack.sClip.stream.available();
-            Medium.Lton = false;
-            //if (i <= 6380001 && i > 5368001)
-            //	m.lton = true;
-            //if (i <= 2992001 && i > 1320001)
-            //	m.lton = true;
-        }
-    }
 
-    static private void Stopairs() {
-        for (var i = 0; i < 6; i++) {
-            Air[i].Stop();
+        static private void Stopairs()
+        {
+            for (var i = 0; i < 6; i++)
+            {
+                Air[i].Stop();
+            }
         }
-    }
 
-    internal static void Stopallnow() {
+        internal static void Stopallnow()
+        {
 //        if (runner != null) {
 //            runner.interrupt();
 //            runner = null;
 //        }
-        Runtyp = 0;
-        if (Loadedt) {
-            Strack.Unload();
-            Strack = null;
-            Loadedt = false;
-        }
-        for (var i = 0; i < 5; i++) {
-            for (var i19 = 0; i19 < 5; i19++) {
-                if (Engs[i,i19] != null) {
-                    Engs[i,i19].Stop();
-                }
-                Engs[i,i19] = null;
-            }
-        }
-        for (var i = 0; i < 6; i++) {
-            if (Air[i] != null) {
-                Air[i].Stop();
-            }
-            Air[i] = null;
-        }
-        Wastd.Stop();
-        if (Intertrack != null) {
-            Intertrack.Unload();
-        }
-        Intertrack = null;
-    }
-
-    static void Stopchat() {
-        Clanchat = false;
-        Clangame = 0;
-        if (Runtyp == -101) {
             Runtyp = 0;
-            try {
+            if (Loadedt)
+            {
+                Strack.Unload();
+                Strack = null;
+                Loadedt = false;
+            }
+            for (var i = 0; i < 5; i++)
+            {
+                for (var i19 = 0; i19 < 5; i19++)
+                {
+                    if (Engs[i, i19] != null)
+                    {
+                        Engs[i, i19].Stop();
+                    }
+                    Engs[i, i19] = null;
+                }
+            }
+            for (var i = 0; i < 6; i++)
+            {
+                if (Air[i] != null)
+                {
+                    Air[i].Stop();
+                }
+                Air[i] = null;
+            }
+            Wastd.Stop();
+            if (Intertrack != null)
+            {
+                Intertrack.Unload();
+            }
+            Intertrack = null;
+        }
+
+        static void Stopchat()
+        {
+            Clanchat = false;
+            Clangame = 0;
+            if (Runtyp == -101)
+            {
+                Runtyp = 0;
+                try
+                {
 //                socket.close();
 //                socket = null;
 //                din.close();
 //                din = null;
 //                dout.close();
 //                dout = null;
-            } catch (Exception ignored) {
-
+                }
+                catch (Exception ignored)
+                {
+                }
             }
         }
-    }
 
-        internal static void Stoploading() {
-        Loading();
-        //app.repaint();
-        Runtyp = 0;
-    }
+        internal static void Stoploading()
+        {
+            Loading();
+            //app.repaint();
+            Runtyp = 0;
+        }
 
-        internal static void Trackbgf(bool abool) {
-        var i = 0;
-        Trkl++;
-        if (Trkl > Trklim) {
-            i = 1;
-            Trklim = (int) (HansenRandom.Double() * 40.0);
-            Trkl = 0;
+        internal static void Trackbgf(bool abool)
+        {
+            var i = 0;
+            Trkl++;
+            if (Trkl > Trklim)
+            {
+                i = 1;
+                Trklim = (int) (HansenRandom.Double() * 40.0);
+                Trkl = 0;
+            }
+            if (abool)
+            {
+                i = 0;
+            }
+            for (var i25 = 0; i25 < 2; i25++)
+            {
+                G.DrawImage(Trackbg[i], Trkx[i25], 25, null);
+                Trkx[i25] -= 10;
+                if (Trkx[i25] <= -605)
+                {
+                    Trkx[i25] = 735;
+                }
+            }
+            G.SetColor(new Color(0, 0, 0));
+            G.FillRect(0, 0, 65, 450);
+            G.FillRect(735, 0, 65, 450);
+            G.FillRect(65, 0, 670, 25);
+            G.FillRect(65, 425, 670, 25);
         }
-        if (abool) {
-            i = 0;
-        }
-        for (var i25 = 0; i25 < 2; i25++) {
-            G.DrawImage(Trackbg[i], Trkx[i25], 25, null);
-            Trkx[i25] -= 10;
-            if (Trkx[i25] <= -605) {
-                Trkx[i25] = 735;
+
+        internal static void Waitenter()
+        {
+            if (Forstart < 690)
+            {
+                G.SetFont(new Font("Arial", 1, 13));
+                Ftm = G.GetFontMetrics();
+                Drawcs(70, "Waiting for all players to finish loading!", 0, 0, 0, 0);
+                if (Forstart <= 640)
+                {
+                    Drawcs(90, "" + (640 - Forstart) / 32 + "", 0, 0, 0, 0);
+                }
+                else
+                {
+                    Drawcs(90, "Your connection to game may have been lost...", 0, 0, 0, 0);
+                }
+                G.SetFont(new Font("Arial", 1, 11));
+                Ftm = G.GetFontMetrics();
+                if (Tflk)
+                {
+                    Drawcs(125, "Get Ready!", 0, 0, 0, 0);
+                    Tflk = false;
+                }
+                else
+                {
+                    Drawcs(125, "Get Ready!", 0, 128, 255, 0);
+                    Tflk = true;
+                }
+            }
+            Forstart++;
+            if (Forstart == 700)
+            {
+                Fase = -2;
+                Winner = false;
             }
         }
-        G.SetColor(new Color(0, 0, 0));
-        G.FillRect(0, 0, 65, 450);
-        G.FillRect(735, 0, 65, 450);
-        G.FillRect(65, 0, 670, 25);
-        G.FillRect(65, 425, 670, 25);
-    }
 
-        internal static void Waitenter() {
-        if (Forstart < 690) {
-            G.SetFont(new Font("Arial", 1, 13));
-            Ftm = G.GetFontMetrics();
-            Drawcs(70, "Waiting for all players to finish loading!", 0, 0, 0, 0);
-            if (Forstart <= 640) {
-                Drawcs(90, "" + (640 - Forstart) / 32 + "", 0, 0, 0, 0);
-            } else {
-                Drawcs(90, "Your connection to game may have been lost...", 0, 0, 0, 0);
+        static internal int Xs(int i, int i279)
+        {
+            if (i279 < 50)
+            {
+                i279 = 50;
             }
-            G.SetFont(new Font("Arial", 1, 11));
-            Ftm = G.GetFontMetrics();
-            if (Tflk) {
-                Drawcs(125, "Get Ready!", 0, 0, 0, 0);
-                Tflk = false;
-            } else {
-                Drawcs(125, "Get Ready!", 0, 128, 255, 0);
-                Tflk = true;
+            return (i279 - Medium.FocusPoint) * (Medium.Cx - i) / i279 + i;
+        }
+
+        static internal int Ys(int i, int i280)
+        {
+            if (i280 < 50)
+            {
+                i280 = 50;
             }
+            return (i280 - Medium.FocusPoint) * (Medium.Cy - i) / i280 + i;
         }
-        Forstart++;
-        if (Forstart == 700) {
-            Fase = -2;
-            Winner = false;
-        }
-    }
-
-    static internal int Xs(int i, int i279) {
-        if (i279 < 50) {
-            i279 = 50;
-        }
-        return (i279 - Medium.FocusPoint) * (Medium.Cx - i) / i279 + i;
-    }
-
-    static internal int Ys(int i, int i280) {
-        if (i280 < 50) {
-            i280 = 50;
-        }
-        return (i280 - Medium.FocusPoint) * (Medium.Cy - i) / i280 + i;
-    }
     }
 }

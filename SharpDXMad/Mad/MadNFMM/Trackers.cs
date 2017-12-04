@@ -5,7 +5,8 @@ namespace Cum
     internal class Trackers
     {
         //private Trackers() {}
-        internal static readonly int[][] C = ArrayExt.New<int>(75000,3);
+        internal static readonly int[][] C = ArrayExt.New<int>(75000, 3);
+
         internal static readonly int[] Dam = new int[75000];
         internal static readonly bool[] Decor = new bool[75000];
         internal static int Ncx;
@@ -25,7 +26,8 @@ namespace Cum
         internal static readonly int[] Z = new int[75000];
         internal static readonly int[] Zy = new int[75000];
 
-        internal static void Devidetrackers(int i, int i0, int i1, int i2) {
+        internal static void Devidetrackers(int i, int i0, int i1, int i2)
+        {
             Sect = null;
             Sx = i;
             Sz = i1;
@@ -39,14 +41,14 @@ namespace Cum
             {
                 Ncz = 1;
             }
-            Sect = new int[Ncx,Ncz][];
+            Sect = new int[Ncx, Ncz][];
             for (var i3 = 0; i3 < Ncx; i3++)
             {
                 for (var i4 = 0; i4 < Ncz; i4++)
                 {
                     var i5 = Sx + i3 * 3000 + 1500;
                     var i6 = Sz + i4 * 3000 + 1500;
-                    var ais  = new int[6700];
+                    var ais = new int[6700];
                     var i7 = 0;
                     for (var i8 = 0; i8 < Nt; i8++)
                     {
@@ -71,8 +73,8 @@ namespace Cum
                         ais[i7] = 0;
                         i7++;
                     }
-                    Sect[i3,i4] = new int[i7];
-                    HansenSystem.ArrayCopy( ais, 0, Sect[i3,i4], 0, i7);
+                    Sect[i3, i4] = new int[i7];
+                    HansenSystem.ArrayCopy(ais, 0, Sect[i3, i4], 0, i7);
                 }
             }
             for (var i12 = 0; i12 < Nt; i12++)
@@ -84,7 +86,8 @@ namespace Cum
             Ncz--;
         }
 
-        private static int Py(int i, int i13, int i14, int i15) {
+        private static int Py(int i, int i13, int i14, int i15)
+        {
             return (i - i13) * (i - i13) + (i14 - i15) * (i14 - i15);
         }
     }

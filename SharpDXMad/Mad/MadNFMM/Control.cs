@@ -4,7 +4,6 @@ using boolean = System.Boolean;
 
 namespace Cum
 {
-
     internal class Control
     {
         /**
@@ -289,7 +288,8 @@ namespace Cum
             Mutes = false;
         }
 
-        internal void Preform(Mad mad, ContO conto) {
+        internal void Preform(Mad mad, ContO conto)
+        {
             Left = false;
             Right = false;
             Up = false;
@@ -352,8 +352,8 @@ namespace Cum
                         f = 0.5F;
                     }
                     _upwait = (int) ((CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) *
-                                    (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) *
-                                    (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) * f);
+                                     (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) *
+                                     (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im]) * f);
                     if (_upwait > 80)
                     {
                         _upwait = 80;
@@ -594,7 +594,7 @@ namespace Cum
                     {
                         if (CheckPoints.Pos[0] - CheckPoints.Pos[mad.Im] > 0)
                         {
-                            _saftey = (int)(_saftey * f);
+                            _saftey = (int) (_saftey * f);
                         }
                         else
                         {
@@ -884,11 +884,9 @@ namespace Cum
                                 }
                                 for ( /**/; i7 < 0; i7 += 360)
                                 {
-
                                 }
                                 for ( /**/; i7 > 180; i7 -= 360)
                                 {
-
                                 }
                                 var i8 = 0;
                                 if (CheckPoints.Opx[i6] - conto.X >= 0)
@@ -903,11 +901,9 @@ namespace Cum
                                     i9 < 0;
                                     i9 += 360)
                                 {
-
                                 }
                                 for ( /**/; i9 > 180; i9 -= 360)
                                 {
-
                                 }
                                 var i10 = Math.Abs(i7 - i9);
                                 if (i10 > 180)
@@ -1814,11 +1810,9 @@ namespace Cum
                                 }
                                 for ( /**/; i25 < 0; i25 += 360)
                                 {
-
                                 }
                                 for ( /**/; i25 > 180; i25 -= 360)
                                 {
-
                                 }
                                 var i26 = 0;
                                 if (CheckPoints.Opx[0] - conto.X >= 0)
@@ -1833,11 +1827,9 @@ namespace Cum
                                     i27 < 0;
                                     i27 += 360)
                                 {
-
                                 }
                                 for ( /**/; i27 > 180; i27 -= 360)
                                 {
-
                                 }
                                 var i28 = Math.Abs(i25 - i27);
                                 if (i28 > 180)
@@ -2272,8 +2264,8 @@ namespace Cum
                                 i40 = 180;
                             }
                             _pan = (int) (90 + i40 + Math.Atan(
-                                             (CheckPoints.Z[i] - conto.Z) /
-                                             (double) (CheckPoints.X[i] - conto.X)) / 0.017453292519943295);
+                                              (CheckPoints.Z[i] - conto.Z) /
+                                              (double) (CheckPoints.X[i] - conto.X)) / 0.017453292519943295);
                         }
                         else
                         {
@@ -2283,7 +2275,7 @@ namespace Cum
                                 i41 = 180;
                             }
                             _pan = (int) (90 + i41 + Math.Atan((_wtz - conto.Z) / (double) (_wtx - conto.X)) /
-                                         0.017453292519943295);
+                                          0.017453292519943295);
                         }
                         _turncnt = 0;
                         _randtcnt = (int) (_acuracy * Medium.Random());
@@ -2306,7 +2298,7 @@ namespace Cum
                         i = 180;
                     }
                     _pan = (int) (90 + i + Math.Atan((i44 - conto.Z) / (double) (i43 - conto.X)) /
-                                 0.017453292519943295);
+                                  0.017453292519943295);
                     _attack--;
                     if (_attack <= 0)
                     {
@@ -2339,19 +2331,15 @@ namespace Cum
                 }
                 for ( /**/; i < 0; i += 360)
                 {
-
                 }
                 for ( /**/; i > 180; i -= 360)
                 {
-
                 }
                 for ( /**/; _pan < 0; _pan += 360)
                 {
-
                 }
                 for ( /**/; _pan > 180; _pan -= 360)
                 {
-
                 }
                 if (Wall != -1 && _hold == 0)
                 {
@@ -2780,11 +2768,9 @@ namespace Cum
                         int i;
                         for (i = mad.Pzy + 90; i < 0; i += 360)
                         {
-
                         }
                         for ( /**/; i > 180; i -= 360)
                         {
-
                         }
                         i = Math.Abs(i);
                         if (mad.Lcomp - mad.Rcomp < 5.0F && (_onced || _onceu))
@@ -2880,11 +2866,9 @@ namespace Cum
                         }
                         for ( /**/; i < 0; i += 360)
                         {
-
                         }
                         for ( /**/; i > 180; i -= 360)
                         {
-
                         }
                         i = Math.Abs(i);
                         if (mad.Lcomp - mad.Rcomp < 10.0F && (_oncel || _oncer))
@@ -2975,11 +2959,13 @@ namespace Cum
             }
         }
 
-        private int Py(int i, int i47, int i48, int i49) {
+        private int Py(int i, int i47, int i48, int i49)
+        {
             return (i - i47) * (i - i47) + (i48 - i49) * (i48 - i49);
         }
 
-        private int Pys(int i, int i50, int i51, int i52) {
+        private int Pys(int i, int i50, int i51, int i52)
+        {
             return (int) Math.Sqrt((i - i50) * (i - i50) + (i51 - i52) * (i51 - i52));
         }
 
