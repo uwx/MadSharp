@@ -208,6 +208,7 @@ namespace Cum
         internal static void Adjstfade(float f, float f271, int i, GameSparker gamesparker)
         {
             if (Resdown != 2)
+            {
                 if (f == 5.0F)
                 {
                     if (Resdown == 0 && Rescnt == 0)
@@ -234,6 +235,7 @@ namespace Cum
                 {
                     Rescnt = 10;
                 }
+            }
         }
 
         internal static void Around(ContO conto, bool abool)
@@ -813,12 +815,15 @@ namespace Cum
                                 var i135 = _clc[i, 1, i122 / 2, 1];
                                 var i136 = _clc[i, 1, i122 / 2, 2];
                                 for (var i137 = 0; i137 < 16; i137++)
+                                {
                                     if (i133 > Fade[i137])
                                     {
                                         i134 = (i134 * Fogd + Cfade[0]) / (Fogd + 1);
                                         i135 = (i135 * Fogd + Cfade[1]) / (Fogd + 1);
                                         i136 = (i136 * Fogd + Cfade[2]) / (Fogd + 1);
                                     }
+                                }
+
                                 G.SetColor(new Color(i134, i135, i136));
                                 G.FillPolygon(is111, is112, 6);
                             }
@@ -920,12 +925,15 @@ namespace Cum
                                 var i151 = _clc[i, 0, i138 / 2, 1];
                                 var i152 = _clc[i, 0, i138 / 2, 2];
                                 for (var i153 = 0; i153 < 16; i153++)
+                                {
                                     if (i149 > Fade[i153])
                                     {
                                         i150 = (i150 * Fogd + Cfade[0]) / (Fogd + 1);
                                         i151 = (i151 * Fogd + Cfade[1]) / (Fogd + 1);
                                         i152 = (i152 * Fogd + Cfade[2]) / (Fogd + 1);
                                     }
+                                }
+
                                 G.SetColor(new Color(i150, i151, i152));
                                 G.FillPolygon(is111, is112, 6);
                             }
@@ -979,12 +987,15 @@ namespace Cum
                             var i164 = Clds[1];
                             var i165 = Clds[2];
                             for (var i166 = 0; i166 < 16; i166++)
+                            {
                                 if (i162 > Fade[i166])
                                 {
                                     i163 = (i163 * Fogd + Cfade[0]) / (Fogd + 1);
                                     i164 = (i164 * Fogd + Cfade[1]) / (Fogd + 1);
                                     i165 = (i165 * Fogd + Cfade[2]) / (Fogd + 1);
                                 }
+                            }
+
                             G.SetColor(new Color(i163, i164, i165));
                             G.FillPolygon(is111, is112, 12);
                         }
@@ -1641,6 +1652,7 @@ namespace Cum
             for (var i71 = i; i71 < i48; i71++)
             {
                 for (var i72 = i49; i72 < i50; i72++)
+                {
                     if (ais[i71 - i, i72 - i49] != 0)
                     {
                         var i73 = i71 + i72 * Nrw;
@@ -1708,6 +1720,7 @@ namespace Cum
                             G.FillPolygon(is78, is79, 8);
                         }
                     }
+                }
             }
         }
 
@@ -1967,6 +1980,7 @@ namespace Cum
             for (var i183 = 0; i183 < _nmt; i183++)
             {
                 for (var i184 = i183 + 1; i184 < _nmt; i184++)
+                {
                     if (ais[i183] < ais[i184])
                     {
                         is173[i183]++;
@@ -1975,6 +1989,8 @@ namespace Cum
                     {
                         is173[i184]++;
                     }
+                }
+
                 _mrd[is173[i183]] = i183;
             }
         }
@@ -2007,6 +2023,7 @@ namespace Cum
                 _cgpx[i41] = _sgpx + i39 * 1200 + (int) (random.NextDouble() * 1000.0 - 500.0);
                 _cgpz[i41] = _sgpz + i40 * 1200 + (int) (random.NextDouble() * 1000.0 - 500.0);
                 for (var i42 = 0; i42 < Trackers.Nt; i42++)
+                {
                     if (Trackers.Zy[i42] == 0 && Trackers.Xy[i42] == 0)
                     {
                         if (Trackers.Radx[i42] < Trackers.Radz[i42] &&
@@ -2030,6 +2047,8 @@ namespace Cum
                             }
                         }
                     }
+                }
+
                 if (++i39 == Nrw)
                 {
                     i39 = 0;
@@ -2169,6 +2188,7 @@ namespace Cum
                 _cntrn--;
             }
             for (var i = 0; i < 3; i++)
+            {
                 if (Diup[i])
                 {
                     Rand[i]++;
@@ -2185,6 +2205,8 @@ namespace Cum
                         Rand[i] = 9;
                     }
                 }
+            }
+
             _trn++;
             if (_trn == 3)
             {

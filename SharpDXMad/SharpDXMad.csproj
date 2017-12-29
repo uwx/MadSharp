@@ -81,8 +81,6 @@
   <ItemGroup>
     <Compile Include="Images.cs" />
     <Compile Include="Mad\Colors.cs" />
-    <Compile Include="Mad\ContO.cs" />
-    <Compile Include="Mad\F51.cs" />
     <Compile Include="Mad\MadNFMM\CarDefine.cs" />
     <Compile Include="Mad\MadNFMM\CheckPoints.cs" />
     <Compile Include="Mad\MadNFMM\ContO.cs" />
@@ -103,11 +101,7 @@
     <Compile Include="Mad\MadNFMM\xtGraphics.cs" />
     <Compile Include="Mad\MadNFMM\xtImages.cs" />
     <Compile Include="Mad\MadNFMM\xtPart2.cs" />
-    <Compile Include="Mad\Medium.cs" />
-    <Compile Include="Mad\Plane.cs" />
     <Compile Include="Mad\G.cs" />
-    <Compile Include="Mad\Trackers.cs" />
-    <Compile Include="Mad\Wheels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

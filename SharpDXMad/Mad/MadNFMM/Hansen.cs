@@ -278,9 +278,20 @@ namespace Cum
             {
                 return new Color(i, i, i, alpha);
             }
-            if (r > 0 && r < i) r = i;
-            if (g > 0 && g < i) g = i;
-            if (b > 0 && b < i) b = i;
+            if (r > 0 && r < i)
+            {
+                r = i;
+            }
+
+            if (g > 0 && g < i)
+            {
+                g = i;
+            }
+
+            if (b > 0 && b < i)
+            {
+                b = i;
+            }
 
             return new Color(Math.Min((int) (r / Factor), 255),
                 Math.Min((int) (g / Factor), 255),
@@ -414,13 +425,24 @@ namespace Cum
         ///<returns>The index of the first matching item, or -1 if no items match.</returns>
         public static int FindIndex<T>(this IEnumerable<T> items, Func<T, bool> predicate)
         {
-            if (items == null) throw new ArgumentNullException(nameof(items));
-            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
+
+            if (predicate == null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
 
             var retVal = 0;
             foreach (var item in items)
             {
-                if (predicate(item)) return retVal;
+                if (predicate(item))
+                {
+                    return retVal;
+                }
+
                 retVal++;
             }
             return -1;
@@ -432,12 +454,19 @@ namespace Cum
         ///<returns>The index of the first matching item, or -1 if the item was not found.</returns>
         public static int IndexOf<T>(this IEnumerable<T> items, T target)
         {
-            if (items == null) throw new ArgumentNullException(nameof(items));
+            if (items == null)
+            {
+                throw new ArgumentNullException(nameof(items));
+            }
 
             var retVal = 0;
             foreach (var item in items)
             {
-                if (Equals(item, target)) return retVal;
+                if (Equals(item, target))
+                {
+                    return retVal;
+                }
+
                 retVal++;
             }
             return -1;

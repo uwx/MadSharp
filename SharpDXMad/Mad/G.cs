@@ -46,7 +46,10 @@ namespace MadGame
 
         public static void FillPolygon(int[] x, int[] y, int n)
         {
-            if (n < 3) return;
+            if (n < 3)
+            {
+                return;
+            }
 
             var pta = new RawVector2[n - 1];
 
@@ -70,7 +73,11 @@ namespace MadGame
 
         public static void DrawPolygon(int[] x, int[] y, int n)
         {
-            if (n < 2) return;
+            if (n < 2)
+            {
+                return;
+            }
+
             for (int i = 0, l = n - 1; i < l; i++)
             {
                 D2D.DrawLine(new RawVector2(x[i], y[i]), new RawVector2(x[i + 1], y[i + 1]), _currentColor);
@@ -111,7 +118,11 @@ namespace MadGame
 
         public static void DrawImage(Image image, int x, int y, object p3)
         {
-            if (image == null) return;
+            if (image == null)
+            {
+                return;
+            }
+
             D2D.DrawBitmap(image, new RectangleF(x, y, image.GetWidth(null), image.GetHeight(null)), 1.0f,
                 BitmapInterpolationMode.NearestNeighbor);
         }

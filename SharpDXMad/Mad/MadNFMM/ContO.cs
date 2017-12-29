@@ -758,6 +758,7 @@ namespace Cum
                             }
                         }
                         if (i28 == 1)
+                        {
                             if (Math.Abs(P[i27].Oz[0] - P[i27].Oz[1]) > Math.Abs(P[i27].Oy[0] - P[i27].Oy[1]))
                             {
                                 if (P[i27].Oz[0] > P[i27].Oz[1])
@@ -799,7 +800,10 @@ namespace Cum
                             {
                                 P[i27].Fs = -1;
                             }
+                        }
+
                         if (i28 == 2)
+                        {
                             if (Math.Abs(P[i27].Oz[0] - P[i27].Oz[1]) > Math.Abs(P[i27].Ox[0] - P[i27].Ox[1]))
                             {
                                 if (P[i27].Oz[0] > P[i27].Oz[1])
@@ -841,7 +845,10 @@ namespace Cum
                             {
                                 P[i27].Fs = 1;
                             }
+                        }
+
                         if (i28 == 3)
+                        {
                             if (Math.Abs(P[i27].Oy[0] - P[i27].Oy[1]) > Math.Abs(P[i27].Ox[0] - P[i27].Ox[1]))
                             {
                                 if (P[i27].Oy[0] > P[i27].Oy[1])
@@ -883,6 +890,8 @@ namespace Cum
                             {
                                 P[i27].Fs = -1;
                             }
+                        }
+
                         var bool53 = false;
                         var bool54 = false;
                         for (var i55 = 0; i55 < Npl; i55++)
@@ -1006,6 +1015,7 @@ namespace Cum
                                 i72 = i71;
                             }
                             for (var i73 = 0; i73 < Npl; i73++)
+                            {
                                 if (i73 != i27)
                                 {
                                     var bool74 = false;
@@ -1014,16 +1024,19 @@ namespace Cum
                                     {
                                         bools[i75] = false;
                                         for (var i76 = 0; i76 < P[i27].N; i76++)
+                                        {
                                             if (P[i27].Ox[i76] == P[i73].Ox[i75] && P[i27].Oy[i76] == P[i73].Oy[i75] &&
                                                 P[i27].Oz[i76] == P[i73].Oz[i75])
                                             {
                                                 bools[i75] = true;
                                                 bool74 = true;
                                             }
+                                        }
                                     }
                                     if (bool74)
                                     {
                                         for (var i77 = 0; i77 < P[i73].N; i77++)
+                                        {
                                             if (!bools[i77])
                                             {
                                                 if (i28 == 1)
@@ -1060,9 +1073,13 @@ namespace Cum
                                                     }
                                                 }
                                             }
+                                        }
                                     }
                                 }
+                            }
+
                             if (i28 == 1)
+                            {
                                 if ((i71 + i72) / 2 > (i29 + i30) / 2)
                                 {
                                     P[i27].Fs *= -1;
@@ -1071,7 +1088,10 @@ namespace Cum
                                 {
                                     P[i27].Fs *= -1;
                                 }
+                            }
+
                             if (i28 == 2)
+                            {
                                 if ((i71 + i72) / 2 > (i31 + i32) / 2)
                                 {
                                     P[i27].Fs *= -1;
@@ -1080,7 +1100,10 @@ namespace Cum
                                 {
                                     P[i27].Fs *= -1;
                                 }
+                            }
+
                             if (i28 == 3)
+                            {
                                 if ((i71 + i72) / 2 > (i33 + i34) / 2)
                                 {
                                     P[i27].Fs *= -1;
@@ -1089,6 +1112,7 @@ namespace Cum
                                 {
                                     P[i27].Fs *= -1;
                                 }
+                            }
                         }
                         P[i27].Deltafntyp();
                     }
@@ -1442,6 +1466,7 @@ namespace Cum
                 }
                 f107 = f100;
                 for (var i115 = 0; i115 < 3; i115++)
+                {
                     if (Medium.Trk == 2)
                     {
                         is106[i115] = (int) (390.0F / (2.2F + f100 - f108));
@@ -1450,10 +1475,13 @@ namespace Cum
                     {
                         is106[i115] = (int) ((Medium.Cpol[i115] + Medium.Cgrnd[i115]) / (2.2F + f100 - f108));
                     }
+                }
+
                 P[i109] = new Plane(is112, is114, is113, 6, is106, 3, -8, 0, 0, 0, 0, Disline, 0, true, 0, false);
             }
             f100 = (float) (0.02 * random.NextDouble());
             for (var i116 = 0; i116 < 3; i116++)
+            {
                 if (Medium.Trk == 2)
                 {
                     is106[i116] = (int) (390.0F / (2.15F + f100));
@@ -1462,6 +1490,8 @@ namespace Cum
                 {
                     is106[i116] = (int) ((Medium.Cpol[i116] + Medium.Cgrnd[i116]) / (2.15F + f100));
                 }
+            }
+
             P[4] = new Plane(is96, is97, is98, 8, is106, 3, -8, 0, 0, 0, 0, Disline, 0, true, 0, false);
             var is117 = new int[2];
             var is118 = new int[2];
@@ -1577,10 +1607,7 @@ namespace Cum
 
         internal void D()
         {
-            if (Dist != 0)
-            {
-                Dist = 0;
-            }
+            Dist = 0;
             var i = Medium.Cx + (int) ((X - Medium.X - Medium.Cx) * Medium.Cos(Medium.Xz) -
                                        (Z - Medium.Z - Medium.Cz) * Medium.Sin(Medium.Xz));
             var i124 = Medium.Cz + (int) ((X - Medium.X - Medium.Cx) * Medium.Sin(Medium.Xz) +
@@ -1592,80 +1619,8 @@ namespace Cum
                 (i125 < Medium.Fade[Disline] + MaxR || Medium.Trk != 0) && (i126 > Disp || Medium.Trk != 0) &&
                 (!Decor || Medium.Resdown != 2 && Medium.Trk != 1))
             {
-                if (Shadow)
-                    if (!Medium.Crs)
-                    {
-                        if (i125 < 2000)
-                        {
-                            var aabool = false;
-                            if (Trackers.Ncx != 0 || Trackers.Ncz != 0)
-                            {
-                                var i127 = (X - Trackers.Sx) / 3000;
-                                if (i127 > Trackers.Ncx)
-                                {
-                                    i127 = Trackers.Ncx;
-                                }
-                                if (i127 < 0)
-                                {
-                                    i127 = 0;
-                                }
-                                var i128 = (Z - Trackers.Sz) / 3000;
-                                if (i128 > Trackers.Ncz)
-                                {
-                                    i128 = Trackers.Ncz;
-                                }
-                                if (i128 < 0)
-                                {
-                                    i128 = 0;
-                                }
-                                for (var i129 = Trackers.Sect[i127, i128].Length - 1; i129 >= 0; i129--)
-                                {
-                                    var i130 = Trackers.Sect[i127, i128][i129];
-                                    if (Math.Abs(Trackers.Zy[i130]) != 90 && Math.Abs(Trackers.Xy[i130]) != 90 &&
-                                        Math.Abs(X - Trackers.X[i130]) < Trackers.Radx[i130] + MaxR &&
-                                        Math.Abs(Z - Trackers.Z[i130]) < Trackers.Radz[i130] + MaxR &&
-                                        (!Trackers.Decor[i130] || Medium.Resdown != 2))
-                                    {
-                                        aabool = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            if (aabool)
-                            {
-                                for (var i131 = 0; i131 < Npl; i131++)
-                                {
-                                    P[i131].S(X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, 0);
-                                }
-                            }
-                            else
-                            {
-                                var i132 = Medium.Cy + (int) ((Medium.Ground - Medium.Cy) * Medium.Cos(Medium.Zy) -
-                                                              (i124 - Medium.Cz) * Medium.Sin(Medium.Zy));
-                                var i133 = Medium.Cz + (int) ((Medium.Ground - Medium.Cy) * Medium.Sin(Medium.Zy) +
-                                                              (i124 - Medium.Cz) * Medium.Cos(Medium.Zy));
-                                if (Ys(i132 + MaxR, i133) > 0 && Ys(i132 - MaxR, i133) < Medium.H)
-                                {
-                                    for (var i134 = 0; i134 < Npl; i134++)
-                                    {
-                                        P[i134].S(X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, 1);
-                                    }
-                                }
-                            }
-                            Medium.Addsp(X - Medium.X, Z - Medium.Z, (int) (MaxR * 0.8));
-                        }
-                        else
-                        {
-                            Lowshadow(i125);
-                        }
-                    }
-                    else
-                    {
-                        for (var i135 = 0; i135 < Npl; i135++)
-                        {
-                            P[i135].S(X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, 2);
-                        }
-                    }
+                PrepareShadow(i125, i124);
+
                 var i136 = Medium.Cy + (int) ((Y - Medium.Y - Medium.Cy) * Medium.Cos(Medium.Zy) -
                                               (i124 - Medium.Cz) * Medium.Sin(Medium.Zy));
                 if (Ys(i136 + MaxR, i125) > Medium.Ih && Ys(i136 - MaxR, i125) < Medium.H)
@@ -1688,31 +1643,37 @@ namespace Cum
                                                (Medium.Z - Z) * (Medium.Z - Z) +
                                                (Medium.Y + Medium.Cy - Y) * (Medium.Y + Medium.Cy - Y));
                         for (var i137 = 0; i137 < 20; i137++)
+                        {
                             if (Stg[i137] != 0)
                             {
                                 Pdust(i137, true);
                             }
+                        }
+
                         Dsprk(true);
                     }
                     ArrayExt.Sort(P, 0, Npl);
 
-                    var _npl = Npl - 1;
+                    var npl = Npl - 1;
                     P[0].D(P[0], P[1], X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, Wxz, Wzy, Noline, i126);
-                    for (var j = 1; j < _npl; j++)
+                    for (var j = 1; j < npl; j++)
                     {
                         P[j].D(P[j - 1], P[j + 1], X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, Wxz, Wzy,
                             Noline, i126);
                     }
-                    P[_npl].D(P[_npl - 1], null, X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, Wxz, Wzy, Noline,
+                    P[npl].D(P[npl - 1], null, X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, Wxz, Wzy, Noline,
                         i126);
 
                     if (Shadow)
                     {
                         for (var i143 = 0; i143 < 20; i143++)
+                        {
                             if (Stg[i143] != 0)
                             {
                                 Pdust(i143, false);
                             }
+                        }
+
                         Dsprk(false);
                     }
                     Dist = (int) (Math.Sqrt((int) Math.Sqrt((Medium.X + Medium.Cx - X) * (Medium.X + Medium.Cx - X) +
@@ -1721,21 +1682,105 @@ namespace Cum
                                   Grounded);
                 }
             }
+            FinishShadow();
+        }
+
+        private void FinishShadow()
+        {
             if (Shadow && Dist == 0)
             {
                 for (var i144 = 0; i144 < 20; i144++)
-                    if (Stg[i144] != 0)
-                    {
-                        Stg[i144] = 0;
-                    }
-                for (var i145 = 0; i145 < 100; i145++)
-                    if (_rtg[i145] != 0)
-                    {
-                        _rtg[i145] = 0;
-                    }
-                if (Sprk != 0)
                 {
-                    Sprk = 0;
+                    Stg[i144] = 0;
+                }
+
+                for (var i145 = 0; i145 < 100; i145++)
+                {
+                    _rtg[i145] = 0;
+                }
+
+                Sprk = 0;
+            }
+        }
+
+        private void PrepareShadow(int i125, int i124)
+        {
+            if (!Shadow)
+            {
+                return;
+            }
+
+            if (!Medium.Crs)
+            {
+                if (i125 < 2000)
+                {
+                    var aabool = false;
+                    if (Trackers.Ncx != 0 || Trackers.Ncz != 0)
+                    {
+                        var i127 = (X - Trackers.Sx) / 3000;
+                        if (i127 > Trackers.Ncx)
+                        {
+                            i127 = Trackers.Ncx;
+                        }
+                        if (i127 < 0)
+                        {
+                            i127 = 0;
+                        }
+                        var i128 = (Z - Trackers.Sz) / 3000;
+                        if (i128 > Trackers.Ncz)
+                        {
+                            i128 = Trackers.Ncz;
+                        }
+                        if (i128 < 0)
+                        {
+                            i128 = 0;
+                        }
+                        for (var i129 = Trackers.Sect[i127, i128].Length - 1; i129 >= 0; i129--)
+                        {
+                            var i130 = Trackers.Sect[i127, i128][i129];
+                            if (Math.Abs(Trackers.Zy[i130]) != 90 && Math.Abs(Trackers.Xy[i130]) != 90 &&
+                                Math.Abs(X - Trackers.X[i130]) < Trackers.Radx[i130] + MaxR &&
+                                Math.Abs(Z - Trackers.Z[i130]) < Trackers.Radz[i130] + MaxR &&
+                                (!Trackers.Decor[i130] || Medium.Resdown != 2))
+                            {
+                                aabool = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (aabool)
+                    {
+                        for (var i131 = 0; i131 < Npl; i131++)
+                        {
+                            P[i131].S(X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, 0);
+                        }
+                    }
+                    else
+                    {
+                        var i132 = Medium.Cy + (int) ((Medium.Ground - Medium.Cy) * Medium.Cos(Medium.Zy) -
+                                                      (i124 - Medium.Cz) * Medium.Sin(Medium.Zy));
+                        var i133 = Medium.Cz + (int) ((Medium.Ground - Medium.Cy) * Medium.Sin(Medium.Zy) +
+                                                      (i124 - Medium.Cz) * Medium.Cos(Medium.Zy));
+                        if (Ys(i132 + MaxR, i133) > 0 && Ys(i132 - MaxR, i133) < Medium.H)
+                        {
+                            for (var i134 = 0; i134 < Npl; i134++)
+                            {
+                                P[i134].S(X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, 1);
+                            }
+                        }
+                    }
+                    Medium.Addsp(X - Medium.X, Z - Medium.Z, (int) (MaxR * 0.8));
+                }
+                else
+                {
+                    Lowshadow(i125);
+                }
+            }
+            else
+            {
+                for (var i135 = 0; i135 < Npl; i135++)
+                {
+                    P[i135].S(X - Medium.X, Y - Medium.Y, Z - Medium.Z, Xz, Xy, Zy, 2);
                 }
             }
         }
@@ -1775,6 +1820,7 @@ namespace Cum
                 }
             }
             for (var i = 0; i < 100; i++)
+            {
                 if (_rtg[i] != 0 && (_rbef[i] && aabool || !_rbef[i] && !aabool))
                 {
                     if (_rtg[i] == 1)
@@ -1873,12 +1919,15 @@ namespace Cum
                         var i257 = 197 - 30 * _rtg[i];
                         var i258 = 0;
                         for (var i259 = 0; i259 < 16; i259++)
+                        {
                             if (i247 > Medium.Fade[i259])
                             {
                                 i256 = (i256 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
                                 i257 = (i257 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
                                 i258 = (i258 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                             }
+                        }
+
                         G.SetColor(new Color(i256, i257, i258));
                         G.DrawLine(i252, i253, i254, i255);
                         _vrx[i] = _vrx[i] * 0.8F;
@@ -1894,6 +1943,8 @@ namespace Cum
                         }
                     }
                 }
+            }
+
             if (Sprk != 0)
             {
                 Sprk = 0;
@@ -2421,6 +2472,7 @@ namespace Cum
                     var i157 = Trackers.Sect[i154, i155][i156];
                     var i158 = 0;
                     for (var i159 = 0; i159 < 4; i159++)
+                    {
                         if (Math.Abs(Trackers.Zy[i157]) != 90 && Math.Abs(Trackers.Xy[i157]) != 90 &&
                             Trackers.Rady[i157] != 801 &&
                             Math.Abs(ais[i159] - (Trackers.X[i157] - Medium.X)) < Trackers.Radx[i157] &&
@@ -2429,6 +2481,8 @@ namespace Cum
                         {
                             i158++;
                         }
+                    }
+
                     if (i158 > 2)
                     {
                         for (var i160 = 0; i160 < 4; i160++)
@@ -2496,12 +2550,15 @@ namespace Cum
             if (aabool)
             {
                 for (var i166 = 0; i166 < 16; i166++)
+                {
                     if (i > Medium.Fade[i166])
                     {
                         i150 = (i150 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
                         i151 = (i151 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
                         i152 = (i152 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                     }
+                }
+
                 G.SetColor(new Color(i150, i151, i152));
                 G.FillPolygon(ais, is146, 4);
             }
@@ -2680,12 +2737,15 @@ namespace Cum
                     var i232 = _srgb[i, 1];
                     var i233 = _srgb[i, 2];
                     for (var i234 = 0; i234 < 16; i234++)
+                    {
                         if (_sav[i] > Medium.Fade[i234])
                         {
                             i231 = (i231 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
                             i232 = (i232 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
                             i233 = (i233 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                         }
+                    }
+
                     G.SetColor(new Color(i231, i232, i233));
                     var f = _sbln[i] - Stg[i] * (_sbln[i] / 8.0F);
                     G.SetAlpha(f);

@@ -149,6 +149,7 @@ namespace Cum
                 for (var i3 = 0; i3 < i; i3++)
                 {
                     for (var i4 = i3 + 1; i4 < i; i4++)
+                    {
                         if (Clear[i3] != Clear[i4])
                         {
                             if (Clear[i3] < Clear[i4])
@@ -168,10 +169,13 @@ namespace Cum
                                 i5 = 0;
                             }
                             while (Typ[i5] <= 0)
+                            {
                                 if (++i5 >= N)
                                 {
                                     i5 = 0;
                                 }
+                            }
+
                             if (Py(contos[i3].X / 100, X[i5] / 100, contos[i3].Z / 100, Z[i5] / 100) >
                                 Py(contos[i4].X / 100, X[i5] / 100, contos[i4].Z / 100, Z[i5] / 100))
                             {
@@ -182,18 +186,24 @@ namespace Cum
                                 Pos[i4]++;
                             }
                         }
+                    }
                 }
                 if (Stage > 2)
                 {
                     for (var i6 = 0; i6 < i; i6++)
+                    {
                         if (Clear[i6] == Nlaps * Nsp && Pos[i6] == 0)
+                        {
                             if (i6 == i0)
                             {
                                 for (var i7 = 0; i7 < i; i7++)
+                                {
                                     if (Pos[i7] == 1)
                                     {
                                         _postwo = i7;
                                     }
+                                }
+
                                 if (Py(Opx[i0] / 100, Opx[_postwo] / 100, Opz[i0] / 100, Opz[_postwo] / 100) < 14000 &&
                                     Clear[i0] - Clear[_postwo] == 1)
                                 {
@@ -207,14 +217,19 @@ namespace Cum
                                 Catchfin = 30;
                                 _postwo = i6;
                             }
+                        }
+                    }
                 }
             }
             Wasted = 0;
             for (var i8 = 0; i8 < i; i8++)
+            {
                 if ((i0 != i8 || i1 >= 2) && mads[i8].Dest)
                 {
                     Wasted++;
                 }
+            }
+
             if (Catchfin != 0 && i1 < 2)
             {
                 Catchfin--;

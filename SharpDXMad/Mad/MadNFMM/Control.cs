@@ -275,7 +275,11 @@ namespace Cum
             Lookback = 0;
             Enter = false;
             Exit = false;
-            if (i == 1) return;
+            if (i == 1)
+            {
+                return;
+            }
+
             Radar = false;
             Arrace = false;
             Chatup = 0;
@@ -283,7 +287,11 @@ namespace Cum
             {
                 Multion = 0;
             }
-            if (i == 3) return;
+            if (i == 3)
+            {
+                return;
+            }
+
             Mutem = false;
             Mutes = false;
         }
@@ -295,9 +303,14 @@ namespace Cum
             Up = false;
             Down = false;
             Handb = false;
-            if (mad.Dest) return;
+            if (mad.Dest)
+            {
+                return;
+            }
+
             bool abool;
             if (mad.Mtouch)
+            {
                 if (_stcnt > _statusque)
                 {
                     _acuracy = (7 - CheckPoints.Pos[mad.Im]) * CheckPoints.Pos[0] * (6 - CheckPoints.Stage * 2);
@@ -412,6 +425,7 @@ namespace Cum
                         }
                     }
                     if (CheckPoints.Stage == 18)
+                    {
                         if (mad.Pcleared >= 10 && mad.Pcleared <= 24)
                         {
                             _skiplev = 1.0F;
@@ -420,6 +434,8 @@ namespace Cum
                         {
                             _skiplev = 0.0F;
                         }
+                    }
+
                     if (CheckPoints.Stage == 21)
                     {
                         _skiplev = 0.0F;
@@ -551,7 +567,10 @@ namespace Cum
                             _agressed = true;
                         }
                         if (CheckPoints.Stage == -1)
+                        {
                             _agressed = Medium.Random() > Medium.Random();
+                        }
+
                         _cntrn = 5;
                     }
                     else
@@ -624,6 +643,7 @@ namespace Cum
                         _stuntf = 2;
                     }
                     if (CheckPoints.Stage == 20)
+                    {
                         if (CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im] ||
                             Math.Abs(CheckPoints.Clear[0] - mad.Clear) >= 2 || mad.Clear < 2)
                         {
@@ -634,6 +654,8 @@ namespace Cum
                         {
                             _stuntf = 3;
                         }
+                    }
+
                     if (CheckPoints.Stage == 21 && mad.Pcleared == 21)
                     {
                         _stuntf = 1;
@@ -875,6 +897,7 @@ namespace Cum
                             }
                         }
                         for (var i6 = 0; i6 < 7; i6++)
+                        {
                             if (i6 != mad.Im && CheckPoints.Clear[i6] != -1)
                             {
                                 var i7 = conto.Xz;
@@ -941,6 +964,7 @@ namespace Cum
                                     i11 = 12000;
                                 }
                                 if (CheckPoints.Stage == 21)
+                                {
                                     if (_bulistc)
                                     {
                                         i11 = 8000;
@@ -951,6 +975,8 @@ namespace Cum
                                     {
                                         i11 = 6000;
                                     }
+                                }
+
                                 if (CheckPoints.Stage == 22 && _bulistc)
                                 {
                                     i11 = 6000;
@@ -1033,6 +1059,7 @@ namespace Cum
                                         f14 = 0.0F;
                                     }
                                     if (bool4 && CheckPoints.Stage == 3 && i6 == 0)
+                                    {
                                         if (CheckPoints.Wasted >= 2)
                                         {
                                             f14 *= 0.5F;
@@ -1041,6 +1068,8 @@ namespace Cum
                                         {
                                             f14 = 0.0F;
                                         }
+                                    }
+
                                     if ((CheckPoints.Stage == 3 || CheckPoints.Stage == 9) && i6 == 4)
                                     {
                                         f14 = 0.0F;
@@ -1066,6 +1095,7 @@ namespace Cum
                                         f14 = 0.0F;
                                     }
                                     if (CheckPoints.Stage == 9 && _bulistc)
+                                    {
                                         if (i6 == 0)
                                         {
                                             f14 = 1.0F;
@@ -1074,12 +1104,15 @@ namespace Cum
                                         {
                                             f14 = 0.0F;
                                         }
+                                    }
+
                                     if (CheckPoints.Stage == 9 &&
                                         (CheckPoints.Pos[i6] == 4 || CheckPoints.Pos[i6] == 3))
                                     {
                                         f14 = 0.0F;
                                     }
                                     if (CheckPoints.Stage == 13)
+                                    {
                                         if (mad.Cn == 9 || mad.Cn == 13 && _bulistc)
                                         {
                                             f14 *= 2.0F;
@@ -1088,6 +1121,8 @@ namespace Cum
                                         {
                                             f14 *= 0.5F;
                                         }
+                                    }
+
                                     if (CheckPoints.Stage == 16)
                                     {
                                         f14 = 0.0F;
@@ -1097,6 +1132,7 @@ namespace Cum
                                         f14 = f14 * 1.5f;
                                     }
                                     if (CheckPoints.Stage == 18)
+                                    {
                                         if (mad.Cn == 11 || mad.Cn == 13 && _bulistc)
                                         {
                                             f14 *= 1.5F;
@@ -1105,6 +1141,8 @@ namespace Cum
                                         {
                                             f14 = 0.0F;
                                         }
+                                    }
+
                                     if (CheckPoints.Stage == 19)
                                     {
                                         if (i6 != 0)
@@ -1208,6 +1246,7 @@ namespace Cum
                                             _aim = 1.0F;
                                         }
                                         if (CheckPoints.Stage == 14)
+                                        {
                                             if (i6 == 0 && CheckPoints.Pos[0] < CheckPoints.Pos[mad.Im])
                                             {
                                                 _aim = 1.5F;
@@ -1216,6 +1255,8 @@ namespace Cum
                                             {
                                                 _aim = Medium.Random();
                                             }
+                                        }
+
                                         if (CheckPoints.Stage == 15)
                                         {
                                             _aim = Medium.Random() * 1.5F;
@@ -1236,6 +1277,7 @@ namespace Cum
                                             _aim = 1.0F;
                                         }
                                         if (CheckPoints.Stage == 21)
+                                        {
                                             if (_bulistc)
                                             {
                                                 _aim = 0.7F;
@@ -1248,6 +1290,8 @@ namespace Cum
                                             {
                                                 _aim = Medium.Random();
                                             }
+                                        }
+
                                         if (CheckPoints.Stage == 22)
                                         {
                                             if (Medium.Random() > Medium.Random())
@@ -1270,6 +1314,7 @@ namespace Cum
                                             _exitattack = Medium.Random() > Medium.Random();
                                         }
                                         if (CheckPoints.Stage == 26)
+                                        {
                                             if (mad.Cn == 13)
                                             {
                                                 _aim = 0.76F;
@@ -1284,6 +1329,8 @@ namespace Cum
                                                     _attack = _attack / 3;
                                                 }
                                             }
+                                        }
+
                                         if (CheckPoints.Stage == -1 && Medium.Random() > Medium.Random())
                                         {
                                             _aim = Medium.Random() * 1.5F;
@@ -1301,6 +1348,7 @@ namespace Cum
                                     _acuracy = 0;
                                 }
                             }
+                        }
                     }
                     abool = false;
                     if (CheckPoints.Stage == 6 || CheckPoints.Stage == 8)
@@ -1446,6 +1494,8 @@ namespace Cum
                 {
                     _stcnt++;
                 }
+            }
+
             if (_usebounce)
             {
                 abool = mad.Wtouch;
@@ -1468,6 +1518,7 @@ namespace Cum
                 if (_attack == 0)
                 {
                     if (_upcnt < 30)
+                    {
                         if (_revstart <= 0)
                         {
                             Up = true;
@@ -1477,6 +1528,8 @@ namespace Cum
                             Down = true;
                             _revstart--;
                         }
+                    }
+
                     if (_upcnt < 25 + _actwait)
                     {
                         _upcnt++;
@@ -1530,10 +1583,13 @@ namespace Cum
                             {
                                 var i21 = 0;
                                 for (var i22 = 0; i22 < CheckPoints.N; i22++)
+                                {
                                     if (CheckPoints.Typ[i22] > 0 && i22 < i19)
                                     {
                                         i21++;
                                     }
+                                }
+
                                 bool20 = mad.Clear != i21 + mad.Nlaps * CheckPoints.Nsp;
                             }
                             while (CheckPoints.Typ[i19] == 0 || CheckPoints.Typ[i19] == -1 ||
@@ -1549,10 +1605,13 @@ namespace Cum
                                 {
                                     var i23 = 0;
                                     for (var i24 = 0; i24 < CheckPoints.N; i24++)
+                                    {
                                         if (CheckPoints.Typ[i24] > 0 && i24 < i19)
                                         {
                                             i23++;
                                         }
+                                    }
+
                                     bool20 = mad.Clear != i23 + mad.Nlaps * CheckPoints.Nsp;
                                 }
                             }
@@ -1560,10 +1619,12 @@ namespace Cum
                         else if (Medium.Random() > _skiplev)
                         {
                             while (CheckPoints.Typ[i] == -1)
+                            {
                                 if (++i >= CheckPoints.N)
                                 {
                                     i = 0;
                                 }
+                            }
                         }
                         if (CheckPoints.Stage == 18 && mad.Pcleared == 73 && _trfix == 0 && mad.Clear != 0)
                         {
@@ -1576,6 +1637,7 @@ namespace Cum
                         if (CheckPoints.Stage == 21)
                         {
                             if (mad.Pcleared == 5 && _trfix == 0 && mad.Power < 70.0F)
+                            {
                                 if (i <= 16)
                                 {
                                     i = 16;
@@ -1584,6 +1646,8 @@ namespace Cum
                                 {
                                     i = 21;
                                 }
+                            }
+
                             if (mad.Pcleared == 50)
                             {
                                 i = 57;
@@ -1592,33 +1656,42 @@ namespace Cum
                         if (CheckPoints.Stage == 22 && (mad.Pcleared == 27 || mad.Pcleared == 37))
                         {
                             while (CheckPoints.Typ[i] == -1)
+                            {
                                 if (++i >= CheckPoints.N)
                                 {
                                     i = 0;
                                 }
+                            }
                         }
                         if (CheckPoints.Stage == 23)
                         {
                             while (CheckPoints.Typ[i] == -1)
+                            {
                                 if (++i >= CheckPoints.N)
                                 {
                                     i = 0;
                                 }
+                            }
                         }
                         if (CheckPoints.Stage == 24)
                         {
                             while (CheckPoints.Typ[i] == -1)
+                            {
                                 if (++i >= CheckPoints.N)
                                 {
                                     i = 0;
                                 }
+                            }
+
                             if (!mad.Gtouch)
                             {
                                 while (CheckPoints.Typ[i] == -2)
+                                {
                                     if (++i >= CheckPoints.N)
                                     {
                                         i = 0;
                                     }
+                                }
                             }
                             if (_oupnt >= 68)
                             {
@@ -1636,10 +1709,12 @@ namespace Cum
                                 CheckPoints.Pos[mad.Im] == 0 && (mad.Clear == 12 || mad.Clear == 20))
                             {
                                 while (CheckPoints.Typ[i] == -4)
+                                {
                                     if (++i >= CheckPoints.N)
                                     {
                                         i = 0;
                                     }
+                                }
                             }
                             if (mad.Pcleared == 9)
                             {
@@ -1714,6 +1789,7 @@ namespace Cum
                                     _oupnt = 332;
                                 }
                                 if (_oupnt != 331 && _oupnt != 332)
+                                {
                                     if (_trfix != 1)
                                     {
                                         i = 38;
@@ -1722,6 +1798,8 @@ namespace Cum
                                     {
                                         i = 39;
                                     }
+                                }
+
                                 if (_oupnt == 331)
                                 {
                                     i = 71;
@@ -1877,10 +1955,12 @@ namespace Cum
                                 i = 76;
                             }
                             while (CheckPoints.Typ[i] == -4)
+                            {
                                 if (--i < 0)
                                 {
                                     i += CheckPoints.N;
                                 }
+                            }
                         }
                         if (CheckPoints.Stage == 21)
                         {
@@ -1999,6 +2079,7 @@ namespace Cum
                             {
                                 var i30 = -10;
                                 for (var i31 = 0; i31 < CheckPoints.N; i31++)
+                                {
                                     if ((CheckPoints.Typ[i31] == -2 || CheckPoints.Typ[i31] == -4) &&
                                         (i31 < 50 || i31 > 54) &&
                                         (Py(conto.X / 100, CheckPoints.X[i31] / 100, conto.Z / 100,
@@ -2008,6 +2089,8 @@ namespace Cum
                                             CheckPoints.Z[i31] / 100);
                                         _oupnt = i31;
                                     }
+                                }
+
                                 _oupnt--;
                                 if (i < 0)
                                 {
@@ -2165,6 +2248,7 @@ namespace Cum
                                 {
                                     var i33 = -10;
                                     for (var i34 = 0; i34 < CheckPoints.N; i34++)
+                                    {
                                         if (CheckPoints.Typ[i34] == -4 &&
                                             (Py(conto.X / 100, CheckPoints.X[i34] / 100, conto.Z / 100,
                                                  CheckPoints.Z[i34] / 100) < i33 && Medium.Random() > 0.6 ||
@@ -2174,6 +2258,8 @@ namespace Cum
                                                 CheckPoints.Z[i34] / 100);
                                             _oupnt = i34;
                                         }
+                                    }
+
                                     _oupnt--;
                                     if (i < 0)
                                     {
@@ -2221,6 +2307,7 @@ namespace Cum
                                 var i36 = -10;
                                 var i37 = 0;
                                 for (var i38 = i35; i38 < CheckPoints.Fn; i38++)
+                                {
                                     if (Py(conto.X / 100, CheckPoints.X[_fpnt[i38]] / 100, conto.Z / 100,
                                             CheckPoints.Z[_fpnt[i38]] / 100) < i36 || i36 == -10)
                                     {
@@ -2228,6 +2315,8 @@ namespace Cum
                                             CheckPoints.Z[_fpnt[i38]] / 100);
                                         i37 = i38;
                                     }
+                                }
+
                                 if (CheckPoints.Stage == 18 || CheckPoints.Stage == 22)
                                 {
                                     i37 = 1;
@@ -2236,6 +2325,7 @@ namespace Cum
                                 _forget = CheckPoints.Special[i37];
                             }
                             for (var i39 = i35; i39 < CheckPoints.Fn; i39++)
+                            {
                                 if (Py(conto.X / 100, CheckPoints.X[_fpnt[i39]] / 100, conto.Z / 100,
                                         CheckPoints.Z[_fpnt[i39]] / 100) < 2000)
                                 {
@@ -2248,6 +2338,8 @@ namespace Cum
                                     _rampp = 0;
                                     _trfix = 3;
                                 }
+                            }
+
                             if (_trfix == 3)
                             {
                                 mad.Nofocus = true;
@@ -2346,6 +2438,7 @@ namespace Cum
                     _clrnce = 0;
                 }
                 if (_hold == 0)
+                {
                     if (Math.Abs(i - _pan) < 180)
                     {
                         if (Math.Abs(i - _pan) > _clrnce)
@@ -2405,6 +2498,8 @@ namespace Cum
                             }
                         }
                     }
+                }
+
                 if (CheckPoints.Stage == 24 && Wall != -1)
                 {
                     if (Trackers.Dam[Wall] == 0 || mad.Pcleared == 45)
@@ -2586,6 +2681,7 @@ namespace Cum
                             if (CheckPoints.Stage != 18 && CheckPoints.Stage != 8)
                             {
                                 if (CheckPoints.Stage != 25 && _lrdirect == -1)
+                                {
                                     if (CheckPoints.Stage != 19)
                                     {
                                         _uddirect = -1;
@@ -2594,6 +2690,8 @@ namespace Cum
                                     {
                                         _uddirect = 1;
                                     }
+                                }
+
                                 _lrdirect = 0;
                                 if ((CheckPoints.Stage == 19 || CheckPoints.Stage == 25) && _uddirect == -1)
                                 {
@@ -2751,6 +2849,7 @@ namespace Cum
                     else if (_swat == 2)
                     {
                         if (mad.Capsized && Medium.Random() > _mustland)
+                        {
                             if (_udbare)
                             {
                                 _lrbare = true;
@@ -2761,6 +2860,8 @@ namespace Cum
                                 _udbare = true;
                                 _lrbare = false;
                             }
+                        }
+
                         _swat = 3;
                     }
                     if (_udbare)
@@ -2802,6 +2903,7 @@ namespace Cum
                                 if (_udcomp)
                                 {
                                     if (_perfection && Math.Abs(i - 90) > 30)
+                                    {
                                         if (i > 90)
                                         {
                                             Up = true;
@@ -2810,6 +2912,7 @@ namespace Cum
                                         {
                                             Down = true;
                                         }
+                                    }
                                 }
                                 else if (Medium.Random() > _mustland)
                                 {
@@ -2841,6 +2944,7 @@ namespace Cum
                             if (_udcomp)
                             {
                                 if (_perfection && Math.Abs(i - 90) > 30)
+                                {
                                     if (i > 90)
                                     {
                                         Up = true;
@@ -2849,6 +2953,7 @@ namespace Cum
                                     {
                                         Down = true;
                                     }
+                                }
                             }
                             else if (Medium.Random() > _mustland)
                             {
@@ -2900,6 +3005,7 @@ namespace Cum
                                 if (_lrcomp)
                                 {
                                     if (_perfection && Math.Abs(i - 90) > 30)
+                                    {
                                         if (i > 90)
                                         {
                                             Left = true;
@@ -2908,6 +3014,7 @@ namespace Cum
                                         {
                                             Right = true;
                                         }
+                                    }
                                 }
                                 else if (Medium.Random() > _mustland)
                                 {
@@ -2939,6 +3046,7 @@ namespace Cum
                             if (_lrcomp)
                             {
                                 if (_perfection && Math.Abs(i - 90) > 30)
+                                {
                                     if (i > 90)
                                     {
                                         Left = true;
@@ -2947,6 +3055,7 @@ namespace Cum
                                     {
                                         Right = true;
                                     }
+                                }
                             }
                             else if (Medium.Random() > _mustland)
                             {
@@ -3047,6 +3156,7 @@ namespace Cum
                 {
                     var i1 = -10;
                     for (var i2 = 0; i2 < CheckPoints.N; i2++)
+                    {
                         if (Py(CheckPoints.Fx[i0] / 100, CheckPoints.X[i2] / 100, CheckPoints.Fz[i0] / 100,
                                 CheckPoints.Z[i2] / 100) < i1 || i1 == -10)
                         {
@@ -3054,6 +3164,7 @@ namespace Cum
                                 CheckPoints.Z[i2] / 100);
                             _fpnt[i0] = i2;
                         }
+                    }
                 }
                 for (var i3 = 0; i3 < CheckPoints.Fn; i3++)
                 {

@@ -65,7 +65,11 @@ namespace SharpDX.Samples
         /// </summary>
         ~DemoApp()
         {
-            if (_disposed) return;
+            if (_disposed)
+            {
+                return;
+            }
+
             Dispose(false);
             _disposed = true;
         }
@@ -286,7 +290,9 @@ namespace SharpDX.Samples
         protected virtual void KeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
+            {
                 Exit();
+            }
         }
 
         protected virtual void KeyUp(KeyEventArgs e)

@@ -208,6 +208,7 @@ namespace Cum
             bool abool, int i36)
         {
             if (Master == 1)
+            {
                 if (_av > 1500 && !Medium.Crs)
                 {
                     N = 12;
@@ -216,6 +217,8 @@ namespace Cum
                 {
                     N = 20;
                 }
+            }
+
             var x = new int[N];
             var z = new int[N];
             var y = new int[N];
@@ -239,277 +242,7 @@ namespace Cum
             }
             else
             {
-                if (Embos <= 11 && Medium.Random() > 0.5 && Glass != 1)
-                {
-                    for (var i41 = 0; i41 < N; i41++)
-                    {
-                        x[i41] = (int) (Ox[i41] + mx + (15.0F - Medium.Random() * 30.0F));
-                        y[i41] = (int) (Oy[i41] + my + (15.0F - Medium.Random() * 30.0F));
-                        z[i41] = (int) (Oz[i41] + mz + (15.0F - Medium.Random() * 30.0F));
-                    }
-                    Rot(x, y, mx, my, xy, N);
-                    Rot(y, z, my, mz, yz, N);
-                    Rot(x, z, mx, mz, xz, N);
-                    Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, N);
-                    Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, N);
-                    var is42 = new int[N];
-                    var is43 = new int[N];
-                    for (var i44 = 0; i44 < N; i44++)
-                    {
-                        is42[i44] = Xs(x[i44], z[i44]);
-                        is43[i44] = Ys(y[i44], z[i44]);
-                    }
-                    G.SetColor(new Color(230, 230, 230));
-                    G.FillPolygon(is42, is43, N);
-                }
-                var f = 1.0F;
-                if (Embos <= 4)
-                {
-                    f = 1.0F + Medium.Random() / 5.0F;
-                }
-                if (Embos > 4 && Embos <= 7)
-                {
-                    f = 1.0F + Medium.Random() / 4.0F;
-                }
-                if (Embos > 7 && Embos <= 9)
-                {
-                    f = 1.0F + Medium.Random() / 3.0F;
-                    if (HSB[2] > 0.7)
-                    {
-                        HSB[2] = 0.7F;
-                    }
-                }
-                if (Embos > 9 && Embos <= 10)
-                {
-                    f = 1.0F + Medium.Random() / 2.0F;
-                    if (HSB[2] > 0.6)
-                    {
-                        HSB[2] = 0.6F;
-                    }
-                }
-                if (Embos > 10 && Embos <= 12)
-                {
-                    f = 1.0F + Medium.Random() / 1.0F;
-                    if (HSB[2] > 0.5)
-                    {
-                        HSB[2] = 0.5F;
-                    }
-                }
-                if (Embos == 12)
-                {
-                    Chip = 1;
-                    Ctmag = 2.0F;
-                    Bfase = -7;
-                }
-                if (Embos == 13)
-                {
-                    HSB[1] = 0.2F;
-                    HSB[2] = 0.4F;
-                }
-                if (Embos == 16)
-                {
-                    _pa = (int) (Medium.Random() * N);
-                    for (_pb = (int) (Medium.Random() * N); _pa == _pb; _pb = (int) (Medium.Random() * N))
-                    {
-                    }
-                }
-                if (Embos >= 16)
-                {
-                    var i45 = 1;
-                    var i46 = 1;
-                    int i47;
-                    for (i47 = Math.Abs(yz); i47 > 270; i47 -= 360)
-                    {
-                    }
-                    i47 = Math.Abs(i47);
-                    if (i47 > 90)
-                    {
-                        i45 = -1;
-                    }
-                    int i48;
-                    for (i48 = Math.Abs(xy); i48 > 270; i48 -= 360)
-                    {
-                    }
-                    i48 = Math.Abs(i48);
-                    if (i48 > 90)
-                    {
-                        i46 = -1;
-                    }
-                    var is49 = new int[3];
-                    var is50 = new int[3];
-                    x[0] = Ox[_pa] + mx;
-                    y[0] = Oy[_pa] + my;
-                    z[0] = Oz[_pa] + mz;
-                    x[1] = Ox[_pb] + mx;
-                    y[1] = Oy[_pb] + my;
-                    z[1] = Oz[_pb] + mz;
-                    while (Math.Abs(x[0] - x[1]) > 100)
-                        if (x[1] > x[0])
-                        {
-                            x[1] -= 30;
-                        }
-                        else
-                        {
-                            x[1] += 30;
-                        }
-                    while (Math.Abs(z[0] - z[1]) > 100)
-                        if (z[1] > z[0])
-                        {
-                            z[1] -= 30;
-                        }
-                        else
-                        {
-                            z[1] += 30;
-                        }
-                    var i51 = (int) (Math.Abs(x[0] - x[1]) / 3 * (0.5 - Medium.Random()));
-                    var i52 = (int) (Math.Abs(z[0] - z[1]) / 3 * (0.5 - Medium.Random()));
-                    x[2] = (x[0] + x[1]) / 2 + i51;
-                    z[2] = (z[0] + z[1]) / 2 + i52;
-                    var i53 = (int) ((Math.Abs(x[0] - x[1]) + Math.Abs(z[0] - z[1])) / 1.5 *
-                                     (Medium.Random() / 2.0F + 0.5));
-                    y[2] = (y[0] + y[1]) / 2 - i45 * i46 * i53;
-                    Rot(x, y, mx, my, xy, 3);
-                    Rot(y, z, my, mz, yz, 3);
-                    Rot(x, z, mx, mz, xz, 3);
-                    Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, 3);
-                    Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, 3);
-                    for (var i54 = 0; i54 < 3; i54++)
-                    {
-                        is49[i54] = Xs(x[i54], z[i54]);
-                        is50[i54] = Ys(y[i54], z[i54]);
-                    }
-                    var i55 = (int) (255.0F + 255.0F * (Medium.Snap[0] / 400.0F));
-                    if (i55 > 255)
-                    {
-                        i55 = 255;
-                    }
-                    if (i55 < 0)
-                    {
-                        i55 = 0;
-                    }
-                    var i56 = (int) (169.0F + 169.0F * (Medium.Snap[1] / 300.0F));
-                    if (i56 > 255)
-                    {
-                        i56 = 255;
-                    }
-                    if (i56 < 0)
-                    {
-                        i56 = 0;
-                    }
-                    var i57 = (int) (89.0F + 89.0F * (Medium.Snap[2] / 200.0F));
-                    if (i57 > 255)
-                    {
-                        i57 = 255;
-                    }
-                    if (i57 < 0)
-                    {
-                        i57 = 0;
-                    }
-                    G.SetColor(new Color(i55, i56, i57));
-                    G.FillPolygon(is49, is50, 3);
-                    x[0] = Ox[_pa] + mx;
-                    y[0] = Oy[_pa] + my;
-                    z[0] = Oz[_pa] + mz;
-                    x[1] = Ox[_pb] + mx;
-                    y[1] = Oy[_pb] + my;
-                    z[1] = Oz[_pb] + mz;
-                    while (Math.Abs(x[0] - x[1]) > 100)
-                        if (x[1] > x[0])
-                        {
-                            x[1] -= 30;
-                        }
-                        else
-                        {
-                            x[1] += 30;
-                        }
-                    while (Math.Abs(z[0] - z[1]) > 100)
-                        if (z[1] > z[0])
-                        {
-                            z[1] -= 30;
-                        }
-                        else
-                        {
-                            z[1] += 30;
-                        }
-                    x[2] = (x[0] + x[1]) / 2 + i51;
-                    z[2] = (z[0] + z[1]) / 2 + i52;
-                    i53 = (int) (i53 * 0.8);
-                    y[2] = (y[0] + y[1]) / 2 - i45 * i46 * i53;
-                    Rot(x, y, mx, my, xy, 3);
-                    Rot(y, z, my, mz, yz, 3);
-                    Rot(x, z, mx, mz, xz, 3);
-                    Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, 3);
-                    Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, 3);
-                    for (var i58 = 0; i58 < 3; i58++)
-                    {
-                        is49[i58] = Xs(x[i58], z[i58]);
-                        is50[i58] = Ys(y[i58], z[i58]);
-                    }
-                    i55 = (int) (255.0F + 255.0F * (Medium.Snap[0] / 400.0F));
-                    if (i55 > 255)
-                    {
-                        i55 = 255;
-                    }
-                    if (i55 < 0)
-                    {
-                        i55 = 0;
-                    }
-                    i56 = (int) (207.0F + 207.0F * (Medium.Snap[1] / 300.0F));
-                    if (i56 > 255)
-                    {
-                        i56 = 255;
-                    }
-                    if (i56 < 0)
-                    {
-                        i56 = 0;
-                    }
-                    i57 = (int) (136.0F + 136.0F * (Medium.Snap[2] / 200.0F));
-                    if (i57 > 255)
-                    {
-                        i57 = 255;
-                    }
-                    if (i57 < 0)
-                    {
-                        i57 = 0;
-                    }
-                    G.SetColor(new Color(i55, i56, i57));
-                    G.FillPolygon(is49, is50, 3);
-                }
-                for (var i59 = 0; i59 < N; i59++)
-                {
-                    if (_typ == 1)
-                    {
-                        x[i59] = (int) (Ox[i59] * f + mx);
-                    }
-                    else
-                    {
-                        x[i59] = Ox[i59] + mx;
-                    }
-                    if (_typ == 2)
-                    {
-                        y[i59] = (int) (Oy[i59] * f + my);
-                    }
-                    else
-                    {
-                        y[i59] = Oy[i59] + my;
-                    }
-                    if (_typ == 3)
-                    {
-                        z[i59] = (int) (Oz[i59] * f + mz);
-                    }
-                    else
-                    {
-                        z[i59] = Oz[i59] + mz;
-                    }
-                }
-                if (Embos != 70)
-                {
-                    Embos++;
-                }
-                else
-                {
-                    Embos = 16;
-                }
+                RenderFlame(mx, my, mz, xz, xy, yz, x, y, z);
             }
             if (Wz != 0)
             {
@@ -529,107 +262,7 @@ namespace Cum
             }
             if (Chip != 0)
             {
-                if (Chip == 1)
-                {
-                    _cxz = xz;
-                    _cxy = xy;
-                    _czy = yz;
-                    var i60 = (int) (Medium.Random() * N);
-                    _cox[0] = Ox[i60];
-                    _coz[0] = Oz[i60];
-                    _coy[0] = Oy[i60];
-                    if (Ctmag > 3.0F)
-                    {
-                        Ctmag = 3.0F;
-                    }
-                    if (Ctmag < -3.0F)
-                    {
-                        Ctmag = -3.0F;
-                    }
-                    _cox[1] = (int) (_cox[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
-                    _cox[2] = (int) (_cox[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
-                    _coy[1] = (int) (_coy[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
-                    _coy[2] = (int) (_coy[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
-                    _coz[1] = (int) (_coz[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
-                    _coz[2] = (int) (_coz[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
-                    _dx = 0;
-                    _dy = 0;
-                    _dz = 0;
-                    if (Bfase != -7)
-                    {
-                        _vx = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
-                        _vz = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
-                        _vy = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
-                    }
-                    else
-                    {
-                        _vx = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
-                        _vz = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
-                        _vy = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
-                    }
-                    Chip = 2;
-                }
-                var is61 = new int[3];
-                var is62 = new int[3];
-                var is63 = new int[3];
-                for (var i64 = 0; i64 < 3; i64++)
-                {
-                    is61[i64] = _cox[i64] + mx;
-                    is63[i64] = _coy[i64] + my;
-                    is62[i64] = _coz[i64] + mz;
-                }
-                Rot(is61, is63, mx, my, _cxy, 3);
-                Rot(is63, is62, my, mz, _czy, 3);
-                Rot(is61, is62, mx, mz, _cxz, 3);
-                for (var i65 = 0; i65 < 3; i65++)
-                {
-                    is61[i65] += _dx;
-                    is63[i65] += _dy;
-                    is62[i65] += _dz;
-                }
-                _dx += _vx;
-                _dz += _vz;
-                _dy += _vy;
-                _vy += 7;
-                if (is63[0] > Medium.Ground)
-                {
-                    Chip = 19;
-                }
-                Rot(is61, is62, Medium.Cx, Medium.Cz, Medium.Xz, 3);
-                Rot(is63, is62, Medium.Cy, Medium.Cz, Medium.Zy, 3);
-                var is66 = new int[3];
-                var is67 = new int[3];
-                for (var i68 = 0; i68 < 3; i68++)
-                {
-                    is66[i68] = Xs(is61[i68], is62[i68]);
-                    is67[i68] = Ys(is63[i68], is62[i68]);
-                }
-                var i69 = (int) (Medium.Random() * 3.0F);
-                if (Bfase != -7)
-                {
-                    if (i69 == 0)
-                    {
-                        G.SetColor(new Color(C[0], C[1], C[2]).Darker());
-                    }
-                    if (i69 == 1)
-                    {
-                        G.SetColor(new Color(C[0], C[1], C[2]));
-                    }
-                    if (i69 == 2)
-                    {
-                        G.SetColor(new Color(C[0], C[1], C[2]).Brighter());
-                    }
-                }
-                else
-                {
-                    G.SetColor(Color.GetHSBColor(HSB[0], HSB[1], HSB[2]));
-                }
-                G.FillPolygon(is66, is67, 3);
-                Chip++;
-                if (Chip == 20)
-                {
-                    Chip = 0;
-                }
+                RenderChip(mx, my, mz, xz, xy, yz);
             }
             Rot(x, y, mx, my, xy, N);
             Rot(y, z, my, mz, yz, N);
@@ -640,11 +273,13 @@ namespace Cum
                 for (var i70 = 0; i70 < 3; i70++)
                 {
                     for (var i71 = 0; i71 < 3; i71++)
+                    {
                         if (i71 != i70)
                         {
                             _projf *= (float) (Math.Sqrt((x[i70] - x[i71]) * (x[i70] - x[i71]) +
                                                          (z[i70] - z[i71]) * (z[i70] - z[i71])) / 100.0);
                         }
+                    }
                 }
                 _projf = _projf / 3.0F;
             }
@@ -663,12 +298,14 @@ namespace Cum
             for (var i79 = 0; i79 < N; i79++)
             {
                 for (var i80 = i79; i80 < N; i80++)
+                {
                     if (i79 != i80 && Math.Abs(is73[i79] - is73[i80]) - Math.Abs(is74[i79] - is74[i80]) < i75)
                     {
                         i78 = i79;
                         i77 = i80;
                         i75 = Math.Abs(is73[i79] - is73[i80]) - Math.Abs(is74[i79] - is74[i80]);
                     }
+                }
             }
             if (is74[i77] < is74[i78])
             {
@@ -681,6 +318,7 @@ namespace Cum
                 bool72 = true;
                 var i82 = 0;
                 for (var i83 = 0; i83 < N; i83++)
+                {
                     if (z[i83] < 50 && y[i83] > Medium.Cy)
                     {
                         bool72 = false;
@@ -689,6 +327,8 @@ namespace Cum
                     {
                         i82++;
                     }
+                }
+
                 if (i82 == N && y[0] > Medium.Cy)
                 {
                     bool72 = false;
@@ -751,6 +391,7 @@ namespace Cum
                 for (var i95 = 0; i95 < N; i95++)
                 {
                     for (var i96 = i95; i96 < N; i96++)
+                    {
                         if (i95 != i96)
                         {
                             if (Math.Abs(is85[i95] - is85[i96]) > i93)
@@ -762,6 +403,7 @@ namespace Cum
                                 i94 = Math.Abs(is86[i95] - is86[i96]);
                             }
                         }
+                    }
                 }
                 if (i93 == 0 || i94 == 0)
                 {
@@ -775,196 +417,63 @@ namespace Cum
             }
             if (bool84)
             {
-                var i97 = 1;
-                var i98 = Gr;
-                if (i98 < 0 && i98 >= -15)
-                {
-                    i98 = 0;
-                }
-                if (Gr == -11)
-                {
-                    i98 = -90;
-                }
-                if (Gr == -12)
-                {
-                    i98 = -75;
-                }
-                if (Gr == -14 || Gr == -15)
-                {
-                    i98 = -50;
-                }
-                if (Glass == 2)
-                {
-                    i98 = 200;
-                }
-                if (Fs != 0)
-                {
-                    int i101;
-                    int i102;
-                    if (Math.Abs(is86[0] - is86[1]) > Math.Abs(is86[2] - is86[1]))
-                    {
-                        i101 = 0;
-                        i102 = 2;
-                    }
-                    else
-                    {
-                        i101 = 2;
-                        i102 = 0;
-                        i97 *= -1;
-                    }
-                    if (is86[1] > is86[i101])
-                    {
-                        i97 *= -1;
-                    }
-                    if (is85[1] > is85[i102])
-                    {
-                        i97 *= -1;
-                    }
-                    if (Fs != 22)
-                    {
-                        i97 *= Fs;
-                        if (i97 == -1)
-                        {
-                            i98 += 40;
-                            i97 = -111;
-                        }
-                    }
-                }
-                if (Medium.Lightson && Light == 2)
-                {
-                    i98 -= 40;
-                }
-                var i103 = y[0];
-                var i104 = y[0];
-                var i105 = x[0];
-                var i106 = x[0];
-                var i107 = z[0];
-                var i108 = z[0];
-                for (var i109 = 0; i109 < N; i109++)
-                {
-                    if (y[i109] > i103)
-                    {
-                        i103 = y[i109];
-                    }
-                    if (y[i109] < i104)
-                    {
-                        i104 = y[i109];
-                    }
-                    if (x[i109] > i105)
-                    {
-                        i105 = x[i109];
-                    }
-                    if (x[i109] < i106)
-                    {
-                        i106 = x[i109];
-                    }
-                    if (z[i109] > i107)
-                    {
-                        i107 = z[i109];
-                    }
-                    if (z[i109] < i108)
-                    {
-                        i108 = z[i109];
-                    }
-                }
-                var i110 = (i103 + i104) / 2;
-                var i111 = (i105 + i106) / 2;
-                var i112 = (i107 + i108) / 2;
-                _av = (int) Math.Sqrt((Medium.Cy - i110) * (Medium.Cy - i110) +
-                                      (Medium.Cx - i111) * (Medium.Cx - i111) + i112 * i112 + i98 * i98 * i98);
-                if (Medium.Trk == 0 && (_av > Medium.Fade[_disline] || _av == 0))
-                {
-                    bool84 = false;
-                }
-                if (i97 == -111 && _av > 4500 && !Road)
-                {
-                    bool84 = false;
-                }
-                if (i97 == -111 && _av > 1500)
-                {
-                    abool = true;
-                }
-                if (_av > 3000 && Medium.Adv <= 900)
-                {
-                    abool = true;
-                }
-                if (Fs == 22 && _av < 11200)
-                {
-                    Medium.Lastmaf = i97;
-                }
-                if (Gr == -13 && (!Medium.Lastcheck || i36 != -1))
-                {
-                    bool84 = false;
-                }
-                if (Master == 2 && _av > 1500 && !Medium.Crs)
-                {
-                    bool84 = false;
-                }
-                if ((Gr == -14 || Gr == -15 || Gr == -12) &&
-                    (_av > 11000 || bool72 || i97 == -111 || Medium.Resdown == 2) && Medium.Trk != 2 && Medium.Trk != 3)
-                {
-                    bool84 = false;
-                }
-                if (Gr == -11 && _av > 11000 && Medium.Trk != 2 && Medium.Trk != 3)
-                {
-                    bool84 = false;
-                }
-                if (Glass == 2 && (Medium.Trk != 0 || _av > 6700))
-                {
-                    bool84 = false;
-                }
-                if (Flx != 0 && Medium.Random() > 0.3 && Flx != 77)
-                {
-                    bool84 = false;
-                }
+                GetShouldRender(i36, is86, is85, y, x, z, bool72, ref abool, ref bool84);
             }
-            if (bool84)
+            if (!bool84)
             {
-                var f = (_projf / _deltaf + 0.3).CapF();
+                return;
+            }
 
-                if (abool && !Solo)
+            var f = (_projf / _deltaf + 0.3).CapF();
+
+            if (abool && !Solo)
+            {
+                var bool113 = false;
+                if (f > 1.0F)
                 {
-                    var bool113 = false;
-                    if (f > 1.0F)
+                    if (f >= 1.27)
                     {
-                        if (f >= 1.27)
-                        {
-                            bool113 = true;
-                        }
-                        f = 1.0F;
+                        bool113 = true;
                     }
-                    if (bool113)
-                    {
-                        f *= 0.89f;
-                    }
-                    else
-                    {
-                        f *= 0.86f;
-                    }
-                    if (f < 0.37)
-                    {
-                        f = 0.37F;
-                    }
-                    if (Gr == -9)
-                    {
+                    f = 1.0F;
+                }
+                if (bool113)
+                {
+                    f *= 0.89f;
+                }
+                else
+                {
+                    f *= 0.86f;
+                }
+                if (f < 0.37)
+                {
+                    f = 0.37F;
+                }
+                switch (Gr)
+                {
+                    case -9:
                         f = 0.7F;
-                    }
-                    if (Gr == -4)
-                    {
+                        break;
+                    case -4:
                         f = 0.74F;
-                    }
-                    if (Gr != -7 && Medium.Trk == 0 && bool72)
-                    {
-                        f = 0.32F;
-                    }
-                    if (Gr == -8 || Gr == -14 || Gr == -15)
-                    {
+                        break;
+                }
+                if (Gr != -7 && Medium.Trk == 0 && bool72)
+                {
+                    f = 0.32F;
+                }
+                switch (Gr)
+                {
+                    case -8:
+                    case -14:
+                    case -15:
                         f = 1.0F;
-                    }
-                    if (Gr == -11 || Gr == -12)
-                    {
+                        break;
+                    case -11:
+                    case -12:
                         f = 0.6F;
                         if (i36 == -1)
+                        {
                             if (Medium.Cpflik || Medium.Nochekflk && !Medium.Lastcheck)
                             {
                                 f = 1.0F;
@@ -973,84 +482,372 @@ namespace Cum
                             {
                                 f = 0.76F;
                             }
-                    }
-                    if (Gr == -13 && i36 == -1)
-                        if (Medium.Cpflik)
-                        {
-                            f = 0.0F;
                         }
-                        else
-                        {
-                            f = 0.76F;
-                        }
-                    if (Gr == -6)
-                    {
+
+                        break;
+                    case -13 when i36 == -1:
+                        f = Medium.Cpflik ? 0.0F : 0.76F;
+                        break;
+                    case -6:
                         f = 0.62F;
-                    }
-                    if (Gr == -5)
-                    {
+                        break;
+                    case -5:
                         f = 0.55F;
+                        break;
+                }
+            }
+            else
+            {
+                if (f > 1.0F)
+                {
+                    f = 1.0F;
+                }
+                if (f < 0.6 || bool72)
+                {
+                    f = 0.6F;
+                }
+            }
+            CalcColor(last, next, i36, f, bool72, out var i114, out var i115, out var i116);
+            G.SetColor(new Color(i114, i115, i116));
+            G.FillPolygon(is85, is86, N);
+            if (Medium.Trk != 0 && Gr == -10)
+            {
+                abool = false;
+            }
+            if (!abool)
+            {
+                DrawPart(is85, is86);
+            }
+            else if (Road && _av <= 3000 && Medium.Trk == 0 && Medium.Fade[0] > 4000)
+            {
+                i114 -= 10;
+                if (i114 < 0)
+                {
+                    i114 = 0;
+                }
+                i115 -= 10;
+                if (i115 < 0)
+                {
+                    i115 = 0;
+                }
+                i116 -= 10;
+                if (i116 < 0)
+                {
+                    i116 = 0;
+                }
+                G.SetColor(new Color(i114, i115, i116));
+                G.DrawPolygon(is85, is86, N);
+            }
+            if (Gr == -10)
+            {
+                if (Medium.Trk == 0)
+                {
+                    i114 = C[0];
+                    i115 = C[1];
+                    i116 = C[2];
+                    if (i36 == -1 && Medium.Cpflik)
+                    {
+                        i114 = (int) (i114 * 1.6);
+                        if (i114 > 255)
+                        {
+                            i114 = 255;
+                        }
+                        i115 = (int) (i115 * 1.6);
+                        if (i115 > 255)
+                        {
+                            i115 = 255;
+                        }
+                        i116 = (int) (i116 * 1.6);
+                        if (i116 > 255)
+                        {
+                            i116 = 255;
+                        }
                     }
+                    for (var i118 = 0; i118 < 16; i118++)
+                    {
+                        if (_av > Medium.Fade[i118])
+                        {
+                            i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
+                            i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
+                            i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
+                        }
+                    }
+
+                    G.SetColor(new Color(i114, i115, i116));
+                    G.DrawPolygon(is85, is86, N);
+                }
+                else if (Medium.Cpflik && Medium.Hit == 5000)
+                {
+                    i115 = (int) (HansenRandom.Double() * 115.0);
+                    i114 = i115 * 2 - 54;
+                    if (i114 < 0)
+                    {
+                        i114 = 0;
+                    }
+                    if (i114 > 255)
+                    {
+                        i114 = 255;
+                    }
+                    i116 = 202 + i115 * 2;
+                    if (i116 < 0)
+                    {
+                        i116 = 0;
+                    }
+                    if (i116 > 255)
+                    {
+                        i116 = 255;
+                    }
+                    i115 += 101;
+                    if (i115 < 0)
+                    {
+                        i115 = 0;
+                    }
+                    if (i115 > 255)
+                    {
+                        i115 = 255;
+                    }
+                    G.SetColor(new Color(i114, i115, i116));
+                    G.DrawPolygon(is85, is86, N);
+                }
+            }
+
+            if (Gr != -18 || Medium.Trk != 0)
+            {
+                return;
+            }
+
+            i114 = C[0];
+            i115 = C[1];
+            i116 = C[2];
+            if (Medium.Cpflik && Medium.Elecr >= 0.0F)
+            {
+                i114 = (int) (25.5F * Medium.Elecr);
+                if (i114 > 255)
+                {
+                    i114 = 255;
+                }
+                i115 = (int) (128.0F + 12.8F * Medium.Elecr);
+                if (i115 > 255)
+                {
+                    i115 = 255;
+                }
+                i116 = 255;
+            }
+            for (var i119 = 0; i119 < 16; i119++)
+            {
+                if (_av <= Medium.Fade[i119]) continue;
+                i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
+                i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
+                i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
+            }
+
+            G.SetColor(new Color(i114, i115, i116));
+            G.DrawPolygon(is85, is86, N);
+        }
+
+        private void GetShouldRender(int i36, int[] is86, int[] is85, int[] y, int[] x, int[] z, bool bool72, ref bool abool,
+            ref bool bool84)
+        {
+            var i97 = 1;
+            var i98 = Gr;
+            if (i98 < 0 && i98 >= -15)
+            {
+                i98 = 0;
+            }
+            switch (Gr)
+            {
+                case -11:
+                    i98 = -90;
+                    break;
+                case -12:
+                    i98 = -75;
+                    break;
+                case -14:
+                case -15:
+                    i98 = -50;
+                    break;
+            }
+            if (Glass == 2)
+            {
+                i98 = 200;
+            }
+            if (Fs != 0)
+            {
+                int i101;
+                int i102;
+                if (Math.Abs(is86[0] - is86[1]) > Math.Abs(is86[2] - is86[1]))
+                {
+                    i101 = 0;
+                    i102 = 2;
                 }
                 else
                 {
-                    if (f > 1.0F)
-                    {
-                        f = 1.0F;
-                    }
-                    if (f < 0.6 || bool72)
-                    {
-                        f = 0.6F;
-                    }
+                    i101 = 2;
+                    i102 = 0;
+                    i97 *= -1;
                 }
-                if (Project == -1)
+                if (is86[1] > is86[i101])
                 {
-                    f = (float) (last._projf / last._deltaf + 0.3);
-
-                    if (f > 1.0F)
-                    {
-                        f = 1.0F;
-                    }
-                    if (f < 0.6 || bool72)
-                    {
-//yeah its referencing OUR bool72, i dunno man...
-                        f = 0.6F;
-                    }
+                    i97 *= -1;
                 }
-                else if (Project == 1 && next != null)
+                if (is85[1] > is85[i102])
                 {
-                    f = (float) (next._projf / next._deltaf + 0.3);
-
-                    if (f > 1.0F)
+                    i97 *= -1;
+                }
+                if (Fs != 22)
+                {
+                    i97 *= Fs;
+                    if (i97 == -1)
                     {
-                        f = 1.0F;
-                    }
-                    if (f < 0.6 || bool72)
-                    {
-//yeah its referencing OUR bool72, i dunno man...
-                        f = 0.6F;
+                        i98 += 40;
+                        i97 = -111;
                     }
                 }
-                var color = Color.GetHSBColor(HSB[0], HSB[1], HSB[2] * f);
-                if (Medium.Trk == 1)
+            }
+            if (Medium.Lightson && Light == 2)
+            {
+                i98 -= 40;
+            }
+            var i103 = y[0];
+            var i104 = y[0];
+            var i105 = x[0];
+            var i106 = x[0];
+            var i107 = z[0];
+            var i108 = z[0];
+            for (var i109 = 0; i109 < N; i109++)
+            {
+                if (y[i109] > i103)
+                {
+                    i103 = y[i109];
+                }
+                if (y[i109] < i104)
+                {
+                    i104 = y[i109];
+                }
+                if (x[i109] > i105)
+                {
+                    i105 = x[i109];
+                }
+                if (x[i109] < i106)
+                {
+                    i106 = x[i109];
+                }
+                if (z[i109] > i107)
+                {
+                    i107 = z[i109];
+                }
+                if (z[i109] < i108)
+                {
+                    i108 = z[i109];
+                }
+            }
+            var i110 = (i103 + i104) / 2;
+            var i111 = (i105 + i106) / 2;
+            var i112 = (i107 + i108) / 2;
+            _av = (int) Math.Sqrt((Medium.Cy - i110) * (Medium.Cy - i110) +
+                                  (Medium.Cx - i111) * (Medium.Cx - i111) + i112 * i112 + i98 * i98 * i98);
+            if (Medium.Trk == 0 && (_av > Medium.Fade[_disline] || _av == 0))
+            {
+                bool84 = false;
+            }
+            if (i97 == -111 && _av > 4500 && !Road)
+            {
+                bool84 = false;
+            }
+            if (i97 == -111 && _av > 1500)
+            {
+                abool = true;
+            }
+            if (_av > 3000 && Medium.Adv <= 900)
+            {
+                abool = true;
+            }
+            if (Fs == 22 && _av < 11200)
+            {
+                Medium.Lastmaf = i97;
+            }
+            if (Gr == -13 && (!Medium.Lastcheck || i36 != -1))
+            {
+                bool84 = false;
+            }
+            if (Master == 2 && _av > 1500 && !Medium.Crs)
+            {
+                bool84 = false;
+            }
+            if ((Gr == -14 || Gr == -15 || Gr == -12) &&
+                (_av > 11000 || bool72 || i97 == -111 || Medium.Resdown == 2) && Medium.Trk != 2 && Medium.Trk != 3)
+            {
+                bool84 = false;
+            }
+            if (Gr == -11 && _av > 11000 && Medium.Trk != 2 && Medium.Trk != 3)
+            {
+                bool84 = false;
+            }
+            if (Glass == 2 && (Medium.Trk != 0 || _av > 6700))
+            {
+                bool84 = false;
+            }
+            if (Flx != 0 && Medium.Random() > 0.3 && Flx != 77)
+            {
+                bool84 = false;
+            }
+        }
+
+        private Color CalcColor(Plane last, Plane next, int i36, float f, bool bool72, out int i114, out int i115, out int i116)
+        {
+            if (Project == -1)
+            {
+                f = (float) (last._projf / last._deltaf + 0.3);
+
+                if (f > 1.0F)
+                {
+                    f = 1.0F;
+                }
+                if (f < 0.6 || bool72)
+                {
+                    //yeah its referencing OUR bool72, i dunno man...
+                    f = 0.6F;
+                }
+            }
+            else if (Project == 1 && next != null)
+            {
+                f = (float) (next._projf / next._deltaf + 0.3);
+
+                if (f > 1.0F)
+                {
+                    f = 1.0F;
+                }
+                if (f < 0.6 || bool72)
+                {
+                    //yeah its referencing OUR bool72, i dunno man...
+                    f = 0.6F;
+                }
+            }
+            var color = Color.GetHSBColor(HSB[0], HSB[1], HSB[2] * f);
+            switch (Medium.Trk)
+            {
+                case 1:
                 {
                     var fs = new float[3];
                     Color.RGBtoHSB(Oc[0], Oc[1], Oc[2], fs);
                     fs[0] = 0.15F;
                     fs[1] = 0.3F;
                     color = Color.GetHSBColor(fs[0], fs[1], fs[2] * f + 0.0F);
+                    break;
                 }
-                if (Medium.Trk == 3)
+                case 3:
                 {
                     var fs = new float[3];
                     Color.RGBtoHSB(Oc[0], Oc[1], Oc[2], fs);
                     fs[0] = 0.6F;
                     fs[1] = 0.14F;
                     color = Color.GetHSBColor(fs[0], fs[1], fs[2] * f + 0.0F);
+                    break;
                 }
-                var i114 = color.GetRed();
-                var i115 = color.GetGreen();
-                var i116 = color.GetBlue();
+            }
+            i114 = color.GetRed();
+            i115 = color.GetGreen();
+            i116 = color.GetBlue();
 /*
             if (false) { //before the dim
                 i114 = (int) (HansenRandom.Double() * 255);
@@ -1058,18 +855,115 @@ namespace Cum
                 i116 = (int) (HansenRandom.Double() * 255);
             }
 */
-                if (Medium.Lightson && (Light != 0 || (Gr == -11 || Gr == -12) && i36 == -1))
+            if (Medium.Lightson && (Light != 0 || (Gr == -11 || Gr == -12) && i36 == -1))
+            {
+                i114 = Oc[0];
+                if (i114 > 255)
                 {
-                    i114 = Oc[0];
-                    if (i114 > 255)
+                    i114 = 255;
+                }
+                if (i114 < 0)
+                {
+                    i114 = 0;
+                }
+                i115 = Oc[1];
+                if (i115 > 255)
+                {
+                    i115 = 255;
+                }
+                if (i115 < 0)
+                {
+                    i115 = 0;
+                }
+                i116 = Oc[2];
+                if (i116 > 255)
+                {
+                    i116 = 255;
+                }
+                if (i116 < 0)
+                {
+                    i116 = 0;
+                }
+            }
+            if (Medium.Trk == 0)
+            {
+                for (var i117 = 0; i117 < 16; i117++)
+                {
+                    if (_av > Medium.Fade[i117])
                     {
-                        i114 = 255;
+                        i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
+                        i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
+                        i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                     }
-                    if (i114 < 0)
+                }
+            }
+            return color;
+        }
+
+        private void DrawPart(int[] is85, int[] is86)
+        {
+            int i114;
+            int i115;
+            int i116;
+            if (Flx == 0)
+            {
+                if (!Solo)
+                {
+                    i114 = 0;
+                    i115 = 0;
+                    i116 = 0;
+/*
+                        if (false) {
+                            i114 = (int) (HansenRandom.Double() * 255);
+                            i115 = (int) (HansenRandom.Double() * 255);
+                            i116 = (int) (HansenRandom.Double() * 255);
+                        }
+*/
+                    if (Medium.Lightson && Light != 0)
                     {
-                        i114 = 0;
+                        i114 = Oc[0] / 2;
+                        if (i114 > 255)
+                        {
+                            i114 = 255;
+                        }
+                        if (i114 < 0)
+                        {
+                            i114 = 0;
+                        }
+                        i115 = Oc[1] / 2;
+                        if (i115 > 255)
+                        {
+                            i115 = 255;
+                        }
+                        if (i115 < 0)
+                        {
+                            i115 = 0;
+                        }
+                        i116 = Oc[2] / 2;
+                        if (i116 > 255)
+                        {
+                            i116 = 255;
+                        }
+                        if (i116 < 0)
+                        {
+                            i116 = 0;
+                        }
                     }
-                    i115 = Oc[1];
+                    G.SetColor(new Color(i114, i115, i116));
+                    G.DrawPolygon(is85, is86, N);
+                }
+            }
+            else
+            {
+                if (Flx == 2)
+                {
+                    G.SetColor(new Color(0, 0, 0));
+                    G.DrawPolygon(is85, is86, N);
+                }
+                if (Flx == 1)
+                {
+                    i114 = 0;
+                    i115 = (int) (223.0F + 223.0F * (Medium.Snap[1] / 100.0F));
                     if (i115 > 255)
                     {
                         i115 = 255;
@@ -1078,7 +972,7 @@ namespace Cum
                     {
                         i115 = 0;
                     }
-                    i116 = Oc[2];
+                    i116 = (int) (255.0F + 255.0F * (Medium.Snap[2] / 100.0F));
                     if (i116 > 255)
                     {
                         i116 = 255;
@@ -1087,254 +981,433 @@ namespace Cum
                     {
                         i116 = 0;
                     }
+                    G.SetColor(new Color(i114, i115, i116));
+                    G.DrawPolygon(is85, is86, N);
+                    Flx = 2;
                 }
-                if (Medium.Trk == 0)
+                if (Flx == 3)
                 {
-                    for (var i117 = 0; i117 < 16; i117++)
-                        if (_av > Medium.Fade[i117])
-                        {
-                            i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
-                            i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
-                            i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
-                        }
-                }
-                G.SetColor(new Color(i114, i115, i116));
-                G.FillPolygon(is85, is86, N);
-                if (Medium.Trk != 0 && Gr == -10)
-                {
-                    abool = false;
-                }
-                if (!abool)
-                {
-                    if (Flx == 0)
+                    i114 = 0;
+                    i115 = (int) (255.0F + 255.0F * (Medium.Snap[1] / 100.0F));
+                    if (i115 > 255)
                     {
-                        if (!Solo)
-                        {
-                            i114 = 0;
-                            i115 = 0;
-                            i116 = 0;
-/*
-                        if (false) {
-                            i114 = (int) (HansenRandom.Double() * 255);
-                            i115 = (int) (HansenRandom.Double() * 255);
-                            i116 = (int) (HansenRandom.Double() * 255);
-                        }
-*/
-                            if (Medium.Lightson && Light != 0)
-                            {
-                                i114 = Oc[0] / 2;
-                                if (i114 > 255)
-                                {
-                                    i114 = 255;
-                                }
-                                if (i114 < 0)
-                                {
-                                    i114 = 0;
-                                }
-                                i115 = Oc[1] / 2;
-                                if (i115 > 255)
-                                {
-                                    i115 = 255;
-                                }
-                                if (i115 < 0)
-                                {
-                                    i115 = 0;
-                                }
-                                i116 = Oc[2] / 2;
-                                if (i116 > 255)
-                                {
-                                    i116 = 255;
-                                }
-                                if (i116 < 0)
-                                {
-                                    i116 = 0;
-                                }
-                            }
-                            G.SetColor(new Color(i114, i115, i116));
-                            G.DrawPolygon(is85, is86, N);
-                        }
+                        i115 = 255;
                     }
-                    else
-                    {
-                        if (Flx == 2)
-                        {
-                            G.SetColor(new Color(0, 0, 0));
-                            G.DrawPolygon(is85, is86, N);
-                        }
-                        if (Flx == 1)
-                        {
-                            i114 = 0;
-                            i115 = (int) (223.0F + 223.0F * (Medium.Snap[1] / 100.0F));
-                            if (i115 > 255)
-                            {
-                                i115 = 255;
-                            }
-                            if (i115 < 0)
-                            {
-                                i115 = 0;
-                            }
-                            i116 = (int) (255.0F + 255.0F * (Medium.Snap[2] / 100.0F));
-                            if (i116 > 255)
-                            {
-                                i116 = 255;
-                            }
-                            if (i116 < 0)
-                            {
-                                i116 = 0;
-                            }
-                            G.SetColor(new Color(i114, i115, i116));
-                            G.DrawPolygon(is85, is86, N);
-                            Flx = 2;
-                        }
-                        if (Flx == 3)
-                        {
-                            i114 = 0;
-                            i115 = (int) (255.0F + 255.0F * (Medium.Snap[1] / 100.0F));
-                            if (i115 > 255)
-                            {
-                                i115 = 255;
-                            }
-                            if (i115 < 0)
-                            {
-                                i115 = 0;
-                            }
-                            i116 = (int) (223.0F + 223.0F * (Medium.Snap[2] / 100.0F));
-                            if (i116 > 255)
-                            {
-                                i116 = 255;
-                            }
-                            if (i116 < 0)
-                            {
-                                i116 = 0;
-                            }
-                            G.SetColor(new Color(i114, i115, i116));
-                            G.DrawPolygon(is85, is86, N);
-                            Flx = 2;
-                        }
-                        if (Flx == 77)
-                        {
-                            G.SetColor(new Color(16, 198, 255));
-                            G.DrawPolygon(is85, is86, N);
-                            Flx = 0;
-                        }
-                    }
-                }
-                else if (Road && _av <= 3000 && Medium.Trk == 0 && Medium.Fade[0] > 4000)
-                {
-                    i114 -= 10;
-                    if (i114 < 0)
-                    {
-                        i114 = 0;
-                    }
-                    i115 -= 10;
                     if (i115 < 0)
                     {
                         i115 = 0;
                     }
-                    i116 -= 10;
+                    i116 = (int) (223.0F + 223.0F * (Medium.Snap[2] / 100.0F));
+                    if (i116 > 255)
+                    {
+                        i116 = 255;
+                    }
                     if (i116 < 0)
                     {
                         i116 = 0;
                     }
                     G.SetColor(new Color(i114, i115, i116));
                     G.DrawPolygon(is85, is86, N);
+                    Flx = 2;
                 }
-                if (Gr == -10)
-                    if (Medium.Trk == 0)
-                    {
-                        i114 = C[0];
-                        i115 = C[1];
-                        i116 = C[2];
-                        if (i36 == -1 && Medium.Cpflik)
-                        {
-                            i114 = (int) (i114 * 1.6);
-                            if (i114 > 255)
-                            {
-                                i114 = 255;
-                            }
-                            i115 = (int) (i115 * 1.6);
-                            if (i115 > 255)
-                            {
-                                i115 = 255;
-                            }
-                            i116 = (int) (i116 * 1.6);
-                            if (i116 > 255)
-                            {
-                                i116 = 255;
-                            }
-                        }
-                        for (var i118 = 0; i118 < 16; i118++)
-                            if (_av > Medium.Fade[i118])
-                            {
-                                i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
-                                i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
-                                i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
-                            }
-                        G.SetColor(new Color(i114, i115, i116));
-                        G.DrawPolygon(is85, is86, N);
-                    }
-                    else if (Medium.Cpflik && Medium.Hit == 5000)
-                    {
-                        i115 = (int) (HansenRandom.Double() * 115.0);
-                        i114 = i115 * 2 - 54;
-                        if (i114 < 0)
-                        {
-                            i114 = 0;
-                        }
-                        if (i114 > 255)
-                        {
-                            i114 = 255;
-                        }
-                        i116 = 202 + i115 * 2;
-                        if (i116 < 0)
-                        {
-                            i116 = 0;
-                        }
-                        if (i116 > 255)
-                        {
-                            i116 = 255;
-                        }
-                        i115 += 101;
-                        if (i115 < 0)
-                        {
-                            i115 = 0;
-                        }
-                        if (i115 > 255)
-                        {
-                            i115 = 255;
-                        }
-                        G.SetColor(new Color(i114, i115, i116));
-                        G.DrawPolygon(is85, is86, N);
-                    }
-                if (Gr == -18 && Medium.Trk == 0)
+                if (Flx == 77)
                 {
-                    i114 = C[0];
-                    i115 = C[1];
-                    i116 = C[2];
-                    if (Medium.Cpflik && Medium.Elecr >= 0.0F)
-                    {
-                        i114 = (int) (25.5F * Medium.Elecr);
-                        if (i114 > 255)
-                        {
-                            i114 = 255;
-                        }
-                        i115 = (int) (128.0F + 12.8F * Medium.Elecr);
-                        if (i115 > 255)
-                        {
-                            i115 = 255;
-                        }
-                        i116 = 255;
-                    }
-                    for (var i119 = 0; i119 < 16; i119++)
-                        if (_av > Medium.Fade[i119])
-                        {
-                            i114 = (i114 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
-                            i115 = (i115 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
-                            i116 = (i116 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
-                        }
-                    G.SetColor(new Color(i114, i115, i116));
+                    G.SetColor(new Color(16, 198, 255));
                     G.DrawPolygon(is85, is86, N);
+                    Flx = 0;
                 }
+            }
+        }
+
+        private void RenderChip(int mx, int my, int mz, int xz, int xy, int yz)
+        {
+            if (Chip == 1)
+            {
+                _cxz = xz;
+                _cxy = xy;
+                _czy = yz;
+                var i60 = (int) (Medium.Random() * N);
+                _cox[0] = Ox[i60];
+                _coz[0] = Oz[i60];
+                _coy[0] = Oy[i60];
+                if (Ctmag > 3.0F)
+                {
+                    Ctmag = 3.0F;
+                }
+                if (Ctmag < -3.0F)
+                {
+                    Ctmag = -3.0F;
+                }
+                _cox[1] = (int) (_cox[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _cox[2] = (int) (_cox[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coy[1] = (int) (_coy[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coy[2] = (int) (_coy[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coz[1] = (int) (_coz[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _coz[2] = (int) (_coz[0] + Ctmag * (10.0F - Medium.Random() * 20.0F));
+                _dx = 0;
+                _dy = 0;
+                _dz = 0;
+                if (Bfase != -7)
+                {
+                    _vx = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
+                    _vz = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
+                    _vy = (int) (Ctmag * (30.0F - Medium.Random() * 60.0F));
+                }
+                else
+                {
+                    _vx = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
+                    _vz = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
+                    _vy = (int) (Ctmag * (10.0F - Medium.Random() * 20.0F));
+                }
+                Chip = 2;
+            }
+            var is61 = new int[3];
+            var is62 = new int[3];
+            var is63 = new int[3];
+            for (var i64 = 0; i64 < 3; i64++)
+            {
+                is61[i64] = _cox[i64] + mx;
+                is63[i64] = _coy[i64] + my;
+                is62[i64] = _coz[i64] + mz;
+            }
+            Rot(is61, is63, mx, my, _cxy, 3);
+            Rot(is63, is62, my, mz, _czy, 3);
+            Rot(is61, is62, mx, mz, _cxz, 3);
+            for (var i65 = 0; i65 < 3; i65++)
+            {
+                is61[i65] += _dx;
+                is63[i65] += _dy;
+                is62[i65] += _dz;
+            }
+            _dx += _vx;
+            _dz += _vz;
+            _dy += _vy;
+            _vy += 7;
+            if (is63[0] > Medium.Ground)
+            {
+                Chip = 19;
+            }
+            Rot(is61, is62, Medium.Cx, Medium.Cz, Medium.Xz, 3);
+            Rot(is63, is62, Medium.Cy, Medium.Cz, Medium.Zy, 3);
+            var is66 = new int[3];
+            var is67 = new int[3];
+            for (var i68 = 0; i68 < 3; i68++)
+            {
+                is66[i68] = Xs(is61[i68], is62[i68]);
+                is67[i68] = Ys(is63[i68], is62[i68]);
+            }
+            var i69 = (int) (Medium.Random() * 3.0F);
+            if (Bfase != -7)
+            {
+                if (i69 == 0)
+                {
+                    G.SetColor(new Color(C[0], C[1], C[2]).Darker());
+                }
+                if (i69 == 1)
+                {
+                    G.SetColor(new Color(C[0], C[1], C[2]));
+                }
+                if (i69 == 2)
+                {
+                    G.SetColor(new Color(C[0], C[1], C[2]).Brighter());
+                }
+            }
+            else
+            {
+                G.SetColor(Color.GetHSBColor(HSB[0], HSB[1], HSB[2]));
+            }
+            G.FillPolygon(is66, is67, 3);
+            Chip++;
+            if (Chip == 20)
+            {
+                Chip = 0;
+            }
+        }
+
+        private void RenderFlame(int mx, int my, int mz, int xz, int xy, int yz, int[] x, int[] y, int[] z)
+        {
+            if (Embos <= 11 && Medium.Random() > 0.5 && Glass != 1)
+            {
+                for (var i41 = 0; i41 < N; i41++)
+                {
+                    x[i41] = (int) (Ox[i41] + mx + (15.0F - Medium.Random() * 30.0F));
+                    y[i41] = (int) (Oy[i41] + my + (15.0F - Medium.Random() * 30.0F));
+                    z[i41] = (int) (Oz[i41] + mz + (15.0F - Medium.Random() * 30.0F));
+                }
+                Rot(x, y, mx, my, xy, N);
+                Rot(y, z, my, mz, yz, N);
+                Rot(x, z, mx, mz, xz, N);
+                Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, N);
+                Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, N);
+                var is42 = new int[N];
+                var is43 = new int[N];
+                for (var i44 = 0; i44 < N; i44++)
+                {
+                    is42[i44] = Xs(x[i44], z[i44]);
+                    is43[i44] = Ys(y[i44], z[i44]);
+                }
+                G.SetColor(new Color(230, 230, 230));
+                G.FillPolygon(is42, is43, N);
+            }
+            var f = 1.0F;
+            if (Embos <= 4)
+            {
+                f = 1.0F + Medium.Random() / 5.0F;
+            }
+            if (Embos > 4 && Embos <= 7)
+            {
+                f = 1.0F + Medium.Random() / 4.0F;
+            }
+            if (Embos > 7 && Embos <= 9)
+            {
+                f = 1.0F + Medium.Random() / 3.0F;
+                if (HSB[2] > 0.7)
+                {
+                    HSB[2] = 0.7F;
+                }
+            }
+            if (Embos > 9 && Embos <= 10)
+            {
+                f = 1.0F + Medium.Random() / 2.0F;
+                if (HSB[2] > 0.6)
+                {
+                    HSB[2] = 0.6F;
+                }
+            }
+            if (Embos > 10 && Embos <= 12)
+            {
+                f = 1.0F + Medium.Random() / 1.0F;
+                if (HSB[2] > 0.5)
+                {
+                    HSB[2] = 0.5F;
+                }
+            }
+            if (Embos == 12)
+            {
+                Chip = 1;
+                Ctmag = 2.0F;
+                Bfase = -7;
+            }
+            if (Embos == 13)
+            {
+                HSB[1] = 0.2F;
+                HSB[2] = 0.4F;
+            }
+            if (Embos == 16)
+            {
+                _pa = (int) (Medium.Random() * N);
+                for (_pb = (int) (Medium.Random() * N); _pa == _pb; _pb = (int) (Medium.Random() * N))
+                {
+                }
+            }
+            if (Embos >= 16)
+            {
+                var i45 = 1;
+                var i46 = 1;
+                int i47;
+                for (i47 = Math.Abs(yz); i47 > 270; i47 -= 360)
+                {
+                }
+                i47 = Math.Abs(i47);
+                if (i47 > 90)
+                {
+                    i45 = -1;
+                }
+                int i48;
+                for (i48 = Math.Abs(xy); i48 > 270; i48 -= 360)
+                {
+                }
+                i48 = Math.Abs(i48);
+                if (i48 > 90)
+                {
+                    i46 = -1;
+                }
+                var is49 = new int[3];
+                var is50 = new int[3];
+                x[0] = Ox[_pa] + mx;
+                y[0] = Oy[_pa] + my;
+                z[0] = Oz[_pa] + mz;
+                x[1] = Ox[_pb] + mx;
+                y[1] = Oy[_pb] + my;
+                z[1] = Oz[_pb] + mz;
+                while (Math.Abs(x[0] - x[1]) > 100)
+                {
+                    if (x[1] > x[0])
+                    {
+                        x[1] -= 30;
+                    }
+                    else
+                    {
+                        x[1] += 30;
+                    }
+                }
+
+                while (Math.Abs(z[0] - z[1]) > 100)
+                {
+                    if (z[1] > z[0])
+                    {
+                        z[1] -= 30;
+                    }
+                    else
+                    {
+                        z[1] += 30;
+                    }
+                }
+
+                var i51 = (int) (Math.Abs(x[0] - x[1]) / 3 * (0.5 - Medium.Random()));
+                var i52 = (int) (Math.Abs(z[0] - z[1]) / 3 * (0.5 - Medium.Random()));
+                x[2] = (x[0] + x[1]) / 2 + i51;
+                z[2] = (z[0] + z[1]) / 2 + i52;
+                var i53 = (int) ((Math.Abs(x[0] - x[1]) + Math.Abs(z[0] - z[1])) / 1.5 *
+                                 (Medium.Random() / 2.0F + 0.5));
+                y[2] = (y[0] + y[1]) / 2 - i45 * i46 * i53;
+                Rot(x, y, mx, my, xy, 3);
+                Rot(y, z, my, mz, yz, 3);
+                Rot(x, z, mx, mz, xz, 3);
+                Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, 3);
+                Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, 3);
+                for (var i54 = 0; i54 < 3; i54++)
+                {
+                    is49[i54] = Xs(x[i54], z[i54]);
+                    is50[i54] = Ys(y[i54], z[i54]);
+                }
+                var i55 = (int) (255.0F + 255.0F * (Medium.Snap[0] / 400.0F));
+                if (i55 > 255)
+                {
+                    i55 = 255;
+                }
+                if (i55 < 0)
+                {
+                    i55 = 0;
+                }
+                var i56 = (int) (169.0F + 169.0F * (Medium.Snap[1] / 300.0F));
+                if (i56 > 255)
+                {
+                    i56 = 255;
+                }
+                if (i56 < 0)
+                {
+                    i56 = 0;
+                }
+                var i57 = (int) (89.0F + 89.0F * (Medium.Snap[2] / 200.0F));
+                if (i57 > 255)
+                {
+                    i57 = 255;
+                }
+                if (i57 < 0)
+                {
+                    i57 = 0;
+                }
+                G.SetColor(new Color(i55, i56, i57));
+                G.FillPolygon(is49, is50, 3);
+                x[0] = Ox[_pa] + mx;
+                y[0] = Oy[_pa] + my;
+                z[0] = Oz[_pa] + mz;
+                x[1] = Ox[_pb] + mx;
+                y[1] = Oy[_pb] + my;
+                z[1] = Oz[_pb] + mz;
+                while (Math.Abs(x[0] - x[1]) > 100)
+                {
+                    if (x[1] > x[0])
+                    {
+                        x[1] -= 30;
+                    }
+                    else
+                    {
+                        x[1] += 30;
+                    }
+                }
+
+                while (Math.Abs(z[0] - z[1]) > 100)
+                {
+                    if (z[1] > z[0])
+                    {
+                        z[1] -= 30;
+                    }
+                    else
+                    {
+                        z[1] += 30;
+                    }
+                }
+
+                x[2] = (x[0] + x[1]) / 2 + i51;
+                z[2] = (z[0] + z[1]) / 2 + i52;
+                i53 = (int) (i53 * 0.8);
+                y[2] = (y[0] + y[1]) / 2 - i45 * i46 * i53;
+                Rot(x, y, mx, my, xy, 3);
+                Rot(y, z, my, mz, yz, 3);
+                Rot(x, z, mx, mz, xz, 3);
+                Rot(x, z, Medium.Cx, Medium.Cz, Medium.Xz, 3);
+                Rot(y, z, Medium.Cy, Medium.Cz, Medium.Zy, 3);
+                for (var i58 = 0; i58 < 3; i58++)
+                {
+                    is49[i58] = Xs(x[i58], z[i58]);
+                    is50[i58] = Ys(y[i58], z[i58]);
+                }
+                i55 = (int) (255.0F + 255.0F * (Medium.Snap[0] / 400.0F));
+                if (i55 > 255)
+                {
+                    i55 = 255;
+                }
+                if (i55 < 0)
+                {
+                    i55 = 0;
+                }
+                i56 = (int) (207.0F + 207.0F * (Medium.Snap[1] / 300.0F));
+                if (i56 > 255)
+                {
+                    i56 = 255;
+                }
+                if (i56 < 0)
+                {
+                    i56 = 0;
+                }
+                i57 = (int) (136.0F + 136.0F * (Medium.Snap[2] / 200.0F));
+                if (i57 > 255)
+                {
+                    i57 = 255;
+                }
+                if (i57 < 0)
+                {
+                    i57 = 0;
+                }
+                G.SetColor(new Color(i55, i56, i57));
+                G.FillPolygon(is49, is50, 3);
+            }
+            for (var i59 = 0; i59 < N; i59++)
+            {
+                if (_typ == 1)
+                {
+                    x[i59] = (int) (Ox[i59] * f + mx);
+                }
+                else
+                {
+                    x[i59] = Ox[i59] + mx;
+                }
+                if (_typ == 2)
+                {
+                    y[i59] = (int) (Oy[i59] * f + my);
+                }
+                else
+                {
+                    y[i59] = Oy[i59] + my;
+                }
+                if (_typ == 3)
+                {
+                    z[i59] = (int) (Oz[i59] * f + mz);
+                }
+                else
+                {
+                    z[i59] = Oz[i59] + mz;
+                }
+            }
+            if (Embos != 70)
+            {
+                Embos++;
+            }
+            else
+            {
+                Embos = 16;
             }
         }
 
@@ -1359,12 +1432,14 @@ namespace Cum
             for (var i26 = 0; i26 < 3; i26++)
             {
                 for (var i27 = 0; i27 < 3; i27++)
+                {
                     if (i27 != i26)
                     {
                         _deltaf *= (float) (Math.Sqrt((Ox[i27] - Ox[i26]) * (Ox[i27] - Ox[i26]) +
                                                       (Oy[i27] - Oy[i26]) * (Oy[i27] - Oy[i26]) +
                                                       (Oz[i27] - Oz[i26]) * (Oz[i27] - Oz[i26])) / 100.0);
                     }
+                }
             }
             _deltaf = _deltaf / 3.0F;
         }
@@ -1375,11 +1450,13 @@ namespace Cum
             for (var i = 0; i < 3; i++)
             {
                 for (var i28 = 0; i28 < 3; i28++)
+                {
                     if (i28 != i)
                     {
                         _projf *= (float) (Math.Sqrt((Ox[i] - Ox[i28]) * (Ox[i] - Ox[i28]) +
                                                      (Oz[i] - Oz[i28]) * (Oz[i] - Oz[i28])) / 100.0);
                     }
+                }
             }
             _projf = _projf / 3.0F;
         }
@@ -1542,11 +1619,13 @@ namespace Cum
                 for (var i153 = 0; i153 < Medium.Nsp; i153++)
                 {
                     for (var i154 = 0; i154 < N; i154++)
+                    {
                         if (Math.Abs(ais[i154] - Medium.Spx[i153]) < Medium.Sprad[i153] &&
                             Math.Abs(is126[i154] - Medium.Spz[i153]) < Medium.Sprad[i153])
                         {
                             abool = false;
                         }
+                    }
                 }
             }
             if (abool)
@@ -1586,12 +1665,15 @@ namespace Cum
             if (abool)
             {
                 for (var i160 = 0; i160 < 16; i160++)
+                {
                     if (_av > Medium.Fade[i160])
                     {
                         i129 = (i129 * Medium.Fogd + Medium.Cfade[0]) / (Medium.Fogd + 1);
                         i130 = (i130 * Medium.Fogd + Medium.Cfade[1]) / (Medium.Fogd + 1);
                         i131 = (i131 * Medium.Fogd + Medium.Cfade[2]) / (Medium.Fogd + 1);
                     }
+                }
+
                 G.SetColor(new Color(i129, i130, i131));
                 G.FillPolygon(is151, is152, N);
             }
@@ -1622,9 +1704,16 @@ namespace Cum
 
         public int CompareTo(Plane o)
         {
-            if (_av == o._av) return 0;
+            if (_av == o._av)
+            {
+                return 0;
+            }
+
             if (_av < o._av)
+            {
                 return 1;
+            }
+
             return -1;
         }
     }

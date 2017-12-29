@@ -580,6 +580,7 @@ namespace Cum
                     var i227 = -1;
                     var bool228 = false;
                     for (var i229 = 0; i229 < Nplayers; i229++)
+                    {
                         if (i229 != Im &&
                             (Py(CheckPoints.Opx[Im] / 100, CheckPoints.Opx[i229] / 100, CheckPoints.Opz[Im] / 100,
                                  CheckPoints.Opz[i229] / 100) < i227 || i227 == -1) &&
@@ -593,6 +594,7 @@ namespace Cum
                                 bool228 = true;
                             }
                         }
+                    }
                 }
                 else
                 {
@@ -1028,6 +1030,7 @@ namespace Cum
                 }
                 var bool107 = false;
                 for (var i108 = 0; i108 < cars[Sc[0]].Npl && !bool107; i108++)
+                {
                     if (cars[Sc[0]].P[i108].Colnum == 1)
                     {
                         var fs = new float[3];
@@ -1038,8 +1041,11 @@ namespace Cum
                         Arnp[2] = 1.0F - fs[2];
                         bool107 = true;
                     }
+                }
+
                 bool107 = false;
                 for (var i109 = 0; i109 < cars[Sc[0]].Npl && !bool107; i109++)
+                {
                     if (cars[Sc[0]].P[i109].Colnum == 2)
                     {
                         var fs = new float[3];
@@ -1050,6 +1056,8 @@ namespace Cum
                         Arnp[5] = 1.0F - fs[2];
                         bool107 = true;
                     }
+                }
+
                 var color = Color.GetHSBColor(Arnp[0], Arnp[1], 1.0F - Arnp[2]);
                 var color110 = Color.GetHSBColor(Arnp[3], Arnp[4], 1.0F - Arnp[5]);
                 for (var i111 = 0; i111 < cars[Sc[0]].Npl; i111++)
@@ -1102,10 +1110,13 @@ namespace Cum
                         if (!GameSparker.Mcars.GetSelectedItem().Equals(CarDefine.Names[Sc[0]]))
                         {
                             for (var i116 = 16; i116 < CarDefine.Nlocars; i116++)
+                            {
                                 if (CarDefine.Names[i116].Equals(GameSparker.Mcars.GetSelectedItem()))
                                 {
                                     i112 = i116;
                                 }
+                            }
+
                             if (i112 == -1)
                             {
                                 Cfase = 5;
@@ -1204,6 +1215,7 @@ namespace Cum
                     {
                         G.DrawImage(Pgate, Pgatx[i118], Pgaty[i118] + Pgady[i118] - Gatey, null);
                         if (Flatrstart == 6)
+                        {
                             if (Pgas[i118])
                             {
                                 Pgady[i118] -= (80 + 100 / (i118 + 1) - Math.Abs(Pgady[i118])) / 3;
@@ -1224,6 +1236,7 @@ namespace Cum
                                     Pgady[i118] = 0;
                                 }
                             }
+                        }
                     }
                     if (Gatey != 0)
                     {
@@ -2843,6 +2856,7 @@ namespace Cum
             if (i208 > 70)
             {
                 if (Dmcnt < 10)
+                {
                     if (Dmflk)
                     {
                         i210 = 170;
@@ -2852,6 +2866,8 @@ namespace Cum
                     {
                         Dmflk = true;
                     }
+                }
+
                 Dmcnt++;
                 if (Dmcnt > 167.0 - i208 * 1.5)
                 {
@@ -3300,6 +3316,7 @@ namespace Cum
                         Drawcs(310, "Public Stage", 41, 177, 255, 3);
                     }
                     if (Dnload == 0 && Drawcarb(true, null, " Add to My Stages ", 334, 317, i, i141, abool))
+                    {
                         if (Logged)
                         {
                             CarDefine.Onstage = CheckPoints.Name;
@@ -3312,6 +3329,8 @@ namespace Cum
                             Dnload = 1;
                             Waitlink = 20;
                         }
+                    }
+
                     if (Dnload == 1)
                     {
                         G.SetColor(new Color(193, 106, 0));
@@ -3589,6 +3608,7 @@ namespace Cum
         internal static void Gscrape(int im, int i, int i269, int i270)
         {
             if ((Bfsc1[im] == 0 || Bfsc2[im] == 0) && Math.Sqrt(i * i + i269 * i269 + i270 * i270) / 10.0 > 15.0)
+            {
                 if (Bfsc1[im] == 0)
                 {
                     if (!Mutes)
@@ -3609,6 +3629,7 @@ namespace Cum
                     Bfsc2[im] = 12;
                     Bfsc1[im] = 6;
                 }
+            }
         }
 
         static internal void Hidos()
@@ -3627,10 +3648,12 @@ namespace Cum
             while (ais[0] + ais[1] + ais[2] < -30)
             {
                 for (var i45 = 0; i45 < 3; i45++)
+                {
                     if (ais[i45] < 50)
                     {
                         ais[i45]++;
                     }
+                }
             }
             var i46 = (int) (230.0F - 230.0F * (ais[0] / 100.0F));
             if (i46 > 255)
@@ -3917,6 +3940,7 @@ namespace Cum
                 G.DrawImage(Star[Pstar], 359, 385 + i49, null);
                 G.SetAlpha(1.0F);
                 if (Pstar != 2)
+                {
                     if (Pstar == 0)
                     {
                         Pstar = 1;
@@ -3925,6 +3949,8 @@ namespace Cum
                     {
                         Pstar = 0;
                     }
+                }
+
                 if (Multion != 0)
                 {
                     Drawcs(380 + i49, "" + Forstart / 20, 0, 0, 0, 3);
@@ -4001,6 +4027,7 @@ namespace Cum
                     }
                 }
                 if (Cfase == 11 || Cfase == 101)
+                {
                     if (Sc[0] >= 16 && CarDefine.Lastload == 2 && Sc[0] < 36)
                     {
                         Cfase = 3;
@@ -4009,6 +4036,8 @@ namespace Cum
                     {
                         Cfase = 0;
                     }
+                }
+
                 if (Cfase == 3)
                 {
                     if (Multion != 0 && CarDefine.Lastload == 1)
@@ -4041,6 +4070,7 @@ namespace Cum
                         {
                             var abool = false;
                             for (var i = NCars; i < CarDefine.Nlocars; i++)
+                            {
                                 if (Math.Abs(CarDefine.Cclass[i] - (Ontyp - 1)) <= 1)
                                 {
                                     if (!abool)
@@ -4053,6 +4083,8 @@ namespace Cum
                                         Maxsl = i;
                                     }
                                 }
+                            }
+
                             if (!abool)
                             {
                                 Onjoin = -1;
@@ -4156,6 +4188,7 @@ namespace Cum
                     var fs = new float[3];
                     Color.RGBtoHSB(cars[i100].Fcol[0], cars[i100].Fcol[1], cars[i100].Fcol[2], fs);
                     for (var i101 = 0; i101 < cars[i100].Npl; i101++)
+                    {
                         if (cars[i100].P[i101].Colnum == 1)
                         {
                             cars[i100].P[i101].HSB[0] = fs[0];
@@ -4165,8 +4198,11 @@ namespace Cum
                             cars[i100].P[i101].Oc[1] = cars[i100].Fcol[1];
                             cars[i100].P[i101].Oc[2] = cars[i100].Fcol[2];
                         }
+                    }
+
                     Color.RGBtoHSB(cars[i100].Scol[0], cars[i100].Scol[1], cars[i100].Scol[2], fs);
                     for (var i102 = 0; i102 < cars[i100].Npl; i102++)
+                    {
                         if (cars[i100].P[i102].Colnum == 2)
                         {
                             cars[i100].P[i102].HSB[0] = fs[0];
@@ -4176,6 +4212,8 @@ namespace Cum
                             cars[i100].P[i102].Oc[1] = cars[i100].Scol[1];
                             cars[i100].P[i102].Oc[2] = cars[i100].Scol[2];
                         }
+                    }
+
                     cars[i100].Xy = 0;
                 }
                 for (var i103 = 0; i103 < 6; i103++)
@@ -4221,10 +4259,13 @@ namespace Cum
             {
                 var abool = false;
                 for (var i = 1; i < GameSparker.Mstgs.GetItemCount(); i++)
+                {
                     if (GameSparker.Mstgs.GetItem(i).Equals(CheckPoints.Name))
                     {
                         abool = true;
                     }
+                }
+
                 if (!abool)
                 {
                     CheckPoints.Stage = (int) (HansenRandom.Double() * NTracks) + 1;
@@ -4239,6 +4280,7 @@ namespace Cum
                     checkpoints.stage = 27;
             }*/
             if (Gmode == 2)
+            {
                 if (Unlocked != NTracks || Justwon2)
                 {
                     CheckPoints.Stage = Unlocked /* + 10*/;
@@ -4247,8 +4289,9 @@ namespace Cum
                 {
                     CheckPoints.Stage = (int) (HansenRandom.Double() * NTracks) + 1;
                 }
-//        GameSparker.sgame.setBackground(new Color(0, 0, 0));
-//        GameSparker.sgame.setForeground(new Color(47, 179, 255));
+            }
+            //        GameSparker.sgame.setBackground(new Color(0, 0, 0));
+            //        GameSparker.sgame.setForeground(new Color(47, 179, 255));
             //app.snfm1.setBackground(new Color(0, 0, 0));
             //app.snfm1.setForeground(new Color(47, 179, 255));
             //app.snfm2.setBackground(new Color(0, 0, 0));
@@ -4344,6 +4387,7 @@ namespace Cum
                 if (Dudo > 0)
                 {
                     if (Aflk)
+                    {
                         if (HansenRandom.Double() > HansenRandom.Double())
                         {
                             Duds = (int) (HansenRandom.Double() * 3.0);
@@ -4352,6 +4396,8 @@ namespace Cum
                         {
                             Duds = (int) (HansenRandom.Double() * 2.0);
                         }
+                    }
+
                     Dudo--;
                 }
                 else
@@ -4643,6 +4689,7 @@ namespace Cum
             var i96 = 48;
             var i97 = 96;
             if (i93 < 50)
+            {
                 if (Aflk)
                 {
                     i95 = 106;
@@ -4654,6 +4701,8 @@ namespace Cum
                 {
                     Aflk = true;
                 }
+            }
+
             if (i != Im)
             {
                 if (i92 == 0)
@@ -5056,37 +5105,55 @@ namespace Cum
                 for (var i2 = 0; i2 < 5; i2++)
                 {
                     for (var i3 = 0; i3 < 5; i3++)
+                    {
                         if (astring.Equals("" + i3 + "" + i2 + ".wav"))
                         {
                             Engs[i3, i2] = new SoundClip("temp-sound/" + astring);
                         }
+                    }
                 }
                 for (var i4 = 0; i4 < 6; i4++)
+                {
                     if (astring.Equals("air" + i4 + ".wav"))
                     {
                         Air[i4] = new SoundClip("temp-sound/" + astring);
                     }
+                }
+
                 for (var i5 = 0; i5 < 3; i5++)
+                {
                     if (astring.Equals("crash" + (i5 + 1) + ".wav"))
                     {
                         Crash[i5] = new SoundClip("temp-sound/" + astring);
                     }
+                }
+
                 for (var i6 = 0; i6 < 3; i6++)
+                {
                     if (astring.Equals("lowcrash" + (i6 + 1) + ".wav"))
                     {
                         Lowcrash[i6] = new SoundClip("temp-sound/" + astring);
                     }
+                }
+
                 for (var i7 = 0; i7 < 3; i7++)
+                {
                     if (astring.Equals("skid" + (i7 + 1) + ".wav"))
                     {
                         Skid[i7] = new SoundClip("temp-sound/" + astring);
                     }
+                }
+
                 for (var i8 = 0; i8 < 3; i8++)
+                {
                     if (astring.Equals("dustskid" + (i8 + 1) + ".wav"))
                     {
                         Dustskid[i8] = new SoundClip("temp-sound/" + astring);
                     }
+                }
+
                 for (var i9 = 0; i9 < 3; i9++)
+                {
                     if (astring.Equals("scrape" + (i9 + 1) + ".wav"))
                     {
                         Scrape[i9] = new SoundClip("temp-sound/" + astring);
@@ -5095,6 +5162,8 @@ namespace Cum
                             Scrape[3] = new SoundClip("temp-sound/" + astring);
                         }
                     }
+                }
+
                 if (astring.Equals("powerup.wav"))
                 {
                     Powerup = new SoundClip("temp-sound/" + astring);

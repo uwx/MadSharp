@@ -200,7 +200,9 @@ namespace Cum
             foreach (var s in arr)
             {
                 if (s == targetValue)
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -217,7 +219,9 @@ namespace Cum
             foreach (var s in arr)
             {
                 if (s == targetValue)
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -234,7 +238,9 @@ namespace Cum
             foreach (var s in arr)
             {
                 if (s == targetValue)
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -251,7 +257,9 @@ namespace Cum
             foreach (var s in arr)
             {
                 if (s == targetValue)
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -268,7 +276,9 @@ namespace Cum
             foreach (var s in arr)
             {
                 if (s == targetValue)
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -285,7 +295,9 @@ namespace Cum
             foreach (var s in arr)
             {
                 if (s == targetValue)
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -302,7 +314,9 @@ namespace Cum
             foreach (var s in arr)
             {
                 if (s == targetValue)
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -318,7 +332,9 @@ namespace Cum
             foreach (var c in str)
             {
                 if (!char.IsDigit(c))
+                {
                     return false;
+                }
             }
             return true;
         }

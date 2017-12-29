@@ -130,13 +130,20 @@ namespace Cum
                 {
                     var f69 = 0.0F;
                     for (var i70 = 0; i70 < conto.P[i68].N; i70++)
+                    {
                         if (conto.P[i68].Wz == 0 &&
                             Py(conto.Keyx[i], conto.P[i68].Ox[i70], conto.Keyz[i], conto.P[i68].Oz[i70]) <
                             mad.Stat.Clrad)
                         {
                             f69 = f / 20.0F * Medium.Random();
                         }
-                    if (f69 == 0.0F || !(Math.Abs(f69) >= 1.0F)) continue;
+                    }
+
+                    if (f69 == 0.0F || !(Math.Abs(f69) >= 1.0F))
+                    {
+                        continue;
+                    }
+
                     conto.P[i68].Chip = 1;
                     conto.P[i68].Ctmag = f69;
                 }
@@ -159,12 +166,15 @@ namespace Cum
                 {
                     var f72 = 0.0F;
                     for (var i73 = 0; i73 < conto.P[i71].N; i73++)
+                    {
                         if (conto.P[i71].Wz == 0 &&
                             Py(conto.Keyx[i], conto.P[i71].Ox[i73], conto.Keyz[i], conto.P[i71].Oz[i73]) <
                             mad.Stat.Clrad)
                         {
                             f72 = f / 20.0F * Medium.Random();
                         }
+                    }
+
                     if (f72 != 0.0F && Math.Abs(f72) >= 1.0F)
                     {
                         conto.P[i71].Chip = 1;
@@ -278,23 +288,29 @@ namespace Cum
             if (i30 == 0 && Dest[i] < -1)
             {
                 for (var i31 = 0; i31 < conto.Npl; i31++)
+                {
                     if (conto.P[i31].Wz == 0 || conto.P[i31].Gr == -17 || conto.P[i31].Gr == -16)
                     {
                         conto.P[i31].Embos = 13;
                     }
+                }
             }
             if (Cntdest[i] != 0)
             {
                 for (var i32 = 0; i32 < conto.Npl; i32++)
+                {
                     if (conto.P[i32].Wz == 0 || conto.P[i32].Gr == -17 || conto.P[i32].Gr == -16)
                     {
                         conto.P[i32].Embos = 1;
                     }
+                }
+
                 Cntdest[i]--;
             }
             for (var i33 = 0; i33 < 20; i33++)
             {
                 for (var i34 = 0; i34 < 30; i34++)
+                {
                     if (Sspark[i, i33, i34] == i30)
                     {
                         conto.Stg[i33] = 1;
@@ -305,8 +321,10 @@ namespace Cum
                         conto.Scx[i33] = Scx[i, i33, i34];
                         conto.Scz[i33] = Scz[i, i33, i34];
                     }
+                }
             }
             for (var i35 = 0; i35 < 200; i35++)
+            {
                 if (Rspark[i, i35] == i30)
                 {
                     conto.Sprk = Sprk[i, i35];
@@ -317,6 +335,8 @@ namespace Cum
                     conto.Rcy = Rcy[i, i35];
                     conto.Rcz = Rcz[i, i35];
                 }
+            }
+
             for (var i36 = 0; i36 < 4; i36++)
             {
                 for (var i37 = 0; i37 < 7; i37++)
@@ -363,23 +383,29 @@ namespace Cum
             if (i38 == 0 && Hdest[i] < -1)
             {
                 for (var i40 = 0; i40 < conto.Npl; i40++)
+                {
                     if (conto.P[i40].Wz == 0 || conto.P[i40].Gr == -17 || conto.P[i40].Gr == -16)
                     {
                         conto.P[i40].Embos = 13;
                     }
+                }
             }
             if (Cntdest[i] != 0)
             {
                 for (var i41 = 0; i41 < conto.Npl; i41++)
+                {
                     if (conto.P[i41].Wz == 0 || conto.P[i41].Gr == -17 || conto.P[i41].Gr == -16)
                     {
                         conto.P[i41].Embos = 1;
                     }
+                }
+
                 Cntdest[i]--;
             }
             for (var i42 = 0; i42 < 20; i42++)
             {
                 for (var i43 = 0; i43 < 30; i43++)
+                {
                     if (Hsspark[i, i42, i43] == i38)
                     {
                         conto.Stg[i42] = 1;
@@ -390,8 +416,10 @@ namespace Cum
                         conto.Scx[i42] = Hscx[i, i42, i43];
                         conto.Scz[i42] = Hscz[i, i42, i43];
                     }
+                }
             }
             for (var i44 = 0; i44 < 200; i44++)
+            {
                 if (Hrspark[i, i44] == i38)
                 {
                     conto.Sprk = Hsprk[i, i44];
@@ -402,6 +430,8 @@ namespace Cum
                     conto.Rcy = Hrcy[i, i44];
                     conto.Rcz = Hrcz[i, i44];
                 }
+            }
+
             for (var i45 = 0; i45 < 4; i45++)
             {
                 for (var i46 = 0; i46 < 7; i46++)
@@ -411,6 +441,7 @@ namespace Cum
                         Regy(i45, Hmagy[i, i45, i46], Hmtouch[i, i46], conto, mad);
                     }
                     if (Hrx[i, i45, i46] == i38)
+                    {
                         if (_lastfr != i38)
                         {
                             Regx(i45, Hmagx[i, i45, i46], conto, mad);
@@ -419,7 +450,10 @@ namespace Cum
                         {
                             Chipx(i45, Hmagx[i, i45, i46], conto, mad);
                         }
+                    }
+
                     if (Hrz[i, i45, i46] == i38)
+                    {
                         if (_lastfr != i38)
                         {
                             Regz(i45, Hmagz[i, i45, i46], conto, mad);
@@ -428,6 +462,7 @@ namespace Cum
                         {
                             Chipz(i45, Hmagz[i, i45, i46], conto, mad);
                         }
+                    }
                 }
             }
             _lastfr = i38;
@@ -465,6 +500,7 @@ namespace Cum
                 Dest[i]--;
             }
             if (Dest[i] == 230)
+            {
                 if (i == i21)
                 {
                     Cotchinow(i21);
@@ -475,6 +511,8 @@ namespace Cum
                     Cotchinow(i);
                     Whenwasted = 165 + i19;
                 }
+            }
+
             for (var i23 = 0; i23 < 299; i23++)
             {
                 X[i23, i] = X[i23 + 1, i];
@@ -607,6 +645,7 @@ namespace Cum
                 {
                     var f63 = 0.0F;
                     for (var i64 = 0; i64 < conto.P[i62].N; i64++)
+                    {
                         if (conto.P[i62].Wz == 0 &&
                             Py(conto.Keyx[i], conto.P[i62].Ox[i64], conto.Keyz[i], conto.P[i62].Oz[i64]) <
                             mad.Stat.Clrad)
@@ -615,6 +654,8 @@ namespace Cum
                             conto.P[i62].Oz[i64] -= (int) (f63 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Zy));
                             conto.P[i62].Ox[i64] += (int) (f63 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Xy));
                         }
+                    }
+
                     if (f63 != 0.0F)
                     {
                         if (Math.Abs(f63) >= 1.0F)
@@ -716,6 +757,7 @@ namespace Cum
                     {
                         var f55 = 0.0F;
                         for (var i56 = 0; i56 < conto.P[i54].N; i56++)
+                        {
                             if (conto.P[i54].Wz == 0 &&
                                 Py(conto.Keyx[i], conto.P[i54].Ox[i56], conto.Keyz[i], conto.P[i54].Oz[i56]) <
                                 mad.Stat.Clrad)
@@ -724,6 +766,8 @@ namespace Cum
                                 conto.P[i54].Oz[i56] += (int) (f55 * Medium.Sin(i52));
                                 conto.P[i54].Ox[i56] -= (int) (f55 * Medium.Sin(i53));
                             }
+                        }
+
                         if (f55 != 0.0F)
                         {
                             if (Math.Abs(f55) >= 1.0F)
@@ -788,6 +832,7 @@ namespace Cum
                     {
                         var f60 = 0.0F;
                         for (var i61 = 0; i61 < conto.P[i59].N; i61++)
+                        {
                             if (conto.P[i59].Wz == 0)
                             {
                                 f60 = f / 15.0F * Medium.Random();
@@ -801,6 +846,8 @@ namespace Cum
                                     i58++;
                                 }
                             }
+                        }
+
                         if (conto.P[i59].Glass == 1)
                         {
                             conto.P[i59].Gr += 5;
@@ -836,6 +883,7 @@ namespace Cum
                 {
                     var f66 = 0.0F;
                     for (var i67 = 0; i67 < conto.P[i65].N; i67++)
+                    {
                         if (conto.P[i65].Wz == 0 &&
                             Py(conto.Keyx[i], conto.P[i65].Ox[i67], conto.Keyz[i], conto.P[i65].Oz[i67]) <
                             mad.Stat.Clrad)
@@ -844,6 +892,8 @@ namespace Cum
                             conto.P[i65].Oz[i67] += (int) (f66 * Medium.Cos(conto.Xz) * Medium.Cos(conto.Zy));
                             conto.P[i65].Ox[i67] += (int) (f66 * Medium.Sin(conto.Xz) * Medium.Cos(conto.Xy));
                         }
+                    }
+
                     if (f66 != 0.0F)
                     {
                         if (Math.Abs(f66) >= 1.0F)

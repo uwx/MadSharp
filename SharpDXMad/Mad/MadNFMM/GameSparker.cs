@@ -158,7 +158,10 @@ namespace Cum
         private static void Loadbase()
         {
             if (CarRads.Length < XTGraphics.NCars)
+            {
                 throw new Exception("too many cars and not enough rad files!");
+            }
+
             var totalSize = 0;
             XTGraphics.Dnload += 6;
 
@@ -988,6 +991,7 @@ namespace Cum
         private static void Catchlink()
         {
             if (!_lostfcs)
+            {
                 if (_xm > 65 && _xm < 735 && _ym > 135 && _ym < 194 || _xm > 275 && _xm < 525 && _ym > 265 && _ym < 284)
                 {
                     //gsPanel.setCursor(new Cursor(12));
@@ -996,6 +1000,7 @@ namespace Cum
                         Openurl("http://www.radicalplay.com/");
                     }
                 }
+            }
         }
 
         private static void Checkmemory()
@@ -2065,6 +2070,7 @@ namespace Cum
                 }
             }
             if (XTGraphics.Fase == 9)
+            {
                 if (_clicknowtime < 76)
                 {
                     XTPart2.Rad(_clicknowtime);
@@ -2091,6 +2097,8 @@ namespace Cum
                     Mouses = 0;
                     U[0].Falseo(0);
                 }
+            }
+
             if (XTGraphics.Fase == -9)
             {
                 if (XTGraphics.Loadedt)
@@ -2367,6 +2375,7 @@ namespace Cum
             if (XTGraphics.Fase == 0)
             {
                 for (var player = 0; player < XTGraphics.Nplayers; player++)
+                {
                     if (Mads[player].Newcar)
                     {
                         var i34 = _stageContos[player].Xz;
@@ -2381,6 +2390,8 @@ namespace Cum
                         };
                         Mads[player].Newcar = false;
                     }
+                }
+
                 Medium.D();
 
                 var ai = new DistHolder[_nob];
@@ -2401,10 +2412,12 @@ namespace Cum
                     for (var k = 0; k < XTGraphics.Nplayers; k++)
                     {
                         for (var m = 0; m < XTGraphics.Nplayers; m++)
+                        {
                             if (m != k)
                             {
                                 Mads[k].Colide(_stageContos[k], Mads[m], _stageContos[m]);
                             }
+                        }
                     }
                     for (var k = 0; k < XTGraphics.Nplayers; k++)
                     {
@@ -2522,6 +2535,7 @@ namespace Cum
                 var j = 0;
                 var ais = new int[10000];
                 for (var k = 0; k < _nob; k++)
+                {
                     if (_stageContos[k].Dist != 0)
                     {
                         ais[j] = k;
@@ -2531,6 +2545,8 @@ namespace Cum
                     {
                         _stageContos[k].D();
                     }
+                }
+
                 var is2 = new int[j];
                 for (var k = 0; k < j; k++)
                 {
@@ -2539,6 +2555,7 @@ namespace Cum
                 for (var k = 0; k < j; k++)
                 {
                     for (var m = k + 1; m < j; m++)
+                    {
                         if (_stageContos[ais[k]].Dist != _stageContos[ais[m]].Dist)
                         {
                             if (_stageContos[ais[k]].Dist < _stageContos[ais[m]].Dist)
@@ -2558,14 +2575,17 @@ namespace Cum
                         {
                             is2[m]++;
                         }
+                    }
                 }
                 for (var k = 0; k < j; k++)
                 {
                     for (var m = 0; m < j; m++)
+                    {
                         if (is2[m] == k)
                         {
                             _stageContos[ais[m]].D();
                         }
+                    }
                 }
                 if (U[0].Enter || U[0].Handb || Mouses == 1)
                 {
@@ -2577,6 +2597,7 @@ namespace Cum
                 for (var k = 0; k < XTGraphics.Nplayers; k++)
                 {
                     if (Record.Fix[k] == _recordtime)
+                    {
                         if (_stageContos[k].Dist == 0)
                         {
                             _stageContos[k].Fcnt = 8;
@@ -2585,6 +2606,8 @@ namespace Cum
                         {
                             _stageContos[k].Fix = true;
                         }
+                    }
+
                     if (_stageContos[k].Fcnt == 7 || _stageContos[k].Fcnt == 8)
                     {
                         _stageContos[k] = new ContO(_contos[Mads[k].Cn], 0, 0, 0, 0);
@@ -2678,6 +2701,7 @@ namespace Cum
                 var j = 0;
                 var ais = new int[10000];
                 for (var k = 0; k < _nob; k++)
+                {
                     if (_stageContos[k].Dist != 0)
                     {
                         ais[j] = k;
@@ -2687,6 +2711,8 @@ namespace Cum
                     {
                         _stageContos[k].D();
                     }
+                }
+
                 var is2 = new int[j];
                 for (var k = 0; k < j; k++)
                 {
@@ -2695,6 +2721,7 @@ namespace Cum
                 for (var k = 0; k < j; k++)
                 {
                     for (var m = k + 1; m < j; m++)
+                    {
                         if (_stageContos[ais[
                                 k]].Dist != _stageContos[ais[m]].Dist)
                         {
@@ -2715,18 +2742,22 @@ namespace Cum
                         {
                             is2[m]++;
                         }
+                    }
                 }
                 for (var k = 0; k < j; k++)
                 {
                     for (var m = 0; m < j; m++)
+                    {
                         if (is2[m] == k)
                         {
                             _stageContos[ais[m]].D();
                         }
+                    }
                 }
                 for (var k = 0; k < XTGraphics.Nplayers; k++)
                 {
                     if (Record.Hfix[k] == _recordtime)
+                    {
                         if (_stageContos[k].Dist == 0)
                         {
                             _stageContos[k].Fcnt = 8;
@@ -2735,6 +2766,8 @@ namespace Cum
                         {
                             _stageContos[k].Fix = true;
                         }
+                    }
+
                     if (_stageContos[k].Fcnt == 7 || _stageContos[k].Fcnt == 8)
                     {
                         _stageContos[k] = new ContO(_contos[Mads[k].Cn], 0, 0, 0, 0);
@@ -2931,6 +2964,7 @@ namespace Cum
                             G.FillRect(0, 0, 800, 450);
                         }
                         if (_wastedpoint == 30 && _clicknowtime >= 1 && _clicknowtime < 30)
+                        {
                             if (_clicknowtime % (int) (2.0F + Medium.Random() * 3.0F) == 0 && !_flashingscreen)
                             {
                                 G.SetColor(new Color(255, 255, 255));
@@ -2941,6 +2975,8 @@ namespace Cum
                             {
                                 _flashingscreen = false;
                             }
+                        }
+
                         if (_recordtime > Record.Whenwasted && _clicknowtime != _wastedpoint)
                         {
                             _clicknowtime++;
@@ -3022,6 +3058,7 @@ namespace Cum
                 }
             }
             if (_lostfcs && XTGraphics.Fase == 7001)
+            {
                 if (_fcscnt == 0)
                 {
 //                if (u[0].chatup == 0)
@@ -3034,6 +3071,8 @@ namespace Cum
                 {
                     _fcscnt--;
                 }
+            }
+
             if (XTGraphics.Im > -1 && XTGraphics.Im < 8)
             {
                 var j = 0;
@@ -3205,13 +3244,25 @@ namespace Cum
                     U[0].Lookback = 1;
                 }
                 if (key == Keys.M)
+                {
                     U[0].Mutem = !U[0].Mutem;
+                }
+
                 if (key == Keys.N)
+                {
                     U[0].Mutes = !U[0].Mutes;
+                }
+
                 if (key == Keys.A)
+                {
                     U[0].Arrace = !U[0].Arrace;
+                }
+
                 if (key == Keys.S)
+                {
                     U[0].Radar = !U[0].Radar;
+                }
+
                 if (key == Keys.V)
                 {
                     _view++;
@@ -3325,7 +3376,11 @@ namespace Cum
 
         public void FocusLost()
         {
-            if (_exwist || _lostfcs) return;
+            if (_exwist || _lostfcs)
+            {
+                return;
+            }
+
             _lostfcs = true;
             _fcscnt = 10;
         }

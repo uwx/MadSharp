@@ -168,15 +168,15 @@ namespace Cum
                 _cbg1 = LoadBimage(ais, 0);
 
                 if (_cbg1 != null && _cbg2 != null)
-                    Makecarsbgc(_cbg1, _cbg2);
-            }),
+{                    Makecarsbgc(_cbg1, _cbg2);
+}            }),
             new ImageIdentifier("class.gif", ais =>
             {
                 _cbg2 = LoadBimage(ais, 0);
 
                 if (_cbg1 != null && _cbg2 != null)
-                    Makecarsbgc(_cbg1, _cbg2);
-            }),
+{                    Makecarsbgc(_cbg1, _cbg2);
+}            }),
             new ImageIdentifier("smokey.gif", ais => { Smokeypix(ais); }),
             new ImageIdentifier("1.gif", ais => { Orank[0] = Loadimage(ais); }),
             new ImageIdentifier("gameh.gif", ais => { Ogameh = Loadimage(ais); }),

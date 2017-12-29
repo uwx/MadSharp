@@ -161,6 +161,7 @@ namespace Cum
                 i26 = 2;
             }
             if (i != -101)
+            {
                 if (i == 4)
                 {
                     G.SetColor(new Color(216, 177, 100));
@@ -170,6 +171,8 @@ namespace Cum
                 {
                     G.FillRect(65, 25, 670, 400);
                 }
+            }
+
             if (i == 4)
             {
                 if (i != Lmode)
@@ -432,11 +435,12 @@ namespace Cum
                     Fase = 8;
                 }
                 if (Opselect == 0)
+                {
                     /*if (unlocked[0] == 11)
-                        if (unlocked[1] != 17)
-                            opselect = 1;
-                        else
-                            opselect = 2;*/
+       if (unlocked[1] != 17)
+           opselect = 1;
+       else
+           opselect = 2;*/
                     if (Firstime)
                     {
                         Oldfase = 102;
@@ -447,6 +451,8 @@ namespace Cum
                     {
                         Fase = 102;
                     }
+                }
+
                 Flipo = 0;
                 control.Enter = false;
                 control.Handb = false;
@@ -603,10 +609,13 @@ namespace Cum
                 "nigger", "pussy", "gay", "homo", "you punk", "i will kill you"
             };
             foreach (var string2 in strings)
+            {
                 if (astring.Contains(string2))
                 {
                     abool = true;
                 }
+            }
+
             if (astring.StartsWith("ass "))
             {
                 abool = true;
@@ -629,6 +638,7 @@ namespace Cum
             var bool421 = false;
             bool bool422;
             for (bool422 = false; i < astring.Length() && !bool422; i++)
+            {
                 if (!bool421)
                 {
                     string419 = "" + string419 + "" + astring.CharAt(i);
@@ -643,19 +653,24 @@ namespace Cum
                     }
                     string420 = "" + astring.CharAt(i);
                 }
+            }
+
             if (!bool422)
             {
                 foreach (var string2 in strings)
+                {
                     if (string419.Contains(string2))
                     {
                         abool = true;
                     }
+                }
             }
             string419 = "";
             string420 = "";
             i = 0;
             bool421 = true;
             for (bool422 = false; i < astring.Length() && !bool422; i++)
+            {
                 if (!bool421)
                 {
                     string419 = "" + string419 + "" + astring.CharAt(i);
@@ -670,19 +685,24 @@ namespace Cum
                     }
                     string420 = "" + astring.CharAt(i);
                 }
+            }
+
             if (!bool422)
             {
                 foreach (var string2 in strings)
+                {
                     if (string419.Contains(string2))
                     {
                         abool = true;
                     }
+                }
             }
             string419 = "";
             string420 = "";
             i = 0;
             var i425 = 0;
             for (bool422 = false; i < astring.Length() && !bool422; i++)
+            {
                 if (i425 == 0)
                 {
                     string419 = "" + string419 + "" + astring.CharAt(i);
@@ -697,19 +717,24 @@ namespace Cum
                     }
                     string420 = "" + astring.CharAt(i);
                 }
+            }
+
             if (!bool422)
             {
                 foreach (var string2 in strings)
+                {
                     if (string419.Contains(string2))
                     {
                         abool = true;
                     }
+                }
             }
             string419 = "";
             string420 = "";
             i = 0;
             i425 = 1;
             for (bool422 = false; i < astring.Length() && !bool422; i++)
+            {
                 if (i425 == 0)
                 {
                     string419 = "" + string419 + "" + astring.CharAt(i);
@@ -724,19 +749,24 @@ namespace Cum
                     }
                     string420 = "" + astring.CharAt(i);
                 }
+            }
+
             if (!bool422)
             {
                 foreach (var string2 in strings)
+                {
                     if (string419.Contains(string2))
                     {
                         abool = true;
                     }
+                }
             }
             string419 = "";
             string420 = "";
             i = 0;
             i425 = 2;
             for (bool422 = false; i < astring.Length() && !bool422; i++)
+            {
                 if (i425 == 0)
                 {
                     string419 = "" + string419 + "" + astring.CharAt(i);
@@ -751,13 +781,17 @@ namespace Cum
                     }
                     string420 = "" + astring.CharAt(i);
                 }
+            }
+
             if (!bool422)
             {
                 foreach (var string2 in strings)
+                {
                     if (string419.Contains(string2))
                     {
                         abool = true;
                     }
+                }
             }
             return abool;
         }
@@ -1684,6 +1718,7 @@ namespace Cum
                     Fase = 0;
                 }
                 if (Opselect == 1)
+                {
                     if (Record.Caught >= 300)
                     {
                         if (Loadedt && !Mutem)
@@ -1696,6 +1731,8 @@ namespace Cum
                     {
                         Fase = -8;
                     }
+                }
+
                 if (Opselect == 2)
                 {
                     if (Loadedt)
@@ -2209,6 +2246,7 @@ namespace Cum
                     i247 = 0;
                 }
                 for (var i248 = 0; i248 < Nplayers; i248++)
+                {
                     if (i248 != Im && CheckPoints.Dested[i248] == 0)
                     {
                         if (Clangame != 0)
@@ -2269,6 +2307,7 @@ namespace Cum
                         G.SetColor(new Color(i, i246, i247));
                         G.FillRect(ais[i248] - 1, is245[i248] - 1, 3, 3);
                     }
+                }
             }
             i = (int) (159.0F + 159.0F * (Medium.Snap[0] / 100.0F));
             if (i > 255)
@@ -2717,11 +2756,13 @@ namespace Cum
         internal static void Setbots(bool[] bools)
         {
             for (var i = 0; i < Nplayers; i++)
+            {
                 if (Plnames[i].Contains("MadBot"))
                 {
                     bools[i] = true;
                     Isbot[i] = true;
                 }
+            }
         }
 
         internal static void Skidf(int im, int i, float f)
@@ -2897,7 +2938,9 @@ namespace Cum
             for (var j = 0; j < Nplayers; j++)
             {
                 if (Sc[j] > NCars)
+                {
                     throw new Exception("there are too many tracks and not enough cars");
+                }
             }
         }
 
@@ -2906,15 +2949,19 @@ namespace Cum
             if (Lcn != i263)
             {
                 for (var i264 = 0; i264 < 5; i264++)
+                {
                     if (Pengs[i264])
                     {
                         Engs[CarDefine.Enginsignature[Lcn], i264].Stop();
                         Pengs[i264] = false;
                     }
+                }
+
                 Lcn = i263;
             }
             i++;
             for (var i265 = 0; i265 < 5; i265++)
+            {
                 if (i == i265)
                 {
                     if (!Pengs[i265])
@@ -2928,6 +2975,7 @@ namespace Cum
                     Engs[CarDefine.Enginsignature[i263], i265].Stop();
                     Pengs[i265] = false;
                 }
+            }
         }
 
         internal static void Stageselect(Control control, int i, int i39, bool abool)
@@ -2994,6 +3042,7 @@ namespace Cum
                             Acexp = -1;
                         }
                         if (CarDefine.Reco == 111)
+                        {
                             if (!Backlog.EqualsIgnoreCase(Nickname))
                             {
                                 Acexp = -3;
@@ -3002,6 +3051,7 @@ namespace Cum
                             {
                                 Acexp = 0;
                             }
+                        }
                     }
                     if (Nfmtab == 2 && CarDefine.Staction == 0 && Removeds == 1)
                     {
@@ -3121,6 +3171,7 @@ namespace Cum
                     G.SetFont(new Font("Arial", 1, 13));
                     Ftm = G.GetFontMetrics();
                     if (CarDefine.Staction == 0 || CarDefine.Staction == 6)
+                    {
                         if (CheckPoints.Stage != -3)
                         {
                             var astring = "";
@@ -3192,10 +3243,13 @@ namespace Cum
                                 //	app.snfm2.select(1 + (int) (HansenRandom.Double() * 17.0));
                             }
                         }
+                    }
+
                     if (CarDefine.Staction == 3)
                     {
                         Drawdprom(145, 170);
                         if (CarDefine.Reco == -2)
+                        {
                             if (Lfrom == 0)
                             {
                                 Drawcs(171, "Login to Retrieve your Account Stages", 0, 0, 0, 3);
@@ -3204,6 +3258,8 @@ namespace Cum
                             {
                                 Drawcs(171, "Login to add this stage to your account.", 0, 0, 0, 3);
                             }
+                        }
+
                         if (CarDefine.Reco == -1)
                         {
                             Drawcs(171, "Unable to connect to server, try again later!", 0, 8, 0, 3);
@@ -3655,6 +3711,7 @@ namespace Cum
             {
                 var i = 250;
                 if (Fase == 7001)
+                {
                     if (Exitm != 4)
                     {
                         Exitm = 0;
@@ -3664,6 +3721,8 @@ namespace Cum
                     {
                         i = 1200;
                     }
+                }
+
                 if (Exitm != 4 || !Lan || Im != 0)
                 {
                     Holdcnt++;
@@ -3696,6 +3755,7 @@ namespace Cum
                         Fase = -6;
                     }
                     else if (Starcnt == 0 && control.Chatup == 0 && (Multion < 2 || !Lan))
+                    {
                         if (Exitm == 0)
                         {
                             Exitm = 1;
@@ -3704,6 +3764,8 @@ namespace Cum
                         {
                             Exitm = 0;
                         }
+                    }
+
                     if (control.Chatup == 0 || Fase != 7001)
                     {
                         control.Enter = false;
@@ -3730,7 +3792,9 @@ namespace Cum
                 {
                     bool184 = true;
                     for (var i = 0; i < Nplayers; i++)
+                    {
                         if (CheckPoints.Dested[i] == 0)
+                        {
                             if (astring.Equals(""))
                             {
                                 astring = Pclan[i];
@@ -3740,6 +3804,8 @@ namespace Cum
                                 bool184 = false;
                                 break;
                             }
+                        }
+                    }
                 }
                 if (Clangame > 1)
                 {
@@ -3748,11 +3814,14 @@ namespace Cum
                     if (bool184)
                     {
                         for (var i = 0; i < Nplayers; i++)
+                        {
                             if (!astring.EqualsIgnoreCase(Pclan[i]))
                             {
                                 string185 = Pclan[i];
                                 break;
                             }
+                        }
+
                         if (Clangame == 2)
                         {
                             bool186 = true;
@@ -3773,6 +3842,7 @@ namespace Cum
                         }
                     }
                     for (var i = 0; i < Nplayers; i++)
+                    {
                         if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp &&
                             CheckPoints.Pos[i] == 0)
                         {
@@ -3797,6 +3867,8 @@ namespace Cum
                                             " should have wasted ain this racing vs wasting game!";
                             }
                         }
+                    }
+
                     if (bool186)
                     {
                         Drawhi(Gamefinished, 70);
@@ -3866,10 +3938,12 @@ namespace Cum
                         {
                             bool188 = true;
                             for (var i = 0; i < Nplayers; i++)
+                            {
                                 if (i != Im && Dested[i] == 0 && !Plnames[i].Contains("MadBot"))
                                 {
                                     bool188 = false;
                                 }
+                            }
                         }
                         if (Fase == 7001 && Nplayers - (CheckPoints.Wasted + 1) >= 2 && Discon != 240 &&
                             !bool188)
@@ -3890,6 +3964,7 @@ namespace Cum
                     if (!Holdit)
                     {
                         for (var i = 0; i < Nplayers; i++)
+                        {
                             if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp &&
                                 CheckPoints.Pos[i] == 0)
                             {
@@ -3986,6 +4061,7 @@ namespace Cum
                                 CheckPoints.Haltall = true;
                                 Holdit = true;
                             }
+                        }
                     }
                 }
                 else
@@ -3996,10 +4072,12 @@ namespace Cum
                         if (!bool184)
                         {
                             for (var i = 0; i < Nplayers; i++)
+                            {
                                 if (CheckPoints.Dested[i] == 0)
                                 {
                                     string189 = Plnames[i];
                                 }
+                            }
                         }
                         else
                         {
@@ -4024,6 +4102,7 @@ namespace Cum
                     if (!Holdit)
                     {
                         for (var i = 0; i < Nplayers; i++)
+                        {
                             if (CheckPoints.Clear[i] == CheckPoints.Nlaps * CheckPoints.Nsp &&
                                 CheckPoints.Pos[i] == 0)
                             {
@@ -4060,6 +4139,7 @@ namespace Cum
                                 Holdit = true;
                                 Winner = false;
                             }
+                        }
                     }
                     if (!Holdit && Discon == 240)
                     {
@@ -4136,9 +4216,11 @@ namespace Cum
                         if (!Arrace)
                         {
                             if (Auscnt == 45 && mad.Capcnt == 0 && Exitm == 0)
+                            {
                                 if (mad.Missedcp > 0)
                                 {
                                     if (mad.Missedcp > 15 && mad.Missedcp < 50)
+                                    {
                                         if (Flk)
                                         {
                                             Drawcs(70, "Checkpoint Missed!", 255, 0, 0, 0);
@@ -4147,6 +4229,8 @@ namespace Cum
                                         {
                                             Drawcs(70, "Checkpoint Missed!", 255, 150, 0, 2);
                                         }
+                                    }
+
                                     mad.Missedcp++;
                                     if (mad.Missedcp == 70)
                                     {
@@ -4179,6 +4263,7 @@ namespace Cum
                                         }
                                     }
                                 }
+                            }
                         }
                         else if (Alocked != Lalocked)
                         {
@@ -4313,6 +4398,7 @@ namespace Cum
                             if (Looped != 2)
                             {
                                 if (Pwcnt < 70 || Pwcnt < 100 && Looped != 0)
+                                {
                                     if (Pwflk)
                                     {
                                         Drawcs(110, "Power low, perform stunt!", 0, 0, 200, 0);
@@ -4323,6 +4409,7 @@ namespace Cum
                                         Drawcs(110, "Power low, perform stunt!", 255, 100, 0, 0);
                                         Pwflk = true;
                                     }
+                                }
                             }
                             else if (Pwcnt < 100)
                             {
@@ -4368,6 +4455,7 @@ namespace Cum
                         if (Tcnt < 30)
                         {
                             if (Exitm == 0)
+                            {
                                 if (Tflk)
                                 {
                                     if (!Wasay)
@@ -4392,6 +4480,8 @@ namespace Cum
                                     }
                                     Tflk = true;
                                 }
+                            }
+
                             Tcnt++;
                         }
                         else if (Wasay)
@@ -4401,6 +4491,7 @@ namespace Cum
                         if (Auscnt < 45)
                         {
                             if (Exitm == 0)
+                            {
                                 if (Aflk)
                                 {
                                     Drawcs(85, Asay, 98, 176, 255, 0);
@@ -4411,10 +4502,13 @@ namespace Cum
                                     Drawcs(85, Asay, 0, 128, 255, 0);
                                     Aflk = true;
                                 }
+                            }
+
                             Auscnt++;
                         }
                     }
                     else if (Exitm == 0)
+                    {
                         if (Tflk)
                         {
                             Drawcs(110, "Bad Landing!", 0, 0, 200, 0);
@@ -4425,6 +4519,8 @@ namespace Cum
                             Drawcs(110, "Bad Landing!", 255, 100, 0, 0);
                             Tflk = true;
                         }
+                    }
+
                     if (mad.Trcnt == 10)
                     {
                         Loop = "";
@@ -4474,6 +4570,7 @@ namespace Cum
                             Loop = "massive Back looping";
                         }
                         if (i == 0)
+                        {
                             if (mad.Ftab && mad.Btab)
                             {
                                 Loop = "Tabletop and reversed Tabletop";
@@ -4482,6 +4579,8 @@ namespace Cum
                             {
                                 Loop = "Tabletop";
                             }
+                        }
+
                         if (i > 0 && mad.Btab)
                         {
                             Loop = "Hanged " + Loop;
@@ -4502,7 +4601,10 @@ namespace Cum
                             i++;
                         }
                         if (i == 0 && mad.Rtab)
+                        {
                             Spin = Loop == "" ? "Tabletop" : "Flipside";
+                        }
+
                         if (i == 1)
                         {
                             Spin = "Rollspin";
@@ -4545,6 +4647,7 @@ namespace Cum
                             else
                             {
                                 if (Spin != "")
+                                {
                                     if (Loop == "")
                                     {
                                         Asay = Asay + " " + Spin;
@@ -4553,6 +4656,8 @@ namespace Cum
                                     {
                                         Asay = Asay + " with " + Spin;
                                     }
+                                }
+
                                 Asay = Asay + " by " + i;
                                 if (bool194)
                                 {
@@ -4561,6 +4666,7 @@ namespace Cum
                             }
                         }
                         else if (Spin != "")
+                        {
                             if (Loop == "")
                             {
                                 Asay = Asay + " " + Spin;
@@ -4569,6 +4675,8 @@ namespace Cum
                             {
                                 Asay = Asay + " by " + Spin;
                             }
+                        }
+
                         if (Asay != "")
                         {
                             Auscnt -= 15;
@@ -4645,6 +4753,7 @@ namespace Cum
                         Crashup = !Crashup;
                     }
                     for (var i = 0; i < Nplayers; i++)
+                    {
                         if (Dested[i] != CheckPoints.Dested[i] && i != Im)
                         {
                             Dested[i] = CheckPoints.Dested[i];
@@ -4692,6 +4801,8 @@ namespace Cum
                                 }
                             }
                         }
+                    }
+
                     if (Multion >= 2 && Alocked != Lalocked)
                     {
                         if (Alocked != -1)

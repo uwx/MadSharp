@@ -62,11 +62,13 @@ namespace Cum
                     if (i3 == 0 || i4 == 0 || i3 == Ncx - 1 || i4 == Ncz - 1)
                     {
                         for (var i10 = 0; i10 < Nt; i10++)
+                        {
                             if (Dam[i10] == 167)
                             {
                                 ais[i7] = i10;
                                 i7++;
                             }
+                        }
                     }
                     if (i7 == 0)
                     {
@@ -78,10 +80,13 @@ namespace Cum
                 }
             }
             for (var i12 = 0; i12 < Nt; i12++)
+            {
                 if (Dam[i12] == 167)
                 {
                     Dam[i12] = 1;
                 }
+            }
+
             Ncx--;
             Ncz--;
         }

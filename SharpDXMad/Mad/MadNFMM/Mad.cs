@@ -138,7 +138,11 @@ namespace Cum
                         _dominate[mad118.Im] = Math.Abs(Power * Speed * Stat.Moment) >
                                                Math.Abs(mad118.Power * mad118.Speed * mad118.Stat.Moment);
                     }
-                    else _dominate[mad118.Im] = Stat.Moment > mad118.Stat.Moment;
+                    else
+                    {
+                        _dominate[mad118.Im] = Stat.Moment > mad118.Stat.Moment;
+                    }
+
                     _caught[mad118.Im] = true;
                 }
             }
@@ -168,6 +172,7 @@ namespace Cum
                 for (var i128 = 0; i128 < 4; i128++)
                 {
                     for (var i129 = 0; i129 < 4; i129++)
+                    {
                         if (Rpy(fs[i128], fs122[i129], fs120[i128], fs123[i129], fs121[i128], fs124[i129]) <
                             (i126 + i127) * (mad118.Stat.Comprad + Stat.Comprad))
                         {
@@ -281,6 +286,7 @@ namespace Cum
                             }
                             mad118.Scy[i129] -= Stat.Lift;
                         }
+                    }
                 }
             }
             if (XTGraphics.Multion == 1)
@@ -299,10 +305,12 @@ namespace Cum
         private void Distruct(ContO conto)
         {
             for (var i = 0; i < conto.Npl; i++)
+            {
                 if (conto.P[i].Wz == 0 || conto.P[i].Gr == -17 || conto.P[i].Gr == -16)
                 {
                     conto.P[i].Embos = 1;
                 }
+            }
         }
 
         internal void Drive(Control control, ContO conto)
@@ -394,6 +402,7 @@ namespace Cum
             if (control.Handb)
             {
                 if (!Pushed)
+                {
                     if (!Wtouch)
                     {
                         if (Loop == 0)
@@ -405,6 +414,7 @@ namespace Cum
                     {
                         Pushed = true;
                     }
+                }
             }
             else
             {
@@ -420,6 +430,7 @@ namespace Cum
                 Loop = 2;
             }
             if (!Dest)
+            {
                 if (Loop == 2)
                 {
                     if (control.Up)
@@ -526,6 +537,7 @@ namespace Cum
                         f15 = 40.0F;
                     }
                     if (control.Down)
+                    {
                         if (Speed > 0.0F)
                         {
                             Speed -= Stat.Handb / 2;
@@ -534,10 +546,13 @@ namespace Cum
                         {
                             var i16 = 0;
                             for (var i17 = 0; i17 < 2; i17++)
+                            {
                                 if (Speed <= -(Stat.Swits[i17] / 2 + f15 * Stat.Swits[i17] / 196.0F))
                                 {
                                     i16++;
                                 }
+                            }
+
                             if (i16 != 2)
                             {
                                 Speed -= Stat.Acelf[i16] / 2.0F + f15 * Stat.Acelf[i16] / 196.0F;
@@ -547,7 +562,10 @@ namespace Cum
                                 Speed = -(Stat.Swits[1] / 2 + f15 * Stat.Swits[1] / 196.0F);
                             }
                         }
+                    }
+
                     if (control.Up)
+                    {
                         if (Speed < 0.0F)
                         {
                             Speed += Stat.Handb;
@@ -556,10 +574,13 @@ namespace Cum
                         {
                             var i18 = 0;
                             for (var i19 = 0; i19 < 3; i19++)
+                            {
                                 if (Speed >= Stat.Swits[i19] / 2 + f15 * Stat.Swits[i19] / 196.0F)
                                 {
                                     i18++;
                                 }
+                            }
+
                             if (i18 != 3)
                             {
                                 Speed += Stat.Acelf[i18] / 2.0F + f15 * Stat.Acelf[i18] / 196.0F;
@@ -569,7 +590,10 @@ namespace Cum
                                 Speed = Stat.Swits[2] / 2 + f15 * Stat.Swits[2] / 196.0F;
                             }
                         }
+                    }
+
                     if (control.Handb && Math.Abs(Speed) > Stat.Handb)
+                    {
                         if (Speed < 0.0F)
                         {
                             Speed += Stat.Handb;
@@ -578,6 +602,8 @@ namespace Cum
                         {
                             Speed -= Stat.Handb;
                         }
+                    }
+
                     if (Loop == -1 && conto.Y < 100)
                     {
                         if (control.Left)
@@ -680,6 +706,8 @@ namespace Cum
                         Pxy += (int) (Rcomp - Lcomp);
                     }
                 }
+            }
+
             var f20 = 20.0F * Speed / (154.0F * Stat.Simag);
             if (f20 > 20.0F)
             {
@@ -711,6 +739,7 @@ namespace Cum
                 }
             }
             if (conto.Wxz != 0 && !control.Left && !control.Right)
+            {
                 if (Math.Abs(Speed) < 10.0F)
                 {
                     if (Math.Abs(conto.Wxz) == 1)
@@ -741,6 +770,8 @@ namespace Cum
                         conto.Wxz += Stat.Turn * 2;
                     }
                 }
+            }
+
             var i21 = (int) (3600.0F / (Speed * Speed));
             if (i21 < 5)
             {
@@ -774,6 +805,7 @@ namespace Cum
             if (Speed > 30.0F || Speed < -100.0F)
             {
                 while (Math.Abs(Mxz - Cxz) > 180)
+                {
                     if (Cxz > Mxz)
                     {
                         Cxz -= 360;
@@ -782,6 +814,8 @@ namespace Cum
                     {
                         Cxz += 360;
                     }
+                }
+
                 if (Math.Abs(Mxz - Cxz) < 30)
                 {
                     Cxz += (int) ((Mxz - Cxz) / 4.0F);
@@ -1152,10 +1186,12 @@ namespace Cum
             {
                 f48 /= i45;
                 for (var i52 = 0; i52 < 4; i52++)
+                {
                     if (!bools47[i52])
                     {
                         fs23[i52] -= f48;
                     }
+                }
             }
             var i53 = 0;
             for (var i54 = 0; i54 < Trackers.Sect[i30, i31].Length; i54++)
@@ -1240,10 +1276,13 @@ namespace Cum
                             (Scz[i58] < 0.0F || Trackers.Radz[i55] == 287))
                         {
                             for (var i61 = 0; i61 < 4; i61++)
+                            {
                                 if (i58 != i61 && fs22[i61] >= Trackers.Z[i55] + Trackers.Radz[i55])
                                 {
                                     fs22[i61] -= fs22[i58] - (Trackers.Z[i55] + Trackers.Radz[i55]);
                                 }
+                            }
+
                             fs22[i58] = Trackers.Z[i55] + Trackers.Radz[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
@@ -1290,10 +1329,13 @@ namespace Cum
                             (Scz[i58] > 0.0F || Trackers.Radz[i55] == 287))
                         {
                             for (var i63 = 0; i63 < 4; i63++)
+                            {
                                 if (i58 != i63 && fs22[i63] <= Trackers.Z[i55] - Trackers.Radz[i55])
                                 {
                                     fs22[i63] -= fs22[i58] - (Trackers.Z[i55] - Trackers.Radz[i55]);
                                 }
+                            }
+
                             fs22[i58] = Trackers.Z[i55] - Trackers.Radz[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
@@ -1340,10 +1382,13 @@ namespace Cum
                             (Scx[i58] < 0.0F || Trackers.Radx[i55] == 287))
                         {
                             for (var i65 = 0; i65 < 4; i65++)
+                            {
                                 if (i58 != i65 && fs[i65] >= Trackers.X[i55] + Trackers.Radx[i55])
                                 {
                                     fs[i65] -= fs[i58] - (Trackers.X[i55] + Trackers.Radx[i55]);
                                 }
+                            }
+
                             fs[i58] = Trackers.X[i55] + Trackers.Radx[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
@@ -1390,10 +1435,13 @@ namespace Cum
                             (Scx[i58] > 0.0F || Trackers.Radx[i55] == 287))
                         {
                             for (var i67 = 0; i67 < 4; i67++)
+                            {
                                 if (i58 != i67 && fs[i67] <= Trackers.X[i55] - Trackers.Radx[i55])
                                 {
                                     fs[i67] -= fs[i58] - (Trackers.X[i55] - Trackers.Radx[i55]);
                                 }
+                            }
+
                             fs[i58] = Trackers.X[i55] - Trackers.Radx[i55];
                             if (Trackers.Skd[i55] != 2)
                             {
@@ -2028,10 +2076,13 @@ namespace Cum
                         i91 = 0;
                     }
                     while (CheckPoints.Typ[i91] <= 0)
+                    {
                         if (++i91 >= CheckPoints.N)
                         {
                             i91 = 0;
                         }
+                    }
+
                     if (i89 > i91 && (Clear != Nlaps * CheckPoints.Nsp || i89 < Pcleared))
                     {
                         i89 = i91;
@@ -2099,6 +2150,7 @@ namespace Cum
                 if (Medium.Noelec == 0)
                 {
                     for (var i93 = 0; i93 < CheckPoints.Fn; i93++)
+                    {
                         if (!CheckPoints.Roted[i93])
                         {
                             if (Math.Abs(conto.Z - CheckPoints.Fz[i93]) < 200 && Py(conto.X / 100,
@@ -2136,16 +2188,19 @@ namespace Cum
                             }
                             Record.Fix[Im] = 300;
                         }
+                    }
                 }
             }
             else
             {
                 for (var i94 = 0; i94 < CheckPoints.Fn; i94++)
+                {
                     if (Rpy(conto.X / 100, CheckPoints.Fx[i94] / 100, conto.Y / 100, CheckPoints.Fy[i94] / 100,
                             conto.Z / 100, CheckPoints.Fz[i94] / 100) < 760)
                     {
                         Medium.Noelec = 2;
                     }
+                }
             }
             if (conto.Fcnt == 7 || conto.Fcnt == 8)
             {
@@ -2314,10 +2369,13 @@ namespace Cum
                     {
                         var i95 = 0;
                         for (var i96 = 0; i96 < 4; i96++)
+                        {
                             if (Math.Abs(Scz[i96]) < 70.0F && Math.Abs(Scx[i96]) < 70.0F)
                             {
                                 i95++;
                             }
+                        }
+
                         if (i95 == 4)
                         {
                             Capcnt = 1;
@@ -2337,6 +2395,7 @@ namespace Cum
                     }
                 }
                 if (Trcnt == 0 && Speed != 0.0F)
+                {
                     if (_xtpower == 0)
                     {
                         if (Power > 0.0F)
@@ -2352,6 +2411,7 @@ namespace Cum
                     {
                         _xtpower--;
                     }
+                }
             }
             if (Im == XTGraphics.Im)
             {
@@ -2367,6 +2427,7 @@ namespace Cum
             if (Dest)
             {
                 if (CheckPoints.Dested[Im] == 0)
+                {
                     if (Lastcolido == 0)
                     {
                         CheckPoints.Dested[Im] = 1;
@@ -2375,6 +2436,7 @@ namespace Cum
                     {
                         CheckPoints.Dested[Im] = 2;
                     }
+                }
             }
             else if (CheckPoints.Dested[Im] != 0 && CheckPoints.Dested[Im] != 3)
             {
@@ -2436,6 +2498,7 @@ namespace Cum
                 {
                     var f112 = 0.0F;
                     for (var i113 = 0; i113 < conto.P[i111].N; i113++)
+                    {
                         if (conto.P[i111].Wz == 0 && Py(conto.Keyx[i], conto.P[i111].Ox[i113], conto.Keyz[i],
                                 conto.P[i111].Oz[i113]) < Stat.Clrad)
                         {
@@ -2448,6 +2511,8 @@ namespace Cum
                                 i110 += (int) Math.Abs(f112);
                             }
                         }
+                    }
+
                     if (f112 != 0.0F)
                     {
                         if (Math.Abs(f112) >= 1.0F)
@@ -2570,6 +2635,7 @@ namespace Cum
                     {
                         var f103 = 0.0F;
                         for (var i104 = 0; i104 < conto.P[i102].N; i104++)
+                        {
                             if (conto.P[i102].Wz == 0 && Py(conto.Keyx[i], conto.P[i102].Ox[i104], conto.Keyz[i],
                                     conto.P[i102].Oz[i104]) < Stat.Clrad)
                             {
@@ -2582,6 +2648,8 @@ namespace Cum
                                     i97 += (int) Math.Abs(f103);
                                 }
                             }
+                        }
+
                         if (f103 != 0.0F)
                         {
                             if (Math.Abs(f103) >= 1.0F)
@@ -2635,6 +2703,7 @@ namespace Cum
                     }
                 }
                 if (i99 * i98 == -1)
+                {
                     if (_nbsq > 0)
                     {
                         var i105 = 0;
@@ -2643,6 +2712,7 @@ namespace Cum
                         {
                             var f108 = 0.0F;
                             for (var i109 = 0; i109 < conto.P[i107].N; i109++)
+                            {
                                 if (conto.P[i107].Wz == 0)
                                 {
                                     f108 = f / 15.0F * Medium.Random();
@@ -2659,6 +2729,8 @@ namespace Cum
                                         }
                                     }
                                 }
+                            }
+
                             if (conto.P[i107].Glass == 1)
                             {
                                 conto.P[i107].Gr += 5;
@@ -2680,6 +2752,7 @@ namespace Cum
                     {
                         _nbsq++;
                     }
+                }
             }
             return i97;
         }
@@ -2721,6 +2794,7 @@ namespace Cum
                 {
                     var f116 = 0.0F;
                     for (var i117 = 0; i117 < conto.P[i115].N; i117++)
+                    {
                         if (conto.P[i115].Wz == 0 && Py(conto.Keyx[i], conto.P[i115].Ox[i117], conto.Keyz[i],
                                 conto.P[i115].Oz[i117]) < Stat.Clrad)
                         {
@@ -2733,6 +2807,8 @@ namespace Cum
                                 i114 += (int) Math.Abs(f116);
                             }
                         }
+                    }
+
                     if (f116 != 0.0F)
                     {
                         if (Math.Abs(f116) >= 1.0F)
