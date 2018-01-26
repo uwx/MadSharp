@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using MadGame;
 using MiscUtil;
+using NAudio.Wave;
 using SharpDX;
 using SharpDX.Direct2D1;
 using SharpDX.DirectWrite;
@@ -139,27 +140,28 @@ namespace Cum
 
     public struct FontMetrics
     {
-        private System.Drawing.Font _font;
+        private readonly TextFormat _textFormat;
 
-        public FontMetrics(Font font)
+        public FontMetrics(TextFormat font)
         {
-            _font = new System.Drawing.Font(font.FontName, font.Size);
+            _textFormat = font;
         }
 
         public int StringWidth(string astring)
         {
-            return TextRenderer.MeasureText(astring, _font).Width;
+            var layout = new TextLayout(G.FactoryDW, astring, _textFormat, 1024, _textFormat.FontSize);
+            return (int)layout.Metrics.Width;
         }
 
         public int Height(string astring)
         {
-            return TextRenderer.MeasureText(astring, _font).Height;
+            return (int)_textFormat.FontSize;
         }
     }
 
     public struct CachedFont
     {
-        public TextFormat Format;
+        public readonly TextFormat Format;
         public FontMetrics Metrics;
 
         public CachedFont((TextFormat, FontMetrics) res)
@@ -185,7 +187,7 @@ namespace Cum
 
     public struct Color
     {
-        public int R, G, B, A;
+        public readonly int R, G, B, A;
 
         public Color(int r, int g, int b, int a)
         {
@@ -651,40 +653,117 @@ namespace Cum
             return _width;
         }
     }
+    
+    // http://mark-dot-net.blogspot.com/2009/10/looped-playback-in-net-with-naudio.html
+    /// <summary>
+    /// Stream for looping playback
+    /// </summary>
+    public class LoopStream : WaveStream
+    {
+        WaveStream sourceStream;
+
+        /// <summary>
+        /// Creates a new Loop stream
+        /// </summary>
+        /// <param name="sourceStream">The stream to read from. Note: the Read method of this stream should return 0 when it reaches the end
+        /// or else we will not loop to the start again.</param>
+        public LoopStream(WaveStream sourceStream)
+        {
+            this.sourceStream = sourceStream;
+            this.EnableLooping = true;
+        }
+
+        /// <summary>
+        /// Use this to turn looping on or off
+        /// </summary>
+        public bool EnableLooping { get; set; }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Return source stream's wave format
+        /// </summary>
+        public override WaveFormat WaveFormat => sourceStream.WaveFormat;
+
+        /// <inheritdoc />
+        /// <summary>
+        /// LoopStream simply returns
+        /// </summary>
+        public override long Length => sourceStream.Length;
+
+        /// <inheritdoc />
+        /// <summary>
+        /// LoopStream simply passes on positioning to source stream
+        /// </summary>
+        public override long Position
+        {
+            get => sourceStream.Position;
+            set => sourceStream.Position = value;
+        }
+
+        public override int Read(byte[] buffer, int offset, int count)
+        {
+            var totalBytesRead = 0;
+
+            while (totalBytesRead < count)
+            {
+                var bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
+                if (bytesRead == 0)
+                {
+                    if (sourceStream.Position == 0 || !EnableLooping)
+                    {
+                        // something wrong with the source stream
+                        break;
+                    }
+                    // loop
+                    sourceStream.Position = 0;
+                }
+                totalBytesRead += bytesRead;
+            }
+            return totalBytesRead;
+        }
+    }
 
     internal class SoundClip
     {
         public static ContO Source;
         public static ContO Player;
+        private readonly AudioFileReader _audioFile;
+        private readonly WaveOutEvent _outputDevice;
+        private readonly LoopStream _loop;
 
         public SoundClip(string s)
         {
-//            throw new NotImplementedException();
+            _audioFile = new AudioFileReader(s);
+            _loop = new LoopStream(_audioFile);
+            _outputDevice = new WaveOutEvent();
+            _outputDevice.Init(_loop);
         }
 
         public void Play()
         {
-//            throw new NotImplementedException();
+            _loop.EnableLooping = false;
+            _outputDevice.Play();
         }
 
         public void Checkopen()
         {
-//            throw new NotImplementedException();
         }
 
         public void Loop()
         {
-//            throw new NotImplementedException();
+            _loop.EnableLooping = true;
+            _outputDevice.Play();
         }
 
         public void Stop()
         {
-//            throw new NotImplementedException();
+            _outputDevice.Stop();
         }
 
         public static void StopAll()
         {
-//            throw new NotImplementedException();
+//            _audioFile.Dispose();
+//            _outputDevice.Dispose();
         }
     }
 

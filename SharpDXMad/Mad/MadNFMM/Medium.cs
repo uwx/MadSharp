@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using MadGame;
 using boolean = System.Boolean;
 
@@ -402,9 +403,19 @@ namespace Cum
             Cpflik = !Cpflik;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static int Mod(int x, int m) {
+            var r = x % m;
+            return r<0 ? r + m : r;
+        }
+        internal static float Sin(int i)
+        {
+            return Tsin[Mod(i, 360)];
+        }
+        
         internal static float Cos(int i)
         {
-            return Tcos[i % 360];
+            return Tcos[Mod(i, 360)];
         }
 
         internal static void D()
@@ -2483,11 +2494,6 @@ namespace Cum
             Snap[0] = i;
             Snap[1] = i247;
             Snap[2] = i248;
-        }
-
-        internal static float Sin(int i)
-        {
-            return Tsin[i % 360];
         }
 
         internal static void Transaround(ContO conto, ContO conto18, int i)

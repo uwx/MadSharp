@@ -9,7 +9,7 @@ namespace Cum
 {
     public class XTPart2
     {
-        static internal Image Loadude(byte[] ais)
+        internal static Image Loadude(byte[] ais)
         {
             return ImageIo.Read(ais);
 //        Image image = ImageIO.read(ais);
@@ -1592,7 +1592,7 @@ namespace Cum
             }
         }
 
-        static public void Nofocus()
+        public static void Nofocus()
         {
             G.SetColor(new Color(255, 255, 255));
             G.FillRect(0, 0, 800, 20);
@@ -1609,14 +1609,14 @@ namespace Cum
             Drawcs(445, "Game lost its focus.   Click screen with mouse to continue.", 100, 100, 100, 3);
         }
 
-        static internal bool Over(Image image, int i, int i294, int i295, int i296)
+        internal static bool Over(Image image, int i, int i294, int i295, int i296)
         {
             var i297 = image.GetHeight(null);
             var i298 = image.GetWidth(null);
             return i > i295 - 5 && i < i295 + i298 + 5 && i294 > i296 - 5 && i294 < i296 + i297 + 5;
         }
 
-        static internal bool Overon(int i, int i289, int i290, int i291, int i292, int i293)
+        internal static bool Overon(int i, int i289, int i290, int i291, int i292, int i293)
         {
             return i292 > i && i292 < i + i290 && i293 > i289 && i293 < i289 + i291;
         }
@@ -1817,7 +1817,7 @@ namespace Cum
 //        }
         }
 
-        static private void Pingstat()
+        private static void Pingstat()
         {
 //        int i = (int) (100.0 * HansenRandom.Double());
 //        try {
@@ -2084,7 +2084,7 @@ namespace Cum
             }
         }
 
-        static internal Image Pressed(Image image)
+        internal static Image Pressed(Image image)
         {
             return image;
 //        int i = image.getHeight(null);
@@ -2103,12 +2103,12 @@ namespace Cum
 //        return xt.createImage(new MemoryImageSource(i337, i, ais, 0, i337));
         }
 
-        static internal int Py(int i, int i281, int i282, int i283)
+        internal static int Py(int i, int i281, int i282, int i283)
         {
             return (i - i281) * (i - i281) + (i282 - i283) * (i282 - i283);
         }
 
-        static internal float Pys(int i, int i284, int i285, int i286)
+        internal static float Pys(int i, int i284, int i285, int i286)
         {
             return (float) Math.Sqrt((i - i284) * (i - i284) + (i285 - i286) * (i285 - i286));
         }
@@ -2177,7 +2177,7 @@ namespace Cum
             G.FillRect(65, 425, 670, 25);
         }
 
-        static private void Radarstat(Mad mad, ContO conto)
+        private static void Radarstat(Mad mad, ContO conto)
         {
             G.SetAlpha(0.5F);
             G.SetColor(new Color(Medium.Csky[0], Medium.Csky[1], Medium.Csky[2]));
@@ -2505,7 +2505,7 @@ namespace Cum
             }
         }
 
-        static internal void Rot(int[] ais, int[] is272, int i, int i273, int i274, int i275)
+        internal static void Rot(int[] ais, int[] is272, int i, int i273, int i274, int i275)
         {
             if (i274 != 0)
             {
@@ -2879,7 +2879,7 @@ namespace Cum
             Flaot = Loadopsnap(Oflaot, i, 1);
         }
 
-        static private void Sortcars(int i)
+        private static void Sortcars(int i)
         {
             if (i != 0)
             {
@@ -2944,7 +2944,7 @@ namespace Cum
             }
         }
 
-        static private void Sparkeng(int i, int i263)
+        private static void Sparkeng(int i, int i263)
         {
             if (Lcn != i263)
             {
@@ -4845,7 +4845,7 @@ namespace Cum
             }
         }
 
-        static private void Stopairs()
+        private static void Stopairs()
         {
             for (var i = 0; i < 6; i++)
             {
@@ -4988,7 +4988,7 @@ namespace Cum
             }
         }
 
-        static internal int Xs(int i, int i279)
+        internal static int Xs(int i, int i279)
         {
             if (i279 < 50)
             {
@@ -4997,7 +4997,7 @@ namespace Cum
             return (i279 - Medium.FocusPoint) * (Medium.Cx - i) / i279 + i;
         }
 
-        static internal int Ys(int i, int i280)
+        internal static int Ys(int i, int i280)
         {
             if (i280 < 50)
             {

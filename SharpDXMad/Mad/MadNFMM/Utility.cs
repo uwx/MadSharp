@@ -175,8 +175,8 @@ namespace Cum
             return int.Parse(string264);
         }
 
-        private readonly static float Epsilon = 0.0000001F;
-        private readonly static double EpsilonDouble = 0.0000001D;
+        private static readonly float Epsilon = 0.0000001F;
+        private static readonly double EpsilonDouble = 0.0000001D;
 
         static bool FEquals(float a, float b)
         {

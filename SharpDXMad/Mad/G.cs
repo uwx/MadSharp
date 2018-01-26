@@ -129,10 +129,11 @@ namespace MadGame
 
         public static void SetFont(Font p0)
         {
-            _fontCached = Fonts.GetOrCompute(p0, () => (
-                new TextFormat(FactoryDW, p0.FontName, p0.Size),
-                new FontMetrics(p0)
-                ));
+            _fontCached = Fonts.GetOrCompute(p0, () =>
+            {
+                var fmt = new TextFormat(FactoryDW, p0.FontName, p0.Size);
+                return (fmt, new FontMetrics(fmt));
+            });
             _textFormat = _fontCached.Format;
         }
 

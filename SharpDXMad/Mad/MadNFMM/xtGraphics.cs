@@ -3529,7 +3529,7 @@ namespace Cum
             return ImageIo.Read(new File(astring));
         }
 
-        static internal string GetSvalue(string astring, int i)
+        internal static string GetSvalue(string astring, int i)
         {
             var string443 = "";
             try
@@ -3565,7 +3565,7 @@ namespace Cum
             return string443;
         }
 
-        static internal int Getvalue(string astring, int i)
+        internal static int Getvalue(string astring, int i)
         {
             var i437 = -1;
             try
@@ -3632,14 +3632,14 @@ namespace Cum
             }
         }
 
-        static internal void Hidos()
+        internal static void Hidos()
         {
             //app.snfm1.setVisible(false);
             //app.snfm2.setVisible(false);
             GameSparker.Mstgs.SetVisible(false);
         }
 
-        static internal void Hipnoload(int i, bool abool)
+        internal static void Hipnoload(int i, bool abool)
         {
             int[] ais =
             {
@@ -4740,7 +4740,7 @@ namespace Cum
             Drawcs(380, "Press  [ Enter ]  to continue", 0, 0, 0, 0);
         }
 
-        static internal Image LoadBimage(byte[] ais, int i)
+        internal static Image LoadBimage(byte[] ais, int i)
         {
             return Loadimage(ais);
 //        Image image = toolkit.createImage(ais);
@@ -4814,7 +4814,7 @@ namespace Cum
             Loadsounds();
         }
 
-        static internal Image Loadimage(byte[] ais)
+        internal static Image Loadimage(byte[] ais)
         {
 //        Image image = toolkit.createImage(ais);
 //        mediatracker.addImage(image, 0);
@@ -4826,7 +4826,7 @@ namespace Cum
             return ImageIo.Read(ais);
         }
 
-        static internal void Loadimages()
+        internal static void Loadimages()
         {
 //        Toolkit toolkit = Toolkit.getDefaultToolkit();
 //        MediaTracker mediatracker = new MediaTracker(app);
@@ -4952,7 +4952,7 @@ namespace Cum
             Fase = 6;
         }
 
-        static internal Image Loadopsnap(Image image, int i, int i323)
+        internal static Image Loadopsnap(Image image, int i, int i323)
         {
             return image;
 //        int i324 = image.getHeight(null);
@@ -5042,7 +5042,7 @@ namespace Cum
 //        return xt.createImage(new MemoryImageSource(i325, i324, ais, 0, i325));
         }
 
-        static internal Image Loadsnap(Image image)
+        internal static Image Loadsnap(Image image)
         {
             return image;
 //        int i = image.getHeight(null);
@@ -5096,7 +5096,7 @@ namespace Cum
 //        return bufferedimage;
         }
 
-        static internal void Loadsounds()
+        internal static void Loadsounds()
         {
             Dnload += 3;
             foreach (var file in Directory.GetFiles("temp-sound/"))
