@@ -620,10 +620,7 @@ namespace Cum
 
         private string _getParent() => System.IO.Path.GetDirectoryName(Path);
 
-        public bool Exists()
-        {
-            System.IO.File.Exists(Path);
-        }
+        public bool Exists() => System.IO.File.Exists(Path);
     }
 
     public struct Font
