@@ -1,4 +1,5 @@
 using System;
+using MiscUtil;
 using boolean = System.Boolean;
 
 namespace Cum
@@ -804,7 +805,7 @@ namespace Cum
             }
             if (Speed > 30.0F || Speed < -100.0F)
             {
-                while (Math.Abs(Mxz - Cxz) > 180)
+                while (SafeMath.Abs(Mxz - Cxz) > 180)
                 {
                     if (Cxz > Mxz)
                     {
@@ -816,7 +817,7 @@ namespace Cum
                     }
                 }
 
-                if (Math.Abs(Mxz - Cxz) < 30)
+                if (SafeMath.Abs(Mxz - Cxz) < 30)
                 {
                     Cxz += (int) ((Mxz - Cxz) / 4.0F);
                 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -27,9 +28,7 @@ namespace MadGame
     /// </summary>
     public class Program : Direct2D1DemoApp
     {
-        private const int FrameDelay = (int) (1000 / 21f);
-
-        private static readonly Stopwatch Stopwatch = new Stopwatch();
+        private const int FrameDelay = (int) (1000 / 21.3f);
 
         public GameSparker GameSparker { get; set; }
 
@@ -60,8 +59,8 @@ namespace MadGame
 
         protected override void Draw(DemoTime time)
         {
-            Stopwatch.Reset();
-
+            var tickStart = CurrentTimeMillis();
+            
             base.Draw(time);
 
             // Draw the TextLayout
@@ -74,13 +73,20 @@ namespace MadGame
 
             GameSparker.GameTick();
 
-            var delay = FrameDelay - (int) Stopwatch.ElapsedMilliseconds;
+            var delay = FrameDelay - (int)(CurrentTimeMillis() - tickStart);
             if (delay > 0)
             {
+                Console.WriteLine(delay);
                 Thread.Sleep(delay);
             }
 
             //RenderTarget2D.FillEllipse(new D2D.Ellipse(new Vector2(250, 525), 100, 100), new D2D.SolidColorBrush(RenderTarget2D, new RawColor4(0,1,0,1)));
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static long CurrentTimeMillis()
+        {
+            return DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
         }
 
         protected override void KeyDown(KeyEventArgs args)

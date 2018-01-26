@@ -404,13 +404,7 @@ namespace Cum
 
         internal static float Cos(int i)
         {
-            for ( /**/; i >= 360; i -= 360)
-            {
-            }
-            for ( /**/; i < 0; i += 360)
-            {
-            }
-            return Tcos[i];
+            return Tcos[i % 360];
         }
 
         internal static void D()
@@ -2493,13 +2487,7 @@ namespace Cum
 
         internal static float Sin(int i)
         {
-            for ( /**/; i >= 360; i -= 360)
-            {
-            }
-            for ( /**/; i < 0; i += 360)
-            {
-            }
-            return Tsin[i];
+            return Tsin[i % 360];
         }
 
         internal static void Transaround(ContO conto, ContO conto18, int i)
