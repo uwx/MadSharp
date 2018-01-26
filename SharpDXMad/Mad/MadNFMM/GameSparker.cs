@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using MadGame;
 using boolean = System.Boolean;
@@ -1165,7 +1166,7 @@ namespace Cum
             Openurl("http://multiplayer.needformadness.com/edit.pl" + logged + "#" + accountid + "");
         }
 
-        private static int Getint(string astring, string string4, int i)
+        internal static int Getint(string astring, string string4, int i)
         {
             // TODO
             return Utility.Getint(astring, string4, i);
@@ -1179,7 +1180,7 @@ namespace Cum
          * @param i the position of the astring
          * @return tthe astring at the position
          */
-        private static string Getastring(string astring, string string2, int i)
+        internal static string Getastring(string astring, string string2, int i)
         {
             var j = 0;
             var string3 = "";
@@ -1677,110 +1678,9 @@ namespace Cum
 //        }
 //    }
 
-        private static void Readcookies(ContO[] contos)
+        private static void Readcookies(IReadOnlyList<ContO> contos)
         {
-            //TODO important
-//        xtGraphics.nickname = "";
-//        try
-//        {
-//            File file = new File("" + Madness.fpath + "data/user.data");
-//            String[] strings =
-//            {
-//                "", "", "", "", ""
-//            };
-//            if (file.exists())
-//            {
-//                BufferedReader bufferedreader = new BufferedReader(new FileReader(file));
-//                String astring;
-//                for (int i = 0; (astring = bufferedreader.readLine()) != null && i < 5; i++)
-//                {
-//                    strings[i] = astring;
-//                }
-//                bufferedreader.close();
-//            }
-//            if (strings[0].StartsWith("lastuser"))
-//            {
-//                xtGraphics.nickname = getastring("lastuser", strings[0], 0);
-//                if (!xtGraphics.nickname.equals(""))
-//                {
-//                    xtGraphics.opselect = 1;
-//                }
-//                String astring;
-//                try
-//                {
-//                    astring = getastring("lastuser", strings[0], 1);
-//                }
-//                catch (Exception
-//                exception) {
-//                    astring = "";
-//                }
-//                if (!astring.equals(""))
-//                {
-//                    tnick.setText(xtGraphics.nickname);
-//                    tpass.setText(astring);
-//                    xtGraphics.autolog = true;
-//                }
-//            }
-//            if (strings[2].StartsWith("saved"))
-//            {
-//                int i = getint("saved", strings[2], 0);
-//                if (i >= 0 && i < xtGraphics.nCars)
-//                {
-//                    xtGraphics.scm = i;
-//                    xtGraphics.firstime = false;
-//                }
-//                i = getint("saved", strings[2], 1);
-//                if (i >= 1 && i <= xtGraphics.nTracks)
-//                {
-//                    xtGraphics.unlocked = i;
-//                }
-//            }
-//            if (strings[1].StartsWith("lastcar"))
-//            {
-//                int i = getint("lastcar", strings[1], 0);
-//                CarDefine.lastcar = getastring("lastcar", strings[1], 7);
-//                if (i >= 0 && i < 36)
-//                {
-//                    xtGraphics.osc = i;
-//                    xtGraphics.firstime = false;
-//                }
-//                int i198 = 0;
-//                for (int i199 = 0; i199 < 6; i199++)
-//                {
-//                    i = getint("lastcar", strings[1], i199 + 1);
-//                    if (i >= 0 && i <= 100)
-//                    {
-//                        xtGraphics.arnp[i199] = i / 100.0F;
-//                        i198++;
-//                    }
-//                }
-//                if (i198 == 6 && xtGraphics.osc >= 0 && xtGraphics.osc <= 15)
-//                {
-//                    Color color = Color.getHSBColor(xtGraphics.arnp[0], xtGraphics.arnp[1],
-//                        1.0F - xtGraphics.arnp[2]);
-//                    Color color200 = Color.getHSBColor(xtGraphics.arnp[3], xtGraphics.arnp[4],
-//                        1.0F - xtGraphics.arnp[5]);
-//                    for (int i201 = 0; i201 < contos[xtGraphics.osc].npl; i201++)
-//                        if (contos[xtGraphics.osc].p[i201].colnum == 1)
-//                        {
-//                            contos[xtGraphics.osc].p[i201].c[0] = color.getRed();
-//                            contos[xtGraphics.osc].p[i201].c[1] = color.getGreen();
-//                            contos[xtGraphics.osc].p[i201].c[2] = color.getBlue();
-//                        }
-//                    for (int i202 = 0; i202 < contos[xtGraphics.osc].npl; i202++)
-//                        if (contos[xtGraphics.osc].p[i202].colnum == 2)
-//                        {
-//                            contos[xtGraphics.osc].p[i202].c[0] = color200.getRed();
-//                            contos[xtGraphics.osc].p[i202].c[1] = color200.getGreen();
-//                            contos[xtGraphics.osc].p[i202].c[2] = color200.getBlue();
-//                        }
-//                }
-//            }
-//        }
-//        catch (Exception
-//        ignored) {
-//
-//        }
+            HansenData.ReadCookie(contos);
         }
 
         static void Reglink()
