@@ -31,7 +31,7 @@ build_script:
   - ps: dotnet publish "MadGame.sln" --configuration Debug -f net47
 
 artifacts:
-  - path: "MadSharp\\bin\\Debug\\net47"
+  - path: "MadSharp\\bin\\Debug\\net47\\publish"
     name: Release (.NET 4.7)
     type: zip
 
