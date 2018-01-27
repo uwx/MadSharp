@@ -84,12 +84,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DemoApp.cs" />
-    <Compile Include="DemoConfiguration.cs" />
-    <Compile Include="DemoTime.cs" />
-    <Compile Include="Direct2D1DemoApp.cs" />
-    <Compile Include="Direct2D1WinFormDemoApp.cs" />
-    <Compile Include="Direct3D11DemoApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

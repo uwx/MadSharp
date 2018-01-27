@@ -35,7 +35,7 @@ namespace MadGame
         protected override void Initialize(DemoConfiguration demoConfiguration)
         {
             base.Initialize(demoConfiguration);
-            Directory.SetCurrentDirectory(@"C:\Users\Rafael\Documents\GitHub\MadGame\GameData");
+            Directory.SetCurrentDirectory(@".\GameData");
             //_bitmap = LoadFromFile(RenderTarget2D, "sharpdx.png");
             G.D2D = RenderTarget2D;
             G.Factory = Factory2D;

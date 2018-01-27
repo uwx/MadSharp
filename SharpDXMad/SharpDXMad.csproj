@@ -82,31 +82,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Images.cs" />
-    <Compile Include="Mad\Colors.cs" />
-    <Compile Include="Mad\MadNFMM\CarDefine.cs" />
-    <Compile Include="Mad\MadNFMM\CheckPoints.cs" />
-    <Compile Include="Mad\MadNFMM\ContO.cs" />
-    <Compile Include="Mad\MadNFMM\Control.cs" />
-    <Compile Include="Mad\MadNFMM\GameSparker.cs" />
-    <Compile Include="Mad\MadNFMM\Hansen.cs" />
-    <Compile Include="Mad\MadNFMM\Mad.cs" />
-    <Compile Include="Mad\MadNFMM\Medium.cs" />
-    <Compile Include="Mad\MadNFMM\MouseHandler.cs" />
-    <Compile Include="Mad\MadNFMM\Plane.cs" />
-    <Compile Include="Mad\MadNFMM\Record.cs" />
-    <Compile Include="Mad\MadNFMM\Smenu.cs" />
-    <Compile Include="Mad\MadNFMM\Stat.cs" />
-    <Compile Include="Mad\MadNFMM\Trackers.cs" />
-    <Compile Include="Mad\MadNFMM\Utility.cs" />
-    <Compile Include="Mad\MadNFMM\Util\SafeMath.cs" />
-    <Compile Include="Mad\MadNFMM\Util\StaticRandom.cs" />
-    <Compile Include="Mad\MadNFMM\Wheels.cs" />
-    <Compile Include="Mad\MadNFMM\xtGraphics.cs" />
-    <Compile Include="Mad\MadNFMM\xtImages.cs" />
-    <Compile Include="Mad\MadNFMM\xtPart2.cs" />
-    <Compile Include="Mad\G.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
