@@ -1,0 +1,64 @@
+# version format
+version: uwx-nightly-{build}
+
+# Build worker image (VM template)
+image: Visual Studio 2017
+
+clone_folder: c:\projects\dsp
+
+clone_script:
+- cmd: git clone -q --recursive --branch=%APPVEYOR_REPO_BRANCH% https://github.com/uwx/MadSharp.git %APPVEYOR_BUILD_FOLDER%
+- cmd: git checkout -qf %APPVEYOR_REPO_COMMIT%
+
+branches:
+  only:
+    - master
+
+environment:
+  access_token:
+    secure: ZCGkDJawCLuRgzYTYraor3+u8xB5hjlMC2RhZZYWKkAVWbJ8DBI/ws7qqpZ2c2L1
+
+install:
+  - cmd: appveyor downloadfile https://dist.nuget.org/win-x86-commandline/v4.3.0/nuget.exe
+
+before_build:
+  - cmd: nuget restore
+  - ps: Install-Product node 8
+
+build: off
+
+build_script:
+  - ps: dotnet build "MadGame.sln" -c Debug
+  - ps: dotnet publish "MadGame.sln" --configuration Debug -f net47
+
+artifacts:
+  - path: "**\\bin\\Debug\\net47"
+    name: Release (.NET 4.7)
+    type: zip
+
+# Automatically register private account and/or project AppVeyor NuGet feeds.
+nuget:
+  account_feed: false
+  project_feed: false
+  disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to account/project feeds for pull request builds
+Configuring in appveyor.yml
+
+deploy:
+  release: madsharp-v$(appveyor_build_version)
+  description: 'MadSharp rev $(APPVEYOR_BUILD_NUMBER)'
+  provider: GitHub
+  auth_token:
+    secure: CgEIBkbJsrD+j0mEVqZpVLEGUl269U3MGdX8t16u3B2SQouZEARKoaUFyN7ueHwS # your encrypted token from GitHub
+  artifact: /.*/            # upload everything to release assets
+  draft: false
+  prerelease: false
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
+
+notifications:
+  - provider: Slack
+    on_build_success: true
+    on_build_failure: true
+    incoming_webhook:
+      secure: /tQzfO0uCSjCMZF2eqIdIGAxeA/Zyn2eKDJKfcnvwV7PsWf0sLZolUFnbnWva3KWtNuYgOXz30QpuRl/fcza4Kp7Ymg7COchmmFXpAPu+ZW/yuY4SiEEgTIRmpLZZFLVlFPOlb+9+JjNvk2Ck6LnWD799g3ErcK7arpJF7O0CrK3Bs/Ib3Qeyigdu7g71Lva
