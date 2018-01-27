@@ -30,6 +30,11 @@ build_script:
   - ps: dotnet build "MadGame.sln" -c Debug
   - ps: dotnet publish "MadGame.sln" --configuration Debug -f net47
 
+after_build:
+  - cmd: 7z a MadSharp.zip %APPVEYOR_BUILD_FOLDER%\\MadSharp\\bin\\Debug\\net47\\publish\\*
+  - cmd: cd %APPVEYOR_BUILD_FOLDER%\\MadSharp
+  - cmd: 7z a ..\MadSharp.zip GameData
+  
 artifacts:
   - path: "MadSharp\\bin\\Debug\\net47\\publish"
     name: Release (.NET 4.7)
