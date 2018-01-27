@@ -36,7 +36,7 @@ after_build:
   - cmd: 7z a ..\MadSharp.zip GameData
   
 artifacts:
-  - path: "MadSharp\\bin\\Debug\\net47\\publish"
+  - path: "MadSharp.zip"
     name: Release (.NET 4.7)
     type: zip
 
