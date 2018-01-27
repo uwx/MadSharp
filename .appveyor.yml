@@ -41,7 +41,6 @@ nuget:
   account_feed: false
   project_feed: false
   disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to account/project feeds for pull request builds
-Configuring in appveyor.yml
 
 deploy:
   release: madsharp-v$(appveyor_build_version)
