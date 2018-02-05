@@ -76,7 +76,7 @@ namespace MadGame
             var delay = FrameDelay - (int)(CurrentTimeMillis() - tickStart);
             if (delay > 0)
             {
-                Console.WriteLine(delay);
+//                Console.WriteLine(delay);
                 Thread.Sleep(delay);
             }
 

@@ -2944,36 +2944,36 @@ namespace Cum
             }
         }
 
-        private static void Sparkeng(int i, int i263)
+        private static void Sparkeng(int gear, int car)
         {
-            if (Lcn != i263)
+            if (Lcn != car)
             {
-                for (var i264 = 0; i264 < 5; i264++)
+                for (var igear = 0; igear < 5; igear++)
                 {
-                    if (Pengs[i264])
+                    if (Pengs[igear])
                     {
-                        Engs[CarDefine.Enginsignature[Lcn], i264].Stop();
-                        Pengs[i264] = false;
+                        Engs[CarDefine.Enginsignature[Lcn], igear].Stop();
+                        Pengs[igear] = false;
                     }
                 }
 
-                Lcn = i263;
+                Lcn = car;
             }
-            i++;
-            for (var i265 = 0; i265 < 5; i265++)
+            gear++;
+            for (var igear = 0; igear < 5; igear++)
             {
-                if (i == i265)
+                if (gear == igear)
                 {
-                    if (!Pengs[i265])
+                    if (!Pengs[igear])
                     {
-                        Engs[CarDefine.Enginsignature[i263], i265].Loop();
-                        Pengs[i265] = true;
+                        Engs[CarDefine.Enginsignature[car], igear].Loop();
+                        Pengs[igear] = true;
                     }
                 }
-                else if (Pengs[i265])
+                else if (Pengs[igear])
                 {
-                    Engs[CarDefine.Enginsignature[i263], i265].Stop();
-                    Pengs[i265] = false;
+                    Engs[CarDefine.Enginsignature[car], igear].Stop();
+                    Pengs[igear] = false;
                 }
             }
         }

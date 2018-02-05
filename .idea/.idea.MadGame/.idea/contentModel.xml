@@ -551,6 +551,13 @@
           </e>
         </e>
         <e p="Images.cs" t="Include" />
+        <e p="LibModPlugSharp" t="Include">
+          <e p="LibModPlugFlags.cs" t="Include" />
+          <e p="LibModPlugNative.cs" t="Include" />
+          <e p="LibModPlugReader.cs" t="Include" />
+          <e p="LibModPlugResamplingMode.cs" t="Include" />
+          <e p="LibModPlugSettings.cs" t="Include" />
+        </e>
         <e p="Mad" t="Include">
           <e p="Colors.cs" t="Include" />
           <e p="G.cs" t="Include" />
@@ -560,7 +567,30 @@
             <e p="ContO.cs" t="Include" />
             <e p="Control.cs" t="Include" />
             <e p="GameSparker.cs" t="Include" />
-            <e p="Hansen.cs" t="Include" />
+            <e p="Hansen" t="Include">
+              <e p="ArrayExt.cs" t="Include" />
+              <e p="CachedFont.cs" t="Include" />
+              <e p="Color.cs" t="Include" />
+              <e p="Date.cs" t="Include" />
+              <e p="DistHolder.cs" t="Include" />
+              <e p="File.cs" t="Include" />
+              <e p="FileUtil.cs" t="Include" />
+              <e p="Font.cs" t="Include" />
+              <e p="FontMetrics.cs" t="Include" />
+              <e p="Fonts.cs" t="Include" />
+              <e p="HansenData.cs" t="Include" />
+              <e p="HansenRandom.cs" t="Include" />
+              <e p="HansenSystem.cs" t="Include" />
+              <e p="HMath.cs" t="Include" />
+              <e p="Image.cs" t="Include" />
+              <e p="ImageIo.cs" t="Include" />
+              <e p="LoopStream.cs" t="Include" />
+              <e p="RadicalMusic.cs" t="Include" />
+              <e p="Random.cs" t="Include" />
+              <e p="SoundClip.cs" t="Include" />
+              <e p="StringShim.cs" t="Include" />
+              <e p="TrackZipLoader.cs" t="Include" />
+            </e>
             <e p="Mad.cs" t="Include" />
             <e p="Medium.cs" t="Include" />
             <e p="MouseHandler.cs" t="Include" />
@@ -581,6 +611,7 @@
           </e>
         </e>
         <e p="MadSharp.csproj" t="IncludeRecursive" />
+        <e p="NAudio.dll" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net47" t="Include">
