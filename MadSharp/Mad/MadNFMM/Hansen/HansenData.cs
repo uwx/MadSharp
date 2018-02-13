@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Cum
 {
-    public class HansenData
+    public static class HansenData
     {
         public static void SetCookie(string[] lines)
         {
@@ -20,55 +20,63 @@ namespace Cum
                 {
                     if (s.StartsWith("saved"))
                     {
-                        var i = GameSparker.Getint("saved", strings[2], 0);
+                        var i = GameSparker.Getint("saved", s, 0);
                         if (i >= 0 && i < XTGraphics.NCars)
                         {
                             XTGraphics.Scm = i;
                             XTGraphics.Firstime = false;
                         }
-                        i = GameSparker.Getint("saved", strings[2], 1);
+                        i = GameSparker.Getint("saved", s, 1);
                         if (i >= 1 && i <= XTGraphics.NTracks)
                         {
                             XTGraphics.Unlocked = i;
                         }
                     } else if (s.StartsWith("lastcar"))
                     {
-                        var i = GameSparker.Getint("lastcar", strings[1], 0);
-                        CarDefine.Lastcar = GameSparker.Getastring("lastcar", strings[1], 7);
-                        if (i >= 0 && i < 36)
+                        var i = GameSparker.Getint("lastcar", s, 0);
+                        if (i < 0 || i >= XTGraphics.NCars) continue;
+                        XTGraphics.Osc = i;
+                        XTGraphics.Firstime = false;
+                    } else if (s.StartsWith("carname")) {
+                        CarDefine.Lastcar = GameSparker.Getastring("carname", s, 0);
+                    } else if (s.StartsWith("carcolor1")) {
+                        for (var j = 0; j < 3; j++)
                         {
-                            XTGraphics.Osc = i;
-                            XTGraphics.Firstime = false;
-                        }
-                        var i198 = 0;
-                        for (var i199 = 0; i199 < 6; i199++)
-                        {
-                            i = GameSparker.Getint("lastcar", strings[1], i199 + 1);
+                            var i = GameSparker.Getint("carcolor1", s, j);
                             if (i < 0 || i > 100) continue;
-                            XTGraphics.Arnp[i199] = i / 100.0F;
-                            i198++;
+                            XTGraphics.Arnp[j] = i / 100.0F;
                         }
-                        if (i198 == 6 && XTGraphics.Osc >= 0 && XTGraphics.Osc <= 15)
+                        
+                        if (XTGraphics.Osc < 0 || XTGraphics.Osc > XTGraphics.NCars-1) continue;
+                        var c1 = Color.GetHSBColor(XTGraphics.Arnp[0], XTGraphics.Arnp[1], 1.0F - XTGraphics.Arnp[2]);
+                        for (var j = 0; j < contos[XTGraphics.Osc].Npl; j++)
                         {
-                            var color = Color.GetHSBColor(XTGraphics.Arnp[0], XTGraphics.Arnp[1],
-                                1.0F - XTGraphics.Arnp[2]);
-                            var color200 = Color.GetHSBColor(XTGraphics.Arnp[3], XTGraphics.Arnp[4],
-                                1.0F - XTGraphics.Arnp[5]);
-                            for (var i201 = 0; i201 < contos[XTGraphics.Osc].Npl; i201++)
-                                if (contos[XTGraphics.Osc].P[i201].Colnum == 1)
-                                {
-                                    contos[XTGraphics.Osc].P[i201].C[0] = color.GetRed();
-                                    contos[XTGraphics.Osc].P[i201].C[1] = color.GetGreen();
-                                    contos[XTGraphics.Osc].P[i201].C[2] = color.GetBlue();
-                                }
-                            for (var i202 = 0; i202 < contos[XTGraphics.Osc].Npl; i202++)
-                                if (contos[XTGraphics.Osc].P[i202].Colnum == 2)
-                                {
-                                    contos[XTGraphics.Osc].P[i202].C[0] = color200.GetRed();
-                                    contos[XTGraphics.Osc].P[i202].C[1] = color200.GetGreen();
-                                    contos[XTGraphics.Osc].P[i202].C[2] = color200.GetBlue();
-                                }
+                            if (contos[XTGraphics.Osc].P[j].Colnum != 1) continue;
+                            contos[XTGraphics.Osc].P[j].C[0] = c1.R;
+                            contos[XTGraphics.Osc].P[j].C[1] = c1.G;
+                            contos[XTGraphics.Osc].P[j].C[2] = c1.B;
                         }
+
+                    } else if (s.StartsWith("carcolor2")) {
+                        for (var j = 0; j < 3; j++)
+                        {
+                            var i = GameSparker.Getint("carcolor2", s, j);
+                            if (i < 0 || i > 100) continue;
+                            XTGraphics.Arnp[j + 3] = i / 100.0F;
+                        }
+
+                        if (XTGraphics.Osc < 0 || XTGraphics.Osc > XTGraphics.NCars-1) continue;
+                        var c2 = Color.GetHSBColor(XTGraphics.Arnp[3], XTGraphics.Arnp[4], 1.0F - XTGraphics.Arnp[5]);
+                        for (var j = 0; j < contos[XTGraphics.Osc].Npl; j++)
+                        {
+                            if (contos[XTGraphics.Osc].P[j].Colnum != 2) continue;
+                            contos[XTGraphics.Osc].P[j].C[0] = c2.R;
+                            contos[XTGraphics.Osc].P[j].C[1] = c2.G;
+                            contos[XTGraphics.Osc].P[j].C[2] = c2.B;
+                        }
+                    } else if (s.StartsWith("volume"))
+                    {
+                        GameSparker.SetAllVolumes(GameSparker.Getint("volume", s, 0) / 100f);
                     }
                 }
             }

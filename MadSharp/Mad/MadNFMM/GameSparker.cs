@@ -152,6 +152,8 @@ namespace Cum
         };
 
         private static bool _gameLoaded;
+        
+        public static float Volume;
 
         /**
          * Loads models.zip
@@ -2900,9 +2902,19 @@ namespace Cum
                         CheckPoints.Stage != XTGraphics.NTracks && CheckPoints.Stage == XTGraphics.Unlocked)
                     {
                         XTGraphics.Unlocked++;
-                        Setcarcookie(XTGraphics.Sc[0], CarDefine.Names[XTGraphics.Sc[0]], XTGraphics.Arnp,
-                            XTGraphics.Gmode,
-                            XTGraphics.Unlocked);
+                        int i = XTGraphics.Sc[0];
+                        float[] fs = XTGraphics.Arnp;
+                        int gamemode = XTGraphics.Gmode;
+                        HansenData.SetCookie(new[]
+                        {
+                            "lastcar(" + i + ")",
+                            "carcolor1(" + (int) (fs[0] * 100.0F) + "," + (int) (fs[1] * 100.0F) + "," + (int) (fs[2] * 100.0F) + ")",
+                            "carcolor2(" + (int) (fs[3] * 100.0F) + "," + (int) (fs[4] * 100.0F) + "," + (int) (fs[5] * 100.0F) + ")",
+                            "carname(" + CarDefine.Names[XTGraphics.Sc[0]] + ")",
+                            "saved(" + i + "," + XTGraphics.Unlocked + ")",
+                            "graphics(" + Moto + ")",
+                            "volume(" + (int)(Volume*100F) + ")",
+                        });
                         XTGraphics.Unlocked--;
                     }
                 }
@@ -3066,18 +3078,6 @@ namespace Cum
             {
                 Trash();
             }
-        }
-
-        internal static void Setcarcookie(int i, string astring, float[] fs, int gamemode, int ais)
-        {
-            HansenData.SetCookie(new[]
-            {
-                "lastcar(" + i + "," + (int) (fs[0] * 100.0F) + "," + (int) (fs[1] * 100.0F) + "," +
-                (int) (fs[2] * 100.0F) + "," + (int) (fs[3] * 100.0F) + "," + (int) (fs[4] * 100.0F) + "," +
-                (int) (fs[5] * 100.0F) + "," + astring + ")",
-                "saved(" + i + "," + ais + ")",
-                "graphics(" + Moto + ")"
-            });
         }
 
         public static void Setloggedcookie()
@@ -3284,6 +3284,13 @@ namespace Cum
 
             _lostfcs = true;
             _fcscnt = 10;
+        }
+
+        public static void SetAllVolumes(float vol)
+        {
+            Volume = vol;
+            XTGraphics.Strack?.SetVolume(vol);
+            SoundClip.SetAllVolumes(vol);
         }
     }
 }

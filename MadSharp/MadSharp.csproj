@@ -4,14 +4,14 @@
     <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ManagedBass" Version="2.0.4" />
-    <PackageReference Include="NAudio" Version="1.8.4" />
     <PackageReference Include="SharpDX" Version="4.0.1" />
     <PackageReference Include="SharpDX.D3DCompiler" Version="4.0.1" />
     <PackageReference Include="SharpDX.Desktop" Version="4.0.1" />
@@ -20,6 +20,8 @@
     <PackageReference Include="SharpDX.DirectInput" Version="4.0.1" />
     <PackageReference Include="SharpDX.DXGI" Version="4.0.1" />
     <PackageReference Include="SharpDX.Mathematics" Version="4.0.1" />
+    <None Include="bass.dll" CopyToOutputDirectory="Always" />
+    <!-- CopyToOutputDirectory = { Always, PreserveNewest, Never } -->
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing" />

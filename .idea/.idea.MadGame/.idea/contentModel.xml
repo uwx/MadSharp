@@ -5,6 +5,7 @@
     <e p="C:\Users\Rafael\Documents\GitHub\MadGame" t="IncludeFlat">
       <e p="MadGame.sln" t="IncludeFlat" />
       <e p="MadSharp" t="IncludeRecursive">
+        <e p="bass.dll" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="GameData" t="Include">
           <e p="data" t="Include">
@@ -551,13 +552,6 @@
           </e>
         </e>
         <e p="Images.cs" t="Include" />
-        <e p="LibModPlugSharp" t="Include">
-          <e p="LibModPlugFlags.cs" t="Include" />
-          <e p="LibModPlugNative.cs" t="Include" />
-          <e p="LibModPlugReader.cs" t="Include" />
-          <e p="LibModPlugResamplingMode.cs" t="Include" />
-          <e p="LibModPlugSettings.cs" t="Include" />
-        </e>
         <e p="Mad" t="Include">
           <e p="Colors.cs" t="Include" />
           <e p="G.cs" t="Include" />
@@ -584,7 +578,6 @@
               <e p="HMath.cs" t="Include" />
               <e p="Image.cs" t="Include" />
               <e p="ImageIo.cs" t="Include" />
-              <e p="LoopStream.cs" t="Include" />
               <e p="RadicalMusic.cs" t="Include" />
               <e p="Random.cs" t="Include" />
               <e p="SoundClip.cs" t="Include" />

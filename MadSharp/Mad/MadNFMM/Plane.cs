@@ -845,9 +845,10 @@ namespace Cum
                     break;
                 }
             }
-            i114 = color.GetRed();
-            i115 = color.GetGreen();
-            i116 = color.GetBlue();
+
+            i114 = color.R;
+            i115 = color.G;
+            i116 = color.B;
 /*
             if (false) { //before the dim
                 i114 = (int) (HansenRandom.Double() * 255);

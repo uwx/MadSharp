@@ -49,24 +49,6 @@ namespace Cum
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetRed()
-        {
-            return R;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetGreen()
-        {
-            return G;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int GetBlue()
-        {
-            return B;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void RGBtoHSB(int i, int i1, int i2, float[] fs)
         {
             Colors.RGBtoHSB(i, i1, i2, fs);

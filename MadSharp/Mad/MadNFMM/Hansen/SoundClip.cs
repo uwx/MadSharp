@@ -19,7 +19,7 @@ namespace Cum
             if ((_chan = Bass.CreateStream(s, 0, 0, isLooping ? BassFlags.Loop : BassFlags.Default)) == 0)
             {
                 // it ain't playable
-                throw new Exception(GetError(Bass.LastError));
+                throw new Exception(GetBassError(Bass.LastError));
             }
             SoundPool.Add(this);
         }
@@ -56,7 +56,15 @@ namespace Cum
             }
         }
         
-        private static string GetError(Errors error)
+        public static void SetAllVolumes(float vol)
+        {
+            foreach (var s in SoundPool)
+            {
+                Bass.ChannelSetAttribute(s._chan, ChannelAttribute.Volume, vol);
+            }
+        }
+        
+        public static string GetBassError(Errors error)
         {
             var errCode = (int) error;
             string errStr;

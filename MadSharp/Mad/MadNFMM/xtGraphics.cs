@@ -1064,24 +1064,24 @@ namespace Cum
                         cars[Sc[0]].P[i111].HSB[0] = Arnp[0];
                         cars[Sc[0]].P[i111].HSB[1] = Arnp[1];
                         cars[Sc[0]].P[i111].HSB[2] = 1.0F - Arnp[2];
-                        cars[Sc[0]].P[i111].C[0] = color.GetRed();
-                        cars[Sc[0]].P[i111].C[1] = color.GetGreen();
-                        cars[Sc[0]].P[i111].C[2] = color.GetBlue();
-                        cars[Sc[0]].P[i111].Oc[0] = color.GetRed();
-                        cars[Sc[0]].P[i111].Oc[1] = color.GetGreen();
-                        cars[Sc[0]].P[i111].Oc[2] = color.GetBlue();
+                        cars[Sc[0]].P[i111].C[0] = color.R;
+                        cars[Sc[0]].P[i111].C[1] = color.G;
+                        cars[Sc[0]].P[i111].C[2] = color.B;
+                        cars[Sc[0]].P[i111].Oc[0] = color.R;
+                        cars[Sc[0]].P[i111].Oc[1] = color.G;
+                        cars[Sc[0]].P[i111].Oc[2] = color.B;
                     }
                     if (cars[Sc[0]].P[i111].Colnum == 2)
                     {
                         cars[Sc[0]].P[i111].HSB[0] = Arnp[3];
                         cars[Sc[0]].P[i111].HSB[1] = Arnp[4];
                         cars[Sc[0]].P[i111].HSB[2] = 1.0F - Arnp[5];
-                        cars[Sc[0]].P[i111].C[0] = color110.GetRed();
-                        cars[Sc[0]].P[i111].C[1] = color110.GetGreen();
-                        cars[Sc[0]].P[i111].C[2] = color110.GetBlue();
-                        cars[Sc[0]].P[i111].Oc[0] = color110.GetRed();
-                        cars[Sc[0]].P[i111].Oc[1] = color110.GetGreen();
-                        cars[Sc[0]].P[i111].Oc[2] = color110.GetBlue();
+                        cars[Sc[0]].P[i111].C[0] = color110.R;
+                        cars[Sc[0]].P[i111].C[1] = color110.G;
+                        cars[Sc[0]].P[i111].C[2] = color110.B;
+                        cars[Sc[0]].P[i111].Oc[0] = color110.R;
+                        cars[Sc[0]].P[i111].Oc[1] = color110.G;
+                        cars[Sc[0]].P[i111].Oc[2] = color110.B;
                     }
                 }
                 Lsc = Sc[0];
@@ -1488,24 +1488,24 @@ namespace Cum
                                         cars[Sc[0]].P[i131].HSB[0] = Arnp[0];
                                         cars[Sc[0]].P[i131].HSB[1] = Arnp[1];
                                         cars[Sc[0]].P[i131].HSB[2] = 1.0F - Arnp[2];
-                                        cars[Sc[0]].P[i131].C[0] = color.GetRed();
-                                        cars[Sc[0]].P[i131].C[1] = color.GetGreen();
-                                        cars[Sc[0]].P[i131].C[2] = color.GetBlue();
-                                        cars[Sc[0]].P[i131].Oc[0] = color.GetRed();
-                                        cars[Sc[0]].P[i131].Oc[1] = color.GetGreen();
-                                        cars[Sc[0]].P[i131].Oc[2] = color.GetBlue();
+                                        cars[Sc[0]].P[i131].C[0] = color.R;
+                                        cars[Sc[0]].P[i131].C[1] = color.G;
+                                        cars[Sc[0]].P[i131].C[2] = color.B;
+                                        cars[Sc[0]].P[i131].Oc[0] = color.R;
+                                        cars[Sc[0]].P[i131].Oc[1] = color.G;
+                                        cars[Sc[0]].P[i131].Oc[2] = color.B;
                                     }
                                     if (cars[Sc[0]].P[i131].Colnum == 2)
                                     {
                                         cars[Sc[0]].P[i131].HSB[0] = Arnp[3];
                                         cars[Sc[0]].P[i131].HSB[1] = Arnp[4];
                                         cars[Sc[0]].P[i131].HSB[2] = 1.0F - Arnp[5];
-                                        cars[Sc[0]].P[i131].C[0] = color130.GetRed();
-                                        cars[Sc[0]].P[i131].C[1] = color130.GetGreen();
-                                        cars[Sc[0]].P[i131].C[2] = color130.GetBlue();
-                                        cars[Sc[0]].P[i131].Oc[0] = color130.GetRed();
-                                        cars[Sc[0]].P[i131].Oc[1] = color130.GetGreen();
-                                        cars[Sc[0]].P[i131].Oc[2] = color130.GetBlue();
+                                        cars[Sc[0]].P[i131].C[0] = color130.R;
+                                        cars[Sc[0]].P[i131].C[1] = color130.G;
+                                        cars[Sc[0]].P[i131].C[2] = color130.B;
+                                        cars[Sc[0]].P[i131].Oc[0] = color130.R;
+                                        cars[Sc[0]].P[i131].Oc[1] = color130.G;
+                                        cars[Sc[0]].P[i131].Oc[2] = color130.B;
                                     }
                                 }
                             }
@@ -1680,7 +1680,15 @@ namespace Cum
                     }
                     if (Sc[0] < 16 || CarDefine.Lastload == 2)
                     {
-                        GameSparker.Setcarcookie(Sc[0], CarDefine.Names[Sc[0]], Arnp, Gmode, Unlocked);
+                        int i1 = Sc[0];
+                        HansenData.SetCookie(new[]
+                        {
+                            "lastcar(" + i1 + "," + (int) (Arnp[0] * 100.0F) + "," + (int) (Arnp[1] * 100.0F) + "," +
+                            (int) (Arnp[2] * 100.0F) + "," + (int) (Arnp[3] * 100.0F) + "," + (int) (Arnp[4] * 100.0F) + "," +
+                            (int) (Arnp[5] * 100.0F) + "," + CarDefine.Names[Sc[0]] + ")",
+                            "saved(" + i1 + "," + Unlocked + ")",
+                            "graphics(" + GameSparker.Moto + ")"
+                        });
                     }
                     if (CarDefine.Haltload != 0)
                     {
@@ -1859,16 +1867,16 @@ namespace Cum
                     if (conto.P[i132].Colnum == 1)
                     {
                         var color = Color.GetHSBColor(Allrnp[i, 0], Allrnp[i, 1], 1.0F - Allrnp[i, 2]);
-                        conto.P[i132].Oc[0] = color.GetRed();
-                        conto.P[i132].Oc[1] = color.GetGreen();
-                        conto.P[i132].Oc[2] = color.GetBlue();
+                        conto.P[i132].Oc[0] = color.R;
+                        conto.P[i132].Oc[1] = color.G;
+                        conto.P[i132].Oc[2] = color.B;
                     }
                     if (conto.P[i132].Colnum == 2)
                     {
                         var color = Color.GetHSBColor(Allrnp[i, 3], Allrnp[i, 4], 1.0F - Allrnp[i, 5]);
-                        conto.P[i132].Oc[0] = color.GetRed();
-                        conto.P[i132].Oc[1] = color.GetGreen();
-                        conto.P[i132].Oc[2] = color.GetBlue();
+                        conto.P[i132].Oc[0] = color.R;
+                        conto.P[i132].Oc[1] = color.G;
+                        conto.P[i132].Oc[2] = color.B;
                     }
                 }
             }
@@ -2722,8 +2730,8 @@ namespace Cum
                 G.SetColor(color);
                 G.FillRoundRect(390 - image.GetWidth(null) / 2, i - 2, image.GetWidth(null) + 20,
                     image.GetHeight(null) + 2, 7, 20);
-                G.SetColor(new Color((int) (color.GetRed() / 1.1), (int) (color.GetGreen() / 1.1),
-                    (int) (color.GetBlue() / 1.1)));
+                G.SetColor(new Color((int) (color.R / 1.1), (int) (color.G / 1.1),
+                    (int) (color.B / 1.1)));
                 G.DrawRoundRect(390 - image.GetWidth(null) / 2, i - 2, image.GetWidth(null) + 20,
                     image.GetHeight(null) + 2, 7, 20);
             }

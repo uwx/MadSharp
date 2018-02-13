@@ -2555,9 +2555,9 @@ namespace Cum
                             new Color(conto.P[i111].C[0], conto.P[i111].C[1], conto.P[i111].C[2]);
                             var color = Color.GetHSBColor(conto.P[i111].HSB[0], conto.P[i111].HSB[1],
                                 conto.P[i111].HSB[2]);
-                            conto.P[i111].C[0] = color.GetRed();
-                            conto.P[i111].C[1] = color.GetGreen();
-                            conto.P[i111].C[2] = color.GetBlue();
+                            conto.P[i111].C[0] = color.R;
+                            conto.P[i111].C[1] = color.G;
+                            conto.P[i111].C[2] = color.B;
                         }
                         if (conto.P[i111].Glass == 1)
                         {
@@ -2692,9 +2692,9 @@ namespace Cum
                                 new Color(conto.P[i102].C[0], conto.P[i102].C[1], conto.P[i102].C[2]);
                                 var color = Color.GetHSBColor(conto.P[i102].HSB[0], conto.P[i102].HSB[1],
                                     conto.P[i102].HSB[2]);
-                                conto.P[i102].C[0] = color.GetRed();
-                                conto.P[i102].C[1] = color.GetGreen();
-                                conto.P[i102].C[2] = color.GetBlue();
+                                conto.P[i102].C[0] = color.R;
+                                conto.P[i102].C[1] = color.G;
+                                conto.P[i102].C[2] = color.B;
                             }
                             if (conto.P[i102].Glass == 1)
                             {
@@ -2851,9 +2851,9 @@ namespace Cum
                             new Color(conto.P[i115].C[0], conto.P[i115].C[1], conto.P[i115].C[2]);
                             var color = Color.GetHSBColor(conto.P[i115].HSB[0], conto.P[i115].HSB[1],
                                 conto.P[i115].HSB[2]);
-                            conto.P[i115].C[0] = color.GetRed();
-                            conto.P[i115].C[1] = color.GetGreen();
-                            conto.P[i115].C[2] = color.GetBlue();
+                            conto.P[i115].C[0] = color.R;
+                            conto.P[i115].C[1] = color.G;
+                            conto.P[i115].C[2] = color.B;
                         }
                         if (conto.P[i115].Glass == 1)
                         {

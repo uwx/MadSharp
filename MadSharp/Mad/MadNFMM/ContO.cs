@@ -2183,7 +2183,7 @@ namespace Cum
                     P[i].HSB[2] = 0.8F;
                     P[i].HSB[1] = 0.8F;
                     var color = Color.GetHSBColor(P[i].HSB[0], P[i].HSB[1], P[i].HSB[2]);
-                    var i167 = (int) (color.GetRed() + color.GetRed() * (Medium.Snap[0] / 100.0F));
+                    var i167 = (int) (color.R + color.R * (Medium.Snap[0] / 100.0F));
                     if (i167 > 255)
                     {
                         i167 = 255;
@@ -2192,7 +2192,7 @@ namespace Cum
                     {
                         i167 = 0;
                     }
-                    var i168 = (int) (color.GetGreen() + color.GetGreen() * (Medium.Snap[1] / 100.0F));
+                    var i168 = (int) (color.G + color.G * (Medium.Snap[1] / 100.0F));
                     if (i168 > 255)
                     {
                         i168 = 255;
@@ -2201,7 +2201,7 @@ namespace Cum
                     {
                         i168 = 0;
                     }
-                    var i169 = (int) (color.GetBlue() + color.GetBlue() * (Medium.Snap[2] / 100.0F));
+                    var i169 = (int) (color.B + color.B * (Medium.Snap[2] / 100.0F));
                     if (i169 > 255)
                     {
                         i169 = 255;
