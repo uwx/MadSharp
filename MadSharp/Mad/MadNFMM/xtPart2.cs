@@ -213,7 +213,7 @@ namespace Cum
                 {
                     if (i != 2 || Flipo != 16)
                     {
-                        G.DrawImage(Bgmain, 65, 25 + Bgmy[i38], null);
+                        G.DrawImage(Bgmain, 65, 25 + Bgmy[i38]);
                     }
                     Bgmy[i38] += i26;
                     if (Bgmy[i38] >= 400)
@@ -241,9 +241,9 @@ namespace Cum
             }
             Mainbg(1);
             G.SetAlpha(0.6F);
-            G.DrawImage(Logomadbg, 65, 25, null);
+            G.DrawImage(Logomadbg, 65, 25);
             G.SetAlpha(1.0F);
-            G.DrawImage(Logomadnes, 233, 186, null);
+            G.DrawImage(Logomadnes, 233, 186);
             var f = Flkat / 800.0F;
             if (f > 0.2)
             {
@@ -263,7 +263,7 @@ namespace Cum
                 Flkat = 0;
             }
             G.SetAlpha(f);
-            G.DrawImage(Dude[0], 351 + Gxdu, 28 + Gydu, null);
+            G.DrawImage(Dude[0], 351 + Gxdu, 28 + Gydu);
             G.SetAlpha(1.0F);
             if (Movly == 0)
             {
@@ -275,8 +275,8 @@ namespace Cum
             {
                 Movly = 0;
             }
-            G.DrawImage(Logocars, 66, 33, null);
-            G.DrawImage(Opback, 247, 237, null);
+            G.DrawImage(Logocars, 66, 33);
+            G.DrawImage(Opback, 247, 237);
             if (Muhi < 0)
             {
                 G.SetColor(new Color(140, 70, 0));
@@ -405,7 +405,7 @@ namespace Cum
                 G.SetColor(new Color(0, 0, 0));
                 G.DrawRoundRect(357, 351, 85, 22, 7, 20);
             }
-            G.DrawImage(Opti, 294, 265, null);
+            G.DrawImage(Opti, 294, 265);
             if (control.Enter || control.Handb)
             {
                 if (Opselect == 1)
@@ -457,8 +457,8 @@ namespace Cum
                 control.Enter = false;
                 control.Handb = false;
             }
-            G.DrawImage(Byrd, 72, 410, null);
-            G.DrawImage(Nfmcoms, 567, 410, null);
+            G.DrawImage(Byrd, 72, 410);
+            G.DrawImage(Nfmcoms, 567, 410);
             if (Shaded)
             {
                 //app.repaint();
@@ -1625,7 +1625,7 @@ namespace Cum
         {
             if (!Badmac)
             {
-                G.DrawImage(Fleximg, 0, 0, null);
+                G.DrawImage(Fleximg, 0, 0);
             }
             else
             {
@@ -1706,7 +1706,7 @@ namespace Cum
                 }
                 G.DrawRoundRect(341, 125, 109, 22, 7, 20);
             }
-            G.DrawImage(Paused, 281, 8, null);
+            G.DrawImage(Paused, 281, 8);
             if (control.Enter || control.Handb)
             {
                 if (Opselect == 0)
@@ -2126,11 +2126,11 @@ namespace Cum
             G.FillRect(65, 135, 670, 59);
             if (Pin != 0)
             {
-                G.DrawImage(Radicalplay, Radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135, null);
+                G.DrawImage(Radicalplay, Radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 135);
             }
             else
             {
-                G.DrawImage(Radicalplay, 212, 135, null);
+                G.DrawImage(Radicalplay, 212, 135);
             }
             if (Radpx != 212)
             {
@@ -2169,7 +2169,7 @@ namespace Cum
                     150, 150, 3);
                 Aflk = true;
             }
-            G.DrawImage(Rpro, 275, 265, null);
+            G.DrawImage(Rpro, 275, 265);
             G.SetColor(new Color(0, 0, 0));
             G.FillRect(0, 0, 65, 450);
             G.FillRect(735, 0, 65, 450);
@@ -2382,7 +2382,7 @@ namespace Cum
                 G.DrawLine(186, 233, 186, 247);
                 G.DrawLine(187, 235, 187, 245);
             }
-            G.DrawImage(Sped, 7, 234, null);
+            G.DrawImage(Sped, 7, 234);
             var i252 = conto.X - Lcarx;
             Lcarx = conto.X;
             var i254 = conto.Z - Lcarz;
@@ -2980,19 +2980,19 @@ namespace Cum
 
         internal static void Stageselect(Control control, int i, int i39, bool abool)
         {
-            G.DrawImage(Br, 65, 25, null);
-            G.DrawImage(Select, 338, 35, null);
+            G.DrawImage(Br, 65, 25);
+            G.DrawImage(Select, 338, 35);
             if (Testdrive != 3 && Testdrive != 4)
             {
                 if (CheckPoints.Stage > 0 && CarDefine.Staction == 0)
                 {
                     if (CheckPoints.Stage != 1 && CheckPoints.Stage != 11)
                     {
-                        G.DrawImage(Back[Pback], 115, 135, null);
+                        G.DrawImage(Back[Pback], 115, 135);
                     }
                     if (CheckPoints.Stage != NTracks)
                     {
-                        G.DrawImage(Next[Pnext], 625, 135, null);
+                        G.DrawImage(Next[Pnext], 625, 135);
                     }
                 }
                 if (Gmode == 0)
@@ -3419,7 +3419,7 @@ namespace Cum
 //                }
                     if (CheckPoints.Stage != -3 && CarDefine.Staction == 0 && CheckPoints.Top20 < 3)
                     {
-                        G.DrawImage(Contin[Pcontin], 355, 360, null);
+                        G.DrawImage(Contin[Pcontin], 355, 360);
                     }
                     else
                     {
@@ -3585,7 +3585,7 @@ namespace Cum
                     }
                     if (CheckPoints.Stage != -3)
                     {
-                        G.DrawImage(Contin[Pcontin], 355, 360, null);
+                        G.DrawImage(Contin[Pcontin], 355, 360);
                     }
                     else
                     {
@@ -3675,7 +3675,7 @@ namespace Cum
                     Drawcs(132, CheckPoints.Name, 176, 176, 176, 3);
                     Aflk = true;
                 }
-                G.DrawImage(Contin[Pcontin], 355, 360, null);
+                G.DrawImage(Contin[Pcontin], 355, 360);
                 if (control.Handb || control.Enter)
                 {
                     Dudo = 150;
@@ -4161,7 +4161,7 @@ namespace Cum
                     }
                     if (!Holdit)
                     {
-                        G.DrawImage(Wgame, 311, 20, null);
+                        G.DrawImage(Wgame, 311, 20);
                         if (!Clanchat)
                         {
                             Drawcs(397, "Click any player on the right to follow!", 0, 0, 0, 0);
@@ -4307,16 +4307,16 @@ namespace Cum
                         G.DrawLine(147, 27, 147, 45);
                         G.DrawLine(148, 29, 148, 43);
                     }
-                    G.DrawImage(Dmg, 600, 7, null);
-                    G.DrawImage(Pwr, 600, 27, null);
-                    G.DrawImage(Lap, 19, 7, null);
+                    G.DrawImage(Dmg, 600, 7);
+                    G.DrawImage(Pwr, 600, 27);
+                    G.DrawImage(Lap, 19, 7);
                     G.SetColor(new Color(0, 0, 100));
                     G.DrawString("" + (mad.Nlaps + 1) + " / " + CheckPoints.Nlaps + "", 51, 18);
-                    G.DrawImage(Was, 92, 7, null);
+                    G.DrawImage(Was, 92, 7);
                     G.SetColor(new Color(0, 0, 100));
                     G.DrawString("" + CheckPoints.Wasted + " / " + (Nplayers - 1) + "", 150, 18);
-                    G.DrawImage(Pos, 42, 27, null);
-                    G.DrawImage(Rank[CheckPoints.Pos[mad.Im]], 110, 28, null);
+                    G.DrawImage(Pos, 42, 27);
+                    G.DrawImage(Rank[CheckPoints.Pos[mad.Im]], 110, 28);
                     Drawstat(CarDefine.Maxmag[mad.Cn], mad.Hitmag, mad.Power);
                     if (control.Radar && CheckPoints.Stage != 10)
                     {
@@ -4375,16 +4375,16 @@ namespace Cum
                         if (Dudo != -1)
                         {
                             G.SetAlpha(0.3F);
-                            G.DrawImage(Dude[Duds], Dudo, 0, null);
+                            G.DrawImage(Dude[Duds], Dudo, 0);
                             G.SetAlpha(1.0F);
                         }
                         if (Gocnt != 0)
                         {
-                            G.DrawImage(Cntdn[Gocnt], 385, 50, null);
+                            G.DrawImage(Cntdn[Gocnt], 385, 50);
                         }
                         else
                         {
-                            G.DrawImage(Cntdn[Gocnt], 363, 50, null);
+                            G.DrawImage(Cntdn[Gocnt], 363, 50);
                         }
                     }
                     if (Looped != 0 && mad.Loop == 2)
@@ -4938,7 +4938,7 @@ namespace Cum
             }
             for (var i25 = 0; i25 < 2; i25++)
             {
-                G.DrawImage(Trackbg[i], Trkx[i25], 25, null);
+                G.DrawImage(Trackbg[i], Trkx[i25], 25);
                 Trkx[i25] -= 10;
                 if (Trkx[i25] <= -605)
                 {

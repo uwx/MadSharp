@@ -2908,8 +2908,8 @@ namespace Cum
                 }
                 if (_recordtime <= 0)
                 {
-                    G.DrawImage(XTImages.Images.Mdness, 289, 30, null);
-                    G.DrawImage(XTImages.Images.Dude[0], 135, 10, null);
+                    G.DrawImage(XTImages.Images.Mdness, 289, 30);
+                    G.DrawImage(XTImages.Images.Dude[0], 135, 10);
                 }
                 if (_recordtime >= 0)
                 {
@@ -2925,6 +2925,7 @@ namespace Cum
             if (XTGraphics.Fase == -6)
             {
                 //repaint();
+                SoundClip.StopAll();
                 XTPart2.Pauseimage(null);
                 XTGraphics.Fase = -7;
                 Mouses = 0;

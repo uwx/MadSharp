@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Cum;
 using MadGame;
+using ManagedBass;
 using SharpDX;
 using SharpDX.Direct3D;
 using SharpDX.Direct3D11;
@@ -54,6 +55,7 @@ namespace MadGame
 
         public void SetupAndRun()
         {
+            Bass.Init();
             Run(new DemoConfiguration("Mad.cs", 800, 450));
         }
 

@@ -116,7 +116,7 @@ namespace MadGame
             _currentColor.Color = currentColorColor;
         }
 
-        public static void DrawImage(Image image, int x, int y, object p3)
+        public static void DrawImage(Image image, int x, int y)
         {
             if (image == null)
             {
@@ -181,6 +181,17 @@ namespace MadGame
         public static void DrawImage(Image bggo, int p1, int i429, int p3, int i, object o)
         {
             ////throw new NotImplementedException();
+        }
+
+        public static void DrawImage(Image image, int x, int y, int wid, int hei)
+        {
+            if (image == null)
+            {
+                return;
+            }
+
+            D2D.DrawBitmap(image, new RectangleF(x, y, wid, hei), 1.0f,
+                BitmapInterpolationMode.NearestNeighbor);
         }
     }
 }

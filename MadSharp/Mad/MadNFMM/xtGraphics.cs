@@ -923,14 +923,14 @@ namespace Cum
         {
             Pnext = 0;
             Trackbgf(false);
-            G.DrawImage(Br, 65, 25, null);
-            G.DrawImage(Select, 338, 35, null);
+            G.DrawImage(Br, 65, 25);
+            G.DrawImage(Select, 338, 35);
             G.SetFont(new Font("Arial", 1, 13));
             Ftm = G.GetFontMetrics();
             Drawcs(130, "This stage will be unlocked when stage " + Unlocked + " ais complete!", 177, 177, 177, 3);
             for (var i = 0; i < 9; i++)
             {
-                G.DrawImage(Pgate, 277 + i * 30, 215, null);
+                G.DrawImage(Pgate, 277 + i * 30, 215);
             }
             G.SetFont(new Font("Arial", 1, 12));
             Ftm = G.GetFontMetrics();
@@ -944,7 +944,7 @@ namespace Cum
                 Drawcs(185, "[ Stage " + (Unlocked + 1) + " Locked ]", 255, 0, 0, 3);
                 Aflk = true;
             }
-            G.DrawImage(Back[Pback], 370, 345, null);
+            G.DrawImage(Back[Pback], 370, 345);
             Lockcnt--;
             if (Lockcnt == 0 || control.Enter || control.Handb || control.Left)
             {
@@ -989,7 +989,7 @@ namespace Cum
             G.FillRect(65, 0, 670, 25);
             G.FillRect(65, 425, 670, 25);
 
-            G.DrawImage(Carsbg, 65, 25, null);
+            G.DrawImage(Carsbg, 65, 25);
             //if (Flatrstart == 6) {
             //    //if (multion != 0 || testdrive == 1 || testdrive == 2)
             //    G.DrawImage(Carsbgc, 65, 25, null);
@@ -1001,21 +1001,18 @@ namespace Cum
             //    Carsbginflex();
             //    Flatrstart = 6;
             //}
-            if (Flatrstart > 1)
-            {
-                Flatrstart = 6;
-            }
+            Flatrstart = 6;
 
-            G.DrawImage(Selectcar, 321, 37, null);
+            G.DrawImage(Selectcar, 321, 37);
             if (Cfase == 3 || Cfase == 7 || Remi)
             {
                 if (CarDefine.Lastload == 1)
                 {
-                    G.DrawImage(Ycmc, 337, 58, null);
+                    G.DrawImage(Ycmc, 337, 58);
                 }
                 if (CarDefine.Lastload == 2)
                 {
-                    G.DrawImage(Yac, 323, 58, null);
+                    G.DrawImage(Yac, 323, 58);
                 }
             }
             if (!Remi)
@@ -1177,11 +1174,11 @@ namespace Cum
                 {
                     if (Sc[0] != Minsl)
                     {
-                        G.DrawImage(Back[Pback], 95, 275, null);
+                        G.DrawImage(Back[Pback], 95, 275);
                     }
                     if (Sc[0] != Maxsl)
                     {
-                        G.DrawImage(Next[Pnext], 645, 275, null);
+                        G.DrawImage(Next[Pnext], 645, 275);
                     }
                 }
                 /*if (gmode == 1) {
@@ -1213,28 +1210,24 @@ namespace Cum
                     }
                     for (var i118 = 0; i118 < 9; i118++)
                     {
-                        G.DrawImage(Pgate, Pgatx[i118], Pgaty[i118] + Pgady[i118] - Gatey, null);
-                        if (Flatrstart == 6)
+                        G.DrawImage(Pgate, Pgatx[i118], Pgaty[i118] + Pgady[i118] - Gatey);
+                        if (Flatrstart != 6) continue;
+                        if (Pgas[i118])
                         {
-                            if (Pgas[i118])
+                            Pgady[i118] -= (80 + 100 / (i118 + 1) - Math.Abs(Pgady[i118])) / 3;
+                            if (Pgady[i118] >= -(70 + 100 / (i118 + 1))) continue;
+                            Pgas[i118] = false;
+                            if (i118 != 8)
                             {
-                                Pgady[i118] -= (80 + 100 / (i118 + 1) - Math.Abs(Pgady[i118])) / 3;
-                                if (Pgady[i118] < -(70 + 100 / (i118 + 1)))
-                                {
-                                    Pgas[i118] = false;
-                                    if (i118 != 8)
-                                    {
-                                        Pgas[i118 + 1] = true;
-                                    }
-                                }
+                                Pgas[i118 + 1] = true;
                             }
-                            else
+                        }
+                        else
+                        {
+                            Pgady[i118] += (80 + 100 / (i118 + 1) - Math.Abs(Pgady[i118])) / 3;
+                            if (Pgady[i118] > 0)
                             {
-                                Pgady[i118] += (80 + 100 / (i118 + 1) - Math.Abs(Pgady[i118])) / 3;
-                                if (Pgady[i118] > 0)
-                                {
-                                    Pgady[i118] = 0;
-                                }
+                                Pgady[i118] = 0;
                             }
                         }
                     }
@@ -1256,17 +1249,17 @@ namespace Cum
                         Ftm = G.GetFontMetrics();
                         G.SetColor(new Color(181, 120, 40));
                         G.DrawString("Top Speed:", 98, 343);
-                        G.DrawImage(Statb, 162, 337, null);
+                        G.DrawImage(Statb, 162, 337);
                         G.DrawString("Acceleration:", 88, 358);
-                        G.DrawImage(Statb, 162, 352, null);
+                        G.DrawImage(Statb, 162, 352);
                         G.DrawString("Handling:", 110, 373);
-                        G.DrawImage(Statb, 162, 367, null);
+                        G.DrawImage(Statb, 162, 367);
                         G.DrawString("Stunts:", 495, 343);
-                        G.DrawImage(Statb, 536, 337, null);
+                        G.DrawImage(Statb, 536, 337);
                         G.DrawString("Strength:", 483, 358);
-                        G.DrawImage(Statb, 536, 352, null);
+                        G.DrawImage(Statb, 536, 352);
                         G.DrawString("Endurance:", 473, 373);
-                        G.DrawImage(Statb, 536, 367, null);
+                        G.DrawImage(Statb, 536, 367);
                         G.SetColor(new Color(0, 0, 0));
                         var f = (CarDefine.Swits[Sc[0], 2] - 220) / 90.0F;
                         if (f < 0.2)
@@ -1298,12 +1291,12 @@ namespace Cum
                         G.FillRect((int) (536.0F + 156.0F * f), 352, (int) (156.0F * (1.0F - f) + 1.0F), 7);
                         f = CarDefine.Outdam[Sc[0]];
                         G.FillRect((int) (536.0F + 156.0F * f), 367, (int) (156.0F * (1.0F - f) + 1.0F), 7);
-                        G.DrawImage(Statbo, 162, 337, null);
-                        G.DrawImage(Statbo, 162, 352, null);
-                        G.DrawImage(Statbo, 162, 367, null);
-                        G.DrawImage(Statbo, 536, 337, null);
-                        G.DrawImage(Statbo, 536, 352, null);
-                        G.DrawImage(Statbo, 536, 367, null);
+                        G.DrawImage(Statbo, 162, 337);
+                        G.DrawImage(Statbo, 162, 352);
+                        G.DrawImage(Statbo, 162, 367);
+                        G.DrawImage(Statbo, 536, 337);
+                        G.DrawImage(Statbo, 536, 352);
+                        G.DrawImage(Statbo, 536, 367);
                         {
                             G.SetFont(new Font("Arial", 1, 13));
                             Ftm = G.GetFontMetrics();
@@ -1346,9 +1339,9 @@ namespace Cum
                             G.SetFont(new Font("Arial", 1, 10));
                             Ftm = G.GetFontMetrics();
                             G.DrawString("Hue  | ", 97, 70);
-                            G.DrawImage(Brt, 137, 63, null);
+                            G.DrawImage(Brt, 137, 63);
                             G.DrawString("Hue  | ", 647, 70);
-                            G.DrawImage(Brt, 687, 63, null);
+                            G.DrawImage(Brt, 687, 63);
                             G.DrawString("Intensity", 121, 219);
                             G.DrawString("Intensity", 671, 219);
                             G.DrawString("Reset", 110, 257);
@@ -1377,10 +1370,10 @@ namespace Cum
                                 G.SetColor(Color.GetHSBColor(Arnp[3], (float) (i129 * 0.025), 1.0F - Arnp[5]));
                                 G.DrawLine(671 + i129, 224, 671 + i129, 230);
                             }
-                            G.DrawImage(Arn, 110, 71 + (int) (Arnp[0] * 160.0F), null);
-                            G.DrawImage(Arn, 145, 71 + (int) (Arnp[2] * 160.0F), null);
-                            G.DrawImage(Arn, 660, 71 + (int) (Arnp[3] * 160.0F), null);
-                            G.DrawImage(Arn, 695, 71 + (int) (Arnp[5] * 160.0F), null);
+                            G.DrawImage(Arn, 110, 71 + (int) (Arnp[0] * 160.0F));
+                            G.DrawImage(Arn, 145, 71 + (int) (Arnp[2] * 160.0F));
+                            G.DrawImage(Arn, 660, 71 + (int) (Arnp[3] * 160.0F));
+                            G.DrawImage(Arn, 695, 71 + (int) (Arnp[5] * 160.0F));
                             G.SetColor(new Color(0, 0, 0));
                             G.FillRect(120 + (int) (Arnp[1] * 40.0F), 222, 3, 3);
                             G.DrawLine(121 + (int) (Arnp[1] * 40.0F), 224, 121 + (int) (Arnp[1] * 40.0F), 230);
@@ -1520,7 +1513,7 @@ namespace Cum
                     }
                     if (!Remi /* && cfase != 10 && cfase != 11 && cfase != 100 && cfase != 101*/)
                     {
-                        G.DrawImage(Contin[Pcontin], 355, 385, null);
+                        G.DrawImage(Contin[Pcontin], 355, 385);
                         /*else {
                             if (cfase == 11 && drawcarb(true, null, "Add to My Cars", 345, 385, i, i104, abool)
                                     && stat.action == 0) {
@@ -2040,7 +2033,7 @@ namespace Cum
             if (Flipo == 101)
             {
                 Mainbg(-1);
-                G.DrawImage(Mdness, 283, 32, null);
+                G.DrawImage(Mdness, 283, 32);
                 G.SetFont(new Font("Arial", 1, 13));
                 Ftm = G.GetFontMetrics();
                 Drawcs(90, "At Radicalplay.com", 0, 0, 0, 3);
@@ -2087,7 +2080,7 @@ namespace Cum
             if (Flipo == 102)
             {
                 Mainbg(-1);
-                G.DrawImage(Onfmm, 283, 32, null);
+                G.DrawImage(Onfmm, 283, 32);
                 G.SetFont(new Font("Arial", 1, 13));
                 Ftm = G.GetFontMetrics();
                 Drawcs(165, "Decompiled and fixed by", 0, 0, 0, 3);
@@ -2139,7 +2132,7 @@ namespace Cum
             if (Flipo == 103)
             {
                 Mainbg(0);
-                G.DrawImage(Nfmcom, 190, 195, null);
+                G.DrawImage(Nfmcom, 190, 195);
                 if (i > 190 && i < 609 && i23 > 195 && i23 < 216)
                 {
                     //app.setCursor(new Cursor(12));
@@ -2149,7 +2142,7 @@ namespace Cum
                     }
                 }
             }
-            G.DrawImage(Next[Pnext], 665, 395, null);
+            G.DrawImage(Next[Pnext], 665, 395);
 
             if (control.Enter || control.Handb || control.Right)
             {
@@ -2569,9 +2562,9 @@ namespace Cum
                     bool433 = true;
                 }
             }
-            G.DrawImage(Bcl[i436], i, i429, null);
+            G.DrawImage(Bcl[i436], i, i429);
             G.DrawImage(Bc[i436], i + 4, i429, i435 + 6, 28, null);
-            G.DrawImage(Bcr[i436], i + i435 + 10, i429, null);
+            G.DrawImage(Bcr[i436], i + i435 + 10, i429);
             if (!abool && i435 == 73)
             {
                 i429--;
@@ -2597,7 +2590,7 @@ namespace Cum
             }
             else
             {
-                G.DrawImage(image, i + 7, i429 + 7, null);
+                G.DrawImage(image, i + 7, i429 + 7);
             }
             return bool433;
         }
@@ -2734,7 +2727,7 @@ namespace Cum
                 G.DrawRoundRect(390 - image.GetWidth(null) / 2, i - 2, image.GetWidth(null) + 20,
                     image.GetHeight(null) + 2, 7, 20);
             }
-            G.DrawImage(image, 400 - image.GetWidth(null) / 2, i, null);
+            G.DrawImage(image, 400 - image.GetWidth(null) / 2, i);
         }
 
         public static void Drawlprom(int i, int i140)
@@ -2824,7 +2817,7 @@ namespace Cum
 //            Image image = xt.createImage(new MemoryImageSource(670, 400, flexpix, 0, 670));
 //            G.DrawImage(image, 65, 25, null);
 //        } else {
-            G.DrawImage(Carsbg, 65, 25, null);
+            G.DrawImage(Carsbg, 65, 25);
             Flatrstart++;
 //        }
         }
@@ -2994,7 +2987,7 @@ namespace Cum
             }*/
             if (!Badmac)
             {
-                G.DrawImage(Fleximg, 0, 0, null);
+                G.DrawImage(Fleximg, 0, 0);
             }
             else
             {
@@ -3016,14 +3009,14 @@ namespace Cum
             {
                 if (Winner)
                 {
-                    G.DrawImage(Congrd, 265, 87, null);
+                    G.DrawImage(Congrd, 265, 87);
                     Drawcs(137, "You Won!  At Stage" + astring, 255, 161, 85, 3);
                     Drawcs(154, CheckPoints.Name, 255, 115, 0, 3);
                     i142 = 154;
                 }
                 else
                 {
-                    G.DrawImage(Gameov, 315, 117, null);
+                    G.DrawImage(Gameov, 315, 117);
                     if (Multion != 0 && (Forstart == 700 || Discon == 240))
                     {
                         Drawcs(167, "Sorry, You where Disconnected from Game!", 255, 161, 85, 3);
@@ -3040,7 +3033,7 @@ namespace Cum
             }
             else
             {
-                G.DrawImage(Gameov, 315, 117, null);
+                G.DrawImage(Gameov, 315, 117);
                 Drawcs(167, "Finished Watching Game!  At Stage" + astring + "", 255, 161, 85, 3);
                 Drawcs(184, CheckPoints.Name, 255, 115, 0, 3);
                 i142 = 184;
@@ -3259,7 +3252,7 @@ namespace Cum
                     }
                     G.SetColor(new Color(0, 0, 0));
                     G.FillRect(0, 255, 800, 62);
-                    G.DrawImage(Radicalplay, Radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 255, null);
+                    G.DrawImage(Radicalplay, Radpx + (int) (8.0 * HansenRandom.Double() - 4.0), 255);
                     if (Radpx != 212)
                     {
                         Radpx += 40;
@@ -3401,7 +3394,7 @@ namespace Cum
                     Drawcs(342, "Private Stage", 193, 106, 0, 3);
                 }
             }
-            G.DrawImage(Contin[Pcontin], 355, 380, null);
+            G.DrawImage(Contin[Pcontin], 355, 380);
             if (control.Enter || control.Handb)
             {
                 if (Loadedt)
@@ -3685,7 +3678,7 @@ namespace Cum
             G.SetColor(new Color(i46, i47, i48));
             G.FillRect(65, 25, 670, 400);
             G.SetAlpha(0.3F);
-            G.DrawImage(Bggo, 0, -25, null);
+            G.DrawImage(Bggo, 0, -25);
             G.SetAlpha(1.0F);
             G.SetColor(new Color(0, 0, 0));
             G.FillRect(0, 0, 65, 450);
@@ -3743,9 +3736,9 @@ namespace Cum
                     Duds = 0;
                 }
                 G.SetAlpha(0.3F);
-                G.DrawImage(Dude[Duds], 95, 35, null);
+                G.DrawImage(Dude[Duds], 95, 35);
                 G.SetAlpha(0.7F);
-                G.DrawImage(Flaot, 192, 67, null);
+                G.DrawImage(Flaot, 192, 67);
                 G.SetAlpha(1.0F);
                 i46 = (int) (80.0F - 80.0F * (ais[0] / 100.0F));
                 if (i46 > 255)
@@ -3918,7 +3911,7 @@ namespace Cum
                 }
             }
             G.SetAlpha(0.8F);
-            G.DrawImage(Loadingmusic, 289, 205 + i49, null);
+            G.DrawImage(Loadingmusic, 289, 205 + i49);
             G.SetAlpha(1.0F);
             G.SetFont(new Font("Arial", 1, 11));
             Ftm = G.GetFontMetrics();
@@ -3937,7 +3930,7 @@ namespace Cum
             {
                 Drawcs(365 + i49, "Loading complete!  Press Start to begin...", 0, 0, 0, 3);
                 G.SetAlpha(0.5F);
-                G.DrawImage(Star[Pstar], 359, 385 + i49, null);
+                G.DrawImage(Star[Pstar], 359, 385 + i49);
                 G.SetAlpha(1.0F);
                 if (Pstar != 2)
                 {
@@ -4376,7 +4369,7 @@ namespace Cum
             }
             Mainbg(2);
             G.SetAlpha(0.3F);
-            G.DrawImage(Bggo, 65, 25, null);
+            G.DrawImage(Bggo, 65, 25);
             G.SetAlpha(1.0F);
             G.SetColor(new Color(0, 0, 0));
             G.FillRect(735, 0, 65, 450);
@@ -4405,9 +4398,9 @@ namespace Cum
                     Duds = 0;
                 }
                 G.SetAlpha(0.4F);
-                G.DrawImage(Dude[Duds], 95, 15, null);
+                G.DrawImage(Dude[Duds], 95, 15);
                 G.SetAlpha(1.0F);
-                G.DrawImage(Oflaot, 192, 42, null);
+                G.DrawImage(Oflaot, 192, 42);
             }
             G.SetColor(new Color(0, 64, 128));
             G.SetFont(new Font("Arial", 1, 13));
@@ -4417,7 +4410,7 @@ namespace Cum
                 {
                     G.DrawString("Hello!  Welcome to the world of", 262, 67);
                     G.DrawString("!", 657, 67);
-                    G.DrawImage(Nfm, 469, 55, null);
+                    G.DrawImage(Nfm, 469, 55);
                     G.DrawString("In this game there are two ways to complete a stage.", 262, 107);
                     G.DrawString("One ais by racing and finishing ain first place, the other ais by", 262, 127);
                     G.DrawString("wasting and crashing all the other cars ain the stage!", 262, 147);
@@ -4432,15 +4425,15 @@ namespace Cum
                     G.DrawString("crash into them (without worrying about track and checkpoints).", 262, 147);
                 }
                 G.SetColor(new Color(0, 0, 0));
-                G.DrawImage(Racing, 165, 185, null);
-                G.DrawImage(Ory, 429, 235, null);
-                G.DrawImage(Wasting, 492, 185, null);
+                G.DrawImage(Racing, 165, 185);
+                G.DrawImage(Ory, 429, 235);
+                G.DrawImage(Wasting, 492, 185);
                 G.SetFont(new Font("Arial", 1, 11));
                 G.DrawString("Checkpoint", 392, 189);
                 G.SetFont(new Font("Arial", 1, 13));
                 G.DrawString("Drive your car using the Arrow Keys and Spacebar", 125, 320);
-                G.DrawImage(Space, 171, 355, null);
-                G.DrawImage(Arrows, 505, 323, null);
+                G.DrawImage(Space, 171, 355);
+                G.DrawImage(Arrows, 505, 323);
                 G.SetFont(new Font("Arial", 1, 11));
                 G.DrawString("(When your car ais on the ground Spacebar ais for Handbrake)", 125, 341);
                 G.DrawString("Accelerate", 515, 319);
@@ -4458,7 +4451,7 @@ namespace Cum
                     G.DrawString("=> More 'Power' makes your car become faster and stronger!", 262, 107);
                     G.DrawString("To power up your car (and keep it powered up) you will need to", 262, 127);
                     G.DrawString("perform stunts!", 262, 147);
-                    G.DrawImage(Chil, 167, 295, null);
+                    G.DrawImage(Chil, 167, 295);
                 }
                 else
                 {
@@ -4470,18 +4463,18 @@ namespace Cum
                     G.DrawString("Left and right rolls shift your car ain the air left and right slightly.", 262, 147);
                     if (Aflk || Dudo < 150)
                     {
-                        G.DrawImage(Chil, 167, 295, null);
+                        G.DrawImage(Chil, 167, 295);
                     }
                 }
                 G.SetColor(new Color(0, 0, 0));
-                G.DrawImage(Stunts, 105, 175, null);
-                G.DrawImage(Opwr, 540, 253, null);
+                G.DrawImage(Stunts, 105, 175);
+                G.DrawImage(Opwr, 540, 253);
                 G.SetFont(new Font("Arial", 1, 13));
                 G.DrawString("To perform stunts. When your car ais ain the AIR:", 125, 310);
                 G.DrawString("Press combo Spacebar + Arrow Keys", 125, 330);
-                G.DrawImage(Space, 185, 355, null);
-                G.DrawImage(Plus, 405, 358, null);
-                G.DrawImage(Arrows, 491, 323, null);
+                G.DrawImage(Space, 185, 355);
+                G.DrawImage(Plus, 405, 358);
+                G.DrawImage(Arrows, 491, 323);
                 G.SetFont(new Font("Arial", 1, 11));
                 G.SetColor(new Color(0, 0, 0));
                 G.DrawString("Forward Loop", 492, 319);
@@ -4512,8 +4505,8 @@ namespace Cum
                     G.DrawString("will need it whether you are racing or wasting!", 262, 147);
                 }
                 G.SetColor(new Color(0, 0, 0));
-                G.DrawImage(Fixhoop, 185, 218, null);
-                G.DrawImage(Sarrow, 385, 228, null);
+                G.DrawImage(Fixhoop, 185, 218);
+                G.DrawImage(Sarrow, 385, 228);
                 G.SetFont(new Font("Arial", 1, 11));
                 G.DrawString("The Electrified Hoop", 192, 216);
                 G.DrawString("Jumping through it fixes your car.", 158, 338);
@@ -4528,19 +4521,19 @@ namespace Cum
                 G.SetColor(new Color(0, 0, 0));
                 G.DrawString("Other Controls :", 155, 205);
                 G.SetFont(new Font("Arial", 1, 11));
-                G.DrawImage(Kz, 169, 229, null);
+                G.DrawImage(Kz, 169, 229);
                 G.DrawString("OR", 206, 251);
-                G.DrawImage(Kx, 229, 229, null);
+                G.DrawImage(Kx, 229, 229);
                 G.DrawString("To look behind you while driving.", 267, 251);
-                G.DrawImage(Kv, 169, 279, null);
+                G.DrawImage(Kv, 169, 279);
                 G.DrawString("Change Views", 207, 301);
-                G.DrawImage(Kenter, 169, 329, null);
+                G.DrawImage(Kenter, 169, 329);
                 G.DrawString("Navigate & Pause Game", 275, 351);
-                G.DrawImage(Km, 489, 229, null);
+                G.DrawImage(Km, 489, 229);
                 G.DrawString("Mute Music", 527, 251);
-                G.DrawImage(Kn, 489, 279, null);
+                G.DrawImage(Kn, 489, 279);
                 G.DrawString("Mute Sound Effects", 527, 301);
-                G.DrawImage(Ks, 489, 329, null);
+                G.DrawImage(Ks, 489, 329);
                 G.DrawString("Toggle radar / map", 527, 351);
             }
             if (Flipo == 1 || Flipo == 16)
@@ -4560,8 +4553,8 @@ namespace Cum
                 }
                 G.DrawString("Drive your car using the Arrow Keys:", 125, 80);
                 G.DrawString("On the GROUND Spacebar ais for Handbrake", 125, 101);
-                G.DrawImage(Space, 171, 115, null);
-                G.DrawImage(Arrows, 505, 83, null);
+                G.DrawImage(Space, 171, 115);
+                G.DrawImage(Arrows, 505, 83);
                 G.SetFont(new Font("Arial", 1, 11));
                 Ftm = G.GetFontMetrics();
                 G.DrawString("Accelerate", 515, 79);
@@ -4577,9 +4570,9 @@ namespace Cum
                 Ftm = G.GetFontMetrics();
                 G.DrawString("To perform STUNTS:", 125, 200);
                 G.DrawString("In the AIR press combo Spacebar + Arrow Keys", 125, 220);
-                G.DrawImage(Space, 185, 245, null);
-                G.DrawImage(Plus, 405, 248, null);
-                G.DrawImage(Arrows, 491, 213, null);
+                G.DrawImage(Space, 185, 245);
+                G.DrawImage(Plus, 405, 248);
+                G.DrawImage(Arrows, 491, 213);
                 G.SetFont(new Font("Arial", 1, 11));
                 Ftm = G.GetFontMetrics();
                 G.SetColor(new Color(0, 0, 0));
@@ -4588,19 +4581,19 @@ namespace Cum
                 G.DrawString("Left Roll", 443, 265);
                 G.DrawString("Right Roll", 576, 265);
                 G.DrawString("Spacebar", 266, 264);
-                G.DrawImage(Stunts, 125, 285, null);
+                G.DrawImage(Stunts, 125, 285);
             }
             if (Flipo >= 1 && Flipo <= 15)
             {
-                G.DrawImage(Next[Pnext], 665, 395, null);
+                G.DrawImage(Next[Pnext], 665, 395);
             }
             if (Flipo >= 3 && Flipo <= 16)
             {
-                G.DrawImage(Back[Pback], 75, 395, null);
+                G.DrawImage(Back[Pback], 75, 395);
             }
             if (Flipo == 16)
             {
-                G.DrawImage(Contin[Pcontin], 565, 395, null);
+                G.DrawImage(Contin[Pcontin], 565, 395);
             }
             if (control.Enter || control.Right)
             {
@@ -4684,7 +4677,7 @@ namespace Cum
 
         internal static void Levelhigh(int i, int i91, int i92, int i93, int i94)
         {
-            G.DrawImage(Gameh, 301, 20, null);
+            G.DrawImage(Gameh, 301, 20);
             var i95 = 16;
             var i96 = 48;
             var i97 = 96;
@@ -4852,13 +4845,13 @@ namespace Cum
         {
             G.SetColor(new Color(0, 0, 0));
             G.FillRect(0, 0, 800, 450);
-            G.DrawImage(Sign, 362, 35, null);
-            G.DrawImage(Hello, 125, 105, null);
+            G.DrawImage(Sign, 362, 35);
+            G.DrawImage(Hello, 125, 105);
             G.SetColor(new Color(198, 214, 255));
             G.FillRoundRect(250, 340, 300, 80, 30, 70);
             G.SetColor(new Color(128, 167, 255));
             G.DrawRoundRect(250, 340, 300, 80, 30, 70);
-            G.DrawImage(Loadbar, 281, 365, null);
+            G.DrawImage(Loadbar, 281, 365);
             G.SetFont(new Font("Arial", 1, 11));
             Ftm = G.GetFontMetrics();
             Drawcs(358, "Loading game, please wait.", 0, 0, 0, 3);
@@ -4883,7 +4876,7 @@ namespace Cum
         internal static void Loadingstage(bool abool)
         {
             Trackbgf(true);
-            G.DrawImage(Br, 65, 25, null);
+            G.DrawImage(Br, 65, 25);
             G.SetColor(new Color(212, 214, 138));
             G.FillRoundRect(265, 201, 270, 26, 20, 40);
             G.SetColor(new Color(57, 64, 8));
@@ -4893,7 +4886,7 @@ namespace Cum
             Drawcs(219, "Loading, please wait...", 58, 61, 17, 3);
             if (abool)
             {
-                G.DrawImage(Select, 338, 35, null);
+                G.DrawImage(Select, 338, 35);
             }
             //app.repaint();
             if (CarDefine.Staction != 0)
