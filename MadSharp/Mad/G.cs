@@ -78,10 +78,13 @@ namespace MadGame
                 return;
             }
 
-            for (int i = 0, l = n - 1; i < l; i++)
+            var l = n - 1;
+            for (var i = 0; i < l; i++)
             {
-                D2D.DrawLine(new RawVector2(x[i], y[i]), new RawVector2(x[i + 1], y[i + 1]), _currentColor);
+                D2D.DrawLine(new RawVector2(x[i]-0.5f, y[i]-0.5f), new RawVector2(x[i + 1]-0.5f, y[i + 1]-0.5f), _currentColor);
             }
+            
+            D2D.DrawLine(new RawVector2(x[l]-0.5f, y[l]-0.5f), new RawVector2(x[0]-0.5f, y[0]-0.5f), _currentColor);
         }
 
         public static void SetColor(Cum.Color color)
