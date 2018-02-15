@@ -2997,10 +2997,12 @@ namespace Cum
                 }
                 if (XTGraphics.Fase == 0)
                 {
-                    for (var i = 0; i < XTGraphics.Nplayers; i++)
-                    {
-                        XTPart2.Playsounds(i, Mads[i], U[i], _stageContos[0], _stageContos[i]);
-                    }
+                    const int i = 0;
+                    XTPart2.Playsounds(i, Mads[i], U[i], _stageContos[0], _stageContos[i]);
+//                    for (var i = 0; i < XTGraphics.Nplayers; i++)
+//                    {
+//                        XTPart2.Playsounds(i, Mads[i], U[i], _stageContos[0], _stageContos[i]);
+//                    }
                 }
             }
             _date = new Date();
