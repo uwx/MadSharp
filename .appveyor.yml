@@ -16,7 +16,7 @@ branches:
 
 environment:
   access_token:
-    secure: ZCGkDJawCLuRgzYTYraor3+u8xB5hjlMC2RhZZYWKkAVWbJ8DBI/ws7qqpZ2c2L1
+    secure: qNMRA5boyCslJ9JgiqjpLdHd0NvhQVWcjJx3ZMrcgrDz6DNFJnDsV7w9IZuhqwYZ
 
 install:
   - cmd: appveyor downloadfile https://dist.nuget.org/win-x86-commandline/v4.3.0/nuget.exe
@@ -51,7 +51,7 @@ deploy:
   description: 'MadSharp rev $(APPVEYOR_BUILD_NUMBER)'
   provider: GitHub
   auth_token:
-    secure: CgEIBkbJsrD+j0mEVqZpVLEGUl269U3MGdX8t16u3B2SQouZEARKoaUFyN7ueHwS # your encrypted token from GitHub
+    secure: qNMRA5boyCslJ9JgiqjpLdHd0NvhQVWcjJx3ZMrcgrDz6DNFJnDsV7w9IZuhqwYZ # your encrypted token from GitHub
   artifact: /.*/            # upload everything to release assets
   draft: false
   prerelease: false
@@ -64,4 +64,4 @@ notifications:
     on_build_success: true
     on_build_failure: true
     incoming_webhook:
-      secure: /tQzfO0uCSjCMZF2eqIdIGAxeA/Zyn2eKDJKfcnvwV7PsWf0sLZolUFnbnWva3KWtNuYgOXz30QpuRl/fcza4Kp7Ymg7COchmmFXpAPu+ZW/yuY4SiEEgTIRmpLZZFLVlFPOlb+9+JjNvk2Ck6LnWD799g3ErcK7arpJF7O0CrK3Bs/Ib3Qeyigdu7g71Lva
+      secure: +5y63VhkKwOZVK264xwgH8gp7vI2cJivXvseQeSoYYNyH3wjOtid8Qz+gyNOjCGpI/xqxxJNwqFrL75ZPHYOYEKs9WhBWznTsFpJUAs5hxn1kcczMv6WYuwUzXJNEdqX6m47PnS7xrzUZJIRWNQCHRJCtN5VX+hXfVV6BT+tKQevfSqQF/uISp/6etOGpEW1
