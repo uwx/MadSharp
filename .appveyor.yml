@@ -64,4 +64,4 @@ notifications:
     on_build_success: true
     on_build_failure: true
     incoming_webhook:
-      secure: +5y63VhkKwOZVK264xwgH8gp7vI2cJivXvseQeSoYYNyH3wjOtid8Qz+gyNOjCGpI/xqxxJNwqFrL75ZPHYOYEKs9WhBWznTsFpJUAs5hxn1kcczMv6WYuwUzXJNEdqX6m47PnS7xrzUZJIRWNQCHRJCtN5VX+hXfVV6BT+tKQevfSqQF/uISp/6etOGpEW1
+      secure: +5y63VhkKwOZVK264xwgH8gp7vI2cJivXvseQeSoYYNyH3wjOtid8Qz+gyNOjCGpI/xqxxJNwqFrL75ZPHYOYEKs9WhBWznTsFpJUAs5hxn1kcczMv6WYuwUzXJNEdqX6m47PnS7xrzUZJIRWNQCHRJCtN5VX+hXfVV6BT+tKQdRDeRr/LANhRLr2pAbIOGP
