@@ -2092,7 +2092,7 @@ namespace Cum
                 G.SetFont(new Font("Arial", 1, 13));
                 Ftm = G.GetFontMetrics();
                 Drawcs(165, "Decompiled and fixed by", 0, 0, 0, 3);
-                Drawcs(185, "rafa1231518 aka chrishansen69", 40, 60, 0, 3);
+                Drawcs(185, "Maxine", 40, 60, 0, 3);
                 G.SetFont(new Font("Arial", 1, 13));
                 Ftm = G.GetFontMetrics();
                 Drawcs(225, "~~~~~~ Special Thanks ~~~~~~", 0, 0, 0, 3);
